@@ -1,0 +1,213 @@
+.page {
+  min-height: 100vh;
+}
+
+/* ヒーロー */
+.hero {
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  padding: 56px 24px 48px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .heroTitle {
+    font-size: 26px;
+  }
+}
+
+.heroDesc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+.searchWrap {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 0 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.searchIcon {
+  font-size: 18px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 16px 0;
+  color: var(--text);
+  background: transparent;
+  font-family: inherit;
+}
+
+.searchInput::placeholder {
+  color: #aaa;
+}
+
+.clearBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 14px;
+  padding: 4px;
+}
+
+/* コンテンツ */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* カテゴリー */
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.catBtn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sub);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.catBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.catBtnActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.catBtnActive:hover {
+  color: #fff;
+}
+
+/* 件数 */
+.count {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 16px;
+}
+
+/* グリッド */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* カード */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(59, 110, 240, 0.12);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardEmoji {
+  font-size: 32px;
+}
+
+/* バッジ */
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.easy {
+  background: var(--easy-bg);
+  color: var(--easy);
+}
+
+.medium {
+  background: var(--medium-bg);
+  color: var(--medium);
+}
+
+.hard {
+  background: var(--hard-bg);
+  color: var(--hard);
+}
+
+.cardName {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cardMeta {
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+.cardArrow {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* 空状態 */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 64px 0;
+  color: var(--text-sub);
+}
+
+.emptySub {
+  font-size: 13px;
+  margin-top: 8px;
+  color: #aaa;
+}
