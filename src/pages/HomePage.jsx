@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICES, CATEGORIES } from '../data/services';
+import ServiceIcon from '../components/ServiceIcon';
 import styles from './HomePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -73,7 +74,7 @@ export default function HomePage() {
             filtered.map((service) => (
               <Link to={`/service/${service.id}`} key={service.id} className={styles.card}>
                 <div className={styles.cardTop}>
-                  <span className={styles.cardEmoji}>{service.emoji}</span>
+                  <ServiceIcon domain={service.domain} emoji={service.emoji} size={44} />
                   <span className={`${styles.badge} ${styles[DIFFICULTY_COLOR[service.difficulty]]}`}>
                     {DIFFICULTY_LABEL[service.difficulty]}
                   </span>

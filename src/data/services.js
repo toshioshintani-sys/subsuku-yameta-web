@@ -16,6 +16,7 @@ export const SERVICES = [
     name: 'Netflix',
     category: 'video',
     emoji: '🎬',
+    domain: 'netflix.com',
     cancelUrl: 'https://www.netflix.com/cancelplan',
     difficulty: 'easy',
     steps: [
@@ -30,6 +31,7 @@ export const SERVICES = [
     name: 'Amazon プライム',
     category: 'shopping',
     emoji: '📦',
+    domain: 'amazon.co.jp',
     cancelUrl: 'https://www.amazon.co.jp/gp/primecentral',
     difficulty: 'medium',
     steps: [
@@ -44,6 +46,7 @@ export const SERVICES = [
     name: 'Spotify',
     category: 'music',
     emoji: '🎵',
+    domain: 'spotify.com',
     cancelUrl: 'https://www.spotify.com/jp/account/subscription/',
     difficulty: 'easy',
     steps: [
@@ -58,6 +61,7 @@ export const SERVICES = [
     name: 'Apple Music',
     category: 'music',
     emoji: '🍎',
+    domain: 'apple.com',
     cancelUrl: 'https://support.apple.com/ja-jp/118428',
     difficulty: 'easy',
     steps: [
@@ -72,6 +76,7 @@ export const SERVICES = [
     name: 'YouTube Premium',
     category: 'video',
     emoji: '▶️',
+    domain: 'youtube.com',
     cancelUrl: 'https://www.youtube.com/paid_memberships',
     difficulty: 'easy',
     steps: [
@@ -86,6 +91,7 @@ export const SERVICES = [
     name: 'Disney+',
     category: 'video',
     emoji: '🏰',
+    domain: 'disneyplus.com',
     cancelUrl: 'https://www.disneyplus.com/ja-jp/account',
     difficulty: 'easy',
     steps: [
@@ -100,6 +106,7 @@ export const SERVICES = [
     name: 'Hulu',
     category: 'video',
     emoji: '📺',
+    domain: 'hulu.jp',
     cancelUrl: 'https://help.hulu.jp/article/cancellation',
     difficulty: 'medium',
     steps: [
@@ -114,6 +121,7 @@ export const SERVICES = [
     name: 'ABEMAプレミアム',
     category: 'video',
     emoji: '📡',
+    domain: 'abema.tv',
     cancelUrl: 'https://abema.tv/account',
     difficulty: 'medium',
     steps: [
@@ -128,6 +136,7 @@ export const SERVICES = [
     name: 'U-NEXT',
     category: 'video',
     emoji: '🎭',
+    domain: 'unext.jp',
     cancelUrl: 'https://video.unext.jp/option/my-menu',
     difficulty: 'hard',
     steps: [
@@ -142,6 +151,7 @@ export const SERVICES = [
     name: 'DAZN',
     category: 'video',
     emoji: '⚽',
+    domain: 'dazn.com',
     cancelUrl: 'https://www.dazn.com/ja-JP/account',
     difficulty: 'medium',
     steps: [
@@ -156,6 +166,7 @@ export const SERVICES = [
     name: 'Apple TV+',
     category: 'video',
     emoji: '📱',
+    domain: 'apple.com',
     cancelUrl: 'https://support.apple.com/ja-jp/118428',
     difficulty: 'easy',
     steps: [
@@ -170,6 +181,7 @@ export const SERVICES = [
     name: 'NHKプラス',
     category: 'video',
     emoji: '📻',
+    domain: 'nhk.or.jp',
     cancelUrl: 'https://plus.nhk.jp/mypage/withdraw',
     difficulty: 'medium',
     steps: [
@@ -183,6 +195,7 @@ export const SERVICES = [
     name: 'LINE MUSIC',
     category: 'music',
     emoji: '🎶',
+    domain: 'line.me',
     cancelUrl: 'https://music.line.me/webapp/plan',
     difficulty: 'easy',
     steps: [
@@ -197,6 +210,7 @@ export const SERVICES = [
     name: 'Amazon Music Unlimited',
     category: 'music',
     emoji: '🎧',
+    domain: 'amazon.co.jp',
     cancelUrl: 'https://www.amazon.co.jp/gp/dmusic/promotions/AmazonMusicUnlimited',
     difficulty: 'medium',
     steps: [
@@ -211,6 +225,7 @@ export const SERVICES = [
     name: '楽天ミュージック',
     category: 'music',
     emoji: '🎼',
+    domain: 'rakuten.co.jp',
     cancelUrl: 'https://music.rakuten.co.jp/subscription/plan/',
     difficulty: 'easy',
     steps: [
@@ -225,6 +240,7 @@ export const SERVICES = [
     name: 'Microsoft 365',
     category: 'software',
     emoji: '💼',
+    domain: 'microsoft.com',
     cancelUrl: 'https://account.microsoft.com/services',
     difficulty: 'medium',
     steps: [
@@ -239,6 +255,7 @@ export const SERVICES = [
     name: 'Adobe Creative Cloud',
     category: 'software',
     emoji: '🎨',
+    domain: 'adobe.com',
     cancelUrl: 'https://account.adobe.com/ja/plans',
     difficulty: 'hard',
     steps: [
@@ -253,6 +270,7 @@ export const SERVICES = [
     name: 'Notion',
     category: 'software',
     emoji: '📝',
+    domain: 'notion.so',
     cancelUrl: 'https://www.notion.so/ja-jp/help/cancel-subscription',
     difficulty: 'easy',
     steps: [
@@ -267,6 +285,7 @@ export const SERVICES = [
     name: 'Dropbox',
     category: 'software',
     emoji: '📂',
+    domain: 'dropbox.com',
     cancelUrl: 'https://www.dropbox.com/account/plan',
     difficulty: 'easy',
     steps: [
@@ -281,6 +300,7 @@ export const SERVICES = [
     name: 'Canva Pro',
     category: 'software',
     emoji: '🖼️',
+    domain: 'canva.com',
     cancelUrl: 'https://www.canva.com/settings/billing',
     difficulty: 'easy',
     steps: [
@@ -295,6 +315,7 @@ export const SERVICES = [
     name: 'Nintendo Switch Online',
     category: 'game',
     emoji: '🎮',
+    domain: 'nintendo.com',
     cancelUrl: 'https://accounts.nintendo.com/setting',
     difficulty: 'medium',
     steps: [
@@ -309,6 +330,7 @@ export const SERVICES = [
     name: 'PlayStation Plus',
     category: 'game',
     emoji: '🕹️',
+    domain: 'playstation.com',
     cancelUrl: 'https://www.playstation.com/ja-jp/support/subscriptions/cancel-playstation-plus/',
     difficulty: 'medium',
     steps: [
@@ -323,6 +345,7 @@ export const SERVICES = [
     name: 'Xbox Game Pass',
     category: 'game',
     emoji: '🟢',
+    domain: 'xbox.com',
     cancelUrl: 'https://account.microsoft.com/services',
     difficulty: 'medium',
     steps: [
@@ -337,6 +360,7 @@ export const SERVICES = [
     name: '日本経済新聞 電子版',
     category: 'news',
     emoji: '📰',
+    domain: 'nikkei.com',
     cancelUrl: 'https://www.nikkei.com/service/nikkeiid/setting/contract/',
     difficulty: 'hard',
     steps: [
@@ -351,6 +375,7 @@ export const SERVICES = [
     name: 'Kindle Unlimited',
     category: 'news',
     emoji: '📚',
+    domain: 'amazon.co.jp',
     cancelUrl: 'https://www.amazon.co.jp/hz/mycd/digital-console/contentlist/ku/ref=kinw_myk_redirect',
     difficulty: 'medium',
     steps: [
@@ -361,10 +386,11 @@ export const SERVICES = [
     note: null,
   },
   {
-    id: 'docomo-dazn',
+    id: 'danime',
     name: 'dアニメストア',
     category: 'video',
     emoji: '🌸',
+    domain: 'docomo.ne.jp',
     cancelUrl: 'https://animestore.docomo.ne.jp/animestore/mypage_do',
     difficulty: 'medium',
     steps: [
@@ -379,6 +405,7 @@ export const SERVICES = [
     name: '楽天TV',
     category: 'video',
     emoji: '🔴',
+    domain: 'rakuten.co.jp',
     cancelUrl: 'https://tv.rakuten.co.jp/mypage/',
     difficulty: 'medium',
     steps: [
@@ -393,6 +420,7 @@ export const SERVICES = [
     name: 'ChatGPT Plus',
     category: 'software',
     emoji: '🤖',
+    domain: 'openai.com',
     cancelUrl: 'https://chat.openai.com/settings',
     difficulty: 'easy',
     steps: [
@@ -407,6 +435,7 @@ export const SERVICES = [
     name: 'Claude Pro',
     category: 'software',
     emoji: '✨',
+    domain: 'anthropic.com',
     cancelUrl: 'https://claude.ai/settings',
     difficulty: 'easy',
     steps: [
@@ -421,6 +450,7 @@ export const SERVICES = [
     name: 'Evernote',
     category: 'software',
     emoji: '🐘',
+    domain: 'evernote.com',
     cancelUrl: 'https://www.evernote.com/Billing.action',
     difficulty: 'medium',
     steps: [

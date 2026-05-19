@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES } from '../data/services';
+import ServiceIcon from '../components/ServiceIcon';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -46,7 +47,7 @@ export default function ServicePage() {
         {/* メインカード */}
         <div className={styles.mainCard}>
           <div className={styles.serviceHead}>
-            <span className={styles.emoji}>{service.emoji}</span>
+            <ServiceIcon domain={service.domain} emoji={service.emoji} size={64} />
             <div>
               <h1 className={styles.name}>{service.name}の解約方法</h1>
               <div className={styles.meta}>
@@ -104,7 +105,7 @@ export default function ServicePage() {
             <div className={styles.relatedGrid}>
               {related.map((s) => (
                 <Link to={`/service/${s.id}`} key={s.id} className={styles.relatedCard}>
-                  <span className={styles.relatedEmoji}>{s.emoji}</span>
+                  <ServiceIcon domain={s.domain} emoji={s.emoji} size={28} />
                   <span className={styles.relatedName}>{s.name}</span>
                   <span className={styles.relatedArrow}>→</span>
                 </Link>
