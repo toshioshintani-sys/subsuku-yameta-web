@@ -1,0 +1,130 @@
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  padding: 36px 24px 40px;
+}
+
+.breadcrumb {
+  max-width: 960px;
+  margin: 0 auto 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.title {
+  max-width: 960px;
+  margin: 0 auto 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+  }
+}
+
+.desc {
+  max-width: 960px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(59, 110, 240, 0.12);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.easy { background: var(--easy-bg); color: var(--easy); }
+.medium { background: var(--medium-bg); color: var(--medium); }
+.hard { background: var(--hard-bg); color: var(--hard); }
+
+.cardName {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cardMeta {
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+.cardArrow {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.empty {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--text-sub);
+  font-size: 14px;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}

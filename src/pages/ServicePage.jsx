@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
+import Seo from '../components/Seo';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -34,12 +35,16 @@ export default function ServicePage() {
 
   return (
     <div className={styles.page}>
+      <Seo
+        title={`${service.name}の解約方法`}
+        description={`${service.name}の解約ページへの直リンクと、${service.steps.length}ステップの手順${service.note ? '。注意点も。' : '。'}`}
+      />
       <div className={styles.inner}>
         {/* パンくず */}
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <span>{CATEGORY_LABEL[service.category]}</span>
+          <Link to={`/category/${service.category}`}>{CATEGORY_LABEL[service.category]}</Link>
           <span> › </span>
           <span>{service.name}</span>
         </nav>

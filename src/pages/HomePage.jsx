@@ -2,25 +2,52 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICES, CATEGORIES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
+import Seo from '../components/Seo';
 import styles from './HomePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
+const DIFFICULTY_ORDER = { easy: 0, medium: 1, hard: 2 };
+
+const SORT_OPTIONS = [
+  { id: 'default', label: 'デフォルト' },
+  { id: 'name', label: '五十音順' },
+  { id: 'difficulty-asc', label: '解約しやすい順' },
+  { id: 'difficulty-desc', label: '解約しにくい順' },
+];
 
 export default function HomePage() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('default');
 
   const filtered = useMemo(() => {
-    return SERVICES.filter((s) => {
+    const list = SERVICES.filter((s) => {
       const matchQuery = s.name.toLowerCase().includes(query.toLowerCase());
       const matchCategory = selectedCategory === 'all' || s.category === selectedCategory;
       return matchQuery && matchCategory;
     });
-  }, [query, selectedCategory]);
+
+    if (sortBy === 'name') {
+      return [...list].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+    }
+    if (sortBy === 'difficulty-asc') {
+      return [...list].sort(
+        (a, b) => DIFFICULTY_ORDER[a.difficulty] - DIFFICULTY_ORDER[b.difficulty]
+      );
+    }
+    if (sortBy === 'difficulty-desc') {
+      return [...list].sort(
+        (a, b) => DIFFICULTY_ORDER[b.difficulty] - DIFFICULTY_ORDER[a.difficulty]
+      );
+    }
+    return list;
+  }, [query, selectedCategory, sortBy]);
 
   return (
     <div className={styles.page}>
+      <Seo />
+
       {/* ヒーロー */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>解約したいのに、どこから？</h1>
@@ -58,17 +85,31 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* 件数 */}
-        <p className={styles.count}>
-          {filtered.length}件のサービス
-        </p>
+        {/* 件数とソート */}
+        <div className={styles.toolbar}>
+          <p className={styles.count}>{filtered.length}件のサービス</p>
+          <label className={styles.sortWrap}>
+            <span className={styles.sortLabel}>並び順</span>
+            <select
+              className={styles.sortSelect}
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              {SORT_OPTIONS.map((o) => (
+                <option key={o.id} value={o.id}>{o.label}</option>
+              ))}
+            </select>
+          </label>
+        </div>
 
         {/* グリッド */}
         <div className={styles.grid}>
           {filtered.length === 0 ? (
             <div className={styles.empty}>
               <p>「{query}」は見つかりませんでした</p>
-              <p className={styles.emptySub}>サービス名のリクエストはTwitter（@未定）まで</p>
+              <p className={styles.emptySub}>
+                サービス追加のリクエストは <Link to="/contact" className={styles.emptyLink}>お問い合わせ</Link> から
+              </p>
             </div>
           ) : (
             filtered.map((service) => (
