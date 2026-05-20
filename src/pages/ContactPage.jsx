@@ -8,6 +8,7 @@ export default function ContactPage() {
       <Seo
         title="お問い合わせ"
         description="サブスクやめたへのご意見・追加リクエスト・誤情報のご指摘。"
+        canonical="/contact"
       />
       <div className={styles.inner}>
         <h1 className={styles.title}>お問い合わせ</h1>

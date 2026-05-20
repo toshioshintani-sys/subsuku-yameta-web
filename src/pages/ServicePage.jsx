@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
@@ -21,6 +22,23 @@ export default function ServicePage() {
   const { id } = useParams();
   const service = SERVICES.find((s) => s.id === id);
 
+  const howToJsonLd = useMemo(() => {
+    if (!service || !service.steps?.length) return null;
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: `${service.name}の解約方法`,
+      description: `${service.name}の解約ページへの直リンクと、${service.steps.length}ステップで完了する手順。`,
+      step: service.steps.map((text, i) => ({
+        '@type': 'HowToStep',
+        position: i + 1,
+        name: `ステップ${i + 1}`,
+        text,
+      })),
+      ...(service.note ? { tip: [{ '@type': 'HowToTip', text: service.note }] } : {}),
+    };
+  }, [service]);
+
   // 同カテゴリのサービスを最大3件
   const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
 
@@ -38,6 +56,8 @@ export default function ServicePage() {
       <Seo
         title={`${service.name}の解約方法`}
         description={`${service.name}の解約ページへの直リンクと、${service.steps.length}ステップの手順${service.note ? '。注意点も。' : '。'}`}
+        canonical={`/service/${service.id}`}
+        jsonLd={howToJsonLd}
       />
       <div className={styles.inner}>
         {/* パンくず */}

@@ -46,7 +46,7 @@ export default function HomePage() {
 
   return (
     <div className={styles.page}>
-      <Seo />
+      <Seo canonical="/" />
 
       {/* ヒーロー */}
       <section className={styles.hero}>

@@ -5,7 +5,7 @@ import styles from './StaticPage.module.css';
 export default function DisclaimerPage() {
   return (
     <div className={styles.page}>
-      <Seo title="免責事項" description="サブスクやめたの免責事項。" />
+      <Seo title="免責事項" description="サブスクやめたの免責事項。" canonical="/disclaimer" />
       <div className={styles.inner}>
         <h1 className={styles.title}>免責事項</h1>
         <p className={styles.lead}>最終更新日：2026年5月19日</p>
