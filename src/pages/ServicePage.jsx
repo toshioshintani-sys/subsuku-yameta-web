@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { SERVICES, ALTERNATIVES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
+import AdSlot from '../components/AdSlot';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -148,6 +149,9 @@ export default function ServicePage() {
             ※ 解約手順はサービス側の仕様変更により異なる場合があります。最新情報は各サービスの公式サポートをご確認ください。
           </p>
         </div>
+
+        {/* 広告（解約手順が終わった直後の自然なブレイク。ない場合は何も描画しない） */}
+        <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         {/* 解約後の選択肢（記事末尾・押し売り厳禁） */}
         {alternatives.length > 0 && (

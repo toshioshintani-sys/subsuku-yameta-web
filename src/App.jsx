@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Analytics from './components/Analytics';
 import HomePage from './pages/HomePage';
 import ServicePage from './pages/ServicePage';
 import CategoryPage from './pages/CategoryPage';
@@ -14,6 +15,7 @@ import './index.css';
 export default function App() {
   return (
     <BrowserRouter>
+      <Analytics />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -1,0 +1,4 @@
+# AdSense 承認後、AdSense 管理画面 → アカウント → ads.txt から取得した
+# 1行を以下に貼り付けて再デプロイすること。
+# 例：
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
