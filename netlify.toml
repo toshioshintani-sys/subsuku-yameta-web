@@ -1,0 +1,26 @@
+# Netlify build configuration for サブスクやめた
+#
+# 重要なポイント：
+# - SPA リダイレクト（最下部）が無いと /about や /service/:id などの
+#   サブルートを直接開いたとき Netlify が 404 を返す
+# - NODE_VERSION を固定して Netlify のデフォルト変更による事故を防ぐ
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--prefer-offline --no-audit"
+
+# 静的アセットに長期キャッシュを設定（Vite はファイル名にハッシュを含めるので安全）
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# SPA フォールバック：React Router のルートを Netlify でも有効化する
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
