@@ -186,6 +186,103 @@
   margin-top: 8px;
 }
 
+/* 解約後の選択肢 */
+.alternatives {
+  margin-bottom: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+@media (max-width: 600px) {
+  .alternatives {
+    padding: 18px;
+  }
+}
+
+.altTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.altLead {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.altGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 600px) {
+  .altGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.altCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.altCard:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(59, 110, 240, 0.1);
+}
+
+.altCardTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.altCardName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.altCardExternalIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--easy-bg);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.altCardReason {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.altCardArrow {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
 /* 関連サービス */
 .related {
   margin-bottom: 32px;

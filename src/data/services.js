@@ -460,4 +460,448 @@ export const SERVICES = [
     ],
     note: null,
   },
+  {
+    id: 'audible',
+    name: 'Audible（オーディブル）',
+    category: 'news',
+    emoji: '🎧',
+    domain: 'audible.co.jp',
+    cancelUrl: 'https://www.audible.co.jp/account/cancel-membership',
+    difficulty: 'hard',
+    steps: [
+      'PCブラウザで上記URLを開く（アプリ・スマホからは解約不可）',
+      '「このまま退会手続きを行う」を繰り返し選ぶ',
+      '理由を選んで「退会手続きを完了する」',
+    ],
+    note: 'スマホアプリからは絶対に解約できない。必ずPCブラウザで',
+  },
+  {
+    id: 'rakuten-magazine',
+    name: '楽天マガジン',
+    category: 'news',
+    emoji: '📖',
+    domain: 'rakuten.co.jp',
+    cancelUrl: 'https://magazine.rakuten.co.jp/account/setting/',
+    difficulty: 'medium',
+    steps: [
+      'マイページ → 「ご契約内容の確認・変更」',
+      '「解約はこちら」（ページ下部）',
+      '理由選択 → 「解約する」',
+    ],
+    note: null,
+  },
+  {
+    id: 'dmagazine',
+    name: 'dマガジン',
+    category: 'news',
+    emoji: '📔',
+    domain: 'docomo.ne.jp',
+    cancelUrl: 'https://magazine.dmkt-sp.jp/mfdoc/setting/cancel',
+    difficulty: 'medium',
+    steps: [
+      'dマガジン公式 → 「解約」',
+      'dアカウントでログイン',
+      '「手続きを完了する」',
+    ],
+    note: null,
+  },
+  {
+    id: 'wowow-on-demand',
+    name: 'WOWOWオンデマンド',
+    category: 'video',
+    emoji: '🎞️',
+    domain: 'wowow.co.jp',
+    cancelUrl: 'https://www.wowow.co.jp/customer/cancel/',
+    difficulty: 'hard',
+    steps: [
+      '上記URL → ログイン',
+      '「解約のお手続き」',
+      'アンケート入力 → 「解約手続きを完了する」',
+    ],
+    note: '電話解約のみだった時期もあるが現在はWebで完結可能',
+  },
+  {
+    id: 'fod',
+    name: 'FOD（フジテレビオンデマンド）',
+    category: 'video',
+    emoji: '🎥',
+    domain: 'fod.fujitv.co.jp',
+    cancelUrl: 'https://fod.fujitv.co.jp/s/account/',
+    difficulty: 'medium',
+    steps: [
+      'マイページ → 「アカウント情報」',
+      '「FODプレミアム解約」',
+      '理由選択 → 「解約する」',
+    ],
+    note: null,
+  },
+  {
+    id: 'lemino',
+    name: 'Lemino（旧dTV）',
+    category: 'video',
+    emoji: '📲',
+    domain: 'lemino.docomo.ne.jp',
+    cancelUrl: 'https://lemino.docomo.ne.jp/lemino-pc/contents/account',
+    difficulty: 'medium',
+    steps: [
+      'マイページ → 「アカウント」',
+      '「解約お手続き」',
+      'dアカウントで認証 → 「手続きを完了する」',
+    ],
+    note: null,
+  },
+  {
+    id: 'yahoo-premium',
+    name: 'Yahoo!プレミアム',
+    category: 'other',
+    emoji: '🅈',
+    domain: 'yahoo.co.jp',
+    cancelUrl: 'https://premium.yahoo.co.jp/end/',
+    difficulty: 'hard',
+    steps: [
+      '上記URL → Yahoo! JAPAN IDでログイン',
+      '解約理由を選んで進む（引き止め画面複数）',
+      '最後まで「解約する」を押し続けて完了',
+    ],
+    note: '引き止めバナーが何度も表示される。慌てず最下部の解約リンクを探す',
+  },
+  {
+    id: 'dmm-premium',
+    name: 'DMMプレミアム',
+    category: 'video',
+    emoji: '🎦',
+    domain: 'dmm.com',
+    cancelUrl: 'https://premium.dmm.com/account/leave/',
+    difficulty: 'medium',
+    steps: [
+      '上記URL → DMMアカウントでログイン',
+      '「解約する」',
+      '確認して完了',
+    ],
+    note: null,
+  },
+  {
+    id: 'apple-one',
+    name: 'Apple One',
+    category: 'other',
+    emoji: '🍏',
+    domain: 'apple.com',
+    cancelUrl: 'https://support.apple.com/ja-jp/118428',
+    difficulty: 'easy',
+    steps: [
+      'iPhoneの「設定」→ Apple ID名',
+      '「サブスクリプション」→「Apple One」',
+      '「サブスクリプションをキャンセルする」',
+    ],
+    note: 'Apple Music・iCloud+・TV+などが個別契約に戻る点に注意',
+  },
+  {
+    id: 'google-one',
+    name: 'Google One',
+    category: 'software',
+    emoji: '☁️',
+    domain: 'one.google.com',
+    cancelUrl: 'https://one.google.com/settings',
+    difficulty: 'easy',
+    steps: [
+      'one.google.com → 「設定」',
+      '「メンバーシップをキャンセル」',
+      '確認して完了',
+    ],
+    note: 'キャンセル後、保存容量超過分のデータは閲覧のみ可能になる',
+  },
+  {
+    id: 'icloud-plus',
+    name: 'iCloud+',
+    category: 'software',
+    emoji: '☁',
+    domain: 'apple.com',
+    cancelUrl: 'https://support.apple.com/ja-jp/HT207580',
+    difficulty: 'easy',
+    steps: [
+      'iPhoneの「設定」→ Apple ID名 → 「iCloud」',
+      '「アカウントのストレージを管理」→「ストレージプランを変更」',
+      '「無料の5GBプランにダウングレード」',
+    ],
+    note: '完全に解約せず無料5GBに戻す形。データ容量超過分は要バックアップ',
+  },
+  {
+    id: '1password',
+    name: '1Password',
+    category: 'software',
+    emoji: '🔐',
+    domain: '1password.com',
+    cancelUrl: 'https://my.1password.com/billing',
+    difficulty: 'medium',
+    steps: [
+      '1Password.com → サインイン → 「請求」',
+      '「サブスクリプションを管理」→「キャンセル」',
+      '確認して完了',
+    ],
+    note: 'キャンセル後も期間末まで使える。Vault データはエクスポート推奨',
+  },
+  {
+    id: 'figma',
+    name: 'Figma（有料プラン）',
+    category: 'software',
+    emoji: '🎯',
+    domain: 'figma.com',
+    cancelUrl: 'https://www.figma.com/settings',
+    difficulty: 'medium',
+    steps: [
+      '右上アイコン → 「Settings」→「Plans」',
+      '「Downgrade」または「Cancel plan」',
+      '確認して完了',
+    ],
+    note: 'チーム単位の課金。誰が支払者か事前に確認',
+  },
+  {
+    id: 'deepl-pro',
+    name: 'DeepL Pro',
+    category: 'software',
+    emoji: '🌐',
+    domain: 'deepl.com',
+    cancelUrl: 'https://www.deepl.com/your-account/plan',
+    difficulty: 'medium',
+    steps: [
+      'アカウント → 「プラン」',
+      '「プランをキャンセル」',
+      '理由選択 → 確定',
+    ],
+    note: null,
+  },
+  {
+    id: 'pairs',
+    name: 'Pairs（ペアーズ）',
+    category: 'other',
+    emoji: '💕',
+    domain: 'pairs.lv',
+    cancelUrl: 'https://www.pairs.lv/help/4408826555417',
+    difficulty: 'hard',
+    steps: [
+      'アプリストア決済の場合：iPhoneの「設定」→ サブスクリプション → Pairs',
+      'クレカ決済の場合：ブラウザ版 → マイページ → 「料金プランの解約」',
+      '理由選択 → 解約完了',
+    ],
+    note: '決済方法により手順が完全に分かれる。アプリ内には解約ボタンが無い',
+  },
+  {
+    id: 'note-premium',
+    name: 'noteプレミアム',
+    category: 'news',
+    emoji: '📝',
+    domain: 'note.com',
+    cancelUrl: 'https://note.com/settings/premium',
+    difficulty: 'easy',
+    steps: [
+      '設定 → 「プレミアム」',
+      '「プレミアムを解約する」',
+      '確認して完了',
+    ],
+    note: null,
+  },
+  {
+    id: 'github-copilot',
+    name: 'GitHub Copilot',
+    category: 'software',
+    emoji: '🐙',
+    domain: 'github.com',
+    cancelUrl: 'https://github.com/settings/copilot',
+    difficulty: 'easy',
+    steps: [
+      '上記URL → 「Cancel Copilot」',
+      '理由選択 → 「Cancel Copilot」',
+      '確認して完了',
+    ],
+    note: '期間末まで利用可能。会社契約の場合は管理者経由',
+  },
 ];
+
+// ---------------------------------------------------------------------------
+// 解約後の選択肢（ServicePage で表示）
+// 構造：
+//   id（内部リンク）または url（外部リンク）+ name + reason
+// 注：
+//   - id 参照は SERVICES の id と一致させる（内部リンクで /service/:id へ）
+//   - 外部リンクは「無料代替」「節約系ツール」を中心に。アフィリエイトIDは後で
+//     ?utm_source=subsuku のように差し替え可能なように保つ。押し売りは避ける。
+// ---------------------------------------------------------------------------
+
+export const ALTERNATIVES = {
+  // 動画 — 同価格帯の乗り換え or 無料代替
+  netflix: [
+    { id: 'disney-plus', reason: '月額990円・ディズニー/マーベル/スターウォーズ系が好きなら' },
+    { id: 'amazon-prime', reason: '月額600円・送料無料特典もまとめて' },
+    { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '広告ありで多くのドラマ・映画コンテンツが視聴可能' },
+  ],
+  'amazon-prime': [
+    { id: 'netflix', reason: '映画・ドラマだけなら専業の方が充実' },
+  ],
+  'youtube-premium': [
+    { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '広告は入るがコンテンツは同じ' },
+    { id: 'spotify', reason: '音楽だけならこちらの方が安い場合あり' },
+  ],
+  'disney-plus': [
+    { id: 'netflix', reason: 'オリジナルドラマ・洋画中心ならこちら' },
+    { id: 'u-next', reason: '見放題数31万本以上で和洋ともにカバー' },
+  ],
+  hulu: [
+    { id: 'u-next', reason: '国内ドラマ重視ならこちらも充実' },
+    { id: 'amazon-prime', reason: '値段重視ならこちらが圧倒的' },
+  ],
+  'u-next': [
+    { id: 'hulu', reason: '月額料金を抑えたい場合' },
+    { id: 'amazon-prime', reason: 'コスパ重視なら最安クラス' },
+  ],
+  'abema-premium': [
+    { url: 'https://abema.tv/', name: 'ABEMA（無料）', reason: 'プレミアム機能不要なら無料版で十分なケースも' },
+  ],
+  fod: [
+    { id: 'u-next', reason: 'フジ系コンテンツも見放題対象' },
+  ],
+  lemino: [
+    { id: 'amazon-prime', reason: 'コスパ重視の汎用VOD' },
+  ],
+  'dmm-premium': [
+    { id: 'amazon-prime', reason: '一般作品中心なら定番の選択' },
+  ],
+  'wowow-on-demand': [
+    { id: 'u-next', reason: '映画ラインナップ重視ならこちらも' },
+  ],
+  'rakuten-tv': [
+    { id: 'amazon-prime', reason: '広く浅く見たいなら定番' },
+  ],
+  dazn: [
+    { url: 'https://www.youtube.com/', name: 'YouTube ライブ（無料）', reason: '一部のスポーツは公式チャンネルで無料配信' },
+  ],
+  danime: [
+    { id: 'u-next', reason: '同じドコモグループ・アニメも見放題に多数含む' },
+  ],
+
+  // 音楽 — 価格帯違い or 無料プラン
+  spotify: [
+    { url: 'https://open.spotify.com/', name: 'Spotify Free', reason: '広告ありで完全無料。シャッフル再生のみ' },
+    { id: 'youtube-premium', reason: '音楽 + 動画の両方が無料化される' },
+    { id: 'amazon-music-unlimited', reason: 'プライム会員は割引' },
+  ],
+  'apple-music': [
+    { id: 'spotify', reason: 'プレイリスト機能が強力' },
+    { url: 'https://open.spotify.com/', name: 'Spotify Free', reason: '無料で試したい場合' },
+  ],
+  'amazon-music-unlimited': [
+    { id: 'spotify', reason: '楽曲数は同等で広告ありなら無料版あり' },
+  ],
+  'line-music': [
+    { id: 'spotify', reason: 'プレイリスト・推薦機能が強力' },
+  ],
+  'rakuten-music': [
+    { id: 'spotify', reason: '邦楽・洋楽どちらも豊富' },
+  ],
+
+  // ソフト・ツール — 無料代替が強い領域
+  'adobe-cc': [
+    { url: 'https://www.figma.com/', name: 'Figma（無料プランあり）', reason: 'UI/Webデザインなら無料で十分' },
+    { url: 'https://www.canva.com/', name: 'Canva（無料プランあり）', reason: 'バナー・SNS画像なら無料版で対応可' },
+    { url: 'https://www.gimp.org/', name: 'GIMP（無料）', reason: '写真編集の無料代替' },
+  ],
+  'canva-pro': [
+    { url: 'https://www.canva.com/', name: 'Canva 無料版', reason: '基本機能は無料で十分なケースも多い' },
+    { url: 'https://www.figma.com/', name: 'Figma（無料）', reason: 'デザイン共有・コラボなら強力' },
+  ],
+  'microsoft-365': [
+    { url: 'https://www.google.com/intl/ja/docs/about/', name: 'Google ドキュメント／スプレッドシート（無料）', reason: 'Excel/Word の代替として完成度高い' },
+    { url: 'https://www.libreoffice.org/', name: 'LibreOffice（無料）', reason: 'オフライン・無料の Office 互換' },
+  ],
+  notion: [
+    { url: 'https://www.notion.so/', name: 'Notion 無料プラン', reason: '個人利用なら無料で十分なことが多い' },
+    { url: 'https://obsidian.md/', name: 'Obsidian（無料）', reason: 'ローカルファイル管理派ならこちら' },
+  ],
+  dropbox: [
+    { id: 'google-one', reason: '15GB 無料・Office連携も強い' },
+    { id: 'icloud-plus', reason: 'Apple ユーザーなら自動同期がラク' },
+  ],
+  evernote: [
+    { id: 'notion', reason: 'モダンUIの統合ノート' },
+    { url: 'https://keep.google.com/', name: 'Google Keep（無料）', reason: 'シンプルなメモなら無料で十分' },
+  ],
+  'chatgpt-plus': [
+    { id: 'claude-pro', reason: 'コーディング・長文タスクなら有力候補' },
+    { url: 'https://chat.openai.com/', name: 'ChatGPT 無料版', reason: 'GPT-5など最新モデルへの利用回数制限を許容できれば' },
+  ],
+  'claude-pro': [
+    { id: 'chatgpt-plus', reason: '汎用性・周辺ツール（GPTs等）重視ならこちら' },
+    { url: 'https://claude.ai/', name: 'Claude 無料版', reason: 'たまにしか使わないなら無料版で十分なケースも' },
+  ],
+  '1password': [
+    { url: 'https://bitwarden.com/', name: 'Bitwarden（無料プランあり）', reason: '個人利用なら無料で大半カバー' },
+  ],
+  figma: [
+    { url: 'https://www.figma.com/', name: 'Figma 無料プラン', reason: '小規模・個人なら無料で十分なことも' },
+  ],
+  'deepl-pro': [
+    { url: 'https://www.deepl.com/translator', name: 'DeepL 無料版', reason: '短文・少量利用なら無料で十分' },
+    { url: 'https://translate.google.com/', name: 'Google翻訳（無料）', reason: '対応言語数なら最大級' },
+  ],
+  'github-copilot': [
+    { id: 'claude-pro', reason: 'コーディング用途なら同等以上の選択肢' },
+    { url: 'https://codeium.com/', name: 'Codeium（無料プランあり）', reason: '個人開発なら無料で代替可能' },
+  ],
+
+  // 読み放題・ニュース
+  'kindle-unlimited': [
+    { id: 'amazon-prime', reason: 'Prime Reading で一部書籍が読み放題に含まれる' },
+    { id: 'audible', reason: '聴くスタイルに切り替える選択肢' },
+  ],
+  audible: [
+    { url: 'https://open.spotify.com/', name: 'Spotify ポッドキャスト（無料）', reason: '音声コンテンツなら無料で多数' },
+  ],
+  'rakuten-magazine': [
+    { id: 'dmagazine', reason: '雑誌ラインナップが似ているドコモ系' },
+  ],
+  dmagazine: [
+    { id: 'rakuten-magazine', reason: 'ラインナップが似ている楽天系' },
+  ],
+  nikkei: [
+    { url: 'https://www.nikkei.com/', name: '日経電子版 無料会員', reason: '月10本まで無料で読める' },
+  ],
+  'nhk-plus': [
+    { url: 'https://plus.nhk.jp/', name: 'NHKプラス（受信契約者は無料）', reason: '受信料を払っていれば無料で利用可能' },
+  ],
+  'note-premium': [
+    { url: 'https://note.com/', name: 'note 無料アカウント', reason: '書く側でないなら無料で十分' },
+  ],
+
+  // ゲーム
+  'nintendo-switch-online': [
+    { id: 'playstation-plus', reason: 'PSユーザーへの乗り換え検討' },
+  ],
+  'playstation-plus': [
+    { id: 'xbox-game-pass', reason: 'PCも遊ぶならゲームパスの方が遊び放題感が強い' },
+  ],
+  'xbox-game-pass': [
+    { id: 'playstation-plus', reason: 'PS5ユーザーならこちら' },
+  ],
+
+  // バンドル系
+  'apple-one': [
+    { id: 'apple-music', reason: '音楽だけ必要ならこちら' },
+    { id: 'icloud-plus', reason: 'ストレージだけならこちら' },
+  ],
+  'google-one': [
+    { url: 'https://drive.google.com/', name: 'Google Drive 無料15GB', reason: 'ストレージ不要ならダウングレード' },
+  ],
+  'icloud-plus': [
+    { id: 'google-one', reason: '汎用クラウドならこちらの方が安価な場合あり' },
+    { id: 'dropbox', reason: 'デバイス間同期の老舗' },
+  ],
+
+  // その他
+  'yahoo-premium': [
+    { url: 'https://www.yahoo.co.jp/', name: 'Yahoo! JAPAN（無料）', reason: '通常利用なら無料アカウントで支障なし' },
+  ],
+  pairs: [
+    { url: 'https://www.matchapp.jp/', name: 'マッチドットコム', reason: '30代以上の真剣婚活なら老舗の選択' },
+    { url: 'https://withapp.jp/', name: 'with', reason: '心理テスト型のマッチング' },
+  ],
+};
+

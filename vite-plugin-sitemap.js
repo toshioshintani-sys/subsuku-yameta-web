@@ -2,7 +2,7 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { SERVICES, CATEGORIES } from './src/data/services.js';
 
-const FALLBACK_SITE_URL = 'https://subsuku-yameta.netlify.app';
+const FALLBACK_SITE_URL = 'https://sabusuku.netlify.app';
 
 function getSiteUrl() {
   return (process.env.VITE_SITE_URL || FALLBACK_SITE_URL).replace(/\/+$/, '');

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { SERVICES } from '../data/services';
+import { SERVICES, ALTERNATIVES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './ServicePage.module.css';
@@ -41,6 +41,34 @@ export default function ServicePage() {
 
   // 同カテゴリのサービスを最大3件
   const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
+
+  // 解約後の選択肢（内部リンクはサービス詳細を補完して描画）
+  const alternatives = useMemo(() => {
+    if (!service) return [];
+    const raw = ALTERNATIVES[service.id] || [];
+    return raw
+      .map((alt) => {
+        if (alt.id) {
+          const target = SERVICES.find((s) => s.id === alt.id);
+          if (!target) return null;
+          return {
+            kind: 'internal',
+            href: `/service/${target.id}`,
+            name: target.name,
+            emoji: target.emoji,
+            domain: target.domain,
+            reason: alt.reason,
+          };
+        }
+        return {
+          kind: 'external',
+          href: alt.url,
+          name: alt.name,
+          reason: alt.reason,
+        };
+      })
+      .filter(Boolean);
+  }, [service]);
 
   if (!service) {
     return (
@@ -120,6 +148,45 @@ export default function ServicePage() {
             ※ 解約手順はサービス側の仕様変更により異なる場合があります。最新情報は各サービスの公式サポートをご確認ください。
           </p>
         </div>
+
+        {/* 解約後の選択肢（記事末尾・押し売り厳禁） */}
+        {alternatives.length > 0 && (
+          <section className={styles.alternatives}>
+            <h2 className={styles.altTitle}>解約したあなたへ：別の選択肢</h2>
+            <p className={styles.altLead}>
+              似た用途で使えるサービスを参考までに紹介します。無理に乗り換える必要はありません。
+            </p>
+            <div className={styles.altGrid}>
+              {alternatives.map((alt, i) => (
+                alt.kind === 'internal' ? (
+                  <Link key={i} to={alt.href} className={styles.altCard}>
+                    <div className={styles.altCardTop}>
+                      <ServiceIcon domain={alt.domain} emoji={alt.emoji} size={32} />
+                      <span className={styles.altCardName}>{alt.name}</span>
+                    </div>
+                    <p className={styles.altCardReason}>{alt.reason}</p>
+                    <span className={styles.altCardArrow}>このサービスの解約方法もみる →</span>
+                  </Link>
+                ) : (
+                  <a
+                    key={i}
+                    href={alt.href}
+                    target="_blank"
+                    rel="sponsored noopener noreferrer"
+                    className={styles.altCard}
+                  >
+                    <div className={styles.altCardTop}>
+                      <span className={styles.altCardExternalIcon}>↗</span>
+                      <span className={styles.altCardName}>{alt.name}</span>
+                    </div>
+                    <p className={styles.altCardReason}>{alt.reason}</p>
+                    <span className={styles.altCardArrow}>公式サイトへ ↗</span>
+                  </a>
+                )
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* 同カテゴリの他サービス */}
         {related.length > 0 && (
