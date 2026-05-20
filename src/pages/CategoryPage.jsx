@@ -30,7 +30,7 @@ export default function CategoryPage() {
 
   return (
     <div className={styles.page}>
-      <Seo title={title} description={description} />
+      <Seo title={title} description={description} canonical={`/category/${category.id}`} />
 
       <section className={styles.hero}>
         <nav className={styles.breadcrumb}>

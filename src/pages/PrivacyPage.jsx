@@ -5,7 +5,7 @@ import styles from './StaticPage.module.css';
 export default function PrivacyPage() {
   return (
     <div className={styles.page}>
-      <Seo title="プライバシーポリシー" description="サブスクやめたのプライバシーポリシー。" />
+      <Seo title="プライバシーポリシー" description="サブスクやめたのプライバシーポリシー。" canonical="/privacy" />
       <div className={styles.inner}>
         <h1 className={styles.title}>プライバシーポリシー</h1>
         <p className={styles.lead}>最終更新日：2026年5月19日</p>

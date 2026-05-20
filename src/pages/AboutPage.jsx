@@ -8,6 +8,7 @@ export default function AboutPage() {
       <Seo
         title="このサイトについて"
         description="サブスクやめたは、解約ページへ1クリックで飛べる解約導線のインデックスサイトです。"
+        canonical="/about"
       />
       <div className={styles.inner}>
         <h1 className={styles.title}>このサイトについて</h1>
