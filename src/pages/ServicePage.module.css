@@ -86,6 +86,186 @@
   color: var(--text-sub);
 }
 
+.price {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  background: rgba(59, 110, 240, 0.08);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* 拡張コンテンツの概要 */
+.summary {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+  margin: -8px 0 24px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+/* 段落 */
+.paragraph {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.9;
+  margin: 0;
+}
+
+.paragraphLead {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+/* 引き止め対策（ダークパターン） */
+.dpList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dpItem {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dpTrigger {
+  padding: 10px 14px;
+  background: var(--medium-bg);
+  font-size: 13px;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.dpResponse {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  background: var(--surface);
+}
+
+.dpTriggerLabel,
+.dpResponseLabel {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.dpTriggerLabel {
+  background: var(--medium);
+  color: #fff;
+}
+
+.dpResponseLabel {
+  background: var(--easy);
+  color: #fff;
+}
+
+/* FAQ */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faqItem {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.faqItem[open] {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+
+.faqQ {
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+.faqMark,
+.faqMarkA {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(59, 110, 240, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.faqA {
+  padding: 0 14px 14px 14px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.8;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Tracker CTA */
+.trackerCta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, var(--easy-bg) 0%, var(--surface) 100%);
+  border: 1px solid var(--easy);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.trackerCta:hover {
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.12);
+  transform: translateY(-1px);
+}
+
+.trackerCtaIcon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.trackerCtaTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.trackerCtaSub {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-top: 2px;
+}
+
 /* 解約ボタン */
 .cancelBtn {
   display: block;

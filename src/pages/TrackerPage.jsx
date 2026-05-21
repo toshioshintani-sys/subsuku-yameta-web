@@ -1,0 +1,343 @@
+import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { SERVICES, PRICING, CATEGORIES } from '../data/services';
+import ServiceIcon from '../components/ServiceIcon';
+import Seo from '../components/Seo';
+import styles from './TrackerPage.module.css';
+
+// 解約マネジメント・ダッシュボード
+// - ユーザーが契約中サブスクを選択（localStorage で永続化）
+// - 月額・年額合計と「解約優先度」を可視化
+// - 個人情報は一切収集しない（全てローカル）
+
+const STORAGE_KEY = 'subsuku-yameta:tracker:v1';
+const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
+const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
+const DIFFICULTY_WEIGHT = { easy: 1, medium: 0.7, hard: 0.5 };
+
+function loadState() {
+  if (typeof window === 'undefined') return { selected: {}, lastUsed: {} };
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return { selected: {}, lastUsed: {} };
+    const parsed = JSON.parse(raw);
+    return {
+      selected: parsed.selected || {},
+      lastUsed: parsed.lastUsed || {},
+    };
+  } catch {
+    return { selected: {}, lastUsed: {} };
+  }
+}
+
+function saveState(state) {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // ignore (quota exceeded など)
+  }
+}
+
+function monthsAgo(isoDate) {
+  if (!isoDate) return null;
+  const then = new Date(isoDate);
+  if (Number.isNaN(then.getTime())) return null;
+  const now = new Date();
+  const months = (now.getFullYear() - then.getFullYear()) * 12 + (now.getMonth() - then.getMonth());
+  return Math.max(0, months);
+}
+
+function formatYen(n) {
+  return `¥${n.toLocaleString('ja-JP')}`;
+}
+
+export default function TrackerPage() {
+  const [state, setState] = useState(() => loadState());
+  const [filterCategory, setFilterCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('priority');
+
+  useEffect(() => {
+    saveState(state);
+  }, [state]);
+
+  const toggle = (id) => {
+    setState((prev) => ({
+      ...prev,
+      selected: { ...prev.selected, [id]: !prev.selected[id] },
+    }));
+  };
+
+  const updateLastUsed = (id, value) => {
+    setState((prev) => ({
+      ...prev,
+      lastUsed: { ...prev.lastUsed, [id]: value || undefined },
+    }));
+  };
+
+  const clearAll = () => {
+    if (confirm('チェック中のサブスクをすべてクリアしますか？（ローカル保存のみ消えます）')) {
+      setState({ selected: {}, lastUsed: {} });
+    }
+  };
+
+  // 選択中サービスと月額情報
+  const enriched = useMemo(() => {
+    return SERVICES.map((s) => {
+      const monthly = PRICING[s.id] ?? 0;
+      const monthsUnused = monthsAgo(state.lastUsed[s.id]);
+      // 解約優先度スコア：価格が高い × 解約しやすい × 使ってない期間が長い
+      const usageBonus = monthsUnused == null ? 1 : Math.min(3, 1 + monthsUnused * 0.15);
+      const priority = (monthly || 0) * (DIFFICULTY_WEIGHT[s.difficulty] || 0.5) * usageBonus;
+      return { ...s, monthly, monthsUnused, priority };
+    });
+  }, [state.lastUsed]);
+
+  const selectedIds = useMemo(
+    () => Object.entries(state.selected).filter(([, v]) => v).map(([k]) => k),
+    [state.selected]
+  );
+
+  const selectedItems = useMemo(
+    () => enriched.filter((s) => state.selected[s.id]),
+    [enriched, state.selected]
+  );
+
+  const totalMonthly = selectedItems.reduce((sum, s) => sum + s.monthly, 0);
+  const totalYearly = totalMonthly * 12;
+
+  // フィルタ・ソート（チェックリスト側）
+  const visibleList = useMemo(() => {
+    let list = enriched;
+    if (filterCategory !== 'all') list = list.filter((s) => s.category === filterCategory);
+    if (sortBy === 'priority') {
+      list = [...list].sort((a, b) => b.priority - a.priority);
+    } else if (sortBy === 'price-desc') {
+      list = [...list].sort((a, b) => b.monthly - a.monthly);
+    } else if (sortBy === 'name') {
+      list = [...list].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+    }
+    return list;
+  }, [enriched, filterCategory, sortBy]);
+
+  // 選択中の「解約しなさい順」リスト
+  const recommendedOrder = useMemo(
+    () => [...selectedItems].sort((a, b) => b.priority - a.priority),
+    [selectedItems]
+  );
+
+  // エクスポート
+  const exportMarkdown = () => {
+    const lines = [
+      '# 私のサブスク棚卸し',
+      '',
+      `合計：月 ${formatYen(totalMonthly)} / 年 ${formatYen(totalYearly)}`,
+      '',
+      '## 解約しなさい順',
+      '',
+      ...recommendedOrder.map((s, i) =>
+        `${i + 1}. **${s.name}** — ${formatYen(s.monthly)}/月（解約難度: ${DIFFICULTY_LABEL[s.difficulty]}） → [${s.cancelUrl}](${s.cancelUrl})`
+      ),
+      '',
+      '_作成: サブスクやめた（https://sabusuku.netlify.app/tracker）_',
+    ];
+    downloadText('subsuku-yametai.md', lines.join('\n'));
+  };
+
+  const exportCsv = () => {
+    const header = '名前,カテゴリ,月額,年額,解約難度,優先度スコア,解約URL';
+    const rows = recommendedOrder.map((s) =>
+      [
+        s.name,
+        s.category,
+        s.monthly,
+        s.monthly * 12,
+        DIFFICULTY_LABEL[s.difficulty],
+        Math.round(s.priority),
+        s.cancelUrl,
+      ]
+        .map((v) => `"${String(v).replace(/"/g, '""')}"`)
+        .join(',')
+    );
+    downloadText('subsuku-yametai.csv', '﻿' + [header, ...rows].join('\n'));
+  };
+
+  return (
+    <div className={styles.page}>
+      <Seo
+        title="サブスク棚卸しダッシュボード"
+        description="契約中のサブスクをチェックして月額・年額の合計と解約優先度を可視化。個人情報は一切保存しません（ローカル保存のみ）。"
+        canonical="/tracker"
+      />
+
+      <section className={styles.hero}>
+        <h1 className={styles.heroTitle}>あなたのサブスク、年いくら払ってる？</h1>
+        <p className={styles.heroDesc}>
+          契約中のサブスクをチェックするだけで、合計額と「解約しなさい順」が一瞬で出ます。
+          <br />
+          <strong>個人情報は一切保存しません。</strong>すべてあなたのブラウザ内（localStorage）に保存されます。
+        </p>
+      </section>
+
+      <div className={styles.summary}>
+        <div className={styles.summaryInner}>
+          <div className={styles.summaryStat}>
+            <div className={styles.statLabel}>選択中</div>
+            <div className={styles.statValue}>{selectedItems.length}<span className={styles.statUnit}>件</span></div>
+          </div>
+          <div className={styles.summaryStat}>
+            <div className={styles.statLabel}>月額合計</div>
+            <div className={styles.statValueAccent}>{formatYen(totalMonthly)}</div>
+          </div>
+          <div className={styles.summaryStat}>
+            <div className={styles.statLabel}>年額合計</div>
+            <div className={styles.statValueAccent}>{formatYen(totalYearly)}</div>
+          </div>
+          {selectedItems.length > 0 && (
+            <div className={styles.summaryActions}>
+              <button className={styles.exportBtn} onClick={exportMarkdown}>📝 Markdown</button>
+              <button className={styles.exportBtn} onClick={exportCsv}>📊 CSV</button>
+              <button className={styles.clearBtn} onClick={clearAll}>🗑 クリア</button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className={styles.content}>
+        {/* 解約しなさい順（選択中があるときだけ） */}
+        {recommendedOrder.length > 0 && (
+          <section className={styles.recommended}>
+            <h2 className={styles.recommendedTitle}>解約しなさい順（おすすめの順番）</h2>
+            <p className={styles.recommendedLead}>
+              「価格が高い × 解約しやすい × 使ってない期間が長い」で優先度を計算しています。
+              上から順に解約するのが最もムダを減らせる順番です。
+            </p>
+            <ol className={styles.recList}>
+              {recommendedOrder.map((s, i) => (
+                <li key={s.id} className={styles.recItem}>
+                  <div className={styles.recRank}>{i + 1}</div>
+                  <div className={styles.recBody}>
+                    <div className={styles.recHead}>
+                      <ServiceIcon domain={s.domain} emoji={s.emoji} size={32} />
+                      <span className={styles.recName}>{s.name}</span>
+                      <span className={`${styles.recBadge} ${styles[DIFFICULTY_COLOR[s.difficulty]]}`}>
+                        {DIFFICULTY_LABEL[s.difficulty]}
+                      </span>
+                    </div>
+                    <div className={styles.recMeta}>
+                      月 {formatYen(s.monthly)} / 年 {formatYen(s.monthly * 12)}
+                      {s.monthsUnused != null && s.monthsUnused >= 1 && (
+                        <span className={styles.recUnused}> · 最後の利用から{s.monthsUnused}ヶ月</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className={styles.recActions}>
+                    <Link to={`/service/${s.id}`} className={styles.recDetailBtn}>手順を見る</Link>
+                    <a
+                      href={s.cancelUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.recCancelBtn}
+                    >
+                      解約 ↗
+                    </a>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {/* チェックリスト */}
+        <section className={styles.checklist}>
+          <div className={styles.checklistHead}>
+            <h2 className={styles.checklistTitle}>契約中のサブスクをチェック</h2>
+            <div className={styles.checklistTools}>
+              <select
+                className={styles.toolSelect}
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+              >
+                {CATEGORIES.map((c) => (
+                  <option key={c.id} value={c.id}>{c.label}</option>
+                ))}
+              </select>
+              <select
+                className={styles.toolSelect}
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                <option value="priority">優先度順</option>
+                <option value="price-desc">価格が高い順</option>
+                <option value="name">五十音順</option>
+              </select>
+            </div>
+          </div>
+
+          <ul className={styles.list}>
+            {visibleList.map((s) => {
+              const isSelected = !!state.selected[s.id];
+              return (
+                <li
+                  key={s.id}
+                  className={`${styles.row} ${isSelected ? styles.rowSelected : ''}`}
+                >
+                  <label className={styles.rowLabel}>
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggle(s.id)}
+                      className={styles.checkbox}
+                    />
+                    <ServiceIcon domain={s.domain} emoji={s.emoji} size={28} />
+                    <span className={styles.rowName}>{s.name}</span>
+                    <span className={styles.rowPrice}>
+                      {s.monthly ? formatYen(s.monthly) + '/月' : '都度課金'}
+                    </span>
+                  </label>
+                  {isSelected && (
+                    <div className={styles.rowExtra}>
+                      <label className={styles.lastUsedLabel}>
+                        最後に使った月：
+                        <input
+                          type="month"
+                          value={state.lastUsed[s.id] || ''}
+                          onChange={(e) => updateLastUsed(s.id, e.target.value)}
+                          className={styles.lastUsedInput}
+                        />
+                      </label>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        {/* 注意書き */}
+        <div className={styles.note}>
+          <p>
+            <strong>個人情報は一切送信しません。</strong>
+            選択状態と「最後に使った月」はあなたのブラウザ内（localStorage）にのみ保存されます。
+            別のブラウザや端末では引き継がれません。
+          </p>
+          <p>
+            価格は標準プランの参考値です（広告つきプラン・年契約・学割等で変動）。
+            実際の請求額は各サービスの請求明細をご確認ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function downloadText(filename, text) {
+  if (typeof window === 'undefined') return;
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}

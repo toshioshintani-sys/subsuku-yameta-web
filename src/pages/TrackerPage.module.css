@@ -1,0 +1,425 @@
+.page {
+  min-height: 100vh;
+}
+
+/* ヒーロー */
+.hero {
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  padding: 48px 24px 40px;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .heroTitle {
+    font-size: 22px;
+  }
+}
+
+.heroDesc {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.heroDesc strong {
+  color: #fff;
+}
+
+/* サマリーバー */
+.summary {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+}
+
+.summaryInner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.summaryStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-sub);
+  letter-spacing: 0.05em;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.statUnit {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-sub);
+  margin-left: 2px;
+}
+
+.statValueAccent {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+.summaryActions {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.exportBtn,
+.clearBtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sub);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.exportBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.clearBtn:hover {
+  border-color: var(--hard);
+  color: var(--hard);
+}
+
+/* コンテンツ */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* 解約しなさい順 */
+.recommended {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+  .recommended {
+    padding: 18px;
+  }
+}
+
+.recommendedTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.recommendedLead {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.recList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .recItem {
+    flex-wrap: wrap;
+  }
+}
+
+.recRank {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.recHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.recBadge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.recBadge.easy { background: var(--easy-bg); color: var(--easy); }
+.recBadge.medium { background: var(--medium-bg); color: var(--medium); }
+.recBadge.hard { background: var(--hard-bg); color: var(--hard); }
+
+.recMeta {
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+.recUnused {
+  color: var(--medium);
+  font-weight: 600;
+}
+
+.recActions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .recActions {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.recDetailBtn,
+.recCancelBtn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.recDetailBtn {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.recDetailBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.recCancelBtn {
+  background: var(--accent);
+  color: #fff;
+}
+
+.recCancelBtn:hover {
+  background: var(--accent-hover);
+}
+
+/* チェックリスト */
+.checklist {
+  margin-bottom: 32px;
+}
+
+.checklistHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.checklistTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.checklistTools {
+  display: flex;
+  gap: 8px;
+}
+
+.toolSelect {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toolSelect:hover,
+.toolSelect:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+@media (min-width: 600px) {
+  .list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: all 0.15s;
+}
+
+.row:hover {
+  border-color: var(--accent);
+}
+
+.rowSelected {
+  background: var(--easy-bg);
+  border-color: var(--easy);
+}
+
+.rowLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+.rowName {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.rowPrice {
+  font-size: 12px;
+  color: var(--text-sub);
+  font-variant-numeric: tabular-nums;
+}
+
+.rowExtra {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.lastUsedLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+.lastUsedInput {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.lastUsedInput:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* 注意書き */
+.note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.note p {
+  margin: 0;
+}
+
+.note p + p {
+  margin-top: 8px;
+}
+
+.note strong {
+  color: var(--text);
+}

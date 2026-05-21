@@ -9,6 +9,9 @@ import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
 import DisclaimerPage from './pages/DisclaimerPage';
 import ContactPage from './pages/ContactPage';
+import TrackerPage from './pages/TrackerPage';
+import BlogIndexPage from './pages/BlogIndexPage';
+import BlogPostPage from './pages/BlogPostPage';
 import NotFoundPage from './pages/NotFoundPage';
 import './index.css';
 
@@ -21,6 +24,9 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/service/:id" element={<ServicePage />} />
         <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/tracker" element={<TrackerPage />} />
+        <Route path="/blog" element={<BlogIndexPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />

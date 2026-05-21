@@ -17,6 +17,14 @@ export default function Footer() {
           </div>
 
           <div className={styles.col}>
+            <div className={styles.colTitle}>ツール</div>
+            <ul className={styles.list}>
+              <li><Link to="/tracker">サブスク棚卸し</Link></li>
+              <li><Link to="/blog">お役立ち記事</Link></li>
+            </ul>
+          </div>
+
+          <div className={styles.col}>
             <div className={styles.colTitle}>カテゴリ</div>
             <ul className={styles.list}>
               {categoryItems.map((c) => (

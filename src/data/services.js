@@ -715,6 +715,171 @@ export const SERVICES = [
     ],
     note: '期間末まで利用可能。会社契約の場合は管理者経由',
   },
+  {
+    id: 'niconico-premium',
+    name: 'ニコニコ動画プレミアム',
+    category: 'video',
+    emoji: '🎴',
+    domain: 'nicovideo.jp',
+    cancelUrl: 'https://secure.nicovideo.jp/secure/premium_status/unregister',
+    difficulty: 'medium',
+    steps: [
+      '上記URL → ログイン',
+      '「次へ」を進める',
+      '理由選択 → 「退会する」',
+    ],
+    note: '解約後も期間末日まで利用可能',
+  },
+  {
+    id: 'bookwalker',
+    name: 'BOOK☆WALKER',
+    category: 'news',
+    emoji: '📕',
+    domain: 'bookwalker.jp',
+    cancelUrl: 'https://bookwalker.jp/withdraw/',
+    difficulty: 'medium',
+    steps: [
+      '上記URL → ログイン',
+      '退会理由を選択',
+      '「退会する」',
+    ],
+    note: '購入済みの書籍は退会後も読めなくなる点に注意。退会前にメモを確保',
+  },
+  {
+    id: 'honto',
+    name: 'honto',
+    category: 'news',
+    emoji: '📓',
+    domain: 'honto.jp',
+    cancelUrl: 'https://honto.jp/cart/my/withdraw.html',
+    difficulty: 'medium',
+    steps: [
+      '上記URL → ログイン',
+      '「退会の手続き」を確認',
+      '「退会する」',
+    ],
+    note: '購入済み電子書籍も読めなくなる。共通ID（dポイント等の連携）も解除される',
+  },
+  {
+    id: 'rakuten-kobo',
+    name: '楽天Kobo（プレミアム）',
+    category: 'news',
+    emoji: '📒',
+    domain: 'kobo.com',
+    cancelUrl: 'https://my.rakuten.co.jp/rms/page/kk/withdraw.html',
+    difficulty: 'medium',
+    steps: [
+      '楽天会員 退会ページ → ログイン',
+      '退会理由を選ぶ',
+      '「退会する」',
+    ],
+    note: '楽天会員自体の退会になる。Kobo購入書籍だけ解約したい場合はサポートへ',
+  },
+  {
+    id: 'crunchyroll',
+    name: 'Crunchyroll',
+    category: 'video',
+    emoji: '🍙',
+    domain: 'crunchyroll.com',
+    cancelUrl: 'https://www.crunchyroll.com/account/membership',
+    difficulty: 'easy',
+    steps: [
+      '上記URL → ログイン',
+      '「Cancel Membership」',
+      '理由選択 → 確認',
+    ],
+    note: 'スマホアプリ経由で登録している場合は各ストアの設定から解約',
+  },
+  {
+    id: 'vimeo-pro',
+    name: 'Vimeo（有料プラン）',
+    category: 'software',
+    emoji: '🎞',
+    domain: 'vimeo.com',
+    cancelUrl: 'https://vimeo.com/settings/billing',
+    difficulty: 'medium',
+    steps: [
+      '設定 → 「Billing」',
+      '「Cancel plan」',
+      '理由選択 → 確定',
+    ],
+    note: '解約後は無料プランに戻る。アップロード済み動画の保存数制限に注意',
+  },
+  {
+    id: 'patreon',
+    name: 'Patreon（サブスク支援）',
+    category: 'other',
+    emoji: '🎗️',
+    domain: 'patreon.com',
+    cancelUrl: 'https://www.patreon.com/settings/memberships',
+    difficulty: 'easy',
+    steps: [
+      '上記URL → メンバーシップ一覧',
+      '解約したいクリエイターの「⋯」→「Edit or cancel pledge」',
+      '「Cancel my pledge」',
+    ],
+    note: '個別のクリエイター単位で解約。アカウント全体ではない',
+  },
+  {
+    id: 'match',
+    name: 'マッチドットコム（Match）',
+    category: 'other',
+    emoji: '💘',
+    domain: 'match.com',
+    cancelUrl: 'https://www.match.com/profile/billing.aspx',
+    difficulty: 'hard',
+    steps: [
+      'PCブラウザで上記URL → ログイン（アプリからは解約不可）',
+      '「自動更新の停止」',
+      '理由選択 → 引き止め画面を進めて完了',
+    ],
+    note: 'アプリ内では解約できない。必ずPCブラウザで',
+  },
+  {
+    id: 'soundcloud-go',
+    name: 'SoundCloud Go',
+    category: 'music',
+    emoji: '🎚️',
+    domain: 'soundcloud.com',
+    cancelUrl: 'https://soundcloud.com/settings/subscriptions',
+    difficulty: 'easy',
+    steps: [
+      '上記URL → ログイン',
+      '「Cancel subscription」',
+      '確認して完了',
+    ],
+    note: null,
+  },
+  {
+    id: 'discord-nitro',
+    name: 'Discord Nitro',
+    category: 'other',
+    emoji: '🎮',
+    domain: 'discord.com',
+    cancelUrl: 'https://discord.com/billing/premium/manage-plan',
+    difficulty: 'easy',
+    steps: [
+      'ユーザー設定 → 「サブスクリプション」',
+      '「Nitro をキャンセル」',
+      '理由選択 → 確定',
+    ],
+    note: '請求期間の残り日数分は引き続き利用可能',
+  },
+  {
+    id: 'linkedin-premium',
+    name: 'LinkedIn Premium',
+    category: 'other',
+    emoji: '💼',
+    domain: 'linkedin.com',
+    cancelUrl: 'https://www.linkedin.com/premium/cancel/',
+    difficulty: 'medium',
+    steps: [
+      '上記URL → 「Continue to cancel」',
+      '理由選択（引き止めオファーが複数表示される）',
+      '「Confirm cancel」',
+    ],
+    note: '無料トライアル中の場合、期間内に解約しないと自動課金',
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -903,5 +1068,294 @@ export const ALTERNATIVES = {
     { url: 'https://www.matchapp.jp/', name: 'マッチドットコム', reason: '30代以上の真剣婚活なら老舗の選択' },
     { url: 'https://withapp.jp/', name: 'with', reason: '心理テスト型のマッチング' },
   ],
+  match: [
+    { url: 'https://withapp.jp/', name: 'with', reason: '心理テスト型・若年層向け' },
+    { id: 'pairs', reason: '会員数最大級・アプリ操作が中心の人向け' },
+  ],
+  'niconico-premium': [
+    { id: 'youtube-premium', reason: '広告なし＋音楽が便利' },
+    { url: 'https://www.nicovideo.jp/', name: 'ニコニコ動画（無料）', reason: '高画質・倍速再生だけ無くてもいい場合' },
+  ],
+  bookwalker: [
+    { id: 'kindle-unlimited', reason: '一般書も含む読み放題' },
+    { id: 'rakuten-magazine', reason: '雑誌・コミック中心ならコスパ◎' },
+  ],
+  honto: [
+    { id: 'kindle-unlimited', reason: 'Amazon系で書籍も読み放題' },
+  ],
+  'rakuten-kobo': [
+    { id: 'kindle-unlimited', reason: 'Amazon の電子書籍読み放題' },
+  ],
+  crunchyroll: [
+    { id: 'danime', reason: '日本国内ならdアニメ系がコスパ◎' },
+    { id: 'u-next', reason: 'アニメ含む網羅型VOD' },
+  ],
+  'vimeo-pro': [
+    { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '公開動画の置き場としては圧倒的に無料で十分' },
+  ],
+  patreon: [
+    { url: 'https://fanbox.cc/', name: 'pixiv FANBOX（日本）', reason: '国内クリエイター支援なら手数料が安く済む選択' },
+  ],
+  'soundcloud-go': [
+    { id: 'spotify', reason: 'プレイリスト・楽曲数で優位' },
+  ],
+  'discord-nitro': [
+    { url: 'https://discord.com/', name: 'Discord 無料版', reason: '通話・チャットなど基本機能は無料で十分' },
+  ],
+  'linkedin-premium': [
+    { url: 'https://www.linkedin.com/', name: 'LinkedIn 無料版', reason: '転職活動は無料版で十分機能する' },
+  ],
 };
+
+// ---------------------------------------------------------------------------
+// 月額価格マップ（解約マネジメント・ダッシュボード /tracker で使用）
+// 注：
+//   - 単位は円・税込・標準プラン
+//   - 学割・年契約・複数プランがある場合は最も一般的なプランを採用
+//   - 価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
+// ---------------------------------------------------------------------------
+export const PRICING = {
+  netflix: 890,              // 広告つきベーシック。スタンダード1490、プレミアム1980
+  'amazon-prime': 600,       // 年間プランは5900（月額換算492）
+  spotify: 980,
+  'apple-music': 1080,
+  'youtube-premium': 1280,
+  'disney-plus': 990,
+  hulu: 1026,
+  'abema-premium': 1080,
+  'u-next': 2189,
+  dazn: 4200,
+  'apple-tv-plus': 900,
+  'nhk-plus': 0,             // 受信料に内包
+  'line-music': 980,
+  'amazon-music-unlimited': 1080,
+  'rakuten-music': 980,
+  'microsoft-365': 1490,
+  'adobe-cc': 6480,          // コンプリートプラン
+  notion: 1500,
+  dropbox: 1200,
+  'canva-pro': 1500,
+  'nintendo-switch-online': 306,
+  'playstation-plus': 850,
+  'xbox-game-pass': 1100,
+  nikkei: 4277,
+  'kindle-unlimited': 980,
+  danime: 550,
+  'rakuten-tv': 0,           // 都度課金がメイン
+  'chatgpt-plus': 3000,
+  'claude-pro': 3000,
+  evernote: 1100,
+  audible: 1500,
+  'rakuten-magazine': 418,
+  dmagazine: 580,
+  'wowow-on-demand': 2530,
+  fod: 976,
+  lemino: 990,
+  'yahoo-premium': 508,
+  'dmm-premium': 550,
+  'apple-one': 1200,
+  'google-one': 250,         // 100GB プラン
+  'icloud-plus': 130,        // 50GB プラン
+  '1password': 450,
+  figma: 1800,
+  'deepl-pro': 1200,
+  pairs: 3700,
+  'note-premium': 500,
+  'github-copilot': 1500,
+  'niconico-premium': 790,
+  bookwalker: 836,
+  honto: 0,                  // 都度購入がメイン
+  'rakuten-kobo': 0,         // 都度購入がメイン
+  crunchyroll: 850,
+  'vimeo-pro': 2700,
+  patreon: 1500,             // 平均的なクリエイター月額
+  match: 4490,
+  'soundcloud-go': 770,
+  'discord-nitro': 1050,
+  'linkedin-premium': 4400,
+};
+
+// ---------------------------------------------------------------------------
+// 拡張コンテンツ（ServicePage で長文化・FAQPage JSON-LD に出力）
+// Top10 サービス（流入見込み大）から優先的に充実させる
+// ---------------------------------------------------------------------------
+export const EXTENDED_CONTENT = {
+  netflix: {
+    summary:
+      'Netflix は世界最大の動画配信サービス。会員数は2.7億人を超え、オリジナル作品『ストレンジャー・シングス』『イカゲーム』などで知られる。月額890円（広告つきベーシック）から1980円（プレミアム）の3プラン。',
+    whyHard:
+      'Netflix の解約は実は「かんたん」な部類。アカウントページから3クリックで完了する設計で、引き止めも控えめ。ただし「メンバーシップを一時停止」と「キャンセル」が並んで表示されるため、間違って一時停止を選ばないよう注意。',
+    darkPatterns: [
+      { trigger: '「メンバーシップを一時停止」が大きく表示される', response: '解約したいなら必ず「メンバーシップのキャンセル」を選ぶ。一時停止は10ヶ月後に自動再開する' },
+      { trigger: '「再加入は簡単です」のメッセージ', response: '実際10ヶ月以内ならアカウント設定や視聴履歴も全て復元されるが、それは解約を躊躇させるための情報。気にせず進める' },
+    ],
+    afterCancel:
+      '解約後も請求期間の末日まで視聴可能。ダウンロード済みコンテンツは即時アクセス不可になることがある。10ヶ月以内なら再加入時にプロフィールと視聴履歴が復元される。完全に消したい場合は別途「アカウントの削除」が必要。',
+    faq: [
+      { q: 'スマホアプリから Netflix を解約できますか？', a: 'iPhone/Android アプリでの直接解約はできません。ブラウザで netflix.com にログインしてください。ただしアプリ内課金（iTunes 決済）の場合は iPhone「設定」のサブスクリプションから解約します。' },
+      { q: '請求日の前日に解約すれば翌月の請求を止められますか？', a: 'はい。請求日の前までに解約すれば次回課金は発生しません。請求日当日に解約しても翌月課金は止まりますが、当月分は返金されません。' },
+      { q: '解約後にデータは消えますか？', a: 'プロフィールと視聴履歴は10ヶ月間保持されます。10ヶ月以内に再加入すれば全て復元されます。' },
+    ],
+  },
+  'amazon-prime': {
+    summary:
+      'Amazon プライムは送料無料・Prime Video・Prime Music・Prime Reading など複数特典がついた月額600円（年額5900円）のサブスク。日本で最も契約者数の多いサブスクの一つ。',
+    whyHard:
+      'Amazon の解約ページは何度もクリックさせる UX が特徴。「特典を終了する」ボタンを3回押す必要があり、間に「継続するとお得です」のキャンペーン誘導が複数挟まる。年契約の場合は「期間途中でも解約可能だが返金は使用日数分のみ」という独自ルール。',
+    darkPatterns: [
+      { trigger: '「3日間無料体験を再度ご利用ください」', response: '以前無料体験を使ったアカウントは2回目以降の無料体験は基本不可。誘惑だけ' },
+      { trigger: '「プライム会員のままで Music HD を試す」など別特典の案内', response: '解約意図が固いなら全部スキップ。下の方の薄い「特典を終了する」を探す' },
+      { trigger: '解約完了後も「30日以内なら復活させる」ボタンが残る', response: '気にしなくてよい。再加入したくなったら普通に申し込める' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで全特典が継続。Prime Video のダウンロード済みは即時アクセス不可。Prime Reading で読み始めた本は購入扱いになっていなければ消える。Amazon フォトの容量も無制限から5GBへ。',
+    faq: [
+      { q: '年間プランを途中解約したら返金はありますか？', a: '使用していない期間に応じて日割り返金されます。ただし Prime 特典を使った形跡があると返金額が大きく減るので、頻繁に使うなら月額より年額の方がお得です。' },
+      { q: 'Amazon アカウント自体は残りますか？', a: 'はい。Prime 会員資格だけ解除され、通常の Amazon 買い物は引き続き可能です。' },
+      { q: 'プライム会員家族会員も自動的に解約されますか？', a: 'はい。家族会員（プライム共有設定）も同時に解除されます。' },
+    ],
+  },
+  spotify: {
+    summary:
+      'Spotify は世界最大の音楽ストリーミングサービス。月額980円のプレミアムで広告なし・オフライン再生・高音質。無料プラン（広告あり・シャッフル制限）も継続提供。',
+    whyHard:
+      'Spotify の解約自体は3クリックで完了する。ただしスマホアプリからは解約できず、必ずブラウザでアクセスする必要がある。これを知らずに「設定→サブスクリプション」を探しても見つからないので、最初で詰まる人が多い。',
+    darkPatterns: [
+      { trigger: 'スマホアプリの設定に解約ボタンが無い', response: 'ブラウザで spotify.com にログインしてから操作する' },
+      { trigger: '「無料プランに切り替えますか」の確認', response: '無料プランに切り替えるなら「ダウングレード」、完全解約は別ボタン' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで Premium 機能が継続。期間満了後は自動的に無料プランへ移行。プレイリスト・ライブラリ・フォロー履歴は全て保持される。ダウンロード済み楽曲はオフライン再生不可になる。',
+    faq: [
+      { q: 'アプリから解約できないのはなぜですか？', a: 'Spotify はアプリ内課金（Apple/Google への手数料）を避けるため、ブラウザ経由の解約のみ受け付けています。iTunes 経由で登録した場合のみ「設定→Apple ID→サブスクリプション」から解約します。' },
+      { q: '解約後もプレイリストは残りますか？', a: 'はい。無料プランへ自動移行するので、アカウント情報・プレイリスト・ライブラリは全て残ります。' },
+      { q: 'ファミリープランを家族の誰かが解約したら他の人はどうなりますか？', a: 'オーナー（決済者）が解約した場合、家族全員の Premium が同時に切れます。' },
+    ],
+  },
+  'u-next': {
+    summary:
+      'U-NEXT は国内最大級の動画配信サービス。31万本以上見放題で月額2189円。毎月1200ポイント（最新作レンタル相当）が付与される。雑誌読み放題も込み。',
+    whyHard:
+      'U-NEXT の解約は「むずかしい」最上位。マイページの下層メニューに隠された「解約はこちら」リンクを見つけるところから始まり、進むほど「ポイントの残高がもったいない」と複数回引き止められる。ページ最下部までスクロールしないと次に進むボタンが見えない設計。',
+    darkPatterns: [
+      { trigger: '「解約はこちら」リンクがページ最下部に小さく配置', response: 'マイメニュー → 契約内容の確認・変更 → 一番下までスクロール' },
+      { trigger: '「ポイントが消滅します（◯ポイント）」の警告', response: 'ポイントは解約と同時に失効。使ってから解約するか、消えるのを許容するか選ぶ' },
+      { trigger: '「視聴中の作品が見られなくなります」', response: 'はい、その通り。それを承知で進める' },
+      { trigger: '理由選択画面で30個以上の選択肢', response: '適当なもの（「あまり利用しなかった」等）を1つ選んで進める' },
+    ],
+    afterCancel:
+      '解約と同時に全機能が利用不可になる（請求期間が残っていても）。保有ポイントは消滅。視聴履歴・お気に入りは保持されない。ファミリーアカウント（最大4人）も同時に解約。再加入時には別アカウントになる。',
+    faq: [
+      { q: 'U-NEXT のポイントを使い切ってから解約したい場合は？', a: '解約手続きを進めると最後に「ポイントが◯失効します」と表示されます。一度キャンセルしてポイントを使ってから戻る方法は無いので、解約する月までに計画的にポイントを消化してください。' },
+      { q: '解約後、ダウンロード済みの動画は見られますか？', a: '解約と同時にアプリ内のダウンロード動画も即時アクセス不可になります。Netflix と違って期間末まで継続視聴できません。' },
+      { q: 'ファミリーアカウントの追加メンバーだけ解約したい場合は？', a: '個別解約はできません。オーナー（決済者）が「ファミリーアカウント設定」から該当メンバーを削除します。' },
+    ],
+  },
+  'adobe-cc': {
+    summary:
+      'Adobe Creative Cloud（CC）は Photoshop・Illustrator・Premiere Pro 等のプロ向けクリエイティブツール群。月額6480円（コンプリートプラン）。単一アプリプランは2728円から。',
+    whyHard:
+      'Adobe の解約は「むずかしい」。年間契約が標準で、途中解約には残り月数の50%相当の違約金が発生する場合がある。さらに引き止め画面が6〜8段階あり、Adobe側から「割引オファー」を提示されることも。',
+    darkPatterns: [
+      { trigger: '「残り◯ヶ月の50%相当の違約金が発生します」', response: '年間契約の場合は事実。月額換算で見直し、本当に解約すべきか判断する' },
+      { trigger: '「2ヶ月無料で継続しませんか」のオファー', response: '本当に必要なら受ける、要らないなら断る。価値で判断' },
+      { trigger: '理由選択 → 解決策の提示 → さらに引き止め画面', response: '6〜8回の確認を全て「続行する」「キャンセルする」で進める' },
+      { trigger: '電話相談のサジェスト', response: '電話は不要。Web で完結できる' },
+    ],
+    afterCancel:
+      '違約金（年契約途中解約時）は即時請求。月額契約は期間末まで利用可能。クラウドストレージ（100GB）に保存したファイルは解約後1年でアクセス不可。Adobe Fonts も即時アクセス不可になる。デスクトップアプリは「体験版モード」で起動する。',
+    faq: [
+      { q: 'Adobe の解約時の違約金を回避する方法はありますか？', a: '年間契約は契約日から14日以内なら全額返金（クーリングオフ）。それ以降は違約金が発生します。月額プランへの切り替えなら違約金なし。年契約の更新月（11ヶ月目あたり）に解約予約すれば違約金回避できます。' },
+      { q: '保存したクラウドファイルはいつまで残りますか？', a: '解約後30日間は閲覧可能、その後は90日間「制限付きアクセス」、合計約120日（最長1年）でアクセス不可になります。重要なファイルは事前にダウンロード推奨。' },
+      { q: '解約後、Adobe ID は残りますか？', a: 'はい。ID 自体は残り、無料の Adobe Express や Photoshop モバイル版は引き続き使えます。' },
+    ],
+  },
+  'chatgpt-plus': {
+    summary:
+      'ChatGPT Plus は OpenAI が提供する月額3000円（$20）の ChatGPT 有料プラン。最新モデル（GPT-5等）への優先アクセス、画像生成、データ分析、メモリ機能などが利用可能。',
+    whyHard:
+      'ChatGPT Plus の解約は「かんたん」。設定画面から3クリックで完了。引き止めも控えめ。ただし「無料版に戻る」のか「Plus を継続する」のか分かりにくい UI なので、間違って続行ボタンを押さないよう注意。',
+    darkPatterns: [
+      { trigger: '「Plus の特典が使えなくなります」リスト表示', response: '無料版でも基本的な ChatGPT は使えるので、本当に Plus が必要か再確認' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで Plus 機能を継続利用可能。期間満了後は無料プランへ自動移行。会話履歴・カスタム指示・GPTs は全て保持される。',
+    faq: [
+      { q: 'ChatGPT Plus を解約しても作成した GPTs は使えますか？', a: '自分が作成した GPTs は無料プランでも使えますが、Plus 限定モデル（GPT-5等）を使う GPTs は無料版モデルで動くようになります。' },
+      { q: '解約後、Plus に戻ることはできますか？', a: 'はい、いつでも再加入できます。会話履歴・設定もそのまま残るので、シームレスに復帰できます。' },
+      { q: '請求が日本円で表示されないのですが？', a: 'ChatGPT は USD 課金なので、為替で月額3000円前後で変動します。請求書はクレジットカード明細で円換算が表示されます。' },
+    ],
+  },
+  audible: {
+    summary:
+      'Audible（オーディブル）は Amazon が運営するオーディオブック聴き放題サービス。月額1500円で12万作品以上が聴き放題。月1冊の追加コインも付与（以前のプラン名残）。',
+    whyHard:
+      'Audible の解約は「むずかしい」最上位レベル。スマホアプリからは絶対に解約できず、PC ブラウザでないと解約ページにすらたどり着けない。さらに退会前に複数回の引き止めオファーがある。',
+    darkPatterns: [
+      { trigger: 'アプリ内に解約ボタンが存在しない', response: 'PC ブラウザで audible.co.jp にログイン。アプリ→「マイページ」→「アカウントサービス」→PC版へ誘導される' },
+      { trigger: '「3ヶ月50%オフで継続しませんか」のオファー', response: '本当に必要か判断。気軽に受けると忘れて結局フル課金が続く' },
+      { trigger: '「退会前にお伺いします」と理由を聞く画面', response: '「あまり聴かなかった」を選んで進む' },
+      { trigger: '解約完了画面でも「やっぱり継続」が大きく表示', response: '完全に進み切るまで安心しない' },
+    ],
+    afterCancel:
+      '解約と同時に聴き放題作品は再生不可。コインで購入したオーディオブックは退会後も「マイライブラリ」に残り永久所有可能。会員特典の月1冊以上のコイン購入もリセット。',
+    faq: [
+      { q: 'コインで買ったオーディオブックは解約後も聴けますか？', a: 'はい。コインを使って購入したタイトルは「永久所有」扱いで、解約後も自分のライブラリから再生できます。これは Audible の重要なメリット。' },
+      { q: 'スマホからしか操作できない場合の解約方法は？', a: 'スマホブラウザでも PC モードに切り替えれば（Safari なら「デスクトップ用 Web サイトを表示」）解約ページに入れます。または PC を借りるか、Amazon カスタマーサービスに電話。' },
+      { q: '解約後にコインは消えますか？', a: 'はい、未使用コインは即座に失効します。解約前にコインを使い切ることを推奨します。' },
+    ],
+  },
+  hulu: {
+    summary:
+      'Hulu（日本版）は日本テレビが運営する動画配信サービス。月額1026円で見放題。国内ドラマ・バラエティに強く、日テレ系最新話の見逃し配信も。',
+    whyHard:
+      'Hulu の解約は「ふつう」レベル。マイページから「登録情報」→「解約手続きはこちら」と進む直線的なフロー。引き止めも数回程度で済む。',
+    darkPatterns: [
+      { trigger: 'クレカ決済以外の場合は申し込み元（iTunes/Google Play）でしか解約できない', response: 'iPhone なら「設定→Apple ID→サブスクリプション」、Android なら Play ストア→定期購入から' },
+      { trigger: '「解約後はダウンロード作品も視聴不可」', response: '事実。重要な作品は解約前に視聴を済ませる' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで視聴可能。期間中はダウンロード再生も可能。視聴履歴・お気に入りは保持される。',
+    faq: [
+      { q: 'Hulu とディズニープラスを同時契約していますが、Hulu だけ解約できますか？', a: '日本の Hulu とディズニープラスは別契約なので個別解約可能。米国の Disney Bundle とは仕組みが異なります。' },
+      { q: '無料トライアル期間中の解約は？', a: '期間内に解約すれば一切課金されません。自動更新前に解約を済ませてください。' },
+      { q: '解約後に再加入する場合、視聴履歴は残っていますか？', a: 'はい、Hulu アカウント自体は残り、お気に入り・視聴履歴も保持されます。' },
+    ],
+  },
+  'disney-plus': {
+    summary:
+      'Disney+ はディズニー・ピクサー・マーベル・スター・ウォーズ・ナショジオの作品が見放題。月額990円のスタンダードプランから。アニメ・洋画ファンに人気。',
+    whyHard:
+      'Disney+ の解約は「かんたん」。アカウントページから直接「解約する」ボタンが見える素直な UI。引き止めも控えめで2〜3ステップで完了。',
+    darkPatterns: [
+      { trigger: 'アプリ経由（iTunes/Google）課金の場合は Disney+ 画面で解約できない', response: '各ストアの設定から解約' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで視聴可能。プロフィールと視聴履歴は数ヶ月間保持され、再加入時に復元される。',
+    faq: [
+      { q: 'NTTドコモから契約した Disney+ の解約は？', a: 'ドコモ系プランの場合は My docomo から解約します。Disney+ アカウントページからは解約できません。' },
+      { q: '年間プランの途中解約はできますか？', a: 'はい、いつでも解約可能ですが、年間プランの場合は残期間の返金はありません。期間末まで利用してください。' },
+      { q: 'プロフィールはいつまで残りますか？', a: 'Disney+ は再加入時にプロフィール・お気に入り・視聴履歴が復元されます。期間は明示されていませんが概ね1年程度残るとされています。' },
+    ],
+  },
+  'yahoo-premium': {
+    summary:
+      'Yahoo!プレミアムは月額508円で Yahoo!ショッピング・PayPay 還元アップ・Yahoo!かんたんバックアップ・ebook japan 連携などを提供。LYP会員制度（旧Yahoo!プレミアム）として継続中。',
+    whyHard:
+      'Yahoo!プレミアム の解約は「むずかしい」レベル。引き止めバナーが何度も表示され、ページの上下に「解約しないでください」のメッセージが散在。本物の解約ボタンを見つけるのに数分かかる。',
+    darkPatterns: [
+      { trigger: '「PayPay 還元率が下がります」の警告', response: '事実だが、それでも解約したいなら気にせず進む' },
+      { trigger: '「もう少し続けてみませんか」の引き止め', response: '右上の「次へ」を進める' },
+      { trigger: '解約画面の最下部に隠された「解約する」', response: 'ページを必ず最下部までスクロール' },
+    ],
+    afterCancel:
+      '解約後は請求期間の末日まで全特典が継続。期間満了後は通常の Yahoo! JAPAN ID（無料）に戻る。PayPay 連携は維持。ebook japan で購入済みの書籍は引き続き読める。',
+    faq: [
+      { q: 'Yahoo!プレミアムを解約しても PayPay は使えますか？', a: 'はい、PayPay 自体は独立サービスなので使えます。ただし PayPay ステップ（還元率アップ）の判定条件が変わります。' },
+      { q: 'LYP プレミアムと Yahoo!プレミアムは違うのですか？', a: '2024年以降は LYP プレミアムが後継ですが、ほぼ同じサービス内容です。料金体系も508円で共通。' },
+      { q: '解約後、ebook japan で買った本はどうなりますか？', a: '購入済み書籍は通常会員でも読み続けられます。月額プレミアム特典の還元クーポン等が無くなる程度です。' },
+    ],
+  },
+};
+
 

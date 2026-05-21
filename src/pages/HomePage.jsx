@@ -69,6 +69,11 @@ export default function HomePage() {
             <button className={styles.clearBtn} onClick={() => setQuery('')}>✕</button>
           )}
         </div>
+
+        {/* Tracker CTA */}
+        <Link to="/tracker" className={styles.heroTracker}>
+          📊 まとめて棚卸しする：契約中サブスクの合計額と「解約しなさい順」を可視化 →
+        </Link>
       </section>
 
       <div className={styles.content}>
