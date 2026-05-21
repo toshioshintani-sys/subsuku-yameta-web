@@ -20,12 +20,23 @@
   --hard-bg: #fef2f2;
 }
 
+html {
+  /* iOS Safari の不要なテキストサイズ自動調整を無効化 */
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* iOS Safari のセーフエリア対応 */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  /* スマホでのオーバースクロール抑制（PWA の見た目改善） */
+  overscroll-behavior-y: none;
 }
 
 a {
@@ -33,6 +44,43 @@ a {
   color: inherit;
 }
 
+/* キーボード操作時のフォーカスを明確に */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* マウス操作時のフォーカスリングは消す */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 #root {
   min-height: 100vh;
+}
+
+/* 視差・モーションを減らす設定のユーザーには遷移をオフ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* スクリーンリーダー専用テキスト */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

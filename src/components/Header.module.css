@@ -10,12 +10,46 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.navLink {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+  border-radius: 999px;
+  transition: all 0.15s;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--accent);
+  background: var(--bg);
+}
+
+@media (max-width: 480px) {
+  .logoSub {
+    display: none;
+  }
+  .navLink {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
 }
 
 .logoIcon {

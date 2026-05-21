@@ -57,16 +57,26 @@ export default function HomePage() {
 
         {/* 検索 */}
         <div className={styles.searchWrap}>
-          <span className={styles.searchIcon}>🔍</span>
+          <label htmlFor="service-search" className="sr-only">サービス名で検索</label>
+          <span className={styles.searchIcon} aria-hidden="true">🔍</span>
           <input
+            id="service-search"
             className={styles.searchInput}
-            type="text"
+            type="search"
             placeholder="サービス名で検索（例：Netflix、Spotify…）"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            autoComplete="off"
           />
           {query && (
-            <button className={styles.clearBtn} onClick={() => setQuery('')}>✕</button>
+            <button
+              className={styles.clearBtn}
+              onClick={() => setQuery('')}
+              aria-label="検索をクリア"
+              type="button"
+            >
+              ✕
+            </button>
           )}
         </div>
 
