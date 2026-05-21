@@ -9,7 +9,8 @@
   --surface: #ffffff;
   --border: #e8edf3;
   --text: #1a1f2e;
-  --text-sub: #6b7280;
+  /* WCAG AA を 4.5:1 で満たすコントラスト（白背景上） */
+  --text-sub: #525a6b;
   --accent: #3b6ef0;
   --accent-hover: #2d5cd8;
   --easy: #16a34a;

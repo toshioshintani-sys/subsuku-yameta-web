@@ -42,6 +42,7 @@ export default function App() {
     <BrowserRouter>
       <Analytics />
       <Header />
+      <main id="main">
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      </main>
       <Footer />
     </BrowserRouter>
   );
