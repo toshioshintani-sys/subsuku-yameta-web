@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES, ALTERNATIVES, EXTENDED_CONTENT, PRICING } from '../data/services';
+import { getAffiliateUrl } from '../data/affiliates';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
@@ -109,9 +110,12 @@ export default function ServicePage() {
             reason: alt.reason,
           };
         }
+        // 外部リンクは serviceId が分からないので、URLからの推測でAmazonタグ等を付与
+        // 内部 alternatives のキー（alt.id 相当）が無い場合は URL ベースの変換のみ
+        const inferredId = alt.serviceId || null;
         return {
           kind: 'external',
-          href: alt.url,
+          href: getAffiliateUrl(inferredId, alt.url),
           name: alt.name,
           reason: alt.reason,
         };
