@@ -1,0 +1,145 @@
+name: Indexing Ping
+
+# main への push のたびに、Google と Bing に sitemap 更新を通知
+# - Google: Indexing API（要：Service Account 鍵を Secret に設定）
+# - Bing: IndexNow（API キー不要、簡単）
+#
+# Service Account 鍵が未設定でも fail せず、Bing 通知だけ実行する
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # 手動実行も可
+
+permissions:
+  contents: read
+
+jobs:
+  ping-search-engines:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build sitemap
+        run: |
+          npm ci
+          npm run build
+
+      - name: Ping Google sitemap (legacy ping endpoint)
+        # 軽量な「sitemap 更新通知」。Indexing API より遥かに簡単
+        # 大量URL の即時インデックスには Indexing API が必要だが、こちらは無料・無認証
+        run: |
+          SITEMAP_URL="https://sabusuku.netlify.app/sitemap.xml"
+          curl -sS "https://www.google.com/ping?sitemap=$SITEMAP_URL" || true
+          echo "Google sitemap ping sent"
+
+      - name: Ping Bing via IndexNow
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "INDEXNOW_KEY not set, skipping Bing IndexNow"
+            exit 0
+          fi
+          # IndexNow: URL list 通知（最大10000件まで一括）
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"host\": \"sabusuku.netlify.app\",
+              \"key\": \"$INDEXNOW_KEY\",
+              \"keyLocation\": \"https://sabusuku.netlify.app/$INDEXNOW_KEY.txt\",
+              \"urlList\": [
+                \"https://sabusuku.netlify.app/\",
+                \"https://sabusuku.netlify.app/tracker\",
+                \"https://sabusuku.netlify.app/blog\"
+              ]
+            }" || true
+          echo "Bing IndexNow ping sent"
+
+      - name: Submit to Google Indexing API
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "GOOGLE_SERVICE_ACCOUNT_JSON not set, skipping Indexing API"
+            exit 0
+          fi
+          # Service Account から JWT 取得 → Bearer token → Indexing API へ urlNotifications
+          # 詳細は docs/GSC_SETUP.md 参照
+          echo "$GOOGLE_SERVICE_ACCOUNT_JSON" > /tmp/sa.json
+
+          # アクセストークン取得（gcloud 不要、curl で JWT 生成）
+          node <<'NODE'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const https = require('https');
+
+          const sa = JSON.parse(fs.readFileSync('/tmp/sa.json', 'utf8'));
+          const now = Math.floor(Date.now() / 1000);
+          const header = Buffer.from(JSON.stringify({ alg: 'RS256', typ: 'JWT' })).toString('base64url');
+          const claim = Buffer.from(JSON.stringify({
+            iss: sa.client_email,
+            scope: 'https://www.googleapis.com/auth/indexing',
+            aud: 'https://oauth2.googleapis.com/token',
+            iat: now,
+            exp: now + 3600,
+          })).toString('base64url');
+          const signer = crypto.createSign('RSA-SHA256');
+          signer.update(`${header}.${claim}`);
+          const signature = signer.sign(sa.private_key, 'base64url');
+          const jwt = `${header}.${claim}.${signature}`;
+
+          // Token 取得
+          const tokenReq = JSON.stringify({
+            grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            assertion: jwt,
+          });
+
+          function postJson(host, path, body, headers = {}) {
+            return new Promise((resolve, reject) => {
+              const req = https.request({
+                hostname: host,
+                path,
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', ...headers },
+              }, (res) => {
+                let chunks = '';
+                res.on('data', (c) => chunks += c);
+                res.on('end', () => resolve({ status: res.statusCode, body: chunks }));
+              });
+              req.on('error', reject);
+              req.write(body);
+              req.end();
+            });
+          }
+
+          (async () => {
+            const tokenRes = await postJson('oauth2.googleapis.com', '/token', tokenReq);
+            const accessToken = JSON.parse(tokenRes.body).access_token;
+            if (!accessToken) {
+              console.error('Failed to get access token:', tokenRes.body);
+              process.exit(0);
+            }
+
+            // 主要 URL のみ通知（Indexing API は1日200件まで・公式は JobPosting / BroadcastEvent 用だが
+            // 実態として一般サイトでも受け付ける時期がある）
+            const urls = [
+              'https://sabusuku.netlify.app/',
+              'https://sabusuku.netlify.app/tracker',
+              'https://sabusuku.netlify.app/blog',
+            ];
+            for (const url of urls) {
+              const body = JSON.stringify({ url, type: 'URL_UPDATED' });
+              const res = await postJson('indexing.googleapis.com', '/v3/urlNotifications:publish', body, {
+                Authorization: `Bearer ${accessToken}`,
+              });
+              console.log(`[${res.status}] ${url}: ${res.body.slice(0, 200)}`);
+            }
+          })();
+          NODE
