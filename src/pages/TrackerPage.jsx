@@ -105,6 +105,8 @@ export default function TrackerPage() {
 
   const totalMonthly = selectedItems.reduce((sum, s) => sum + s.monthly, 0);
   const totalYearly = totalMonthly * 12;
+  const total5Years = totalYearly * 5;
+  const total10Years = totalYearly * 10;
 
   // フィルタ・ソート（チェックリスト側）
   const visibleList = useMemo(() => {
@@ -204,6 +206,31 @@ export default function TrackerPage() {
       </div>
 
       <div className={styles.content}>
+        {/* 節約効果可視化（選択中があるときだけ） */}
+        {selectedItems.length > 0 && (
+          <section className={styles.savings} aria-label="長期累計コスト">
+            <h2 className={styles.savingsTitle}>このまま続けると…</h2>
+            <p className={styles.savingsLead}>
+              選択中の {selectedItems.length} サービスを今後も払い続けた場合の累計額です。
+            </p>
+            <div className={styles.savingsGrid}>
+              <div className={styles.savingsCard}>
+                <div className={styles.savingsLabel}>5 年で</div>
+                <div className={styles.savingsValue}>{formatYen(total5Years)}</div>
+                <div className={styles.savingsSub}>軽自動車 1 台分</div>
+              </div>
+              <div className={styles.savingsCard}>
+                <div className={styles.savingsLabel}>10 年で</div>
+                <div className={styles.savingsValue}>{formatYen(total10Years)}</div>
+                <div className={styles.savingsSub}>家族旅行 数回分</div>
+              </div>
+            </div>
+            <p className={styles.savingsHint}>
+              💡 全部解約する必要はありません。使っていないものから順に整理すれば、十分な節約効果があります。
+            </p>
+          </section>
+        )}
+
         {/* 解約しなさい順（選択中があるときだけ） */}
         {recommendedOrder.length > 0 && (
           <section className={styles.recommended}>

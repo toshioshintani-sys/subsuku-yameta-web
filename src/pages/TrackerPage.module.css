@@ -123,6 +123,78 @@
   padding: 32px 24px 64px;
 }
 
+/* 節約効果可視化 */
+.savings {
+  background: linear-gradient(135deg, var(--medium-bg) 0%, var(--surface) 100%);
+  border: 1px solid var(--medium);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .savings {
+    padding: 18px;
+  }
+}
+
+.savingsTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--medium);
+  margin-bottom: 6px;
+}
+
+.savingsLead {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.savingsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.savingsCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.savingsLabel {
+  font-size: 11px;
+  color: var(--text-sub);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.savingsValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--medium);
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.savingsSub {
+  font-size: 10px;
+  color: var(--text-sub);
+  margin-top: 4px;
+}
+
+.savingsHint {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin: 0;
+}
+
 /* 解約しなさい順 */
 .recommended {
   background: var(--surface);

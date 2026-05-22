@@ -87,6 +87,35 @@ export default function HomePage() {
       </section>
 
       <div className={styles.content}>
+        {/* 使い方ガイド（初訪問者向け） */}
+        <section className={styles.guide} aria-label="使い方">
+          <ol className={styles.guideList}>
+            <li className={styles.guideItem}>
+              <span className={styles.guideNum}>1</span>
+              <div>
+                <div className={styles.guideTitle}>サービスを探す</div>
+                <div className={styles.guideDesc}>下の検索かカテゴリから、解約したいサブスクを選ぶ</div>
+              </div>
+            </li>
+            <li className={styles.guideItem}>
+              <span className={styles.guideNum}>2</span>
+              <div>
+                <div className={styles.guideTitle}>解約ページへ直行</div>
+                <div className={styles.guideDesc}>3ステップ以内の手順と、引き止め画面の対策つき</div>
+              </div>
+            </li>
+            <li className={styles.guideItem}>
+              <span className={styles.guideNum}>3</span>
+              <div>
+                <div className={styles.guideTitle}>まとめて棚卸し</div>
+                <div className={styles.guideDesc}>
+                  <Link to="/tracker" className={styles.guideLink}>棚卸しダッシュボード</Link>で年間総額を可視化
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+
         {/* カテゴリーフィルター */}
         <div className={styles.categories}>
           {CATEGORIES.map((cat) => (
