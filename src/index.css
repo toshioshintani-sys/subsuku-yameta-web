@@ -5,6 +5,7 @@
 }
 
 :root {
+  color-scheme: light dark;
   --bg: #f7f9fc;
   --surface: #ffffff;
   --border: #e8edf3;
@@ -19,6 +20,25 @@
   --medium-bg: #fffbeb;
   --hard: #dc2626;
   --hard-bg: #fef2f2;
+}
+
+/* ダークモード：システム設定に追従 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1419;
+    --surface: #1a1f2e;
+    --border: #2a3142;
+    --text: #e5e9f0;
+    --text-sub: #a4b0c4;
+    --accent: #6d92ff;
+    --accent-hover: #8ba8ff;
+    --easy: #34d399;
+    --easy-bg: rgba(52, 211, 153, 0.12);
+    --medium: #fbbf24;
+    --medium-bg: rgba(251, 191, 36, 0.12);
+    --hard: #f87171;
+    --hard-bg: rgba(248, 113, 113, 0.12);
+  }
 }
 
 html {

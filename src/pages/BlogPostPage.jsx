@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { POST_BY_SLUG, POSTS } from '../data/posts';
 import Seo from '../components/Seo';
+import ShareButtons from '../components/ShareButtons';
 import { SITE_URL } from '../config';
 import styles from './BlogPostPage.module.css';
 
@@ -96,6 +97,13 @@ export default function BlogPostPage() {
             {post.body.map((block, i) => renderBlock(block, i))}
           </div>
         </article>
+
+        {/* シェア */}
+        <ShareButtons
+          path={`/blog/${post.slug}`}
+          title={post.title}
+          hashtags={['サブスクやめた', ...(post.tags || [])]}
+        />
 
         {/* Tracker CTA */}
         <Link to="/tracker" className={styles.cta}>

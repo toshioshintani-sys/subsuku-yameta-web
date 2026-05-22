@@ -4,6 +4,7 @@ import { SERVICES, ALTERNATIVES, EXTENDED_CONTENT, PRICING } from '../data/servi
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
+import ShareButtons from '../components/ShareButtons';
 import { SITE_URL } from '../config';
 import styles from './ServicePage.module.css';
 
@@ -271,6 +272,13 @@ export default function ServicePage() {
             ※ 解約手順はサービス側の仕様変更により異なる場合があります。最新情報は各サービスの公式サポートをご確認ください。
           </p>
         </div>
+
+        {/* シェア（他の困っている人へ） */}
+        <ShareButtons
+          path={`/service/${service.id}`}
+          title={`${service.name}の解約方法｜サブスクやめた`}
+          hashtags={['サブスクやめた', service.name.replace(/\s+/g, '')]}
+        />
 
         {/* 広告（解約手順が終わった直後の自然なブレイク。ない場合は何も描画しない） */}
         <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
