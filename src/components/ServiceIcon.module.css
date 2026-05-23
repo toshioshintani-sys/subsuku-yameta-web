@@ -1,12 +1,11 @@
-/* ブランドロゴタイル（公式 SVG を中央配置・白背景・角丸）
-   padding は jsx 側で size に応じた固定 px を inline 指定する */
+/* ブランドロゴタイル（公式 SVG を中央配置・角丸）
+   背景色・padding は jsx 側で inline 指定する */
 .brandTile {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   overflow: hidden;
   flex-shrink: 0;
   box-sizing: border-box;
