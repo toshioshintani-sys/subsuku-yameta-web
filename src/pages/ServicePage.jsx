@@ -187,7 +187,6 @@ export default function ServicePage() {
                 {monthlyDisplay && (
                   <span className={styles.price}>
                     月 {monthlyDisplay}
-                    {hasMultiplePlans && <span className={styles.priceNote}> 〜</span>}
                   </span>
                 )}
               </div>

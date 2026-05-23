@@ -120,6 +120,39 @@ discover.js の「電子書籍」「雑誌読み放題」ジャンルは、楽�
 
 ---
 
+## 2026-05-23 ★★★★ もしも追跡URL 取得＋ discover 拡張で収益化フェーズ突入
+
+### 発見
+もしも提携完了4案件の追跡URLを取得し、discover.js に反映。新ジャンル2つも追加：
+- **学習**（learning）：デジハリ・デジタネを追加（既存3社と並ぶ）
+- **子育て・知育玩具**（kids-toy）：新規ジャンル・トイサブ
+- **お酒定期便**（sake-subscription）：新規ジャンル・SAKEPOST
+
+### もしも追跡URL の構造（運用知見）
+形式：`https://af.moshimo.com/af/c/click?a_id={A}&p_id={P}&pc_id={PC}&pl_id={PL}`
+- a_id：媒体ID（**案件ごとに違う** ※当初固定値と誤解した）
+- p_id：プロモーションID（案件ごと固有・URL `?promotion_id=` で参照）
+- pc_id：メディアID（**案件ごとに違う** ※当初固定値と誤解した）
+- pl_id：広告ID（テキストリンク・バナーで別 ID）
+
+### 取得手順
+1. 提携中プロモーション画面（`?apply_status=2&shop_site_id=673448`）に遷移
+2. 各案件の「広告リンクへ」リンクから promotion_id を取得（href 属性から）
+3. テキストリンク画面に直接遷移：`/promotion/source?promotion_id=X&shop_site_id=Y&display_type=1`
+4. ソース欄の `<a href="...">` をコピー
+
+### なぜ重要か
+- もしものリンク形式は固定パターンではなく、案件ごとに4要素すべて変動
+- 取得を自動化する場合は、各案件で個別 API/Scraping 必要
+- 一度取得した URL は永続的（提携継続中なら）
+
+### 永続化
+- 実装：affiliates.js MOSHIMO_LINKS（4件）・discover.js（learning + 2新ジャンル）
+- コミット：a60df32
+- 今後の新規提携時も同じ手順でできる
+
+---
+
 ## 2026-05-23 ★★★ もしも 4案件即時提携完了（discover.js 拡張候補）
 
 ### 発見
