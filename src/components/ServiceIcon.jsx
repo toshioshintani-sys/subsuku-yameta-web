@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { CategoryIcon } from '../icons';
-import { getBrand } from '../icons/brand-registry';
+import { getBrand, hasLocalSvg } from '../icons/brand-registry';
 import styles from './ServiceIcon.module.css';
 
 /**
  * サービスアイコン表示コンポーネント
  *
- * 4段階フォールバック（すべて無料・認証不要・課金リスク 0）：
+ * 5段階フォールバック（すべて無料・認証不要・課金リスク 0）：
  * 1. simple-icons（ローカル・公式着色）→ 主要29サービス
- * 2. Google Favicon API（domain ベース・無料無制限）→ どのドメインでも表示保証
- * 3. DuckDuckGo Icons API（Google Favicon の予備）
- * 4. カテゴリ Lucide アイコン（最終フォールバック）
+ * 2. ローカル SVG /brand-logos/{id}.svg（Wikimedia から取得した個別 SVG）
+ * 3. Google Favicon API（domain ベース・無料無制限）→ 表示保証
+ * 4. DuckDuckGo Icons API（Google Favicon の予備）
+ * 5. カテゴリ Lucide アイコン → 最終フォールバック
  */
 export default function ServiceIcon({ serviceId, domain, category, emoji, size = 48 }) {
+  const [localSvgFailed, setLocalSvgFailed] = useState(false);
   const [googleFailed, setGoogleFailed] = useState(false);
   const [duckFailed, setDuckFailed] = useState(false);
 
@@ -20,7 +22,7 @@ export default function ServiceIcon({ serviceId, domain, category, emoji, size =
   const brand = serviceId ? getBrand(serviceId) : null;
   if (brand) {
     const innerSize = Math.round(size * 0.55);
-    const isLightBg = brand.bg === '#FFFFFF' || brand.bg.toUpperCase() === '#FFFFFF';
+    const isLightBg = brand.bg.toUpperCase() === '#FFFFFF' || brand.bg.toUpperCase() === '#FAF9F5';
     return (
       <span
         className={styles.brandTile}
@@ -48,11 +50,39 @@ export default function ServiceIcon({ serviceId, domain, category, emoji, size =
     );
   }
 
-  // 2. Google Favicon API：domain から高解像度ファビコンを取得（無料・無制限）
+  // 2. ローカル SVG ファイル（Wikimedia から手動取得）
+  if (serviceId && hasLocalSvg(serviceId) && !localSvgFailed) {
+    const innerPadding = Math.max(4, Math.round(size * 0.14));
+    const inner = size - innerPadding * 2;
+    return (
+      <span
+        className={styles.brandTile}
+        style={{
+          width: size,
+          height: size,
+          padding: innerPadding,
+          backgroundColor: 'var(--surface)',
+          borderColor: 'var(--border)',
+        }}
+        aria-hidden="true"
+      >
+        <img
+          src={`/brand-logos/${serviceId}.svg`}
+          alt=""
+          width={inner}
+          height={inner}
+          style={{ width: inner, height: inner, display: 'block', objectFit: 'contain' }}
+          loading="lazy"
+          onError={() => setLocalSvgFailed(true)}
+        />
+      </span>
+    );
+  }
+
+  // 3. Google Favicon API：domain から高解像度ファビコンを取得（無料・無制限）
   if (domain && !googleFailed) {
     const innerPadding = Math.max(4, Math.round(size * 0.14));
     const inner = size - innerPadding * 2;
-    // sz=128 で高解像度を要求
     const src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
     return (
       <span
@@ -78,7 +108,7 @@ export default function ServiceIcon({ serviceId, domain, category, emoji, size =
     );
   }
 
-  // 3. DuckDuckGo Favicon API：Google が失敗したら予備で試す
+  // 4. DuckDuckGo Favicon API：Google が失敗したら予備で試す
   if (domain && !duckFailed) {
     const innerPadding = Math.max(4, Math.round(size * 0.14));
     const inner = size - innerPadding * 2;
@@ -107,7 +137,7 @@ export default function ServiceIcon({ serviceId, domain, category, emoji, size =
     );
   }
 
-  // 4. カテゴリ Lucide アイコン
+  // 5. カテゴリ Lucide アイコン
   if (category) {
     return (
       <span
@@ -123,7 +153,7 @@ export default function ServiceIcon({ serviceId, domain, category, emoji, size =
     );
   }
 
-  // 5. 絵文字（最終の最終）
+  // 6. 絵文字（最終）
   return (
     <span
       className={styles.emojiFallback}

@@ -132,6 +132,9 @@ export const LOCAL_SVG_AVAILABLE = new Set([
   'disney-plus',
   'adobe-cc',
   'linkedin-premium',
+  // Top10 強化分（2026-05-23 追加）
+  'chatgpt-plus',     // ChatGPT 緑スパイラル
+  'microsoft-365',    // Microsoft 4色四角
   // simple-icons とダブってる（事実上 simple-icons 優先）
   'netflix',
   'spotify',
