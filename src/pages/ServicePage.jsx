@@ -26,6 +26,7 @@ import {
   ExternalLink as ExternalLinkIcon,
 } from 'lucide-react';
 import ServiceIcon from '../components/ServiceIcon';
+import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
 import ShareButtons from '../components/ShareButtons';
@@ -346,7 +347,7 @@ export default function ServicePage() {
           {monthly > 0 && (
             <div className={styles.lossViz} aria-label="年額試算">
               {hasMultiplePlans ? (
-                // 複数プランがある場合：プラン別の損失額を併記
+                // 複数プランがある場合：プラン別の損失額を併記（カウントアップ）
                 <>
                   <div className={styles.lossVizHeader}>
                     <span className={styles.lossVizLabel}>このまま続けると（プラン別）</span>
@@ -358,27 +359,37 @@ export default function ServicePage() {
                           {p.name.length > 16 ? p.name.slice(0, 14) + '…' : p.name}
                         </span>
                         <span className={styles.lossVizPlanAmount}>
-                          年 <strong>{formatYen((p.yearly ?? p.monthly * 12))}</strong>
+                          年 <CountUpYen value={p.yearly ?? p.monthly * 12} duration={1.0} delay={0.1 * i} className={styles.lossVizPlanAmountValue} />
                         </span>
                       </li>
                     ))}
                   </ul>
                   <p className={styles.lossVizSub}>
-                    最も高いプランなら 10年で <strong>{formatYen(Math.max(...plans.map((p) => (p.yearly ?? p.monthly * 12))) * 10)}</strong> を払い続ける計算です。
+                    最も高いプランなら 10年で{' '}
+                    <CountUpYen
+                      value={Math.max(...plans.map((p) => (p.yearly ?? p.monthly * 12))) * 10}
+                      duration={1.6}
+                      delay={0.4}
+                      className={styles.lossVizSubStrong}
+                    />
+                    {' '}を払い続ける計算です。
                   </p>
                 </>
               ) : (
-                // 単一プランの場合：従来の表示
+                // 単一プランの場合：従来の表示（カウントアップ）
                 <>
                   <div className={styles.lossVizMain}>
                     <span className={styles.lossVizLabel}>このまま続けると</span>
                     <span className={styles.lossVizAmount}>
-                      年 <strong>{formatYen(monthly * 12)}</strong>
+                      年 <CountUpYen value={monthly * 12} duration={1.2} className={styles.lossVizAmountValue} />
                     </span>
                   </div>
                   <p className={styles.lossVizSub}>
-                    月{formatYen(monthly)} × 12ヶ月。5年で <strong>{formatYen(monthly * 60)}</strong>、
-                    10年で <strong>{formatYen(monthly * 120)}</strong> を払い続ける計算です。
+                    月{formatYen(monthly)} × 12ヶ月。5年で{' '}
+                    <CountUpYen value={monthly * 60} duration={1.4} delay={0.2} className={styles.lossVizSubStrong} />、
+                    10年で{' '}
+                    <CountUpYen value={monthly * 120} duration={1.6} delay={0.4} className={styles.lossVizSubStrong} />
+                    {' '}を払い続ける計算です。
                   </p>
                 </>
               )}

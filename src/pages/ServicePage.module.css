@@ -30,6 +30,25 @@
   border-radius: 16px;
   padding: 32px;
   margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+  animation: cardFadeIn 0.4s ease-out;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainCard {
+    animation: none;
+  }
 }
 
 @media (max-width: 600px) {
@@ -601,12 +620,36 @@
   font-feature-settings: 'tnum' 1;
 }
 
-.lossVizAmount strong {
+.lossVizAmount strong,
+.lossVizAmountValue {
   color: var(--loss-strong);
   font-weight: 800;
   font-size: 28px;
   margin: 0 2px;
   letter-spacing: -0.04em;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  display: inline-block;
+}
+
+.lossVizSubStrong {
+  color: var(--text);
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.02em;
+  display: inline-block;
+}
+
+.lossVizPlanAmountValue {
+  color: var(--loss-strong);
+  font-weight: 800;
+  font-size: 17px;
+  margin: 0 2px;
+  letter-spacing: -0.03em;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  display: inline-block;
 }
 
 .lossVizSub {
