@@ -93,6 +93,8 @@
   background: rgba(59, 110, 240, 0.08);
   padding: 2px 8px;
   border-radius: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
 }
 
 .priceNote {
@@ -177,14 +179,18 @@
   color: var(--text);
   font-weight: 700;
   text-align: right;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.02em;
 }
 
 .planYearly {
   font-size: 13px;
   color: var(--text-sub);
   text-align: right;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.02em;
 }
 
 .planCheckHint {
@@ -261,14 +267,16 @@
   font-size: 14px;
   color: var(--text);
   font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
 }
 
 .lossVizPlanAmount strong {
   color: rgba(200, 70, 50, 0.95);
   font-weight: 800;
-  font-size: 16px;
+  font-size: 17px;
   margin: 0 2px;
+  letter-spacing: -0.03em;
 }
 
 @media (max-width: 540px) {
@@ -588,13 +596,16 @@
   color: var(--text);
   font-weight: 600;
   letter-spacing: -0.3px;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
 }
 
 .lossVizAmount strong {
   color: rgba(200, 70, 50, 0.95);
   font-weight: 800;
-  font-size: 26px;
+  font-size: 28px;
   margin: 0 2px;
+  letter-spacing: -0.04em;
 }
 
 .lossVizSub {

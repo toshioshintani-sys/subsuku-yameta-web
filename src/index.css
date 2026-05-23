@@ -20,6 +20,13 @@
   --medium-bg: #fffbeb;
   --hard: #dc2626;
   --hard-bg: #fef2f2;
+
+  /* Phase B：タイポグラフィシステム
+     - 本文：Inter（英数）+ Noto Sans JP（日本語）の合成スタック
+     - 数字：JetBrains Mono（金額・年数の引き締まり）
+     - 見出し：本文と同じだがレターSpacing で詰める */
+  --font-sans: 'Inter', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
 }
 
 /* ダークモード：システム設定に追従 */
@@ -47,17 +54,34 @@ html {
 }
 
 body {
-  font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', system-ui, sans-serif;
+  font-family: var(--font-sans);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  letter-spacing: -0.005em;
+  font-feature-settings: 'palt' 1; /* 日本語の自動詰め */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* iOS Safari のセーフエリア対応 */
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
   /* スマホでのオーバースクロール抑制（PWA の見た目改善） */
   overscroll-behavior-y: none;
+}
+
+/* 数字を引き締めて見せる（金額・年数の信頼性向上） */
+.num,
+[data-num] {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1, 'zero' 1;
+  letter-spacing: -0.01em;
+}
+
+/* 見出しは少しトラッキングを詰める */
+h1, h2, h3, h4 {
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
 a {

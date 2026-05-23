@@ -80,7 +80,8 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .logoSub {
