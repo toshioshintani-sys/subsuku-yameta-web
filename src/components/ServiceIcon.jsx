@@ -1,24 +1,26 @@
 import { useState } from 'react';
 import { CategoryIcon } from '../icons';
-import { getBrand, hasLocalSvg } from '../icons/brand-registry';
+import { getBrand } from '../icons/brand-registry';
 import styles from './ServiceIcon.module.css';
 
 /**
  * サービスアイコン表示コンポーネント
  *
- * 優先順位：
- * 1. simple-icons にあれば → ブランドカラー背景 + 白いシルエット（公式アプリアイコン風）
- * 2. /brand-logos/{serviceId}.svg があれば → そのまま表示
- * 3. なければ → カテゴリ Lucide アイコン（accent-soft タイル）
- * 4. それも無理 → 絵文字
+ * 4段階フォールバック（すべて無料・認証不要・課金リスク 0）：
+ * 1. simple-icons（ローカル・公式着色）→ 主要29サービス
+ * 2. Google Favicon API（domain ベース・無料無制限）→ どのドメインでも表示保証
+ * 3. DuckDuckGo Icons API（Google Favicon の予備）
+ * 4. カテゴリ Lucide アイコン（最終フォールバック）
  */
-export default function ServiceIcon({ serviceId, category, emoji, size = 48 }) {
-  const [localSvgFailed, setLocalSvgFailed] = useState(false);
+export default function ServiceIcon({ serviceId, domain, category, emoji, size = 48 }) {
+  const [googleFailed, setGoogleFailed] = useState(false);
+  const [duckFailed, setDuckFailed] = useState(false);
 
-  // 1. Simple Icons から SVG path で直接描画
+  // 1. simple-icons：最優先・最も品質高い・公式カラー塗り
   const brand = serviceId ? getBrand(serviceId) : null;
   if (brand) {
     const innerSize = Math.round(size * 0.55);
+    const isLightBg = brand.bg === '#FFFFFF' || brand.bg.toUpperCase() === '#FFFFFF';
     return (
       <span
         className={styles.brandTile}
@@ -26,7 +28,7 @@ export default function ServiceIcon({ serviceId, category, emoji, size = 48 }) {
           width: size,
           height: size,
           backgroundColor: brand.bg,
-          borderColor: brand.bg === '#FFFFFF' ? 'var(--border)' : 'transparent',
+          borderColor: isLightBg ? 'var(--border)' : 'transparent',
         }}
         title={brand.title}
         aria-hidden="true"
@@ -46,35 +48,66 @@ export default function ServiceIcon({ serviceId, category, emoji, size = 48 }) {
     );
   }
 
-  // 2. ローカル SVG ファイルがあれば表示
-  if (serviceId && hasLocalSvg(serviceId) && !localSvgFailed) {
+  // 2. Google Favicon API：domain から高解像度ファビコンを取得（無料・無制限）
+  if (domain && !googleFailed) {
     const innerPadding = Math.max(4, Math.round(size * 0.14));
     const inner = size - innerPadding * 2;
+    // sz=128 で高解像度を要求
+    const src = `https://www.google.com/s2/favicons?domain=${encodeURIComponent(domain)}&sz=128`;
     return (
       <span
-        className={styles.brandTile}
+        className={styles.faviconTile}
         style={{
           width: size,
           height: size,
           padding: innerPadding,
-          backgroundColor: 'var(--surface)',
         }}
+        title={domain}
         aria-hidden="true"
       >
         <img
-          src={`/brand-logos/${serviceId}.svg`}
+          src={src}
           alt=""
           width={inner}
           height={inner}
           style={{ width: inner, height: inner, display: 'block', objectFit: 'contain' }}
           loading="lazy"
-          onError={() => setLocalSvgFailed(true)}
+          onError={() => setGoogleFailed(true)}
         />
       </span>
     );
   }
 
-  // 3. カテゴリ Lucide アイコン
+  // 3. DuckDuckGo Favicon API：Google が失敗したら予備で試す
+  if (domain && !duckFailed) {
+    const innerPadding = Math.max(4, Math.round(size * 0.14));
+    const inner = size - innerPadding * 2;
+    const src = `https://icons.duckduckgo.com/ip3/${encodeURIComponent(domain)}.ico`;
+    return (
+      <span
+        className={styles.faviconTile}
+        style={{
+          width: size,
+          height: size,
+          padding: innerPadding,
+        }}
+        title={domain}
+        aria-hidden="true"
+      >
+        <img
+          src={src}
+          alt=""
+          width={inner}
+          height={inner}
+          style={{ width: inner, height: inner, display: 'block', objectFit: 'contain' }}
+          loading="lazy"
+          onError={() => setDuckFailed(true)}
+        />
+      </span>
+    );
+  }
+
+  // 4. カテゴリ Lucide アイコン
   if (category) {
     return (
       <span
@@ -90,7 +123,7 @@ export default function ServiceIcon({ serviceId, category, emoji, size = 48 }) {
     );
   }
 
-  // 4. 絵文字（最終）
+  // 5. 絵文字（最終の最終）
   return (
     <span
       className={styles.emojiFallback}
