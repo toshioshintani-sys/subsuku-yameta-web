@@ -19,6 +19,7 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.colTitle}>ツール</div>
             <ul className={styles.list}>
+              <li><Link to="/discover">サブスク図鑑</Link></li>
               <li><Link to="/tracker">サブスク棚卸し</Link></li>
               <li><Link to="/blog">お役立ち記事</Link></li>
             </ul>

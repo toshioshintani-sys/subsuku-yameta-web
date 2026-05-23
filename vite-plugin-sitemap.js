@@ -2,6 +2,7 @@ import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { SERVICES, CATEGORIES } from './src/data/services.js';
 import { POSTS } from './src/data/posts.js';
+import { DISCOVER_GENRES } from './src/data/discover.js';
 
 const FALLBACK_SITE_URL = 'https://sabusuku.netlify.app';
 
@@ -10,13 +11,14 @@ function getSiteUrl() {
 }
 
 function buildRoutes() {
-  const staticRoutes = ['/', '/tracker', '/blog', '/about', '/privacy', '/disclaimer', '/contact'];
+  const staticRoutes = ['/', '/tracker', '/discover', '/blog', '/about', '/privacy', '/disclaimer', '/contact'];
   const categoryRoutes = CATEGORIES
     .filter((c) => c.id !== 'all')
     .map((c) => `/category/${c.id}`);
   const serviceRoutes = SERVICES.map((s) => `/service/${s.id}`);
   const postRoutes = POSTS.map((p) => `/blog/${p.slug}`);
-  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes];
+  const discoverRoutes = DISCOVER_GENRES.map((g) => `/discover/${g.id}`);
+  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes, ...discoverRoutes];
 }
 
 function escapeXml(s) {

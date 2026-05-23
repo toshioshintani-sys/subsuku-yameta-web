@@ -13,6 +13,7 @@ export default function Header() {
           </div>
         </Link>
         <nav className={styles.nav} aria-label="主要ナビゲーション">
+          <Link to="/discover" className={styles.navLink}>図鑑</Link>
           <Link to="/tracker" className={styles.navLink}>棚卸し</Link>
           <Link to="/blog" className={styles.navLink}>記事</Link>
         </nav>

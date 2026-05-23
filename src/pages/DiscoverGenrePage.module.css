@@ -1,0 +1,300 @@
+.page {
+  min-height: 100vh;
+  padding: 32px 24px 64px;
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-bottom: 20px;
+}
+
+.breadcrumb a {
+  color: var(--accent);
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.emoji {
+  font-size: 48px;
+  text-align: center;
+  line-height: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 20px;
+  }
+}
+
+.tagline {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+}
+
+.priceRange {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(59, 110, 240, 0.08);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.section {
+  margin-bottom: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 18px;
+  }
+}
+
+.h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+.p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.9;
+  margin: 0;
+}
+
+.lead {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+
+/* 向いている人 / 向かない人 */
+.targetsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .targetsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.targetCard {
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: 10px;
+}
+
+.targetTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.targetList {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.targetList li {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* サービスカード */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.serviceCard {
+  padding: 16px 18px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serviceHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.serviceName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.servicePrice {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.serviceUsp {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.serviceCancel {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  padding: 8px 10px;
+  background: var(--easy-bg);
+  border-radius: 6px;
+}
+
+.serviceCancelLabel {
+  font-weight: 700;
+  color: var(--easy);
+}
+
+.serviceLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  align-self: flex-end;
+}
+
+.serviceLink:hover {
+  text-decoration: underline;
+}
+
+/* やめたくなったら */
+.cancelSection {
+  background: linear-gradient(135deg, var(--easy-bg) 0%, var(--surface) 100%);
+  border-color: var(--easy);
+}
+
+.cancelFootnote {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin: 12px 0 0;
+}
+
+.inlineLink {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.inlineLink:hover {
+  text-decoration: underline;
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* 関連ジャンル */
+.related {
+  max-width: 720px;
+  margin: 32px auto 0;
+}
+
+.relatedTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin: 0 0 12px;
+}
+
+.relatedList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.relatedCard {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.relatedCard:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.relatedEmoji {
+  font-size: 18px;
+}
+
+.relatedName {
+  flex: 1;
+}

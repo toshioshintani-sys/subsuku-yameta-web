@@ -13,6 +13,8 @@ const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage'));
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const DiscoverIndexPage = lazy(() => import('./pages/DiscoverIndexPage'));
+const DiscoverGenrePage = lazy(() => import('./pages/DiscoverGenrePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
@@ -49,6 +51,8 @@ export default function App() {
           <Route path="/service/:id" element={<ServicePage />} />
           <Route path="/category/:id" element={<CategoryPage />} />
           <Route path="/tracker" element={<TrackerPage />} />
+          <Route path="/discover" element={<DiscoverIndexPage />} />
+          <Route path="/discover/:id" element={<DiscoverGenrePage />} />
           <Route path="/blog" element={<BlogIndexPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/about" element={<AboutPage />} />
