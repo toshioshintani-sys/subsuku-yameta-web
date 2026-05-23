@@ -1,6 +1,15 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { SERVICES, ALTERNATIVES, EXTENDED_CONTENT, PRICING } from '../data/services';
+import {
+  SERVICES,
+  ALTERNATIVES,
+  EXTENDED_CONTENT,
+  PRICING,
+  getDefaultMonthly,
+  getPlans,
+  getPlanCheckHint,
+  formatMonthlyRange,
+} from '../data/services';
 import {
   getAffiliateUrl,
   buildAmazonSearchUrl,
@@ -36,7 +45,11 @@ export default function ServicePage() {
   const { id } = useParams();
   const service = SERVICES.find((s) => s.id === id);
   const extended = service ? EXTENDED_CONTENT[service.id] : null;
-  const monthly = service ? PRICING[service.id] : undefined;
+  const monthly = service ? getDefaultMonthly(service.id) : 0;
+  const plans = service ? getPlans(service.id) : [];
+  const planCheckHint = service ? getPlanCheckHint(service.id) : null;
+  const hasMultiplePlans = plans.length >= 2;
+  const monthlyDisplay = service ? formatMonthlyRange(service.id) : '';
 
   // 構造化データ（HowTo + FAQPage + BreadcrumbList）
   const jsonLd = useMemo(() => {
@@ -171,8 +184,11 @@ export default function ServicePage() {
                   解約難度：{DIFFICULTY_LABEL[service.difficulty]}
                 </span>
                 <span className={styles.steps}>{service.steps.length}ステップ</span>
-                {monthly > 0 && (
-                  <span className={styles.price}>月 {formatYen(monthly)}</span>
+                {monthlyDisplay && (
+                  <span className={styles.price}>
+                    月 {monthlyDisplay}
+                    {hasMultiplePlans && <span className={styles.priceNote}> 〜</span>}
+                  </span>
                 )}
               </div>
             </div>
@@ -277,19 +293,82 @@ export default function ServicePage() {
             </section>
           )}
 
+          {/* 料金プラン一覧（多プラン対応サービスのみ表示・BAE：情報の透明化） */}
+          {hasMultiplePlans && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>あなたが契約しているプランは？</h2>
+              <p className={styles.paragraphLead}>
+                {service.name} には複数の料金プランがあります。自分がどれを契約しているか確認してから、損失額を見てみましょう。
+              </p>
+              <div className={styles.planTable}>
+                <div className={styles.planTableHead}>
+                  <span>プラン</span>
+                  <span>月額</span>
+                  <span>年額相当</span>
+                </div>
+                {plans.map((p, i) => (
+                  <div key={i} className={`${styles.planRow} ${p.popular ? styles.planRowPopular : ''}`}>
+                    <div className={styles.planName}>
+                      {p.name}
+                      {p.popular && <span className={styles.planBadge}>一般的</span>}
+                      {p.note && <span className={styles.planNote}>{p.note}</span>}
+                    </div>
+                    <div className={styles.planMonthly}>{formatYen(p.monthly)}</div>
+                    <div className={styles.planYearly}>
+                      {p.yearly ? formatYen(p.yearly) : formatYen(p.monthly * 12)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {planCheckHint && (
+                <p className={styles.planCheckHint}>
+                  <span className={styles.planCheckIcon}>💡</span>
+                  {planCheckHint}
+                </p>
+              )}
+            </section>
+          )}
+
           {/* 損失可視化ブロック（BAE：行動経済学のナッジ - 損失回避） */}
           {monthly > 0 && (
             <div className={styles.lossViz} aria-label="年額試算">
-              <div className={styles.lossVizMain}>
-                <span className={styles.lossVizLabel}>このまま続けると</span>
-                <span className={styles.lossVizAmount}>
-                  年 <strong>{formatYen(monthly * 12)}</strong>
-                </span>
-              </div>
-              <p className={styles.lossVizSub}>
-                月{formatYen(monthly)} × 12ヶ月。5年で <strong>{formatYen(monthly * 60)}</strong>、
-                10年で <strong>{formatYen(monthly * 120)}</strong> を払い続ける計算です。
-              </p>
+              {hasMultiplePlans ? (
+                // 複数プランがある場合：プラン別の損失額を併記
+                <>
+                  <div className={styles.lossVizHeader}>
+                    <span className={styles.lossVizLabel}>このまま続けると（プラン別）</span>
+                  </div>
+                  <ul className={styles.lossVizPlanList}>
+                    {plans.map((p, i) => (
+                      <li key={i} className={styles.lossVizPlanItem}>
+                        <span className={styles.lossVizPlanName}>
+                          {p.name.length > 16 ? p.name.slice(0, 14) + '…' : p.name}
+                        </span>
+                        <span className={styles.lossVizPlanAmount}>
+                          年 <strong>{formatYen((p.yearly ?? p.monthly * 12))}</strong>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={styles.lossVizSub}>
+                    最も高いプランなら 10年で <strong>{formatYen(Math.max(...plans.map((p) => (p.yearly ?? p.monthly * 12))) * 10)}</strong> を払い続ける計算です。
+                  </p>
+                </>
+              ) : (
+                // 単一プランの場合：従来の表示
+                <>
+                  <div className={styles.lossVizMain}>
+                    <span className={styles.lossVizLabel}>このまま続けると</span>
+                    <span className={styles.lossVizAmount}>
+                      年 <strong>{formatYen(monthly * 12)}</strong>
+                    </span>
+                  </div>
+                  <p className={styles.lossVizSub}>
+                    月{formatYen(monthly)} × 12ヶ月。5年で <strong>{formatYen(monthly * 60)}</strong>、
+                    10年で <strong>{formatYen(monthly * 120)}</strong> を払い続ける計算です。
+                  </p>
+                </>
+              )}
             </div>
           )}
 

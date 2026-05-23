@@ -95,6 +95,190 @@
   border-radius: 10px;
 }
 
+.priceNote {
+  font-weight: 500;
+  opacity: 0.75;
+  margin-left: 1px;
+}
+
+/* 料金プラン表（多プラン対応・BAE：情報の透明化） */
+.planTable {
+  margin: 12px 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.planTableHead {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg);
+  font-size: 11px;
+  color: var(--text-sub);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.planTableHead span:nth-child(2),
+.planTableHead span:nth-child(3) {
+  text-align: right;
+}
+
+.planRow {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.planRow:last-child {
+  border-bottom: none;
+}
+
+.planRowPopular {
+  background: rgba(59, 110, 240, 0.04);
+}
+
+.planName {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planBadge {
+  display: inline-block;
+  width: fit-content;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(59, 110, 240, 0.12);
+  padding: 1px 7px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+}
+
+.planNote {
+  font-size: 11px;
+  color: var(--text-sub);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.planMonthly {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.planYearly {
+  font-size: 13px;
+  color: var(--text-sub);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.planCheckHint {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.025);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.planCheckIcon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 540px) {
+  .planTable {
+    border-radius: 8px;
+  }
+  .planTableHead,
+  .planRow {
+    grid-template-columns: 1fr 80px;
+    gap: 6px;
+    padding: 10px 12px;
+  }
+  .planTableHead span:nth-child(3),
+  .planYearly {
+    display: none;
+  }
+  .planMonthly {
+    font-size: 13px;
+  }
+  .planName {
+    font-size: 13px;
+  }
+}
+
+/* 損失可視化：プラン別表示用 */
+.lossVizHeader {
+  margin-bottom: 8px;
+}
+
+.lossVizPlanList {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lossVizPlanItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(220, 100, 70, 0.12);
+  border-radius: 6px;
+}
+
+.lossVizPlanName {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.lossVizPlanAmount {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.lossVizPlanAmount strong {
+  color: rgba(200, 70, 50, 0.95);
+  font-weight: 800;
+  font-size: 16px;
+  margin: 0 2px;
+}
+
+@media (max-width: 540px) {
+  .lossVizPlanItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}
+
 /* 拡張コンテンツの概要 */
 .summary {
   font-size: 14px;

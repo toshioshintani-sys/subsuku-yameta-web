@@ -1176,6 +1176,154 @@ export const PRICING = {
 };
 
 // ---------------------------------------------------------------------------
+// 料金プラン詳細（多プラン対応・2026-05-23 追加）
+// PRICING は「代表月額」として後方互換で残す。PLANS は補足情報として併用する。
+//
+// 構造：
+//   plans: [
+//     { name: 'プラン名', monthly: 月額(円), yearly?: 年額(円), popular?: 一般的か, note?: '備考' }
+//   ]
+//
+// 注：価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
+// ---------------------------------------------------------------------------
+export const PLANS = {
+  netflix: {
+    plans: [
+      { name: '広告つきスタンダード', monthly: 890 },
+      { name: 'スタンダード', monthly: 1490, popular: true },
+      { name: 'プレミアム', monthly: 1980, note: '4K対応・4台同時視聴' },
+    ],
+    howToCheck: 'Netflix にログイン →「アカウント」→「プランの詳細」で確認できます',
+  },
+  'amazon-prime': {
+    plans: [
+      { name: '月額プラン', monthly: 600, popular: true },
+      { name: '年額プラン', monthly: 492, yearly: 5900, note: '月換算で月額より108円お得' },
+      { name: '学生プラン（Prime Student）', monthly: 300, yearly: 2950 },
+    ],
+    howToCheck: 'Amazon にログイン →「アカウント＆リスト」→「プライム会員情報の管理」で確認できます',
+  },
+  spotify: {
+    plans: [
+      { name: '個人プラン（Premium）', monthly: 980, popular: true },
+      { name: 'Duo（2人用）', monthly: 1280, note: '同居家族で2人まで利用可' },
+      { name: 'ファミリー（最大6人）', monthly: 1580, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 480, note: '大学生・専門学生限定' },
+    ],
+    howToCheck: 'Spotify にログイン →「アカウント」→「定期プラン」で確認できます',
+  },
+  hulu: {
+    plans: [
+      { name: '月額プラン', monthly: 1026, popular: true, note: '広告なし・全コンテンツ見放題' },
+      { name: '年額プラン', monthly: 854, yearly: 10240, note: '月換算で月額より172円お得' },
+    ],
+    howToCheck: 'Hulu にログイン →「アカウント」→「契約情報」で確認できます',
+  },
+  'u-next': {
+    plans: [
+      { name: '月額プラン', monthly: 2189, popular: true, note: '1200ポイント付与・最大4アカウント' },
+    ],
+    howToCheck: 'U-NEXT にログイン →「アカウント・契約」→「契約内容の確認」で確認できます',
+  },
+  'youtube-premium': {
+    plans: [
+      { name: '個人プラン', monthly: 1280, popular: true },
+      { name: 'ファミリープラン（最大5人）', monthly: 2280, note: '同居家族で5人まで' },
+      { name: '学生プラン', monthly: 780, note: '大学生・専門学生限定' },
+    ],
+    howToCheck: 'YouTube にログイン →「購入とメンバーシップ」→「YouTube Premium」で確認できます',
+  },
+  'disney-plus': {
+    plans: [
+      { name: 'スタンダード', monthly: 1140, popular: true, note: 'フルHD画質・4台同時視聴' },
+      { name: 'プレミアム', monthly: 1520, note: '4K画質・Dolby Atmos対応' },
+    ],
+    howToCheck: 'Disney+ にログイン →「アカウント」→「サブスクリプション」で確認できます',
+  },
+  'apple-music': {
+    plans: [
+      { name: '個人プラン', monthly: 1080, popular: true },
+      { name: 'ファミリープラン（最大6人）', monthly: 1680, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 580, note: '大学生・専門学生限定' },
+    ],
+    howToCheck: '「設定」→ Apple ID →「メディアと購入」→「サブスクリプション」で確認できます',
+  },
+  dazn: {
+    plans: [
+      { name: '月額プラン', monthly: 4200, popular: true },
+      { name: '年額プラン（月払い）', monthly: 3000, yearly: 36000, note: '月額より大幅にお得・解約縛りあり' },
+      { name: '年額プラン（一括払い）', monthly: 2500, yearly: 30000, note: '最もお得・全額前払い' },
+    ],
+    howToCheck: 'DAZN にログイン →「マイ・アカウント」→「マイ・プラン」で確認できます',
+  },
+  'apple-one': {
+    plans: [
+      { name: '個人プラン', monthly: 1200, popular: true, note: 'Music + TV+ + Arcade + iCloud 50GB' },
+      { name: 'ファミリープラン', monthly: 1980, note: 'iCloud 200GB に増量・最大5人共有' },
+      { name: 'プレミアプラン', monthly: 3580, note: 'iCloud 2TB・Fitness+・News+ も追加' },
+    ],
+    howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
+  },
+};
+
+// ---------------------------------------------------------------------------
+// 料金プラン関連のヘルパー関数（後方互換維持）
+// ---------------------------------------------------------------------------
+
+/**
+ * サービスの代表月額を取得する
+ * @param {string} serviceId
+ * @returns {number} 月額（円）。設定がなければ 0
+ */
+export function getDefaultMonthly(serviceId) {
+  const plansEntry = PLANS[serviceId];
+  if (plansEntry?.plans) {
+    const popular = plansEntry.plans.find((p) => p.popular);
+    if (popular) return popular.monthly;
+    return plansEntry.plans[0]?.monthly ?? 0;
+  }
+  return PRICING[serviceId] ?? 0;
+}
+
+/**
+ * サービスの全プランを取得する
+ * @param {string} serviceId
+ * @returns {Array} プラン配列。設定がなければ空配列
+ */
+export function getPlans(serviceId) {
+  return PLANS[serviceId]?.plans || [];
+}
+
+/**
+ * 「自分のプラン確認方法」テキストを取得する
+ * @param {string} serviceId
+ * @returns {string|null}
+ */
+export function getPlanCheckHint(serviceId) {
+  return PLANS[serviceId]?.howToCheck || null;
+}
+
+/**
+ * 月額の最小値〜最大値の表示文字列を生成する
+ * 例: "¥890〜¥1,980" / "¥1,490"
+ * @param {string} serviceId
+ * @returns {string}
+ */
+export function formatMonthlyRange(serviceId) {
+  const plans = getPlans(serviceId);
+  if (plans.length === 0) {
+    const v = getDefaultMonthly(serviceId);
+    return v > 0 ? `¥${v.toLocaleString('ja-JP')}` : '';
+  }
+  const amounts = plans.map((p) => p.monthly).filter((v) => v > 0);
+  if (amounts.length === 0) return '';
+  const min = Math.min(...amounts);
+  const max = Math.max(...amounts);
+  if (min === max) return `¥${min.toLocaleString('ja-JP')}`;
+  return `¥${min.toLocaleString('ja-JP')}〜¥${max.toLocaleString('ja-JP')}`;
+}
+
+// ---------------------------------------------------------------------------
 // 拡張コンテンツ（ServicePage で長文化・FAQPage JSON-LD に出力）
 // Top10 サービス（流入見込み大）から優先的に充実させる
 // ---------------------------------------------------------------------------
