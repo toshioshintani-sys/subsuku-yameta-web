@@ -42,9 +42,17 @@ export const ASP_FULL_URLS = {
 };
 
 // ============================================================
-// MOSHIMO_LINKS：もしも経由の楽天市場リンクなど（既存構造を維持）
+// MOSHIMO_LINKS：もしも経由の追跡 URL マップ
+// 提携完了した案件をここに記録。serviceId → URL
+// （discover.js では各サービスの affiliateUrl に直接埋めるパターンが主流）
 // ============================================================
-export const MOSHIMO_LINKS = {};
+export const MOSHIMO_LINKS = {
+  // 提携完了4案件（2026-05-23 即時提携・サブスクやめた媒体）
+  'toysub': 'https://af.moshimo.com/af/c/click?a_id=5581465&p_id=4587&pc_id=11989&pl_id=61358',
+  'digitane': 'https://af.moshimo.com/af/c/click?a_id=5581466&p_id=4975&pc_id=13311&pl_id=65311',
+  'dehari-online': 'https://af.moshimo.com/af/c/click?a_id=5581467&p_id=3193&pc_id=7476&pl_id=41798',
+  'sakepost': 'https://af.moshimo.com/af/c/click?a_id=5581468&p_id=5618&pc_id=15457&pl_id=72438',
+};
 
 // ============================================================
 // A8_PROGRAMS：互換性のために残す（fullUrl 方式に統合された）

@@ -247,6 +247,24 @@ export const DISCOVER_GENRES = [
     priceRange: '980〜10,000円/月',
     services: [
       {
+        name: 'デジハリ・オンラインスクール',
+        domain: 'online.dhw.co.jp',
+        monthly: 10000,
+        usp: 'Web・CG・映像・プログラミング。卒業後の転職実績豊富な老舗オンラインスクール',
+        cancel: '受講期間内のコース変更不可。期間満了で自動終了',
+        officialUrl: 'https://online.dhw.co.jp/',
+        affiliateUrl: 'https://af.moshimo.com/af/c/click?a_id=5581467&p_id=3193&pc_id=7476&pl_id=41798',
+      },
+      {
+        name: 'デジタネ（旧D-SCHOOL）',
+        domain: 'digitane.jp',
+        monthly: 2500,
+        usp: '小中学生向けプログラミング。Scratch・マイクラ・Roblox 等を体系的に学べる',
+        cancel: 'マイページから「退会手続き」。次回更新日の前日まで',
+        officialUrl: 'https://digitane.jp/',
+        affiliateUrl: 'https://af.moshimo.com/af/c/click?a_id=5581466&p_id=4975&pc_id=13311&pl_id=65311',
+      },
+      {
         name: 'Schoo（スクー）',
         domain: 'schoo.jp',
         monthly: 1078,
@@ -255,27 +273,57 @@ export const DISCOVER_GENRES = [
         officialUrl: 'https://schoo.jp/',
         affiliateUrl: null,
       },
-      {
-        name: 'Udemy Personal Plan',
-        domain: 'udemy.com',
-        monthly: 2800,
-        usp: '世界最大級のオンライン講座プラットフォームの定額版',
-        cancel: 'マイページ「設定」→「サブスクリプション」から解約',
-        officialUrl: 'https://www.udemy.com/personal-plan/',
-        affiliateUrl: null,
-      },
-      {
-        name: 'オンライン英会話 DMM',
-        domain: 'eikaiwa.dmm.com',
-        monthly: 7900,
-        usp: '24時間365日、毎日25分英会話できる定額制',
-        cancel: 'マイページから「自動更新停止」または「退会」',
-        officialUrl: 'https://eikaiwa.dmm.com/',
-        affiliateUrl: null,
-      },
     ],
     cancelGuide:
       '学び系は「3ヶ月続けば習慣化、続かなければ気軽に止められる」スタンスがおすすめ。多くのサービスが月単位の課金で違約金なし。「今月忙しい」と思ったら迷わず一時停止できる柔軟性が魅力。',
+  },
+  {
+    id: 'kids-toy',
+    name: '子育て・知育玩具',
+    emoji: '🧸',
+    tagline: '買って後悔より、定額レンタルで「飽きたら返却」',
+    summary:
+      '0〜6歳の知育玩具は月齢に合わせて頻繁に入れ替えが必要。1個3,000〜10,000円する木のおもちゃをすべて買うのは現実的ではない。月額制レンタルなら、子どもの成長に合わせて毎月新しいおもちゃが届き、飽きたものは返却できる。',
+    targets: ['知育玩具にこだわりたい', '部屋がおもちゃで溢れがち', '何を買えばいいか分からない'],
+    notFor: ['お下がりが豊富にある', '子どもの好みが定まっている', 'おもちゃは買って所有したい'],
+    priceRange: '2,000〜5,000円/月',
+    services: [
+      {
+        name: 'トイサブ！ファーストセレクション',
+        domain: 'toysub.net',
+        monthly: 3674,
+        usp: '業界最大手・延べ会員数2万人以上。月齢に合わせたプロ選定の知育玩具',
+        cancel: 'マイページから「サービス停止」。返却完了後に手続き',
+        officialUrl: 'https://toysub.net/',
+        affiliateUrl: 'https://af.moshimo.com/af/c/click?a_id=5581465&p_id=4587&pc_id=11989&pl_id=61358',
+      },
+    ],
+    cancelGuide:
+      '知育玩具レンタルは「子どもの興味が変わるタイミング」での解約が定番。3ヶ月使ってみて、お気に入りが出てこなければ別ジャンルに切り替えるか、買い切り型に移行する判断がしやすい。',
+  },
+  {
+    id: 'sake-subscription',
+    name: 'お酒定期便',
+    emoji: '🍶',
+    tagline: '「いつもと違う一杯」を月1回ポストに届ける',
+    summary:
+      '日本酒・クラフトビール・ワインの定期便サービスが台頭。お店で買うと選びきれない多銘柄を、プロが厳選して少量ずつ届けてくれる。週末の一杯を「今月のテーマ」として楽しめる。買い切りだとなかなか手が伸びない高価格帯のお酒が試せるのが魅力。',
+    targets: ['お酒の知識を広げたい', '毎月新しい味を試したい', '酒蔵応援したい'],
+    notFor: ['特定の銘柄しか飲まない', '量を飲みたい', '価格重視'],
+    priceRange: '1,800〜5,000円/月',
+    services: [
+      {
+        name: 'SAKEPOST（日本酒定期便）',
+        domain: 'sakepost.jp',
+        monthly: 1980,
+        usp: 'ポスト投函型・100ml×3種の日本酒が毎月届く・全国の酒蔵から厳選',
+        cancel: 'マイページから「定期便を停止」。次回発送の3日前まで',
+        officialUrl: 'https://sakepost.jp/',
+        affiliateUrl: 'https://af.moshimo.com/af/c/click?a_id=5581468&p_id=5618&pc_id=15457&pl_id=72438',
+      },
+    ],
+    cancelGuide:
+      'お酒定期便は「好みの方向性が見えてきた」段階で解約し、その後は単品購入に移行する人が多い。3〜6回試して、自分の好みのジャンル（純米吟醸 / にごり / 山廃 等）が分かれば、卒業の合図。',
   },
 ];
 
