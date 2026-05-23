@@ -9,21 +9,20 @@
 // 「サブスクやめた」のユーザーは『サブスクのハードルが低い人』であり、
 // 知らない世界を中立的に教えてくれる場として機能することで価値が生まれる
 //
-// ★★★ A8 提携状況メモ（2026-05-23）★★★
-//   42件の提携承認は「ライフオラクル」サイト経由のため、現「サブスクやめた」
-//   サイトでは追跡 URL を発行できない（規約違反リスク）。
-//   先に A8 で「サブスクやめた」をサイト追加 → 各広告主に追加申請 →
-//   承認後に affiliateUrl を埋める。詳細は docs/A8_REAPPLY_GUIDE.md 参照。
+// ★★★ A8 提携 URL 反映済み（2026-05-23）★★★
+//   A8 では「サイト追加申請」は不要だった。サブスクやめたを A8 にサイト登録 (006) し、
+//   「広告リンク作成」画面の掲載サイト切替で 8 案件すべての追跡 URL を取得して反映済み。
+//   各 affiliateUrl は「サブスクやめた」用に発行されたもので、A8 規約準拠。
 //
-//   申請中の8案件と対応プログラムID：
-//     HitoHana       : s00000016113004 → flower → HitoHana
-//     airCloset      : s00000016856001 → fashion-rental → airCloset
-//     DROBE          : s00000020848001 → fashion-rental → DROBE
-//     AnotherADdress : s00000023131001 → fashion-rental → AnotherADdress
-//     DELIPICKS      : s00000022857001 → frozen-meal → DELIPICKS
-//     every frecious : s00000010789007 → water-server → every frecious
-//     マルチピュア   : s00000024726001 → water-server → マルチピュア
-//     INIC コーヒー  : s00000017094001 → coffee-subscription → INIC コーヒー
+//   反映済みの 8 案件：
+//     HitoHana       : s00000016113004 (flower)              → 4B3XB5+30CZYQ+3GBU+NTJWY
+//     airCloset      : s00000016856001 (fashion-rental)      → 4B3XB5+2VLJ4I+3M28+61Z83
+//     DROBE          : s00000020848001 (fashion-rental)      → 4B3XB5+3QK2KY+4GV4+5YJRM
+//     AnotherADdress : s00000023131001 (fashion-rental)      → 4B3XB5+2WSEC2+4YHA+60H7M
+//     DELIPICKS      : s00000022857001 (frozen-meal)         → 4B3XB5+3ITFPU+4WD6+61Z81
+//     every frecious : s00000010789007 (water-server)        → 4B3XB5+3PD7DE+2B8Y+15OK2A
+//     マルチピュア   : s00000024726001 (water-server)        → 4B3XB5+3BO8GI+5ASC+5YRHE
+//     INIC コーヒー  : s00000017094001 (coffee-subscription) → 4B3XB5+383MTU+3NWC+63H8H
 
 export const DISCOVER_GENRES = [
   {
@@ -53,7 +52,7 @@ export const DISCOVER_GENRES = [
         usp: '色やボリュームを5パターンから選べる。初回花瓶プレゼント',
         cancel: 'マイページ「定期便管理」から解約。次回配送5日前まで',
         officialUrl: 'https://hitohana.tokyo/teikibin',
-        affiliateUrl: null, // A8 承認済み（s00000016113004）→ 後で実 URL 反映
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+30CZYQ+3GBU+NTJWY',
       },
       {
         name: 'medelu（メデル）',
@@ -86,7 +85,7 @@ export const DISCOVER_GENRES = [
         usp: '国内最大級・大人女性向け。プロのスタイリストが選定',
         cancel: 'マイページから解約。月額プランは月単位、年契約は更新月のみ違約金なし',
         officialUrl: 'https://www.air-closet.com/',
-        affiliateUrl: null, // A8: s00000016856001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+2VLJ4I+3M28+61Z83',
       },
       {
         name: 'DROBE（ドローブ）',
@@ -95,7 +94,7 @@ export const DISCOVER_GENRES = [
         usp: 'プロスタイリストがコーディネートを提案。買い取りベース型',
         cancel: 'マイページからスタイリング停止。買い取り済みは返金対象外',
         officialUrl: 'https://drobe.jp/',
-        affiliateUrl: null, // A8: s00000020848001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+3QK2KY+4GV4+5YJRM',
       },
       {
         name: 'AnotherADdress（アナザーアドレス）',
@@ -104,7 +103,7 @@ export const DISCOVER_GENRES = [
         usp: '百貨店初のサブスク。ハイブランド～セレクトショップ系',
         cancel: 'マイページ「会員情報」から「退会手続き」。次回更新日の前日まで',
         officialUrl: 'https://anotheraddress.jp/',
-        affiliateUrl: null, // A8: s00000023131001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+2WSEC2+4YHA+60H7M',
       },
     ],
     cancelGuide:
@@ -137,7 +136,7 @@ export const DISCOVER_GENRES = [
         usp: 'フレンチシェフ監修・国産食材中心',
         cancel: 'マイページから「スキップ」「お休み」「解約」を選択。次回配送5日前まで',
         officialUrl: 'https://delipicks.com/',
-        affiliateUrl: null, // A8: s00000022857001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+3ITFPU+4WD6+61Z81',
       },
       {
         name: 'オイシックス Kit Oisix',
@@ -170,7 +169,7 @@ export const DISCOVER_GENRES = [
         usp: '据置・卓上両モデル。レンタル料に水道代以外の全額込み',
         cancel: '電話または問い合わせフォームから。最低利用期間3年あり（途中解約は違約金）',
         officialUrl: 'https://every-frecious.com/',
-        affiliateUrl: null, // A8: s00000010789007
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+3PD7DE+2B8Y+15OK2A',
       },
       {
         name: 'ハミングウォーター',
@@ -188,7 +187,7 @@ export const DISCOVER_GENRES = [
         usp: '据置・卓上両モデル。1日110円の浄水型',
         cancel: 'マイページから解約申請',
         officialUrl: 'https://www.multipure.co.jp/',
-        affiliateUrl: null, // A8: s00000024726001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+3BO8GI+5ASC+5YRHE',
       },
     ],
     cancelGuide:
@@ -221,7 +220,7 @@ export const DISCOVER_GENRES = [
         usp: 'たった5秒で本格コーヒー。粉末タイプで持ち運び・ホテル滞在にも',
         cancel: 'マイページから解約申請',
         officialUrl: 'https://inic-coffee.com/',
-        affiliateUrl: null, // A8: s00000017094001
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+383MTU+3NWC+63H8H',
       },
       {
         name: 'TAILORED CAFE',
