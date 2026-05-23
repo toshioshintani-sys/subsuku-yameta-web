@@ -183,7 +183,7 @@ export default function HomePage() {
             filtered.map((service) => (
               <Link to={`/service/${service.id}`} key={service.id} className={styles.card}>
                 <div className={styles.cardTop}>
-                  <ServiceIcon domain={service.domain} emoji={service.emoji} size={44} />
+                  <ServiceIcon serviceId={service.id} category={service.category} domain={service.domain} emoji={service.emoji} size={44} />
                   <span className={`${styles.badge} ${styles[DIFFICULTY_COLOR[service.difficulty]]}`}>
                     {DIFFICULTY_LABEL[service.difficulty]}
                   </span>

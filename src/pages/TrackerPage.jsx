@@ -245,7 +245,7 @@ export default function TrackerPage() {
                   <div className={styles.recRank}>{i + 1}</div>
                   <div className={styles.recBody}>
                     <div className={styles.recHead}>
-                      <ServiceIcon domain={s.domain} emoji={s.emoji} size={32} />
+                      <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={32} />
                       <span className={styles.recName}>{s.name}</span>
                       <span className={`${styles.recBadge} ${styles[DIFFICULTY_COLOR[s.difficulty]]}`}>
                         {DIFFICULTY_LABEL[s.difficulty]}
@@ -316,7 +316,7 @@ export default function TrackerPage() {
                       onChange={() => toggle(s.id)}
                       className={styles.checkbox}
                     />
-                    <ServiceIcon domain={s.domain} emoji={s.emoji} size={28} />
+                    <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={28} />
                     <span className={styles.rowName}>{s.name}</span>
                     <span className={styles.rowPrice}>
                       {s.monthly ? formatYen(s.monthly) + '/月' : '都度課金'}

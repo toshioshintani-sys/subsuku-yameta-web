@@ -185,7 +185,7 @@ export default function ServicePage() {
         {/* メインカード */}
         <div className={styles.mainCard}>
           <div className={styles.serviceHead}>
-            <ServiceIcon domain={service.domain} emoji={service.emoji} size={64} />
+            <ServiceIcon serviceId={service.id} category={service.category} domain={service.domain} emoji={service.emoji} size={64} />
             <div>
               <h1 className={styles.name}>{service.name}の解約方法</h1>
               <div className={styles.meta}>
@@ -429,7 +429,7 @@ export default function ServicePage() {
                 alt.kind === 'internal' ? (
                   <Link key={i} to={alt.href} className={styles.altCard}>
                     <div className={styles.altCardTop}>
-                      <ServiceIcon domain={alt.domain} emoji={alt.emoji} size={32} />
+                      <ServiceIcon serviceId={alt.id} category={alt.category} domain={alt.domain} emoji={alt.emoji} size={32} />
                       <span className={styles.altCardName}>{alt.name}</span>
                     </div>
                     <p className={styles.altCardReason}>{alt.reason}</p>
@@ -488,7 +488,7 @@ export default function ServicePage() {
             <div className={styles.relatedGrid}>
               {related.map((s) => (
                 <Link to={`/service/${s.id}`} key={s.id} className={styles.relatedCard}>
-                  <ServiceIcon domain={s.domain} emoji={s.emoji} size={28} />
+                  <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={28} />
                   <span className={styles.relatedName}>{s.name}</span>
                   <span className={styles.relatedArrow}>→</span>
                 </Link>
