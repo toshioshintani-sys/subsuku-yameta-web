@@ -6,45 +6,91 @@
 
 :root {
   color-scheme: light dark;
-  --bg: #f7f9fc;
-  --surface: #ffffff;
-  --border: #e8edf3;
-  --text: #1a1f2e;
-  /* WCAG AA を 4.5:1 で満たすコントラスト（白背景上） */
-  --text-sub: #525a6b;
-  --accent: #3b6ef0;
-  --accent-hover: #2d5cd8;
-  --easy: #16a34a;
-  --easy-bg: #f0fdf4;
-  --medium: #d97706;
-  --medium-bg: #fffbeb;
-  --hard: #dc2626;
-  --hard-bg: #fef2f2;
 
-  /* Phase B：タイポグラフィシステム
-     - 本文：Inter（英数）+ Noto Sans JP（日本語）の合成スタック
-     - 数字：JetBrains Mono（金額・年数の引き締まり）
-     - 見出し：本文と同じだがレターSpacing で詰める */
+  /* ----------------------------------------------------------
+     Phase C：カラーシステム（OKLCH ベース・「自由 vs 重力」哲学）
+
+     2つの軸で色を構築：
+     - 「自由」軸：解約・解放を表す ティール〜深い青緑（Primary）
+     - 「重力」軸：払い続ける負担を表す くすみテラコッタ（Loss）
+                  派手な赤を避け、知性的な圧迫感
+
+     OKLCH は人間の知覚に合わせた色空間。すべての色相で
+     明度・彩度が知覚的に等価になり、グラデーション破綻が起きない。
+     ---------------------------------------------------------- */
+
+  /* ニュートラル（温かみのあるグレー：純粋な #888 ではない） */
+  --bg: oklch(98% 0.008 80);
+  --surface: oklch(100% 0 0);
+  --surface-2: oklch(96% 0.005 80);
+  --border: oklch(92% 0.008 230);
+  --border-strong: oklch(86% 0.012 230);
+  --text: oklch(20% 0.02 250);
+  --text-sub: oklch(45% 0.015 250);
+  --text-faint: oklch(60% 0.01 250);
+
+  /* Primary：自由・解放のティール */
+  --accent: oklch(54% 0.13 200);
+  --accent-hover: oklch(46% 0.14 200);
+  --accent-soft: oklch(95% 0.04 200);
+  --accent-text: oklch(35% 0.13 200);
+
+  /* Loss：払い続ける重力のテラコッタ（赤じゃない・知性的な圧迫感） */
+  --loss: oklch(52% 0.13 35);
+  --loss-strong: oklch(45% 0.16 35);
+  --loss-soft: oklch(96% 0.03 35);
+  --loss-border: oklch(85% 0.05 35);
+
+  /* 難易度（既存互換性のため hex も維持） */
+  --easy: oklch(58% 0.15 145);
+  --easy-bg: oklch(96% 0.04 145);
+  --medium: oklch(64% 0.14 65);
+  --medium-bg: oklch(96% 0.04 65);
+  --hard: oklch(56% 0.18 30);
+  --hard-bg: oklch(96% 0.04 30);
+
+  /* タイポグラフィシステム（Phase B） */
   --font-sans: 'Inter', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+
+  /* シャドウシステム（精密な階層） */
+  --shadow-sm: 0 1px 2px oklch(20% 0.02 250 / 0.06);
+  --shadow-md: 0 4px 12px oklch(20% 0.02 250 / 0.08);
+  --shadow-lg: 0 12px 32px oklch(20% 0.02 250 / 0.10);
 }
 
-/* ダークモード：システム設定に追従 */
+/* ダークモード：深い藍 + 温かいテキスト（単純反転ではない） */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f1419;
-    --surface: #1a1f2e;
-    --border: #2a3142;
-    --text: #e5e9f0;
-    --text-sub: #a4b0c4;
-    --accent: #6d92ff;
-    --accent-hover: #8ba8ff;
-    --easy: #34d399;
-    --easy-bg: rgba(52, 211, 153, 0.12);
-    --medium: #fbbf24;
-    --medium-bg: rgba(251, 191, 36, 0.12);
-    --hard: #f87171;
-    --hard-bg: rgba(248, 113, 113, 0.12);
+    --bg: oklch(15% 0.015 250);
+    --surface: oklch(20% 0.02 250);
+    --surface-2: oklch(18% 0.018 250);
+    --border: oklch(30% 0.02 250);
+    --border-strong: oklch(38% 0.025 250);
+    --text: oklch(94% 0.01 80);
+    --text-sub: oklch(72% 0.015 80);
+    --text-faint: oklch(55% 0.015 80);
+
+    --accent: oklch(72% 0.13 200);
+    --accent-hover: oklch(82% 0.13 200);
+    --accent-soft: oklch(28% 0.06 200);
+    --accent-text: oklch(85% 0.11 200);
+
+    --loss: oklch(70% 0.13 35);
+    --loss-strong: oklch(78% 0.16 35);
+    --loss-soft: oklch(28% 0.06 35);
+    --loss-border: oklch(35% 0.07 35);
+
+    --easy: oklch(72% 0.14 145);
+    --easy-bg: oklch(28% 0.05 145);
+    --medium: oklch(76% 0.13 65);
+    --medium-bg: oklch(28% 0.05 65);
+    --hard: oklch(72% 0.16 30);
+    --hard-bg: oklch(28% 0.06 30);
+
+    --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3);
+    --shadow-md: 0 4px 12px oklch(0% 0 0 / 0.4);
+    --shadow-lg: 0 12px 32px oklch(0% 0 0 / 0.5);
   }
 }
 

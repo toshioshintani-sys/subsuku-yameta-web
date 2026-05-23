@@ -88,9 +88,9 @@
 
 .price {
   font-size: 12px;
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 700;
-  background: rgba(59, 110, 240, 0.08);
+  background: var(--accent-soft);
   padding: 2px 8px;
   border-radius: 10px;
   font-family: var(--font-mono);
@@ -143,7 +143,7 @@
 }
 
 .planRowPopular {
-  background: rgba(59, 110, 240, 0.04);
+  background: var(--accent-soft);
 }
 
 .planName {
@@ -161,7 +161,7 @@
   font-size: 10px;
   font-weight: 700;
   color: var(--accent);
-  background: rgba(59, 110, 240, 0.12);
+  background: var(--accent-soft);
   padding: 1px 7px;
   border-radius: 8px;
   letter-spacing: 0.3px;
@@ -252,8 +252,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(220, 100, 70, 0.12);
+  background: var(--surface);
+  border: 1px solid var(--loss-border);
   border-radius: 6px;
 }
 
@@ -272,7 +272,7 @@
 }
 
 .lossVizPlanAmount strong {
-  color: rgba(200, 70, 50, 0.95);
+  color: var(--loss-strong);
   font-weight: 800;
   font-size: 17px;
   margin: 0 2px;
@@ -404,7 +404,7 @@
   font-size: 11px;
   font-weight: 700;
   color: var(--accent);
-  background: rgba(59, 110, 240, 0.08);
+  background: var(--accent-soft);
   padding: 2px 6px;
   border-radius: 4px;
   flex-shrink: 0;
@@ -568,13 +568,14 @@
   margin-top: 8px;
 }
 
-/* BAE: 損失可視化ブロック（行動経済学のナッジ - 損失回避） */
+/* BAE: 損失可視化ブロック（行動経済学のナッジ - 損失回避）
+   Phase C: 「重力」軸のテラコッタで圧迫感を表現（派手な赤ではない） */
 .lossViz {
   margin: 20px 0 16px;
   padding: 18px 20px;
-  background: linear-gradient(to right, rgba(255, 220, 200, 0.18), rgba(255, 200, 180, 0.05));
-  border: 1px solid rgba(220, 100, 70, 0.18);
-  border-left: 3px solid rgba(220, 100, 70, 0.6);
+  background: var(--loss-soft);
+  border: 1px solid var(--loss-border);
+  border-left: 3px solid var(--loss);
   border-radius: 10px;
 }
 
@@ -601,7 +602,7 @@
 }
 
 .lossVizAmount strong {
-  color: rgba(200, 70, 50, 0.95);
+  color: var(--loss-strong);
   font-weight: 800;
   font-size: 28px;
   margin: 0 2px;
