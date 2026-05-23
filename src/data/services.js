@@ -1264,6 +1264,156 @@ export const PLANS = {
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
+  // ---- Top11-30（2026-05-23 追加） ----
+  'microsoft-365': {
+    plans: [
+      { name: 'Personal（1人用）', monthly: 1490, yearly: 14900, popular: true, note: 'Office 全アプリ + OneDrive 1TB' },
+      { name: 'Family（最大6人）', monthly: 2100, yearly: 21000, note: '家族で 1TB×6 = 6TB のクラウド' },
+    ],
+    howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
+  },
+  'adobe-cc': {
+    plans: [
+      { name: 'フォトプラン（Photoshop + Lightroom）', monthly: 1180, popular: true },
+      { name: '単体プラン（Photoshop のみ等）', monthly: 2728 },
+      { name: 'コンプリートプラン（全アプリ）', monthly: 6480 },
+      { name: '学生・教職員向け', monthly: 1980, note: '本人確認必要・最初の1年' },
+    ],
+    howToCheck: 'Adobe アカウント →「プラン情報」で確認できます',
+  },
+  audible: {
+    plans: [
+      { name: '月額プラン', monthly: 1500, popular: true, note: '聴き放題＋追加コインなし' },
+    ],
+    howToCheck: 'Amazon アカウント →「アカウントサービス」→「Audible 会員情報」で確認できます',
+  },
+  'kindle-unlimited': {
+    plans: [
+      { name: '月額プラン', monthly: 980, popular: true },
+    ],
+    howToCheck: 'Amazon →「アカウントサービス」→「Kindle Unlimited 会員登録の管理」で確認できます',
+  },
+  danime: {
+    plans: [
+      { name: '月額プラン', monthly: 550, popular: true, note: 'docomo 以外でも契約可' },
+    ],
+    howToCheck: 'dアニメストア →「マイページ」→「契約内容の確認」で確認できます',
+  },
+  notion: {
+    plans: [
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Plus', monthly: 1500, popular: true, note: '無制限ファイル・30日履歴' },
+      { name: 'Business', monthly: 2250, note: 'SAML SSO・90日履歴' },
+    ],
+    howToCheck: 'Notion →「Settings & members」→「Plans」で確認できます',
+  },
+  dropbox: {
+    plans: [
+      { name: 'Plus（2TB）', monthly: 1200, popular: true },
+      { name: 'Essentials（3TB）', monthly: 2400 },
+      { name: 'Family（2TB・最大6人）', monthly: 2000 },
+    ],
+    howToCheck: 'Dropbox →「アカウント設定」→「プラン」で確認できます',
+  },
+  'canva-pro': {
+    plans: [
+      { name: 'Pro（個人）', monthly: 1500, yearly: 12000, popular: true },
+      { name: 'Teams（チーム）', monthly: 1800, note: '人数分課金・最低3人〜' },
+    ],
+    howToCheck: 'Canva →「設定」→「請求とチーム」で確認できます',
+  },
+  'nintendo-switch-online': {
+    plans: [
+      { name: '個人プラン', monthly: 306, yearly: 2400, popular: true },
+      { name: 'ファミリープラン（最大8人）', monthly: 366, yearly: 4500 },
+      { name: '追加パック（個人）', monthly: 416, yearly: 4900, note: 'N64・メガドラ等の旧作も遊べる' },
+    ],
+    howToCheck: 'Nintendo Switch →「ニンテンドーアカウント」→「Switch Online」で確認できます',
+  },
+  'playstation-plus': {
+    plans: [
+      { name: 'Essential', monthly: 850, yearly: 8600, popular: true, note: '従来のPS Plus 相当' },
+      { name: 'Extra', monthly: 1300, yearly: 13900, note: 'カタログから400本以上遊び放題' },
+      { name: 'Premium', monthly: 1550, yearly: 16700, note: 'クラシックタイトル + クラウドストリーミング' },
+    ],
+    howToCheck: 'PlayStation →「設定」→「アカウント管理」→「サブスクリプション」で確認できます',
+  },
+  'xbox-game-pass': {
+    plans: [
+      { name: 'Core', monthly: 842, note: 'マルチプレイ + 限定タイトル' },
+      { name: 'PC Game Pass', monthly: 1100, popular: true, note: 'PC ゲーム遊び放題' },
+      { name: 'Ultimate', monthly: 1680, note: 'PC + Console + EA Play + クラウド' },
+    ],
+    howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
+  },
+  'chatgpt-plus': {
+    plans: [
+      { name: 'Plus（個人）', monthly: 3000, popular: true, note: 'GPT-4o・画像生成・優先アクセス' },
+      { name: 'Team（チーム）', monthly: 4500, note: '人数分課金・最低2人〜' },
+      { name: 'Pro', monthly: 30000, note: 'o1 無制限・上級モデル' },
+    ],
+    howToCheck: 'ChatGPT →「Settings」→「Subscription」で確認できます',
+  },
+  'claude-pro': {
+    plans: [
+      { name: 'Pro', monthly: 3000, popular: true, note: '5倍多くメッセージ送信可' },
+      { name: 'Max（5x）', monthly: 15000, note: 'Pro の5倍利用枠' },
+      { name: 'Max（20x）', monthly: 30000, note: 'Pro の20倍利用枠' },
+    ],
+    howToCheck: 'Claude →「Settings」→「Plans & Billing」で確認できます',
+  },
+  figma: {
+    plans: [
+      { name: 'Starter（無料）', monthly: 0 },
+      { name: 'Professional', monthly: 1800, yearly: 18000, popular: true },
+      { name: 'Organization', monthly: 6750, note: 'デザインシステム機能 + SSO' },
+    ],
+    howToCheck: 'Figma →「Settings」→「Plan & billing」で確認できます',
+  },
+  'deepl-pro': {
+    plans: [
+      { name: 'Starter', monthly: 1200, popular: true, note: '文字数無制限・ファイル翻訳' },
+      { name: 'Advanced', monthly: 3800, note: 'カスタム用語集・チーム管理' },
+      { name: 'Ultimate', monthly: 7500, note: 'CAT 連携・API 大規模利用' },
+    ],
+    howToCheck: 'DeepL →「アカウント」→「サブスクリプション」で確認できます',
+  },
+  '1password': {
+    plans: [
+      { name: '個人プラン', monthly: 450, yearly: 4500, popular: true },
+      { name: 'ファミリー（最大5人）', monthly: 750, yearly: 7500 },
+    ],
+    howToCheck: '1Password →「マイプロフィール」→「アカウント」で確認できます',
+  },
+  'github-copilot': {
+    plans: [
+      { name: 'Individual', monthly: 1500, yearly: 15000, popular: true },
+      { name: 'Business', monthly: 2900, note: 'ライセンス管理 + プライバシー強化' },
+      { name: 'Enterprise', monthly: 5550, note: '内製モデル + ナレッジベース統合' },
+    ],
+    howToCheck: 'GitHub →「Settings」→「Billing and plans」→「Copilot」で確認できます',
+  },
+  'niconico-premium': {
+    plans: [
+      { name: 'プレミアム会員', monthly: 790, popular: true },
+    ],
+    howToCheck: 'ニコニコ →「アカウント」→「プレミアム会員」で確認できます',
+  },
+  'apple-tv-plus': {
+    plans: [
+      { name: '月額プラン', monthly: 900, popular: true },
+      { name: '年額プラン', monthly: 750, yearly: 9000 },
+    ],
+    howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
+  },
+  crunchyroll: {
+    plans: [
+      { name: 'Fan', monthly: 850, popular: true, note: '広告なし・全アニメ視聴' },
+      { name: 'Mega Fan', monthly: 1080, note: '同時4台 + オフライン再生' },
+      { name: 'Ultimate Fan', monthly: 1280, note: '同時6台 + 限定特典' },
+    ],
+    howToCheck: 'Crunchyroll →「アカウント」→「メンバーシップ」で確認できます',
+  },
 };
 
 // ---------------------------------------------------------------------------
