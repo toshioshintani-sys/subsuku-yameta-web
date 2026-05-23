@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, BarChart3 } from 'lucide-react';
-import { SERVICES, CATEGORIES } from '../data/services';
+import { SERVICES, CATEGORIES, getPopularity } from '../data/services';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
@@ -12,16 +12,27 @@ const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
 const DIFFICULTY_ORDER = { easy: 0, medium: 1, hard: 2 };
 
 const SORT_OPTIONS = [
-  { id: 'default', label: 'デフォルト' },
+  { id: 'popular', label: '人気順' },
   { id: 'name', label: '五十音順' },
   { id: 'difficulty-asc', label: '解約しやすい順' },
   { id: 'difficulty-desc', label: '解約しにくい順' },
 ];
 
+// カテゴリ表示順（探しやすさ重視・「すべて」表示時の二次ソート用）
+const CATEGORY_ORDER = {
+  video: 1,
+  music: 2,
+  software: 3,
+  game: 4,
+  news: 5,
+  shopping: 6,
+  other: 7,
+};
+
 export default function HomePage() {
   const [query, setQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [sortBy, setSortBy] = useState('default');
+  const [sortBy, setSortBy] = useState('popular');
 
   const filtered = useMemo(() => {
     const list = SERVICES.filter((s) => {
@@ -43,7 +54,14 @@ export default function HomePage() {
         (a, b) => DIFFICULTY_ORDER[b.difficulty] - DIFFICULTY_ORDER[a.difficulty]
       );
     }
-    return list;
+    // 人気順：popularity 降順 → カテゴリ順 → 五十音順 の3段階安定ソート
+    return [...list].sort((a, b) => {
+      const popDiff = getPopularity(b.id) - getPopularity(a.id);
+      if (popDiff !== 0) return popDiff;
+      const catDiff = (CATEGORY_ORDER[a.category] || 99) - (CATEGORY_ORDER[b.category] || 99);
+      if (catDiff !== 0) return catDiff;
+      return a.name.localeCompare(b.name, 'ja');
+    });
   }, [query, selectedCategory, sortBy]);
 
   return (

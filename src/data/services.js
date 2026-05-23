@@ -1176,6 +1176,100 @@ export const PRICING = {
 };
 
 // ---------------------------------------------------------------------------
+// 人気度スコア（HomePage デフォルトソート用・2026-05-23 追加）
+//
+// 目的：「デタラメ順」を解消し、ユーザーが探しやすい順に並べる
+// 基準：知名度・契約者数・検索ボリュームの総合判断
+// スコアの目安：
+//   100：誰でも知ってる超メジャー
+//   90：知ってる人が多い主要サブスク
+//   80：それなりに有名
+//   70：一定の知名度
+//   60：認知度はそこそこ
+//   50以下：ニッチ・専門領域
+// ---------------------------------------------------------------------------
+export const POPULARITY = {
+  // 動画系 Top
+  netflix: 100,
+  'amazon-prime': 100,
+  hulu: 85,
+  'disney-plus': 85,
+  'u-next': 80,
+  'abema-premium': 70,
+  'apple-tv-plus': 65,
+  dazn: 70,
+  'nhk-plus': 60,
+  fod: 50,
+  lemino: 45,
+  'wowow-on-demand': 45,
+  'rakuten-tv': 40,
+  danime: 60,
+  crunchyroll: 40,
+  'vimeo-pro': 30,
+
+  // 音楽系
+  spotify: 100,
+  'apple-music': 90,
+  'youtube-premium': 95,
+  'amazon-music-unlimited': 75,
+  'line-music': 65,
+  'rakuten-music': 50,
+  'soundcloud-go': 35,
+
+  // ソフト・ツール
+  'microsoft-365': 90,
+  'adobe-cc': 90,
+  'chatgpt-plus': 95,
+  'claude-pro': 85,
+  notion: 80,
+  dropbox: 75,
+  'canva-pro': 75,
+  'github-copilot': 80,
+  figma: 75,
+  'deepl-pro': 70,
+  '1password': 65,
+  evernote: 50,
+
+  // ゲーム
+  'nintendo-switch-online': 85,
+  'playstation-plus': 80,
+  'xbox-game-pass': 75,
+  'discord-nitro': 50,
+
+  // ニュース・読み放題
+  'kindle-unlimited': 85,
+  audible: 75,
+  'rakuten-magazine': 55,
+  dmagazine: 55,
+  bookwalker: 40,
+  'rakuten-kobo': 45,
+  honto: 35,
+  nikkei: 50,
+  'note-premium': 50,
+  'niconico-premium': 65,
+
+  // ショッピング/ストレージ複合
+  'apple-one': 75,
+  'google-one': 65,
+  'icloud-plus': 70,
+  'yahoo-premium': 60,
+  'dmm-premium': 50,
+
+  // その他
+  pairs: 60,
+  match: 45,
+  patreon: 40,
+  'linkedin-premium': 40,
+};
+
+/**
+ * サービスの人気度スコアを取得（未登録は 0）
+ */
+export function getPopularity(serviceId) {
+  return POPULARITY[serviceId] ?? 0;
+}
+
+// ---------------------------------------------------------------------------
 // 料金プラン詳細（多プラン対応・2026-05-23 追加）
 // PRICING は「代表月額」として後方互換で残す。PLANS は補足情報として併用する。
 //
