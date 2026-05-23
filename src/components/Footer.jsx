@@ -42,6 +42,7 @@ export default function Footer() {
               <li><Link to="/about">このサイトについて</Link></li>
               <li><Link to="/privacy">プライバシーポリシー</Link></li>
               <li><Link to="/disclaimer">免責事項</Link></li>
+              <li><Link to="/disclosure">収益開示</Link></li>
               <li><Link to="/contact">お問い合わせ</Link></li>
             </ul>
           </div>

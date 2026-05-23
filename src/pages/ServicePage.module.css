@@ -366,13 +366,76 @@
   margin-top: 8px;
 }
 
-/* 解約後の選択肢 */
+/* BAE: 損失可視化ブロック（行動経済学のナッジ - 損失回避） */
+.lossViz {
+  margin: 20px 0 16px;
+  padding: 18px 20px;
+  background: linear-gradient(to right, rgba(255, 220, 200, 0.18), rgba(255, 200, 180, 0.05));
+  border: 1px solid rgba(220, 100, 70, 0.18);
+  border-left: 3px solid rgba(220, 100, 70, 0.6);
+  border-radius: 10px;
+}
+
+.lossVizMain {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.lossVizLabel {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-weight: 500;
+}
+
+.lossVizAmount {
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.lossVizAmount strong {
+  color: rgba(200, 70, 50, 0.95);
+  font-weight: 800;
+  font-size: 26px;
+  margin: 0 2px;
+}
+
+.lossVizSub {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.lossVizSub strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .lossViz {
+    padding: 14px 16px;
+  }
+  .lossVizAmount {
+    font-size: 18px;
+  }
+  .lossVizAmount strong {
+    font-size: 22px;
+  }
+}
+
+/* BAE: 解約後の選択肢（控えめ・PR表示・解約より目立たない） */
 .alternatives {
   margin-bottom: 32px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 24px;
+  /* シグナル非対称性：解約ボタンより薄い背景 */
+  opacity: 0.96;
 }
 
 @media (max-width: 600px) {
@@ -381,18 +444,65 @@
   }
 }
 
+.altHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
 .altTitle {
   font-size: 16px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 6px;
+  margin: 0;
+}
+
+/* BAE: PR ラベル（景表法対応・極小・グレー） */
+.prLabel {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-sub);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
 .altLead {
   font-size: 12px;
   color: var(--text-sub);
   margin-bottom: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.altLead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* BAE: 収益開示への控えめなリンク */
+.altDisclosure {
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  text-align: right;
+}
+
+.altDisclosure a {
+  color: var(--text-sub);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.2);
+}
+
+.altDisclosure a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
 }
 
 .altGrid {

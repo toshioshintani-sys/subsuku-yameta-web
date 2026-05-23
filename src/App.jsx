@@ -18,6 +18,7 @@ const DiscoverGenrePage = lazy(() => import('./pages/DiscoverGenrePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
+const DisclosurePage = lazy(() => import('./pages/DisclosurePage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/disclaimer" element={<DisclaimerPage />} />
+          <Route path="/disclosure" element={<DisclosurePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

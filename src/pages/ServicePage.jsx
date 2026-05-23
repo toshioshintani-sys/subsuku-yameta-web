@@ -1,7 +1,13 @@
 import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SERVICES, ALTERNATIVES, EXTENDED_CONTENT, PRICING } from '../data/services';
-import { getAffiliateUrl } from '../data/affiliates';
+import {
+  getAffiliateUrl,
+  buildAmazonSearchUrl,
+  buildRakutenSearchUrl,
+  trackAffiliateClick,
+  detectAsp,
+} from '../data/affiliates';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
@@ -271,6 +277,22 @@ export default function ServicePage() {
             </section>
           )}
 
+          {/* 損失可視化ブロック（BAE：行動経済学のナッジ - 損失回避） */}
+          {monthly > 0 && (
+            <div className={styles.lossViz} aria-label="年額試算">
+              <div className={styles.lossVizMain}>
+                <span className={styles.lossVizLabel}>このまま続けると</span>
+                <span className={styles.lossVizAmount}>
+                  年 <strong>{formatYen(monthly * 12)}</strong>
+                </span>
+              </div>
+              <p className={styles.lossVizSub}>
+                月{formatYen(monthly)} × 12ヶ月。5年で <strong>{formatYen(monthly * 60)}</strong>、
+                10年で <strong>{formatYen(monthly * 120)}</strong> を払い続ける計算です。
+              </p>
+            </div>
+          )}
+
           {/* 免責 */}
           <p className={styles.disclaimer}>
             ※ 解約手順はサービス側の仕様変更により異なる場合があります。最新情報は各サービスの公式サポートをご確認ください。
@@ -287,15 +309,20 @@ export default function ServicePage() {
         {/* 広告（解約手順が終わった直後の自然なブレイク。ない場合は何も描画しない） */}
         <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
-        {/* 解約後の選択肢（記事末尾・押し売り厳禁） */}
+        {/* 解約後の選択肢（記事末尾・BAE準拠：押し売り厳禁・PR表示・厳選3つまで） */}
         {alternatives.length > 0 && (
           <section className={styles.alternatives}>
-            <h2 className={styles.altTitle}>解約したあなたへ：別の選択肢</h2>
+            <div className={styles.altHeader}>
+              <h2 className={styles.altTitle}>もし「次に何か」を検討するなら</h2>
+              <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+            </div>
             <p className={styles.altLead}>
-              似た用途で使えるサービスを参考までに紹介します。無理に乗り換える必要はありません。
+              似た用途で使えるサービスを情報として置いておきます。
+              <strong>乗り換える必要はありません</strong>。
+              「やめる」が最善の選択であることも多いです。
             </p>
             <div className={styles.altGrid}>
-              {alternatives.map((alt, i) => (
+              {alternatives.slice(0, 3).map((alt, i) => (
                 alt.kind === 'internal' ? (
                   <Link key={i} to={alt.href} className={styles.altCard}>
                     <div className={styles.altCardTop}>
@@ -312,6 +339,14 @@ export default function ServicePage() {
                     target="_blank"
                     rel="sponsored noopener noreferrer"
                     className={styles.altCard}
+                    onClick={() =>
+                      trackAffiliateClick({
+                        asp: detectAsp(alt.href),
+                        service: service.id,
+                        placement: 'service_page_bottom',
+                        position: i + 1,
+                      })
+                    }
                   >
                     <div className={styles.altCardTop}>
                       <span className={styles.altCardExternalIcon}>↗</span>
@@ -323,6 +358,10 @@ export default function ServicePage() {
                 )
               ))}
             </div>
+            <p className={styles.altDisclosure}>
+              掲載順位は提携の有無や報酬で決まりません。詳細は
+              <Link to="/disclosure">収益開示</Link>をご覧ください。
+            </p>
           </section>
         )}
 

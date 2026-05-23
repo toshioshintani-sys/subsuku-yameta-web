@@ -1,51 +1,63 @@
-// アフィリエイトリンク統合
+// アフィリエイトリンク統合（BAE: Behavioral Affiliate Engine）
 //
-// 設計：
-//   - ALTERNATIVES（services.js）の外部リンクを、ASP の追跡 URL でラップする
-//   - ASP ID は Netlify 環境変数（VITE_*）から読む。未設定でも壊れない
-//   - 設定済みなら ASP 経由のリンクを返し、未設定なら元の URL を返す（フォールバック）
+// 設計原則：docs/AFFILIATE_DESIGN_PRINCIPLES.md
 //
-// 対応 ASP：
-//   - A8.net（最も多い案件・主力）
-//   - もしもアフィリエイト（Amazon・楽天・カエレバ系も）
-//   - Amazon アソシエイト（直）
+// 対応 ASP（2026-05-23時点）：
+//   - A8.net（提携した8案件の追跡URLを ASP_FULL_URLS に直接マップ）
+//   - もしもアフィリエイト（提携した4案件 + 楽天市場の追跡URLをマップ）
+//   - Amazon アソシエイト（StoreID を ?tag= で付与・全Amazon商品で稼働）
+//   - 楽天アフィリエイト（hb.afl.rakuten.co.jp/hgc/{ID}/ 形式で全楽天市場商品で稼働）
 //
-// 俊雄さんの設定手順は docs/AFFILIATE_SETUP.md を参照
+// 設定済み環境変数（Netlify）：
+//   - VITE_AMAZON_ASSOCIATE_ID = shinta1999-22
+//   - VITE_RAKUTEN_AFFILIATE_ID = 039b7990.875038c7.0ab5f5c4.4f8cf5a9
+//   - VITE_A8_MEDIA_ID
+//   - VITE_MOSHIMO_MEDIA_ID = 673448
 
-const A8_MEDIA_ID = import.meta.env.VITE_A8_MEDIA_ID;       // 例: a10040418585
-const MOSHIMO_MEDIA_ID = import.meta.env.VITE_MOSHIMO_MEDIA_ID; // 例: 1184296
-const AMAZON_ASSOCIATE_ID = import.meta.env.VITE_AMAZON_ASSOCIATE_ID; // 例: subsuku-22
+const A8_MEDIA_ID = import.meta.env.VITE_A8_MEDIA_ID;
+const MOSHIMO_MEDIA_ID = import.meta.env.VITE_MOSHIMO_MEDIA_ID;
+const AMAZON_ASSOCIATE_ID = import.meta.env.VITE_AMAZON_ASSOCIATE_ID;
+const RAKUTEN_AFFILIATE_ID = import.meta.env.VITE_RAKUTEN_AFFILIATE_ID;
 
-// サービス id → A8 のプログラム ID（提携承認後に取得して埋める）
-// 俊雄さんが A8 で提携承認されたら、ここに記入するだけで全リンクが切り替わる
-// プログラム ID と広告 ID（s00000000000xxxxxxx）の組合せ
-// 例: u-next: { program: 'p00000000000xxxxx', ad: 's00000000000yyyyy' }
-export const A8_PROGRAMS = {
-  // 提携承認後に俊雄さんが追記
-  // 'u-next': { program: '', ad: '' },
-  // 'hulu': { program: '', ad: '' },
-  // 'dazn': { program: '', ad: '' },
-  // 'adobe-cc': { program: '', ad: '' },
-  // 'audible': { program: '', ad: '' },
-  // 'kindle-unlimited': { program: '', ad: '' },
-  // 'amazon-prime': { program: '', ad: '' },
-  // 'danime': { program: '', ad: '' },
+// ============================================================
+// ASP_FULL_URLS：俊雄さんが ASP 管理画面で取得した「完成済みの追跡 URL」
+// 提携完了したら、ここに serviceId → URL でマップする
+// ============================================================
+export const ASP_FULL_URLS = {
+  // A8.net（8案件・サブスクやめた媒体で2026-05-23 申請中）
+  // 'hitohana': '...',
+  // 'aircloset': '...',
+  // 'drobe': '...',
+  // 'another-address': '...',
+  // 'delipicks': '...',
+  // 'every-frecious': '...',
+  // 'multipure': '...',
+  // 'inic-coffee': '...',
+
+  // もしも（4案件・2026-05-23 即時提携完了・URL は管理画面から取得して埋める）
+  // 'toysub': '...',
+  // 'digitane': '...',
+  // 'dehari-online': '...',
+  // 'sakepost': '...',
 };
 
-// もしもアフィリエイトでカバーするサービス
-// 楽天系・Amazon系・特定の案件
-// 形式: そのまま追跡URL（俊雄さんが「リンク作成」でコピーしたもの）を入れる
-export const MOSHIMO_LINKS = {
-  // 'rakuten-magazine': 'https://af.moshimo.com/af/c/click?...',
-  // 'rakuten-music': 'https://af.moshimo.com/af/c/click?...',
-  // 'rakuten-kobo': 'https://af.moshimo.com/af/c/click?...',
-};
+// ============================================================
+// MOSHIMO_LINKS：もしも経由の楽天市場リンクなど（既存構造を維持）
+// ============================================================
+export const MOSHIMO_LINKS = {};
 
-// Amazon アソシエイトでカバーするサービス（associate id を末尾につけるだけ）
+// ============================================================
+// A8_PROGRAMS：互換性のために残す（fullUrl 方式に統合された）
+// ============================================================
+export const A8_PROGRAMS = {};
+
+// ============================================================
+// Amazon アソシエイト：Amazon URL に ?tag=AMAZON_ID を付与
+// ============================================================
 const AMAZON_HOSTS = ['amazon.co.jp', 'amazon.com', 'www.amazon.co.jp', 'www.amazon.com'];
 
 function withAmazonTag(url) {
-  if (!AMAZON_ASSOCIATE_ID) return url;
+  if (!AMAZON_ASSOCIATE_ID || !url) return url;
   try {
     const u = new URL(url);
     if (!AMAZON_HOSTS.includes(u.hostname)) return url;
@@ -56,56 +68,149 @@ function withAmazonTag(url) {
   }
 }
 
-function buildA8Url(serviceId) {
-  const cfg = A8_PROGRAMS[serviceId];
-  if (!cfg || !cfg.program || !cfg.ad || !A8_MEDIA_ID) return null;
-  // A8 の追跡 URL は媒体IDによって形式が違うが、最も標準的な形式：
-  // https://px.a8.net/svt/ejp?a8mat=<program>+<random>+<medium>+<ad>
-  // 厳密には A8 管理画面で発行された URL をそのまま使うのが安全
-  // ここでは「俊雄さんが管理画面で取得したリンクをそのまま入れる」運用を推奨
-  // → A8_PROGRAMS の値を { fullUrl: '...' } に変えるのが現実的
-  return null; // 未確定。fullUrl 方式に移行
+// ============================================================
+// 楽天アフィリエイト：楽天 URL を hb.afl.rakuten.co.jp 形式に変換
+// 形式: https://hb.afl.rakuten.co.jp/hgc/{ID}/?pc=<encoded_url>&link_type=text
+// ============================================================
+const RAKUTEN_HOSTS = [
+  'rakuten.co.jp',
+  'www.rakuten.co.jp',
+  'item.rakuten.co.jp',
+  'books.rakuten.co.jp',
+  'travel.rakuten.co.jp',
+  'magazine.rakuten.co.jp',
+  'event.rakuten.co.jp',
+];
+
+function isRakutenUrl(url) {
+  if (!url) return false;
+  try {
+    const u = new URL(url);
+    return RAKUTEN_HOSTS.some((h) => u.hostname === h || u.hostname.endsWith('.' + h));
+  } catch {
+    return false;
+  }
 }
 
-// シンプルで確実な方式：
-// 俊雄さんが ASP 管理画面で取得した「完成済みの追跡 URL」をそのまま入れる
-// それを ASP_FULL_URLS としてマップする
-export const ASP_FULL_URLS = {
-  // フォーマット：serviceId → 完成済みの追跡 URL
-  // 例（架空）：
-  // 'u-next': 'https://px.a8.net/svt/ejp?a8mat=ABCDEFG+HIJKLM',
-  // 'rakuten-magazine': 'https://af.moshimo.com/af/c/click?a_id=...',
-};
+function withRakutenAffiliate(url) {
+  if (!RAKUTEN_AFFILIATE_ID || !url) return url;
+  if (!isRakutenUrl(url)) return url;
+  const encoded = encodeURIComponent(url);
+  return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encoded}&link_type=text&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJ0ZXh0In0=`;
+}
+
+// ============================================================
+// 公開関数：外部リンクをアフィリエイト追跡 URL に変換
+// ============================================================
 
 /**
- * 外部リンクをアフィリエイト追跡 URL に変換する
- * @param {string} serviceId - 内部サービスID（例: 'u-next'）
- * @param {string} originalUrl - 元の外部リンク URL
- * @returns {string} アフィリエイト URL（設定があれば）または元の URL
+ * @param {string} serviceId 内部サービスID（例: 'netflix'）
+ * @param {string} originalUrl 元の外部リンク
+ * @returns {string} アフィリエイト URL または 元の URL（フォールバック）
  */
 export function getAffiliateUrl(serviceId, originalUrl) {
-  // 1. ASP_FULL_URLS に直接マップがあれば、それを返す（最優先）
-  if (ASP_FULL_URLS[serviceId]) {
+  // 1. ASP_FULL_URLS に直接マップがあれば最優先
+  if (serviceId && ASP_FULL_URLS[serviceId]) {
     return ASP_FULL_URLS[serviceId];
   }
 
-  // 2. もしも経由
-  if (MOSHIMO_LINKS[serviceId]) {
+  // 2. もしも経由のマップ
+  if (serviceId && MOSHIMO_LINKS[serviceId]) {
     return MOSHIMO_LINKS[serviceId];
   }
 
-  // 3. Amazon アソシエイト（URL ホストで判定）
-  return withAmazonTag(originalUrl);
+  // 3. Amazon URL なら ?tag= を付与
+  if (originalUrl) {
+    const amazonized = withAmazonTag(originalUrl);
+    if (amazonized !== originalUrl) return amazonized;
+
+    // 4. 楽天 URL なら hb.afl 形式に変換
+    const rakutenized = withRakutenAffiliate(originalUrl);
+    if (rakutenized !== originalUrl) return rakutenized;
+  }
+
+  // 5. それ以外は元の URL（フォールバック）
+  return originalUrl;
 }
 
 /**
- * 設定済みアフィの数（管理画面/デバッグ用）
+ * Amazon の任意検索クエリへのアフィリエイトリンクを生成
+ * 「やめた後の都度購入」用に使う
+ * @param {string} query 検索キーワード
+ * @returns {string} Amazon 検索 URL（tag付き）
+ */
+export function buildAmazonSearchUrl(query) {
+  const base = `https://www.amazon.co.jp/s?k=${encodeURIComponent(query)}`;
+  return withAmazonTag(base);
+}
+
+/**
+ * 楽天市場の任意検索クエリへのアフィリエイトリンクを生成
+ * @param {string} query 検索キーワード
+ * @returns {string} 楽天市場検索 URL（アフィリエイト変換済み）
+ */
+export function buildRakutenSearchUrl(query) {
+  const base = `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(query)}/`;
+  // 楽天検索URLは hb.afl 形式に変換できないので、id=tagで対応
+  if (!RAKUTEN_AFFILIATE_ID) return base;
+  return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(base)}&link_type=text`;
+}
+
+// ============================================================
+// GA4 イベント送信（BAE 設計原則の計測ルール準拠）
+// ============================================================
+
+/**
+ * アフィリエイトクリックを GA4 にイベントとして送信
+ * @param {object} params
+ * @param {string} params.asp - 'a8' | 'moshimo' | 'amazon' | 'rakuten'
+ * @param {string} params.service - サービスID または検索キーワード
+ * @param {string} params.placement - 'service_page_bottom' | 'discover_genre' | 'blog_inline' | 'home_hero'
+ * @param {number} params.position - 厳選3つ中の何番目か（1/2/3）
+ */
+export function trackAffiliateClick(params) {
+  if (typeof window === 'undefined') return;
+  if (typeof window.gtag !== 'function') return;
+  try {
+    window.gtag('event', 'affiliate_click', {
+      asp: params.asp || 'unknown',
+      service: params.service || 'unknown',
+      placement: params.placement || 'unknown',
+      position: params.position || 0,
+    });
+  } catch {
+    // 失敗してもユーザー体験は阻害しない
+  }
+}
+
+/**
+ * URL から ASP 種別を自動判定
+ * @param {string} url
+ * @returns {'a8' | 'moshimo' | 'amazon' | 'rakuten' | 'direct'}
+ */
+export function detectAsp(url) {
+  if (!url) return 'direct';
+  if (url.includes('px.a8.net')) return 'a8';
+  if (url.includes('af.moshimo.com')) return 'moshimo';
+  if (url.includes('hb.afl.rakuten.co.jp')) return 'rakuten';
+  if (url.includes('amazon.co.jp') || url.includes('amazon.com')) return 'amazon';
+  return 'direct';
+}
+
+// ============================================================
+// デバッグ・統計用
+// ============================================================
+
+/**
+ * 設定済みアフィの統計
  */
 export function getAffiliateStats() {
   return {
-    a8: Object.keys(A8_PROGRAMS).filter((k) => A8_PROGRAMS[k]?.program).length,
-    moshimo: Object.keys(MOSHIMO_LINKS).length,
     aspFull: Object.keys(ASP_FULL_URLS).length,
+    moshimo: Object.keys(MOSHIMO_LINKS).length,
     amazonEnabled: !!AMAZON_ASSOCIATE_ID,
+    rakutenEnabled: !!RAKUTEN_AFFILIATE_ID,
+    a8MediaConfigured: !!A8_MEDIA_ID,
+    moshimoMediaConfigured: !!MOSHIMO_MEDIA_ID,
   };
 }

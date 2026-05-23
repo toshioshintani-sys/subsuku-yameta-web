@@ -74,6 +74,38 @@
   text-decoration: underline;
 }
 
+.principleList {
+  list-style: none;
+  margin: 12px 0 16px 0;
+  padding: 0;
+}
+
+.principleList li {
+  position: relative;
+  padding: 12px 12px 12px 28px;
+  margin-bottom: 8px;
+  background: var(--surface-2, rgba(0,0,0,0.02));
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.principleList li::before {
+  content: "✓";
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.principleList strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
 .backLink {
   display: inline-block;
   margin-top: 24px;

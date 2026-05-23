@@ -11,7 +11,7 @@ function getSiteUrl() {
 }
 
 function buildRoutes() {
-  const staticRoutes = ['/', '/tracker', '/discover', '/blog', '/about', '/privacy', '/disclaimer', '/contact'];
+  const staticRoutes = ['/', '/tracker', '/discover', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
   const categoryRoutes = CATEGORIES
     .filter((c) => c.id !== 'all')
     .map((c) => `/category/${c.id}`);
