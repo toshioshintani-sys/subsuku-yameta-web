@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import { Lightbulb, ChevronRight } from 'lucide-react';
 import { DISCOVER_GENRES } from '../data/discover';
+import { DiscoverIcon } from '../icons';
 import Seo from '../components/Seo';
 import styles from './DiscoverIndexPage.module.css';
 
@@ -21,7 +23,8 @@ export default function DiscoverIndexPage() {
           <strong>中立的に・やめ方まで一緒に</strong>紹介します。
         </p>
         <p className={styles.heroHint}>
-          💡 各ジャンルページの末尾に「やめたくなったら」セクションを置いています。気軽に試して、合わなければ止める——それを支援するのがこのサイトの役割です。
+          <Lightbulb size={15} strokeWidth={1.75} aria-hidden="true" />
+          <span>各ジャンルページの末尾に「やめたくなったら」セクションを置いています。気軽に試して、合わなければ止める——それを支援するのがこのサイトの役割です。</span>
         </p>
       </section>
 
@@ -30,7 +33,9 @@ export default function DiscoverIndexPage() {
           {DISCOVER_GENRES.map((g) => (
             <li key={g.id} className={styles.item}>
               <Link to={`/discover/${g.id}`} className={styles.card}>
-                <div className={styles.cardEmoji} aria-hidden="true">{g.emoji}</div>
+                <div className={styles.cardEmoji} aria-hidden="true">
+                  <DiscoverIcon genreId={g.id} size={26} />
+                </div>
                 <div className={styles.cardBody}>
                   <h2 className={styles.cardTitle}>{g.name}</h2>
                   <p className={styles.cardTagline}>{g.tagline}</p>
@@ -39,7 +44,9 @@ export default function DiscoverIndexPage() {
                     <span className={styles.cardCount}>主要 {g.services.length} 社を比較</span>
                   </div>
                 </div>
-                <span className={styles.cardArrow} aria-hidden="true">→</span>
+                <span className={styles.cardArrow} aria-hidden="true">
+                  <ChevronRight size={20} strokeWidth={1.75} />
+                </span>
               </Link>
             </li>
           ))}

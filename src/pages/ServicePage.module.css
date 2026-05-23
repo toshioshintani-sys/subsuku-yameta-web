@@ -452,7 +452,11 @@
 
 /* 解約ボタン */
 .cancelBtn {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
   background: var(--accent);
   color: #fff;
   text-align: center;
@@ -461,12 +465,18 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 32px;
-  transition: background 0.15s, transform 0.15s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .cancelBtn:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cancelBtn:active {
+  transform: translateY(0);
 }
 
 /* 手順 */

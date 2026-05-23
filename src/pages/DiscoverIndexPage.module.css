@@ -35,6 +35,10 @@
 }
 
 .heroHint {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
   color: rgba(255, 255, 255, 0.82);
   font-size: 12px;
   line-height: 1.7;
@@ -43,6 +47,11 @@
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 8px;
+}
+
+.heroHint > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .content {
@@ -90,9 +99,15 @@
 }
 
 .cardEmoji {
-  font-size: 40px;
-  text-align: center;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 .cardBody {

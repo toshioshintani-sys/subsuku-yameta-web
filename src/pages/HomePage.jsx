@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Search, BarChart3 } from 'lucide-react';
 import { SERVICES, CATEGORIES } from '../data/services';
+import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './HomePage.module.css';
@@ -58,7 +60,9 @@ export default function HomePage() {
         {/* 検索 */}
         <div className={styles.searchWrap}>
           <label htmlFor="service-search" className="sr-only">サービス名で検索</label>
-          <span className={styles.searchIcon} aria-hidden="true">🔍</span>
+          <span className={styles.searchIcon} aria-hidden="true">
+            <Search size={18} strokeWidth={1.75} />
+          </span>
           <input
             id="service-search"
             className={styles.searchInput}
@@ -82,7 +86,9 @@ export default function HomePage() {
 
         {/* Tracker CTA */}
         <Link to="/tracker" className={styles.heroTracker}>
-          📊 まとめて棚卸しする：契約中サブスクの合計額と「解約しなさい順」を可視化 →
+          <BarChart3 size={16} strokeWidth={1.75} aria-hidden="true" />
+          <span>まとめて棚卸しする：契約中サブスクの合計額と「解約しなさい順」を可視化</span>
+          <span aria-hidden="true">→</span>
         </Link>
       </section>
 

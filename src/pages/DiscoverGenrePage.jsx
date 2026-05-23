@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 import { DISCOVER_GENRES_BY_ID, DISCOVER_GENRES } from '../data/discover';
+import { DiscoverIcon } from '../icons';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import { SITE_URL } from '../config';
@@ -60,7 +62,9 @@ export default function DiscoverGenrePage() {
         </nav>
 
         <header className={styles.head}>
-          <span className={styles.emoji} aria-hidden="true">{genre.emoji}</span>
+          <span className={styles.emoji} aria-hidden="true">
+            <DiscoverIcon genreId={genre.id} size={32} />
+          </span>
           <div>
             <h1 className={styles.title}>{genre.name}</h1>
             <p className={styles.tagline}>{genre.tagline}</p>
@@ -121,7 +125,10 @@ export default function DiscoverGenrePage() {
         </section>
 
         <section className={`${styles.section} ${styles.cancelSection}`}>
-          <h2 className={styles.h2}>💡 やめたくなったら</h2>
+          <h2 className={styles.h2}>
+            <Sparkles size={20} strokeWidth={1.75} aria-hidden="true" />
+            <span>やめたくなったら</span>
+          </h2>
           <p className={styles.p}>{genre.cancelGuide}</p>
           <p className={styles.cancelFootnote}>
             それでも迷ったら、本サイトの <Link to="/" className={styles.inlineLink}>解約手順インデックス</Link> や <Link to="/tracker" className={styles.inlineLink}>サブスク棚卸しダッシュボード</Link> も併せてご活用ください。
@@ -144,7 +151,9 @@ export default function DiscoverGenrePage() {
           {DISCOVER_GENRES.filter((g) => g.id !== genre.id).slice(0, 5).map((g) => (
             <li key={g.id}>
               <Link to={`/discover/${g.id}`} className={styles.relatedCard}>
-                <span className={styles.relatedEmoji} aria-hidden="true">{g.emoji}</span>
+                <span className={styles.relatedEmoji} aria-hidden="true">
+                  <DiscoverIcon genreId={g.id} size={20} />
+                </span>
                 <span className={styles.relatedName}>{g.name}</span>
               </Link>
             </li>

@@ -17,6 +17,14 @@ import {
   trackAffiliateClick,
   detectAsp,
 } from '../data/affiliates';
+import {
+  Scissors,
+  AlertTriangle,
+  Lightbulb,
+  BarChart3,
+  ArrowUpRight,
+  ExternalLink as ExternalLinkIcon,
+} from 'lucide-react';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
@@ -205,7 +213,9 @@ export default function ServicePage() {
             rel="noopener noreferrer"
             className={styles.cancelBtn}
           >
-            🔗 {service.name}の解約ページを開く
+            <Scissors size={18} strokeWidth={2} aria-hidden="true" />
+            <span>{service.name}の解約ページを開く</span>
+            <ExternalLinkIcon size={14} strokeWidth={1.75} aria-hidden="true" />
           </a>
 
           {/* 手順 */}
@@ -224,7 +234,9 @@ export default function ServicePage() {
           {/* 注意事項 */}
           {service.note && (
             <div className={styles.note}>
-              <span className={styles.noteIcon}>⚠️</span>
+              <span className={styles.noteIcon} aria-hidden="true">
+                <AlertTriangle size={16} strokeWidth={1.75} />
+              </span>
               <p>{service.note}</p>
             </div>
           )}
@@ -321,7 +333,9 @@ export default function ServicePage() {
               </div>
               {planCheckHint && (
                 <p className={styles.planCheckHint}>
-                  <span className={styles.planCheckIcon}>💡</span>
+                  <span className={styles.planCheckIcon} aria-hidden="true">
+                    <Lightbulb size={14} strokeWidth={1.75} />
+                  </span>
                   {planCheckHint}
                 </p>
               )}
@@ -445,7 +459,9 @@ export default function ServicePage() {
 
         {/* サブスク棚卸しダッシュボードへの送客 */}
         <Link to="/tracker" className={styles.trackerCta}>
-          <div className={styles.trackerCtaIcon}>📊</div>
+          <div className={styles.trackerCtaIcon} aria-hidden="true">
+            <BarChart3 size={28} strokeWidth={1.5} />
+          </div>
           <div>
             <div className={styles.trackerCtaTitle}>サブスクの棚卸し、まとめてやりませんか？</div>
             <div className={styles.trackerCtaSub}>月額・年額の合計と「解約しなさい順」を1分で可視化 → /tracker</div>
