@@ -8,6 +8,22 @@
 //
 // 「サブスクやめた」のユーザーは『サブスクのハードルが低い人』であり、
 // 知らない世界を中立的に教えてくれる場として機能することで価値が生まれる
+//
+// ★★★ A8 提携状況メモ（2026-05-23）★★★
+//   42件の提携承認は「ライフオラクル」サイト経由のため、現「サブスクやめた」
+//   サイトでは追跡 URL を発行できない（規約違反リスク）。
+//   先に A8 で「サブスクやめた」をサイト追加 → 各広告主に追加申請 →
+//   承認後に affiliateUrl を埋める。詳細は docs/A8_REAPPLY_GUIDE.md 参照。
+//
+//   申請中の8案件と対応プログラムID：
+//     HitoHana       : s00000016113004 → flower → HitoHana
+//     airCloset      : s00000016856001 → fashion-rental → airCloset
+//     DROBE          : s00000020848001 → fashion-rental → DROBE
+//     AnotherADdress : s00000023131001 → fashion-rental → AnotherADdress
+//     DELIPICKS      : s00000022857001 → frozen-meal → DELIPICKS
+//     every frecious : s00000010789007 → water-server → every frecious
+//     マルチピュア   : s00000024726001 → water-server → マルチピュア
+//     INIC コーヒー  : s00000017094001 → coffee-subscription → INIC コーヒー
 
 export const DISCOVER_GENRES = [
   {
