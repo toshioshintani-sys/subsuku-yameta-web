@@ -1,0 +1,39 @@
+name: Deploy to Netlify
+
+# main に push されたら Netlify のビルドフックを叩いて自動デプロイ
+# 環境変数は Netlify ダッシュボード側で管理するため、GitHub 側への複製不要
+#
+# 事前準備（一度だけ）:
+#   Netlify ダッシュボード → sabusuku → Site settings → Build & deploy → Build hooks
+#   → "Add build hook" → 名前: "GitHub push" → Branch: main → Save
+#   → 発行された URL の末尾 ID を GitHub secret NETLIFY_BUILD_HOOK_ID に登録
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build
+        run: |
+          if [ -z "${{ secrets.NETLIFY_BUILD_HOOK_ID }}" ]; then
+            echo "::error::NETLIFY_BUILD_HOOK_ID が GitHub Secrets に未設定です"
+            echo "設定方法: Netlify ダッシュボード → sabusuku → Site settings → Build & deploy → Build hooks"
+            exit 1
+          fi
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST -d '{}' \
+            "https://api.netlify.com/build_hooks/${{ secrets.NETLIFY_BUILD_HOOK_ID }}")
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "Netlify ビルドをトリガーしました (HTTP $HTTP_STATUS)"
+            echo "デプロイ進捗: https://app.netlify.com/projects/sabusuku/deploys"
+          else
+            echo "::error::Netlify ビルドフック呼び出し失敗 (HTTP $HTTP_STATUS)"
+            exit 1
+          fi
