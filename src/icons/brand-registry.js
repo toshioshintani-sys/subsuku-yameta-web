@@ -130,8 +130,6 @@ export const LOCAL_SVG_AVAILABLE = new Set([
   // Wikimedia から取得済み（simple-icons に無いもの優先）
   'amazon-prime',
   'disney-plus',
-  'adobe-cc',
-  'linkedin-premium',
   // Top10 強化分（2026-05-23 追加）
   'chatgpt-plus',     // ChatGPT 緑スパイラル
   'microsoft-365',    // Microsoft 4色四角
@@ -141,11 +139,14 @@ export const LOCAL_SVG_AVAILABLE = new Set([
   'youtube-premium',
   'apple-music',
   'apple-tv-plus',
-  'notion',
   'dropbox',
   'figma',
   'github-copilot',
   'playstation-plus',
+  // 注意：以下は削除済み（PNG を SVG 拡張子で保存していて Safari モバイルで失敗）
+  //   adobe-cc → Google Favicon（adobe.com）にフォールバック
+  //   linkedin-premium → Google Favicon（linkedin.com）にフォールバック
+  //   notion → simple-icons の siNotion で描画
 ]);
 
 export function hasLocalSvg(serviceId) {
