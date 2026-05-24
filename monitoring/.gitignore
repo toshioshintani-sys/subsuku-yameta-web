@@ -1,0 +1,21 @@
+# 認証情報（絶対にコミットしない）
+auth-setup/
+config/adc.json
+config/credentials*.json
+config/*token*.json
+*.pem
+*.key
+
+# ログ・キャッシュ（ローカル運用データ）
+logs/
+cache/
+
+# 一時ファイル
+*.bak
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# 改善提案メモ（個人メモなので別管理）
+improvement_proposals/

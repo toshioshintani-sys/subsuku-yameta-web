@@ -1,0 +1,9 @@
+{
+  "_comment": "日次メトリクスのアラート閾値。これを下回ると気づき欄で警告",
+  "note_like_rate_min": 0.10,
+  "note_like_rate_target": 0.15,
+  "x_link_clicks_min_warn": 1,
+  "ga4_active_users_drop_pct": 30,
+  "x_follower_drop_warn": 2,
+  "consecutive_failure_escalate": 3
+}

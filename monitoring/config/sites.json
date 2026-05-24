@@ -1,0 +1,30 @@
+{
+  "_comment": "監視対象サイト定義。新サイトを追加するときはここに1ブロック足す。",
+  "_updated": "2026-05-23",
+  "sites": [
+    {
+      "id": "life-oracle",
+      "name": "ライフオラクル",
+      "url": "https://life-oracle.jp/",
+      "ga4_property_id": "534433669",
+      "kpi": {
+        "primary": "session",
+        "secondary": ["pageview", "engagement_rate"]
+      },
+      "enabled": true
+    },
+    {
+      "id": "sabusuku-yameta",
+      "name": "サブスクやめた",
+      "url": "https://sabusuku.netlify.app/",
+      "ga4_property_id": "538470329",
+      "measurement_id": "G-S0H16V3WE2",
+      "kpi": {
+        "primary": "session",
+        "secondary": ["pageview", "engagement_rate", "affiliate_click"]
+      },
+      "enabled": true,
+      "_note": "2026-05-23 確定。ライフオラクルアカウント（392497640）配下に存在。サービスアカウントへの Viewer 権限付与状態は要確認。"
+    }
+  ]
+}
