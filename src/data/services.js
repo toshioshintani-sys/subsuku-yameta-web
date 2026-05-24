@@ -1508,6 +1508,149 @@ export const PLANS = {
     ],
     howToCheck: 'Crunchyroll →「アカウント」→「メンバーシップ」で確認できます',
   },
+  // ---- Top31-50（2026-05-23 追加・人気度60〜75） ----
+  'amazon-music-unlimited': {
+    plans: [
+      { name: '個人プラン', monthly: 1080, popular: true, note: 'Prime会員は980円' },
+      { name: 'ファミリープラン', monthly: 1680, note: '最大6人' },
+      { name: '学生プラン', monthly: 580 },
+    ],
+    howToCheck: 'Amazon →「アカウントサービス」→「Music Unlimited 会員情報」で確認できます',
+  },
+  'line-music': {
+    plans: [
+      { name: '一般プラン', monthly: 980, popular: true },
+      { name: '学生プラン', monthly: 580, note: '中高大生・本人確認必要' },
+      { name: 'ファミリープラン', monthly: 1480, note: '最大6人' },
+    ],
+    howToCheck: 'LINE MUSIC アプリ →「マイページ」→「メンバーシップ」で確認できます',
+  },
+  'rakuten-music': {
+    plans: [
+      { name: 'スタンダード（楽天モバイル契約者）', monthly: 0, popular: true, note: '楽天モバイル契約で無料' },
+      { name: 'スタンダード（一般）', monthly: 980 },
+      { name: 'ライトプラン', monthly: 500 },
+    ],
+    howToCheck: '楽天ミュージック →「マイページ」→「契約情報」で確認できます',
+  },
+  'apple-tv-plus': {
+    plans: [
+      { name: '月額プラン', monthly: 900, popular: true },
+      { name: '年額プラン', monthly: 750, yearly: 9000, note: '月額より150円安い' },
+    ],
+    howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
+  },
+  'icloud-plus': {
+    plans: [
+      { name: '50GB', monthly: 130, popular: true },
+      { name: '200GB', monthly: 400, note: '家族共有可' },
+      { name: '2TB', monthly: 1300, note: 'プライベートリレー対応' },
+      { name: '6TB', monthly: 3900 },
+      { name: '12TB', monthly: 7900 },
+    ],
+    howToCheck: '「設定」→ Apple ID →「iCloud」→「ストレージプラン」で確認できます',
+  },
+  'google-one': {
+    plans: [
+      { name: 'ベーシック（100GB）', monthly: 250, popular: true, yearly: 2500 },
+      { name: 'プレミアム（2TB）', monthly: 1300, yearly: 13000 },
+      { name: 'AI プレミアム（2TB + Gemini Advanced）', monthly: 2900 },
+    ],
+    howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
+  },
+  audible: {
+    plans: [
+      { name: '月額プラン', monthly: 1500, popular: true, note: '聴き放題（一部対象外あり）' },
+    ],
+    howToCheck: 'Amazon →「アカウントサービス」→「Audible 会員情報」で確認できます',
+  },
+  'kindle-unlimited': {
+    plans: [
+      { name: '月額プラン', monthly: 980, popular: true, note: '200万冊以上が読み放題' },
+    ],
+    howToCheck: 'Amazon →「アカウントサービス」→「Kindle Unlimited 会員登録の管理」で確認できます',
+  },
+  'rakuten-magazine': {
+    plans: [
+      { name: '月額プラン', monthly: 418, popular: true, note: '700誌以上が読み放題' },
+      { name: '年額プラン', monthly: 350, yearly: 4180 },
+    ],
+    howToCheck: '楽天マガジン → ログイン →「契約状況の確認」で確認できます',
+  },
+  dmagazine: {
+    plans: [
+      { name: '月額プラン', monthly: 580, popular: true, note: 'docomo以外も契約可' },
+    ],
+    howToCheck: 'dマガジン → My docomo or マイページで確認できます',
+  },
+  'yahoo-premium': {
+    plans: [
+      { name: '月額プラン', monthly: 508, popular: true, note: 'Yahoo!ショッピングのポイント還元含む' },
+    ],
+    howToCheck: 'Yahoo! JAPAN ID →「Yahoo!プレミアム会員サービス」で確認できます',
+  },
+  'dmm-premium': {
+    plans: [
+      { name: '月額プラン', monthly: 550, popular: true, note: 'DMM TV見放題・ポイント特典' },
+    ],
+    howToCheck: 'DMM.com →「マイアカウント」→「メンバーシップ」で確認できます',
+  },
+  '1password': {
+    plans: [
+      { name: '個人プラン', monthly: 450, popular: true, yearly: 4500 },
+      { name: 'ファミリー（5人）', monthly: 750, yearly: 7500, note: '家族で共有可' },
+    ],
+    howToCheck: '1Password →「マイプロフィール」→「アカウント」で確認できます',
+  },
+  'deepl-pro': {
+    plans: [
+      { name: 'Starter', monthly: 1200, popular: true, note: '文字数無制限・ファイル翻訳' },
+      { name: 'Advanced', monthly: 3800, note: 'カスタム用語集' },
+      { name: 'Ultimate', monthly: 7500, note: 'CAT 連携・API 大規模' },
+    ],
+    howToCheck: 'DeepL →「アカウント」→「サブスクリプション」で確認できます',
+  },
+  evernote: {
+    plans: [
+      { name: 'Personal', monthly: 1100, popular: true },
+      { name: 'Professional', monthly: 1550 },
+    ],
+    howToCheck: 'Evernote →「アカウント設定」→「請求情報」で確認できます',
+  },
+  pairs: {
+    plans: [
+      { name: '男性会員（クレカ）', monthly: 3700, popular: true },
+      { name: '男性会員（Apple/Google）', monthly: 4300 },
+      { name: '女性会員', monthly: 0, note: '基本無料（プレミアム機能のみ有料）' },
+    ],
+    howToCheck: 'Pairs → マイページ →「ご契約情報」で確認できます',
+  },
+  match: {
+    plans: [
+      { name: '月額プラン（1ヶ月）', monthly: 4490, popular: true },
+      { name: '3ヶ月プラン', monthly: 3990, yearly: 11970 },
+      { name: '12ヶ月プラン', monthly: 2390, yearly: 28680 },
+    ],
+    howToCheck: 'Match.com → マイページ →「ご契約状況」で確認できます',
+  },
+  'note-premium': {
+    plans: [
+      { name: 'プレミアム会員', monthly: 500, popular: true, note: '機能アップグレード・マガジン作成可' },
+    ],
+    howToCheck: 'note → アカウント設定 →「会員情報」で確認できます',
+  },
+  fod: {
+    plans: [
+      { name: 'プレミアム月額', monthly: 976, popular: true, note: 'フジテレビ系コンテンツ見放題' },
+    ],
+    howToCheck: 'FOD →「マイメニュー」→「契約状況」で確認できます',
+  },
+  lemino: {
+    plans: [
+      { name: 'プレミアム月額', monthly: 990, popular: true },
+    ],
+    howToCheck: 'Lemino →「マイページ」→「契約情報」で確認できます',
+  },
 };
 
 // ---------------------------------------------------------------------------

@@ -1,20 +1,30 @@
+/* BAE 設計原則準拠：広告は静かに、解約導線より目立たないこと */
 .wrap {
-  margin: 24px 0;
-  padding: 12px;
-  background: var(--surface);
+  margin: 32px 0;
+  padding: 14px 12px 10px;
+  background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   text-align: center;
+  /* シグナル非対称性：解約ボタンより視覚的に控えめ */
+  opacity: 0.94;
 }
 
 .label {
+  display: inline-block;
   font-size: 10px;
-  color: var(--text-sub);
-  letter-spacing: 0.1em;
-  margin-bottom: 6px;
-  text-transform: none;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .ins {
   min-height: 90px;
+}
+
+/* マウスホバーで透明度が戻る（=隠してない・透明性は保つ） */
+.wrap:hover {
+  opacity: 1;
 }

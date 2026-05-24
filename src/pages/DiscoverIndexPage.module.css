@@ -94,7 +94,7 @@
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 18px rgba(59, 110, 240, 0.1);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
@@ -105,9 +105,16 @@
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: var(--bg);
-  color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
   flex-shrink: 0;
+  transition: transform 0.18s, background 0.18s;
+}
+
+.card:hover .cardEmoji {
+  transform: scale(1.05);
+  background: var(--accent);
+  color: #fff;
 }
 
 .cardBody {
@@ -140,10 +147,12 @@
 .cardPrice {
   font-size: 11px;
   font-weight: 600;
-  color: var(--accent);
-  background: rgba(59, 110, 240, 0.08);
+  color: var(--accent-text);
+  background: var(--accent-soft);
   padding: 2px 8px;
   border-radius: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
 }
 
 .cardCount {
@@ -153,7 +162,13 @@
 
 .cardArrow {
   font-size: 20px;
+  color: var(--text-sub);
+  transition: color 0.18s, transform 0.18s;
+}
+
+.card:hover .cardArrow {
   color: var(--accent);
+  transform: translateX(3px);
 }
 
 .note {
