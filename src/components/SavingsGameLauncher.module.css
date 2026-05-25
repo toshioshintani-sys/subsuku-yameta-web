@@ -1,0 +1,47 @@
+/* 8bit サムネトリガー — 控えめに置く
+ * BAE 準拠：解約導線より目立たないが、興味ある人が気づく程度の存在感
+ */
+
+.launcher {
+  appearance: none;
+  margin: 48px auto 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.launcher:hover,
+.launcher:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.pixelArt {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  border-radius: 6px;
+  border: 1px solid #0a1530;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-sub);
+  letter-spacing: 0.05em;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.launcher:hover .label,
+.launcher:focus-visible .label {
+  color: var(--accent);
+}

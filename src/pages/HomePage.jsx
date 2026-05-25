@@ -5,6 +5,7 @@ import { SERVICES, CATEGORIES, getPopularity, getDefaultMonthly } from '../data/
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
+import SavingsGameLauncher from '../components/SavingsGameLauncher';
 import styles from './HomePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -317,6 +318,9 @@ export default function HomePage() {
             </section>
           </>
         )}
+
+        {/* やめたつもり貯金ゲーム — 下部に控えめに（俊雄さん指示） */}
+        <SavingsGameLauncher />
       </div>
     </div>
   );
