@@ -59,9 +59,15 @@
   --shadow-lg: 0 12px 32px oklch(20% 0.02 250 / 0.10);
 }
 
-/* ダークモード：深い藍 + 温かいテキスト（単純反転ではない） */
+/* ----------------------------------------------------------
+   ダークモード変数の定義
+   - 共通 mixin を CSS には書けないので、@media と [data-theme] の
+     2箇所に同じ値をセット
+   - 優先順位：[data-theme="dark"] > @media (prefers-color-scheme: dark)
+   - ユーザーが明示選択した場合は OS 設定より優先
+   ---------------------------------------------------------- */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: oklch(15% 0.015 250);
     --surface: oklch(20% 0.02 250);
     --surface-2: oklch(18% 0.018 250);
@@ -92,6 +98,44 @@
     --shadow-md: 0 4px 12px oklch(0% 0 0 / 0.4);
     --shadow-lg: 0 12px 32px oklch(0% 0 0 / 0.5);
   }
+}
+
+/* ユーザー明示選択：ダーク（OS 設定より優先） */
+:root[data-theme='dark'] {
+  --bg: oklch(15% 0.015 250);
+  --surface: oklch(20% 0.02 250);
+  --surface-2: oklch(18% 0.018 250);
+  --border: oklch(30% 0.02 250);
+  --border-strong: oklch(38% 0.025 250);
+  --text: oklch(94% 0.01 80);
+  --text-sub: oklch(72% 0.015 80);
+  --text-faint: oklch(55% 0.015 80);
+
+  --accent: oklch(72% 0.13 200);
+  --accent-hover: oklch(82% 0.13 200);
+  --accent-soft: oklch(28% 0.06 200);
+  --accent-text: oklch(85% 0.11 200);
+
+  --loss: oklch(70% 0.13 35);
+  --loss-strong: oklch(78% 0.16 35);
+  --loss-soft: oklch(28% 0.06 35);
+  --loss-border: oklch(35% 0.07 35);
+
+  --easy: oklch(72% 0.14 145);
+  --easy-bg: oklch(28% 0.05 145);
+  --medium: oklch(76% 0.13 65);
+  --medium-bg: oklch(28% 0.05 65);
+  --hard: oklch(72% 0.16 30);
+  --hard-bg: oklch(28% 0.06 30);
+
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3);
+  --shadow-md: 0 4px 12px oklch(0% 0 0 / 0.4);
+  --shadow-lg: 0 12px 32px oklch(0% 0 0 / 0.5);
+}
+
+/* ユーザー明示選択：ライト（OS 設定がダークでも上書き） */
+:root[data-theme='light'] {
+  /* デフォルト :root の値そのまま使うので何も書かない */
 }
 
 html {

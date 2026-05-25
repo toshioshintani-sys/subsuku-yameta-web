@@ -22,6 +22,12 @@
   gap: 12px;
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav {
   display: flex;
   gap: 8px;

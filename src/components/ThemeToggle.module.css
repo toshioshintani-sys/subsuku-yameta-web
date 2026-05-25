@@ -1,0 +1,122 @@
+/* BAE 設計原則：解約導線より目立たず、しかし暗所で確実に視認できる
+ *
+ * - 40x40 タップターゲット（モバイル WCAG 推奨44px に近い）
+ * - ダーク時：accent カラーの控えめなボーダーで光らせる
+ * - フォーカス時：accent カラーで明確に
+ */
+
+.toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--bg);
+  transform: scale(1.05);
+}
+
+.toggle:active {
+  transform: scale(0.95);
+}
+
+/* アイコンラッパ：Sun と Moon を重ね、状態に応じて切替 */
+.iconWrap {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSun,
+.iconMoon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* デフォルト（system + ライト時）：Moon を見せる（暗いほうへ行ける示唆） */
+.iconSun {
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+.iconMoon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* system + OSがダークの時：Sun を見せる */
+@media (prefers-color-scheme: dark) {
+  .toggle[data-theme-state='system'] .iconSun {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  .toggle[data-theme-state='system'] .iconMoon {
+    opacity: 0;
+    transform: rotate(45deg);
+  }
+}
+
+/* 明示的にダーク：Sun を見せる（明るいほうへ行ける示唆） */
+.toggle[data-theme-state='dark'] .iconSun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+.toggle[data-theme-state='dark'] .iconMoon {
+  opacity: 0;
+  transform: rotate(45deg);
+}
+
+/* 明示的にライト：Moon を見せる */
+.toggle[data-theme-state='light'] .iconSun {
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+.toggle[data-theme-state='light'] .iconMoon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ダーク時の視認性強化（俊雄さんの「夜の視認性」要望対応） */
+@media (prefers-color-scheme: dark) {
+  .toggle {
+    /* 暗背景でわかりやすいよう accent 系の輪郭を強める */
+    border-color: var(--border-strong);
+    color: var(--accent);
+    /* ほんのり光る感じ */
+    box-shadow: 0 0 0 1px var(--accent-soft) inset;
+  }
+}
+
+/* 明示ダークモード時も同様 */
+:root[data-theme='dark'] .toggle {
+  border-color: var(--border-strong);
+  color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft) inset;
+}
+
+/* スマホ：ちょっと小さく（ヘッダー圧迫を避ける） */
+@media (max-width: 480px) {
+  .toggle {
+    width: 36px;
+    height: 36px;
+    border-width: 1px;
+  }
+}
