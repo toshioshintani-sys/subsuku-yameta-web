@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">Kiri-san mobile hero in light mode</title>
+  <desc id="desc">A vertical light hero illustration where Kiri-san cuts a subscription cord and opens a calm sky above a path.</desc>
+  <defs>
+    <linearGradient id="mobile-sky-light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6f4f4"/>
+      <stop offset="1" stop-color="#fbf8f3"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#mobile-sky-light)"/>
+  <circle cx="482" cy="116" r="74" fill="#fbf8f3" opacity=".76"/>
+  <path d="M0 586C84 552 158 574 236 552c94-26 160-76 256-60 44 8 78 22 108 31v277H0Z" fill="#0a7c7c" opacity=".09"/>
+  <path d="M0 660C92 630 182 642 268 622c98-23 162-65 252-47 28 6 54 16 80 27v198H0Z" fill="#0a7c7c" opacity=".13"/>
+  <path d="M238 620C282 654 318 713 342 800" stroke="#0a7c7c" stroke-width="2" opacity=".22"/>
+  <path d="M350 612C324 678 316 738 318 800" stroke="#0a7c7c" stroke-width="1.5" opacity=".2"/>
+
+  <path d="M54 354C120 374 172 337 240 352" stroke="#b85c3d" stroke-width="2.5"/>
+  <path d="M360 352C420 330 482 326 552 294" stroke="#b85c3d" stroke-width="2.5"/>
+  <path d="M318 342l32-28" stroke="#b85c3d" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M322 364l36 20" stroke="#b85c3d" stroke-width="2.5" stroke-linecap="round"/>
+
+  <g fill="#fbf8f3" stroke="#b85c3d" stroke-width="1.5" stroke-linejoin="round" opacity=".82">
+    <rect x="72" y="258" width="64" height="44" rx="11" transform="rotate(-10 104 280)"/>
+    <path d="M90 275h28M90 288h18" transform="rotate(-10 104 280)"/>
+    <rect x="440" y="236" width="66" height="46" rx="11" transform="rotate(9 473 259)"/>
+    <path d="M458 254h26M458 268h16" transform="rotate(9 473 259)"/>
+  </g>
+
+  <g fill="none" stroke="#0a7c7c" stroke-width="2" stroke-linecap="round" opacity=".36">
+    <path d="M122 176c42-18 92-16 144 3"/>
+    <path d="M288 138c34-10 70-9 110 3"/>
+    <path d="M184 220c28-8 58-8 90 0"/>
+  </g>
+
+  <g transform="translate(176 302) scale(1.24)" fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="98" cy="174" rx="57" ry="7" fill="#1a1f2e" stroke="none" opacity=".08"/>
+    <path d="M94 91C82 70 67 54 48 47c25-9 50 6 61 39" fill="#0a7c7c"/>
+    <path d="M106 91c12-21 27-37 46-44-25-9-50 6-61 39" fill="#0a7c7c"/>
+    <path d="M69 119c-19 6-31 22-29 38 2 16 16 26 31 23 14-3 24-17 23-31" fill="#fbf8f3"/>
+    <path d="M129 119c19 6 31 22 29 38-2 16-16 26-31 23-14-3-24-17-23-31" fill="#fbf8f3"/>
+    <path d="M70 140c-7 5-9 16-4 22 5 7 17 6 22-2 4-7 2-17-5-22"/>
+    <path d="M128 140c7 5 9 16 4 22-5 7-17 6-22-2-4-7-2-17 5-22"/>
+    <path d="M83 95c8 7 27 7 35 0"/>
+    <circle cx="99" cy="106" r="27" fill="#fbf8f3"/>
+    <circle cx="99" cy="106" r="7" fill="#b85c3d"/>
+    <path d="M86 99c4-3 8-2 11 1"/>
+    <path d="M102 100c4-2 8-1 11 2"/>
+    <path d="M87 116c8 8 18 8 26 0"/>
+  </g>
+
+  <g fill="#0a7c7c" opacity=".32">
+    <circle cx="420" cy="370" r="3"/>
+    <circle cx="454" cy="350" r="2.5"/>
+    <circle cx="484" cy="374" r="2"/>
+  </g>
+</svg>

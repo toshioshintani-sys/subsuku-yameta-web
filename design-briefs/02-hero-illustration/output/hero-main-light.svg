@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Kiri-san cutting a subscription cord in a quiet morning hero scene</title>
+  <desc id="desc">The Kiri-san scissors mascot cuts a terracotta subscription cord as the sky opens into a calm light horizon.</desc>
+  <defs>
+    <linearGradient id="sky-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e6f4f4"/>
+      <stop offset="1" stop-color="#fbf8f3"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#sky-light)"/>
+  <circle cx="1010" cy="116" r="92" fill="#fbf8f3" opacity=".72"/>
+  <path d="M0 428C128 394 252 420 376 390c136-32 248-95 392-75 147 20 268 96 432 58v227H0Z" fill="#0a7c7c" opacity=".08"/>
+  <path d="M0 502C164 472 286 485 418 468c172-22 282-82 432-62 120 16 212 74 350 48v146H0Z" fill="#0a7c7c" opacity=".12"/>
+  <path d="M602 456C716 460 830 488 966 560" stroke="#0a7c7c" stroke-width="2" opacity=".26"/>
+  <path d="M522 460C650 488 746 538 820 600" stroke="#0a7c7c" stroke-width="1.5" opacity=".2"/>
+
+  <path d="M78 334C170 362 260 324 352 342" stroke="#b85c3d" stroke-width="2.5"/>
+  <path d="M462 338C576 294 738 316 930 250" stroke="#b85c3d" stroke-width="2.5"/>
+  <path d="M430 330l34-29" stroke="#b85c3d" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M432 350l42 21" stroke="#b85c3d" stroke-width="2.5" stroke-linecap="round"/>
+
+  <g fill="#fbf8f3" stroke="#b85c3d" stroke-width="1.5" stroke-linejoin="round" opacity=".82">
+    <rect x="118" y="254" width="72" height="48" rx="12" transform="rotate(-9 154 278)"/>
+    <path d="M137 272h32M137 286h20" transform="rotate(-9 154 278)"/>
+    <rect x="788" y="202" width="76" height="52" rx="12" transform="rotate(7 826 228)"/>
+    <path d="M810 220h28M810 235h18" transform="rotate(7 826 228)"/>
+    <rect x="906" y="300" width="64" height="44" rx="11" transform="rotate(-13 938 322)" opacity=".72"/>
+    <path d="M925 316h22M925 329h14" transform="rotate(-13 938 322)" opacity=".72"/>
+  </g>
+
+  <g fill="none" stroke="#0a7c7c" stroke-width="2" stroke-linecap="round" opacity=".38">
+    <path d="M668 210c44-18 92-20 142-7"/>
+    <path d="M716 176c24-8 50-9 78-2"/>
+    <path d="M856 152c32-9 62-8 92 3"/>
+  </g>
+
+  <g transform="translate(252 252) scale(1.28)" fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="98" cy="174" rx="57" ry="7" fill="#1a1f2e" stroke="none" opacity=".08"/>
+    <path d="M94 91C82 70 67 54 48 47c25-9 50 6 61 39" fill="#0a7c7c"/>
+    <path d="M106 91c12-21 27-37 46-44-25-9-50 6-61 39" fill="#0a7c7c"/>
+    <path d="M69 119c-19 6-31 22-29 38 2 16 16 26 31 23 14-3 24-17 23-31" fill="#fbf8f3"/>
+    <path d="M129 119c19 6 31 22 29 38-2 16-16 26-31 23-14-3-24-17-23-31" fill="#fbf8f3"/>
+    <path d="M70 140c-7 5-9 16-4 22 5 7 17 6 22-2 4-7 2-17-5-22"/>
+    <path d="M128 140c7 5 9 16 4 22-5 7-17 6-22-2-4-7-2-17 5-22"/>
+    <path d="M83 95c8 7 27 7 35 0"/>
+    <circle cx="99" cy="106" r="27" fill="#fbf8f3"/>
+    <circle cx="99" cy="106" r="7" fill="#b85c3d"/>
+    <path d="M86 99c4-3 8-2 11 1"/>
+    <path d="M102 100c4-2 8-1 11 2"/>
+    <path d="M87 116c8 8 18 8 26 0"/>
+  </g>
+
+  <g fill="#0a7c7c" opacity=".32">
+    <circle cx="688" cy="280" r="3"/>
+    <circle cx="734" cy="262" r="2.5"/>
+    <circle cx="786" cy="284" r="2"/>
+  </g>
+</svg>
