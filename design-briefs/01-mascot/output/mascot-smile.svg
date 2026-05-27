@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Smiling scissors mascot</title>
+  <desc id="desc">A calm teal scissors mascot with warm handles and a gentle smile.</desc>
+  <g fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="100" cy="174" rx="58" ry="7" fill="#e5e8f0" stroke="none" opacity=".7"/>
+
+    <path d="M96 86C83 58 70 34 51 20c29 5 50 31 59 68" fill="#0a7c7c"/>
+    <path d="M104 86c13-28 26-52 45-66-29 5-50 31-59 68" fill="#0a7c7c"/>
+
+    <path d="M70 117c-19 6-31 22-29 39 2 16 16 26 31 23 14-3 25-17 24-32" fill="#fbf8f3"/>
+    <path d="M130 117c19 6 31 22 29 39-2 16-16 26-31 23-14-3-25-17-24-32" fill="#fbf8f3"/>
+    <path d="M71 138c-7 5-9 16-4 22 5 7 17 6 22-2 4-7 2-17-5-22" fill="none"/>
+    <path d="M129 138c7 5 9 16 4 22-5 7-17 6-22-2-4-7-2-17 5-22" fill="none"/>
+
+    <path d="M83 91c7 7 27 7 34 0" fill="none"/>
+    <circle cx="100" cy="103" r="27" fill="#fbf8f3"/>
+    <circle cx="100" cy="103" r="7" fill="#b85c3d"/>
+    <path d="M85 111c9 9 21 9 30 0" fill="none"/>
+    <path d="M88 96c3-3 7-3 10 0" fill="none"/>
+    <path d="M102 96c3-3 7-3 10 0" fill="none"/>
+  </g>
+</svg>
