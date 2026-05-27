@@ -130,21 +130,38 @@
 
 ---
 
-## 7. 納品方法
+## 7. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読・世界観）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [src/index.css（OKLCH カラー定義の正解値）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/index.css)
+- [src/components/Header.jsx（既存ロゴ ✂ Scissors の使い方）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/components/Header.jsx)
+- [docs/AFFILIATE_DESIGN_PRINCIPLES.md（BAE 設計憲法 v2.0）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/docs/AFFILIATE_DESIGN_PRINCIPLES.md)
+- 既存サイト実物：https://sabusuku.netlify.app
+
+## 8. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/01-mascot` ブランチを切る
+2. 下記ファイルを作成・コミット
+3. PR を出す（タイトル：「Codex: Mascot - 5 expressions (BRIEF 01)」）
+4. PR Description に DESIGN_NOTES.md の内容＋採用基準セルフチェックを記載
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/01-mascot/output/` 配下に：
 
 ```
 output/
 ├── mascot-smile.svg
-├── mascot-smile@1x.png
-├── mascot-smile@2x.png
-├── mascot-smile@3x.png
 ├── mascot-thinking.svg
-├── mascot-thinking@1x.png
-├── ... (以下同様で 5表情 × 4ファイル = 20ファイル)
+├── mascot-celebrate.svg
+├── mascot-lost.svg
+├── mascot-cutting.svg
 └── DESIGN_NOTES.md ← Codex が制作意図を書く（後述）
 ```
+
+**PNG は不要**（SVG のみ・viewBox でレスポンシブ対応）。
 
 ### DESIGN_NOTES.md に書くべきこと
 

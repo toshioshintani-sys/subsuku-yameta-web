@@ -74,7 +74,21 @@
 
 ---
 
-## 6. 納品方法
+## 6. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [src/icons/index.jsx](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/icons/index.jsx)（既存カテゴリアイコン実装・置き換え対象）
+- [src/data/services.js](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/data/services.js)（CATEGORIES 配列・8カテゴリ定義）
+
+## 7. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/05-icons` ブランチを切る
+2. PR タイトル：「Codex: Category icons x8 (BRIEF 05)」
+3. PR Description に DESIGN_NOTES.md ＋採用基準セルフチェック
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/05-category-icons/output/` 配下に：
 

@@ -121,7 +121,21 @@
 
 ---
 
-## 8. 納品方法
+## 8. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [01-mascot/output/](https://github.com/toshioshintani-sys/subsuku-yameta-web/tree/main/design-briefs/01-mascot/output)（マスコット完成版・必須連動）
+- [src/pages/NotFoundPage.jsx](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/pages/NotFoundPage.jsx)（既存 404 実装・置き換え対象）
+
+## 9. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/04-404` ブランチを切る
+2. PR タイトル：「Codex: 404 illustration - light/dark (BRIEF 04)」
+3. PR Description に DESIGN_NOTES.md ＋採用基準セルフチェック
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/04-not-found-404/output/` 配下に：
 
@@ -129,10 +143,10 @@
 output/
 ├── 404-illustration.svg
 ├── 404-illustration-dark.svg
-├── 404-illustration@1x.webp
-├── 404-illustration@2x.webp
 └── DESIGN_NOTES.md
 ```
+
+**WebP fallback は不要**（SVG のみ）。
 
 ---
 

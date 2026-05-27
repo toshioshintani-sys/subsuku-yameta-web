@@ -82,7 +82,22 @@ URL: https://sabusuku.netlify.app/yamete-kau
 
 ---
 
-## 6. 納品方法
+## 6. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [src/data/yameteKau.js](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/data/yameteKau.js)（6カテゴリ定義・25商品データ）
+- [src/pages/YameteKauPage.jsx](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/pages/YameteKauPage.jsx)（既存ページ実装）
+- 既存サイト実物：https://sabusuku.netlify.app/yamete-kau
+
+## 7. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/06-yamete-kau` ブランチを切る
+2. PR タイトル：「Codex: Yamete-Kau category headers x6 (BRIEF 06)」
+3. PR Description に DESIGN_NOTES.md ＋採用基準セルフチェック
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/06-yamete-kau-categories/output/` 配下に：
 

@@ -92,7 +92,21 @@ Empty State は **使い慣れたユーザーですら遭遇する瞬間** な�
 
 ---
 
-## 6. 納品方法
+## 6. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [01-mascot/output/](https://github.com/toshioshintani-sys/subsuku-yameta-web/tree/main/design-briefs/01-mascot/output)（マスコット完成版・必須連動）
+- [src/index.css](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/index.css)
+
+## 7. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/03-empty` ブランチを切る
+2. PR タイトル：「Codex: Empty State illustrations x3 (BRIEF 03)」
+3. PR Description に DESIGN_NOTES.md ＋採用基準セルフチェック
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/03-empty-state/output/` 配下に：
 

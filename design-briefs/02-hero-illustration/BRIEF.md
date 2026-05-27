@@ -140,7 +140,24 @@
 
 ---
 
-## 8. 納品方法
+## 8. 参考にすべき既存ファイル（GitHub main で参照）
+
+- [_STYLE_GUIDE.md（必読）](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/design-briefs/_STYLE_GUIDE.md)
+- [01-mascot/output/](https://github.com/toshioshintani-sys/subsuku-yameta-web/tree/main/design-briefs/01-mascot/output)（マスコットが完成していたら参照・連動）
+- [src/index.css](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/index.css)（カラー値）
+- [src/pages/HomePage.jsx](https://github.com/toshioshintani-sys/subsuku-yameta-web/blob/main/src/pages/HomePage.jsx)（Hero セクションが置かれるページ実装）
+- 既存サイト実物：https://sabusuku.netlify.app
+
+## 9. 納品方法（PR ベース）
+
+### ブランチ運用
+
+1. `main` から `codex/02-hero` ブランチを切る
+2. 下記ファイルを作成・コミット
+3. PR タイトル：「Codex: Hero illustration - light/dark/mobile (BRIEF 02)」
+4. PR Description に DESIGN_NOTES.md ＋採用基準セルフチェック
+
+### 納品先・ファイル名（厳守）
 
 `design-briefs/02-hero-illustration/output/` 配下に：
 
@@ -150,12 +167,10 @@ output/
 ├── hero-main-dark.svg
 ├── hero-main-mobile-light.svg
 ├── hero-main-mobile-dark.svg
-├── hero-main@1x.webp
-├── hero-main@2x.webp
-├── hero-main-dark@1x.webp
-├── hero-main-dark@2x.webp
 └── DESIGN_NOTES.md
 ```
+
+**WebP/PNG fallback は不要**（SVG のみで OK）。SVG なら 1ファイルでレスポンシブ対応可能。
 
 ### DESIGN_NOTES.md に書くべきこと
 
