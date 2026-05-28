@@ -125,6 +125,21 @@
   min-height: 60vh;
 }
 
+.notFoundMascot {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+.notFoundActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
 .notFoundCode {
   font-size: 64px;
   font-weight: 800;

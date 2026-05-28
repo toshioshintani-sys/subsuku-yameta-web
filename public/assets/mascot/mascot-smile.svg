@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Kiri-san v3 standing smile</title>
+  <desc id="desc">A calm human-shaped character with a front-facing open scissors head, crossed pivot, and two handle rings.</desc>
+  <defs>
+    <g id="front-scissors-head" fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M98 78 60 21c8-5 18-2 24 6l23 50Z" fill="#0a7c7c"/>
+      <path d="M102 78 140 21c-8-5-18-2-24 6L93 77Z" fill="#0a7c7c"/>
+      <path d="M97 71 75 32"/>
+      <path d="M103 71 125 32"/>
+      <path d="M85 64 100 78 118 112"/>
+      <path d="M115 64 100 78 82 112"/>
+      <circle cx="100" cy="78" r="7" fill="#b85c3d"/>
+      <path d="M94 72 106 84"/>
+      <path d="M106 72 94 84"/>
+      <circle cx="76" cy="113" r="17" fill="#fbf8f3"/>
+      <circle cx="124" cy="113" r="17" fill="#fbf8f3"/>
+      <circle cx="76" cy="113" r="7"/>
+      <circle cx="124" cy="113" r="7"/>
+    </g>
+  </defs>
+  <g fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="100" cy="191" rx="40" ry="5" fill="#5e6a82" stroke="none" opacity=".18"/>
+    <use href="#front-scissors-head"/>
+    <path d="M91 130q9 7 18 0"/>
+    <path d="M100 133v9"/>
+    <path d="M82 146c12-10 26-10 36 0l-6 35H88Z" fill="#5e6a82"/>
+    <path d="M89 153 70 168"/>
+    <path d="M111 153 130 168"/>
+    <circle cx="67" cy="170" r="4" fill="#fbf8f3"/>
+    <circle cx="133" cy="170" r="4" fill="#fbf8f3"/>
+    <path d="M93 181 85 191"/>
+    <path d="M107 181 115 191"/>
+    <path d="M78 191h14"/>
+    <path d="M108 191h14"/>
+  </g>
+</svg>
