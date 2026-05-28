@@ -1,9 +1,57 @@
 // ブログ記事データ
 // 構造：slug, title, description, published (YYYY-MM-DD), tags, body
-// body は段落の配列。各要素は { type: 'p'|'h2'|'ul'|'quote', text/items } の形式
+// body は段落の配列。各要素は { type: 'p'|'h2'|'h3'|'ul'|'quote'|'code'|'table', text/items/headers/rows } の形式
 // SEO 狙いキーワードを title・description・body 冒頭に自然に含める
 
 export const POSTS = [
+  {
+    slug: 'claude-code-vs-codex-settings-json',
+    title: 'Claude CodeとCodexを2ヶ月使い比べて分かった選び方 — settings.jsonを育てた側が速い',
+    description:
+      'Next.js + TypeScriptの実プロジェクトで2ヶ月間、同じタスクにClaude CodeとCodex（ChatGPT Plus）を投入して使い比べた。日常開発はClaude Code、大規模変更はCodex——それぞれの理由を体感から解説。',
+    published: '2026-05-27',
+    tags: ['AI', 'ツール比較', 'Claude Code', 'Codex', '開発者向け'],
+    body: [
+      { type: 'p', text: 'AIコーディングツールを検討するとき、誰もが最初に聞く。「Claude CodeとCodex、実際どっちが速い？」ベンチマークや機能表は世の中に溢れている。でも「同じプロジェクトに両方投入した体感」をレポートしている記事はあまり見かけない。Next.js + TypeScriptのプロジェクト（約120ファイル）で2ヶ月間、同じタスクに両方を投入して使い比べた。その結果を共有する。' },
+      { type: 'p', text: '先に結論を言うと、<strong>「settings.jsonを育てたClaude Codeが速い」</strong>というのが正確な表現だ。ツールの性能というより、どれだけ設定に投資したかが速度を決める。' },
+      { type: 'h2', text: 'Claude Codeの「速さ」はどこから来るか' },
+      { type: 'p', text: '日常的なコード修正・機能追加では、Claude Codeの方が体感で速い。ただし条件がある。settings.jsonとSkillsをちゃんと育てた場合に限る、という条件だ。' },
+      { type: 'p', text: 'よくある誤解として、「CLAUDE.mdに細かいルールを書けば良くなる」がある。実際はその逆で、CLAUDE.mdはコンテキストウィンドウを圧迫するので最小限にすべきだ。代わりにsettings.jsonのpermissions設定と、Skillsによるワークフロー定義に投資する。' },
+      { type: 'p', text: 'この「最初のプロンプトから既存コードベースに馴染んだコードが出てくる」体験が、設定なしのCodexとの差になる。Claude Codeが生成したコード例：' },
+      { type: 'code', text: '// 既存の getPostBySlug パターンを踏襲した形式\nexport async function getPostsByTag(tag: string): Promise<BlogPost[]> {\n  const posts = await getAllPosts();\n  return posts.filter((post) =>\n    post.tags.some((t) => t.toLowerCase() === tag.toLowerCase())\n  );\n}' },
+      { type: 'p', text: 'コードが「このプロジェクトの人間が書いたように見える」のは、長いコンテキストでプロジェクト全体を把握しているからだ。CLAUDE.mdに命名規則を書くのではなく、既存コードをコンテキストに含めてパターンを学習させる方が再現性が高い。' },
+      { type: 'table', headers: ['アプローチ', 'メリット', 'デメリット'], rows: [
+        ['CLAUDE.mdにルール記載', '明示的で管理しやすい', 'コンテキスト圧迫、更新が必要'],
+        ['既存コードからパターン学習', '自然な一貫性', '意図しないパターンも学習する可能性'],
+        ['Skillsで定型化', '再現性が高い', '初期設定コストが高い'],
+      ]},
+      { type: 'h2', text: 'Codexが上回る場面：大規模変更とGitHub統合' },
+      { type: 'p', text: '一方でCodexに分があるのは大規模変更だ。Next.js 15から16へのマイグレーションを行ったとき、差を実感した。Codexのクラウド並列実行は「投げたら待つだけ」で、コーヒーを淹れに行ける。この差は意外と大きい。' },
+      { type: 'table', headers: ['タスク', 'Claude Code', 'Codex'], rows: [
+        ['単一ファイルのバグ修正', '約30秒', '約45秒'],
+        ['3ファイルの機能追加', '約2分', '約2.5分'],
+        ['20ファイルのAPI変更', '約8分', '約5分（Cloud並列）'],
+        ['50ファイルのimport整理', '約15分', '約7分（Cloud並列）'],
+      ]},
+      { type: 'p', text: '※ 体感値。プロジェクトの複雑度・ネットワーク状況で変動する。' },
+      { type: 'p', text: 'もう一つの強みがGitHub統合だ。PRに <code>@codex</code> でコメントするだけで自動レビューが起動する。「設定を育てる」というより「GitHubに接続する」だけで即戦力になるのがCodexの設計思想だ。' },
+      { type: 'h2', text: 'コード品質の差：「良さの方向性」が違う' },
+      { type: 'p', text: 'どちらが良いコードを出すかは一概に言えない。方向性が違うからだ。Claude Codeは既存コードベースとの一貫性が高い。変数の命名、エラーハンドリングのパターン、コメントのスタイルまで、周囲のコードに合わせてくる。' },
+      { type: 'p', text: 'Codexはベストプラクティスに忠実。同じ機能でもCodexはより防御的で型安全なコードを出す：' },
+      { type: 'code', text: '/**\n * Retrieves blog posts matching the specified tag.\n * @param tag - The tag to filter by (case-insensitive)\n */\nexport async function getPostsByTag(tag: string): Promise<BlogPost[]> {\n  if (!tag || typeof tag !== \'string\') {\n    return [];\n  }\n  const normalizedTag = tag.toLowerCase().trim();\n  const posts = await getAllPosts();\n  return posts\n    .filter((post) =>\n      post.tags.some((t) => t.toLowerCase().trim() === normalizedTag)\n    )\n    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());\n}' },
+      { type: 'p', text: 'プロジェクトのフェーズで選ぶのが現実的だ。初期開発ではCodexの防御的なコードが安全。運用フェーズでは既存コードとの一貫性を保つClaude Codeが楽。' },
+      { type: 'h2', text: '実践で気づいたこと：コスト感は「初日で回収」の感覚' },
+      { type: 'p', text: '2ヶ月使って一番変わったのは、コストへの感覚だ。現在は Claude Code Max 20x（$200/月）+ Codex ChatGPT Plus（$20/月）で$220。「高い」と感じた時期もあったが、今は「Claude Codeなしで手動でやっていた作業を時給換算したら、$220は初日で回収できる」が正直な感覚だ。' },
+      { type: 'p', text: '「1つだけ選ぶなら」という問いへの答えは Claude Code になる。理由は単純で、日常開発の時間の方が長いから。大規模リファクタリングは月に数回だが、日常のコード修正は毎日ある。' },
+      { type: 'h2', text: 'まとめ：自分はこう使っている' },
+      { type: 'ul', items: [
+        '<strong>Claude Code：</strong>日常開発全般。settings.jsonとSkillsを育てた分だけ速くなる',
+        '<strong>Codex：</strong>PRの自動レビューと大規模一括変更。GitHubに接続するだけで動く',
+        '<strong>両方：</strong>月$220で日常開発 + PR自動レビューの体制が組める',
+      ]},
+      { type: 'p', text: '「どちらが良いか」ではなく「どの作業に向いているか」で選ぶのが2ヶ月使った結論だ。初期設定に時間をかけたくないならCodexから始めるのが正直なアドバイスになる。どちらも月額サブスクなので、まず1ヶ月試して合わなければ止めれば良い。' },
+    ],
+  },
   {
     slug: 'why-cant-cancel',
     title: 'なぜサブスクは「やめにくく」設計されているのか',

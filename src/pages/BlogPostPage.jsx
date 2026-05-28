@@ -10,6 +10,9 @@ function renderBlock(block, i) {
   if (block.type === 'h2') {
     return <h2 key={i} className={styles.h2}>{block.text}</h2>;
   }
+  if (block.type === 'h3') {
+    return <h3 key={i} className={styles.h3}>{block.text}</h3>;
+  }
   if (block.type === 'ul') {
     return (
       <ul key={i} className={styles.ul}>
@@ -21,6 +24,33 @@ function renderBlock(block, i) {
   }
   if (block.type === 'quote') {
     return <blockquote key={i} className={styles.quote}>{block.text}</blockquote>;
+  }
+  if (block.type === 'code') {
+    return (
+      <pre key={i} className={styles.pre}>
+        <code>{block.text}</code>
+      </pre>
+    );
+  }
+  if (block.type === 'table') {
+    return (
+      <div key={i} className={styles.tableWrap}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {block.headers.map((h, j) => <th key={j}>{h}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {block.rows.map((row, j) => (
+              <tr key={j}>
+                {row.map((cell, k) => <td key={k} dangerouslySetInnerHTML={{ __html: cell }} />)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   }
   // default: paragraph (may contain inline HTML for links)
   return <p key={i} className={styles.p} dangerouslySetInnerHTML={{ __html: block.text }} />;
