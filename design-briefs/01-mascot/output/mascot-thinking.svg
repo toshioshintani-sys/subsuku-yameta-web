@@ -1,26 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Thinking scissors mascot</title>
-  <desc id="desc">A teal scissors mascot pausing with one blade near its chin in quiet thought.</desc>
+  <title id="title">Kiri-san v2 thinking</title>
+  <desc id="desc">A human-shaped character with a closed scissors head, pausing in a thinking pose.</desc>
   <g fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="101" cy="174" rx="56" ry="7" fill="#e5e8f0" stroke="none" opacity=".7"/>
+    <ellipse cx="100" cy="184" rx="40" ry="6" fill="#5e6a82" stroke="none" opacity=".18"/>
 
-    <path d="M93 87C80 61 68 39 51 26c25 4 45 27 57 62" fill="#0a7c7c"/>
-    <path d="M109 91c14-21 30-33 51-36-18 12-28 29-35 51" fill="#0a7c7c"/>
+    <path d="M101 73 160 42c-16 22-34 36-58 45Z" fill="#0a7c7c"/>
+    <path d="M103 82 162 75c-19 13-38 20-59 18Z" fill="#0a7c7c"/>
+    <path d="M101 73 151 51"/>
+    <path d="M103 82 154 78"/>
+    <circle cx="99" cy="78" r="6.5" fill="#b85c3d"/>
+    <circle cx="72" cy="66" r="14" fill="#fbf8f3"/>
+    <circle cx="72" cy="94" r="14" fill="#fbf8f3"/>
+    <circle cx="72" cy="66" r="6"/>
+    <circle cx="72" cy="94" r="6"/>
+    <path d="M85 69 99 78"/>
+    <path d="M85 91 99 78"/>
 
-    <path d="M72 118c-19 6-31 22-29 38 2 16 16 26 31 23 14-3 24-17 23-31" fill="#fbf8f3"/>
-    <path d="M131 119c17 8 27 24 23 39-4 15-18 23-32 18-12-4-21-17-20-30" fill="#fbf8f3"/>
-    <path d="M73 139c-7 5-9 16-4 22 5 7 17 6 22-2 4-7 2-17-5-22" fill="none"/>
-    <path d="M127 139c7 6 8 16 3 22-6 6-17 4-21-4-3-7 0-16 7-20" fill="none"/>
-
-    <path d="M84 92c8 7 27 7 35 0" fill="none"/>
-    <circle cx="101" cy="104" r="27" fill="#fbf8f3"/>
-    <circle cx="101" cy="104" r="7" fill="#b85c3d"/>
-    <path d="M113 124c8 0 17-5 20-13" fill="#0a7c7c"/>
-    <path d="M86 96c4-3 8-2 11 1" fill="none"/>
-    <path d="M105 97c4-2 8-1 10 2" fill="none"/>
-    <path d="M92 116c7-4 15-4 22 0" fill="none"/>
-
-    <circle cx="141" cy="38" r="3" fill="#b85c3d" stroke="none"/>
-    <circle cx="151" cy="28" r="2.5" fill="#0a7c7c" stroke="none"/>
+    <path d="M99 86v23"/>
+    <path d="M83 116c12-10 25-10 35 0l-5 43H88Z" fill="#5e6a82"/>
+    <path d="M90 126 108 141"/>
+    <path d="M114 122 129 108"/>
+    <circle cx="132" cy="105" r="4" fill="#fbf8f3"/>
+    <path d="M90 145h22"/>
+    <path d="M93 159l-7 22"/>
+    <path d="M107 159l7 22"/>
+    <path d="M80 181h12"/>
+    <path d="M108 181h12"/>
+    <circle cx="142" cy="48" r="2.5" fill="#b85c3d" stroke="none"/>
+    <circle cx="151" cy="36" r="2.5" fill="#0a7c7c" stroke="none"/>
   </g>
 </svg>

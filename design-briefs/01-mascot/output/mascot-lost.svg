@@ -1,25 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
-  <title id="title">Lost scissors mascot</title>
-  <desc id="desc">A gentle scissors mascot looking puzzled, suitable for empty states and 404 pages.</desc>
+  <title id="title">Kiri-san v2 lost</title>
+  <desc id="desc">A human-shaped character with a closed scissors head, shrugging in a gentle puzzled pose.</desc>
   <g fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <ellipse cx="100" cy="174" rx="55" ry="7" fill="#e5e8f0" stroke="none" opacity=".7"/>
+    <ellipse cx="100" cy="184" rx="40" ry="6" fill="#5e6a82" stroke="none" opacity=".18"/>
 
-    <path d="M94 88C80 68 61 58 43 60c20-16 49-8 64 27" fill="#0a7c7c"/>
-    <path d="M106 88c14-20 33-30 51-28-20-16-49-8-64 27" fill="#0a7c7c"/>
+    <path d="M101 73 160 42c-16 22-34 36-58 45Z" fill="#0a7c7c"/>
+    <path d="M103 82 162 75c-19 13-38 20-59 18Z" fill="#0a7c7c"/>
+    <path d="M101 73 151 51"/>
+    <path d="M103 82 154 78"/>
+    <circle cx="99" cy="78" r="6.5" fill="#b85c3d"/>
+    <circle cx="72" cy="66" r="14" fill="#fbf8f3"/>
+    <circle cx="72" cy="94" r="14" fill="#fbf8f3"/>
+    <circle cx="72" cy="66" r="6"/>
+    <circle cx="72" cy="94" r="6"/>
+    <path d="M85 69 99 78"/>
+    <path d="M85 91 99 78"/>
 
-    <path d="M71 119c-18 7-28 23-25 38 4 15 18 23 32 18 12-4 21-17 20-30" fill="#fbf8f3"/>
-    <path d="M129 119c18 7 28 23 25 38-4 15-18 23-32 18-12-4-21-17-20-30" fill="#fbf8f3"/>
-    <path d="M74 139c-7 6-8 16-3 22 6 6 17 4 21-4 3-7 0-16-7-20" fill="none"/>
-    <path d="M126 139c7 6 8 16 3 22-6 6-17 4-21-4-3-7 0-16 7-20" fill="none"/>
-
-    <path d="M84 92c8 7 24 7 32 0" fill="none"/>
-    <circle cx="100" cy="104" r="27" fill="#fbf8f3"/>
-    <circle cx="100" cy="104" r="7" fill="#b85c3d"/>
-    <circle cx="91" cy="98" r="2.5" fill="#1a1f2e" stroke="none"/>
-    <circle cx="110" cy="100" r="2.5" fill="#1a1f2e" stroke="none"/>
-    <path d="M93 116c5-3 10-3 14 2" fill="none"/>
-
-    <path d="M132 45c7-8 19-3 15 7-2 5-9 5-9 12" stroke="#b85c3d"/>
-    <circle cx="138" cy="73" r="2.5" fill="#b85c3d" stroke="none"/>
+    <path d="M99 86v23"/>
+    <path d="M83 116c12-10 25-10 35 0l-5 43H88Z" fill="#5e6a82"/>
+    <path d="M88 123 63 119"/>
+    <path d="M112 123 137 119"/>
+    <path d="M63 119l-9-8"/>
+    <path d="M137 119l9-8"/>
+    <circle cx="52" cy="109" r="4" fill="#fbf8f3"/>
+    <circle cx="148" cy="109" r="4" fill="#fbf8f3"/>
+    <path d="M93 159l-7 22"/>
+    <path d="M107 159l7 22"/>
+    <path d="M80 181h12"/>
+    <path d="M108 181h12"/>
+    <path d="M142 36c9-7 19 1 13 10-3 5-10 4-10 12" stroke="#b85c3d"/>
+    <circle cx="145" cy="68" r="2.5" fill="#b85c3d" stroke="none"/>
   </g>
 </svg>
