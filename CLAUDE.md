@@ -260,18 +260,32 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
 複数 commit を一度に push した場合は、まとめて1メッセージで報告
 （各 SHA・件名を箇条書き）。
 
-### 設定状態
+### 設定状態（2026-05-30 確定）
 
-- 接続先：（俊雄さん再接続後に記入）
-- 通知先：（俊雄さん再接続後に記入）
-- 初回テスト通知：未実施
-- 運用開始日：未確定（再接続後）
+- **接続方式**：Chrome MCP 経由（Slack MCP コネクター不使用）
+  - 理由：Slack MCP 切断中・Chrome MCP の方が確実と俊雄さん判断
+- **ワークスペース**：World_Oracle（`app.slack.com/client/T0B5Y2Q5J6S/`）
+- **通知先**：`#6-subsuku-daily`（チャンネル ID `C0B6UG621R6`）
+- **初回テスト通知**：2026-05-30 06:47（疎通成功）
+- **運用開始日**：2026-05-30
+- **棲み分け方針**（俊雄さん 2026-05-30 判断）：
+  - **GA4 日次通知**（毎朝6:35）→ 既存 `registry.yaml` 通知フレームワーク（別チャットの Claude 構築）
+  - **git push 通知**（都度）→ 私（Claude Code）が Chrome MCP 経由で送信
+  - 重複なし・統合は当面しない
+
+### 私が push 後にやる手順（Chrome MCP）
+
+1. `mcp__Claude_in_Chrome__tabs_context_mcp` で MCP タブを取得
+2. Slack タブが無ければ `tabs_create_mcp` → navigate `https://app.slack.com/client/T0B5Y2Q5J6S/C0B6UG621R6`
+3. 入力欄をクリックして type で§11フォーマットのメッセージ入力
+4. 送信ボタンをクリック（座標は seasonal に変動する可能性 → screenshot 確認）
 
 ### 失敗時の挙動
 
-- Slack MCP がエラー / 切断 → push は通常通り完了させる・通知だけスキップ
+- Chrome MCP 接続切れ → push は通常通り完了させる・通知だけスキップ
 - セッション応答で「Slack 通知に失敗」を必ず報告
 - 連続3回失敗したら本ルールを見直し
+- 俊雄さんが Chrome を閉じている時は通知できない（朝晩の対応で済ます）
 
 ---
 
