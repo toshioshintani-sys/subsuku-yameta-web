@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Kiri-san cuts a subscription cord at sunrise</title>
+  <desc id="desc">A wide hero illustration with Kiri-san, the confirmed front-facing scissors-head mascot, cutting a subscription cord into a quiet open horizon.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a7c7c" stop-opacity=".10"/>
+      <stop offset=".72" stop-color="#fbf8f3"/>
+    </linearGradient>
+    <linearGradient id="open-haze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0a7c7c" stop-opacity=".12"/>
+      <stop offset=".36" stop-color="#0a7c7c" stop-opacity=".04"/>
+      <stop offset="1" stop-color="#0a7c7c" stop-opacity="0"/>
+    </linearGradient>
+    <g id="kiri-light" fill="none" stroke="#1a1f2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="100" cy="191" rx="43" ry="5" fill="#5e6a82" stroke="none" opacity=".18"/>
+      <path d="M98 78 60 21c8-5 18-2 24 6l23 50Z" fill="#0a7c7c"/>
+      <path d="M102 78 140 21c-8-5-18-2-24 6L93 77Z" fill="#0a7c7c"/>
+      <path d="M97 71 75 32"/>
+      <path d="M103 71 125 32"/>
+      <path d="M85 64 100 78 118 112"/>
+      <path d="M115 64 100 78 82 112"/>
+      <circle cx="100" cy="78" r="7" fill="#b85c3d"/>
+      <path d="M94 72 106 84"/>
+      <path d="M106 72 94 84"/>
+      <circle cx="76" cy="113" r="17" fill="#fbf8f3"/>
+      <circle cx="124" cy="113" r="17" fill="#fbf8f3"/>
+      <circle cx="76" cy="113" r="7"/>
+      <circle cx="124" cy="113" r="7"/>
+      <path d="M92 130q8 6 16 0"/>
+      <path d="M100 133 94 145"/>
+      <path d="M78 151c14-11 29-11 42 0l-5 31H88Z" fill="#5e6a82"/>
+      <path d="M87 157 63 171"/>
+      <path d="M113 157 134 169"/>
+      <circle cx="60" cy="173" r="4" fill="#fbf8f3"/>
+      <circle cx="137" cy="171" r="4" fill="#fbf8f3"/>
+      <path d="M91 181 73 191"/>
+      <path d="M108 181 122 191"/>
+      <path d="M66 191h14"/>
+      <path d="M116 191h14"/>
+    </g>
+  </defs>
+  <rect width="1200" height="600" fill="url(#sky)"/>
+  <path d="M0 112C180 78 364 82 548 118s384 43 652-38v520H0Z" fill="url(#open-haze)"/>
+  <circle cx="880" cy="148" r="54" fill="#fbf8f3" opacity=".72"/>
+  <path d="M54 430C248 398 421 412 610 426c224 16 374 8 536-32" stroke="#5e6a82" stroke-width="2" fill="none" opacity=".34"/>
+  <path d="M168 456C322 432 468 436 602 458c206 34 350 28 514-22" stroke="#0a7c7c" stroke-width="2" fill="none" opacity=".12"/>
+  <path d="M455 437C548 475 655 494 774 492" stroke="#5e6a82" stroke-width="1.5" fill="none" opacity=".22"/>
+  <path d="M438 438C532 510 641 544 769 547" stroke="#5e6a82" stroke-width="1.5" fill="none" opacity=".16"/>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M36 229C118 211 226 249 346 226" stroke="#b85c3d" stroke-width="4"/>
+    <path d="M438 230C565 211 642 273 759 247c124-28 236-3 387 68" stroke="#b85c3d" stroke-width="4"/>
+    <path d="M382 217 358 198" stroke="#b85c3d" stroke-width="3"/>
+    <path d="M404 236 378 260" stroke="#b85c3d" stroke-width="3"/>
+    <path d="M424 218 456 198" stroke="#b85c3d" stroke-width="3"/>
+    <path d="M430 243 464 262" stroke="#b85c3d" stroke-width="3"/>
+  </g>
+
+  <g fill="#fbf8f3" stroke="#5e6a82" stroke-width="2" stroke-linejoin="round" opacity=".86">
+    <rect x="122" y="195" width="64" height="44" rx="7" transform="rotate(-8 154 217)"/>
+    <path d="M137 213h34M137 225h22" transform="rotate(-8 154 217)"/>
+    <rect x="650" y="224" width="70" height="48" rx="8" transform="rotate(7 685 248)"/>
+    <path d="M666 244h36M666 257h24" transform="rotate(7 685 248)"/>
+    <rect x="853" y="258" width="62" height="42" rx="7" transform="rotate(13 884 279)"/>
+    <path d="M869 276h28M869 287h18" transform="rotate(13 884 279)"/>
+  </g>
+
+  <use href="#kiri-light" transform="translate(260 120) scale(1.32)"/>
+</svg>

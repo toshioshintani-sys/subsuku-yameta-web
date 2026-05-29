@@ -4,9 +4,41 @@
 
 /* ヒーロー */
 .hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
   padding: 56px 24px 48px;
   text-align: center;
+}
+
+/* 背景帯：キリさん v3 イラストを薄く敷く（装飾・序列は崩さない） */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+  .heroBg img {
+    /* 縦構図はコピーと重なりやすいので更に控えめに */
+    object-position: center top;
+    opacity: 0.38;
+  }
+}
+
+/* コンテンツは背景帯の前面に固定（視覚序列の最上位を維持） */
+.heroInner {
+  position: relative;
+  z-index: 1;
 }
 
 .heroTitle {

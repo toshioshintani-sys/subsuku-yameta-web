@@ -102,6 +102,13 @@ export default function HomePage() {
 
       {/* ヒーロー */}
       <section className={styles.hero}>
+        {/* 背景帯：キリさんが紐を切る v3 イラスト（装飾・薄く敷く / 紺ヒーロー帯に合わせ dark 版） */}
+        <picture className={styles.heroBg} aria-hidden="true">
+          <source media="(max-width: 600px)" srcSet="/assets/hero/hero-main-mobile-dark.svg" />
+          <img src="/assets/hero/hero-main-dark.svg" alt="" loading="eager" decoding="async" />
+        </picture>
+
+        <div className={styles.heroInner}>
         <h1 className={styles.heroTitle}>解約したいのに、どこから？</h1>
         <p className={styles.heroDesc}>
           各サービスの解約ページへ直接飛べます。手順と注意点もすぐわかります。
@@ -140,6 +147,7 @@ export default function HomePage() {
           <span>まとめて棚卸しする：契約中サブスクの合計額と「解約しなさい順」を可視化</span>
           <span aria-hidden="true">→</span>
         </Link>
+        </div>
       </section>
 
       <div className={styles.content}>
