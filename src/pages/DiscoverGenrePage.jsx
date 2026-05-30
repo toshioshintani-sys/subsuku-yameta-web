@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { DISCOVER_GENRES_BY_ID, DISCOVER_GENRES } from '../data/discover';
+import { trackAffiliateClick, detectAsp } from '../data/affiliates';
 import { DiscoverIcon } from '../icons';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
@@ -116,6 +117,18 @@ export default function DiscoverGenrePage() {
                   target="_blank"
                   rel={s.affiliateUrl ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
                   className={styles.serviceLink}
+                  onClick={
+                    s.affiliateUrl
+                      ? () =>
+                          trackAffiliateClick({
+                            asp: detectAsp(s.affiliateUrl),
+                            service: s.id || s.name,
+                            placement: 'discover_genre',
+                            position: i + 1,
+                            layer: 'B',
+                          })
+                      : undefined
+                  }
                 >
                   公式サイトを見る ↗
                 </a>

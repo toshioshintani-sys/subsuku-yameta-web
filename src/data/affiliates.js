@@ -173,8 +173,9 @@ export function buildRakutenSearchUrl(query) {
  * @param {object} params
  * @param {string} params.asp - 'a8' | 'moshimo' | 'amazon' | 'rakuten'
  * @param {string} params.service - サービスID または検索キーワード
- * @param {string} params.placement - 'service_page_bottom' | 'discover_genre' | 'blog_inline' | 'home_hero'
+ * @param {string} params.placement - 'service_page_bottom' | 'discover_genre' | 'yamete_kau' | 'blog_inline' | 'home_hero'
  * @param {number} params.position - 厳選3つ中の何番目か（1/2/3）
+ * @param {string} [params.layer] - 3層モデル 'A' | 'B' | 'C'（BAE憲法 §14・どの層から発生したクリックか）
  */
 export function trackAffiliateClick(params) {
   if (typeof window === 'undefined') return;
@@ -185,6 +186,7 @@ export function trackAffiliateClick(params) {
       service: params.service || 'unknown',
       placement: params.placement || 'unknown',
       position: params.position || 0,
+      layer: params.layer || 'unknown',
     });
   } catch {
     // 失敗してもユーザー体験は阻害しない

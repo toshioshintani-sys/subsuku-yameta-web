@@ -108,6 +108,7 @@ export default function YameteKauPage() {
                         service: product.id,
                         placement: 'yamete_kau',
                         position: 1,
+                        layer: 'C',
                       })
                     }
                   >
@@ -124,6 +125,7 @@ export default function YameteKauPage() {
                         service: product.id,
                         placement: 'yamete_kau',
                         position: 2,
+                        layer: 'C',
                       })
                     }
                   >

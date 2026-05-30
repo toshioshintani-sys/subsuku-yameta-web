@@ -15,6 +15,43 @@
 
 ---
 
+## 2026-05-30 ★★★★★ アフィリエイト計測の盲点発見 — 告知前に塞ぐべき「見る仕組み」の穴
+
+### 経緯
+俊雄さんの問い「導線は行動心理学/経済学的に100点か。なら必要なのは告知だけか」を proposal-stress-test で検証。結論：**「100点」は計測ゼロでは断言不能**（BAE §17「数値A/Bのみが原則を上書きする」と自己矛盾）。「害がない/信頼保全」軸は高品質だが「転換最大」軸は未知。**告知最優先は正しいが「だけ」は誤り**＝告知が生むトラフィックで導線PDCAを同時に回すのが正。
+
+### 発見（実物コードを読んで判明した計測の穴）
+BAE §14 は全アフィリエイト接点で `affiliate_click`（asp/service/placement/position/**layer A/B/C**）を計測すると定めるが、live は不揃いだった：
+
+| 接点 | 計測 | layer |
+|---|---|---|
+| ServicePage（解約後の選択肢・B層） | ○ 発火 | ✗ 未付与 |
+| YameteKauPage（やめて買う・C層） | ○ 発火 | ✗ 未付与 |
+| **DiscoverGenrePage（サブスク図鑑・B層の主要面）** | **✗ 完全に未計測（盲点）** | ✗ |
+
+→ 図鑑（hitohana/aircloset 等の A8 案件が並ぶ B層の中心面）のクリックが**1件も計上されていなかった**。告知で人が来ても、ここのファネルは永遠に見えない状態だった。
+
+### 対処（commit でこの穴を塞いだ）
+- `affiliates.js`：`trackAffiliateClick` の gtag payload に `layer` を追加
+- `DiscoverGenrePage.jsx`：affiliateUrl のリンクに `onClick` で `affiliate_click`（placement:'discover_genre', layer:'B'）を発火
+- `ServicePage.jsx`：既存呼び出しに `layer:'B'` 付与
+- `YameteKauPage.jsx`：amazon/楽天 呼び出しに `layer:'C'` 付与
+
+### なぜ重要か
+- PDCA の Check（転換ファネル可視化）の**土台**。告知前にこれが無いと、トラフィックが来ても学習ゼロ。
+- 「設計（憲法§14）はあるのに実装が追従していない」典型例。**憲法に書いた計測仕様は、全接点で実装されているかを定期 grep で確認すべき**（`trackAffiliateClick` の呼び出し箇所カバレッジ点検）。
+
+### 残課題（PDCA 続き・未着手）
+1. GA4 側で `layer`/`placement` をカスタムディメンジョン登録（俊雄さん作業）＋ 週次ファネルレビュー
+2. 70+ サービスの大半が代替案薄い＝告知の取りこぼし（§5-C「全件一括」トリガー該当→別途 stress-test の上で着手）
+3. 告知を認知系（note/X）と成果系（SEO/AI検索）に分離設計
+
+### 永続化
+- 実装：`src/data/affiliates.js` / `DiscoverGenrePage.jsx` / `ServicePage.jsx` / `YameteKauPage.jsx`
+- 本 lessons.md
+
+---
+
 ## 2026-05-30 ★★★★ Hero v2 を HomePage に組込み — 3つの実装知見
 
 ### 発見

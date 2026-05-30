@@ -448,6 +448,7 @@ export default function ServicePage() {
                         service: service.id,
                         placement: 'service_page_bottom',
                         position: i + 1,
+                        layer: 'B',
                       })
                     }
                   >
