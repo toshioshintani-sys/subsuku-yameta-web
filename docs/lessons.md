@@ -15,6 +15,36 @@
 
 ---
 
+## 2026-05-30 ★★★★★ 収益の核心：ブログが「親切だが非収益」だった — 収益リンクを埋めた集客記事へ
+
+### 経緯
+俊雄さんの指摘「システム改修ばかりしていないか。目的は慈善事業にみせた収益化だ」。直近の私の手（Hero/ダーク/計測）は機械磨きで1円も生んでいなかった。方針を「収益を生む面」へ転換し、集客コンテンツ（収益直結）に着手。
+
+### 発見（致命的）
+**既存ブログ記事（posts.js）9本は、収益リンクが1本も無かった。** 全て /tracker への内部リンク止まり＝「解約を助ける親切な顔」だけで、お金を生む動線がゼロ。これがまさに「慈善に見えて非収益」状態の正体。集客できても収益化しない構造だった。
+
+### 対処（卒業→入学型の収益記事を追加）
+検索需要が極大で買い切り代替が明確な2本を追加（買い切り物販＝Amazon/楽天は提携審査不要で即収益）：
+- `microsoft365-vs-perpetual-office`（Microsoft 365 → 買い切りOffice）
+- `adobe-cc-to-buyout-alternative`（Adobe CC → 買い切り/Affinity）
+
+BAE準拠：両論併記（買い切りのデメリット・解約しない方がいい人を明記）、禁則句なし、（PR）表示、/disclosure リンク、解約導線を主役に保つ。収益リンクは `buildAmazonSearchUrl/buildRakutenSearchUrl`（タグは本番env注入）。
+
+### 技術的な落とし穴（再発防止）
+posts.js に affiliates.js を import したらビルドが**config読込で**クラッシュ。原因＝**vite.config の sitemap プラグインが posts.js を Node コンテキストで読む**ため、affiliates.js 冒頭の `import.meta.env.VITE_*` が undefined を参照。
+→ 対処：affiliates.js の env 読み出しを `const ENV = (typeof import.meta!=='undefined' && import.meta.env) || {}` で null-safe 化。
+→ 教訓：**env依存モジュールは「Nodeから読まれても落ちない」前提で書く**（sitemap/SSR等がデータ層を読む）。
+
+### なぜ重要か（経営）
+- 集客（分母）を増やしても、収益リンクが無ければ AdSense 微収益だけ。**記事には必ず収益動線を埋める**のが「慈善にみせた収益化」の実装。
+- 今後の集客記事は全て「卒業→入学（解約→買い切り/乗換）」で収益リンク内包をテンプレ化する。
+
+### 永続化
+- 実装：`src/data/posts.js`（+2記事）/ `src/data/affiliates.js`（null-safe）
+- 本 lessons.md
+
+---
+
 ## 2026-05-30 ★★★★★ アフィリエイト計測の盲点発見 — 告知前に塞ぐべき「見る仕組み」の穴
 
 ### 経緯

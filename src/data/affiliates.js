@@ -14,10 +14,13 @@
 //   - VITE_A8_MEDIA_ID
 //   - VITE_MOSHIMO_MEDIA_ID = 673448
 
-const A8_MEDIA_ID = import.meta.env.VITE_A8_MEDIA_ID;
-const MOSHIMO_MEDIA_ID = import.meta.env.VITE_MOSHIMO_MEDIA_ID;
-const AMAZON_ASSOCIATE_ID = import.meta.env.VITE_AMAZON_ASSOCIATE_ID;
-const RAKUTEN_AFFILIATE_ID = import.meta.env.VITE_RAKUTEN_AFFILIATE_ID;
+// Node（vite.config の sitemap プラグイン等）から import される場合 import.meta.env が
+// undefined になりうるため null-safe に読む。ブラウザビルドでは Vite が値を静的注入する。
+const ENV = (typeof import.meta !== 'undefined' && import.meta.env) || {};
+const A8_MEDIA_ID = ENV.VITE_A8_MEDIA_ID;
+const MOSHIMO_MEDIA_ID = ENV.VITE_MOSHIMO_MEDIA_ID;
+const AMAZON_ASSOCIATE_ID = ENV.VITE_AMAZON_ASSOCIATE_ID;
+const RAKUTEN_AFFILIATE_ID = ENV.VITE_RAKUTEN_AFFILIATE_ID;
 
 // ============================================================
 // ASP_FULL_URLS：俊雄さんが ASP 管理画面で取得した「完成済みの追跡 URL」

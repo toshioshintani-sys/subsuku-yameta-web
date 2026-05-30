@@ -1,9 +1,78 @@
+import { buildAmazonSearchUrl, buildRakutenSearchUrl } from './affiliates';
+
 // ブログ記事データ
 // 構造：slug, title, description, published (YYYY-MM-DD), tags, body
 // body は段落の配列。各要素は { type: 'p'|'h2'|'ul'|'quote', text/items } の形式
 // SEO 狙いキーワードを title・description・body 冒頭に自然に含める
 
 export const POSTS = [
+  {
+    slug: 'microsoft365-vs-perpetual-office',
+    title: 'Microsoft 365（旧Office 365）を解約して「買い切りOffice」に戻すと、何年で得をするのか',
+    description:
+      'Microsoft 365 の年額を払い続けるか、買い切りのOfficeに戻すか。年12,984円のサブスクと買い切り版の損益分岐点を具体的に計算。買い切りに戻さない方がいい人も正直に併記する。',
+    published: '2026-05-30',
+    tags: ['卒業と入学', '買い切り', 'Office'],
+    body: [
+      { type: 'p', text: 'WordとたまにExcelを開くくらいしか使っていないのに、Microsoft 365 に毎年1万円以上を払い続けている——ある日クレカ明細を見て、そう気づいた。サブスクが悪いわけではない。問題は「自分の使い方に対して、その契約形態が合っているか」を一度も確かめていなかったことだ。' },
+      { type: 'h2', text: 'まず「サブスクである必要があるか」を確かめる' },
+      { type: 'p', text: 'Microsoft 365 Personal は月1,490円・年12,984円が一般的な価格帯（2026年時点・最新は公式で確認）。常に最新版が使え、複数台にインストールでき、OneDrive 1TB や Teams なども付く。これらを実際に使い倒しているなら、サブスクのままが合理的だ。' },
+      { type: 'p', text: 'ただ「ローカルで Word・Excel・PowerPoint を開くだけ」「クラウド容量も追加機能も使っていない」なら、付いてくる価値の大半を使っていない可能性が高い。' },
+      { type: 'h2', text: '卒業→入学：買い切りOfficeという選択肢' },
+      { type: 'p', text: '買い切り版（Office Home & Business 2021 など）は、一度買えば追加の月額が発生しない。価格は時期や販売店で変わるが、おおむね38,000〜43,000円台が目安だ。' },
+      { type: 'p', text: `最新の買い切り版の価格は、<a href="${buildAmazonSearchUrl('Office Home and Business 2021')}" target="_blank" rel="sponsored nofollow noopener noreferrer">Amazonで買い切りOfficeを見る</a>（PR）、または<a href="${buildRakutenSearchUrl('Office 2021 買い切り')}" target="_blank" rel="sponsored nofollow noopener noreferrer">楽天市場で見る</a>（PR）で確認できる。価格は変動するので、購入前に必ず現在価格を見てほしい。` },
+      { type: 'h2', text: '損益分岐点：何年使えば買い切りが安くなるか' },
+      { type: 'quote', text: '元が取れる年数 = 買い切り価格 ÷ サブスク年額' },
+      { type: 'p', text: '例：買い切り約38,000円 ÷ サブスク年12,984円 ≈ 2.9年。つまり「同じPC環境で3年以上使い続ける」なら買い切りが安くなる計算だ。逆に3年以内に乗り換える人や、常に最新機能を追う人はサブスクのままの方が損をしにくい。' },
+      { type: 'h2', text: '買い切りに「戻さない方がいい人」' },
+      {
+        type: 'ul',
+        items: [
+          '常に最新版・新機能を使いたい（買い切りはバージョン固定）',
+          'PC・ノート・タブレットなど複数台で使う',
+          'OneDrive 1TB のクラウド容量が必要',
+          'Teams の有料機能を仕事で使っている',
+          'サポート期限を気にする（買い切り版は数年でサポートが終了する）',
+        ],
+      },
+      { type: 'p', text: 'これらに当てはまるなら、買い切りに戻すと逆に不便になる。「サブスクのままが正解」というケースは普通にある。' },
+      { type: 'h2', text: '解約と買い替えの順番' },
+      { type: 'p', text: 'まず焦って解約する前に、自分が1ヶ月でどの機能を使ったかを棚卸しするとよい。契約中のサブスク全体を見渡すなら <a href="/tracker">サブスク棚卸しダッシュボード</a> が使える（個人情報は送信されない）。年契約の途中解約には違約金が絡む場合があるので、<a href="/blog/monthly-vs-yearly-plan">年契約と月契約の損益</a> も先に確認しておくと安全だ。' },
+      { type: 'p', text: 'この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は <a href="/disclosure">収益開示</a> を参照。「やっぱりサブスクが自分には合う」と思ったなら、それも正しい判断だ。' },
+    ],
+  },
+  {
+    slug: 'adobe-cc-to-buyout-alternative',
+    title: 'Adobe Creative Cloud が高い人へ：解約して「買い切り」で済ませられる現実的なライン',
+    description:
+      '年28,776円〜のAdobe CCを払い続けるか、買い切りのデザインソフトに乗り換えるか。用途別に「Adobeを解約していい人・解約しない方がいい人」を正直に分ける。',
+    published: '2026-05-30',
+    tags: ['卒業と入学', '買い切り', 'Adobe'],
+    body: [
+      { type: 'p', text: '年に数回チラシやSNS画像を作るだけなのに、Adobe Creative Cloud に毎月数千円を払い続けている。気づいたとき、「自分はこの料金に見合うほどAdobeを使っているだろうか」と立ち止まった。' },
+      { type: 'h2', text: 'まず Adobe CC の料金を正確に把握する' },
+      { type: 'p', text: '単体プラン（Photoshop単体など）は月2,728円・年28,776円、すべて使えるコンプリートプランは年86,880円前後が一般的な価格帯（2026年時点・最新は公式で確認）。使い続ける限り課金は止まらない。だからこそ「本当に必要な機能はどれか」を切り分ける価値がある。' },
+      { type: 'h2', text: '卒業→入学：買い切りで足りるかは「用途」で決まる' },
+      { type: 'p', text: '写真の軽い補正、チラシ・ロゴ・SNS画像の制作くらいなら、買い切りのデザインソフトで足りることが多い。代表的なのが Affinity（Designer / Photo / Publisher）で、一度買えば月額は発生しない。価格はAdobe1年分よりかなり安いことが多い。' },
+      { type: 'p', text: `買い切りソフトの最新価格は、<a href="${buildAmazonSearchUrl('Affinity Designer Photo Publisher')}" target="_blank" rel="sponsored nofollow noopener noreferrer">Amazonで買い切りデザインソフトを見る</a>（PR）、または<a href="${buildRakutenSearchUrl('Affinity 買い切り')}" target="_blank" rel="sponsored nofollow noopener noreferrer">楽天市場で見る</a>（PR）で確認できる。` },
+      { type: 'quote', text: 'Adobe単体プラン年28,776円 vs 買い切り数千〜2万円台 → 多くの場合、1年使い切る前に元が取れる' },
+      { type: 'h2', text: 'Adobeを「解約しない方がいい人」' },
+      {
+        type: 'ul',
+        items: [
+          '印刷入稿で AI / PSD / INDD のネイティブ互換が必須',
+          '動画編集（Premiere Pro）や After Effects を使う',
+          'Lightroom のクラウド同期・RAW現像のワークフローに乗っている',
+          'チームでAdobe前提のデータをやり取りする',
+          'Adobe Fonts や生成AI機能に日常的に依存している',
+        ],
+      },
+      { type: 'p', text: 'これらに当てはまるなら、買い切りに乗り換えると互換性や作業効率で逆に損をする。その場合は「Adobeのままが正解」だ。背伸びして乗り換える必要はない。' },
+      { type: 'h2', text: '解約の順番（焦らない）' },
+      { type: 'p', text: 'まず1週間、自分が実際に使った機能を記録してみる。それでも「画像の書き出しと簡単な加工しか使っていない」なら、買い切りで足りる可能性が高い。Adobe の年間プランは途中解約に違約金が絡むことがあり、解約フローでも引き止めが入る。先に <a href="/blog/how-to-survive-retention-screen">引き止め画面の突破法</a> を読んでおくと心が折れにくい。' },
+      { type: 'p', text: 'この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は <a href="/disclosure">収益開示</a> を参照。乗り換えが自分に合わないと感じたら、Adobeを続けるのも正しい選択だ。' },
+    ],
+  },
   {
     slug: 'why-cant-cancel',
     title: 'なぜサブスクは「やめにくく」設計されているのか',
