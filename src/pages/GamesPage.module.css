@@ -1,0 +1,153 @@
+.page {
+  min-height: 100vh;
+  padding: 0 16px 64px;
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.head {
+  padding: 36px 4px 28px;
+  text-align: center;
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-text);
+  margin: 0 0 8px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 26px;
+  }
+}
+
+.lead {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-sub);
+  margin: 0 auto 14px;
+  max-width: 600px;
+  text-align: left;
+}
+.lead strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.gameSection {
+  margin: 8px 0 28px;
+}
+
+.explainer,
+.upcoming {
+  margin: 32px 0;
+  text-align: left;
+}
+
+.h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+
+.explainer p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-sub);
+  margin: 0 0 14px;
+}
+.explainer strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.upcomingLead {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-sub);
+  margin: 0 0 16px;
+}
+
+.upcomingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upcomingItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.upcomingName {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.upcomingDesc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.trackerCta {
+  display: block;
+  margin-top: 28px;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface-2));
+  border: 1px solid var(--accent);
+  border-radius: 16px;
+  padding: 20px 22px;
+  transition: transform 0.12s;
+}
+.trackerCta:hover {
+  transform: translateY(-2px);
+}
+.trackerCtaTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.trackerCtaSub {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--text-sub);
+  text-decoration: none;
+}
+.backLink:hover {
+  color: var(--accent-text);
+}

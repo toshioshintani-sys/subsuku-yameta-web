@@ -22,6 +22,7 @@ export default function Footer() {
               <li><Link to="/discover">サブスク図鑑</Link></li>
               <li><Link to="/tracker">サブスク棚卸し</Link></li>
               <li><Link to="/yamete-kau">やめて買う</Link></li>
+              <li><Link to="/games">サブスク判断ゲーム</Link></li>
               <li><Link to="/blog">お役立ち記事</Link></li>
             </ul>
           </div>

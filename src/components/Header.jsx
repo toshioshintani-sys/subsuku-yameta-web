@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Scissors, LayoutGrid, ListChecks, FileText } from 'lucide-react';
+import { Scissors, LayoutGrid, ListChecks, FileText, Gamepad2 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import styles from './Header.module.css';
 
@@ -25,6 +25,10 @@ export default function Header() {
             <Link to="/tracker" className={styles.navLink}>
               <ListChecks size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
               <span>棚卸し</span>
+            </Link>
+            <Link to="/games" className={styles.navLink}>
+              <Gamepad2 size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
+              <span>ゲーム</span>
             </Link>
             <Link to="/blog" className={styles.navLink}>
               <FileText size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
