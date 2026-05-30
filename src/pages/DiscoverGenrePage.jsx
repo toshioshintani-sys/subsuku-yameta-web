@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { Sparkles } from 'lucide-react';
 import { DISCOVER_GENRES_BY_ID, DISCOVER_GENRES } from '../data/discover';
 import { trackAffiliateClick, detectAsp } from '../data/affiliates';
+import AdSlot from '../components/AdSlot';
 import { DiscoverIcon } from '../icons';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
@@ -136,6 +137,9 @@ export default function DiscoverGenrePage() {
             ))}
           </div>
         </section>
+
+        {/* 広告（比較の後・解約ガイドより上には置かない＝解約導線を邪魔しない・未設定なら非表示） */}
+        <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_DISCOVER || import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         <section className={`${styles.section} ${styles.cancelSection}`}>
           <h2 className={styles.h2}>
