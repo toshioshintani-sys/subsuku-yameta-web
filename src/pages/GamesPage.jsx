@@ -64,7 +64,7 @@ export default function GamesPage() {
         <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_GAMES || import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         <section className={styles.explainer}>
-          <h2 className={styles.h2}>「サンクコスト」とは？</h2>
+          <h2 className={styles.h2}>「もう払ったから、もったいない」が判断を狂わせる</h2>
           <p>
             サンクコスト（埋没費用）とは、<strong>すでに支払ってしまい、もう取り戻せないお金や時間</strong>のことです。
             行動経済学の実験では、人は「ここまで払った（使った）のだから」と、本来は判断に関係ないはずの
@@ -87,8 +87,8 @@ export default function GamesPage() {
           <ul className={styles.upcomingList}>
             {UPCOMING.map((u) => (
               <li key={u.name} className={styles.upcomingItem}>
-                <span className={styles.upcomingName}>{u.name}</span>
                 <span className={styles.upcomingDesc}>{u.desc}</span>
+                <span className={styles.upcomingName}>＝行動経済学でいう「{u.name}」</span>
               </li>
             ))}
           </ul>

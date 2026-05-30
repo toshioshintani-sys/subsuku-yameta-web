@@ -106,11 +106,14 @@ export default function SunkCostGame() {
   if (phase === 'intro') {
     return (
       <div className={styles.game}>
-        <div className={styles.badge}>行動経済学で遊ぶ・第1弾</div>
-        <h2 className={styles.gameTitle}>サンクコストの罠</h2>
+        <div className={styles.badge}>やめられない理由・第1弾</div>
+        <h2 className={styles.gameTitle}>「ここまで払ったし…」で、やめられない</h2>
+        <p className={styles.termSub}>
+          あとで知る → この心のクセは「<strong>サンクコスト</strong>」と呼ばれています
+        </p>
         <p className={styles.lead}>
           「ここまで払ったんだから、もったいない」——その気持ちが、使っていないサブスクを続けさせます。
-          <strong>払ったお金は、続けても・やめても戻りません。</strong>
+          でも、<strong>払ったお金は、続けても・やめても戻りません。</strong>
           3つの場面で、あなたが「もったいなさ」に引っ張られないか試してみましょう。
         </p>
         <button type="button" className={styles.startBtn} onClick={start}>

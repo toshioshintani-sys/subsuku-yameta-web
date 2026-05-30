@@ -104,16 +104,16 @@
   padding: 14px 16px;
 }
 
-.upcomingName {
+.upcomingDesc {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1.7;
   color: var(--text);
 }
 
-.upcomingDesc {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--text-sub);
+.upcomingName {
+  font-size: 12px;
+  color: var(--text-faint);
 }
 
 .trackerCta {
