@@ -60,8 +60,17 @@ async function main() {
   let ok = 0;
   let fail = 0;
 
+  // 広告・解析のブロック対象（プリレンダ中に AdSense 表示や GA ヒットを発生させない＝
+  // AdSenseポリシー「自動生成ツールによる表示の禁止」順守＋GAデータ汚染防止＋高速化）
+  const BLOCK = /googlesyndication|doubleclick|google-analytics|googletagmanager|\/gtag\/|adservice\.google|pagead2|adsbygoogle/i;
+
   for (const route of routes) {
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+      if (BLOCK.test(req.url())) req.abort();
+      else req.continue();
+    });
     try {
       await page.goto(base + route, { waitUntil: 'networkidle0', timeout: 45000 });
       // React 描画 + Seo 副作用の完了を待つ（#main に十分な本文が入るまで）
