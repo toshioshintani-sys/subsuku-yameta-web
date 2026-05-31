@@ -663,6 +663,31 @@ A8 は **広告リンク作成画面で「掲載サイト」を切り替えら�
 
 ---
 
+## 2026-06-01 ★★ USD建てサブスクの円換算は「PLANS全プラン」を補正しないと効かない
+
+### 発見
+ChatGPT Plus / Claude Pro を $20=¥155（¥3100）にする際、最初 `PRICING` だけ上書きしたが、
+これらは `PLANS` に複数プラン（Plus/Team/Pro 等）を持つため、tracker は `getPlans()` 経由で
+**PLANS側の代表プラン（¥3000）** を表示し、PRICING の上書きが無視された。
+→ USD建てサービスは PLANS の各プラン monthly/yearly も換算が必要。
+
+### 永続化（コード）
+`src/data/services.js`：`USD_JPY=155` ＋ `USD_PRICED={chatgpt-plus,claude-pro}` を定義し、
+モジュール読込時に **PRICING と PLANS全プランを旧レート150→155で等比補正**（3000→3100 と整数で割り切れる）。
+⚠️ 不変条件：USD_PRICED のサービスは PRICING/PLANS を**常に150円換算の円値**で書くこと（155で直書きすると二重換算）。
+為替が±5円超 動いたら `USD_JPY` の数値だけ更新（俊雄さん 2026-06-01 指示）。
+
+### 永続化（UI）
+`src/pages/TrackerPage.jsx`：複数プランのサービスはチェック後に**プラン選択 `<select>`** を表示。
+state に `plan`（serviceId→index）を追加し localStorage 永続化。月額/年額/解約優先度は選択プランで再計算。
+「年間費用が全然違う」（俊雄さん）への対応。
+
+### 告知チャネル決定
+告知は **Threads に確定**（2026-06-01）。詳細・投稿テンプレは `docs/kokuchi-plan.md` §5。
+Threads最適化＝1行目フック・タグ1個・リンクは連投2投目に分離。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：

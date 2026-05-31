@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES, PRICING, CATEGORIES } from '../data/services';
+import { SERVICES, PRICING, CATEGORIES, getPlans } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './TrackerPage.module.css';
@@ -16,18 +16,41 @@ const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
 const DIFFICULTY_WEIGHT = { easy: 1, medium: 0.7, hard: 0.5 };
 
 function loadState() {
-  if (typeof window === 'undefined') return { selected: {}, lastUsed: {} };
+  if (typeof window === 'undefined') return { selected: {}, lastUsed: {}, plan: {} };
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { selected: {}, lastUsed: {} };
+    if (!raw) return { selected: {}, lastUsed: {}, plan: {} };
     const parsed = JSON.parse(raw);
     return {
       selected: parsed.selected || {},
       lastUsed: parsed.lastUsed || {},
+      plan: parsed.plan || {}, // serviceId -> 選択したプランの index
     };
   } catch {
-    return { selected: {}, lastUsed: {} };
+    return { selected: {}, lastUsed: {}, plan: {} };
   }
+}
+
+// プラン関連ヘルパー（多プラン対応・2026-06-01）
+function defaultPlanIndex(plans) {
+  const i = plans.findIndex((p) => p.popular);
+  return i >= 0 ? i : 0;
+}
+
+function resolvePlanIndex(plans, stored) {
+  if (!plans.length) return -1;
+  if (stored != null && stored >= 0 && stored < plans.length) return stored;
+  return defaultPlanIndex(plans);
+}
+
+// サービスの「選択中プラン」に応じた月額を返す。プラン未設定なら PRICING の代表額
+function planMonthly(serviceId, storedIdx) {
+  const plans = getPlans(serviceId);
+  if (plans.length) {
+    const idx = resolvePlanIndex(plans, storedIdx);
+    return plans[idx]?.monthly ?? 0;
+  }
+  return PRICING[serviceId] ?? 0;
 }
 
 function saveState(state) {
@@ -75,23 +98,33 @@ export default function TrackerPage() {
     }));
   };
 
+  const updatePlan = (id, idx) => {
+    setState((prev) => ({
+      ...prev,
+      plan: { ...prev.plan, [id]: idx },
+    }));
+  };
+
   const clearAll = () => {
     if (confirm('チェック中のサブスクをすべてクリアしますか？（ローカル保存のみ消えます）')) {
-      setState({ selected: {}, lastUsed: {} });
+      setState({ selected: {}, lastUsed: {}, plan: {} });
     }
   };
 
   // 選択中サービスと月額情報
   const enriched = useMemo(() => {
     return SERVICES.map((s) => {
-      const monthly = PRICING[s.id] ?? 0;
+      const plans = getPlans(s.id);
+      const planIdx = resolvePlanIndex(plans, state.plan[s.id]);
+      const monthly = planMonthly(s.id, state.plan[s.id]);
+      const planName = plans.length ? plans[planIdx]?.name : null;
       const monthsUnused = monthsAgo(state.lastUsed[s.id]);
       // 解約優先度スコア：価格が高い × 解約しやすい × 使ってない期間が長い
       const usageBonus = monthsUnused == null ? 1 : Math.min(3, 1 + monthsUnused * 0.15);
       const priority = (monthly || 0) * (DIFFICULTY_WEIGHT[s.difficulty] || 0.5) * usageBonus;
-      return { ...s, monthly, monthsUnused, priority };
+      return { ...s, monthly, plans, planIdx, planName, monthsUnused, priority };
     });
-  }, [state.lastUsed]);
+  }, [state.lastUsed, state.plan]);
 
   const selectedIds = useMemo(
     () => Object.entries(state.selected).filter(([, v]) => v).map(([k]) => k),
@@ -254,6 +287,9 @@ export default function TrackerPage() {
                     </div>
                     <div className={styles.recMeta}>
                       月 {formatYen(s.monthly)} / 年 {formatYen(s.monthly * 12)}
+                      {s.planName && s.plans.length > 1 && (
+                        <span className={styles.recUnused}> · {s.planName}</span>
+                      )}
                       {s.monthsUnused != null && s.monthsUnused >= 1 && (
                         <span className={styles.recUnused}> · 最後の利用から{s.monthsUnused}ヶ月</span>
                       )}
@@ -325,6 +361,22 @@ export default function TrackerPage() {
                   </label>
                   {isSelected && (
                     <div className={styles.rowExtra}>
+                      {s.plans.length > 1 && (
+                        <label className={styles.lastUsedLabel}>
+                          プラン：
+                          <select
+                            value={s.planIdx}
+                            onChange={(e) => updatePlan(s.id, Number(e.target.value))}
+                            className={styles.toolSelect}
+                          >
+                            {s.plans.map((p, i) => (
+                              <option key={p.name} value={i}>
+                                {p.name}（{p.monthly ? formatYen(p.monthly) + '/月' : '都度'}）
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      )}
                       <label className={styles.lastUsedLabel}>
                         最後に使った月：
                         <input
@@ -350,7 +402,8 @@ export default function TrackerPage() {
             別のブラウザや端末では引き継がれません。
           </p>
           <p>
-            価格は標準プランの参考値です（広告つきプラン・年契約・学割等で変動）。
+            複数プランがあるサービスは、チェック後に表示される「プラン」から自分の契約プランを選べます（合計額・年額に反映されます）。
+            海外サービス（ChatGPT Plus・Claude Pro 等）の $ 表記は 1ドル＝155円で換算しています。
             実際の請求額は各サービスの請求明細をご確認ください。
           </p>
         </div>
