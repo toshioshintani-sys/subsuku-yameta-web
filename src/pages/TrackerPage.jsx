@@ -170,6 +170,7 @@ export default function TrackerPage() {
         title="サブスク棚卸しダッシュボード"
         description="契約中のサブスクをチェックして月額・年額の合計と解約優先度を可視化。個人情報は一切保存しません（ローカル保存のみ）。"
         canonical="/tracker"
+        noindex
       />
 
       <section className={styles.hero}>

@@ -32,7 +32,7 @@ function absolutize(urlOrPath) {
   return SITE_URL + (urlOrPath.startsWith('/') ? urlOrPath : '/' + urlOrPath);
 }
 
-export default function Seo({ title, description, canonical, ogUrl, jsonLd }) {
+export default function Seo({ title, description, canonical, ogUrl, jsonLd, noindex = false }) {
   useEffect(() => {
     const finalTitle = title
       ? `${title}｜サブスクやめた`
@@ -42,6 +42,8 @@ export default function Seo({ title, description, canonical, ogUrl, jsonLd }) {
     const finalOgUrl = absolutize(ogUrl) || finalCanonical;
 
     document.title = finalTitle;
+    // 純ツール等の薄いページは noindex（検索インデックスを"中身のあるページ"に寄せる）
+    setMeta('robots', noindex ? 'noindex,follow' : 'index,follow');
     setMeta('description', finalDesc);
     setMeta('og:title', finalTitle, 'property');
     setMeta('og:description', finalDesc, 'property');
@@ -64,7 +66,7 @@ export default function Seo({ title, description, canonical, ogUrl, jsonLd }) {
         if (s.parentNode) s.parentNode.removeChild(s);
       });
     };
-  }, [title, description, canonical, ogUrl, jsonLd]);
+  }, [title, description, canonical, ogUrl, jsonLd, noindex]);
 
   return null;
 }
