@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { SERVICES, CATEGORIES } from './src/data/services.js';
 import { POSTS } from './src/data/posts.js';
 import { DISCOVER_GENRES } from './src/data/discover.js';
+import { BIAS_GAMES } from './src/data/biasGames.js';
 
 const FALLBACK_SITE_URL = 'https://sabusuku.netlify.app';
 
@@ -18,7 +19,8 @@ function buildRoutes() {
   const serviceRoutes = SERVICES.map((s) => `/service/${s.id}`);
   const postRoutes = POSTS.map((p) => `/blog/${p.slug}`);
   const discoverRoutes = DISCOVER_GENRES.map((g) => `/discover/${g.id}`);
-  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes, ...discoverRoutes];
+  const gameRoutes = BIAS_GAMES.map((g) => `/games/${g.id}`);
+  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes, ...discoverRoutes, ...gameRoutes];
 }
 
 function escapeXml(s) {

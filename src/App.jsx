@@ -17,6 +17,7 @@ const DiscoverIndexPage = lazy(() => import('./pages/DiscoverIndexPage'));
 const DiscoverGenrePage = lazy(() => import('./pages/DiscoverGenrePage'));
 const YameteKauPage = lazy(() => import('./pages/YameteKauPage'));
 const GamesPage = lazy(() => import('./pages/GamesPage'));
+const GameDetailPage = lazy(() => import('./pages/GameDetailPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/discover/:id" element={<DiscoverGenrePage />} />
           <Route path="/yamete-kau" element={<YameteKauPage />} />
           <Route path="/games" element={<GamesPage />} />
+          <Route path="/games/:id" element={<GameDetailPage />} />
           <Route path="/blog" element={<BlogIndexPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/about" element={<AboutPage />} />
