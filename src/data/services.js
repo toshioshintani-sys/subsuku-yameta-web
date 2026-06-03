@@ -917,6 +917,7 @@ export const ALTERNATIVES = {
   'u-next': [
     { id: 'hulu', reason: '月額料金を抑えたい場合' },
     { id: 'amazon-prime', reason: 'コスパ重視なら最安クラス' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とぐっと安い。ニュース・アニメ・オリジナル番組中心。見放題本数や新作レンタルはU-NEXTが上' },
   ],
   'abema-premium': [
     { url: 'https://abema.tv/', name: 'ABEMA（無料）', reason: 'プレミアム機能不要なら無料版で十分なケースも' },
@@ -931,12 +932,14 @@ export const ALTERNATIVES = {
     { id: 'amazon-prime', reason: '一般作品中心なら定番の選択' },
   ],
   'wowow-on-demand': [
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円と割安。オリジナル番組・ニュース・アニメ中心なら。映画ラインナップの厚みはWOWOWが上' },
     { id: 'u-next', reason: '映画ラインナップ重視ならこちらも' },
   ],
   'rakuten-tv': [
     { id: 'amazon-prime', reason: '広く浅く見たいなら定番' },
   ],
   dazn: [
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円。サッカー・格闘技・スポーツニュースを安く見たいなら。ただし試合の網羅はDAZNに及ばない' },
     { url: 'https://www.youtube.com/', name: 'YouTube ライブ（無料）', reason: '一部のスポーツは公式チャンネルで無料配信' },
   ],
   danime: [

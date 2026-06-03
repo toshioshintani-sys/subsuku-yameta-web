@@ -27,7 +27,11 @@ const RAKUTEN_AFFILIATE_ID = ENV.VITE_RAKUTEN_AFFILIATE_ID;
 // 提携完了したら、ここに serviceId → URL でマップする
 // ============================================================
 export const ASP_FULL_URLS = {
-  // A8.net（8案件・サブスクやめた媒体で2026-05-23 申請中）
+  // A8.net（サブスクやめた媒体・本番稼働中）
+  // ABEMAプレミアム（2026-06 提携・報酬902円）：高い動画サブからの「安い乗換先」(B層)
+  'abema-premium': 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+2HB4LU+4EKC+5YRHE',
+
+  // A8.net（その他・サブスクやめた媒体で2026-05-23 申請中→順次URL取得）
   // 'hitohana': '...',
   // 'aircloset': '...',
   // 'drobe': '...',

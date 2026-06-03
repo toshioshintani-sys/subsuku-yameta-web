@@ -688,6 +688,30 @@ Threads最適化＝1行目フック・タグ1個・リンクは連投2投目に�
 
 ---
 
+## 2026-06-03 ★★★★ 初の本番A8アフィリンク実装（ABEMA）＝乗換先の実装パターン確立
+
+### 発見
+A8の追加案件（5月下旬に承認集中）から、第一弾として **ABEMAプレミアム（報酬902円・2000円未満で§5-D stress-test不要）** を実装。
+「高い動画サブ→安いABEMA」の乗換先(B層)として **DAZN・WOWOW・U-NEXT** の3ページに両論併記で設置。
+
+### 実装パターン（再利用可・重要）
+ServicePage の `ALTERNATIVES` で **アフィリンクにするには「外部entry＋serviceId」形式**を使う：
+- `{ id:'x' }` → **内部リンク**（/service/x へ・非アフィ）
+- `{ url, name, serviceId:'abema-premium', reason }` → **外部リンク**。`getAffiliateUrl(serviceId)` が `ASP_FULL_URLS[serviceId]` を最優先で返す＝A8トラッキングURLになる
+- 手順：①`affiliates.js` の `ASP_FULL_URLS` に `serviceId → A8 URL` を追加 ②該当サービスの ALTERNATIVES に外部entryを追加
+- 描画は既にBAE準拠（PR表示・「乗り換える必要はありません」・`rel="sponsored"`・`trackAffiliateClick(layer:'B', placement:'service_page_bottom')`・/disclosure）→ データ追加だけで完成
+
+### A8リンク取得の運用知見（Chrome）
+- 新A8コンソール（media-console.a8.net）。広告リンク作成URL＝`/program/create-link?programId=sXXXX`。
+- **トラッキングURLは Chrome MCP では取得不可**：スクショが空白を返す不具合＋JSでクエリ文字列付きURLは安全フィルタにブロックされる。→ **俊雄さんが「素材をコピー」して貼る**のが確実（掲載サイト＝サブスクやめた を選ぶこと）。
+- 報酬額・EPC・確定率は参加中プログラム一覧（pageSize=100）で全件 get_page_text で読める。
+
+### 永続化
+- コード：`src/data/affiliates.js`（ASP_FULL_URLS に abema-premium）/ `src/data/services.js`（dazn・wowow-on-demand・u-next の ALTERNATIVES）
+- 次：浄水サーバー(5000円)・知育玩具(3000円)等は2000円超→“推し”昇格時 stress-test。C群は図鑑情報掲載。詳細 `docs/A8_PROGRAM_REVIEW.md`
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
