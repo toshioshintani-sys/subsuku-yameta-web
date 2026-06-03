@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="1152" viewBox="0 0 2048 1152" role="img" aria-label="サブスクやめた チャンネルアート">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#131c2e"/>
+      <stop offset="1" stop-color="#1a2540"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="2048" height="1152" fill="url(#bg)"/>
+
+  <!-- テラコッタの紐（全幅を横断し、中央で切れている＝サブスクの紐を切る） -->
+  <g stroke="#b85c3d" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.92">
+    <path d="M-20 700 Q 260 660 520 696"/>
+    <path d="M600 700 Q 1300 760 2068 706"/>
+  </g>
+
+  <!-- キリさん（はさみ頭）。紐の切れ目の上に -->
+  <g transform="translate(545,600) scale(2.1) translate(-100,-76)"
+     fill="none" stroke="#fbf8f3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M98 78 60 21c8-5 18-2 24 6l23 50Z" fill="#0a7c7c"/>
+    <path d="M102 78 140 21c-8-5-18-2-24 6L93 77Z" fill="#0a7c7c"/>
+    <path d="M97 71 75 32"/>
+    <path d="M103 71 125 32"/>
+    <path d="M85 64 100 78 118 112"/>
+    <path d="M115 64 100 78 82 112"/>
+    <circle cx="100" cy="78" r="7" fill="#b85c3d"/>
+    <path d="M94 72 106 84"/>
+    <path d="M106 72 94 84"/>
+    <circle cx="76" cy="113" r="17" fill="#fbf8f3"/>
+    <circle cx="124" cy="113" r="17" fill="#fbf8f3"/>
+    <circle cx="76" cy="113" r="7" fill="#1a2540"/>
+    <circle cx="124" cy="113" r="7" fill="#1a2540"/>
+    <path d="M91 130q9 7 18 0"/>
+  </g>
+
+  <!-- テキスト（中央セーフゾーン内） -->
+  <g font-family="'Yu Gothic UI','Yu Gothic','Meiryo','Noto Sans JP',sans-serif">
+    <text x="770" y="560" font-size="150" font-weight="800" fill="#fbf8f3" letter-spacing="2">サブスクやめた</text>
+    <text x="776" y="650" font-size="56" font-weight="700" fill="#aab4c8">やめる？ 乗り換える？ 買い切る？</text>
+    <text x="776" y="722" font-size="46" font-weight="500" fill="#aab4c8">あなたの「次の動き」を、遊んで見抜く。</text>
+    <text x="776" y="792" font-size="42" font-weight="700" fill="#5cb9b9">sabusuku.netlify.app</text>
+  </g>
+</svg>

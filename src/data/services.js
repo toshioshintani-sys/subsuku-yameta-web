@@ -1654,6 +1654,34 @@ export const PLANS = {
 };
 
 // ---------------------------------------------------------------------------
+// 為替レート（USD→JPY）— 2026-06-01 俊雄さん指示
+// ・USD建てサブスク（ChatGPT Plus / Claude Pro 等）は ¥USD_JPY で換算する
+// ・±5円超 変動するまで 155 で固定。為替が大きく動いたら、この数値だけを更新する
+// ・USD_PRICED に { serviceId: 月額USD } を足すと、PRICING / 単一PLAN が自動換算される
+// ---------------------------------------------------------------------------
+export const USD_JPY = 155;
+// 既存の PRICING / PLANS の円価格は旧レート（1ドル=150円）で作られている。
+// USD建てサービスは新レートへ等比補正する（例: Plus 3000=$20 → 3100）。
+// ⚠️ USD_PRICED のサービスは、PRICING/PLANS を常に「150円換算の円値」で記述すること。
+//    155円で直接書くと二重換算になる。
+const USD_JPY_PREV = 150;
+export const USD_PRICED = {
+  'chatgpt-plus': 20,
+  'claude-pro': 20,
+};
+for (const [id] of Object.entries(USD_PRICED)) {
+  const adjust = (yen) => Math.round((yen * USD_JPY) / USD_JPY_PREV);
+  if (typeof PRICING[id] === 'number') PRICING[id] = adjust(PRICING[id]);
+  const planEntry = PLANS[id];
+  if (planEntry?.plans) {
+    for (const p of planEntry.plans) {
+      if (typeof p.monthly === 'number') p.monthly = adjust(p.monthly);
+      if (typeof p.yearly === 'number') p.yearly = adjust(p.yearly);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // 料金プラン関連のヘルパー関数（後方互換維持）
 // ---------------------------------------------------------------------------
 
@@ -1807,7 +1835,7 @@ export const EXTENDED_CONTENT = {
   },
   'chatgpt-plus': {
     summary:
-      'ChatGPT Plus は OpenAI が提供する月額3000円（$20）の ChatGPT 有料プラン。最新モデル（GPT-5等）への優先アクセス、画像生成、データ分析、メモリ機能などが利用可能。',
+      'ChatGPT Plus は OpenAI が提供する月額約3100円（$20・1ドル155円換算）の ChatGPT 有料プラン。最新モデル（GPT-5等）への優先アクセス、画像生成、データ分析、メモリ機能などが利用可能。',
     whyHard:
       'ChatGPT Plus の解約は「かんたん」。設定画面から3クリックで完了。引き止めも控えめ。ただし「無料版に戻る」のか「Plus を継続する」のか分かりにくい UI なので、間違って続行ボタンを押さないよう注意。',
     darkPatterns: [
@@ -1945,7 +1973,7 @@ export const EXTENDED_CONTENT = {
   },
   'claude-pro': {
     summary:
-      'Claude Pro は Anthropic が提供する月額3000円（$20）の AI チャットサービス有料プラン。最新モデル（Claude Opus 4.5以降）への優先アクセス・5倍以上のメッセージ上限・Projects 機能などが利用可能。',
+      'Claude Pro は Anthropic が提供する月額約3100円（$20・1ドル155円換算）の AI チャットサービス有料プラン。最新モデル（Claude Opus 4.5以降）への優先アクセス・5倍以上のメッセージ上限・Projects 機能などが利用可能。',
     whyHard:
       'Claude Pro の解約は「かんたん」。設定画面から3クリックで完了し、引き止めも控えめ。ただし、Claude Code（CLI）と統合プランの場合は、別の解約フローになる点に注意。',
     darkPatterns: [

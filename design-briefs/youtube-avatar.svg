@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 200 200" role="img" aria-label="サブスクやめた キリさん アバター">
+  <!-- 背景（丸クロップでも全面が紺になる） -->
+  <rect width="200" height="200" fill="#1a2440"/>
+  <!-- ふちのティールアクセント -->
+  <circle cx="100" cy="100" r="93" fill="none" stroke="#0a7c7c" stroke-width="3" opacity="0.35"/>
+
+  <!-- キリさん頭部（V字刃＋X字ピボット＋2リング）。紺背景なので線はクリームに -->
+  <g transform="translate(100,104) scale(1.24) translate(-100,-76)"
+     fill="none" stroke="#fbf8f3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- V字刃（ティール） -->
+    <path d="M98 78 60 21c8-5 18-2 24 6l23 50Z" fill="#0a7c7c"/>
+    <path d="M102 78 140 21c-8-5-18-2-24 6L93 77Z" fill="#0a7c7c"/>
+    <path d="M97 71 75 32"/>
+    <path d="M103 71 125 32"/>
+    <path d="M85 64 100 78 118 112"/>
+    <path d="M115 64 100 78 82 112"/>
+    <!-- X字ピボット（テラコッタ） -->
+    <circle cx="100" cy="78" r="7" fill="#b85c3d"/>
+    <path d="M94 72 106 84"/>
+    <path d="M106 72 94 84"/>
+    <!-- 2つの持ち手リング（クリーム＋紺の穴＝目に見える） -->
+    <circle cx="76" cy="113" r="17" fill="#fbf8f3"/>
+    <circle cx="124" cy="113" r="17" fill="#fbf8f3"/>
+    <circle cx="76" cy="113" r="7" fill="#1a2440"/>
+    <circle cx="124" cy="113" r="7" fill="#1a2440"/>
+    <!-- ほほえみ -->
+    <path d="M91 130q9 7 18 0"/>
+  </g>
+</svg>
