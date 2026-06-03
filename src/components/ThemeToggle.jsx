@@ -54,6 +54,9 @@ export default function ThemeToggle() {
         ? 'ライトモード（タップで自動に切替）'
         : '自動（システム設定に追従・タップでダークに切替）';
 
+  // ピル内に出す現在モードの短いラベル（発見性UP：切替できると一目で分かる）
+  const modeWord = theme === 'dark' ? 'ダーク' : theme === 'light' ? 'ライト' : '自動';
+
   return (
     <button
       type="button"
@@ -70,6 +73,7 @@ export default function ThemeToggle() {
         <Sun size={18} strokeWidth={2} className={styles.iconSun} />
         <Moon size={18} strokeWidth={2} className={styles.iconMoon} />
       </span>
+      <span className={styles.label} aria-hidden="true">{modeWord}</span>
     </button>
   );
 }

@@ -10,9 +10,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  gap: 7px;
   height: 40px;
-  padding: 0;
+  padding: 0 13px 0 11px;
   margin: 0;
   border: 1.5px solid var(--border);
   border-radius: 999px;
@@ -20,6 +20,15 @@
   color: var(--text-sub);
   cursor: pointer;
   transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+/* 現在モードのラベル（発見性UP・デスクトップのみ） */
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .toggle:hover,
@@ -112,7 +121,19 @@
   box-shadow: 0 0 0 1px var(--accent-soft) inset;
 }
 
-/* スマホ：ちょっと小さく（ヘッダー圧迫を避ける） */
+/* スマホ：ラベルを隠して丸アイコンに戻す（ヘッダー圧迫を避ける） */
+@media (max-width: 600px) {
+  .toggle {
+    gap: 0;
+    width: 40px;
+    padding: 0;
+  }
+  .label {
+    display: none;
+  }
+}
+
+/* さらに狭い端末：ちょっと小さく */
 @media (max-width: 480px) {
   .toggle {
     width: 36px;
