@@ -51,12 +51,24 @@
 
   /* タイポグラフィシステム（Phase B） */
   --font-sans: 'Inter', 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', system-ui, sans-serif;
+  /* 見出し用セリフ体（DESIGN_UPGRADE 作業1）：見出し h1/h2 とロゴのみに使用。本文・UI は --font-sans のまま */
+  --font-display: 'Noto Serif JP', 'Hiragino Mincho ProN', 'YuMincho', 'Yu Mincho', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
 
   /* シャドウシステム（精密な階層） */
   --shadow-sm: 0 1px 2px oklch(20% 0.02 250 / 0.06);
   --shadow-md: 0 4px 12px oklch(20% 0.02 250 / 0.08);
   --shadow-lg: 0 12px 32px oklch(20% 0.02 250 / 0.10);
+
+  /* タイポグラフィスケール（DESIGN_UPGRADE 作業2・clamp でレスポンシブ） */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  clamp(1.75rem, 3vw, 2.25rem);
+  --text-hero: clamp(2.25rem, 5vw, 3.5rem);
 }
 
 /* ----------------------------------------------------------
@@ -168,10 +180,20 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* 見出しは少しトラッキングを詰める */
+/* 見出しは少しトラッキングを詰める（DESIGN_UPGRADE 作業1：h1/h2 はセリフ体で高級感） */
 h1, h2, h3, h4 {
   letter-spacing: -0.02em;
   line-height: 1.3;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
 }
 
 a {

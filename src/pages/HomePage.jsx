@@ -6,6 +6,7 @@ import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import SavingsGameLauncher from '../components/SavingsGameLauncher';
+import FadeUp from '../components/FadeUp';
 import styles from './HomePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -231,10 +232,12 @@ export default function HomePage() {
 
             {/* セクション1：Top10 大タイル */}
             <section className={styles.topSection} aria-label="人気のサブスク Top10">
-              <h2 className={styles.sectionTitle}>
-                <span className={styles.sectionRank}>★</span>
-                人気の <span className={styles.numHighlight}>Top 10</span>
-              </h2>
+              <FadeUp>
+                <h2 className={styles.sectionTitle}>
+                  <span className={styles.sectionRank}>★</span>
+                  人気の <span className={styles.numHighlight}>Top 10</span>
+                </h2>
+              </FadeUp>
               <div className={styles.topGrid}>
                 {top10.map((service, i) => (
                   <Link to={`/service/${service.id}`} key={service.id} className={styles.topCard}>
@@ -262,10 +265,12 @@ export default function HomePage() {
 
             {/* セクション2：カテゴリ別リスト */}
             <section className={styles.catSection} aria-label="カテゴリ別すべて">
-              <h2 className={styles.sectionTitle}>
-                すべてのサービス <span className={styles.numHighlight}>{SERVICES.length - 10}</span>
-                <span className={styles.titleSub}>件をカテゴリ別に</span>
-              </h2>
+              <FadeUp delay={0.05}>
+                <h2 className={styles.sectionTitle}>
+                  すべてのサービス <span className={styles.numHighlight}>{SERVICES.length - 10}</span>
+                  <span className={styles.titleSub}>件をカテゴリ別に</span>
+                </h2>
+              </FadeUp>
 
               {CATEGORY_ORDER_LIST.map((catId) => {
                 const items = restByCategory[catId] || [];

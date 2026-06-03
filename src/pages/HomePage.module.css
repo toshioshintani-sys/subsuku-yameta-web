@@ -42,7 +42,8 @@
 }
 
 .heroTitle {
-  font-size: 36px;
+  /* DESIGN_UPGRADE 作業2：固定36px→スケール変数（デスクトップは2.25rem=36pxで第一印象不変、中間幅のみ追従） */
+  font-size: var(--text-3xl);
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.5px;
@@ -363,9 +364,10 @@
 }
 
 .topCard:hover {
+  /* DESIGN_UPGRADE 作業3：浮き上がりを強めて高級感（-3px + shadow-lg） */
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 .topRank {

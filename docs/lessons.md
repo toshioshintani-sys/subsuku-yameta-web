@@ -663,6 +663,36 @@ A8 は **広告リンク作成画面で「掲載サイト」を切り替えら�
 
 ---
 
+## 2026-06-01 ★★★ デザイン100万円感アップ（DESIGN_UPGRADE_BRIEF 作業1〜4）と §2-1 第一印象の守り方
+
+### 発見
+俊雄さんの指示書 `docs/DESIGN_UPGRADE_BRIEF.md`（PRブランチ）に従い、色・本文フォントを変えずに「高級感」を付与：
+- **作業1**：見出し用セリフ体 Noto Serif JP を導入し h1/h2・ロゴに適用（最大インパクト）。index.html は既存フォントリクエストに結合（preconnect重複回避）
+- **作業2**：タイポスケール変数（--text-xs〜--text-hero, clamp）を追加
+- **作業3**：framer-motion の `FadeUp` を新規作成しセクション見出しに適用＋Top10カードのホバー浮き上がり強化
+- **作業4**：ヘッダーロゴをセリフ体・20pxに
+
+### 判断（重要）：指示書2-2の対象が実在しなかった
+指示書2-2は「font-size: 36px のセクション見出しを var(--text-3xl) に」とあったが、コード上の唯一の36pxは **`.heroTitle`（トップの第一印象＝§2-1 #3 不可侵）** だった。`.sectionTitle` は18px。
+- 18px→36px の激変は避け、`.heroTitle` に var(--text-3xl) を適用 → **デスクトップは2.25rem=36pxのまま＝第一印象を維持**しつつ中間幅のみ追従。
+- 「指示書の文字面」より「§2-1 不可侵（第一印象）」を優先し、最も低リスクな解釈を選んだ。
+
+### 技術メモ
+- **framer-motion の whileInView は JS トランスフォームなので index.css の prefers-reduced-motion（CSS）では止まらない** → `FadeUp` に `useReducedMotion` ガードを実装。
+- プリレンダ（Puppeteer）後の dist/index.html を確認 → 見出しは opacity:0 が残らず**表示状態で焼き込み済み**。SEO/AdSense審査への悪影響なし。
+- framer-motion バンドルで index チャンクが 378→500kB（gzip 162kB）に増。作業3の想定コスト。
+
+### なぜ重要か
+- 「100万円感」の正体は **見出しのセリフ体＋余白スケール＋微モーション**。色を触らず質感だけ上げられる。
+- 指示書が実コードと食い違う時、§2-1（ブランドの顔）を最優先にして低リスク解釈を選ぶのが正しい。
+
+### 永続化
+- コード：index.html / src/index.css / src/pages/HomePage.{jsx,module.css} / src/components/FadeUp.jsx（新規）/ src/components/Header.module.css
+- ブランチ：`claude/github-subscription-cancellation-1E186`（PR #9）
+- 作業5（ServicePage見出し）は今回スコープ外（俊雄さん指示は作業1〜4）
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
