@@ -712,6 +712,26 @@ ServicePage の `ALTERNATIVES` で **アフィリンクにするには「外部e
 
 ---
 
+## 2026-06-04 ★★★ W杯2026「どこで見る」ガイド公開＋deep-research harness失敗の教訓
+
+### 経緯
+今月W杯開幕。俊雄さん発案の「サッカー見るならDAZN」を事実確認した結果、**全104試合ネット配信はDAZNのみだが“DAZN必須”は誇張**——日本戦はDAZN無料配信＋地上波(NHK総合33/日テレ15/フジ10予定)＋NHK BS4K全104。よって解約サイト流に「**無料優先で賢く見る・必要な人だけ課金・終わったら解約**」ガイドへ再設計し /blog に公開。
+
+### deep-research（skill/Workflow）が高コストで失敗した教訓（重要）
+- `deep-research` ワークフローが **schema未達エラー（subagentがStructuredOutput未呼び出し）で全滅**。107エージェント・約540万トークン・14分を消費して成果物ゼロ。
+- **教訓：同じharnessを再実行しない**（再失敗＆浪費リスク）。**自分の的を絞ったWebSearch 2-3本で十分**だった。重い汎用harnessより、必要事実だけ直接取りに行く方が速く安い。次回も「skillが空振りしたら直接検索にフォールバック」。
+
+### 記事の作り（再利用パターン）
+- DAZNアフィは現行ASP(A8/もしも/Amazon/楽天)に無い→**アフィリンク無し**。収益源は **AdSense流入（BlogPostPageのAdSlot）＋内部送客**（/service/dazn・/service/abema-premium・/tracker）。
+- 無料を主役・有料は情報として併記（順位/煽り無し）。料金・放送カードは「公式で確認を」と明記（鮮度リスク回避）。
+- 季節SEO（W杯・夏休み前棚卸し・ボーナス固定費）は流入が跳ねる旬枠。AdSense承認後に効く高PV面の“仕込み”になる。
+
+### 永続化
+- 実装：`src/data/posts.js`（slug: world-cup-2026-where-to-watch-free）。build 107/107・プリレンダ確認済。
+- DAZNで成果報酬も得たいなら別ASP（アクセストレード等＝新規ASP＝§5-D stress-test）が必要。今は保留。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
