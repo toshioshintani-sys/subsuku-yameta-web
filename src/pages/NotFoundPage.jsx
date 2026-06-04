@@ -5,7 +5,7 @@ import styles from './StaticPage.module.css';
 export default function NotFoundPage() {
   return (
     <div className={styles.notFound}>
-      <Seo title="ページが見つかりません" description="お探しのページは見つかりませんでした。" />
+      <Seo title="ページが見つかりません" description="お探しのページは見つかりませんでした。" noindex />
       <img
         src="/assets/mascot/mascot-lost.svg"
         alt="道に迷ったキリさん"

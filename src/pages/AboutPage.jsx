@@ -84,6 +84,20 @@ export default function AboutPage() {
         </div>
 
         <div className={styles.card}>
+          <h2>運営者情報</h2>
+          <ul>
+            <li><strong>サイト名</strong>：サブスクやめた</li>
+            <li><strong>運営</strong>：サブスクやめた 編集部（個人運営）</li>
+            <li><strong>連絡先</strong>：<Link to="/contact">お問い合わせ</Link>よりご連絡ください</li>
+            <li><strong>収益の開示</strong>：<Link to="/disclosure">収益開示</Link>に記載</li>
+          </ul>
+          <p>
+            当サイトは特定企業に属さない個人運営の情報サイトです。掲載する各サービスの運営元とは資本・提携関係にありません
+            （アフィリエイトプログラムを通じた紹介を除く）。
+          </p>
+        </div>
+
+        <div className={styles.card}>
           <h2>お問い合わせ</h2>
           <p>
             掲載内容の誤り・解約手順の変更・サービス追加のご要望などは、

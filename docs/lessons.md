@@ -732,6 +732,28 @@ ServicePage の `ALTERNATIVES` で **アフィリンクにするには「外部e
 
 ---
 
+## 2026-06-04 ★★★ 残タスクを4部長仕様で自律実装＋「部長仕様を鵜呑みにしない」教訓
+
+### 実施（owner不要の自律タスクを部長の実装仕様で一括実装）
+- **AdSlot CLS対策＋遅延読込**（アプリ部長仕様）：`IntersectionObserver` で接近時のみ `<ins>` マウント＋push、`.reserve` で高さ予約（モバイル100px/PC280px・overflow:hidden）。CLIENT未設定なら return null・プリレンダ時 typeof window ガードは死守。4設置面は呼び出し無修正。
+- **季節SEO記事2本**（記事部長仕様）：`summer-break-subscription-review`（夏休み前棚卸し）/ `bonus-season-fixed-cost-yearly-vs-buyout`（ボーナスで年契約vs買い切り）。両論併記・(PR)・/disclosure・内部送客（実在slug確認済）・記事BはAmazon/楽天買い切りブロック。
+- **AdSense審査対策**（収益部長仕様）：ContactPageの偽アドレス`.example.com`削除→正直表記、AboutPageに運営者情報カード追加、404に noindex、index.htmlにAdSense meta受け皿コメント。
+
+### ★ 部長仕様の誤りを2つ実装前に是正（重要：仕様は必ずレビューしてから適用）
+1. **収益部長「サービス114件→表記を“100以上”に統一」は誤り**。実数は **58件**（ホームも「全58件」）。100以上は虚偽になるため**表記変更（修正E）はスキップ**。
+2. **収益部長「/games・/games/:id を noindex」も不適**。ゲームは各々 explainerBody の解説本文を持ち、**そもそもAdSense用にコンテンツとして追加した面**。noindexは「コンテンツを厚く」戦略と矛盾し逆効果→**404のみ noindex、ゲームは index 維持**。
+
+### なぜ重要か
+- サブエージェント（部長）の仕様は質が高いが**事実誤認・戦略矛盾を含みうる**。実装担当（自分）が**数値と戦略整合を必ず検算してから適用**する。これが暴走防止の実務版。
+
+### owner必須で残ったもの（私には不可）
+- GA4 layer/placement カスタムディメンジョン登録／AdSenseの実お問い合わせ窓口（Googleフォーム等）／面別スロットID発行・Netlify env／A8リンク取得。
+
+### 永続化
+- 実装：`src/components/AdSlot.{jsx,module.css}` / `src/data/posts.js`(+2) / `src/pages/{ContactPage,AboutPage,NotFoundPage}.jsx` / `index.html`。build 109/109。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：

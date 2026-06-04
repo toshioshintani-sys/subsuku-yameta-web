@@ -28,8 +28,9 @@ export default function ContactPage() {
 
           <h2>送り先</h2>
           <p>
-            <a href="mailto:contact@subsuku-yameta.example.com">contact@subsuku-yameta.example.com</a>
-            （※サイト本番運用開始時に正規アドレスへ差し替え予定）
+            専用のお問い合わせ窓口を準備中です。整い次第、このページでご案内します。
+            お急ぎのサービス追加・誤情報のご指摘は、該当ページのURLを控えておいていただけると、
+            窓口開設後の対応がスムーズです。
           </p>
 
           <h2>返信について</h2>

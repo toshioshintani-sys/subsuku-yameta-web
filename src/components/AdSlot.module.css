@@ -20,8 +20,27 @@
   font-weight: 600;
 }
 
+/* 高さ予約コンテナ：広告の有無に関わらず常にこの高さを確保する＝CLS防止 */
+/* モバイル基準（デフォルト） */
+.reserve {
+  min-height: 100px;     /* モバイル定番 320x100 を吸収 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;      /* 万一広告が予約を超えても本文を押し下げない */
+}
+
+/* タブレット以上：横長レスポンシブ広告に備えて高さを拡張 */
+@media (min-width: 768px) {
+  .reserve {
+    min-height: 280px;   /* PC のレクタングル/レスポンシブを吸収 */
+  }
+}
+
 .ins {
-  min-height: 90px;
+  display: block;
+  width: 100%;
+  min-height: inherit;   /* 予約高さを ins にも継承（auto format の初期つぶれ防止） */
 }
 
 /* マウスホバーで透明度が戻る（=隠してない・透明性は保つ） */
