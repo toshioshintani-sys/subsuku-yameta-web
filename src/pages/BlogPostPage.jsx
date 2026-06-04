@@ -23,6 +23,20 @@ function renderBlock(block, i) {
   if (block.type === 'quote') {
     return <blockquote key={i} className={styles.quote}>{block.text}</blockquote>;
   }
+  if (block.type === 'img') {
+    return (
+      <figure key={i} className={styles.figure}>
+        <img
+          src={block.src}
+          alt={block.alt || ''}
+          className={styles.figureImg}
+          loading="lazy"
+          decoding="async"
+        />
+        {block.caption && <figcaption className={styles.figcaption}>{block.caption}</figcaption>}
+      </figure>
+    );
+  }
   // default: paragraph (may contain inline HTML for links)
   return <p key={i} className={styles.p} dangerouslySetInnerHTML={{ __html: block.text }} />;
 }

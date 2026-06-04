@@ -138,6 +138,27 @@
   font-style: italic;
 }
 
+/* 記事内の図版（早見表・インフォグラフィック） */
+.figure {
+  margin: 24px 0;
+}
+
+.figureImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-sub);
+  text-align: center;
+}
+
 /* CTA */
 .cta {
   display: flex;
