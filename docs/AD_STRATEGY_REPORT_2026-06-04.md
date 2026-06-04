@@ -40,7 +40,7 @@
 ## 4. 部長間で出た重要な修正・気づき
 - **知育玩具の単価誤認を是正**：A8_PROGRAM_REVIEW で「A採用」としたChaChaCha/And TOYBOXは実報酬**3,000円＝2,000円超**。§5-D（高単価の推しは stress-test）に該当。→ **今週の確実枠は dicon に確定**、知育玩具は stress-test 通過後に解禁（A8_PROGRAM_REVIEW を後日この線で微修正）。
 - **収益面は想定より1つ多い**：AdSlotは Service/Blog/Discover に加え **Games(GameDetailPage)** にも設置済＝計4面（承認後の収益ポテンシャルやや上振れ）。
-- **ads.txt が未配置**：承認・収益保護の標準要件。施策1/4で配置する。
+- **ads.txt は既に配置済み（アプリ部長の「未配置」は誤認・秘書が実査で訂正）**：`public/ads.txt` ＝ `google.com, pub-0787387437486917, DIRECT, f08c47fec0942fa0`（pub IDは§8と一致・認証IDはGoogle標準）。**追加作業不要**。施策1/4からは「ads.txt配置」を除外し、配置済み確認のみとする。
 
 ---
 
