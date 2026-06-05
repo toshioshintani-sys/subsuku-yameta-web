@@ -775,6 +775,21 @@ AdSense審査中の本サイトでは、ポリシー違反マークアップ（�
 
 ---
 
+## 2026-06-06 ★★★ FAQPage を解約HOWTO記事へ横展開（量産パターンが回り始めた）
+
+### 実施
+6/05に確立したFAQPageパターン（opt-in `faq`＋可視`<details>`＋本文由来）を2記事へ横展開：`auto-renewal-pitfalls`（自動更新の落とし穴・4問）/ `app-vs-browser-billing`（アプリ課金で解約不可の理由・4問）。後者は「Spotify アプリから解約できない理由」等、**AI検索で直に引かれるHOWTO型**で集客部長#1に直結。build緑109/109、両ページのprerender HTMLに FAQPage JSON-LD＋可視FAQ を確認。
+
+### なぜ重要か
+- 「データ追加だけで安全に量産できる」型が実証フェーズに入った。回答を**本文由来に限定**すれば、AdSense審査中でもポリシー違反リスクなしで増やせる。次弾は `why-cant-cancel`・`how-to-survive-retention-screen`・`when-to-cancel`（解約HOWTO群＝FAQ性が高い）。
+- 6/05報告で「ローカルprerenderがポート4317占有で中断」とあったが、本日はクリーンに109/109成功。**あれは環境起因（別プロセス占有）でコード起因でない**と確認できた。
+
+### 永続化
+- 実装：`src/data/posts.js`（2記事に faq）／コミット `cb5acec`
+- 本 lessons.md
+
+---
+
 ## 2026-06-05 ★★★★★ GA4プロパティ取り違えの near-miss と正しいID（ブランド混同の防止）
 
 ### 何が起きたか
