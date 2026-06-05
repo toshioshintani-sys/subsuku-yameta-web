@@ -53,7 +53,7 @@ export default function BlogPostPage() {
 
   const jsonLd = useMemo(() => {
     if (!post) return null;
-    return [
+    const schemas = [
       {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -74,6 +74,19 @@ export default function BlogPostPage() {
         ],
       },
     ];
+    // FAQPage：記事内に表示する Q&A と完全一致する場合のみ出力（Google ポリシー順守＝可視テキストと一致）
+    if (post.faq?.length) {
+      schemas.push({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      });
+    }
+    return schemas;
   }, [post]);
 
   if (!post) {
@@ -111,6 +124,19 @@ export default function BlogPostPage() {
           <div className={styles.body}>
             {post.body.map((block, i) => renderBlock(block, i))}
           </div>
+
+          {/* よくある質問（記事内容に基づく・FAQPage構造化データと一致＝AI検索/リッチリザルト用） */}
+          {post.faq?.length > 0 && (
+            <section className={styles.faq} aria-label="よくある質問">
+              <h2 className={styles.h2}>よくある質問</h2>
+              {post.faq.map((f, i) => (
+                <details key={i} className={styles.faqItem}>
+                  <summary className={styles.faqQ}>{f.q}</summary>
+                  <p className={styles.faqA}>{f.a}</p>
+                </details>
+              ))}
+            </section>
+          )}
         </article>
 
         {/* 広告（記事を読み終えた自然なブレイク・解約導線より下・未設定なら非表示） */}

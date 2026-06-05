@@ -159,6 +159,48 @@
   text-align: center;
 }
 
+/* よくある質問（FAQPage構造化データと対の可視UI） */
+.faq {
+  margin: 32px 0 8px;
+}
+
+.faqItem {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px 16px;
+  margin-bottom: 10px;
+  background: var(--surface);
+}
+
+.faqQ {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.7;
+  padding: 12px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faqQ::-webkit-details-marker {
+  display: none;
+}
+
+.faqQ::before {
+  content: 'Q. ';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.faqA {
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.95;
+  margin: 0 0 14px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
 /* CTA */
 .cta {
   display: flex;

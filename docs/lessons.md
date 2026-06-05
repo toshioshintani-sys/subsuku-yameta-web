@@ -754,6 +754,27 @@ ServicePage の `ALTERNATIVES` で **アフィリンクにするには「外部e
 
 ---
 
+## 2026-06-05 ★★★ FAQPage構造化データを「opt-in＋可視UI一致」で実装（AI検索引用最適化＝集客部長#1）
+
+### 発見
+BlogPostPage は Article + BreadcrumbList の JSON-LD は持っていたが **FAQPage が無かった**。FAQPage は ChatGPT/Gemini/AI Overviews の引用とGoogleリッチリザルトに効く最強レバーで、集客部長の最優先（AI検索引用最適化）に直結する未実装ギャップだった。
+
+### 実装パターン（再利用可・重要）
+- posts.js に **任意フィールド `faq: [{q, a}]`** を追加（持たない記事は完全に無影響＝後方互換）。
+- BlogPostPage で `post.faq?.length` のときだけ (1) FAQPage JSON-LD を schemas に push、(2) 可視の `<details>/<summary>` FAQセクションを描画。
+- **Googleポリシー順守の肝**：FAQPage構造化データは「ユーザーに見える本文と一致」が必須。だから JSON-LD だけ注入は不可＝必ず可視UIと対で出す。`<details>` の展開式UIはGoogleが明示的に許容（中身はDOMに存在）。
+- **真実性の肝**：Q&Aの回答は記事本文に書いてある内容だけから作る（新事実を足さない）。第一弾はW杯記事（季節需要が今ピーク）に5問。
+
+### なぜ重要か
+AdSense審査中の本サイトでは、ポリシー違反マークアップ（不可視FAQ・本文に無い断定）は致命傷。「可視UIと一致・本文由来・任意opt-in」の3点を満たせば安全に量産できる。横展開候補：when-to-cancel・auto-renewal-pitfalls 等のHOWTO/FAQ性が高い記事。
+
+### 永続化
+- 実装：`src/pages/BlogPostPage.jsx`（FAQPage JSON-LD＋`<details>`描画）/ `BlogPostPage.module.css`（.faq系）/ `src/data/posts.js`（W杯記事に faq 5問）
+- 検証：vite build 緑（2206 modules）・bundleに faq文言とFAQPage混入を確認。※ローカル prerender は別プロセスのポート4317占有で中断（コード起因でない・Netlifyはクリーン環境でprerender）。
+- 本 lessons.md
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
