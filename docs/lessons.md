@@ -797,7 +797,7 @@ GA4で `layer`/`placement` カスタムディメンションを作る作業中�
 
 ### 永続化
 - `CLAUDE.md` §8 を正しい測定ID/プロパティIDに訂正済。
-- 残り：`service`・`asp`・`position` も同様に登録すると affiliate_click をフル分解可能（任意・未実施）。
+- カスタムディメンション5件すべて登録完了（2026-06-05）：`layer`・`placement`・`service`・`asp`・`position`（イベント範囲）。affiliate_click を全パラメータで分解可能に。
 
 ---
 
