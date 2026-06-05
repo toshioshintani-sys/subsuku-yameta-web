@@ -194,7 +194,9 @@
 ## 8. Netlify 環境変数（v2.0 時点）
 
 ```
-VITE_GA_MEASUREMENT_ID=（設定済）
+VITE_GA_MEASUREMENT_ID=G-S0H16V3WE2  ← サブスクやめた専用（GA4プロパティID 538470329・アカウント392497640内）
+  # ⚠️ G-L5V42D0116 / プロパティ534433669 は「ライフオラクル」。別物。GA4作業時は必ずプロパティ538470329を選ぶこと（2026-06-05 訂正）
+  # カスタムディメンション（イベント範囲）：layer・placement 登録済（affiliate_clickの3層/配置別分析用）
 VITE_ADSENSE_CLIENT=（設定済）
 VITE_ADSENSE_SLOT_SERVICE=4506595525
 VITE_SITE_URL=https://sabusuku.netlify.app
