@@ -927,6 +927,25 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
 
 ---
 
+## 2026-06-06 ★5 計測の穴：blog本文アフィクリックが構造的に1件も計測されていなかった
+
+### 発見
+- `BlogPostPage.jsx` は本文を `dangerouslySetInnerHTML` で描画するため、本文中の生`<a>`タグはReactの`onClick`に乗らず、`trackAffiliateClick`（affiliates.js:187）の**発火経路がゼロ**だった。
+- 結果、実装済みアフィ3本のうち**blog埋め込み2本（dicon/Dentaly）のクリックは100%計測不能**。計測されていたのはALTERNATIVES枠のABEMA 1本だけ。
+- 4部長（収益/アフィ/記事/アプリ）が独立に同一バグを最優先指摘＝全会一致。
+
+### なぜ重要か
+- 憲法§1の優先順位は ①社会性→**②計測**→③母数→④アフィ。②が割れていると③④の意思決定が全部「勘」になる。トラフィックが来てから気づくと手遅れ＝**収益ゼロの今こそ直す絶好機**。
+- 教訓：`dangerouslySetInnerHTML`で挿入したリンクはReactイベントに乗らない。生HTMLのクリック計測は**コンテナにイベント委譲（`e.target.closest('a')`）**で拾うのが定石（既存`detectAsp`を再利用、依存ゼロ・10〜20行）。
+
+### 永続化（コード反映済）
+- `src/pages/BlogPostPage.jsx`：本文`.body`に委譲クリックリスナー→`placement=blog_inline`を計測。
+- `src/components/BiasGame.jsx`：`diagnosis_start`/`diagnosis_complete`を追加（告知ファネル＝撤退ライン100本×1,000の母数）。
+- `docs/threads-4koma/README.md`：2投目リンクに`utm_content=dora_NoXX`を必須化（4コマ別の効果判別）。
+- 規約：GA4 `placement` 値は登録済5軸固定（layer/placement/service/asp/position）。新placementを足す時は表記ゆれ注意。アフィリンクは判別可能なホスト（px.a8.net等）を使う（短縮URL/リダイレクタを噛ますと`detectAsp`が死ぬ）。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
