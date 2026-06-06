@@ -3,3 +3,7 @@ dist/
 .env
 .env.local
 .claude/
+
+# Threads auto-poster (secrets & local state)
+scripts/threads/.credentials.json
+scripts/threads/.state.json

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "note": "サブスクやめた Threads 自動投稿キュー（テキスト投稿のみ＝画像不要で完全自動化できる弾）。1回の実行で items を順に1本投稿し、最後まで行ったら先頭へ循環する。脚本の出典は docs/threads-stock.md（A-1〜A-10）。craft 準拠：バイアス名を出さない・感情語を避ける・1行目フック・タグ1個・リンクは2投目(reply)へ分離。",
+  "items": [
+    {
+      "id": "A-1",
+      "body": "「来月から本気出す」って、毎月言ってない…？\nジム3ヶ月行ってないのに、退会届だけ書けない。\n入会金1万円は、もう財布に戻ってこないのにね🐱",
+      "tag": "#サブスク",
+      "reply": "使ってないサブスク、続ける？やめる？が30秒で出る\n→ https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-2",
+      "body": "解約しようとした → パスワードどこだっけ → また今度。\nこの「また今度」、半年たってませんか。\n明細には、同じ金額が静かに並び続けてる🐱",
+      "tag": "#サブスク解約",
+      "reply": "主要サブスクの“最短”解約ルートまとめた\n→ https://sabusuku.netlify.app/?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-3",
+      "body": "解約ボタンの直前で出てくる「今やめると特典を失います」。\nあれに一回でも手が止まった人、カモにされる側です。\nその2ヶ月無料の先、ずっと月2,000円なんだけど🐱",
+      "tag": "#節約",
+      "reply": "引き止め文句に惑わされない判断ゲーム\n→ https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-4",
+      "body": "無料体験、終わる前に解約するつもりだった。\nカレンダーに入れた。通知も切った。今日、課金された。\n「あとでやる」は、だいたい来ない🐱",
+      "tag": "#固定費見直し",
+      "reply": "“あとで”を潰すサブスク棚卸し\n→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-5",
+      "body": "月600円。コーヒー2杯。そう思って4つ入った。\n気づいたら月2,400円、年28,800円。\n「1杯ぶん」を4回足すと、軽自動車に近づく🐱",
+      "tag": "#家計",
+      "reply": "あなたの合計、一瞬で出ます\n→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-6",
+      "body": "「みんな入ってるし」で入ったサブスク。\nそのみんな、ほんとに今も使ってる…？\n周りに合わせて始めたものほど、やめ時を逃す🐱",
+      "tag": "#サブスク",
+      "reply": "自分の使用頻度で“やめなさい順”が出る\n→ https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-7",
+      "body": "「せっかく課金したんだから元を取らなきゃ」\nで、観たくもない作品をBGMにして寝落ち。\n元を取るために時間を払ってる、本末転倒🐱",
+      "tag": "#節約術",
+      "reply": "続ける/やめるを30秒で整理\n→ https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-8",
+      "body": "プランを選ぶとき、真ん中をなんとなく選んでない？\n真ん中が“お得に見える”ように、上の段は置かれてる。\n選ばされた真ん中、ほんとに必要な容量ですか🐱",
+      "tag": "#サブスク",
+      "reply": "プラン別の年額まで出る棚卸し\n→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-9",
+      "body": "年払いにすると2ヶ月分お得。だから年払いにした。\n…使わなかった月も、まとめて払い終わってた。\n“お得”の前に、使うかどうかなんだよね🐱",
+      "tag": "#固定費",
+      "reply": "年契約のワナも込みで判定\n→ https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    },
+    {
+      "id": "A-10",
+      "body": "解約したいサービスが多すぎて、どれからやればいいか分からない。\n→ 高い × 解約がラク × 使ってない、の順でいい。\n全部やめなくていい。1個目で十分効く🐱",
+      "tag": "#サブスク解約",
+      "reply": "その“順番”を自動で出す\n→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi"
+    }
+  ]
+}
