@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { POST_BY_SLUG, POSTS } from '../data/posts';
+import { detectAsp, trackAffiliateClick } from '../data/affiliates';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import AdSlot from '../components/AdSlot';
@@ -89,6 +90,22 @@ export default function BlogPostPage() {
     return schemas;
   }, [post]);
 
+  // 本文（dangerouslySetInnerHTML）内のアフィリンクは React の onClick に乗らないため、
+  // 本文コンテナにイベント委譲リスナーを1つ置いて affiliate_click を計測する。
+  // 既存の detectAsp / trackAffiliateClick を再利用（新規依存なし）。
+  const handleBodyClick = useCallback((e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const asp = detectAsp(a.href);
+    if (asp === 'direct') return; // 内部リンク・非アフィは計測しない
+    trackAffiliateClick({
+      asp,
+      service: post?.slug || 'unknown',
+      placement: 'blog_inline',
+      position: 0,
+    });
+  }, [post]);
+
   if (!post) {
     return <Navigate to="/blog" replace />;
   }
@@ -121,7 +138,7 @@ export default function BlogPostPage() {
             <p className={styles.lead}>{post.description}</p>
           </div>
 
-          <div className={styles.body}>
+          <div className={styles.body} onClick={handleBodyClick}>
             {post.body.map((block, i) => renderBlock(block, i))}
           </div>
 

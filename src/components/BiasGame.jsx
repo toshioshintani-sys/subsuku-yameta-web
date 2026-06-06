@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 
 import styles from './BiasGame.module.css';
 
+// 告知ファネル計測：診断の開始/完了を GA4 に送る。
+// GA4 がセッションの utm_source（threads 等）に自動で紐付けるため、
+// 「告知→診断開始→診断完了」のファネルと撤退ライン（100本×1,000）の母数が取れる。
+function trackEvent(name, params) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  try {
+    window.gtag('event', name, params || {});
+  } catch {
+    // 計測失敗でUXを止めない
+  }
+}
+
 /**
  * バイアスゲーム 汎用エンジン（データ駆動）
  * - data/biasGames.js の1ゲーム設定（game prop）を受け取って描画する。
@@ -44,6 +56,7 @@ export default function BiasGame({ game }) {
     setRound(0);
     setChoice(null);
     setScore(0);
+    trackEvent('diagnosis_start', { game: game.id || String(game.n), bias: game.term });
   }
 
   function pick(key) {
@@ -53,8 +66,10 @@ export default function BiasGame({ game }) {
   }
 
   function next() {
-    if (round + 1 >= total) setPhase('result');
-    else {
+    if (round + 1 >= total) {
+      setPhase('result');
+      trackEvent('diagnosis_complete', { game: game.id || String(game.n), bias: game.term, score, total });
+    } else {
       setRound((r) => r + 1);
       setChoice(null);
     }

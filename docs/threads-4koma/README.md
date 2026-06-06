@@ -23,9 +23,17 @@
 | 15 | dora_No15_過信バイアス_全機能.png | 過信バイアス | 上位プラン、ほんとに上位の機能つかってる？🐱 | #固定費見直し | tracker |
 
 ## 2投目リンク（UTM付き・コピペ用）
-- **games**：`続ける？やめる？が30秒でわかる無料診断 → https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi`
-- **tracker**：`サブスクの棚卸し（合計・年額が一瞬で）→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi`
-- **top**：`主要サブスクの最短解約ルート → https://sabusuku.netlify.app/?utm_source=threads&utm_medium=social&utm_campaign=kokuchi`
+> **必ず末尾に `&utm_content=dora_NoXX` を付ける**（XX＝投稿する4コマ番号）。これで「どの4コマが釣れたか」がGA4で分かる＝撤退ライン判定が機能する。付け忘れると全部 kokuchi にまとまって、ネット別の効果が消える。
+- **games**：`続ける？やめる？が30秒でわかる無料診断 → https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=kokuchi&utm_content=dora_NoXX`
+- **tracker**：`サブスクの棚卸し（合計・年額が一瞬で）→ https://sabusuku.netlify.app/tracker?utm_source=threads&utm_medium=social&utm_campaign=kokuchi&utm_content=dora_NoXX`
+- **top**：`主要サブスクの最短解約ルート → https://sabusuku.netlify.app/?utm_source=threads&utm_medium=social&utm_campaign=kokuchi&utm_content=dora_NoXX`
+
+例：No04（自動更新）を投稿 → `…&utm_campaign=kokuchi&utm_content=dora_No04`
 
 ## 計測（撤退ライン：100本×1,000超えゼロで仮説再考）
-投稿したら、いいね/表示と**2投目リンクのクリック**を記録（GA4のutm_campaign=kokuchiで流入が見える）。
+GA4（プロパティ538470329）で以下が見える：
+- **流入**：`utm_source=threads` / `utm_campaign=kokuchi` / **`utm_content=dora_NoXX`（4コマ別）**
+- **ファネル**：セッション → `diagnosis_start`（診断開始）→ `diagnosis_complete`（診断完了）※BiasGameに計測実装済（2026-06-06）
+- **収益接続**：記事経由なら `affiliate_click`（`placement=blog_inline`）※BlogPostPageに委譲計測実装済（2026-06-06）
+
+→ 追うのは「いいね総数」でなく **utm_content別のクリック→diagnosis_start率**。どのネタ（バイアス）が診断に繋がったかで弾を選別する。
