@@ -1,0 +1,35 @@
+{
+  "_doc": "リプライ担当(reply-handler.mjs)の分類ルールと固定テンプレ。憲法 kokuchi-plan.md §2『広報運用ルール』のリプライ運用に対応。生成文を無承認で他人に送らない。テンプレは運営トーン（どら猫を脱ぐ）。",
+  "categories": {
+    "praise": {
+      "_desc": "賞賛・共感。完全自動OKだが Threads API は『いいね』未対応のため、現状は無反応＋記録のみ。",
+      "keywords": ["わかる", "それな", "わかりみ", "好き", "面白", "おもろ", "うける", "草", "ｗｗ", "www", "共感", "刺さ", "ほんそれ", "たしかに"],
+      "action": "none"
+    },
+    "faq": {
+      "_desc": "明確な質問。固定テンプレ（運営トーン）で返す。THREADS_REPLY_AUTOSEND=1 のときだけ自動送信、既定はキュー。",
+      "keywords": ["どこ", "どうやって", "やり方", "方法", "リンク", "url", "URL", "診断", "ゲームは", "解約", "教えて", "ある？", "どれ"],
+      "action": "template"
+    },
+    "criticism": {
+      "_desc": "批判・皮肉・不快表明。必ず人承認（運営トーンの下書きを提示）。自動送信しない。",
+      "keywords": ["嫌い", "最低", "うざ", "ウザ", "不快", "つまらん", "つまんな", "ステマ", "胡散", "うさん", "詐欺", "通報", "気持ち悪", "きも", "感じ悪", "上から", "失礼"],
+      "action": "draft_for_review"
+    },
+    "company_mention": {
+      "_desc": "実在サービス名を含む＝名誉毀損/景表法リスク。必ず人承認。提携先かどうかも人が判断。",
+      "keywords": ["Netflix", "ネトフリ", "Amazon", "アマプラ", "Disney", "ディズニー", "U-NEXT", "Hulu", "DAZN", "ABEMA", "Spotify", "YouTube", "ジム", "RIZAP", "ライザップ"],
+      "action": "draft_for_review"
+    },
+    "spam": {
+      "_desc": "荒らし・誹謗・無関係宣伝。無反応＋フラグ。THREADS_REPLY_HIDE_SPAM=1 のとき hide_reply。",
+      "keywords": ["稼げ", "副業", "DM", "ＤＭ", "フォロバ", "相互", "http://", "案件"],
+      "action": "flag"
+    }
+  },
+  "templates": {
+    "faq_default": "コメントありがとうございます。無料の診断ゲームと棚卸しはこちらです → https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=reply",
+    "faq_cancel": "コメントありがとうございます。主要サービスの最短解約ルートはこちらにまとめています → https://sabusuku.netlify.app/?utm_source=threads&utm_medium=social&utm_campaign=reply"
+  },
+  "review_draft_hint": "運営トーン（どら猫を脱ぐ）。事実なら謝罪、誤解は一度だけ静かに事実提示、煽りは無反応。下書きはあくまで叩き台で、送信は俊雄さんの承認後。"
+}

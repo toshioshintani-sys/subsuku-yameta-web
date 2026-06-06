@@ -7,3 +7,6 @@ dist/
 # Threads auto-poster (secrets & local state)
 scripts/threads/.credentials.json
 scripts/threads/.state.json
+# Threads reply-handler（他者コメント本文・ユーザー名を含む＝privacyのため非コミット）
+scripts/threads/reply-queue.json
+scripts/threads/.reply-state.json
