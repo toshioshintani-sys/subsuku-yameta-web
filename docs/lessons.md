@@ -843,6 +843,27 @@ GA4で `layer`/`placement` カスタムディメンションを作る作業中�
 
 ---
 
+## 2026-06-06 ★★★ dicon（コンタクト定額）を2本目の本番A8アフィとしてブログ記事で実装
+
+### 実施
+A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）を、ブログ記事 `contact-lens-spot-buy-to-subscription` に実装。
+- **報酬2,000円ちょうど＝§5-D「2,000円“超”」ではない→stress-test不要**（境界の判定確認）。
+- vehicle は **ブログ記事**（discover図鑑にdicon1件だけだと“横並び比較”が成立せず薄いため）。「卒業→入学」型・両論併記。
+- 追跡リンク＝A8素材ID:001（EPC最高）`px.a8.net/svt/ejp?a8mat=4B3XB5+201K2A+47VI+BWVTE` を記事本文の `<a rel="sponsored nofollow noopener noreferrer">`（PR）に直書き（公開情報なので可）。
+
+### ★ BAEの肝＝「本当の費用」を正直に
+広告は月額3,100円を前に出すが、**初回・更新時に年会費3,000円が別途**＝実質年額 約40,200円（月約3,350円）。**月額だけで判断させない**よう年会費を明記し、向く人/向かない人を両論併記（毎日1day乱視用なら効く／週数回・2week/1month・年会費が重い人は割高）。広告主の「最安級」は禁則なので不使用。
+
+### 運用メモ（再利用）
+- **飛び先URL（dicon.jp/…/LP_T2510）≠ 追跡リンク（px.a8.net）**。直リンクは計測されず報酬0。報酬は px.a8.net 経由のみ。
+- ブログ記事のアフィリンクは `dangerouslySetInnerHTML` 描画のため React onClick が付けられず**GA4 affiliate_click は飛ばない**（A8のa8matでの成果計測は機能）。blog_inlineのGA4計測は別途要対応の既知ギャップ。
+- **公開後の owner作業**：A8「広告掲載URL管理」に記事URL（/blog/contact-lens-spot-buy-to-subscription）を提出（提携条件）。
+
+### 永続化
+- 実装：`src/data/posts.js`（+1記事）。build 110/110。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
