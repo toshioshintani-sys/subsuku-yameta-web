@@ -775,6 +775,33 @@ AdSense審査中の本サイトでは、ポリシー違反マークアップ（�
 
 ---
 
+## 2026-06-06 ★★★★★ Threads 全自動投稿が稼働開始（公式API・テキスト1日1本）＋セットアップの落とし穴
+
+### 何ができたか
+俊雄さんが sabusuku.yameta の Threads を新規作成 → Meta公式Threads API でテキスト自動投稿を構築・**実投稿成功**。毎日20:00に `scripts/threads/post.mjs` が `queue.json`（A-1〜A-10循環）から1本＋リンク返信の2連投を自動公開（Windowsタスク `Subsuku_Threads_AutoPost_2000`）。
+
+### 構成（再利用可）
+- `scripts/threads/post.mjs`：graph.threads.net で TEXTコンテナ作成→publish、返信は reply_to_id。認証無ければ no-op で正常終了。新規npm依存ゼロ（global fetch）。
+- 認証：`scripts/threads/.credentials.json`（gitignore）に `{userId, accessToken}`。userId は `GET /v1.0/me?fields=id` で取得（=26896560380044092 / sabusuku.yameta）。
+- トークンは**60日有効・要更新**。失効したらトークン生成をやり直し。
+
+### セットアップの落とし穴（時間を溶かした順）
+1. **アプリ名に「meta」を含むと弾かれる**：`Subsuku Yameta` は "Ya**meta**" がNG。→ `Subsuku Yameru Poster` に変更で通過。FB/Insta/Book/Gram 等も同様。
+2. **プログラム入力(form_input)はReactのvalidationが発火せず赤エラーが残る**。実キーボード入力(type)で解消。
+3. **Threadsテスター**は generic FBテスターと別。役割ダイアログ下部の「**Threadsテスター**」を選び、Threadsユーザー名で招待 → 本人がThreadsアプリで承認。
+4. **トークン生成は「ブラウザでログイン中のThreadsアカウント」に対して走る**。個人垢(shinta1999)でログインしたままだと `error 1349245: user has not accepted the invite`。→ **threads.com を sabusuku.yameta でログインし直してから**生成すると通る。
+5. **Chrome MCPのCDPスクショは対象タブが背面だとタイムアウト**。OS側スクショ(computer-use)で確認 or read_page(a11y)で代替。前面維持が安定。
+
+### 運用・拡張
+- ネタ差し替えは `queue.json` の items を編集するだけ。画像(4コマ)は image_url(公開URL)が要るので当面テキストのみ自動、画像は手動。
+- アカウントは「個人IGとは別の新規IG(sabusuku.yameta)→Threads」。日本ではIG無しThreads単独登録は不可(EU/UKテストのみ)。
+
+### 永続化
+- 実装：`scripts/threads/{post.mjs,queue.json}` / `docs/THREADS_AUTOPOST_SETUP.md` / Windowsタスク `Subsuku_Threads_AutoPost_2000`
+- 本 lessons.md
+
+---
+
 ## 2026-06-06 ★★★ FAQPage を解約HOWTO記事へ横展開（量産パターンが回り始めた）
 
 ### 実施
