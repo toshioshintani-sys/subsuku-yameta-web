@@ -93,8 +93,11 @@ Set-Content 'C:\Users\user\Desktop\Claude_work\subsukuyametaweb\subsuku-yameta-w
 ### 方法B：再生成（リフレッシュ失効後）
 Meta開発者ダッシュボード → アプリ「Subsuku Yameru Poster」(ID 1013218207841843) → ユースケース「Threads API」→ 設定 → ユーザートークン生成ツール → sabusuku.yameta の「アクセストークンを生成」。**注意：ブラウザのthreads.comを sabusuku.yameta でログインした状態で**（個人垢のままだと `error 1349245`）。取得後 `.credentials.json` を更新。詳細は `docs/THREADS_AUTOPOST_SETUP.md`。
 
-### 推奨：自動リフレッシュ化（未実装・あなたの最初の改善候補）
-方法Aを `post.mjs` 内に組み込み「トークン残り<7日なら投稿前にrefresh」する。あるいは月次のWindowsタスクでリフレッシュだけ回す。これを入れると**人手のトークン管理が消える**。
+### 自動リフレッシュ化（✅ 2026-06-06 実装済・post.mjs に統合）
+`post.mjs` の `ensureFreshToken()` が**本番投稿の直前に「残り≤10日 or 期限不明なら refresh_access_token で自動延長」**し、`.credentials.json` を `{userId, accessToken, expiresAt, refreshedAt}` で更新する。
+- 失敗してもその日の投稿は止めない（現行トークンで継続）。dry-run / env由来では延長しない（副作用なし）。
+- 毎日20:00の自動投稿が走るたびに残量を見て、~50日ごとに自動延長＝**人手のトークン管理は不要**になった。
+- ⚠ 取得から24h未満は延長不可（Threads仕様）。初回取得当日の延長は失敗扱いで投稿だけ継続→翌日以降に自動延長が成功し expiresAt が入る。完全失効後だけ方法B（再生成）。
 
 ---
 
@@ -118,7 +121,7 @@ Meta開発者ダッシュボード → アプリ「Subsuku Yameru Poster」(ID 1
 
 ## 7. 残タスク / 次の一手（Threads専任chatが持つ）
 
-- [ ] **トークン自動リフレッシュ実装**（§4-推奨）。最優先（運用の安定化）。
+- [x] **トークン自動リフレッシュ実装**（§4）。2026-06-06 完了＝`post.mjs` の `ensureFreshToken()`。人手のトークン管理が不要に。
 - [ ] 反応データを見てネタ拡充（`queue.json` を10本→増やす）。伸びた文は4コマ化。
 - [ ] 投稿時刻/本数の最適化（今は1日1本20:00。エンゲージ次第で朝夜2本等）。
 - [ ] 4コマ画像投稿の経路を作るか判断（画像ホスティング＋image投稿 or 手動継続）。

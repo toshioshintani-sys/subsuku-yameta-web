@@ -39,19 +39,69 @@ function log(...a) {
   console.log(`[threads-poster ${new Date().toISOString()}]`, ...a);
 }
 
+// 返り値: { creds: {userId, accessToken, expiresAt?}|null, fromFile: boolean }
+// fromFile=true のときだけトークン自動延長で .credentials.json を書き戻せる
 function loadCreds() {
   const envId = process.env.THREADS_USER_ID;
   const envToken = process.env.THREADS_ACCESS_TOKEN;
-  if (envId && envToken) return { userId: envId, accessToken: envToken };
+  if (envId && envToken) return { creds: { userId: envId, accessToken: envToken }, fromFile: false };
   if (existsSync(CRED_PATH)) {
     try {
       const c = JSON.parse(readFileSync(CRED_PATH, 'utf8'));
-      if (c.userId && c.accessToken) return c;
+      if (c.userId && c.accessToken) return { creds: c, fromFile: true };
     } catch (e) {
       log('⚠ .credentials.json の読込に失敗:', e.message);
     }
   }
-  return null;
+  return { creds: null, fromFile: false };
+}
+
+/**
+ * トークンが失効間近(残り≤10日)または期限不明なら refresh_access_token で延長し、
+ * .credentials.json を {userId, accessToken, expiresAt, refreshedAt} で更新する。
+ * - 失敗してもその日の投稿は止めない（現行トークンで続行）。
+ * - env 由来トークンは書き戻せないので延長しない（残量が分かれば警告のみ）。
+ * - Threads 仕様：取得から24h未満は延長不可（その場合は失敗扱いで継続）。~50日ごとに延長で半永久に生きる。
+ */
+async function ensureFreshToken(creds, fromFile) {
+  const DAY = 24 * 60 * 60 * 1000;
+  const now = Date.now();
+  const expMs = creds.expiresAt ? new Date(creds.expiresAt).getTime() : NaN;
+  const remainingDays = Number.isFinite(expMs) ? (expMs - now) / DAY : NaN;
+
+  // 期限が分かっていて10日より多く残っていれば何もしない
+  if (Number.isFinite(remainingDays) && remainingDays > 10) return creds;
+
+  if (!fromFile) {
+    if (Number.isFinite(remainingDays) && remainingDays <= 10) {
+      log(`⚠ トークン残り約${remainingDays.toFixed(1)}日。env 由来のため自動延長不可。手動更新を。`);
+    }
+    return creds;
+  }
+
+  log(`トークン延長を試行（残り: ${Number.isFinite(remainingDays) ? remainingDays.toFixed(1) + '日' : '不明'}）`);
+  try {
+    const url = `${API_BASE}/refresh_access_token?grant_type=th_refresh_token&access_token=${encodeURIComponent(creds.accessToken)}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!res.ok || !data.access_token) {
+      throw new Error(`${res.status} ${JSON.stringify(data)}`);
+    }
+    const expiresIn = Number(data.expires_in) || 60 * 24 * 60 * 60; // 秒（既定60日）
+    const updated = {
+      userId: creds.userId,
+      accessToken: data.access_token,
+      expiresAt: new Date(now + expiresIn * 1000).toISOString(),
+      refreshedAt: new Date(now).toISOString(),
+    };
+    writeFileSync(CRED_PATH, JSON.stringify(updated, null, 2) + '\n', 'utf8');
+    log(`✓ トークン延長成功（次回失効目安: ${updated.expiresAt}）`);
+    return updated;
+  } catch (e) {
+    log('⚠ トークン延長に失敗（投稿は現行トークンで継続）:', e.message);
+    log('  ※取得から24h未満は延長不可。完全失効後は再生成（方法B）。詳細 docs/THREADS_OPERATION_HANDOFF.md §4。');
+    return creds;
+  }
 }
 
 function loadState() {
@@ -120,7 +170,8 @@ async function main() {
 
   log(`今回のネタ: ${item.id}（${idx + 1}/${items.length}）`);
 
-  const creds = loadCreds();
+  const { creds: loadedCreds, fromFile } = loadCreds();
+  let creds = loadedCreds;
 
   if (DRY_RUN || !creds) {
     if (!creds && !DRY_RUN) {
@@ -128,9 +179,12 @@ async function main() {
     }
     log('--- 1投目（本文）---\n' + body);
     log('--- 2投目（返信・リンク）---\n' + item.reply);
-    // dry-run / 未設定では state を進めない（本番投稿時のみ前進）
+    // dry-run / 未設定では state を進めない・トークン延長もしない（副作用なし）
     process.exit(0);
   }
+
+  // 本番のみ：トークンが失効間近なら自動延長（失敗しても現行トークンで投稿は継続）
+  creds = await ensureFreshToken(creds, fromFile);
 
   try {
     const postId = await publishText(creds, body);
