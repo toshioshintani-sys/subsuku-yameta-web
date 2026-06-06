@@ -9,12 +9,16 @@
 >
 > ※下記URLは公開前提の追跡リンク（秘密ではない）。実装時に `<a rel="sponsored nofollow noopener noreferrer">`＋（PR）で設置し、公開後 A8「広告掲載URL管理」に記事URLを提出。
 
-## ✅ 本番実装済み（3）
+## ✅ 本番実装済み（5）
 | サービス | programID | 報酬 | 設置 | 追跡URL |
 |---|---|---|---|---|
 | ABEMAプレミアム | s00000020550001 | 902円 | DAZN/WOWOW/U-NEXTのALTERNATIVES | https://px.a8.net/svt/ejp?a8mat=4B3XB5+2HB4LU+4EKC+5YRHE |
 | dicon（乱視用コンタクト定額） | s00000019683002 | 2,000円 | /blog/contact-lens-spot-buy-to-subscription | https://px.a8.net/svt/ejp?a8mat=4B3XB5+201K2A+47VI+BWVTE |
 | Dentaly（電動歯ブラシ定額） | s00000023224001 | 1,000円 | /blog/electric-toothbrush-spot-buy-to-subscription | https://px.a8.net/svt/ejp?a8mat=4B3XB5+2JOV0Y+4Z74+5YJRM |
+| アンドプランツ（花の定期便） | s00000022840002 | 1,500円 | /discover/flower（回数縛りなしを訴求） | https://px.a8.net/svt/ejp?a8mat=4B3XB5+3KLQJ6+4W8G+BWVTE |
+| タスハナ（+hana・花の定期便） | s00000023029001 | 1,000円 | /discover/flower（⚠5回縛りを明記＝両論併記） | https://px.a8.net/svt/ejp?a8mat=4B3XB5+37I782+4XOY+5YJRM |
+
+> 2026-06-07 花の定期便2社を /discover/flower に実装（#7・アフィ部推奨・2,000円未満ST不要）。タスハナの5回継続縛りは cancel 欄に明記（社会性＝正直）。クリックは discover/blog とも GA4 計測（affiliate委譲・2026-06-06実装）。
 
 ## 📦 取得済み・未実装の在庫（18・すべて4B3XB5＝サブスクやめた正規）
 

@@ -34,7 +34,7 @@ export const DISCOVER_GENRES = [
       '月550円から始められて、暮らしの「小さな非日常」を作るサブスク。ポスト投函型と直接受取型があり、自宅にいる時間が少ない人でも続けやすい。花瓶が付属するプランも多く、初めての人でも始めやすい。',
     targets: ['部屋の雰囲気を変えたい', '気分を上げたい', '気軽な贅沢が欲しい'],
     notFor: ['花粉症がひどい', '猫を飼っている（一部の花は猫に有害）', '長期不在が多い'],
-    priceRange: '550〜4,950円/月',
+    priceRange: '550〜4,980円/月',
     services: [
       {
         name: 'Bloomee（ブルーミー）',
@@ -62,6 +62,24 @@ export const DISCOVER_GENRES = [
         cancel: 'マイページから1回スキップまたは解約',
         officialUrl: 'https://medelu.life/',
         affiliateUrl: null,
+      },
+      {
+        name: 'AND PLANTS（アンドプランツ）',
+        domain: 'andplants.jp',
+        monthly: 1980,
+        usp: 'STANDARD1,980円〜（6本目安）。頻度を毎週/2週/4週で選べ、回数縛りなしでいつでも解約・スキップできる',
+        cancel: 'マイページからいつでも解約・スキップ可。最低継続回数なし（次回お届け前に手続き）',
+        officialUrl: 'https://andplants.jp/',
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+3KLQJ6+4W8G+BWVTE',
+      },
+      {
+        name: '+hana（タスハナ）',
+        domain: 'tasuhana（＋hana）',
+        monthly: 858,
+        usp: '月858円〜（送料込）の最安級・全プランポスト投函。ロスフラワー活用',
+        cancel: '⚠️最低5回の継続が必要。5回目の出荷後にマイページから解約可（次回配送10日前まで）。スキップは半年に1回は注文が要る',
+        officialUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+37I782+4XOY+5YJRM',
+        affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+37I782+4XOY+5YJRM',
       },
     ],
     cancelGuide:
