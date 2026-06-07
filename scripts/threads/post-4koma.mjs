@@ -17,10 +17,12 @@
  *
  * 認証情報は post.mjs と共通（env 優先 / .credentials.json）。
  *
- * 🚨 kill-switch（憲法・kokuchi-plan §2 広報運用ルール）:
- *   悪態どら猫の「画像4コマ」は強度が高いため、**手動・在席時のみ**投稿する。
- *   このスクリプトを無人スケジュール（cron / タスクスケジューラ）で回すのは禁止
- *   （無人で炎上が起きたら気づけない）。投下は「人が見ている時にワンコマンドで1本」。
+ * 🟢 運用（憲法・kokuchi-plan §2 広報運用ルール・2026-06-07 俊雄さん指示で改訂）:
+ *   4コマは「原則 自動スケジュール投稿」。タスク Subsuku_Threads_4koma_1200（毎日12:00・1本）。
+ *   安全装置は捨てない（kill-switch は"禁止"でなく"緊急停止"に格上げ）:
+ *     ① reply-handler でコメントを監視（批判・炎上シグナルは承認キューへ）
+ *     ② 炎上時の緊急停止: Disable-ScheduledTask -TaskName Subsuku_Threads_4koma_1200
+ *   投稿失敗時は state を進めず exit（壊れた投稿でスパムしない）。
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
