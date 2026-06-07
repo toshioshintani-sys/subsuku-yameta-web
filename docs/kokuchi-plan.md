@@ -78,8 +78,8 @@
 - 時間基準：俊雄さん平日不在のため「気づいた最初のセッションで即時／ただし自動投稿は気づいた瞬間に停止」。
 
 **自動投稿の安全装置（kill switch）**
-- **4コマ画像は原則 自動スケジュール投稿**（毎日12:00・タスク `Subsuku_Threads_4koma_1200`・俊雄さん指示2026-06-07）。テキスト queue.json は20:00・強度3以下。
-- 安全装置（kill-switch は"禁止"でなく"緊急停止"）：① reply-handler でコメント監視 → 批判/炎上は承認キュー、② 炎上時は `Disable-ScheduledTask -TaskName Subsuku_Threads_4koma_1200` で即停止。フォロワー増で炎上リスクが上がったら頻度/強度を再調整。
+- テキスト queue.json は20:00・強度3以下。**4コマ画像は kill-switch＝在席時に手動1本のみ**（無人スケジュール投稿は NOT_DOING / WEEKLY_SPRINT で禁止・2026-06-07 自律運用ルール適用で確定）。タスク `Subsuku_Threads_4koma_1200` は**無効化済**（再有効化は俊雄さんが方針変更を決定した時のみ＝NOT_DOING 再開トリガー）。
+- 監視：reply-handler でコメントを承認キューへ。炎上時は手動投稿を止める。
 - 炎上を察知したら、まず Windows タスク（Threads自動投稿 `Subsuku_Threads_AutoPost_2000` 等）を停止してから対応する。
 - リプライ自動送信（`reply-handler.mjs`）は環境変数 `THREADS_REPLY_AUTOSEND` で制御。**既定OFF**＝全件キュー行き。安全カテゴリ（テンプレFAQ）だけ ON にできる。
 

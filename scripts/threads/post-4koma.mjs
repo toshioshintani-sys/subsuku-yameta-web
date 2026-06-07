@@ -17,12 +17,11 @@
  *
  * 認証情報は post.mjs と共通（env 優先 / .credentials.json）。
  *
- * 🟢 運用（憲法・kokuchi-plan §2 広報運用ルール・2026-06-07 俊雄さん指示で改訂）:
- *   4コマは「原則 自動スケジュール投稿」。タスク Subsuku_Threads_4koma_1200（毎日12:00・1本）。
- *   安全装置は捨てない（kill-switch は"禁止"でなく"緊急停止"に格上げ）:
- *     ① reply-handler でコメントを監視（批判・炎上シグナルは承認キューへ）
- *     ② 炎上時の緊急停止: Disable-ScheduledTask -TaskName Subsuku_Threads_4koma_1200
- *   投稿失敗時は state を進めず exit（壊れた投稿でスパムしない）。
+ * 🚨 kill-switch（憲法・kokuchi-plan §2 / NOT_DOING / WEEKLY_SPRINT・2026-06-07 自律運用ルール適用）:
+ *   画像4コマは強度が高いため、**在席時に手動で1本のみ**投稿する。無人スケジュール投稿は禁止。
+ *   このスクリプトは「人が見ている時にワンコマンドで1本」専用。
+ *   タスク Subsuku_Threads_4koma_1200 は無効化済（再有効化は俊雄さんが方針変更を決定した時のみ）。
+ *   reply-handler でコメントを監視（承認キュー）。投稿失敗時は state を進めず exit（スパムしない）。
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
