@@ -10,3 +10,5 @@ scripts/threads/.state.json
 # Threads reply-handler（他者コメント本文・ユーザー名を含む＝privacyのため非コミット）
 scripts/threads/reply-queue.json
 scripts/threads/.reply-state.json
+# 4コマ画像投稿の進捗state（ローカル）
+scripts/threads/.4koma-state.json
