@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ChevronDown, ArrowRight, X } from 'lucide-react';
-import { SERVICES, getPopularity, getDefaultMonthly } from '../data/services';
+import { SERVICES, getPopularity, getDefaultMonthly, getPlans } from '../data/services';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
@@ -122,8 +122,15 @@ function applySort(list, sortBy) {
   });
 }
 
+function popularPlanIndex(id) {
+  const plans = getPlans(id);
+  const i = plans.findIndex((p) => p.popular);
+  return i >= 0 ? i : 0;
+}
+
 // ヒーローのインライン・ミニ計算機。
-// 「いま入っているもの」をタップで選ぶと、年間の固定費がその場でカウントアップする。
+// 「いま入っているもの」をタップ→各サービスのプランを自分のコースに合わせると、
+// 年間の固定費がその場でカウントアップする。プランで料金が違う問題に対応。
 // 煽らず・正直に（実価格）総額を見せ、棚卸し(/tracker)へ自然につなぐ＝§2-2準拠。
 function HeroCostCalc() {
   const options = useMemo(
@@ -131,14 +138,26 @@ function HeroCostCalc() {
     []
   );
   const [selected, setSelected] = useState(() => new Set(HERO_SAMPLE_IDS));
+  const [planIdx, setPlanIdx] = useState({}); // { serviceId: planIndex }（未設定はpopular）
+
+  const planIndexFor = (id) => (id in planIdx ? planIdx[id] : popularPlanIndex(id));
+  const monthlyFor = (id) => {
+    const plans = getPlans(id);
+    if (plans.length) return plans[planIndexFor(id)]?.monthly ?? getDefaultMonthly(id);
+    return getDefaultMonthly(id);
+  };
 
   const yearly = useMemo(() => {
     let sum = 0;
     options.forEach((s) => {
-      if (selected.has(s.id)) sum += getDefaultMonthly(s.id) * 12;
+      if (!selected.has(s.id)) return;
+      const plans = getPlans(s.id);
+      const idx = s.id in planIdx ? planIdx[s.id] : popularPlanIndex(s.id);
+      const monthly = plans.length ? (plans[idx]?.monthly ?? getDefaultMonthly(s.id)) : getDefaultMonthly(s.id);
+      sum += monthly * 12;
     });
     return sum;
-  }, [selected, options]);
+  }, [selected, planIdx, options]);
 
   const toggle = (id) =>
     setSelected((prev) => {
@@ -147,6 +166,8 @@ function HeroCostCalc() {
       else next.add(id);
       return next;
     });
+
+  const selectedList = options.filter((s) => selected.has(s.id));
 
   return (
     <div className={styles.heroCalc}>
@@ -164,11 +185,46 @@ function HeroCostCalc() {
             >
               <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={20} />
               <span className={styles.heroCalcChipName}>{s.name}</span>
-              <span className={styles.heroCalcChipPrice}>{formatYen(getDefaultMonthly(s.id))}</span>
             </button>
           );
         })}
       </div>
+
+      {selectedList.length > 0 && (
+        <div className={styles.heroCalcPlans}>
+          {selectedList.map((s) => {
+            const plans = getPlans(s.id);
+            const idx = planIndexFor(s.id);
+            const monthly = monthlyFor(s.id);
+            return (
+              <div className={styles.heroCalcPlanRow} key={s.id}>
+                <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={18} />
+                <span className={styles.heroCalcPlanName}>{s.name}</span>
+                {plans.length > 1 ? (
+                  <div className={styles.heroCalcSelectWrap}>
+                    <select
+                      className={styles.heroCalcSelect}
+                      value={idx}
+                      onChange={(e) => setPlanIdx((p) => ({ ...p, [s.id]: Number(e.target.value) }))}
+                      aria-label={`${s.name} のプラン`}
+                    >
+                      {plans.map((p, j) => (
+                        <option key={j} value={j}>
+                          {p.name}（{formatYen(p.monthly)}）
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown size={14} strokeWidth={2} aria-hidden="true" />
+                  </div>
+                ) : (
+                  <span className={styles.heroCalcPlanFixed}>月{formatYen(monthly)}</span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       <div className={styles.heroCalcResult}>
         <div className={styles.heroCalcAmountWrap}>
           <span className={styles.heroCalcAmountLabel}>年間の固定費</span>
@@ -180,7 +236,7 @@ function HeroCostCalc() {
         </Link>
       </div>
       <p className={styles.heroCalcNote}>
-        解約・乗り換え・買い切りの前に、まず総額を。タップして自分の契約に合わせられます。
+        プランで料金は変わります。自分のコースを選んで合わせてください（価格は参考値）。
       </p>
     </div>
   );

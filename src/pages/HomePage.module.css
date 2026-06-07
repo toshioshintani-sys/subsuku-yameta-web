@@ -140,6 +140,77 @@
   color: var(--accent);
   opacity: 1;
 }
+/* 選んだサービスのプランを自分のコースに合わせる行 */
+.heroCalcPlans {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.heroCalcPlanRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.heroCalcPlanRow img,
+.heroCalcPlanRow svg {
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+.heroCalcPlanName {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.heroCalcSelectWrap {
+  position: relative;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+}
+.heroCalcSelectWrap svg {
+  position: absolute;
+  right: 9px;
+  color: #16233a;
+  pointer-events: none;
+}
+.heroCalcSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 6px 28px 6px 11px;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: #fff;
+  color: #16233a;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  max-width: 230px;
+}
+.heroCalcSelect:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.heroCalcPlanFixed {
+  margin-left: auto;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .heroCalcSelect {
+    max-width: 158px;
+  }
+  .heroCalcPlanName {
+    font-size: 12px;
+  }
+}
 .heroCalcResult {
   display: flex;
   align-items: center;
