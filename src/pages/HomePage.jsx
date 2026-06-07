@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ChevronDown, ArrowRight, X } from 'lucide-react';
+import { Search, ChevronDown, ArrowRight, X, Plus } from 'lucide-react';
 import { SERVICES, getPopularity, getDefaultMonthly, getPlans } from '../data/services';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
@@ -129,16 +129,21 @@ function popularPlanIndex(id) {
 }
 
 // ヒーローのインライン・ミニ計算機。
-// 「いま入っているもの」をタップ→各サービスのプランを自分のコースに合わせると、
-// 年間の固定費がその場でカウントアップする。プランで料金が違う問題に対応。
+// よく使う8件のクイックチップ＋「全件検索で追加」で、いま入っているものを選び、
+// 各サービスのプランを自分のコースに合わせると、年間の固定費がカウントアップする。
+// ※一部だけ並べると網羅性=信頼を損なうため、全サービスから追加できるようにしている。
 // 煽らず・正直に（実価格）総額を見せ、棚卸し(/tracker)へ自然につなぐ＝§2-2準拠。
 function HeroCostCalc() {
-  const options = useMemo(
-    () => applySort(SERVICES.filter((s) => getDefaultMonthly(s.id) > 0), 'popular').slice(0, 8),
+  const allPaid = useMemo(
+    () => applySort(SERVICES.filter((s) => getDefaultMonthly(s.id) > 0), 'popular'),
     []
   );
+  const quickPicks = useMemo(() => allPaid.slice(0, 8), [allPaid]);
+
   const [selected, setSelected] = useState(() => new Set(HERO_SAMPLE_IDS));
   const [planIdx, setPlanIdx] = useState({}); // { serviceId: planIndex }（未設定はpopular）
+  const [showAdd, setShowAdd] = useState(false);
+  const [addQuery, setAddQuery] = useState('');
 
   const planIndexFor = (id) => (id in planIdx ? planIdx[id] : popularPlanIndex(id));
   const monthlyFor = (id) => {
@@ -149,31 +154,41 @@ function HeroCostCalc() {
 
   const yearly = useMemo(() => {
     let sum = 0;
-    options.forEach((s) => {
-      if (!selected.has(s.id)) return;
-      const plans = getPlans(s.id);
-      const idx = s.id in planIdx ? planIdx[s.id] : popularPlanIndex(s.id);
-      const monthly = plans.length ? (plans[idx]?.monthly ?? getDefaultMonthly(s.id)) : getDefaultMonthly(s.id);
+    selected.forEach((id) => {
+      const plans = getPlans(id);
+      const idx = id in planIdx ? planIdx[id] : popularPlanIndex(id);
+      const monthly = plans.length ? (plans[idx]?.monthly ?? getDefaultMonthly(id)) : getDefaultMonthly(id);
       sum += monthly * 12;
     });
     return sum;
-  }, [selected, planIdx, options]);
+  }, [selected, planIdx]);
 
-  const toggle = (id) =>
+  const add = (id) =>
     setSelected((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      next.add(id);
+      return next;
+    });
+  const remove = (id) =>
+    setSelected((prev) => {
+      const next = new Set(prev);
+      next.delete(id);
       return next;
     });
 
-  const selectedList = options.filter((s) => selected.has(s.id));
+  const selectedServices = useMemo(() => allPaid.filter((s) => selected.has(s.id)), [allPaid, selected]);
+
+  const addResults = useMemo(() => {
+    const q = addQuery.trim().toLowerCase();
+    return allPaid.filter((s) => !selected.has(s.id) && (!q || s.name.toLowerCase().includes(q))).slice(0, 8);
+  }, [allPaid, selected, addQuery]);
 
   return (
     <div className={styles.heroCalc}>
       <p className={styles.heroCalcLead}>いま入っているもの、年いくら？</p>
+
       <div className={styles.heroCalcChips} role="group" aria-label="契約中のサブスクを選ぶ">
-        {options.map((s) => {
+        {quickPicks.map((s) => {
           const on = selected.has(s.id);
           return (
             <button
@@ -181,18 +196,64 @@ function HeroCostCalc() {
               key={s.id}
               className={`${styles.heroCalcChip} ${on ? styles.heroCalcChipOn : ''}`}
               aria-pressed={on}
-              onClick={() => toggle(s.id)}
+              onClick={() => (on ? remove(s.id) : add(s.id))}
             >
               <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={20} />
               <span className={styles.heroCalcChipName}>{s.name}</span>
             </button>
           );
         })}
+        <button
+          type="button"
+          className={`${styles.heroCalcChip} ${styles.heroCalcAddChip}`}
+          aria-expanded={showAdd}
+          onClick={() => setShowAdd((v) => !v)}
+        >
+          <Plus size={16} strokeWidth={2.2} aria-hidden="true" />
+          <span>他のサブスクを追加</span>
+        </button>
       </div>
 
-      {selectedList.length > 0 && (
+      {showAdd && (
+        <div className={styles.heroCalcAdd}>
+          <div className={styles.heroCalcAddSearch}>
+            <Search size={16} strokeWidth={1.9} aria-hidden="true" />
+            <input
+              type="search"
+              className={styles.heroCalcAddInput}
+              placeholder={`サービス名で検索（全${allPaid.length}件から）`}
+              value={addQuery}
+              onChange={(e) => setAddQuery(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
+          <div className={styles.heroCalcAddResults}>
+            {addResults.length === 0 ? (
+              <span className={styles.heroCalcAddEmpty}>該当なし。棚卸しダッシュボードには全サービスがあります。</span>
+            ) : (
+              addResults.map((s) => (
+                <button
+                  type="button"
+                  key={s.id}
+                  className={styles.heroCalcAddItem}
+                  onClick={() => {
+                    add(s.id);
+                    setAddQuery('');
+                  }}
+                >
+                  <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={18} />
+                  <span className={styles.heroCalcAddItemName}>{s.name}</span>
+                  <Plus size={14} strokeWidth={2.2} aria-hidden="true" />
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
+      {selectedServices.length > 0 && (
         <div className={styles.heroCalcPlans}>
-          {selectedList.map((s) => {
+          {selectedServices.map((s) => {
             const plans = getPlans(s.id);
             const idx = planIndexFor(s.id);
             const monthly = monthlyFor(s.id);
@@ -219,6 +280,14 @@ function HeroCostCalc() {
                 ) : (
                   <span className={styles.heroCalcPlanFixed}>月{formatYen(monthly)}</span>
                 )}
+                <button
+                  type="button"
+                  className={styles.heroCalcRemove}
+                  onClick={() => remove(s.id)}
+                  aria-label={`${s.name} を外す`}
+                >
+                  <X size={14} strokeWidth={2} aria-hidden="true" />
+                </button>
               </div>
             );
           })}
@@ -236,7 +305,7 @@ function HeroCostCalc() {
         </Link>
       </div>
       <p className={styles.heroCalcNote}>
-        プランで料金は変わります。自分のコースを選んで合わせてください（価格は参考値）。
+        全{allPaid.length}件から選べます。プランで料金が変わるので、自分のコースを選んでください（価格は参考値）。
       </p>
     </div>
   );
