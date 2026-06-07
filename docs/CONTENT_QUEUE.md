@@ -14,7 +14,7 @@
 |---|---|---|---|---|---|
 | 1 | gym-cancel-to-home-training | 買い切り・高intent | 未 | FAQ＋損益分岐の早見表化＋「向かない人」見出し化 | todo |
 | 2 | water-server-cancel-to-filter | 買い切り | 未 | FAQ＋年間コスト比較表＋向く人見出し | todo |
-| 3 | why-cant-cancel | 解約・高intent | 未 | FAQ＋ダークパターン別フロー＋見出し定義/原因/解決 | todo |
+| 3 | why-cant-cancel | 解約・高intent | ✅ | FAQ4問追加済（本文由来・ダークパターン/対処/法規制）。見出しの定義→原因→解決順は任意 | done |
 | 4 | how-to-survive-retention-screen | 解約 | 未 | FAQ＋引き止め文句×対処の対応表 | todo |
 | 5 | auto-renewal-pitfalls | 自動更新・高intent | 未 | FAQ＋自動更新チェックリスト見出し化 | todo |
 | 6 | monthly-vs-yearly-plan | 比較 | 未 | FAQ＋月額vs年額の比較表＋解約自由度 | todo |
