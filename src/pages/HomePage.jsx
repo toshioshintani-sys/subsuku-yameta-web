@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, BarChart3, ChevronDown, ArrowRight, X } from 'lucide-react';
+import { Search, ChevronDown, ArrowRight, X } from 'lucide-react';
 import { SERVICES, getPopularity, getDefaultMonthly } from '../data/services';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
@@ -122,6 +122,70 @@ function applySort(list, sortBy) {
   });
 }
 
+// ヒーローのインライン・ミニ計算機。
+// 「いま入っているもの」をタップで選ぶと、年間の固定費がその場でカウントアップする。
+// 煽らず・正直に（実価格）総額を見せ、棚卸し(/tracker)へ自然につなぐ＝§2-2準拠。
+function HeroCostCalc() {
+  const options = useMemo(
+    () => applySort(SERVICES.filter((s) => getDefaultMonthly(s.id) > 0), 'popular').slice(0, 8),
+    []
+  );
+  const [selected, setSelected] = useState(() => new Set(HERO_SAMPLE_IDS));
+
+  const yearly = useMemo(() => {
+    let sum = 0;
+    options.forEach((s) => {
+      if (selected.has(s.id)) sum += getDefaultMonthly(s.id) * 12;
+    });
+    return sum;
+  }, [selected, options]);
+
+  const toggle = (id) =>
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  return (
+    <div className={styles.heroCalc}>
+      <p className={styles.heroCalcLead}>いま入っているもの、年いくら？</p>
+      <div className={styles.heroCalcChips} role="group" aria-label="契約中のサブスクを選ぶ">
+        {options.map((s) => {
+          const on = selected.has(s.id);
+          return (
+            <button
+              type="button"
+              key={s.id}
+              className={`${styles.heroCalcChip} ${on ? styles.heroCalcChipOn : ''}`}
+              aria-pressed={on}
+              onClick={() => toggle(s.id)}
+            >
+              <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={20} />
+              <span className={styles.heroCalcChipName}>{s.name}</span>
+              <span className={styles.heroCalcChipPrice}>{formatYen(getDefaultMonthly(s.id))}</span>
+            </button>
+          );
+        })}
+      </div>
+      <div className={styles.heroCalcResult}>
+        <div className={styles.heroCalcAmountWrap}>
+          <span className={styles.heroCalcAmountLabel}>年間の固定費</span>
+          <AnimatedYen value={yearly} prefix="¥" className={styles.heroCalcAmount} />
+        </div>
+        <Link to="/tracker" className={styles.heroCalcCta}>
+          棚卸しで整理する
+          <ArrowRight size={16} strokeWidth={1.9} aria-hidden="true" />
+        </Link>
+      </div>
+      <p className={styles.heroCalcNote}>
+        解約・乗り換え・買い切りの前に、まず総額を。タップして自分の契約に合わせられます。
+      </p>
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [query, setQuery] = useState('');
   const [sortBy, setSortBy] = useState('popular');
@@ -143,15 +207,6 @@ export default function HomePage() {
   }, []);
 
   const top10Ids = useMemo(() => new Set(top10.map((s) => s.id)), [top10]);
-
-  const heroSample = useMemo(() => {
-    const items = HERO_SAMPLE_IDS.map((id) => SERVICES.find((s) => s.id === id)).filter(Boolean);
-    const yearly = items.reduce((sum, service) => sum + getDefaultMonthly(service.id) * 12, 0);
-    return {
-      names: items.map((s) => s.name).join(' + '),
-      yearly,
-    };
-  }, []);
 
   // Top10 を除いた残りを カテゴリ別に分割
   const restByCategory = useMemo(() => {
@@ -217,20 +272,8 @@ export default function HomePage() {
           )}
         </div>
 
-        {/* Tracker CTA */}
-        <Link to="/tracker" className={styles.heroTracker}>
-          <span className={styles.heroTrackerIcon} aria-hidden="true">
-            <BarChart3 size={16} strokeWidth={1.75} />
-          </span>
-          <span className={styles.heroTrackerBody}>
-            <span className={styles.heroTrackerLabel}>例：{heroSample.names}</span>
-            <span className={styles.heroTrackerMain}>
-              <AnimatedYen value={heroSample.yearly} prefix="年¥" className={styles.heroTrackerAmount} />
-              <span>をまず見える化</span>
-            </span>
-          </span>
-          <ArrowRight size={15} strokeWidth={1.85} aria-hidden="true" />
-        </Link>
+        {/* インライン・ミニ計算機（体験型・/tracker へ自然に誘導） */}
+        <HeroCostCalc />
         </div>
       </section>
 

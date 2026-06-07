@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ArrowUpRight } from 'lucide-react';
 import { DISCOVER_GENRES_BY_ID, DISCOVER_GENRES } from '../data/discover';
 import { trackAffiliateClick, detectAsp } from '../data/affiliates';
 import AdSlot from '../components/AdSlot';
@@ -113,26 +113,34 @@ export default function DiscoverGenrePage() {
                   <span className={styles.serviceCancelLabel}>やめる時：</span>
                   {s.cancel}
                 </div>
-                <a
-                  href={s.affiliateUrl || s.officialUrl}
-                  target="_blank"
-                  rel={s.affiliateUrl ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
-                  className={styles.serviceLink}
-                  onClick={
-                    s.affiliateUrl
-                      ? () =>
-                          trackAffiliateClick({
-                            asp: detectAsp(s.affiliateUrl),
-                            service: s.id || s.name,
-                            placement: 'discover_genre',
-                            position: i + 1,
-                            layer: 'B',
-                          })
-                      : undefined
-                  }
-                >
-                  公式サイトを見る ↗
-                </a>
+                <div className={styles.serviceFooter}>
+                  {s.affiliateUrl && (
+                    <span className={styles.prTag} title="広告（アフィリエイト）を含みます">
+                      PR
+                    </span>
+                  )}
+                  <a
+                    href={s.affiliateUrl || s.officialUrl}
+                    target="_blank"
+                    rel={s.affiliateUrl ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
+                    className={styles.serviceLink}
+                    onClick={
+                      s.affiliateUrl
+                        ? () =>
+                            trackAffiliateClick({
+                              asp: detectAsp(s.affiliateUrl),
+                              service: s.id || s.name,
+                              placement: 'discover_genre',
+                              position: i + 1,
+                              layer: 'B',
+                            })
+                        : undefined
+                    }
+                  >
+                    <span>公式サイトを見る</span>
+                    <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
+                  </a>
+                </div>
               </article>
             ))}
           </div>
