@@ -18,19 +18,19 @@ export default function Header() {
         </Link>
         <div className={styles.right}>
           <nav className={styles.nav} aria-label="主要ナビゲーション">
-            <Link to="/discover" className={styles.navLink}>
+            <Link to="/discover" className={styles.navLink} aria-label="サブスク図鑑">
               <LayoutGrid size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
               <span>図鑑</span>
             </Link>
-            <Link to="/tracker" className={styles.navLink}>
+            <Link to="/tracker" className={styles.navLink} aria-label="棚卸し">
               <ListChecks size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
               <span>棚卸し</span>
             </Link>
-            <Link to="/games" className={styles.navLink}>
+            <Link to="/games" className={styles.navLink} aria-label="ゲーム">
               <Gamepad2 size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
               <span>ゲーム</span>
             </Link>
-            <Link to="/blog" className={styles.navLink}>
+            <Link to="/blog" className={styles.navLink} aria-label="記事">
               <FileText size={16} strokeWidth={1.75} className={styles.navIcon} aria-hidden="true" />
               <span>記事</span>
             </Link>

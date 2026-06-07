@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, BarChart3, ChevronDown } from 'lucide-react';
-import { SERVICES, CATEGORIES, getPopularity, getDefaultMonthly } from '../data/services';
+import { Search, BarChart3, ChevronDown, ArrowRight, X } from 'lucide-react';
+import { SERVICES, getPopularity, getDefaultMonthly } from '../data/services';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
@@ -32,9 +32,76 @@ const SORT_OPTIONS = [
   { id: 'difficulty-desc', label: '解約しにくい順' },
 ];
 
+const HERO_SAMPLE_IDS = ['netflix', 'spotify', 'youtube-premium'];
+
+const NEXT_MOVES = [
+  {
+    label: 'A',
+    title: 'まず、何も契約しない',
+    desc: '契約中の固定費を年額で見て、残すものだけを決める',
+    to: '/tracker',
+    action: '棚卸しする',
+  },
+  {
+    label: 'B',
+    title: '合うものに乗り換える',
+    desc: '解約した後の代替サブスクを、特徴と弱点つきで比較する',
+    to: '/discover',
+    action: '図鑑を見る',
+  },
+  {
+    label: 'C',
+    title: '買い切りで済ませる',
+    desc: '月額を増やさず、単発購入で足りるラインを探す',
+    to: '/yamete-kau',
+    action: '買い切りを見る',
+  },
+];
+
 function formatYen(n) {
   if (!n || n === 0) return '';
   return `¥${n.toLocaleString('ja-JP')}`;
+}
+
+function AnimatedYen({ value, className, prefix = '¥' }) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    if (
+      typeof window === 'undefined' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      rafRef.current = requestAnimationFrame(() => setDisplayValue(value));
+      return () => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
+    }
+
+    const start = performance.now();
+    const duration = 900;
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setDisplayValue(Math.round(value * eased));
+      if (progress < 1) {
+        rafRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [value]);
+
+  return (
+    <span className={className}>
+      {prefix}
+      {displayValue.toLocaleString('ja-JP')}
+    </span>
+  );
 }
 
 function applySort(list, sortBy) {
@@ -76,6 +143,15 @@ export default function HomePage() {
   }, []);
 
   const top10Ids = useMemo(() => new Set(top10.map((s) => s.id)), [top10]);
+
+  const heroSample = useMemo(() => {
+    const items = HERO_SAMPLE_IDS.map((id) => SERVICES.find((s) => s.id === id)).filter(Boolean);
+    const yearly = items.reduce((sum, service) => sum + getDefaultMonthly(service.id) * 12, 0);
+    return {
+      names: items.map((s) => s.name).join(' + '),
+      yearly,
+    };
+  }, []);
 
   // Top10 を除いた残りを カテゴリ別に分割
   const restByCategory = useMemo(() => {
@@ -124,7 +200,7 @@ export default function HomePage() {
             id="service-search"
             className={styles.searchInput}
             type="search"
-            placeholder="サービス名で検索（例：Netflix、Spotify…）"
+            placeholder="サービス名で検索（例：Netflix）"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoComplete="off"
@@ -136,16 +212,24 @@ export default function HomePage() {
               aria-label="検索をクリア"
               type="button"
             >
-              ✕
+              <X size={16} strokeWidth={1.8} aria-hidden="true" />
             </button>
           )}
         </div>
 
         {/* Tracker CTA */}
         <Link to="/tracker" className={styles.heroTracker}>
-          <BarChart3 size={16} strokeWidth={1.75} aria-hidden="true" />
-          <span>まとめて棚卸しする：契約中サブスクの合計額と「解約しなさい順」を可視化</span>
-          <span aria-hidden="true">→</span>
+          <span className={styles.heroTrackerIcon} aria-hidden="true">
+            <BarChart3 size={16} strokeWidth={1.75} />
+          </span>
+          <span className={styles.heroTrackerBody}>
+            <span className={styles.heroTrackerLabel}>例：{heroSample.names}</span>
+            <span className={styles.heroTrackerMain}>
+              <AnimatedYen value={heroSample.yearly} prefix="年¥" className={styles.heroTrackerAmount} />
+              <span>をまず見える化</span>
+            </span>
+          </span>
+          <ArrowRight size={15} strokeWidth={1.85} aria-hidden="true" />
         </Link>
         </div>
       </section>
@@ -158,7 +242,7 @@ export default function HomePage() {
               <span className={styles.guideNum}>1</span>
               <div>
                 <div className={styles.guideTitle}>サービスを探す</div>
-                <div className={styles.guideDesc}>下の検索かカテゴリから、解約したいサブスクを選ぶ</div>
+                <div className={styles.guideDesc}>下の検索かカテゴリから選ぶ</div>
               </div>
             </li>
             <li className={styles.guideItem}>
@@ -220,7 +304,10 @@ export default function HomePage() {
                   </div>
                   <div className={styles.cardName}>{service.name}</div>
                   <div className={styles.cardMeta}>{service.steps.length}ステップで完了</div>
-                  <div className={styles.cardArrow}>解約手順を見る →</div>
+                  <div className={styles.cardArrow}>
+                    <span>解約手順を見る</span>
+                    <ArrowRight size={14} strokeWidth={1.85} aria-hidden="true" />
+                  </div>
                 </Link>
               ))}
             </div>
@@ -232,7 +319,7 @@ export default function HomePage() {
             {/* セクション1：Top10 大タイル */}
             <section className={styles.topSection} aria-label="人気のサブスク Top10">
               <h2 className={styles.sectionTitle}>
-                <span className={styles.sectionRank}>★</span>
+                <span className={styles.sectionRank}>よく探される</span>
                 人気の <span className={styles.numHighlight}>Top 10</span>
               </h2>
               <div className={styles.topGrid}>
@@ -255,6 +342,28 @@ export default function HomePage() {
                         <span className={styles.topPrice}>{formatYen(getDefaultMonthly(service.id))}</span>
                       )}
                     </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section className={styles.nextMoveSection} aria-label="やめた後の次の動き">
+              <div className={styles.nextMoveHeader}>
+                <span className={styles.nextMoveKicker}>やめた後の次の動き</span>
+                <h2 className={styles.nextMoveTitle}>解約だけで終わらせず、固定費を組み替える</h2>
+              </div>
+              <div className={styles.nextMoveGrid}>
+                {NEXT_MOVES.map((move) => (
+                  <Link to={move.to} key={move.label} className={styles.nextMoveCard}>
+                    <span className={styles.nextMoveLabel}>{move.label}</span>
+                    <span className={styles.nextMoveText}>
+                      <span className={styles.nextMoveCardTitle}>{move.title}</span>
+                      <span className={styles.nextMoveDesc}>{move.desc}</span>
+                    </span>
+                    <span className={styles.nextMoveAction}>
+                      {move.action}
+                      <ArrowRight size={14} strokeWidth={1.85} aria-hidden="true" />
+                    </span>
                   </Link>
                 ))}
               </div>
@@ -314,7 +423,9 @@ export default function HomePage() {
                               {getDefaultMonthly(s.id) > 0 && (
                                 <span className={styles.catRowPrice}>月 {formatYen(getDefaultMonthly(s.id))}</span>
                               )}
-                              <span className={styles.catRowArrow} aria-hidden="true">→</span>
+                              <span className={styles.catRowArrow} aria-hidden="true">
+                                <ArrowRight size={15} strokeWidth={1.85} />
+                              </span>
                             </Link>
                           </li>
                         ))}

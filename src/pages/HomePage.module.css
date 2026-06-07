@@ -1,14 +1,29 @@
 .page {
   min-height: 100vh;
+  background:
+    linear-gradient(180deg, color-mix(in oklch, var(--surface) 78%, var(--bg)) 0, var(--bg) 520px),
+    var(--bg);
 }
 
 /* ヒーロー */
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
-  padding: 56px 24px 48px;
+  background:
+    linear-gradient(180deg, rgba(6, 14, 28, 0.18), rgba(6, 14, 28, 0.32)),
+    linear-gradient(135deg, #101a2d 0%, #233556 62%, #182338 100%);
+  padding: 72px 24px 72px;
   text-align: center;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 120px;
+  background: linear-gradient(180deg, transparent, rgba(10, 18, 32, 0.28));
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* 背景帯：キリさん v3 イラストを薄く敷く（装飾・序列は崩さない） */
@@ -24,7 +39,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.5;
+  opacity: 0.34;
 }
 
 @media (max-width: 600px) {
@@ -39,43 +54,47 @@
 .heroInner {
   position: relative;
   z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .heroTitle {
-  font-size: 36px;
-  font-weight: 700;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
   color: #fff;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
-}
-
-@media (max-width: 600px) {
-  .heroTitle {
-    font-size: 26px;
-  }
+  letter-spacing: 0;
+  line-height: 1.16;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.26);
 }
 
 .heroDesc {
   color: rgba(255, 255, 255, 0.92);
-  font-size: 15px;
-  margin-bottom: 28px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 30px;
 }
 
 .searchWrap {
-  max-width: 560px;
+  max-width: 680px;
   margin: 0 auto;
   position: relative;
   display: flex;
   align-items: center;
   background: var(--surface);
-  border-radius: 12px;
-  padding: 0 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  padding: 0 18px;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.88) inset;
 }
 
 .searchIcon {
-  font-size: 18px;
-  margin-right: 10px;
+  display: inline-flex;
+  color: #0f2742;
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
@@ -84,68 +103,183 @@
   border: none;
   outline: none;
   font-size: 16px;
-  padding: 16px 0;
+  min-width: 0;
+  padding: 18px 0;
   color: var(--text);
   background: transparent;
   font-family: inherit;
+  font-weight: 500;
 }
 
 .searchInput::placeholder {
-  color: #aaa;
+  color: color-mix(in oklch, var(--text-sub) 64%, transparent);
 }
 
 .clearBtn {
-  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--bg);
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  color: #aaa;
-  font-size: 14px;
-  padding: 4px;
+  color: var(--text-sub);
+  padding: 0;
+  transition: color 0.15s, background 0.15s;
+}
+
+.clearBtn:hover {
+  color: var(--text);
+  background: var(--surface-2);
 }
 
 /* Hero Tracker CTA */
 .heroTracker {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 100%;
+  margin-top: 22px;
+  padding: 10px 12px 10px 14px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.07)),
+    rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.15s;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  animation: quietPulse 4.6s ease-in-out infinite;
 }
 
 .heroTracker:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.38);
   transform: translateY(-1px);
 }
 
+.heroTrackerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.12);
+  flex: 0 0 auto;
+}
+
+.heroTrackerBody {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  text-align: left;
+}
+
+.heroTrackerLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heroTrackerMain {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.93);
+  line-height: 1.35;
+}
+
+.heroTrackerAmount {
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+@keyframes quietPulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+  }
+  50% {
+    box-shadow: 0 14px 36px rgba(0, 137, 143, 0.2);
+  }
+}
+
 @media (max-width: 600px) {
+  .hero {
+    padding: 54px 24px 58px;
+  }
+
+  .heroBg img {
+    opacity: 0.28;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+    line-height: 1.28;
+  }
+
+  .heroDesc {
+    font-size: 15px;
+    line-height: 1.78;
+    margin-bottom: 24px;
+  }
+
+  .searchWrap {
+    padding: 0 14px;
+  }
+
+  .searchInput {
+    padding: 15px 0;
+  }
+
   .heroTracker {
+    width: 100%;
     font-size: 12px;
-    padding: 8px 14px;
+    line-height: 1.55;
+    padding: 10px 12px;
+    justify-content: flex-start;
+  }
+
+  .heroTrackerLabel {
+    max-width: 250px;
+  }
+
+  .heroTrackerAmount {
+    font-size: 16px;
   }
 }
 
 /* コンテンツ */
 .content {
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 0 24px 72px;
 }
 
 /* 使い方ガイド */
 .guide {
-  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+  margin: -34px 0 30px;
 }
 
 .guideList {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 8px;
+  gap: 10px;
   list-style: none;
 }
 
@@ -158,18 +292,19 @@
 
 .guideItem {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: flex-start;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
+  border-radius: 8px;
+  padding: 18px 18px;
+  box-shadow: var(--shadow-sm);
 }
 
 .guideNum {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: var(--accent);
   color: #fff;
   font-size: 14px;
@@ -184,13 +319,13 @@
   font-size: 14px;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .guideDesc {
   font-size: 12px;
   color: var(--text-sub);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .guideLink {
@@ -241,7 +376,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
+  padding: 14px 16px;
+  background: color-mix(in oklch, var(--surface) 84%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
 
 .count {
@@ -263,7 +403,8 @@
 .sortSelect {
   font-family: inherit;
   font-size: 13px;
-  padding: 6px 10px;
+  min-height: 36px;
+  padding: 6px 34px 6px 10px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -293,30 +434,178 @@
 /* セクション共通 */
 .topSection,
 .catSection {
-  margin-bottom: 40px;
+  margin-bottom: 44px;
+}
+
+.nextMoveSection {
+  margin: -8px 0 44px;
+  padding: 22px;
+  background:
+    linear-gradient(135deg, color-mix(in oklch, var(--accent-soft) 70%, var(--surface)), var(--surface));
+  border: 1px solid color-mix(in oklch, var(--accent) 18%, var(--border));
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.nextMoveHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.nextMoveKicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  color: var(--accent-text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.nextMoveTitle {
+  flex: 1;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.nextMoveGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.nextMoveCard {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "label text"
+    "label action";
+  gap: 8px 12px;
+  min-height: 132px;
+  padding: 16px;
+  background: color-mix(in oklch, var(--surface) 94%, white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+}
+
+.nextMoveCard::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transform: translateX(-40%);
+  transition: opacity 0.18s;
+}
+
+.nextMoveCard:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.nextMoveCard:hover::after {
+  opacity: 0.85;
+  animation: scanMove 1.4s ease-out infinite;
+}
+
+.nextMoveLabel {
+  grid-area: label;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 8px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.nextMoveText {
+  grid-area: text;
+  display: grid;
+  gap: 5px;
+}
+
+.nextMoveCardTitle {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.nextMoveDesc {
+  color: var(--text-sub);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.nextMoveAction {
+  grid-area: action;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: end;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateX(-45%);
+  }
+  100% {
+    transform: translateX(45%);
+  }
 }
 
 .sectionTitle {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 700;
+  gap: 9px;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--text);
-  margin-bottom: 18px;
-  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  letter-spacing: 0;
 }
 
 .sectionRank {
-  color: var(--accent);
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  color: var(--accent-text);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in oklch, var(--accent) 22%, transparent);
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .numHighlight {
   color: var(--accent);
   font-family: var(--font-mono);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .titleSub {
@@ -330,7 +619,7 @@
 .topGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 @media (min-width: 540px) {
@@ -343,7 +632,7 @@
 @media (min-width: 720px) {
   .topGrid {
     grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
+    gap: 16px;
   }
 }
 
@@ -351,35 +640,38 @@
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px 12px 14px;
+  border-radius: 8px;
+  padding: 20px 12px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
-  min-height: 152px;
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s, background 0.18s;
+  min-height: 164px;
+  box-shadow: 0 1px 0 color-mix(in oklch, var(--surface) 70%, white) inset, var(--shadow-sm);
 }
 
 .topCard:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+  background: color-mix(in oklch, var(--surface) 92%, var(--accent-soft));
 }
 
 .topRank {
   position: absolute;
-  top: 8px;
-  left: 10px;
+  top: 9px;
+  left: 9px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   color: var(--text-sub);
-  background: var(--bg);
-  padding: 2px 6px;
+  background: color-mix(in oklch, var(--bg) 82%, var(--surface));
+  border: 1px solid var(--border);
+  padding: 2px 7px;
   border-radius: 6px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .topName {
@@ -389,7 +681,7 @@
   text-align: center;
   line-height: 1.3;
   margin-top: 2px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .topMeta {
@@ -405,7 +697,7 @@
   font-size: 11px;
   color: var(--text-sub);
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .badgeSmall {
@@ -421,8 +713,9 @@
   margin-bottom: 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
 .catHeader {
@@ -430,7 +723,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 14px 16px;
   background: var(--surface);
   border: none;
   font-family: inherit;
@@ -455,7 +748,7 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: 7px;
   background: var(--accent-soft);
   color: var(--accent-text);
 }
@@ -472,7 +765,7 @@
   color: var(--text-sub);
   background: var(--bg);
   padding: 2px 8px;
-  border-radius: 999px;
+  border-radius: 7px;
   font-family: var(--font-mono);
 }
 
@@ -502,9 +795,10 @@
   grid-template-columns: auto 1fr auto auto auto;
   align-items: center;
   gap: 12px;
-  padding: 10px 16px;
+  min-height: 58px;
+  padding: 11px 16px;
   text-decoration: none;
-  transition: background 0.12s;
+  transition: background 0.12s, color 0.12s;
 }
 
 .catRow:hover {
@@ -515,7 +809,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -526,13 +820,16 @@
   font-size: 12px;
   color: var(--text-sub);
   font-family: var(--font-mono);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
 .catRowArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-sub);
-  font-size: 14px;
+  transition: color 0.15s, transform 0.15s;
 }
 
 .catRow:hover .catRowArrow {
@@ -551,6 +848,84 @@
   }
 }
 
+@media (max-width: 600px) {
+  .content {
+    padding: 0 24px 64px;
+  }
+
+  .guide {
+    margin-top: -26px;
+    margin-bottom: 26px;
+  }
+
+  .guideItem {
+    padding: 16px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .sortWrap {
+    justify-content: space-between;
+  }
+
+  .sortSelect {
+    flex: 1;
+    max-width: 180px;
+  }
+
+  .sectionTitle {
+    flex-wrap: wrap;
+    gap: 7px;
+    font-size: 20px;
+    line-height: 1.35;
+  }
+
+  .topGrid {
+    gap: 12px;
+  }
+
+  .topCard {
+    min-height: 150px;
+    padding: 18px 10px 13px;
+  }
+
+  .nextMoveSection {
+    padding: 16px;
+    margin-bottom: 36px;
+  }
+
+  .nextMoveHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nextMoveTitle {
+    text-align: left;
+    font-size: 17px;
+  }
+
+  .nextMoveGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .nextMoveCard {
+    min-height: 116px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroTracker,
+  .nextMoveCard:hover::after {
+    animation: none;
+  }
+}
+
 /* グリッド（検索結果フラット表示モード用・既存維持） */
 .grid {
   display: grid;
@@ -562,7 +937,7 @@
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 20px;
   cursor: pointer;
   transition: all 0.2s;
@@ -622,6 +997,9 @@
 }
 
 .cardArrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 13px;
   color: var(--accent);
   font-weight: 600;

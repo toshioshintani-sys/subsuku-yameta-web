@@ -11,9 +11,14 @@
 
 新しいチャット・セッションを「サブスクやめた」関連の作業で始めるとき、**最初に以下を読む**：
 
-1. **`docs/lessons.md`** — 過去の発見・失敗・判断軸。重要度 ★ 順にスキャン
-2. **`docs/AFFILIATE_DESIGN_PRINCIPLES.md`** — BAE 設計憲法 v2.0（実装の判断軸）
-3. **`docs/STRATEGY.md`** — 戦略文書（Phase 計画）
+1. **`docs/WEEKLY_SPRINT.md`** — 今週のfocus（やる3/やらない3/律速）。**最初に読む**（自律運用ルール原則2＝計画が実行を拘束する・2026-06-07追加）
+2. **`docs/NOT_DOING.md`** — 今やらないこと/DO-NOT-ADOPT（逸脱防止・2026-06-07追加）
+3. **`docs/ORG_OPERATING_MODEL.md`** — 部長制の組織憲章（運営の型）
+4. **`docs/lessons.md`** — 過去の発見・失敗・判断軸。重要度 ★ 順にスキャン
+5. **`docs/AFFILIATE_DESIGN_PRINCIPLES.md`** — BAE 設計憲法 v2.0（実装の判断軸）
+6. **`docs/STRATEGY.md`** — 戦略文書（Phase 計画）
+
+> 全プロジェクト共通の自律運用の型 = `~/.claude/AUTONOMY_OPERATING_RULES.md`。サブスクやめたは**部長制(ORG)＋週次スプリント**で原則を満たす（原則1/4/5/7は部長制で既達・原則2/6を2026-06-07に補強）。**固有決定が既定に勝つ**（例：Xは送客最下位＝採択しない・画像4コマは在席手動のみ）。
 
 「サブスクやめた」関連かどうかの判定基準：
 - ユーザーの依頼に「サブスクやめた」「sabusuku」「subsuku」「解約」のいずれかが含まれる

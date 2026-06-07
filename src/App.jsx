@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Analytics from './components/Analytics';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
 import './index.css';
 
@@ -46,6 +47,7 @@ function PageLoader() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Analytics />
       <Header />
       <main id="main">
