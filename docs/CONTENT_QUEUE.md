@@ -17,7 +17,7 @@
 | 3 | why-cant-cancel | 解約・高intent | ✅ | FAQ4問追加済（本文由来・ダークパターン/対処/法規制）。見出しの定義→原因→解決順は任意 | done |
 | 4 | how-to-survive-retention-screen | 解約 | ✅ | FAQ4問追加済（06-10・本文由来＝3コツ＋確認メール）。対応表は任意 | done |
 | 5 | auto-renewal-pitfalls | 自動更新・高intent | ✅ | FAQ4問追加済。チェックリスト見出し化は任意 | done |
-| 6 | monthly-vs-yearly-plan | 比較 | 未 | FAQ＋月額vs年額の比較表＋解約自由度 | todo |
+| 6 | monthly-vs-yearly-plan | 比較 | ✅ | FAQ4問追加済（06-11・本文由来＝損得判断/計算式/5つの判断軸/デメリット）。比較表化は任意 | done |
 | 7 | free-trial-strategy | 無料体験 | 未 | FAQ＋解約締切の逆算カレンダー早見表 | todo |
 | 8 | best-payment-method-for-subscription | 比較 | 未 | FAQ＋支払い方法の比較表 | todo |
 | - | contact-lens-spot-buy-to-subscription | 買い切り | ✅ | 済（228e116）。見出し順だけ点検 | done |
