@@ -913,6 +913,7 @@ export const ALTERNATIVES = {
   hulu: [
     { id: 'u-next', reason: '国内ドラマ重視ならこちらも充実' },
     { id: 'amazon-prime', reason: '値段重視ならこちらが圧倒的' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とほぼ同額。ニュース・オリジナル番組・アニメ中心ならこちら。海外ドラマの厚みはHuluが上' },
   ],
   'u-next': [
     { id: 'hulu', reason: '月額料金を抑えたい場合' },
@@ -924,9 +925,11 @@ export const ALTERNATIVES = {
   ],
   fod: [
     { id: 'u-next', reason: 'フジ系コンテンツも見放題対象' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とやや高くなる。ニュース・バラエティ・アニメの同時配信が強み。フジ系の独占作品はFODでしか見られないものが多い' },
   ],
   lemino: [
     { id: 'amazon-prime', reason: 'コスパ重視の汎用VOD' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とほぼ同額。オリジナル番組・ニュース・格闘技中心なら。ドコモ系特典との連携はLeminoが上' },
   ],
   'dmm-premium': [
     { id: 'amazon-prime', reason: '一般作品中心なら定番の選択' },
@@ -944,6 +947,7 @@ export const ALTERNATIVES = {
   ],
   danime: [
     { id: 'u-next', reason: '同じドコモグループ・アニメも見放題に多数含む' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とdアニメより高くなる。アニメ専門でなくニュース・バラエティも見たい人向け。アニメ本数の深さはdアニメが上' },
   ],
 
   // 音楽 — 価格帯違い or 無料プラン
@@ -1092,6 +1096,7 @@ export const ALTERNATIVES = {
   crunchyroll: [
     { id: 'danime', reason: '日本国内ならdアニメ系がコスパ◎' },
     { id: 'u-next', reason: 'アニメ含む網羅型VOD' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とやや高い。アニメの同時配信＋ニュース・バラエティも見るなら。アニメ専門の網羅性はCrunchyrollやdアニメが上' },
   ],
   'vimeo-pro': [
     { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '公開動画の置き場としては圧倒的に無料で十分' },
