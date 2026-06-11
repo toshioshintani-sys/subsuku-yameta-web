@@ -1144,6 +1144,11 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
   2. **失敗通知の有効化**：`npx netlify env:set BUILD_FAILURE_WEBHOOK "<#6のwebhook URL>"`。
   3. **リモートビルド失敗の根因**：Netlifyコンソール（https://app.netlify.com/projects/sabusuku/deploys ）で失敗deployのログを開けば30秒で判明する（APIでは読めない）。
 
+### ✅ 解決（2026-06-12 朝・俊雄さん承認後）
+- **根因確定＝Netlify上で puppeteer の Chrome が不在**（ラッパーのSlack自動通知が実エラー「Could not find Chrome (ver.149)」を捕獲）。6/3頃のビルドイメージ更新（noble）で `~/.cache/puppeteer` が消えた後、node_modulesはキャッシュ復元される＝postinstall（Chrome DL）が二度と走らず**自己回復しない構造**だった。
+- **修正＝`scripts/netlify-build.mjs` が NETLIFY=true 時に `npx puppeteer browsers install chrome` を冪等実行**（6a1acec）。push→自動ビルド→自動公開が9日ぶりに復活（published=6a1acec を一次ソースで確認）。
+- 復旧手順の記録：①俊雄さん承認後 `netlify deploy --build --prod` で本番を即時最新化 ②BUILD_FAILURE_WEBHOOK 設定 ③診断ビルド1発→ラッパーが実エラーをSlackへ→根因特定→修正push→自動デプロイ復活。**ログがAPI非公開でも「ビルド自身に喋らせる」ラッパーが突破口になった**。
+
 ### 教訓
 - **「push済み」と「本番反映」は別物。デプロイの成否はNetlifyの published_deploy（一次ソース）で確認する**。朝会の健全性チェックに「本番デプロイの commit_ref が origin/main HEAD と一致するか」を加えるべき（`netlify api getSite` で取得可）。
 - 手動リストア等の**本番操作は必ず lessons / Slack に記録する**。無記録の操作が9日間の沈黙事故の起点になった。
