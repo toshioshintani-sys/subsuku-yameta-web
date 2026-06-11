@@ -6,7 +6,9 @@
 # - NODE_VERSION を固定して Netlify のデフォルト変更による事故を防ぐ
 
 [build]
-  command = "npm run build"
+  # ラッパー経由でビルド：失敗時に実エラー末尾を Slack（env: BUILD_FAILURE_WEBHOOK）へ自動通知。
+  # 2026-06-03〜11 にビルド全敗が9日間無通知だった事故の再発防止（自律運用ルール原則7）。
+  command = "node scripts/netlify-build.mjs"
   publish = "dist"
 
 [build.environment]

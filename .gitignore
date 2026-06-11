@@ -12,3 +12,6 @@ scripts/threads/reply-queue.json
 scripts/threads/.reply-state.json
 # 4コマ画像投稿の進捗state（ローカル）
 scripts/threads/.4koma-state.json
+
+# Netlify CLI link state
+.netlify/

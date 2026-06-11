@@ -1129,6 +1129,28 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
 
 ---
 
+## 2026-06-12 ★5 重大事故発見：本番が5/31版に固定・6/3以降の全ビルドが9日間silent失敗（push≠deploy）
+
+### 事実（一次ソース＝Netlify API・コミット履歴）
+- **本番（sabusuku.netlify.app）の公開deployは 5/31 の d053563 のまま**。6/1以降の約40コミット（FAQ群・ヒーロー計算機・ScrollToTop・PR透明タグ・ナビブリーフ…全部）は**一度も本番に出ていない**。
+- タイムライン：6/3 12:20Z 84b2ea9 のビルドまで成功 → **6/3 12:25Z に誰かが本番を5/31版へ手動リストア**（Netlify UI操作・記録なし・おそらくCodexデザインWIPの視覚崩れ対応）→ 6/3 12:43Z 04bd68f から**全ビルドが「exit 2・約20秒」で失敗し続け**、リストアが固定化した。
+- 失敗原因は**未特定**：コマンド/branch/stop_builds/ロック＝全て正常。lockfile健全（全プラットフォームrollupあり）。import欠落なし。**クリーンclone＋npm ci＋buildはローカル成功**＝ソースは無実。Netlify環境固有。**ビルドログはAPI非公開**＝コンソールUIでしか読めない。
+- **「push済み＝本番反映」と全員（私含む）が9日間思い込んでいた**。Slack通知はpushの成功しか報じない。検証も localhost プレビューで行っていた。
+
+### 夜間に実施済みの対処
+- **再発防止（原則7「無人で静かに死なない」）**：`scripts/netlify-build.mjs`（ビルドラッパー）＋netlify.toml変更。ビルド失敗時に実エラー末尾をSlackへ自動通知する。**有効化には Netlify env `BUILD_FAILURE_WEBHOOK` の設定が必要（俊雄さんの承認待ち・下記）**。未設定でも挙動は従来と同一（安全）。
+- 安全分類器の判断により私からは実行しなかったもの（**俊雄さんの朝の意思決定**）：
+  1. **本番の最新化**：リポジトリで `npx netlify deploy --build --prod` を1回（CLIがNetlify環境変数を注入してビルド→デプロイ。リンク済み・検証済み）。戻す時は `npx netlify api restoreSiteDeploy --data '{"site_id":"b4ac149a-76c4-4156-9903-c2605ac17cf9","deploy_id":"6a1caa96f7cfd00008ecc785"}'`（5/31版に1コマンドで復帰）。
+  2. **失敗通知の有効化**：`npx netlify env:set BUILD_FAILURE_WEBHOOK "<#6のwebhook URL>"`。
+  3. **リモートビルド失敗の根因**：Netlifyコンソール（https://app.netlify.com/projects/sabusuku/deploys ）で失敗deployのログを開けば30秒で判明する（APIでは読めない）。
+
+### 教訓
+- **「push済み」と「本番反映」は別物。デプロイの成否はNetlifyの published_deploy（一次ソース）で確認する**。朝会の健全性チェックに「本番デプロイの commit_ref が origin/main HEAD と一致するか」を加えるべき（`netlify api getSite` で取得可）。
+- 手動リストア等の**本番操作は必ず lessons / Slack に記録する**。無記録の操作が9日間の沈黙事故の起点になった。
+- 検証はlocalhostだけでなく**本番URLの実体**でも行う（今回、llms.txt検証のSPAフォールバック200が偽陽性を生んだ：存在しないパスでも index.html が200で返る。**静的ファイルの存在確認は Content-Type または本文先頭で判定**）。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
