@@ -495,3 +495,66 @@
 .note strong {
   color: var(--text);
 }
+
+/* 解約のあとの選択肢（B/C出口・解約CTAより視覚的に弱いトーン） */
+.nextMoves {
+  margin-top: 20px;
+  padding: 20px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.nextMovesTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.nextMovesLead {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+
+.nextMovesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .nextMovesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nextMoveCard {
+  display: block;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.nextMoveCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.nextMoveTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.nextMoveDesc {
+  font-size: 12px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}

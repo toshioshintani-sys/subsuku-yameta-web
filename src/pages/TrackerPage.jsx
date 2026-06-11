@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SERVICES, PRICING, CATEGORIES, getPlans } from '../data/services';
+import { trackAffiliateClick } from '../data/affiliates';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './TrackerPage.module.css';
@@ -309,6 +310,35 @@ export default function TrackerPage() {
                 </li>
               ))}
             </ol>
+          </section>
+        )}
+
+        {/* 解約のあとの選択肢（B=乗換/C=買い切りの出口。解約導線より視覚的に弱く・末尾配置） */}
+        {recommendedOrder.length > 0 && (
+          <section className={styles.nextMoves} aria-label="解約のあとの選択肢">
+            <h2 className={styles.nextMovesTitle}>解約のあと、どう動く？</h2>
+            <p className={styles.nextMovesLead}>
+              乗り換える必要はありません。このまま整理を続けるだけでも十分です。
+              ただ「やめたら困るかも」で手が止まっているなら、次の2つが判断材料になります。
+            </p>
+            <div className={styles.nextMovesGrid}>
+              <Link
+                to="/discover"
+                className={styles.nextMoveCard}
+                onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 1, layer: 'B' })}
+              >
+                <div className={styles.nextMoveTitle}>合うものに乗り換える</div>
+                <div className={styles.nextMoveDesc}>近い代替を特徴と弱点つきで比較（サブスク図鑑）</div>
+              </Link>
+              <Link
+                to="/yamete-kau"
+                className={styles.nextMoveCard}
+                onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 2, layer: 'C' })}
+              >
+                <div className={styles.nextMoveTitle}>買い切りで済ませる</div>
+                <div className={styles.nextMoveDesc}>月額を増やさず、単発購入で足りるラインを探す（やめて買う）</div>
+              </Link>
+            </div>
           </section>
         )}
 
