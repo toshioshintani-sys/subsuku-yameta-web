@@ -44,7 +44,15 @@ export default defineConfig({
         // SPA フォールバック
         navigateFallback: '/index.html',
         // sitemap.xml と ads.txt は Netlify が直接配信するので除外
-        navigateFallbackDenylist: [/^\/sitemap\.xml/, /^\/ads\.txt/, /^\/robots\.txt/],
+        // feed.xml / llms.txt / IndexNowキー(.txt) も同様に静的配信（SWを通さない）
+        navigateFallbackDenylist: [
+          /^\/sitemap\.xml/,
+          /^\/ads\.txt/,
+          /^\/robots\.txt/,
+          /^\/feed\.xml/,
+          /^\/llms\.txt/,
+          /^\/[0-9a-f]{32}\.txt$/,
+        ],
         // ロゴ画像（Clearbit）は SWR（古いキャッシュを返しつつバックグラウンドで更新）
         runtimeCaching: [
           {
