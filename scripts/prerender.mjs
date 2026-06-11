@@ -16,7 +16,9 @@ import puppeteer from 'puppeteer';
 import { readFileSync, mkdirSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 
-const PORT = 4317;
+// ポートは環境変数で可変（既定4317）。別プロセスが占有して衝突した時は
+// PRERENDER_PORT=4318 などで回避できる（2026-06-12・ポート占有での build 失敗対策）
+const PORT = Number(process.env.PRERENDER_PORT || 4317);
 const DIST = 'dist';
 
 function getRoutes() {

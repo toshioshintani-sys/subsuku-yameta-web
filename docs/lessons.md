@@ -1105,6 +1105,30 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
 
 ---
 
+## 2026-06-12 ★4 全自動集客レイヤーを実装（IndexNow＋llms.txt＋RSS＋FAQキュー完遂・夜間自律実装）
+
+### 発見・実装
+- **集客の「配信側」が手動だった**：記事を最適化しても、検索エンジンへの通知は自然クロール待ちだった。3層を新設：
+  1. **IndexNow**（`scripts/seo/indexnow-ping.mjs`＋`public/<key>.txt`）：本番sitemapの全URLをBing系（=ChatGPT search/Copilot等AI検索の引用元）へ1POSTで自動通知。**朝会SKILLに「pushした日はping実行」を組込み＝以後毎日自走**。本番sitemapを読むので公開済みURLしか送らない（安全）。Googleは IndexNow 非対応＝sitemap＋自然クロール（**Search Console登録は俊雄さんのアカウント作業＝未着手の伸びしろ**）。
+  2. **llms.txt**（vite-plugin-sitemap.js で生成）：AI検索/LLMクローラー向けサイト案内。POSTS/DISCOVER_GENRESから生成＝記事が増えても常に最新。両論併記・PR透明の方針も明記（AI引用時の文脈安全）。
+  3. **RSS feed.xml**（同プラグイン・最新20記事）＋index.htmlにalternateリンク。アグリゲータ/クローラーの更新検知面。
+- **CONTENT_QUEUE A項（AI検索引用最適化）全8件完遂**：#7 free-trial-strategy（FAQ4＋解約締切の逆算カレンダー早見表）・#8 best-payment-method（FAQ4＋支払い方法比較早見表）を本文由来で追加（Opus起草→敵対的検証pass）。**コンテンツ側と配信側が両方自動化された**。
+- **Pinterest・GSCは未自動化と明示**：アカウント作成/認証＝俊雄さんの原子操作。Pinterestは PINTEREST_PLAYBOOK 待機。「全自動」の範囲＝コンテンツ最適化（朝会日次）＋配信通知（IndexNow日次）＋既設Threads（毎日20:00/12:00）。誇張しない。
+
+### prerenderポート占有の恒久対策
+- `npm run build` が port 4317 占有で失敗（lessons 2026-06-07 既知の環境起因が再発・取り残しの node prerender.mjs が占有）。プロセスkillは安全分類器に拒否されたため、**prerender.mjs の PORT を `PRERENDER_PORT` 環境変数で可変化**（既定4317）。以後の衝突は `PRERENDER_PORT=4319 npm run build` で回避。
+
+### なぜ重要か
+- 律速＝集客の「届ける側」が自動化された。記事最適化（朝会）→push→IndexNow通知→AI検索引用、のループが無人で回る。
+- 配信物（llms.txt/feed.xml）はデータから生成＝保守ゼロ。手で更新するファイルを増やさない。
+
+### 永続化
+- 追加: `scripts/seo/indexnow-ping.mjs`・`public/7315f020dddb7ab2494b9c03227c43d7.txt`（IndexNowキー）
+- 変更: `vite-plugin-sitemap.js`（feed/llms生成）・`index.html`（RSS alternate）・`vite.config.js`（SW denylist）・`scripts/prerender.mjs`（PRERENDER_PORT）・朝会SKILL（push日にping）
+- 俊雄さんへの伸びしろ（原子操作待ち）: ①Google Search Console 登録（Google側の発見も加速） ②Pinterestアカウント作成（PLAYBOOK実行開始）
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
