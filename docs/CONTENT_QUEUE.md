@@ -18,8 +18,8 @@
 | 4 | how-to-survive-retention-screen | 解約 | ✅ | FAQ4問追加済（06-10・本文由来＝3コツ＋確認メール）。対応表は任意 | done |
 | 5 | auto-renewal-pitfalls | 自動更新・高intent | ✅ | FAQ4問追加済。チェックリスト見出し化は任意 | done |
 | 6 | monthly-vs-yearly-plan | 比較 | ✅ | FAQ4問追加済（06-11・本文由来＝損得判断/計算式/5つの判断軸/デメリット）。比較表化は任意 | done |
-| 7 | free-trial-strategy | 無料体験 | 未 | FAQ＋解約締切の逆算カレンダー早見表 | todo |
-| 8 | best-payment-method-for-subscription | 比較 | 未 | FAQ＋支払い方法の比較表 | todo |
+| 7 | free-trial-strategy | 無料体験 | ✅ | 済（2026-06-12 FAQ4問＋逆算カレンダー早見表・本文由来・敵対検証pass） | done |
+| 8 | best-payment-method-for-subscription | 比較 | ✅ | 済（2026-06-12 FAQ4問＋支払い方法比較早見表・本文由来・敵対検証pass） | done |
 | - | contact-lens-spot-buy-to-subscription | 買い切り | ✅ | 済（228e116）。見出し順だけ点検 | done |
 | - | electric-toothbrush-spot-buy-to-subscription | 買い切り | ✅ | 済（228e116） | done |
 | - | microsoft365-vs-perpetual-office | 買い切り | ✅ | 済（bc9b0c8） | done |
