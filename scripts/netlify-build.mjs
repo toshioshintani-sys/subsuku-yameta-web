@@ -10,10 +10,29 @@
 // netlify.toml: command = "node scripts/netlify-build.mjs"
 // env: BUILD_FAILURE_WEBHOOK（Netlify env var・未設定なら通知スキップで挙動不変）
 
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 
 const CHUNK_LIMIT = 64 * 1024; // 末尾64KBだけ保持（メモリ節約）
 let tail = '';
+
+// Netlify 上では puppeteer の Chrome を先に確保する。
+// 根因（2026-06-12 特定）: 6/3頃のビルドイメージ更新で ~/.cache/puppeteer が消えた後、
+// node_modules はキャッシュ復元される＝puppeteer の postinstall（Chrome DL）が走らず、
+// prerender が「Could not find Chrome」で全ビルド失敗し続けた（自己回復しない構造）。
+// `puppeteer browsers install` は冪等：キャッシュ済みなら数秒、無ければDLして
+// ~/.cache/puppeteer に置く（Netlifyがビルドキャッシュとして保存→次回は高速）。
+if (process.env.NETLIFY === 'true') {
+  console.log('[netlify-build] puppeteer Chrome を確認/インストール…');
+  const r = spawnSync('npx', ['puppeteer', 'browsers', 'install', 'chrome'], {
+    shell: true,
+    stdio: 'inherit',
+    env: process.env,
+  });
+  if (r.status !== 0) {
+    keep(`[netlify-build] Chrome install failed (exit ${r.status})\n`);
+    console.error(`[netlify-build] Chrome インストール失敗 (exit ${r.status}) — ビルドは続行（prerenderで失敗すれば通知される）`);
+  }
+}
 
 function keep(s) {
   tail += s;
