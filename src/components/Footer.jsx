@@ -17,13 +17,28 @@ export default function Footer() {
           </div>
 
           <div className={styles.col}>
-            <div className={styles.colTitle}>ツール</div>
+            <div className={styles.colTitle}>このサイトでできること</div>
             <ul className={styles.list}>
-              <li><Link to="/discover">サブスク図鑑</Link></li>
-              <li><Link to="/tracker">サブスク棚卸し</Link></li>
-              <li><Link to="/yamete-kau">やめて買う</Link></li>
-              <li><Link to="/games">サブスク判断ゲーム</Link></li>
-              <li><Link to="/blog">お役立ち記事</Link></li>
+              <li>
+                <Link to="/tracker">サブスク棚卸し</Link>
+                <div className={styles.listDesc}>契約中の月額・年額合計と見直し順を可視化</div>
+              </li>
+              <li>
+                <Link to="/discover">サブスク図鑑</Link>
+                <div className={styles.listDesc}>乗り換え先を特徴と弱点つきで比較</div>
+              </li>
+              <li>
+                <Link to="/yamete-kau">やめて買う</Link>
+                <div className={styles.listDesc}>月額をやめて買い切りで済ます代替案</div>
+              </li>
+              <li>
+                <Link to="/blog">お役立ち記事</Link>
+                <div className={styles.listDesc}>解約・乗り換え・買い切りの解説記事</div>
+              </li>
+              <li>
+                <Link to="/games">サブスク判断ゲーム</Link>
+                <div className={styles.listDesc}>課金の心理クセを2分で体験</div>
+              </li>
             </ul>
           </div>
 

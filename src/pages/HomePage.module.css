@@ -643,6 +643,13 @@
   text-decoration: underline;
 }
 
+/* ガイド末尾の控えめな記事導線（/blogへの本文内リンク欠落の解消） */
+.guideMore {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
 /* カテゴリー */
 .categories {
   display: flex;

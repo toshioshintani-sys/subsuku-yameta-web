@@ -67,6 +67,14 @@
   color: #fff;
 }
 
+/* 各ツールの1行説明（初見が最下部到達時に全機能を把握できる） */
+.listDesc {
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 1px;
+}
+
 .copy {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 20px;

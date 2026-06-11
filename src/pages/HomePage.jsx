@@ -47,7 +47,7 @@ const NEXT_MOVES = [
     title: '合うものに乗り換える',
     desc: '解約した後の代替サブスクを、特徴と弱点つきで比較する',
     to: '/discover',
-    action: '図鑑を見る',
+    action: '乗り換え先を見る',
   },
   {
     label: 'C',
@@ -430,6 +430,9 @@ export default function HomePage() {
               </div>
             </li>
           </ol>
+          <p className={styles.guideMore}>
+            <Link to="/blog" className={styles.guideLink}>解約・乗り換えのコツをお役立ち記事で読む →</Link>
+          </p>
         </section>
 
         {/* 並び順切り替え（カテゴリフィルタは2階層レイアウトでは廃止） */}
