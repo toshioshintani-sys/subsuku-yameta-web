@@ -258,13 +258,19 @@ Slack で受け取れるようにする運用ルール。
 `git push origin main` または PR merge による main 更新が **成功した直後**。
 （push 失敗時は通知不要・次の応答で報告）
 
-### 通知方法
+### 通知方法（2026-06-11 改訂：Webhook直送に統一）
 
-Slack MCP コネクター（`mcp__plugin_marketing_slack__*` 系ツール）経由で
-俊雄さん指定のチャンネル / DM にメッセージを送る。
+**Slack Webhook 直送**を使う（**Chrome MCP は使わない**）。既存通知基盤 `_shared/slack_sender.py`（Webhook＋3リトライ＋ログ・標準ライブラリのみ）の CLI を Bash で1回呼ぶだけ：
 
-**hook ではなく Claude の運用ルール**。私が push のたびに必ず Slack ツールを呼ぶ。
-忘れたら次セッションで自己検出して送り直す。
+```
+python -X utf8 "C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py" SUBSUKU_DAILY "<§11フォーマットの本文>"
+```
+
+- `SUBSUKU_DAILY` → `#6-subsuku-daily`（env `SLACK_WEBHOOK_SUBSUKU_DAILY`・GA4日次通知と同経路で実績済）。
+- 改行を含む本文はダブルクオート内に**実改行**を入れて渡す（複数行OK・2026-06-11 疎通確認済）。
+- **なぜ Webhook**：ブラウザ非依存で確実（Chrome未起動でも届く）＋ screenshot/DOM往復ゼロ＝**低トークン**（旧Chrome MCPは1通で数千トークン級だった）。出力 `OK`／終了コード0=成功。
+
+**hook ではなく Claude の運用ルール**。私が push のたびに必ずこのコマンドを実行する。忘れたら次セッションで自己検出して送り直す。
 
 ### 通知フォーマット
 
@@ -280,8 +286,8 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
 
 ### 設定状態（2026-05-30 確定）
 
-- **接続方式**：Chrome MCP 経由（Slack MCP コネクター不使用）
-  - 理由：Slack MCP 切断中・Chrome MCP の方が確実と俊雄さん判断
+- **接続方式**：**Slack Webhook 直送**（`_shared/slack_sender.py` SUBSUKU_DAILY・2026-06-11改訂）
+  - 旧＝Chrome MCP 経由（2026-05-30）。確実でなく・トークンも重いため Webhook直送へ移行（朝会 subsuku-asakai と同方式・`docs/lessons.md` 2026-06-11）。Chrome MCP 投稿は廃止。
 - **ワークスペース**：World_Oracle（`app.slack.com/client/T0B5Y2Q5J6S/`）
 - **通知先**：`#6-subsuku-daily`（チャンネル ID `C0B6UG621R6`）
 - **初回テスト通知**：2026-05-30 06:47（疎通成功）
@@ -291,16 +297,21 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
   - **git push 通知**（都度）→ 私（Claude Code）が Chrome MCP 経由で送信
   - 重複なし・統合は当面しない
 
-### 私が push 後にやる手順（Chrome MCP）
+### 私が push 後にやる手順（Webhook直送）
 
-1. `mcp__Claude_in_Chrome__tabs_context_mcp` で MCP タブを取得
-2. Slack タブが無ければ `tabs_create_mcp` → navigate `https://app.slack.com/client/T0B5Y2Q5J6S/C0B6UG621R6`
-3. 入力欄をクリックして type で§11フォーマットのメッセージ入力
-4. 送信ボタンをクリック（座標は seasonal に変動する可能性 → screenshot 確認）
+1. push 成功を確認（short SHA・件名・差分 N files +X/-Y）。
+2. Bash で1回実行（§11フォーマットを本文に・複数行は実改行で）：
+   ```
+   python -X utf8 "C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py" SUBSUKU_DAILY "✅ サブスクやめた main push
+   [<SHA>] <件名>
+   変更: N files, +X / -Y
+   https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>"
+   ```
+3. 出力 `OK`（終了コード0）で完了。失敗時は応答で「Slack通知失敗」を報告（webhookは3リトライ済＝Chrome MCPへのフォールバックは不要。env未設定が原因なら俊雄さんに連絡）。
 
 ### 失敗時の挙動
 
-- Chrome MCP 接続切れ → push は通常通り完了させる・通知だけスキップ
+- Webhook送信失敗（env未設定 or 3リトライ全滅）→ push は通常通り完了させる・応答で「Slack通知失敗」を報告（通知だけスキップ）
 - セッション応答で「Slack 通知に失敗」を必ず報告
 - 連続3回失敗したら本ルールを見直し
 - 俊雄さんが Chrome を閉じている時は通知できない（朝晩の対応で済ます）

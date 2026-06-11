@@ -1066,6 +1066,29 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
 
 ---
 
+## 2026-06-11 ★4 朝会のSlack配信をChrome MCP→Webhook直送に置換（確実＋低トークン・6/10-11がサイレント欠落していた）
+
+### 発見
+- subsuku-asakai（朝会・Claude Code routine・毎朝07:11）は正常に起動・作業・push していたのに、**Slack #6 への配信が6/10・6/11と連続で欠落**。原因＝SKILLの配信手段が「Chrome MCP で投稿→不在ならローカル保存」で、**朝7:11はChromeが閉じ/未ログイン**なため毎朝ローカル（docs/daily-reports/）へサイレント・フォールバックしていた。スケジューラの lastRunAt は更新されるので「動いている」ように見え、Slackだけ空になる＝気づきにくい。
+- Chrome MCP配信は確実でないうえ screenshot/DOM往復で**トークンも重い**（1配信で数千トークン級）。
+
+### 対処（実装済・テスト合格）
+- **新規Webhookもコードも作らず**、既存の通知基盤 `world-oracle-staging/notifications/_shared/slack_sender.py`（Webhook＋3リトライ＋ログ・stdlibのみ）を再利用。`send_slack("SUBSUKU_DAILY", …)` は #6 に届く実績済（GA4日次通知の経路＝env `SLACK_WEBHOOK_SUBSUKU_DAILY`）。
+- 薄いCLI `world-oracle-staging/notifications/subsuku_yameta/daily/post_asakai_report.py` を追加：朝会が書いた `docs/daily-reports/YYYY-MM-DD.md` を読み、1コマンドでWebhook直送（引数なし=今日／--date／--text／--dry-run）。Chrome不要・screenshot不要＝**トークンほぼゼロ**。HTTP200で成否確定・失敗時のみフォールバック。dry-run＋実送信ともに合格（2026-06-11）。
+- 朝会SKILL（`~/.claude/scheduled-tasks/subsuku-asakai/SKILL.md`）の仕上げを「Chrome MCP投稿」→「保存後に post_asakai_report.py をBashで1回実行（Webhook直送）、非ゼロ時のみ貼付テキスト出力」に変更。Chrome MCP配信は廃止。
+- 6/10・6/11分は本セッションで手動バックフィル済み（#6・20:46）。
+
+### なぜ重要か
+- 「確実＋低トークン」の通知は **Chrome MCPでなくWebhook直送**が原則。§11のpush通知も同手段に寄せれば、Chrome往復・screenshotのトークンを恒常的に削れる（横展開候補・要俊雄さん確認）。
+- 自動routineは「起動した＝届いた」ではない。**配信の成否は一次ソース（Slack実体 or HTTP200）で確認**する。lastRunAt緑は配信成功を意味しない。
+
+### 永続化
+- 追加: `world-oracle-staging/notifications/subsuku_yameta/daily/post_asakai_report.py`
+- 変更: `~/.claude/scheduled-tasks/subsuku-asakai/SKILL.md`（配信＝Webhook直送・Chrome廃止）
+- 横展開（済・2026-06-11）: CLAUDE.md §11 push通知も Chrome MCP→`slack_sender` Webhook直送に統一（`SUBSUKU_DAILY`・複数行疎通確認済）。Slack送信からChrome MCPを全廃。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
