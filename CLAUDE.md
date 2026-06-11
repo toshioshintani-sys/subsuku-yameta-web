@@ -258,19 +258,21 @@ Slack で受け取れるようにする運用ルール。
 `git push origin main` または PR merge による main 更新が **成功した直後**。
 （push 失敗時は通知不要・次の応答で報告）
 
-### 通知方法（2026-06-11 改訂：Webhook直送に統一）
+### 通知方法（2026-06-12 改訂：ハイブリッド＝Chrome優先・Webhookフォールバック）
 
-**Slack Webhook 直送**を使う（**Chrome MCP は使わない**）。既存通知基盤 `_shared/slack_sender.py`（Webhook＋3リトライ＋ログ・標準ライブラリのみ）の CLI を Bash で1回呼ぶだけ：
+**Chromeが使える時は Chrome MCP で投稿し、Chrome未起動/未ログイン/投稿失敗の時のみ Webhook 直送にフォールバック**する（俊雄さん決定 2026-06-12・proposal-stress-test 経由）。判断軸＝「Chromeか否か」ではなく「Chrome操作はAPI非消費・サブスク範囲なので上手に使う／確実性が要る所はWebhookで担保」。
 
-```
-python -X utf8 "C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py" SUBSUKU_DAILY "<§11フォーマットの本文>"
-```
+優先順位：
+1. **第一：Chrome MCP** — `#6-subsuku-daily`(`C0B6UG621R6`) を開いて §11フォーマットを投稿（朝会と同手順・`docs/lessons.md` 2026-06-12 原則）。
+2. **フォールバック：Webhook直送** — Chrome不在/未ログイン/投稿失敗時のみ。既存基盤 `_shared/slack_sender.py`（Webhook＋3リトライ・標準ライブラリのみ）の CLI を Bash で1回：
+   ```
+   python -X utf8 "C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py" SUBSUKU_DAILY "<§11フォーマットの本文>"
+   ```
+   `SUBSUKU_DAILY` → `#6-subsuku-daily`（env `SLACK_WEBHOOK_SUBSUKU_DAILY`・GA4日次通知と同経路）。改行は実改行で。出力 `OK`／終了コード0=成功。
 
-- `SUBSUKU_DAILY` → `#6-subsuku-daily`（env `SLACK_WEBHOOK_SUBSUKU_DAILY`・GA4日次通知と同経路で実績済）。
-- 改行を含む本文はダブルクオート内に**実改行**を入れて渡す（複数行OK・2026-06-11 疎通確認済）。
-- **なぜ Webhook**：ブラウザ非依存で確実（Chrome未起動でも届く）＋ screenshot/DOM往復ゼロ＝**低トークン**（旧Chrome MCPは1通で数千トークン級だった）。出力 `OK`／終了コード0=成功。
+- **トークンコストの自覚（stress-test 2026-06-12）**：Chrome投稿は screenshot/DOM往復で Webhook の**約100倍トークン**を消費し共有プリペイド残高を削る。それでも俊雄さんは「Chromeは外部金銭ゼロ・サブスク範囲＝上手に使う」方針でChrome優先を選択。**残高逼迫時・無人時刻はWebhookに寄せて構わない**（実利判断・どちらでも目的は達成）。
 
-**hook ではなく Claude の運用ルール**。私が push のたびに必ずこのコマンドを実行する。忘れたら次セッションで自己検出して送り直す。
+**hook ではなく Claude の運用ルール**。私が push のたびに必ず通知する。忘れたら次セッションで自己検出して送り直す。
 
 ### 通知フォーマット
 
@@ -286,8 +288,8 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
 
 ### 設定状態（2026-05-30 確定）
 
-- **接続方式**：**Slack Webhook 直送**（`_shared/slack_sender.py` SUBSUKU_DAILY・2026-06-11改訂）
-  - 旧＝Chrome MCP 経由（2026-05-30）。確実でなく・トークンも重いため Webhook直送へ移行（朝会 subsuku-asakai と同方式・`docs/lessons.md` 2026-06-11）。Chrome MCP 投稿は廃止。
+- **接続方式**：**ハイブリッド**＝Chrome MCP 優先・Webhook直送フォールバック（2026-06-12改訂・proposal-stress-test 経由）
+  - 経緯：2026-05-30 Chrome MCP → 2026-06-11 別セッションがWebhook一本化（Chrome全廃）→ 2026-06-12 俊雄さんが「Chromeは上手に使う」方針でハイブリッドに是正。push通信でChromeはWebhookの約100倍トークンと承知の上でChrome優先（`docs/lessons.md` 2026-06-12）。Webhook経路(`_shared/slack_sender.py` SUBSUKU_DAILY)は温存＝フォールバック。
 - **ワークスペース**：World_Oracle（`app.slack.com/client/T0B5Y2Q5J6S/`）
 - **通知先**：`#6-subsuku-daily`（チャンネル ID `C0B6UG621R6`）
 - **初回テスト通知**：2026-05-30 06:47（疎通成功）
@@ -297,28 +299,32 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
   - **git push 通知**（都度）→ 私（Claude Code）が Chrome MCP 経由で送信
   - 重複なし・統合は当面しない
 
-### 私が push 後にやる手順（Webhook直送）
+### 私が push 後にやる手順（ハイブリッド）
 
 1. push 成功を確認（short SHA・件名・差分 N files +X/-Y）。
-2. Bash で1回実行（§11フォーマットを本文に・複数行は実改行で）：
+2. **第一：Chrome MCP** で `#6-subsuku-daily` を開き §11フォーマットを投稿（朝会と同手順・実投稿まで目視確認）。
+3. **Chromeが不在/未ログイン/投稿失敗なら → Webhook直送にフォールバック**：
    ```
    python -X utf8 "C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py" SUBSUKU_DAILY "✅ サブスクやめた main push
    [<SHA>] <件名>
    変更: N files, +X / -Y
    https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>"
    ```
-3. 出力 `OK`（終了コード0）で完了。失敗時は応答で「Slack通知失敗」を報告（webhookは3リトライ済＝Chrome MCPへのフォールバックは不要。env未設定が原因なら俊雄さんに連絡）。
+   出力 `OK`（終了コード0）で完了。
+4. どちらの経路でも届かなかった時のみ、応答で「Slack通知失敗」を報告（env未設定が原因なら俊雄さんに連絡）。
 
 ### 失敗時の挙動
 
-- Webhook送信失敗（env未設定 or 3リトライ全滅）→ push は通常通り完了させる・応答で「Slack通知失敗」を報告（通知だけスキップ）
-- セッション応答で「Slack 通知に失敗」を必ず報告
-- 連続3回失敗したら本ルールを見直し
-- 俊雄さんが Chrome を閉じている時は通知できない（朝晩の対応で済ます）
+- Chrome投稿不可（未起動/未ログイン）→ ただちにWebhookフォールバックで送る（無言の未着を作らない）。
+- Webhookも失敗（env未設定 or 3リトライ全滅）→ push は通常通り完了させ・応答で「Slack通知失敗」を必ず報告（通知だけスキップ・ローカルに残す）。
+- 連続3回失敗したら本ルールを見直し。
 
 ---
 
 ## 12. 改訂履歴
+
+### 2026-06-12（§11 改訂）
+- §11 push通知を「Webhook一本化（Chrome全廃）」→「ハイブリッド（Chrome優先・Webhookフォールバック）」に是正（proposal-stress-test 経由・俊雄さん決定）。前提「Chromeは API非消費」を検証＝外部金銭/外部APIは非消費だが Anthropic トークンは消費（messaging用途でWebhookの約100倍）。コスト承知の上でChrome優先を採用。
 
 ### v2.0（2026-05-23）
 - ミッション再定義（3層モデル・SRE3条件・ガード機構）
