@@ -239,3 +239,19 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 安全網の回遊リンク（/tracker・/discover への動線） */
+.safetyLinks {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.safetyLinks a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.safetyLinks a:hover {
+  text-decoration: underline;
+}

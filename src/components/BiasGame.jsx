@@ -122,6 +122,24 @@ export default function BiasGame({ game }) {
           <strong>棚卸しダッシュボードで「これからのコスト」を見る →</strong>
         </Link>
 
+        <div className={styles.gameExits}>
+          <span className={styles.gameExitsLabel}>このあとの一手：</span>
+          <Link
+            to="/discover"
+            className={styles.gameExitLink}
+            onClick={() => trackEvent('game_exit', { to: 'discover', game: game.id })}
+          >
+            合うものに乗り換える
+          </Link>
+          <Link
+            to="/yamete-kau"
+            className={styles.gameExitLink}
+            onClick={() => trackEvent('game_exit', { to: 'yamete-kau', game: game.id })}
+          >
+            買い切りで済ます
+          </Link>
+        </div>
+
         <button type="button" className={styles.againBtn} onClick={start}>
           もう一度
         </button>

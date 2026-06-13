@@ -12,7 +12,7 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.colTitle}>サブスクやめた</div>
             <p className={styles.tagline}>
-              解約ページへ1クリックで飛べる、解約導線のインデックスサイト。
+              解約・乗り換え・買い切りまで、サブスクの「次の動き」をフラットに示す実利サイト。
             </p>
           </div>
 

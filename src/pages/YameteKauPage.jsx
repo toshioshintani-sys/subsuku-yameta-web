@@ -146,6 +146,11 @@ export default function YameteKauPage() {
           いつでも <Link to="/">解約導線</Link> に戻ってこれます。
           買い切り商品も、必要なくなったらフリマで手放せます。
         </p>
+        <p className={styles.safetyLinks}>
+          ほかの選択肢も見るなら：
+          <Link to="/tracker">固定費の棚卸し</Link>・
+          <Link to="/discover">乗り換え先を探す</Link>
+        </p>
       </aside>
     </article>
   );
