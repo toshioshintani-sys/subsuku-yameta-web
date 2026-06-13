@@ -949,6 +949,11 @@ export const ALTERNATIVES = {
     { id: 'u-next', reason: '同じドコモグループ・アニメも見放題に多数含む' },
     { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とdアニメより高くなる。アニメ専門でなくニュース・バラエティも見たい人向け。アニメ本数の深さはdアニメが上' },
   ],
+  'apple-tv-plus': [
+    { id: 'amazon-prime', reason: '作品数の幅と価格ならこちら。Appleオリジナルの作り込みとは方向性が違う' },
+    { id: 'netflix', reason: 'オリジナル作品の本数で選ぶなら' },
+    { id: 'u-next', reason: '和洋の見放題数を最大化したいなら' },
+  ],
 
   // 音楽 — 価格帯違い or 無料プラン
   spotify: [
@@ -1383,18 +1388,6 @@ export const PLANS = {
     ],
     howToCheck: 'Adobe アカウント →「プラン情報」で確認できます',
   },
-  audible: {
-    plans: [
-      { name: '月額プラン', monthly: 1500, popular: true, note: '聴き放題＋追加コインなし' },
-    ],
-    howToCheck: 'Amazon アカウント →「アカウントサービス」→「Audible 会員情報」で確認できます',
-  },
-  'kindle-unlimited': {
-    plans: [
-      { name: '月額プラン', monthly: 980, popular: true },
-    ],
-    howToCheck: 'Amazon →「アカウントサービス」→「Kindle Unlimited 会員登録の管理」で確認できます',
-  },
   danime: {
     plans: [
       { name: '月額プラン', monthly: 550, popular: true, note: 'docomo 以外でも契約可' },
@@ -1472,21 +1465,6 @@ export const PLANS = {
     ],
     howToCheck: 'Figma →「Settings」→「Plan & billing」で確認できます',
   },
-  'deepl-pro': {
-    plans: [
-      { name: 'Starter', monthly: 1200, popular: true, note: '文字数無制限・ファイル翻訳' },
-      { name: 'Advanced', monthly: 3800, note: 'カスタム用語集・チーム管理' },
-      { name: 'Ultimate', monthly: 7500, note: 'CAT 連携・API 大規模利用' },
-    ],
-    howToCheck: 'DeepL →「アカウント」→「サブスクリプション」で確認できます',
-  },
-  '1password': {
-    plans: [
-      { name: '個人プラン', monthly: 450, yearly: 4500, popular: true },
-      { name: 'ファミリー（最大5人）', monthly: 750, yearly: 7500 },
-    ],
-    howToCheck: '1Password →「マイプロフィール」→「アカウント」で確認できます',
-  },
   'github-copilot': {
     plans: [
       { name: 'Individual', monthly: 1500, yearly: 15000, popular: true },
@@ -1500,13 +1478,6 @@ export const PLANS = {
       { name: 'プレミアム会員', monthly: 790, popular: true },
     ],
     howToCheck: 'ニコニコ →「アカウント」→「プレミアム会員」で確認できます',
-  },
-  'apple-tv-plus': {
-    plans: [
-      { name: '月額プラン', monthly: 900, popular: true },
-      { name: '年額プラン', monthly: 750, yearly: 9000 },
-    ],
-    howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
   crunchyroll: {
     plans: [
