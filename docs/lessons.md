@@ -18,6 +18,8 @@
 ### 永続化
 - 表情の使い分け＝`docs/PINTEREST_PREP.md` §5.5。生成＝`scripts/seo/gen-pin-samples.mjs`・サンプル＝`docs/pinterest/samples/`。
 - 横展開候補：Shortsのナビゲーター役、トラッカー結果のシェア画像、SNSアバター、404/empty以外の各広報面にもチョキくんを。
+- **表情は"目玉"で増やせる（俊雄さん 2026-06-14）**：固定5表情に縛られず、目＝持ち手リング `circle(76,113)/(124,113) r17＋瞳r7`、口＝`M91 130q9 7 18 0` を差し替えれば、驚き/ウインク/半目等をコードで量産可能（新SVG不要）。`gen-pin-samples.mjs` に eye-variant 関数を足せば表情バリエーションを無限化できる＝今後の量産レバー。
+- 本番20ピン（index/games/blog/discover・確定URL）を `docs/pinterest/samples/` に生成、`docs/pinterest/pins-manifest.md` にピン→URL(UTM)対応表。投稿は俊雄さんの原子操作（アカウント＋ドメイン認証）。
 
 ---
 
