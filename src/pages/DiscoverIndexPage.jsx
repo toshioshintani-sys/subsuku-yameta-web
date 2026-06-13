@@ -17,14 +17,14 @@ export default function DiscoverIndexPage() {
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>知らないサブスクの世界</h1>
         <p className={styles.heroDesc}>
-          無駄なサブスクをやめたら、本当に大切なものに使う番。
+          固定費を見直したあとは、空いたぶんを<strong>本当に使いたいもの</strong>に回す番。
           花の定期便、洋服レンタル、おうち学び——
-          知ってる人だけが楽しんでいる「もうひとつのサブスク」を、
-          <strong>中立的に・やめ方まで一緒に</strong>紹介します。
+          知っている人だけが楽しんでいる「もうひとつのサブスク」を、
+          <strong>中立的に・やめ方まで添えて</strong>紹介します。
         </p>
         <p className={styles.heroHint}>
           <Lightbulb size={15} strokeWidth={1.75} aria-hidden="true" />
-          <span>各ジャンルページの末尾に「やめたくなったら」セクションを置いています。気軽に試して、合わなければ止める——それを支援するのがこのサイトの役割です。</span>
+          <span>どのジャンルページも、末尾に「やめたくなったら」を必ず置いています。出口を先に渡すから、合うかどうかは気軽に確かめられる——それがこのサイトのやり方です。</span>
         </p>
       </section>
 
@@ -53,7 +53,7 @@ export default function DiscoverIndexPage() {
         </ul>
 
         <p className={styles.note}>
-          このコーナーは「サブスクのハードルが低い人」のために作られました。<strong>解約特化サイトとして、やめる手順を最初から一緒に渡す</strong>——それが私たちのスタンスです。
+          試すのも、見送るのも、決めるのはあなた。<strong>解約特化サイトとして、やめる手順を最初から渡しておく</strong>ので、合わなければいつでも引き返せます。
         </p>
       </div>
     </div>
