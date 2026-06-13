@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BottomNav from './components/BottomNav';
 import Analytics from './components/Analytics';
 import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage';
@@ -74,6 +75,7 @@ export default function App() {
       </Suspense>
       </main>
       <Footer />
+      <BottomNav />
     </BrowserRouter>
   );
 }

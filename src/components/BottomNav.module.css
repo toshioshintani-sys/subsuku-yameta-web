@@ -1,0 +1,56 @@
+/* ボトムタブバー：モバイル(≤768px)のみ表示。各タブにラベル＝押す前に行き先が分かる。 */
+.bar {
+  display: none;
+}
+
+/* 固定バーぶんの余白をページ下に確保（最後のコンテンツがバーに隠れないように） */
+@media (max-width: 768px) {
+  :global(body) {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -6px 20px rgba(10, 14, 22, 0.08);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+    backdrop-filter: blur(18px);
+  }
+
+  .tab {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 4px 2px;
+    min-width: 0;
+    color: var(--text-sub);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .tab:hover,
+  .tab:focus-visible {
+    color: var(--text);
+  }
+
+  /* 現在地を明示（色のみ・控えめ＝解約導線の視覚優位を侵さない） */
+  .tabActive {
+    color: var(--accent);
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+}

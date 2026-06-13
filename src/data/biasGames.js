@@ -12,6 +12,7 @@ export const BIAS_GAMES = [
   {
     id: 'sunk-cost',
     n: 1,
+    shortLabel: '8ヶ月、未起動',
     headline: '「ここまで払ったし…」で、やめられない',
     term: 'サンクコスト',
     termLine: 'あとで知る → この心のクセは「サンクコスト（埋没費用）」と呼ばれています',
@@ -69,6 +70,7 @@ export const BIAS_GAMES = [
   {
     id: 'status-quo',
     n: 2,
+    shortLabel: '動かない=払う',
     headline: '「手続きが面倒」で、つい続けてしまう',
     term: '現状維持バイアス',
     termLine: 'あとで知る → この心のクセは「現状維持バイアス」と呼ばれています',
@@ -126,6 +128,7 @@ export const BIAS_GAMES = [
   {
     id: 'loss-aversion',
     n: 3,
+    shortLabel: '引き止め画面',
     headline: '「今の特典を失う」と思うと、やめられない',
     term: '損失回避',
     termLine: 'あとで知る → この心のクセは「損失回避」と呼ばれています',
@@ -183,6 +186,7 @@ export const BIAS_GAMES = [
   {
     id: 'default-effect',
     n: 4,
+    shortLabel: '最初からオン',
     headline: '「最初からそうなってる方」を、つい選んでしまう',
     term: 'デフォルト効果',
     termLine: 'あとで知る → この心のクセは「デフォルト効果」と呼ばれています',
@@ -237,6 +241,7 @@ export const BIAS_GAMES = [
   {
     id: 'planning-fallacy',
     n: 5,
+    shortLabel: 'ジム、月2回',
     headline: '「来月こそ使う」と、未来の自分を信じすぎる',
     term: 'プランニング誤謬',
     termLine: 'あとで知る → この心のクセは「プランニング誤謬」と呼ばれています',
@@ -294,6 +299,7 @@ export const BIAS_GAMES = [
   {
     id: 'decoy-effect',
     n: 6,
+    shortLabel: 'なぜ真ん中に',
     headline: '「真ん中のプラン」を、つい選んでしまう',
     term: 'おとり効果',
     termLine: 'あとで知る → この心のクセは「おとり効果（デコイ効果）」と呼ばれています',

@@ -1,7 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ChevronDown, ArrowRight, X, Plus } from 'lucide-react';
+import {
+  Search,
+  ChevronDown,
+  ArrowRight,
+  X,
+  Plus,
+  Gamepad2,
+  Wallet,
+  Armchair,
+  Gift,
+  SquareCheck,
+  Dumbbell,
+  Columns3,
+} from 'lucide-react';
 import { SERVICES, getPopularity, getDefaultMonthly, getPlans } from '../data/services';
+import { BIAS_GAMES } from '../data/biasGames';
 import { CategoryIcon } from '../icons';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
@@ -9,6 +23,17 @@ import SavingsGameLauncher from '../components/SavingsGameLauncher';
 import styles from './HomePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
+
+// 息抜きコーナーの判断ゲームのアイコン。サイト全体と同じ lucide 線アイコンで統一
+// （絵文字はカラー＋環境依存でここだけ浮くため廃止・俊雄さん指摘 2026-06-13）。
+const GAME_ICONS = {
+  'sunk-cost': Wallet,
+  'status-quo': Armchair,
+  'loss-aversion': Gift,
+  'default-effect': SquareCheck,
+  'planning-fallacy': Dumbbell,
+  'decoy-effect': Columns3,
+};
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
 const DIFFICULTY_ORDER = { easy: 0, medium: 1, hard: 2 };
 
@@ -609,8 +634,42 @@ export default function HomePage() {
           </>
         )}
 
-        {/* やめたつもり貯金ゲーム — 下部に控えめに（俊雄さん指示） */}
-        <SavingsGameLauncher />
+        {/* 息抜きコーナー：遊びの入口を下部に集約（ゲームはタブから外しここへ・俊雄さん指示） */}
+        <section className={styles.playZone} aria-label="息抜き">
+          <h2 className={styles.playTitle}>ちょっと息抜き</h2>
+          <p className={styles.playLead}>解約の合間に。遊びながら、固定費との距離感をつかむ。</p>
+          <div className={styles.playLayout}>
+            <SavingsGameLauncher />
+            <div className={styles.gameMiniWrap}>
+              <p className={styles.gameMiniHead}>
+                <Gamepad2 size={15} strokeWidth={1.75} aria-hidden="true" />
+                <span className={styles.gameMiniHeadMain}>判断ゲーム</span>
+                <span className={styles.gameMiniHeadSub}>30秒で課金のクセを見抜く</span>
+              </p>
+              <div className={styles.gameMiniGrid}>
+                {BIAS_GAMES.map((g) => {
+                  const Icon = GAME_ICONS[g.id];
+                  return (
+                    <Link
+                      key={g.id}
+                      to={`/games/${g.id}`}
+                      className={styles.gameMini}
+                      aria-label={`判断ゲーム：${g.headline}`}
+                    >
+                      <span className={styles.gameMiniIcon} aria-hidden="true">
+                        {Icon ? <Icon size={22} strokeWidth={1.75} /> : null}
+                      </span>
+                      <span className={styles.gameMiniLabel}>{g.shortLabel}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+              <Link to="/games" className={styles.gameMiniMore}>
+                判断ゲームをまとめて見る →
+              </Link>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
