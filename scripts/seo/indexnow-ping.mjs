@@ -61,6 +61,16 @@ async function main() {
   } else {
     const body = await ping.text().catch(() => '');
     console.error(`[indexnow] 失敗: HTTP ${ping.status} ${body.slice(0, 200)}`);
+    if (body.includes('UserForbiddedToAccessSite')) {
+      // 共有サブドメイン(*.netlify.app)はBingがホスト未認証として弾く。
+      // keyファイル自体は正常(本番200・内容一致)＝設定不備ではない。
+      console.error(
+        '[indexnow] → 原因: Bing/IndexNow がホスト未認証。' +
+          'Bing Webmaster Tools(bing.com/webmasters)で sabusuku.netlify.app を追加し、' +
+          'GSCからインポートして所有権確認を。緊急度低: Google/通常クロールは別経路で影響なし。' +
+          '恒久対策はカスタムドメイン化。'
+      );
+    }
     process.exit(1);
   }
 }
