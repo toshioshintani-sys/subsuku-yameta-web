@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { SITE_URL } from '../config.js';
 
 const DEFAULT_DESC =
-  'Netflix・Spotify・Amazonプライム…30以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。';
+  'Netflix・Spotify・Amazonプライム…58以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。';
 
 function setMeta(name, content, attr = 'name') {
   if (!content) return;

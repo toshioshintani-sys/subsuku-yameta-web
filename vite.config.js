@@ -18,7 +18,7 @@ export default defineConfig({
         name: 'サブスクやめた',
         short_name: 'サブスクやめた',
         description:
-          'Netflix・Spotify・Amazonプライム…50以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。',
+          'Netflix・Spotify・Amazonプライム…58以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。',
         theme_color: '#1a1f2e',
         background_color: '#ffffff',
         display: 'standalone',
