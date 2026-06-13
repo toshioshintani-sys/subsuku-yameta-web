@@ -65,8 +65,31 @@
   opacity: 1;
 }
 
-/* デスクトップ＝フルラベル／モバイル＝短縮ラベル（640px以下で切替） */
-.labelShort {
+/* ハンバーガーボタン（>768px では非表示・モバイルのみ表示） */
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.menuButton:hover {
+  background: var(--bg);
+}
+
+/* モバイルドロワー＋背景（デスクトップでは常に非表示） */
+.backdrop {
+  display: none;
+}
+
+.drawer {
   display: none;
 }
 
@@ -115,9 +138,9 @@
   white-space: nowrap;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .inner {
-    padding: 10px 12px;
+    padding: 10px 14px;
     gap: 8px;
   }
 
@@ -131,7 +154,7 @@
   }
 
   .logoTitle {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .logoSub {
@@ -139,52 +162,90 @@
   }
 
   .right {
-    gap: 4px;
-    min-width: 0; /* flex子として縮めるのを許可（ページ全体の横スクロールを出さない） */
+    gap: 6px;
   }
 
-  /* 旧仕様の「アイコンのみ無言化」を廃止：アイコン＋短縮ラベルの縦積みに。
-     5項目が収まらない幅ではナビ内だけ横スクロール（右端フェードで続きを示唆）。 */
-  .nav {
-    gap: 2px;
-    min-width: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
-    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
-  }
-
-  .nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .navLink {
-    flex-direction: column;
-    justify-content: center;
-    gap: 2px;
-    min-width: 48px;
-    min-height: 42px;
-    padding: 4px 5px;
-    flex: 0 0 auto;
-  }
-
-  .labelFull {
-    display: none;
-  }
-
-  .labelShort {
-    display: inline;
-    font-size: 10px;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .navLinkActive {
-    box-shadow: inset 0 -2px 0 0 var(--accent);
-  }
-
+  /* 横一列ナビと縦罫線は、ドロワーに置き換えるため非表示 */
+  .nav,
   .navDivider {
-    margin: 0 2px;
+    display: none;
+  }
+
+  /* ハンバーガー表示 */
+  .menuButton {
+    display: inline-flex;
+  }
+
+  /* 背景オーバーレイ（タップで閉じる） */
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    background: rgba(10, 14, 22, 0.38);
+    z-index: 95;
+    cursor: default;
+    animation: subsukuFade 0.15s ease;
+  }
+
+  /* ドロワー本体：ヘッダー直下に展開・フルラベル縦並び（項目が増えても破綻しない） */
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 28px rgba(10, 14, 22, 0.18);
+    padding: 8px;
+    z-index: 100;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+  }
+
+  .drawerOpen {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .drawerLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .drawerLink:hover,
+  .drawerLink:focus-visible {
+    background: var(--bg);
+  }
+
+  .drawerLinkActive {
+    color: var(--accent);
+    background: var(--bg);
+  }
+}
+
+@keyframes subsukuFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
