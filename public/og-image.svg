@@ -1,3 +1,6 @@
+<!-- OGフレーム（背景＋テキスト＋マスコット置き場の白丸）。
+     チョキくん本体は gen-og-image.mjs が mascot-cutting.svg を白丸に重ねて og-image.png を生成する。
+     このSVG単体ではマスコットは出ない（合成はPNG側）。デザイン変更後は再生成すること。 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -6,10 +9,13 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g font-family="'Hiragino Sans','Noto Sans JP',sans-serif" fill="#ffffff" text-anchor="middle">
-    <text x="600" y="200" font-size="56" opacity="0.9">✂️ サブスクやめた</text>
-    <text x="600" y="320" font-size="84" font-weight="700" letter-spacing="-2">解約ページへ1クリック</text>
-    <text x="600" y="430" font-size="36" opacity="0.7">Netflix・Spotify・Amazonプライムほか主要サブスク対応</text>
-    <text x="600" y="540" font-size="28" opacity="0.5">sabusuku.netlify.app</text>
+  <!-- チョキくんを乗せる温かい白の丸（暗い輪郭線が映えるように） -->
+  <circle cx="952" cy="318" r="236" fill="#fbf8f3"/>
+  <g font-family="'Yu Gothic','Hiragino Sans','Noto Sans JP',sans-serif" fill="#ffffff">
+    <text x="80" y="158" font-size="44" opacity="0.92">✂ サブスクやめた</text>
+    <text x="80" y="292" font-size="94" font-weight="700" letter-spacing="-2">解約ページへ</text>
+    <text x="80" y="400" font-size="94" font-weight="700" letter-spacing="-2">1クリック</text>
+    <text x="80" y="486" font-size="28" opacity="0.72">Netflix・Spotify ほか 主要サブスクの解約手順</text>
+    <text x="80" y="552" font-size="25" opacity="0.5">sabusuku.netlify.app</text>
   </g>
 </svg>
