@@ -1176,6 +1176,23 @@ A8 dicon乱視用（s00000019683002・報酬「初回定期購入2,000円」）�
 
 ---
 
+## 2026-06-13 ★3 全体構成監査の改修＋「4つ目の数字」発見（プリレンダはstatic metaをSeoデフォルトで上書きする）
+
+### 発見
+- 3エージェント監査（構造/ゲーム/運用）で不整合を 高→中→低 で改修。土台（111ページ整合・自動化ループ・ゲームのBAE準拠）は健全と確認。
+- **サービス数表記の真因＝Seo.jsx の DEFAULT_DESC「30以上」**。監査は index.html「48以上」・manifest「50以上」を報告したが、**ホームで実際に配信される説明文はこのデフォルト**だった（HomePageは `<Seo canonical="/" />` をdescription無しで呼ぶ）。**プリレンダ（document.outerHTML焼込）は React/Seo が static meta を上書きした後のDOMを保存する**ため、index.html だけ直しても配信物は変わらない。→ 全4箇所（index.html×2・manifest・Seoデフォルト）を「58以上」に統一。
+- ゲームの「収益袋小路」：結果CTAが/tracker一択だったので B(/discover)・C(/yamete-kau)出口を追加（game_exit計測つき・解約導線優位は維持）。
+- PLANS重複キー5件（apple-tv-plus/audible/kindle-unlimited/1password/deepl-pro）：Top1-30とTop31-50追加時の二重定義。**JSは後勝ち**なので表示中の「後ろ（richな方）」を温存し**先頭ブロックのみ削除**＝表示不変でlint解消。
+
+### 教訓
+- **メタ情報の検証は static HTML でなく「配信される実体（プリレンダ後dist or 実ブラウザのDOM）」で行う**。index.htmlのgrepはSeo上書き・コメントアウトで偽陰性/偽陽性を生む（AdSense/GSCのコメントアウト誤検知と同型）。
+- 重複オブジェクトキーは後勝ち。dedup時は**実行時に勝つ方を残す（先頭削除）**と挙動が変わらない。
+
+### 永続化
+- 変更: Seo.jsx(DEFAULT_DESC)・index.html・vite.config.js（58統一）／Footer.jsx（v2タグライン）／BiasGame.jsx+css（B/C出口）／YameteKauPage（回遊）／services.js（apple-tv代替＋PLANS重複キー除去）
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
