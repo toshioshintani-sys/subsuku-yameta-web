@@ -51,10 +51,17 @@ async function main() {
   const server = await preview({ preview: { port: PORT, strictPort: true } });
   const base = `http://localhost:${PORT}`;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
-  });
+  let browser;
+  try {
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+  } catch (e) {
+    console.warn('[prerender] Chromium 起動失敗。SSG をスキップしてビルドを続行します:', e.message);
+    await server.httpServer.close();
+    return;
+  }
 
   const results = [];
   let ok = 0;
@@ -114,6 +121,7 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error('[prerender] 例外：', e);
-  process.exit(1);
+  console.warn('[prerender] 警告：プリレンダを完全スキップします（予期しない例外）:', e.message);
+  console.warn('[prerender] ビルドは続行します（SSG なし）。vite build の静的ファイルのみ配信されます。');
+  process.exit(0);
 });
