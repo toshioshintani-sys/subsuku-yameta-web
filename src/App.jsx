@@ -12,6 +12,7 @@ import './index.css';
 // 初期 JS バンドルを縮小する（SEO / Lighthouse スコア向上）
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage'));
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/service/:id" element={<ServicePage />} />
           <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/compare" element={<ComparePage />} />
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/discover" element={<DiscoverIndexPage />} />
           <Route path="/discover/:id" element={<DiscoverGenrePage />} />

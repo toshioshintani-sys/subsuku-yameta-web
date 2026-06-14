@@ -12,7 +12,7 @@ function getSiteUrl() {
 }
 
 function buildRoutes() {
-  const staticRoutes = ['/', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
+  const staticRoutes = ['/', '/compare', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
   const categoryRoutes = CATEGORIES
     .filter((c) => c.id !== 'all')
     .map((c) => `/category/${c.id}`);
@@ -86,7 +86,7 @@ function renderLlmsTxt(siteUrl, posts, genres) {
     .join('\n');
   return `# サブスクやめた
 
-> 日本のサブスクリプション（Netflix・Spotify など58サービス）の解約手順への直リンク集。あわせて「乗り換え先の比較」「買い切りでの代替」「固定費の棚卸しツール」を、煽り・ランキング・★スコアを使わず両論併記で提供する日本語サイト。
+> 日本のサブスクリプション（Netflix・Spotify など${SERVICES.length}サービス）の解約手順への直リンク集。あわせて「乗り換え先の比較」「買い切りでの代替」「固定費の棚卸しツール」を、煽り・ランキング・★スコアを使わず両論併記で提供する日本語サイト。
 
 重要な前提:
 - 解約手順が主目的のサイトで、紹介サービスには必ずデメリットも併記する
@@ -95,7 +95,8 @@ function renderLlmsTxt(siteUrl, posts, genres) {
 
 ## 主要ツール
 
-- [解約手順トップ](${siteUrl}/): 58サービスの解約ページ直リンクと3ステップ手順
+- [解約手順トップ](${siteUrl}/): ${SERVICES.length}サービスの解約ページ直リンクと3ステップ手順
+- [解約方法の一覧・比較](${siteUrl}/compare): ${SERVICES.length}サービスの解約難易度・月額目安・注意点・解約ページ直リンクを1ページで一覧・比較（ランキングなし・両論併記）
 - [固定費の棚卸し](${siteUrl}/tracker): 契約中サブスクの月額・年額合計と見直し順を可視化（登録不要）
 - [サブスク図鑑](${siteUrl}/discover): ジャンル別に乗り換え先を特徴・弱点つきで比較
 - [やめて買う](${siteUrl}/yamete-kau): 月額をやめて買い切りで済ませる代替案

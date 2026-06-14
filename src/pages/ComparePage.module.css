@@ -1,0 +1,339 @@
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+/* ヒーロー */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 0 20px;
+}
+
+.heroMascot {
+  flex: 0 0 auto;
+  width: 92px;
+  height: 92px;
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 4px;
+}
+
+.title {
+  font-size: clamp(22px, 3.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.lead {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-sub);
+  margin: 0 0 10px;
+}
+
+.summary {
+  font-size: 13px;
+  color: var(--text-sub);
+  margin: 0;
+}
+
+.summary b {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.summarySub {
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+/* コントロール（カテゴリ絞り込み＋並び替え） */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0 6px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-sub);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.chipActive {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+
+.sortSelect {
+  font: inherit;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.scrollHint {
+  display: none;
+  font-size: 12px;
+  color: var(--text-sub);
+  text-align: center;
+  margin: 4px 0;
+  opacity: 0.8;
+}
+
+/* テーブル */
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 720px;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  color: var(--text-sub);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--bg);
+}
+
+.table td,
+.table th {
+  padding: 11px 14px;
+  vertical-align: middle;
+}
+
+.thName {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  min-width: 170px;
+}
+
+.table thead .thName {
+  background: var(--bg);
+  z-index: 2;
+}
+
+.table tbody tr:hover .thName {
+  background: var(--bg);
+}
+
+.svcLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.svcLink:hover {
+  color: var(--accent);
+}
+
+.cat {
+  color: var(--text-sub);
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge_easy {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge_medium {
+  background: #fff4e0;
+  color: #9a6516;
+}
+
+.badge_hard {
+  background: #fde7e0;
+  color: #b1492a;
+}
+
+.price {
+  color: var(--text);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.note {
+  color: var(--text-sub);
+  min-width: 220px;
+  line-height: 1.5;
+}
+
+.thNote {
+  min-width: 220px;
+}
+
+.cancelLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cancelLink:hover {
+  text-decoration: underline;
+}
+
+.stepsLink {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--text-sub);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.stepsLink:hover {
+  color: var(--accent);
+}
+
+/* 注記（BAE：中立の線引き） */
+.bae {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-sub);
+  margin: 16px 2px 28px;
+}
+
+/* 次の動き */
+.next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.nextCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.nextCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.nextTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.nextSub {
+  font-size: 12.5px;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    gap: 12px;
+  }
+  .heroMascot {
+    width: 64px;
+    height: 64px;
+  }
+  .scrollHint {
+    display: block;
+  }
+  .next {
+    grid-template-columns: 1fr;
+  }
+}

@@ -6,6 +6,22 @@
 
 ---
 
+## 2026-06-14 ★★★ 本命の流入レバー：58サービス解約「1枚比較表」/compare を新設
+
+### 発見
+広報総ざらいでrank1だった「AI検索・ロングテールの受け皿」を実装。`src/pages/ComparePage.jsx`＝services.js(58件)を1枚のTable＋ItemList/BreadcrumbList JSON-LDにした `/compare`。列＝解約難易度(手順数ベースの中立ラベル)・月額目安(getDefaultMonthly)・注意(note)・解約直リンク(cancelUrl)＋各`/service/:id`への内部リンク。カテゴリ絞り込み＋並び替え。**prerender 112/112(111→+1)で58データ行を静的HTMLに焼き込み**＝AI/クローラーが一発引用できる一次データ表。sitemap・llms.txt・Footerにも導線。チョキくんjito(見抜く顔)＝`mascot-jito.svg`をヒーローに。
+
+### なぜ重要か
+- 律速＝流入≈0の**最も確実な恒久解**。58個別ページの内部リンクハブ＋AI検索『サブスク 解約 一覧/比較』の被引用先を同時に満たす。即効性はないが恒久資産。
+- **BAE厳守**：難易度の色分けは"優劣ランキングではなく解約のしやすさ＝中立の事実"と本文明記、★/順位なし、注意列で両論併記。
+
+### 永続化
+- **ルートはsitemapの`staticRoutes`に足すだけでprerender自動対象**（prerender.mjsはsitemapの`<loc>`を読む）。新ページ追加の定石。
+- 静的HTMLに全58行＋JSON-LD(numberOfItems:58)が焼かれることをビルド後に確認（AI引用の前提）。
+- **件数は常に`SERVICES.length`で動的に**（grepの`difficulty:`=59はコメント行を誤カウント、実数58）。ハードコードした「58」はllms.txt等で陳腐化するので動的化済。
+
+---
+
 ## 2026-06-14 ★★ 確立済みのブランド資産（マスコット）を広報で素通りしていた——チョキくんを標準キャラ化
 
 ### 発見

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { CATEGORIES } from '../data/services';
+import { CATEGORIES, SERVICES } from '../data/services';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -19,6 +19,10 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.colTitle}>このサイトでできること</div>
             <ul className={styles.list}>
+              <li>
+                <Link to="/compare">解約方法の一覧・比較</Link>
+                <div className={styles.listDesc}>{SERVICES.length}サービスの解約難易度・直リンクを1枚で</div>
+              </li>
               <li>
                 <Link to="/tracker">サブスク棚卸し</Link>
                 <div className={styles.listDesc}>契約中の月額・年額合計と見直し順を可視化</div>
