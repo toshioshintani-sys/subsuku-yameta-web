@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-06-14 ★ 21記事のcross-post(note/はてな)を機械生成＋node ESMの拡張子落とし穴
+
+### 発見
+posts.jsの{p/h2/ul/quote/img}ブロックをPF用Markdownに機械変換する `scripts/seo/gen-syndication.mjs` を新設。内部リンク→絶対URL+UTM、**アフィリンク(a8/amazon等)→除去**（note等のToS回避＋クリックを原文に集約）、冒頭に初出リンク（canonicalの人手対応）、末尾に/compare等＋全文へのCTA。21本＋README（canonical指針）を `docs/syndication/` に出力。投稿は俊雄さんの原子操作（貼るだけ）。
+- **node ESMの落とし穴**：拡張子なしの相対import（`from './affiliates'`）は**Viteは解決するが生node(`node script.mjs`)は `ERR_MODULE_NOT_FOUND`**。データ系jsをnodeの量産スクリプトからimportするなら`.js`明記が必要。posts.jsのimportに`.js`を補って解消（Vite挙動は不変・app/buildに影響なし）。
+
+### なぜ重要か
+- 律速=流入の即効触媒。各PF読者を元サイトへ送客し、canonical/初出リンクで元記事SEOを守る（重複コンテンツ対策）。
+- 今後 node製の量産スクリプトから `src/data/*` を import する時は**拡張子必須**。先回りで全データファイルの相対importに`.js`を付けてもよい。
+
+### 永続化
+- 再生成＝`node scripts/seo/gen-syndication.mjs`。出力＝`docs/syndication/<slug>.md`＋README（はてな=詳細設定でcanonical、note=初出リンク必須・インデックス後に転載）。
+
+---
+
 ## 2026-06-14 ★★★ 本命の流入レバー：58サービス解約「1枚比較表」/compare を新設
 
 ### 発見

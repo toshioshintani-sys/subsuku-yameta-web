@@ -1,0 +1,46 @@
+> 📌 この記事の初出（最新版）: [サブスクやめた｜解約のタイミング完全ガイド：請求日・月末・年契約更新月の使い分け](https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel)
+> ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
+
+「Netflix を月末に解約すれば月初に解約するより得？」「Adobe CC の年契約の解約タイミングはいつがベスト？」——サブスクの解約タイミングは、サービスごとにルールが違うため、知らないと数千円損することがある。
+
+## パターン1：請求期間末まで利用可能なタイプ
+
+最も多いのがこのパターン。Netflix、Spotify、Hulu、Disney+ など主要サービスはほぼ全てこのタイプ。「いつ解約しても請求期間（=契約日から1ヶ月）の末日までは使える」。
+
+このタイプは、契約日が月の中旬（例：3月15日に契約）なら、毎月15日が請求日。3月31日に解約しても、4月14日まで使える。つまり「請求日の前日に解約」が最もムダなく利用できるタイミング。
+
+## パターン2：解約と同時に即時停止
+
+U-NEXT がこのタイプ。解約ボタンを押した瞬間に視聴不可になる。残りポイントも消滅する。このタイプは「請求日の前日まで使い切ってから解約」が最適。
+
+具体的には、毎月3日が請求日なら、3日に解約すれば翌月の課金は止まり、なおかつ最後の最後まで利用できる（解約のクリックと同時に視聴は止まるが、課金は止まる）。
+
+## パターン3：年契約・違約金あり
+
+Adobe CC の年契約や、一部のオンラインサロンがこのタイプ。期間途中で解約すると、残月数の50%相当の違約金が発生する。
+
+違約金を避けるには「年契約の更新月（契約から11ヶ月目）」に解約予約を入れる。Adobe の場合、アカウントページから「次回更新時に解約」を選べる。月契約に切り替えてから解約するという裏技もある。
+
+## パターン4：日割り返金あり
+
+Amazon プライムの年契約がこのタイプ。途中解約しても、使った日数分だけ年会費から日割りで返金される。ただし「Prime Video を見た」「送料無料を使った」などの形跡があると返金額が減るので、年契約は「使い切る前提」が前提。
+
+## タイミング判断の早見表
+
+- Netflix/Spotify/Hulu/Disney+ 等の主要月額：請求日の前日に解約 → 翌月末まで使える
+- U-NEXT：請求日の数日前に解約 → 即時停止だが翌月課金が止まる
+- Adobe CC（年契約）：契約から11ヶ月目に「更新時解約」を予約
+- Amazon プライム（年契約）：返金額を考えると年契約は満了まで使う方が無難
+- 無料体験：体験期間終了の2〜3日前に解約。当日は焦るので避ける
+
+請求日を覚えていない場合は、各サービスのアカウントページで確認できる。複数のサブスクを把握する用途には、本サイトの [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel) が役に立つ。
+
+---
+
+### 関連（サブスクやめた）
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel)
+- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=when-to-cancel)
+
+*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

@@ -1,4 +1,4 @@
-import { buildAmazonSearchUrl, buildRakutenSearchUrl } from './affiliates';
+import { buildAmazonSearchUrl, buildRakutenSearchUrl } from './affiliates.js';
 
 // ブログ記事データ
 // 構造：slug, title, description, published (YYYY-MM-DD), tags, body
