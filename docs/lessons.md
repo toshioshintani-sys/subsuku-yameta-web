@@ -18,7 +18,7 @@
 ### 永続化
 - 表情の使い分け＝`docs/PINTEREST_PREP.md` §5.5。生成＝`scripts/seo/gen-pin-samples.mjs`・サンプル＝`docs/pinterest/samples/`。
 - 横展開候補：Shortsのナビゲーター役、トラッカー結果のシェア画像、SNSアバター、404/empty以外の各広報面にもチョキくんを。
-- **表情は"目玉"で増やせる（俊雄さん 2026-06-14）**：固定5表情に縛られず、目＝持ち手リング `circle(76,113)/(124,113) r17＋瞳r7`、口＝`M91 130q9 7 18 0` を差し替えれば、驚き/ウインク/半目等をコードで量産可能（新SVG不要）。`gen-pin-samples.mjs` に eye-variant 関数を足せば表情バリエーションを無限化できる＝今後の量産レバー。
+- **表情は"目玉"で作る＝実装済（俊雄さん 2026-06-14）**：`gen-pin-samples.mjs` の `faceMascot()`＋`FACES`パレットが、内側○(76,113)/(124,113)と口(M91 130q9 7 18 0)を描き替えて表情を生成。参照＝**藤子不二雄（ドラえもん/パーマン）の単純線・点の目**：jito(ジト目=見抜く/皮肉・ブランド人格にドンピシャ)/sparkle(キラキラ=憧れ)/shock(点目=ハッと気づき)/troubled(＞＜)/wink/look(視線)/determined。固定ポーズSVG不要で表情を無限に増やせる量産レバー。パレット一覧＝`docs/pinterest/choki-faces.png`。⚠同一ページに同じ`id="front-scissors-head"`のSVGを複数置くと`<use>`が先頭を参照するID衝突→uid付与で回避（実ピンは1枚ずつ描画で無害）。
 - 本番20ピン（index/games/blog/discover・確定URL）を `docs/pinterest/samples/` に生成、`docs/pinterest/pins-manifest.md` にピン→URL(UTM)対応表。投稿は俊雄さんの原子操作（アカウント＋ドメイン認証）。
 
 ---
