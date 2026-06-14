@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-06-14 ★★ 自律的な社外投稿はブラウザ自動化でなくAPI：Chrome file_uploadはユーザー共有ファイルに限定される
+
+### 発見
+Pinterestへ自律投稿しようとChrome MCPでビルダーを操作し、ログイン確認・アップローダ特定まで到達。だが **file_upload が「ユーザーがこのセッションに共有したファイル」しか許可せず**、リポジトリのピン画像(`docs/pinterest/samples/`)も`.claude/downloads`へのコピーも弾かれた（共有フォルダの実体も全探索したが無し）。レンダラーも一時フリーズ。→ **ブラウザ自動化での画像投稿は構造的に不可**。
+- 解＝**Pinterest API v5**：①ピン画像を公開URL化(`public/pins/`→deploy、`SITE/pins/pin-<key>.png`)②ユーザーがトークンを一度発行 → `scripts/seo/post-pinterest.mjs` がボード5枚を自動作成→20ピンを `media_source:image_url` で投稿（ブラウザ不要・冪等）。`pinterest-auth.mjs`＋`docs/pinterest/API_SETUP.md` で取得手順をturnkey化。
+
+### なぜ重要か
+- **自律的なSNS投稿はブラウザUI自動化に頼らずAPIを使う**のが定石（Threadsも同様）。ブラウザは画像アップのサンドボックス＋UIの脆さで20件規模に向かない。
+- 「準備→稼働」の唯一の残ゲート＝**ユーザーのトークン発行（物理的原子操作）**。それ以外（画像の公開URL化・投稿コード・ボード作成）は全部Claudeが自律で完了できる。
+
+### 永続化
+- `scripts/seo/pins-data.mjs` を**画像生成(gen-pin-samples)と投稿(post-pinterest)の単一ソース**に統一（ドリフト防止）。新ピンは pins-data に足すだけで生成も投稿も追従。
+
+---
+
 ## 2026-06-14 ★ 21記事のcross-post(note/はてな)を機械生成＋node ESMの拡張子落とし穴
 
 ### 発見
