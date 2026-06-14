@@ -19,6 +19,7 @@
 - 表情の使い分け＝`docs/PINTEREST_PREP.md` §5.5。生成＝`scripts/seo/gen-pin-samples.mjs`・サンプル＝`docs/pinterest/samples/`。
 - 横展開候補：Shortsのナビゲーター役、トラッカー結果のシェア画像、SNSアバター、404/empty以外の各広報面にもチョキくんを。
 - **表情は"目玉"で作る＝実装済（俊雄さん 2026-06-14）**：`gen-pin-samples.mjs` の `faceMascot()`＋`FACES`パレットが、内側○(76,113)/(124,113)と口(M91 130q9 7 18 0)を描き替えて表情を生成。参照＝**藤子不二雄（ドラえもん/パーマン）の単純線・点の目**：jito(ジト目=見抜く/皮肉・ブランド人格にドンピシャ)/sparkle(キラキラ=憧れ)/shock(点目=ハッと気づき)/troubled(＞＜)/wink/look(視線)/determined。固定ポーズSVG不要で表情を無限に増やせる量産レバー。パレット一覧＝`docs/pinterest/choki-faces.png`。⚠同一ページに同じ`id="front-scissors-head"`のSVGを複数置くと`<use>`が先頭を参照するID衝突→uid付与で回避（実ピンは1枚ずつ描画で無害）。
+- **表情の"充足ライン"＝感情レジスター約10／顔12パターンで打ち止め（俊雄さん 2026-06-14）**：smile/jito/sparkle/joy/gentle/shock/dumbfounded/troubled/wink/look/determined。視線(右左上下)は同じ目をずらす"無料の派生"でカウント外。**瞳孔サイズが独立の感情軸**＝大(sparkle=憧れ)→普通→小(shock=ハッと気づき)→極小・・(dumbfounded=唖然/言葉も止まる)。増やしすぎは一貫性を薄める＝20も30も先回りで作らず、新しい文脈が実際に出た時だけ足すのが規律。
 - 本番20ピン（index/games/blog/discover・確定URL）を `docs/pinterest/samples/` に生成、`docs/pinterest/pins-manifest.md` にピン→URL(UTM)対応表。投稿は俊雄さんの原子操作（アカウント＋ドメイン認証）。
 
 ---

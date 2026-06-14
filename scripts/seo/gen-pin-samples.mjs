@@ -35,10 +35,25 @@ const FACES = {
     re: '<circle cx="124" cy="113" r="9" fill="#1a1f2e"/><circle cx="120.5" cy="109.5" r="3.1" fill="#fbf8f3"/>',
     mouth: '<path d="M89 128 Q100 144 111 128" fill="none"/>',
   },
+  joy: { // ＾＾ 笑い全開・達成（やった!/解約完了/貯金できた）
+    le: '<path d="M67 117 Q76 103 85 117" fill="none"/>',
+    re: '<path d="M115 117 Q124 103 133 117" fill="none"/>',
+    mouth: '<path d="M89 128 Q100 144 111 128" fill="none"/>',
+  },
+  gentle: { // ◡◡ 優しく目を細める・寄り添い（責めない・大丈夫・一緒に考えよう）
+    le: '<path d="M67 114 Q76 121 85 114" fill="none"/>',
+    re: '<path d="M115 114 Q124 121 133 114" fill="none"/>',
+    mouth: '<path d="M92 131 q8 5 16 0" fill="none"/>',
+  },
   shock: { // 点目：小さな点＋小さなお口。ハッと気づく/しまった（"気づいたら課金"）
     le: '<circle cx="76" cy="112" r="2.6" fill="#1a1f2e"/>',
     re: '<circle cx="124" cy="112" r="2.6" fill="#1a1f2e"/>',
     mouth: '<circle cx="100" cy="133" r="4" fill="none"/>',
+  },
+  dumbfounded: { // ・・ 極小の瞳孔＋一文字口。唖然・呆然（言葉も出ない・悪質さに呆れ）
+    le: '<circle cx="76" cy="113" r="1.9" fill="#1a1f2e"/>',
+    re: '<circle cx="124" cy="113" r="1.9" fill="#1a1f2e"/>',
+    mouth: '<path d="M93 134 H107" fill="none"/>',
   },
   troubled: { // ＞＜ 困った・後悔
     le: '<path d="M70 106 L82 113 L70 120" fill="none"/>',
@@ -117,9 +132,9 @@ const PINS = [
   // 入口（index）
   { key: 'tracker', path: '/tracker', face: 'jito', head: ['使ってないサブスク、', '年でいくら払ってる?'], sub: '1分で棚卸し・無料・登録不要' },
   { key: 'buyout', path: '/yamete-kau', face: 'sparkle', head: ['月額をやめて、', '買い切りに。'], sub: '向く人・向かない人で正直に比較' },
-  { key: 'games', path: '/games', face: 'lookRight', head: ['「解約できない」は、', '意志の弱さじゃない。'], sub: '課金のクセを30秒ゲームで見抜く' },
+  { key: 'games', path: '/games', face: 'gentle', head: ['「解約できない」は、', '意志の弱さじゃない。'], sub: '課金のクセを30秒ゲームで見抜く' },
   // 判断ゲーム
-  { key: 'g-sunk', path: '/games/sunk-cost', face: 'troubled', head: ['8ヶ月払って、', '一度も開いてない。'], sub: '「もったいない」で続けてない? 30秒で' },
+  { key: 'g-sunk', path: '/games/sunk-cost', face: 'dumbfounded', head: ['8ヶ月払って、', '一度も開いてない。'], sub: '「もったいない」で続けてない? 30秒で' },
   { key: 'g-status', path: '/games/status-quo', face: 'jito', head: ['解約3クリック、', '継続0クリック。'], sub: '動かない=払い続ける、の正体' },
   { key: 'g-loss', path: '/games/loss-aversion', face: 'troubled', head: ['「今やめると損」で、', '足が止まってない?'], sub: '引き止め画面の心理を見抜く' },
   { key: 'g-default', path: '/games/default-effect', face: 'shock', head: ['チェックは、', '最初から入ってた。'], sub: '"何もしない"を向こうは計算してる' },
@@ -131,7 +146,7 @@ const PINS = [
   { key: 'b-yearly', path: '/blog/monthly-vs-yearly-plan', face: 'lookRight', head: ['年契約と月契約、', '結局どっちが得?'], sub: '判断軸と計算式を公開' },
   { key: 'b-whencancel', path: '/blog/when-to-cancel', face: 'lookUp', head: ['解約は、', 'いつ押すのが正解?'], sub: '請求日・月末・更新月の使い分け' },
   { key: 'b-autorenew', path: '/blog/auto-renewal-pitfalls', face: 'shock', head: ['「気づいたら', '課金されてた」を防ぐ'], sub: '自動更新の落とし穴と対策' },
-  { key: 'b-gym', path: '/blog/gym-cancel-to-home-training', face: 'sparkle', head: ['ジムをやめて、', '自宅トレに。'], sub: '何ヶ月で元が取れる? 向き不向きも' },
+  { key: 'b-gym', path: '/blog/gym-cancel-to-home-training', face: 'joy', head: ['ジムをやめて、', '自宅トレに。'], sub: '何ヶ月で元が取れる? 向き不向きも' },
   { key: 'b-adobe', path: '/blog/adobe-cc-to-buyout-alternative', face: 'lookRight', head: ['Adobe CCが高い人へ。', '買い切りで済む線。'], sub: '現実的なラインを正直に' },
   { key: 'b-budget', path: '/blog/family-budget-review-order', face: 'lookUp', head: ['家計の見直し、', 'どこから手をつける?'], sub: '優先順位の決め方' },
   // サブスク図鑑（discover）
