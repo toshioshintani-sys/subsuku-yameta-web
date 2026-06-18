@@ -18,9 +18,11 @@
 - **noteはMarkdown転載に構造的に不向き**。同じ原稿でも**はてなブログはMarkdownモードで全部そのまま綺麗**（リンク=アンカーテキストのハイパーリンク=URL非表示）＝本来の適所。俊雄さんはnote単独を選択中なので、その制約下での最善＝「リンクは単独行URL→カード化」方式のアダプタで対応。
 - **note実投稿は事実上『俊雄さんの手作業』が現実解**（または将来ペースト変換を1分検証／はてな併用）。「貼るだけ全自動」はnoteでは成立しにくい。
 
-### 永続化
-- 変換アダプタ＝`scripts/seo/gen-note-adapted.mjs`（v2・全リンクをカード化・URL本文非表示）。出力＝`docs/syndication/note/<slug>.note.txt`（21本）。
-- 未解決＝note paste時のMarkdown変換可否（次回clipboard権限承認で1分検証可）。本lessonsに実測値。
+### 永続化／★解決（同日・俊雄さん指摘で判明）
+- **正解＝ブラウザではなく note API**。ライフオラクルが確立済の方式（`ライフオラクルnoteネタ/scripts/gachijin/note_client.py`＋`markdown.py`）を**サブスクやめたに移植**＝`scripts/note/post-note.mjs`。
+- 流れ：`markdownToNoteHtml()` で Markdown→HTML（**`[text](url)`→`<a href>`＝アンカーテキスト表示・URL非表示**で俊雄さん指示を完全達成／`##`→`<h2>`／`-`→`<ul>`／`>`→`<blockquote>`）→ `POST https://note.com/api/v1/text_notes` に `name`＋`free_body(HTML)`＋`status:'draft'`。認証＝Cookie `_note_session_v5`（DevTools→Application→Cookies→note.com・32文字）＝env `NOTE_SESSION_TOKEN`（lessonsライフオラクル 2026-05-03 と同仕様）。
+- **入力は元の `docs/syndication/*.md` そのまま**。ブラウザ自動化＋カード方式（`gen-note-adapted.mjs`／`.note.txt`）は**これに置換され不要**（教訓：確立済の社内資産を先に探すべきだった＝車輪の再発明をした）。
+- 残：サブスクやめた垢の `_note_session_v5` を俊雄さんが取得し `.env` に設定（原子操作）。その後 `node scripts/note/post-note.mjs <slug>` で下書き作成→ダッシュボードで確認→公開。
 
 ---
 
