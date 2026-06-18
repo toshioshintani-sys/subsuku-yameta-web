@@ -22,7 +22,14 @@
 - **正解＝ブラウザではなく note API**。ライフオラクルが確立済の方式（`ライフオラクルnoteネタ/scripts/gachijin/note_client.py`＋`markdown.py`）を**サブスクやめたに移植**＝`scripts/note/post-note.mjs`。
 - 流れ：`markdownToNoteHtml()` で Markdown→HTML（**`[text](url)`→`<a href>`＝アンカーテキスト表示・URL非表示**で俊雄さん指示を完全達成／`##`→`<h2>`／`-`→`<ul>`／`>`→`<blockquote>`）→ `POST https://note.com/api/v1/text_notes` に `name`＋`free_body(HTML)`＋`status:'draft'`。認証＝Cookie `_note_session_v5`（DevTools→Application→Cookies→note.com・32文字）＝env `NOTE_SESSION_TOKEN`（lessonsライフオラクル 2026-05-03 と同仕様）。
 - **入力は元の `docs/syndication/*.md` そのまま**。ブラウザ自動化＋カード方式（`gen-note-adapted.mjs`／`.note.txt`）は**これに置換され不要**（教訓：確立済の社内資産を先に探すべきだった＝車輪の再発明をした）。
-- 残：サブスクやめた垢の `_note_session_v5` を俊雄さんが取得し `.env` に設定（原子操作）。その後 `node scripts/note/post-note.mjs <slug>` で下書き作成→ダッシュボードで確認→公開。
+- セットアップ：サブスクやめた垢の `_note_session_v5` を俊雄さんが DevTools で取得し `.env` の `NOTE_SESSION_TOKEN=` に設定（原子操作・git管理外）。**トークンを引数/コマンドに直書きするとClaude Codeの分類器がブロック**するので、ユーザーが Notepad で .env に貼る運用にした。
+
+### 追記（公開フロー実測・2026-06-18・W杯記事で実公開成功）
+- **note APIは「本文入りの下書き」を作れない**：POST単独はタイトルのみ定着、本文は入らない（「0文字」）。本文はPUTで確定するが **PUT status=draft は 422**。
+- **予約投稿（reserved＋publish_at）は note premium（有料・月¥500）限定**＝無料アカウントは「予約投稿は出来ません」で422。よって無料垢では「確認してから自動公開」は不可。
+- **公開（status=published）は無料垢でOK**。確定フロー＝**POST（作成）→ POST /api/v1/image_upload/note_eyecatch（1280×670 PNG）→ PUT status=published（free_body＋eye_catch_key）**。これでW杯記事を本文＋アイキャッチ＋ハイパーリンク付きで**実公開成功**（`n29b06960186c`）。
+- アイキャッチ＝`scripts/note/gen-note-eyecatch.mjs`（チョキくん＋記事タイトル・1280×670）→ `docs/syndication/note/eyecatch/<slug>.png`。`post-note.mjs` が自動アップロード。
+- 運用：`node scripts/note/post-note.mjs <slug> --publish`（即公開）。レビューしたいなら公開後に note 編集で直す（公開後編集OK）。残り20本も同コマンドで。カード方式（gen-note-adapted.mjs/.note.txt）は本HTML方式に置換され不要。
 
 ---
 
