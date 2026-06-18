@@ -1,0 +1,47 @@
+📌 この記事の初出（最新版）: サブスクやめた｜家族でサブスクをシェアする時の落とし穴：解約・引継ぎ・トラブル対策
+
+https://sabusuku.netlify.app/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription
+
+※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
+
+Spotify ファミリープラン（最大6人で月額1580円）、YouTube Premium ファミリー（月額2280円・最大5人）、Apple One ファミリー（月額1850円・最大6人）、Amazon プライム（家族会員2人まで送料無料特典共有）。家族でサブスクをシェアすると一人あたりの負担が大幅に下がる。
+
+ただし、「誰が支払うか」「家族構成が変わった時どうするか」「解約のタイミング」など、事前に決めておかないと家族間の小さなトラブルに繋がる。
+
+## 事前に決めるべき5つのルール
+
+・誰が決済者（オーナー）になるか？1人に集約する
+・月々の支払いを家族間で分担するか、誰か1人が払うか？
+・家族メンバーが追加・離脱する時の手続き責任は誰？
+・解約する時の判断は誰がする？オーナー単独 or 全員合意？
+・万一オーナーが連絡取れなくなった場合のバックアッププラン
+
+## 解約・引継ぎの落とし穴
+
+Spotify のファミリープランで「オーナーが解約」すると、家族全員が同時に Premium 機能を失う。家族メンバー側はオーナーへの連絡なしには再加入できない。家族間のトラブルになる場合があるので、ファミリープラン解約は事前にメンバー全員へ通知すべき。
+
+Apple One ファミリーの場合も同様。さらに iCloud ストレージ200GBが家族で共有されている場合、解約すると全員の iCloud バックアップが影響を受ける。
+
+## 結婚・離婚・独立の時の引継ぎ
+
+配偶者と離婚する、子供が独立して家を出る、というタイミングは要注意。多くのファミリープランは「同一住所」を条件にしているため、住所が変わると規約違反になる。
+
+推奨は「ライフイベント直前にプラン見直し」。引っ越し・転居届と同じタイミングで、ファミリープランを解体するか、個人プランへ切り替えるかを決める。
+
+## ファミリープランが向かない人
+
+・一人暮らしで、家族との連絡が頻繁ではない人（住所要件が守りにくい）
+・家族の使用頻度がバラバラで、料金分担の議論が面倒な人
+・事務手続きを誰かに任せたい人（オーナーは結局自分が負担することが多い）
+
+これらに該当する場合、個人プランで自分専用に契約する方が結果的に楽。お金よりも「人間関係の摩擦」を避ける方が大切なケースもある。
+
+### 関連（サブスクやめた）
+
+https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription
+
+https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription
+
+https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription
+
+*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

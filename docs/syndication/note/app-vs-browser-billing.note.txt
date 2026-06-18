@@ -1,0 +1,61 @@
+📌 この記事の初出（最新版）: サブスクやめた｜アプリ内課金とブラウザ課金の違い：解約できない理由はだいたいこれ
+
+https://sabusuku.netlify.app/blog/app-vs-browser-billing?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing
+
+※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
+
+「Netflix アプリから解約しようとしたら、解約ボタンが見つからない」「Spotify の設定にプラン管理画面が無い」——これらの問題の原因はほぼ100%、決済経路の違いにある。
+
+## 3つの決済経路
+
+スマホで使えるサブスクは、決済経路によって3種類に分類できる。それぞれ解約方法が完全に違うため、自分がどの経路で契約しているかを把握することが解約の第一歩だ。
+
+・ブラウザ直接決済：サービス公式サイトでクレカ登録 → サイト内の解約ボタンから解約
+・Apple App Store 経由（iTunes 決済）：iPhone「設定」→「Apple ID」→「サブスクリプション」から解約
+・Google Play ストア経由（Android）：Play ストアアプリ→「定期購入」から解約
+
+## アプリ内課金の判別方法
+
+一番簡単な判別方法は、まず iPhone なら「設定→Apple ID→サブスクリプション」を開いてみること。そこに該当サービスが表示されていれば、アプリ経由（iTunes 決済）。表示されていなければ、ブラウザ直接決済かキャリア（ドコモ・au）経由のいずれか。
+
+なぜサブスク事業者はアプリ内課金を避けたがるか？理由は手数料。Apple / Google は決済手数料として15-30%を取るため、Spotify や Netflix は「アプリから直接登録できないようにする」設計を取っている。これがユーザーにとっては「アプリから解約できない」混乱の元になる。
+
+## キャリア決済の落とし穴
+
+日本特有の問題として、ドコモ・au・ソフトバンクの「キャリア決済」がある。Spotify Premium for docomo、DAZN for docomo、dアニメストア、Apple Music for docomo など、キャリアと提携したプランで契約すると、解約は各キャリアのマイページから。
+
+これらは Apple のサブスクリプション画面にも、サービス公式サイトにも表示されない。「契約した時はキャリアショップ／キャリアの公式サイトで登録した」「料金がスマホの利用料金と一緒に引き落とされている」場合はキャリア経由だ。
+
+## 対処の鉄則
+
+自分がどの経路か分からない時は、まずクレカ明細を確認する。「APPLE.COM/BILL」となっていればApple経由、「GOOGLE *◯◯」となっていれば Google Play 経由、「DOCOMO」「KDDI」とあればキャリア経由、サービス名そのまま（「NETFLIX.COM」等）ならブラウザ直接決済だ。
+
+本サイトの各サービス詳細ページでは、想定される決済経路ごとに解約手順を併記している。サブスク棚卸しダッシュボード でも、各サービスの解約ページへワンクリックで飛べる。
+
+https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing
+
+## よくある質問
+
+**Q. Spotifyやネットフリックスをアプリから解約できないのはなぜ？**
+
+決済経路がApp Store／Google Play経由になっているからです。Apple・Googleは決済手数料として15〜30%を取るため、SpotifyやNetflixは「アプリから直接登録できないようにする」設計を取っています。その結果、アプリ内に解約ボタンが存在せず「アプリから解約できない」混乱が起きます。
+
+**Q. 自分がどの決済経路で契約しているか調べるには？**
+
+まずiPhoneなら「設定→Apple ID→サブスクリプション」を開きます。そこに該当サービスが表示されていればApple（iTunes）決済です。確実なのはクレカ明細の確認で、「APPLE.COM/BILL」ならApple経由、「GOOGLE *◯◯」ならGoogle Play経由、「DOCOMO」「KDDI」ならキャリア決済、サービス名そのまま（NETFLIX.COM等）ならブラウザ直接決済です。
+
+**Q. Apple（App Store）経由のサブスクの解約方法は？**
+
+iPhoneの「設定」→「Apple ID」→「サブスクリプション」から解約します。サービスの公式サイト側には解約ボタンが無いことが多いため、Apple経由だと分かったらこの画面から手続きしてください。
+
+**Q. キャリア決済（docomo / au / SoftBank）のサブスクはどこで解約する？**
+
+各キャリアのマイページから解約します。Spotify Premium for docomo、DAZN for docomo、dアニメストア、Apple Music for docomo などキャリア提携プランは、Appleのサブスクリプション画面にもサービス公式サイトにも表示されません。料金がスマホ利用料金と一緒に引き落とされている場合はキャリア経由です。
+
+### 関連（サブスクやめた）
+
+https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing
+
+https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing
+
+*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
