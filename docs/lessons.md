@@ -6,6 +6,24 @@
 
 ---
 
+## 2026-06-18 ★★★★ 開発者アプリ作成は突破→だがAPI"書き込み"はPinterest審査待ち（自動投稿は今日不可）
+
+### 発見
+- **開発者アプリ作成フォームをChrome MCPの実キー打鍵で突破**＝App ID `1582125`・名 `Subsuku Poster` を作成成功。昨夜の「3-100文字」呪いの正体は **React controlled-inputに値が未登録**。`form_input`や貼付では発火せず、**`computer`の実キー`type`で一発解決**（2026-06-06 Metaアプリと同根を実証）。日本語もInput経由でIMEバイパスされ正しく入る。**禁止語は "Pinterest"**（"meta"ではない＝Metaの話と混同しない）。
+- **罠：テキスト欄にフォーカスが乗らない状態で `/` を打つと、Pinterestの「/」検索ショートカットが発火**してオーバーレイが開き、URLのスラッシュが欠落→「URL無効」。対策＝クリック→**青枠フォーカスを screenshot で確認**してから type。クリアは click→ctrl+a→Delete。
+- **本丸の壁：Pinterestは新規アプリのAPI"書き込み"を「Trialのアクセスが保留中」＝自動審査でゲート**。保留中は App secret・リダイレクトURI編集が不可、手動トークン生成も**読み取り専用スコープのみ**（pins:read/boards:read/user_accounts:read/ads:read/catalogs:read＝**pins:write/boards:write が無い**）。**「アクセスをリクエスト」ボタンは無く自動pending**＝ユーザー操作不要・Pinterestの承認待ち（数時間〜1〜2日が通例）。
+- 結論：**post-pinterest.mjs（20ピン自動投稿）は、Trialアクセスが"active"化するまで実行不可**。承認後は app ページの「トークンを生成する」で書込トークンを出し `PINTEREST_TOKEN` にセット→実行（App secret/OAuth/リダイレクトURI 不要の最短路）。
+
+### なぜ重要か
+- 「API化＝私が全自動」の前提に **Pinterest審査という外部依存**が挟まる。承認前は手動投稿が唯一の流入手段＝**5本の★を手動先行**が正（流入≈0が7日継続の局面で今日の一手を逃さない）。
+- 再開は俊雄さんが app ページの「保留中」表示の消滅を確認→ping、私が約2分で完了（トークン生成→スクリプト）。**重複回避＝手動済みの5 keyを `docs/pinterest/.posted.json` に先入れし、スクリプトは残り15本だけ投稿**。
+
+### 永続化
+- App ID `1582125`（`Subsuku Poster`）。状態確認＝`https://developers.pinterest.com/apps/1582125/`。
+- 最短手順は本lessons＋`docs/pinterest/API_SETUP.md`（※OAuth節より「appページの手動トークン生成」が短い・secret/redirect不要）。手動投稿＝`docs/pinterest/MANUAL_POST_CHECKLIST.md`。
+
+---
+
 ## 2026-06-14 ★★★ Pinterest開発者アプリ「3-100文字」エラーの正体＋損切り判断（手動フォールバック完備）
 
 ### 発見
