@@ -5,7 +5,7 @@ import { POSTS } from './src/data/posts.js';
 import { DISCOVER_GENRES } from './src/data/discover.js';
 import { BIAS_GAMES } from './src/data/biasGames.js';
 
-const FALLBACK_SITE_URL = 'https://sabusuku.netlify.app';
+const FALLBACK_SITE_URL = 'https://sabusuku-yameta.com';
 
 function getSiteUrl() {
   return (process.env.VITE_SITE_URL || FALLBACK_SITE_URL).replace(/\/+$/, '');

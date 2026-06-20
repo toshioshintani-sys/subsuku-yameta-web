@@ -8,7 +8,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const FALLBACK_SITE_URL = 'https://sabusuku.netlify.app';
+const FALLBACK_SITE_URL = 'https://sabusuku-yameta.com';
 
 // .env を最小ロード（post-note.mjs と同方式・既存の process.env を上書きしない）
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
