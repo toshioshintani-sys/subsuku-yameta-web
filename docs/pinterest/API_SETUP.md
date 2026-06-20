@@ -4,7 +4,7 @@
 > 一度トークンを発行すれば、`post-pinterest.mjs` が20ピンを各ボードに投稿（ボードも自動作成）。以後はThreadsのように自律で回せる。
 
 ## 仕組み（前工程はすべて用意済み）
-- ピン画像は **公開URL** 化済み：`https://sabusuku.netlify.app/pins/pin-<key>.png`（`public/pins/`・deploy済）
+- ピン画像は **公開URL** 化済み：`https://sabusuku-yameta.com/pins/pin-<key>.png`（`public/pins/`・deploy済）
 - ピンのタイトル/説明/リンク/ボードは `scripts/seo/pins-data.mjs`（画像生成と同じ単一ソース）
 - 投稿器 `scripts/seo/post-pinterest.mjs`：ボード5枚を自動作成 → 20ピンを投稿。`--dry-run` で事前確認。再実行は投稿済みをスキップ（`docs/pinterest/.posted.json`）。
 
@@ -12,7 +12,7 @@
 
 ### 1. Pinterest 開発者アプリを作る
 - https://developers.pinterest.com/apps/ → 「Create app」（サブスクやめたアカウントで）
-- アプリの **Redirect URIs** に `https://sabusuku.netlify.app/` を登録
+- アプリの **Redirect URIs** に `https://sabusuku-yameta.com/` を登録
 - **App ID** と **App secret** を控える
 
 ### 2. アクセストークンを取る（補助スクリプトあり）

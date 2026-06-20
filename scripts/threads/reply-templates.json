@@ -28,8 +28,8 @@
     }
   },
   "templates": {
-    "faq_default": "コメントありがとうございます。無料の診断ゲームと棚卸しはこちらです → https://sabusuku.netlify.app/games?utm_source=threads&utm_medium=social&utm_campaign=reply",
-    "faq_cancel": "コメントありがとうございます。主要サービスの最短解約ルートはこちらにまとめています → https://sabusuku.netlify.app/?utm_source=threads&utm_medium=social&utm_campaign=reply"
+    "faq_default": "コメントありがとうございます。無料の診断ゲームと棚卸しはこちらです → https://sabusuku-yameta.com/games?utm_source=threads&utm_medium=social&utm_campaign=reply",
+    "faq_cancel": "コメントありがとうございます。主要サービスの最短解約ルートはこちらにまとめています → https://sabusuku-yameta.com/?utm_source=threads&utm_medium=social&utm_campaign=reply"
   },
   "review_draft_hint": "運営トーン（どら猫を脱ぐ）。事実なら謝罪、誤解は一度だけ静かに事実提示、煽りは無反応。下書きはあくまで叩き台で、送信は俊雄さんの承認後。"
 }

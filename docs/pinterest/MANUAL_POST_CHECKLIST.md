@@ -15,14 +15,14 @@ C:\Users\user\Desktop\Claude_work\subsukuyametaweb\subsuku-yameta-web\public\pin
 ```
 
 各ピンの「画像: pin-xxx.png」をこのフォルダから選んでアップロード（ドラッグ&ドロップ）。
-※ ネット経由でもOK：`https://sabusuku.netlify.app/pins/pin-xxx.png` をブラウザで開いて保存。
+※ ネット経由でもOK：`https://sabusuku-yameta.com/pins/pin-xxx.png` をブラウザで開いて保存。
 
 ---
 
 ## §0. 最初の1回だけ（前提）
 
 1. **Pinterestに「サブスクやめた」アカウントでログイン**しているか確認（ビジネスアカウント推奨）。
-2. **（任意・後回し可）ドメイン認証**：設定 → ドメインを申請 → `sabusuku.netlify.app`。認証するとリッチピン＋解析が有効化。メタタグが要るなら index.html に1行入れる対応はこちら（Claude）でやります。**未認証でも普通のピン投稿は通る**ので、最初は飛ばしてOK。
+2. **（任意・後回し可）ドメイン認証**：設定 → ドメインを申請 → `sabusuku-yameta.com`。認証するとリッチピン＋解析が有効化。メタタグが要るなら index.html に1行入れる対応はこちら（Claude）でやります。**未認証でも普通のピン投稿は通る**ので、最初は飛ばしてOK。
 3. **5つのボードを作る**（ピン作成時に新規ボードとして作ってもOK。先に作るなら下記の名前＋説明をコピペ）：
 
 | # | ボード名 | ボード説明 |
@@ -62,110 +62,110 @@ C:\Users\user\Desktop\Claude_work\subsukuyametaweb\subsuku-yameta-web\public\pin
 **★ 画像: pin-tracker.png**
 - タイトル: `使ってないサブスク、年でいくら払ってる?`
 - 説明: `1分で棚卸し・無料・登録不要｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/tracker?utm_source=pinterest&utm_medium=social&utm_campaign=fixed-cost`
+- リンク: `https://sabusuku-yameta.com/tracker?utm_source=pinterest&utm_medium=social&utm_campaign=fixed-cost`
 
 ### ② やめて買い切り（卒業→入学）
 
 **★ 画像: pin-buyout.png**
 - タイトル: `月額をやめて、買い切りに。`
 - 説明: `向く人・向かない人で正直に比較｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/yamete-kau?utm_source=pinterest&utm_medium=social&utm_campaign=buyout`
+- リンク: `https://sabusuku-yameta.com/yamete-kau?utm_source=pinterest&utm_medium=social&utm_campaign=buyout`
 
 ### ③ サブスク比較（特徴と弱点つき）
 
 **★ 画像: pin-d-coffee.png**
 - タイトル: `やめた月額で、コーヒー定期便。`
 - 説明: `卒業→入学。向く人・向かない人｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/discover/coffee-subscription?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
+- リンク: `https://sabusuku-yameta.com/discover/coffee-subscription?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
 
 **画像: pin-d-frozen.png**
 - タイトル: `冷凍弁当・宅食、自炊と比べてどう?`
 - 説明: `特徴と弱点で比較｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/discover/frozen-meal?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
+- リンク: `https://sabusuku-yameta.com/discover/frozen-meal?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
 
 **画像: pin-d-water.png**
 - タイトル: `ウォーターサーバー、浄水ポットとどっち?`
 - 説明: `年いくら変わるか正直に｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/discover/water-server?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
+- リンク: `https://sabusuku-yameta.com/discover/water-server?utm_source=pinterest&utm_medium=social&utm_campaign=compare`
 
 ### ④ 課金の心理（遊んで見抜く）
 
 **★ 画像: pin-games.png**
 - タイトル: `「解約できない」は、意志の弱さじゃない。`
 - 説明: `課金のクセを30秒ゲームで見抜く｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-sunk.png**
 - タイトル: `8ヶ月払って、一度も開いてない。`
 - 説明: `「もったいない」で続けてない? 30秒で｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/sunk-cost?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/sunk-cost?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-status.png**
 - タイトル: `解約3クリック、継続0クリック。`
 - 説明: `動かない=払い続ける、の正体｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/status-quo?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/status-quo?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-loss.png**
 - タイトル: `「今やめると損」で、足が止まってない?`
 - 説明: `引き止め画面の心理を見抜く｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/loss-aversion?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/loss-aversion?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-default.png**
 - タイトル: `チェックは、最初から入ってた。`
 - 説明: `"何もしない"を向こうは計算してる｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/default-effect?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/default-effect?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-plan.png**
 - タイトル: `「来月こそ使う」、毎月言ってない?`
 - 説明: `未来の自分を、少し過信してる｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/planning-fallacy?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/planning-fallacy?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 **画像: pin-g-decoy.png**
 - タイトル: `なぜいつも、真ん中のプラン?`
 - 説明: `松竹梅の"竹"は仕組まれてる｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/games/decoy-effect?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
+- リンク: `https://sabusuku-yameta.com/games/decoy-effect?utm_source=pinterest&utm_medium=social&utm_campaign=psychology`
 
 ### ⑤ サブスクのお役立ち（解約・乗り換え）
 
 **★ 画像: pin-b-whycant.png**
 - タイトル: `サブスクは、わざとやめにくい。`
 - 説明: `ダークパターンの仕組みと対策｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/why-cant-cancel?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/why-cant-cancel?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-retention.png**
 - タイトル: `引き止め画面で、心を折られない。`
 - 説明: `突破する3つのコツ｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/how-to-survive-retention-screen?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/how-to-survive-retention-screen?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-yearly.png**
 - タイトル: `年契約と月契約、結局どっちが得?`
 - 説明: `判断軸と計算式を公開｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/monthly-vs-yearly-plan?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/monthly-vs-yearly-plan?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-whencancel.png**
 - タイトル: `解約は、いつ押すのが正解?`
 - 説明: `請求日・月末・更新月の使い分け｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/when-to-cancel?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-autorenew.png**
 - タイトル: `「気づいたら課金されてた」を防ぐ`
 - 説明: `自動更新の落とし穴と対策｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/auto-renewal-pitfalls?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/auto-renewal-pitfalls?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-gym.png**
 - タイトル: `ジムをやめて、自宅トレに。`
 - 説明: `何ヶ月で元が取れる? 向き不向きも｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/gym-cancel-to-home-training?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/gym-cancel-to-home-training?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-adobe.png**
 - タイトル: `Adobe CCが高い人へ。買い切りで済む線。`
 - 説明: `現実的なラインを正直に｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/adobe-cc-to-buyout-alternative?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/adobe-cc-to-buyout-alternative?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 **画像: pin-b-budget.png**
 - タイトル: `家計の見直し、どこから手をつける?`
 - 説明: `優先順位の決め方｜サブスクやめた（解約・乗り換え・買い切り）`
-- リンク: `https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
+- リンク: `https://sabusuku-yameta.com/blog/family-budget-review-order?utm_source=pinterest&utm_medium=social&utm_campaign=blog`
 
 ---
 
