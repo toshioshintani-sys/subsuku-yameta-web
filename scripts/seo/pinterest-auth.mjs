@@ -10,8 +10,10 @@
 //  2) トークン交換:
 //       $env:PINTEREST_APP_ID="xxx"; $env:PINTEREST_APP_SECRET="yyy"; node scripts/seo/pinterest-auth.mjs <code>
 //     出力の access_token を PINTEREST_TOKEN にセットして post-pinterest.mjs を実行。
+import { SITE_URL } from './site-url.mjs';
+
 const SCOPES = 'boards:read,boards:write,pins:read,pins:write';
-const REDIRECT = process.env.PINTEREST_REDIRECT || 'https://sabusuku.netlify.app/';
+const REDIRECT = process.env.PINTEREST_REDIRECT || `${SITE_URL}/`;
 const appId = process.env.PINTEREST_APP_ID;
 const secret = process.env.PINTEREST_APP_SECRET;
 const code = process.argv[2];

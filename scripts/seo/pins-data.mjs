@@ -1,7 +1,9 @@
 // Pinterest ピンの単一ソース。gen-pin-samples.mjs（画像生成）と post-pinterest.mjs（API投稿）が共有する。
 // face=表情（FACESパレット）, path=リンク先, head=見出し2行, sub=説明（両論併記/正直）。
 
-export const SITE = 'https://sabusuku.netlify.app';
+import { SITE_URL } from './site-url.mjs';
+
+export const SITE = SITE_URL;
 
 export const PINS = [
   // 入口（index）

@@ -12,11 +12,12 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { POSTS } from '../../src/data/posts.js';
+import { SITE_URL, SITE_HOST } from './site-url.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const OUT = resolve(ROOT, 'docs/syndication');
 mkdirSync(OUT, { recursive: true });
-const SITE = 'https://sabusuku.netlify.app';
+const SITE = SITE_URL;
 const AFF = /a8\.net|px\.a8|a8mat|moshimo|amazon\.|rakuten|valuecommerce|linksynergy|\.afl\.|af-mdf/i;
 
 function utm(path, slug) {
@@ -63,7 +64,7 @@ function buildDoc(p) {
     `- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](${utm('/tracker', slug)})\n` +
     `- 🛒 [やめて買い切りで探す](${utm('/yamete-kau', slug)})\n` +
     `- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](${orig})\n\n` +
-    `*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*`;
+    `*この記事は「サブスクやめた」(${SITE_HOST}) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*`;
   return `${head}\n\n${body}${faq}${cta}\n`;
 }
 

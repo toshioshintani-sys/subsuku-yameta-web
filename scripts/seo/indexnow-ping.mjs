@@ -14,9 +14,11 @@
 //
 // キー: public/<KEY>.txt として配信済み（IndexNow の所有権確認方式）。
 
+import { SITE_URL, SITE_HOST } from './site-url.mjs';
+
 const KEY = '7315f020dddb7ab2494b9c03227c43d7';
-const HOST = 'sabusuku.netlify.app';
-const SITE = `https://${HOST}`;
+const HOST = SITE_HOST;
+const SITE = SITE_URL;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 
 const dryRun = process.argv.includes('--dry-run');
@@ -66,7 +68,7 @@ async function main() {
       // keyファイル自体は正常(本番200・内容一致)＝設定不備ではない。
       console.error(
         '[indexnow] → 原因: Bing/IndexNow がホスト未認証。' +
-          'Bing Webmaster Tools(bing.com/webmasters)で sabusuku.netlify.app を追加し、' +
+          `Bing Webmaster Tools(bing.com/webmasters)で ${SITE_HOST} を追加し、` +
           'GSCからインポートして所有権確認を。緊急度低: Google/通常クロールは別経路で影響なし。' +
           '恒久対策はカスタムドメイン化。'
       );

@@ -5,6 +5,7 @@ import { trackAffiliateClick } from '../data/affiliates';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './TrackerPage.module.css';
+import { SITE_URL } from '../config';
 
 // 解約マネジメント・ダッシュボード
 // - ユーザーが契約中サブスクを選択（localStorage で永続化）
@@ -175,7 +176,7 @@ export default function TrackerPage() {
         `${i + 1}. **${s.name}** — ${formatYen(s.monthly)}/月（解約難度: ${DIFFICULTY_LABEL[s.difficulty]}） → [${s.cancelUrl}](${s.cancelUrl})`
       ),
       '',
-      '_作成: サブスクやめた（https://sabusuku.netlify.app/tracker）_',
+      `_作成: サブスクやめた（${SITE_URL}/tracker）_`,
     ];
     downloadText('subsuku-yametai.md', lines.join('\n'));
   };

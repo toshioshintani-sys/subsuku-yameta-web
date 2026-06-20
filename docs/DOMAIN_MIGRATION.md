@@ -40,6 +40,25 @@
 ---
 ## 移行前にやっておけること（ドメイン未確定でも私が今できる）
 - 上記「ハードコードURLの掃除」を **VITE_SITE_URL 駆動にパラメータ化**しておく（挙動不変・移行時に env 1個で全置換）。
-- → これを今やるか、ドメイン確定時にまとめてやるかは俊雄さん次第（どちらでも結果は同じ）。
+- → **2026-06-20 本スレで「今やる」を実施済み**（下記の実施記録を参照）。
 
-*記録 2026-06-20 / 診断はGA4実測＋site:検索＋コード監査に基づく*
+---
+## 前準備の実施記録（2026-06-20・ドメイン確定前に実施）
+
+確定ドメイン＝**`sabusuku-yameta.com`**（俊雄さん決定・お名前.comで取得予定・RDAPで空き確認済）。
+
+### 済：ハードコードURLを VITE_SITE_URL 駆動にパラメータ化（挙動は一切不変）
+- 新規 `scripts/seo/site-url.mjs` ＝ **Nodeスクリプト用の本番オリジン単一ソース**（`process.env.VITE_SITE_URL` を読み・`.env` も最小ロード・未設定なら旧ドメインにフォールバック）。export＝`SITE_URL`／`SITE_HOST`。
+- これ経由に置換：`indexnow-ping.mjs`(HOST/SITE/診断文)・`pins-data.mjs`(SITE)・`gen-syndication.mjs`(SITE＋転載フッターのホスト表記)・`pinterest-auth.mjs`(REDIRECTフォールバック)。
+- アプリ内：`TrackerPage.jsx` の書き出し署名を `SITE_URL`（`src/config.js`）経由に。
+- アプリ本体＋`vite-plugin-sitemap.js`(sitemap/robots/feed/llms.txt)＋`src/config.js` は**元から VITE_SITE_URL 駆動**（直書きはフォールバックのみ）。
+- 検証：`node --check` 全通過／`site-url.mjs` は env 未設定で `https://sabusuku.netlify.app` を返す（＝挙動不変）／`npm run build` 通過。
+
+### 移行当日にやること（前準備済みなので最小）
+1. **env を差し替え＝メインスイッチ**：Netlify環境変数 ＋ ローカル `.env` に `VITE_SITE_URL=https://sabusuku-yameta.com`。→ アプリ・sitemap・feed・llms.txt・上記スクリプトが一斉に新ドメインへ。
+2. **フォールバック定数も新ドメインに更新**（env無し実行時の事故防止）：`src/config.js`／`vite-plugin-sitemap.js`(FALLBACK_SITE_URL)／`scripts/seo/site-url.mjs`(FALLBACK_SITE_URL)。
+3. **静的リテラルの直書きを置換（env非適用＝手で差し替え）**：`index.html` L49,50,56,57（og:url/og:image/twitter:image/canonical）／`monitoring/config/sites.json`（JSONなのでenv不可）／`.github/workflows/indexing-ping.yml`（CIのIndexNow ping・Vite env非適用＝先頭に `env:` で1箇所化推奨）。
+4. **告知・コンテンツ系（順次・301でカバーされるので急がない）**：`scripts/threads/*.json`（queue/4koma/reply の既存告知文URL）／画像透かし（`gen-note-eyecatch.mjs`／`gen-pin-samples.mjs`／`gen-note-brand.mjs`／`public/og-image.svg` 等）／`docs/*.md`。
+5. **Netlify/301/GSC/IndexNow/Bing**：本書「私がやること」§の通り（ドメイン追加・自動HTTPS・301・GSCドメインプロパティ＋アドレス変更ツール・IndexNowキーを新ドメイン直下に配置）。
+
+*記録 2026-06-20 / 診断はGA4実測＋site:検索＋コード監査に基づく / 前準備実施 2026-06-20（本スレ）*
