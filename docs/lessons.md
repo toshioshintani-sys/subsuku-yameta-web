@@ -6,6 +6,37 @@
 
 ---
 
+## 2026-06-20 ★★★★★ SEO基盤は完成・律速はドメイン（独自ドメイン移行が最大の一手）
+
+### 発見
+- GA4(538470329)実測：過去7日 訪問**0**／過去28日 訪問26・**自然検索たった1セッション**。`site:sabusuku.netlify.app` で自社ページ**0件**＝検索にほぼ存在しない。流入は Direct50/Referral10/Organic1。
+- コード監査：インデックス基盤は**完成・優秀**（sitemap全網羅[全サービス/記事/カテゴリ/図鑑]・robots・**GSC検証済**[`public/googlef48b6b57fcb30d8a.html`]・IndexNowキー・RSS・llms.txt・prerender・ServicePageに HowTo+FAQPage+BreadcrumbList）。**直す所が無い。**
+- ＝原因はサイトの作りでなく**ドメイン権威の天井**：本番が `sabusuku.netlify.app`（無料Netlifyサブドメイン）。他2PJ（life-oracle.jp/thestackletter.com）は独自ドメイン済、ここだけ未取得。ライフオラクルの「netlify.app生サブドメインが正規URL奪取」と同型。
+
+### なぜ重要か
+- 「サイト/SEOを磨く」は無効（既に完成）。他PJと同じ罠＝基盤を作り込んだが配布(発見性)が壁。律速は**ドメイン＋権威＋時間**。
+- 高CPA固定費アフィ(6/19方針)も**流入が無ければ成約も無い**＝ドメインで発見性の天井を外すのが前提条件。
+
+### 永続化
+- 移行キット＝`docs/DOMAIN_MIGRATION.md`（俊雄さんの操作／私の一括作業[DNS・VITE_SITE_URL・index.html・ハードコード掃除・301・GSCアドレス変更・IndexNow]／検証／正直な期待値）。
+- 次の一手＝俊雄さんが独自ドメイン取得→私が移行一括実行。ドメイン前にGSC「ページ」レポートで「登録済み」か「検出-インデックス未登録」かを確認。期待値は正直に（即流入でなく数週間〜）。
+- memory: `project_subsuku_seo_domain_bottleneck`。**サブスクやめた作業は専用スレで継続**（混同防止）。会議改善は新スレで `/true-council` を部長制/朝会に適用。
+
+## 2026-06-20 ★★★ AI_RADAR＝AIサブスク価格の社内"プル型"一次確認先（Stack Letter供給）
+
+### 何か（部長制に周知）
+Stack Letter（＝"世界版サブスクやめた思想"・共通の根を持つ別ブランド）チームが構築した、AIツール/サービスの最新動向＋**検証済み価格**の社内参照資料。AIサブスク（ChatGPT/Claude/Copilot/Gemini/Perplexity/Cursor/Notion等）の月額・改定を書く時の**一次確認先**。
+- 取得＝`C:\Users\user\Desktop\Claude_work\AI_RADAR更新.cmd` ダブルクリック→最新化して `AI_RADAR.md` が開く。**プル型＝叩けば最新（常時固定でない）**。生成器＝`world-oracle-staging\agents\_runtime\ai_radar.py --refresh`・**LLM不使用＝コストゼロ**。
+- 信頼度＝✅検証済み価格（検証日つき・信頼可）／🔴ライブRSS・🔭market_scout＝未検証。
+
+### 🛑 規律（絶対）
+- ✅は信頼可。**🔴🔭は生情報＝記事化前に各社公式で必ず再確認**。両論併記・煽り禁止のサブスクやめた基準で。**出所ブランド（Stack Letter）は記事に出さない**（社内資料）。
+
+### なぜ重要か
+- AIコンテンツは陳腐化が速い（価格が毎月変わる）が、AI_RADARが鮮度を解決＝「素材は世界から・声は自分（anti-FOMO/減らす）」で書ける。AI＝最優先の集客フック（churnが心理トラップ＝堀）。記事部長/集客部長はAIサブスク記事の一次確認先に。
+
+---
+
 ## 2026-06-19 ★★★★★ 収益エンジンを「高単価"固定費見直し"アフィ」に置換（stress-test GO・ガードレール付き）
 
 ### 決定（proposal-stress-test 経由・俊雄さん GO）

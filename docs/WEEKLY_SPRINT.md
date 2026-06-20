@@ -27,6 +27,9 @@
 - **affiliate_click**（layer/placement/service 分解）・推定収益
 - **AdSense承認状態**（準備中→承認）
 
+### 📡 共有リソース（部長制周知・2026-06-20）
+- **AI_RADAR**＝AIサブスク価格/改定の社内"プル型"一次確認先（`C:\Users\user\Desktop\Claude_work\AI_RADAR.md`／更新は`AI_RADAR更新.cmd`をダブルクリック・LLM不使用＝コストゼロ）。**AIサブスク記事を書く記事部長/集客部長は、書く前にここで価格を確認**。✅検証済み価格のみ信頼／🔴ライブRSS・🔭market_scoutは各社公式で再確認／**出所ブランドは記事に出さない**（社内資料）。詳細＝`docs/lessons.md` 2026-06-20。
+
 ---
 
 ## 停滞検知（自律ルール原則6・軽量版）
