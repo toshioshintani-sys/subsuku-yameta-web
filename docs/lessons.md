@@ -6,6 +6,24 @@
 
 ---
 
+## 2026-06-21 ★★★★ ドメイン移行 Phase2 進捗＋末尾スラッシュSEO修正（朝）
+
+### Phase2 外部申請（私がChrome/MCPで・収益クリティカルは実質完了）
+- **AdSense**：新ドメインをサイト追加→所有権確認→審査リクエスト（審査待ち）。3週間「準備中」だった無料サブドメインから脱出。
+- **GSC**：ドメインプロパティをNetlify DNSのTXTで検証→sitemap送信(成功114)→旧→新アドレス変更active。
+- **IndexNow**：独自ドメインで初めて通る（HTTP200・114URL）。旧*.netlify.appはBingがホスト未認証で弾いていた。
+- **A8**：サブスクやめた登録済(主サイト・URL新ドメイン)＋8案件提携&追跡URLはdiscover.js配線済で本番稼働。COA(副サイト)無事＝**A8は主+副最大500共存なので主サイト切替は他サイト無害**。
+- GSCの「掲載順位の向上について」メール＝新プロパティ追加時の自動ようこそメール＝無視でOK（むしろ有効化の証）。
+
+### ★末尾スラッシュSEO修正（非自明・再利用可）
+- **症状**：Netlifyは prerender 出力(/route/index.html＝ディレクトリ型)を **/route/ で配信し /route→/route/ へ301**。一方 sitemap/canonical は末尾スラッシュ無しで発行＝**GSCに出したsitemapの全URLが毎回301**（インデックスが汚れる）。
+- **修正＝発行側を配信形に揃える(回帰最小)**：`vite-plugin-sitemap.js` に `withSlash()`（root '/'・.xml等ファイル・クエリ除外）を sitemap/feed/llms に適用、`Seo.jsx` の canonical/og:url も末尾スラッシュ化、`prerender.mjs` は「sitemapが末尾スラッシュでも訪問は末尾なし(React Router確実マッチ)」の防御正規化。
+- **実測**：sitemap=`/compare/`、`/compare/`→200（もう301しない）、`/compare`→301→`/compare/`、canonical一致、`/feed.xml`はファイルなのでスラッシュ無し維持。commit a0fe5dd。
+- 学び：**SPA+prerenderをNetlifyに置くと既定で末尾スラッシュ配信**。発行URL(sitemap/canonical)は最初から末尾スラッシュで揃えるのが安全。
+
+### 残り（俊雄さんのログイン操作・収益非影響）
+もしも/Amazon/楽天/VC のサイトURL更新（リンクは配線済）／Bing Webmaster(任意・IndexNow稼働済)／Pinterest claim／ICANN登録者メール認証。詳細＝`docs/DOMAIN_MIGRATION_EXTERNAL_CHECKLIST.md`。
+
 ## 2026-06-20 ★★★★★ 独自ドメイン移行 Phase1 完了（本番=sabusuku-yameta.com・301実測確認）
 
 ### 完了（同日夜・私がChrome/MCPで実行）
