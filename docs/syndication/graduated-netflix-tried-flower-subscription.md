@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜Netflix を卒業した私が、その月額で「花の定期便」を1ヶ月試した話](https://sabusuku.netlify.app/blog/graduated-netflix-tried-flower-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜Netflix を卒業した私が、その月額で「花の定期便」を1ヶ月試した話](https://sabusuku-yameta.com/blog/graduated-netflix-tried-flower-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 Netflix を半年契約していたが、最近は寝る前に流すだけになっていた。月額990円を払って、月に2時間しか観ていない月もある。「これってサブスクのコスパとして良いのか？」と疑問が湧いた。
@@ -30,16 +30,16 @@ Netflix を半年契約していたが、最近は寝る前に流すだけにな
 
 ## 迷っている人へ
 
-もし「最近、Netflix も観なくなったな」と感じているなら、1ヶ月だけ別のジャンルを試してみるのも面白い。本サイトの [花の定期便ジャンル](https://sabusuku.netlify.app/discover/flower?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription) では、主要3社の比較と「やめる時の手順」までまとめてある。気軽に試して、合わなかったら止めれば良い。
+もし「最近、Netflix も観なくなったな」と感じているなら、1ヶ月だけ別のジャンルを試してみるのも面白い。本サイトの [花の定期便ジャンル](https://sabusuku-yameta.com/discover/flower?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription) では、主要3社の比較と「やめる時の手順」までまとめてある。気軽に試して、合わなかったら止めれば良い。
 
-もちろん花じゃなくてもいい。[サブスク図鑑](https://sabusuku.netlify.app/discover?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription) では洋服レンタル、冷凍弁当、コーヒー定期便など6ジャンルを紹介している。Netflix の卒業証書を、別のサブスクの入学証書に変える——そんな気軽さで試してみてほしい。
+もちろん花じゃなくてもいい。[サブスク図鑑](https://sabusuku-yameta.com/discover?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription) では洋服レンタル、冷凍弁当、コーヒー定期便など6ジャンルを紹介している。Netflix の卒業証書を、別のサブスクの入学証書に変える——そんな気軽さで試してみてほしい。
 
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/graduated-netflix-tried-flower-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/graduated-netflix-tried-flower-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-netflix-tried-flower-subscription)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

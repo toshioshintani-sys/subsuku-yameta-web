@@ -43,7 +43,7 @@ function html(title) {
     <div style="position:absolute;left:72px;top:90px;width:730px;height:470px;display:flex;flex-direction:column;justify-content:center">
       <div style="font-size:${fontSize(title)}px;font-weight:700;color:${NAVY};line-height:1.42">${esc(title)}</div>
     </div>
-    <div style="position:absolute;left:74px;bottom:54px;color:${TEAL};font-weight:700;font-size:28px">✂ サブスクやめた　｜　sabusuku.netlify.app</div>
+    <div style="position:absolute;left:74px;bottom:54px;color:${TEAL};font-weight:700;font-size:28px">✂ サブスクやめた　｜　sabusuku-yameta.com</div>
   </div></body></html>`;
 }
 

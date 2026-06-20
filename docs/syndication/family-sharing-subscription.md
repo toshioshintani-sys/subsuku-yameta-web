@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜家族でサブスクをシェアする時の落とし穴：解約・引継ぎ・トラブル対策](https://sabusuku.netlify.app/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜家族でサブスクをシェアする時の落とし穴：解約・引継ぎ・トラブル対策](https://sabusuku-yameta.com/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 Spotify ファミリープラン（最大6人で月額1580円）、YouTube Premium ファミリー（月額2280円・最大5人）、Apple One ファミリー（月額1850円・最大6人）、Amazon プライム（家族会員2人まで送料無料特典共有）。家族でサブスクをシェアすると一人あたりの負担が大幅に下がる。
@@ -33,12 +33,26 @@ Apple One ファミリーの場合も同様。さらに iCloud ストレージ20
 
 これらに該当する場合、個人プランで自分専用に契約する方が結果的に楽。お金よりも「人間関係の摩擦」を避ける方が大切なケースもある。
 
+## よくある質問
+
+**Q. ファミリープランのオーナーが解約すると、家族メンバーはどうなりますか？**
+
+Spotify などのファミリープランは、オーナー（決済者）が解約すると家族メンバー全員が同時に有料機能を失います。メンバー側はオーナーへ連絡せずに単独で再加入することはできません。Apple One ファミリーでも同様で、共有している iCloud ストレージが解約の影響を受け、全員のバックアップに波及することがあります。トラブルを避けるため、解約前に必ずメンバー全員へ通知してください。
+
+**Q. 離婚・子供の独立・転居のとき、ファミリープランはどうすればいいですか？**
+
+多くのファミリープランは「家族が同一住所に住んでいること」を利用条件にしています。離婚・子供の独立・引っ越しで住所が変わると規約違反になる場合があるため、転居届と同じタイミングでファミリープランを解体するか、個人プランへ切り替えるかを決めておくのがおすすめです。ライフイベントの直前にプランを見直すのが安全です。
+
+**Q. ファミリープランが向かないのはどんな人ですか？**
+
+一人暮らしで家族との連絡が頻繁でない人（住所要件を守りにくい）、家族の使用頻度がバラバラで料金分担の議論が面倒な人、事務手続きを誰かに任せたい人（オーナーは結局自分の負担になりがち）には向きません。こうした場合は個人プランで自分専用に契約する方が、お金よりも「人間関係の摩擦」を避けられて結果的に楽なこともあります。
+
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=family-sharing-subscription)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

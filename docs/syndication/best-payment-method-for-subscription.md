@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜サブスクの支払い方法、結局どれが正解？クレカ・PayPay・キャリア決済を比較](https://sabusuku.netlify.app/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜サブスクの支払い方法、結局どれが正解？クレカ・PayPay・キャリア決済を比較](https://sabusuku-yameta.com/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 新しいサブスクに登録する時、支払い方法をどう選べばいいか？クレカ、PayPay、Amazon Pay、キャリア決済、それぞれにメリット・デメリットがある。
@@ -27,7 +27,7 @@
 
 管理のしやすさ、解約のしやすさ、トラブル時の対処、ポイント還元、すべてにおいてクレカが優位。例外は「日々の支出を厳密に管理したい」「PayPay 還元を最大化したい」場合のみ。
 
-そして最も重要なのは「家計簿アプリと連携できる支払い方法を選ぶ」こと。Money Forward ME や Zaim はクレカ・銀行口座を自動取得する。本サイトの [棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription) と組み合わせれば、サブスクの「見える化」が完成する。
+そして最も重要なのは「家計簿アプリと連携できる支払い方法を選ぶ」こと。Money Forward ME や Zaim はクレカ・銀行口座を自動取得する。本サイトの [棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription) と組み合わせれば、サブスクの「見える化」が完成する。
 
 ## 支払い方法の比較早見表
 
@@ -61,9 +61,9 @@ Amazon Pay・Apple Pay・Google Payなどプラットフォーム経由の決済
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

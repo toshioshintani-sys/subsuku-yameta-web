@@ -48,7 +48,7 @@ const headerSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 670
     <text x="94" y="342" font-size="42" font-weight="700" fill="${NAVY}">今のサブスク、どう動きますか？</text>
     <text x="94" y="406" font-size="33" fill="${GREY}">やめる・乗り換える・買い切る・試す。</text>
     <text x="94" y="460" font-size="28" fill="${GREY}">煽らず・両論併記で、次の一手を。</text>
-    <text x="94" y="588" font-size="30" font-weight="700" fill="${TEAL}">sabusuku.netlify.app</text>
+    <text x="94" y="588" font-size="30" font-weight="700" fill="${TEAL}">sabusuku-yameta.com</text>
   </g>
 </svg>`;
 

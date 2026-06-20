@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜Microsoft 365（旧Office 365）を解約して「買い切りOffice」に戻すと、何年で得をするのか](https://sabusuku.netlify.app/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜Microsoft 365（旧Office 365）を解約して「買い切りOffice」に戻すと、何年で得をするのか](https://sabusuku-yameta.com/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 WordとたまにExcelを開くくらいしか使っていないのに、Microsoft 365 に毎年1万円以上を払い続けている——ある日クレカ明細を見て、そう気づいた。サブスクが悪いわけではない。問題は「自分の使い方に対して、その契約形態が合っているか」を一度も確かめていなかったことだ。
@@ -33,9 +33,9 @@ Microsoft 365 Personal は月1,490円・年12,984円が一般的な価格帯（2
 
 ## 解約と買い替えの順番
 
-まず焦って解約する前に、自分が1ヶ月でどの機能を使ったかを棚卸しするとよい。契約中のサブスク全体を見渡すなら [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) が使える（個人情報は送信されない）。年契約の途中解約には違約金が絡む場合があるので、[年契約と月契約の損益](https://sabusuku.netlify.app/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) も先に確認しておくと安全だ。
+まず焦って解約する前に、自分が1ヶ月でどの機能を使ったかを棚卸しするとよい。契約中のサブスク全体を見渡すなら [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) が使える（個人情報は送信されない）。年契約の途中解約には違約金が絡む場合があるので、[年契約と月契約の損益](https://sabusuku-yameta.com/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) も先に確認しておくと安全だ。
 
-この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) を参照。「やっぱりサブスクが自分には合う」と思ったなら、それも正しい判断だ。
+この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office) を参照。「やっぱりサブスクが自分には合う」と思ったなら、それも正しい判断だ。
 
 ## よくある質問
 
@@ -58,9 +58,9 @@ Office Home & Business 2021 などの買い切り版は、おおむね38,000〜4
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=microsoft365-vs-perpetual-office)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

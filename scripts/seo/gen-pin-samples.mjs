@@ -122,7 +122,7 @@ function pinSvg({ head, sub, face, key }) {
       <text x="500" y="436" font-size="80" font-weight="700" fill="${NAVY}" letter-spacing="-1">${l2}</text>
       <text x="500" y="548" font-size="36" fill="${GREY}">${sub}</text>
       ${mascot}
-      <text x="500" y="1445" font-size="34" fill="${GREY}" opacity="0.85">sabusuku.netlify.app</text>
+      <text x="500" y="1445" font-size="34" fill="${GREY}" opacity="0.85">sabusuku-yameta.com</text>
     </g>
   </svg>`;
 }

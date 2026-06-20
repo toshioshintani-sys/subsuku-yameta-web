@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜解約フローの「引き止め画面」を心折れずに突破する3つのコツ](https://sabusuku.netlify.app/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜解約フローの「引き止め画面」を心折れずに突破する3つのコツ](https://sabusuku-yameta.com/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 Adobe Creative Cloud、U-NEXT、Yahoo!プレミアム、Audible。これらに共通するのは、解約フロー中に「引き止め画面」が複数枚出ることだ。
@@ -13,7 +13,7 @@ Adobe Creative Cloud、U-NEXT、Yahoo!プレミアム、Audible。これらに�
 
 「3ヶ月50%オフ」「2ヶ月無料」などのオファーが出たら、感情ではなく金額で判断する。「年間で◯円浮く vs このサービスを使う頻度」を冷静に計算し、「年に1回しか使わないなら不要」と判断できれば突破できる。
 
-この判断を簡単にするため、解約前に [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen) で「月額 × 使用頻度」を可視化しておくと迷いが減る。
+この判断を簡単にするため、解約前に [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen) で「月額 × 使用頻度」を可視化しておくと迷いが減る。
 
 ## コツ3：解約完了画面まで気を抜かない
 
@@ -46,9 +46,9 @@ Adobe Creative Cloud、U-NEXT、Yahoo!プレミアム、Audible。これらに�
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=how-to-survive-retention-screen)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

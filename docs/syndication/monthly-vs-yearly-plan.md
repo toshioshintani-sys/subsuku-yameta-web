@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜年契約と月契約、結局どっちが得？判断軸と計算式を完全公開](https://sabusuku.netlify.app/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜年契約と月契約、結局どっちが得？判断軸と計算式を完全公開](https://sabusuku-yameta.com/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 多くのサブスクには年契約プランがあり、「年契約は月契約より2〜3ヶ月分お得」というキャッチコピーで誘導される。一見、年契約が常に正解に見えるが、実は損するパターンも多い。
@@ -38,7 +38,7 @@
 
 例：U-NEXT 月2189円・年29760円 → 29760 ÷ 2189 = 13.6ヶ月。年契約は意外と分が悪い（途中解約不可と合わせると慎重に判断すべき）。
 
-計算が面倒なら、本サイトの [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan) で月額換算で表示しているので、年間の総額が一目で分かる。「年に◯円も払っているのか」が実感できると、契約見直しの動機になる。
+計算が面倒なら、本サイトの [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan) で月額換算で表示しているので、年間の総額が一目で分かる。「年に◯円も払っているのか」が実感できると、契約見直しの動機になる。
 
 ## よくある質問
 
@@ -61,9 +61,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=monthly-vs-yearly-plan)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

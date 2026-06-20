@@ -1,9 +1,9 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜ワールドカップ2026は無料で見られる？ 放送・配信を「お金をかけない順」に整理](https://sabusuku.netlify.app/blog/world-cup-2026-where-to-watch-free?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜ワールドカップ2026は無料で見られる？ 放送・配信を「お金をかけない順」に整理](https://sabusuku-yameta.com/blog/world-cup-2026-where-to-watch-free?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 「ワールドカップを見たい。でも、そのためだけにDAZNに入るべき？」——4年に一度、同じ迷いがやってくる。先に結論を言うと、**日本代表戦と多くの試合は無料で見られる**。全部をネットで追いたい人だけ課金すればいい。だからまず「自分に課金が要るのか」を見極めるのがいちばんの節約だ。
 
-![ワールドカップ2026を日本で見る早見表：日本戦はDAZN無料＋地上波、地上波はNHK総合33・日テレ15・フジ10試合、NHK BS4Kは全104試合。全部見るならDAZN月4,200円。大会だけ契約して終わったら解約。](https://sabusuku.netlify.app/assets/blog/world-cup-2026-where-to-watch.svg)
+![ワールドカップ2026を日本で見る早見表：日本戦はDAZN無料＋地上波、地上波はNHK総合33・日テレ15・フジ10試合、NHK BS4Kは全104試合。全部見るならDAZN月4,200円。大会だけ契約して終わったら解約。](https://sabusuku-yameta.com/assets/blog/world-cup-2026-where-to-watch.svg)
 
 ## まず結論（お金をかけない順）
 
@@ -33,11 +33,11 @@
 
 ## 「大会だけ見て、終わったら解約」という賢い手
 
-グループリーグから決勝までは約1か月。大会期間だけ契約して、見終わったら解約すれば、月額の払いすぎを避けられる。コツは「締め日前に解約手続きをする」こと。手順は [DAZNの解約方法](https://sabusuku.netlify.app/service/dazn?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)、[ABEMAプレミアムの解約方法](https://sabusuku.netlify.app/service/abema-premium?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) でそれぞれ確認できる。入りっぱなしにしないことが、いちばんの節約だ。
+グループリーグから決勝までは約1か月。大会期間だけ契約して、見終わったら解約すれば、月額の払いすぎを避けられる。コツは「締め日前に解約手続きをする」こと。手順は [DAZNの解約方法](https://sabusuku-yameta.com/service/dazn?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)、[ABEMAプレミアムの解約方法](https://sabusuku-yameta.com/service/abema-premium?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) でそれぞれ確認できる。入りっぱなしにしないことが、いちばんの節約だ。
 
 > 年額で考えると：月4,200円 × 見続ける月数。「大会の1か月だけ」なら、短期契約してすぐ解約するのが合理的。
 
-すでに他の動画サブスクに入っているなら、W杯を機に重複を見直すと固定費が下がる。[サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) で、契約中サービスの合計額と「解約しなさい順」を一度に確認できる。
+すでに他の動画サブスクに入っているなら、W杯を機に重複を見直すと固定費が下がる。[サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) で、契約中サービスの合計額と「解約しなさい順」を一度に確認できる。
 
 ## まとめ
 
@@ -45,7 +45,7 @@
 - 全試合を好きな時に見たい人だけ、DAZN等に課金する
 - 大会だけ契約して、終わったら解約。「入りっぱなし」を避けるのが最大の節約
 
-放送カードや最新の料金・キャンペーン条件は変わることがあるため、視聴前に各公式（DAZN・NHK・各局）で必ず確認してほしい。この記事は特定サービスへの加入を勧めるものではなく、無料を含む選択肢を整理した情報提供だ。固定費を見直すなら [棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) もどうぞ。
+放送カードや最新の料金・キャンペーン条件は変わることがあるため、視聴前に各公式（DAZN・NHK・各局）で必ず確認してほしい。この記事は特定サービスへの加入を勧めるものではなく、無料を含む選択肢を整理した情報提供だ。固定費を見直すなら [棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free) もどうぞ。
 
 ## よくある質問
 
@@ -72,9 +72,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/world-cup-2026-where-to-watch-free?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/world-cup-2026-where-to-watch-free?utm_source=note&utm_medium=syndication&utm_campaign=world-cup-2026-where-to-watch-free)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

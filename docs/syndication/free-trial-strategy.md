@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜無料体験を上手に活用する3つのコツ（と、やってはいけないこと）](https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜無料体験を上手に活用する3つのコツ（と、やってはいけないこと）](https://sabusuku-yameta.com/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 サブスクの「初月無料」「14日間無料体験」は、上手く使えば家計の味方になる。しかし使い方を間違えると「気づいたら自動課金が始まっていた」「アカウントBANされた」というトラブルに繋がる。
@@ -7,7 +7,7 @@
 
 無料体験のあるサブスクに登録する時、最初に行うべきは「Google カレンダーで体験期間終了の2〜3日前にリマインダー」を設定すること。これだけで「気づかず自動課金」を90%回避できる。
 
-本サイトの [棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy) も併用すれば、「今月どのサブスクが体験期間中か」が一目で分かる。
+本サイトの [棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy) も併用すれば、「今月どのサブスクが体験期間中か」が一目で分かる。
 
 ## コツ2：複数の体験を「同時に」走らせない
 
@@ -63,9 +63,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

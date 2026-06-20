@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜ジムを解約して「自宅トレ」に切り替えると、何ヶ月で元が取れるのか](https://sabusuku.netlify.app/blog/gym-cancel-to-home-training?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜ジムを解約して「自宅トレ」に切り替えると、何ヶ月で元が取れるのか](https://sabusuku-yameta.com/blog/gym-cancel-to-home-training?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 週に1回も行けていないジムに、毎月7,000円。「行かなきゃ」という罪悪感だけが残って、明細を見るたびに少し落ち込む。ジムが悪いのではない。自分の通える頻度と、その固定費が見合っているかを一度も確かめていなかっただけだ。
@@ -33,9 +33,9 @@
 
 ## 解約の順番（締め日に注意）
 
-まず1ヶ月、実際に行った回数を記録してみるとよい。それでも月1〜2回なら、自宅トレで足りる可能性が高い。ジムの退会は「当月◯日締め・翌月から退会」のように締め日が決まっていることが多いので、契約内容を確認してから手続きする。固定費全体を見直すなら [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training) も使える。
+まず1ヶ月、実際に行った回数を記録してみるとよい。それでも月1〜2回なら、自宅トレで足りる可能性が高い。ジムの退会は「当月◯日締め・翌月から退会」のように締め日が決まっていることが多いので、契約内容を確認してから手続きする。固定費全体を見直すなら [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training) も使える。
 
-この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training) を参照。ジムに通えている人は、続けるのが正しい選択だ。
+この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training) を参照。ジムに通えている人は、続けるのが正しい選択だ。
 
 ## よくある質問
 
@@ -58,9 +58,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/gym-cancel-to-home-training?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/gym-cancel-to-home-training?utm_source=note&utm_medium=syndication&utm_campaign=gym-cancel-to-home-training)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

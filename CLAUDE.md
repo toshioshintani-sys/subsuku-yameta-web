@@ -31,7 +31,7 @@
 ## 1. プロジェクト概要
 
 **サイト名：** サブスクやめた
-**URL：** https://sabusuku.netlify.app
+**URL：** https://sabusuku-yameta.com （2026-06-21 独自ドメインへ移行。旧 sabusuku.netlify.app は301で本ドメインへ）
 **ミッション（v2.0 再定義）：**
 
 > **今のサブスク、どう動きますか？**
@@ -215,7 +215,7 @@ VITE_GA_MEASUREMENT_ID=G-S0H16V3WE2  ← サブスクやめた専用（GA4プロ
   # カスタムディメンション（イベント範囲・2026-06-05登録済）：layer・placement・service・asp・position（affiliate_click 全パラメータを分解分析可）
 VITE_ADSENSE_CLIENT=（設定済）
 VITE_ADSENSE_SLOT_SERVICE=4506595525
-VITE_SITE_URL=https://sabusuku.netlify.app
+VITE_SITE_URL=https://sabusuku-yameta.com  ← 2026-06-21 独自ドメイン移行（Netlify環境変数も更新済）
 VITE_AMAZON_ASSOCIATE_ID=shinta1999-22
 VITE_RAKUTEN_AFFILIATE_ID=039b7990.875038c7.0ab5f5c4.4f8cf5a9
 VITE_A8_MEDIA_ID=（俊雄さんのメディアID）

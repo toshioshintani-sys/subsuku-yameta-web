@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜ボーナスで固定費見直し：年契約と買い切りの「境界線」をどこで引くか](https://sabusuku.netlify.app/blog/bonus-season-fixed-cost-yearly-vs-buyout?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜ボーナスで固定費見直し：年契約と買い切りの「境界線」をどこで引くか](https://sabusuku-yameta.com/blog/bonus-season-fixed-cost-yearly-vs-buyout?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 6月〜7月、夏のボーナスが入ると、ふだん後回しにしている**固定費の見直し**に手をつけやすくなる。まとまったお金があるこの時期は、「毎月の月額」を「一度きりの買い切り」に置き換える判断がしやすい。年契約・月契約・買い切り——同じサービスでも、自分が何年使うかで正解は変わる。その境界線をどこで引くかを整理しておきたい。
@@ -13,11 +13,11 @@
 
 > 【年契約 vs 月契約】元が取れる月数 = 年契約料金 ÷ 月契約料金　／　【買い切り vs サブスク】元が取れる年数 = 買い切り価格 ÷ サブスク年額
 
-たとえば年契約が月契約の10か月分の値段なら、10か月以上使うなら年契約が得。買い切りがサブスク3年分の値段なら、3年以上同じ環境で使うなら買い切りが得、という具合だ。年契約と月契約の細かい判断軸は [年契約と月契約、結局どっちが得？](https://sabusuku.netlify.app/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) に5つの質問付きでまとめてある。
+たとえば年契約が月契約の10か月分の値段なら、10か月以上使うなら年契約が得。買い切りがサブスク3年分の値段なら、3年以上同じ環境で使うなら買い切りが得、という具合だ。年契約と月契約の細かい判断軸は [年契約と月契約、結局どっちが得？](https://sabusuku-yameta.com/blog/monthly-vs-yearly-plan?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) に5つの質問付きでまとめてある。
 
 ## ソフト系：サブスクのままか、買い切りに戻すか
 
-ボーナス期に見直し対象になりやすいのが、Office や画像編集などのソフト系サブスクだ。常に最新版・クラウド連携・複数端末を使い倒しているならサブスクが合理的だが、「ローカルで基本機能を使うだけ」なら買い切り版に戻した方が、数年スパンで安くなることがある。具体的な損益分岐は [Microsoft 365 を買い切りOfficeに戻すと何年で得をするのか](https://sabusuku.netlify.app/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)、デザインソフトについては [Adobe CC を解約して買い切りで済ませられる現実的なライン](https://sabusuku.netlify.app/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) で詳しく試算している。
+ボーナス期に見直し対象になりやすいのが、Office や画像編集などのソフト系サブスクだ。常に最新版・クラウド連携・複数端末を使い倒しているならサブスクが合理的だが、「ローカルで基本機能を使うだけ」なら買い切り版に戻した方が、数年スパンで安くなることがある。具体的な損益分岐は [Microsoft 365 を買い切りOfficeに戻すと何年で得をするのか](https://sabusuku-yameta.com/blog/microsoft365-vs-perpetual-office?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)、デザインソフトについては [Adobe CC を解約して買い切りで済ませられる現実的なライン](https://sabusuku-yameta.com/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) で詳しく試算している。
 
 ## 買い切りに切り替える前に価格を確認する
 
@@ -45,7 +45,7 @@
 
 ## 年契約の途中解約には注意
 
-買い切りに乗り換えるとき、いま入っている年契約を途中で解約すると違約金が絡む場合がある。更新月に合わせて解約予約を入れるなど、損のないタイミングがある。サービス別の解約タイミングは [解約のタイミング完全ガイド](https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) を先に確認しておくと安全だ。
+買い切りに乗り換えるとき、いま入っている年契約を途中で解約すると違約金が絡む場合がある。更新月に合わせて解約予約を入れるなど、損のないタイミングがある。サービス別の解約タイミングは [解約のタイミング完全ガイド](https://sabusuku-yameta.com/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) を先に確認しておくと安全だ。
 
 ## まとめ
 
@@ -54,9 +54,9 @@
 - 最新版・クラウド同期・短期利用が前提なら、サブスクのままが正解
 - 年契約の途中解約は違約金に注意。更新月に合わせて動く
 
-まずは契約中のサブスクの「年額」を一覧にして、固定費の総額を実感するところから。[サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) なら月額を年額換算で表示するので、「年に◯円も払っているのか」が一目で分かる。
+まずは契約中のサブスクの「年額」を一覧にして、固定費の総額を実感するところから。[サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) なら月額を年額換算で表示するので、「年に◯円も払っているのか」が一目で分かる。
 
-この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) を参照。見直した結果サブスクを続けると決めたなら、それも正しい判断だ。
+この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout) を参照。見直した結果サブスクを続けると決めたなら、それも正しい判断だ。
 
 ## よくある質問
 
@@ -79,9 +79,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/bonus-season-fixed-cost-yearly-vs-buyout?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/bonus-season-fixed-cost-yearly-vs-buyout?utm_source=note&utm_medium=syndication&utm_campaign=bonus-season-fixed-cost-yearly-vs-buyout)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

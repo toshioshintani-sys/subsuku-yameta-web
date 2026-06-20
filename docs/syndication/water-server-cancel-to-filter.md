@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜ウォーターサーバーを解約して「浄水ポット」に変えると、年いくら浮くのか](https://sabusuku.netlify.app/blog/water-server-cancel-to-filter?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜ウォーターサーバーを解約して「浄水ポット」に変えると、年いくら浮くのか](https://sabusuku-yameta.com/blog/water-server-cancel-to-filter?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 ボトルの交換は重いし、電気代もかかる。冷水と「安心」のために毎月4,000円近く払っている——ある日ふと、それは高いのではないかと思った。ウォーターサーバーが悪いのではない。自分の使い方に対して、その固定費が見合っているかを確かめていなかっただけだ。
@@ -31,9 +31,9 @@
 
 ## 解約の順番（解約金・返却に注意）
 
-ウォーターサーバーは「最低利用期間内に解約すると解約金」「サーバー返却時の送料が自己負担」になることが多い。まず契約書で最低利用期間と返却条件を確認してから手続きする。固定費全体を見直すなら [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter) も合わせて使える。
+ウォーターサーバーは「最低利用期間内に解約すると解約金」「サーバー返却時の送料が自己負担」になることが多い。まず契約書で最低利用期間と返却条件を確認してから手続きする。固定費全体を見直すなら [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter) も合わせて使える。
 
-この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter) を参照。サーバーの便利さが生活に必要なら、続けるのも正しい判断だ。
+この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter) を参照。サーバーの便利さが生活に必要なら、続けるのも正しい判断だ。
 
 ## よくある質問
 
@@ -56,9 +56,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/water-server-cancel-to-filter?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/water-server-cancel-to-filter?utm_source=note&utm_medium=syndication&utm_campaign=water-server-cancel-to-filter)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

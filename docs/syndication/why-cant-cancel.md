@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜なぜサブスクは「やめにくく」設計されているのか](https://sabusuku.netlify.app/blog/why-cant-cancel?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜なぜサブスクは「やめにくく」設計されているのか](https://sabusuku-yameta.com/blog/why-cant-cancel?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 「Netflix を解約しようと思ったら、ボタンが見つからない」「U-NEXT で引き止め画面が5枚出てきて心が折れた」——これらはあなたのリテラシーが低いせいではない。サブスク事業者の側が、解約を「あえてしにくく」設計しているからだ。
@@ -27,7 +27,7 @@
 
 日本でも 2022 年の特定商取引法改正で「最終確認画面」の表示義務が課されたが、サブスクの解約 UI 自体への規制は欧米より緩い。事業者の善意に期待できない以上、ユーザー側で「解約は当然の権利」と認識し、感情を入れずに事務的に処理する姿勢が大切である。
 
-本サイトが目指しているのは「解約を 1 クリックで終わらせる」状態。日々のサブスク見直しに、ぜひ [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel) も合わせてご活用ください。
+本サイトが目指しているのは「解約を 1 クリックで終わらせる」状態。日々のサブスク見直しに、ぜひ [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel) も合わせてご活用ください。
 
 ## よくある質問
 
@@ -50,9 +50,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/why-cant-cancel?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/why-cant-cancel?utm_source=note&utm_medium=syndication&utm_campaign=why-cant-cancel)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

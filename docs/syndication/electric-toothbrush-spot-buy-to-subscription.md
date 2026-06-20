@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜電動歯ブラシの「高い本体＋替えブラシ買い忘れ」をやめて、月額定額にするとどうなる？](https://sabusuku.netlify.app/blog/electric-toothbrush-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜電動歯ブラシの「高い本体＋替えブラシ買い忘れ」をやめて、月額定額にするとどうなる？](https://sabusuku-yameta.com/blog/electric-toothbrush-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 電動歯ブラシは「本体が高くて手が出ない」「替えブラシをいつの間にか買い忘れている」という、地味なつまずきが起きやすい。最近は**本体無料＋替えブラシが月額で届く定額（サブスク）**も出てきたが、これも入りっぱなしになりやすい定期契約だ。安く始められる人と、かえって固定費が増えるだけの人がいるので、入る前に自分の歯みがき習慣で確かめたい。
@@ -33,7 +33,7 @@
 
 ## 固定費ぜんぶで見直すなら
 
-月330円のような“小さな定額”は、一つひとつは安くても、積み重なると効いてくる。契約中のサブスクをまとめて並べたいなら、[サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription) で合計額を年額換算で確認できる。この記事の Dentaly へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription) を参照。今の歯ブラシのままで十分なら、それも正しい選択だ。
+月330円のような“小さな定額”は、一つひとつは安くても、積み重なると効いてくる。契約中のサブスクをまとめて並べたいなら、[サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription) で合計額を年額換算で確認できる。この記事の Dentaly へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription) を参照。今の歯ブラシのままで十分なら、それも正しい選択だ。
 
 ## よくある質問
 
@@ -52,9 +52,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/electric-toothbrush-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/electric-toothbrush-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=electric-toothbrush-spot-buy-to-subscription)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

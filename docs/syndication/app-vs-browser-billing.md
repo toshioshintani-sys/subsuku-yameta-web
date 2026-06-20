@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜アプリ内課金とブラウザ課金の違い：解約できない理由はだいたいこれ](https://sabusuku.netlify.app/blog/app-vs-browser-billing?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜アプリ内課金とブラウザ課金の違い：解約できない理由はだいたいこれ](https://sabusuku-yameta.com/blog/app-vs-browser-billing?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 「Netflix アプリから解約しようとしたら、解約ボタンが見つからない」「Spotify の設定にプラン管理画面が無い」——これらの問題の原因はほぼ100%、決済経路の違いにある。
@@ -27,7 +27,7 @@
 
 自分がどの経路か分からない時は、まずクレカ明細を確認する。「APPLE.COM/BILL」となっていればApple経由、「GOOGLE *◯◯」となっていれば Google Play 経由、「DOCOMO」「KDDI」とあればキャリア経由、サービス名そのまま（「NETFLIX.COM」等）ならブラウザ直接決済だ。
 
-本サイトの各サービス詳細ページでは、想定される決済経路ごとに解約手順を併記している。[サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing) でも、各サービスの解約ページへワンクリックで飛べる。
+本サイトの各サービス詳細ページでは、想定される決済経路ごとに解約手順を併記している。[サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing) でも、各サービスの解約ページへワンクリックで飛べる。
 
 ## よくある質問
 
@@ -50,9 +50,9 @@ iPhoneの「設定」→「Apple ID」→「サブスクリプション」から
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/app-vs-browser-billing?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/app-vs-browser-billing?utm_source=note&utm_medium=syndication&utm_campaign=app-vs-browser-billing)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜夏休み前のサブスク棚卸し：帰省・長期休みの前に「家庭の動画・学習サブスク」を見直す手順](https://sabusuku.netlify.app/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜夏休み前のサブスク棚卸し：帰省・長期休みの前に「家庭の動画・学習サブスク」を見直す手順](https://sabusuku-yameta.com/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 6月〜7月、夏休みや帰省の予定が見えてくると、家計の「ふだん見ないところ」に目が向く。中でも溜まりやすいのが、家庭の**動画サブスクと学習サブスク**だ。子どもの春の入学・進級で増やした学習アプリ、コロナ禍以降に家族それぞれが契約した動画配信——気づけば似たサービスが2つ3つ並んでいることがある。長期休みの前は、その重複を見直す絶好のタイミングだ。
@@ -13,7 +13,7 @@
 
 まず、家族それぞれが契約しているサブスクを1か所に集める。スマホの「設定→サブスクリプション」、クレカ明細、家計簿アプリのいずれかを見れば、ほとんどが拾える。動画配信、音楽、学習、雑誌読み放題、クラウドストレージ——ジャンルを問わず全部だ。
 
-本サイトの [サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) を使うと、契約中のサービスをチェックするだけで合計月額と「解約しなさい順」が自動で出る。個人情報は送信されず、すべてブラウザ内（localStorage）に保存されるので、家族で順番に開いて追記していくのにも向いている。
+本サイトの [サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) を使うと、契約中のサービスをチェックするだけで合計月額と「解約しなさい順」が自動で出る。個人情報は送信されず、すべてブラウザ内（localStorage）に保存されるので、家族で順番に開いて追記していくのにも向いている。
 
 ## ステップ2：動画サブスクの「重複」を見つける
 
@@ -24,7 +24,7 @@
 - 無料体験のまま自動課金に移行して、誰も気づいていないもの
 - 昨年の夏アニメ・特定の番組のために契約して、そのまま放置しているもの
 
-「家族の誰がどれを実際に開いているか」を1週間だけ観察すると、片方に寄せられる重複が見えてくる。動画配信は多くが「請求日の前日に解約しても請求期間末まで視聴できる」設計なので、損なく止めやすい。サービスごとの違いは [解約のタイミング完全ガイド](https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) にまとめてある。
+「家族の誰がどれを実際に開いているか」を1週間だけ観察すると、片方に寄せられる重複が見えてくる。動画配信は多くが「請求日の前日に解約しても請求期間末まで視聴できる」設計なので、損なく止めやすい。サービスごとの違いは [解約のタイミング完全ガイド](https://sabusuku-yameta.com/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) にまとめてある。
 
 ## ステップ3：子どもの学習サブスクを「使用頻度」で判定する
 
@@ -41,15 +41,15 @@
 - 年契約の途中で、解約しても日割り返金が無く、満了まで使った方が得
 - 家族プランに集約済みで、1人あたりの負担がすでに十分に低い
 
-家族でシェアしている場合は、解約すると全員に影響が及ぶ。オーナーが勝手に止めて揉めないよう、事前の共有が要る。家族プラン特有の注意点は [家族でサブスクをシェアする時の落とし穴](https://sabusuku.netlify.app/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) を参照してほしい。
+家族でシェアしている場合は、解約すると全員に影響が及ぶ。オーナーが勝手に止めて揉めないよう、事前の共有が要る。家族プラン特有の注意点は [家族でサブスクをシェアする時の落とし穴](https://sabusuku-yameta.com/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) を参照してほしい。
 
 ## ステップ4：無料体験の「自動課金」を止める
 
-夏休み前のもう1つの落とし穴が、無料体験からの自動課金だ。長期休み向けに「お試し」で登録した動画・学習サービスが、休みが終わる頃にしれっと課金へ移行する。登録した瞬間に、体験終了の2〜3日前へリマインダーを入れておくのが確実だ。無料体験を上手に回すコツは [無料体験を上手に活用する3つのコツ](https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) に、自動更新の防ぎ方は [「気づいたら課金されてた」を二度と起こさない方法](https://sabusuku.netlify.app/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) にまとめてある。
+夏休み前のもう1つの落とし穴が、無料体験からの自動課金だ。長期休み向けに「お試し」で登録した動画・学習サービスが、休みが終わる頃にしれっと課金へ移行する。登録した瞬間に、体験終了の2〜3日前へリマインダーを入れておくのが確実だ。無料体験を上手に回すコツは [無料体験を上手に活用する3つのコツ](https://sabusuku-yameta.com/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) に、自動更新の防ぎ方は [「気づいたら課金されてた」を二度と起こさない方法](https://sabusuku-yameta.com/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) にまとめてある。
 
 ## どこから手をつけるか迷ったら
 
-契約が10個以上あると、棚卸しそのものに疲れて放置しがちだ。そういうときは「価格 × 解約のしやすさ × 使用頻度」の優先順位で、上から事務的に処理していくと進む。考え方は [家計のサブスク見直し、どこから手をつけるべきか](https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) に詳しい。
+契約が10個以上あると、棚卸しそのものに疲れて放置しがちだ。そういうときは「価格 × 解約のしやすさ × 使用頻度」の優先順位で、上から事務的に処理していくと進む。考え方は [家計のサブスク見直し、どこから手をつけるべきか](https://sabusuku-yameta.com/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) に詳しい。
 
 > 夏休みの1か月で家を空けるなら、その期間に誰も開かないサブスクは「いったん止める」だけでも年額の一部が浮く。再開はいつでもできる。
 
@@ -60,14 +60,14 @@
 - 帰省や夏の家庭学習で「むしろ活躍する」ものは残す——減らすことが目的ではない
 - 無料体験の自動課金は、登録時のリマインダーで先回りして止める
 
-まずは家庭の契約を一覧にするところから。[サブスク棚卸しダッシュボード](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) で合計額と見直し順を出して、長期休みの前に「使っていないのに払い続けている」状態を一度リセットしておこう。
+まずは家庭の契約を一覧にするところから。[サブスク棚卸しダッシュボード](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review) で合計額と見直し順を出して、長期休みの前に「使っていないのに払い続けている」状態を一度リセットしておこう。
 
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

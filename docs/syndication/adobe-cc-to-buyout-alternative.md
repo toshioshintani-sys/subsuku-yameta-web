@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜Adobe Creative Cloud が高い人へ：解約して「買い切り」で済ませられる現実的なライン](https://sabusuku.netlify.app/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜Adobe Creative Cloud が高い人へ：解約して「買い切り」で済ませられる現実的なライン](https://sabusuku-yameta.com/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 年に数回チラシやSNS画像を作るだけなのに、Adobe Creative Cloud に毎月数千円を払い続けている。気づいたとき、「自分はこの料金に見合うほどAdobeを使っているだろうか」と立ち止まった。
@@ -27,9 +27,9 @@
 
 ## 解約の順番（焦らない）
 
-まず1週間、自分が実際に使った機能を記録してみる。それでも「画像の書き出しと簡単な加工しか使っていない」なら、買い切りで足りる可能性が高い。Adobe の年間プランは途中解約に違約金が絡むことがあり、解約フローでも引き止めが入る。先に [引き止め画面の突破法](https://sabusuku.netlify.app/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative) を読んでおくと心が折れにくい。
+まず1週間、自分が実際に使った機能を記録してみる。それでも「画像の書き出しと簡単な加工しか使っていない」なら、買い切りで足りる可能性が高い。Adobe の年間プランは途中解約に違約金が絡むことがあり、解約フローでも引き止めが入る。先に [引き止め画面の突破法](https://sabusuku-yameta.com/blog/how-to-survive-retention-screen?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative) を読んでおくと心が折れにくい。
 
-この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative) を参照。乗り換えが自分に合わないと感じたら、Adobeを続けるのも正しい選択だ。
+この記事の Amazon・楽天へのリンクはアフィリエイトを含む（PR）。掲載順位は報酬では決めていない。詳細は [収益開示](https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative) を参照。乗り換えが自分に合わないと感じたら、Adobeを続けるのも正しい選択だ。
 
 ## よくある質問
 
@@ -52,9 +52,9 @@
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/adobe-cc-to-buyout-alternative?utm_source=note&utm_medium=syndication&utm_campaign=adobe-cc-to-buyout-alternative)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

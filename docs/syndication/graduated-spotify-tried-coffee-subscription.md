@@ -1,4 +1,4 @@
-> 📌 この記事の初出（最新版）: [サブスクやめた｜Spotify をやめてコーヒー定期便を始めた話：耳から舌へ、贅沢の置換](https://sabusuku.netlify.app/blog/graduated-spotify-tried-coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
+> 📌 この記事の初出（最新版）: [サブスクやめた｜Spotify をやめてコーヒー定期便を始めた話：耳から舌へ、贅沢の置換](https://sabusuku-yameta.com/blog/graduated-spotify-tried-coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
 > ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
 Spotify Premium を3年契約していた。月980円。プレイリストを作って通勤中に聴くのが日課だったが、ここ半年、ほとんど無音で通勤している。「もう要らないんじゃないか」と気づいて、解約してみた。
@@ -31,16 +31,16 @@ Spotify をやめても困らなかった。困らないどころか、無音通
 
 PostCoffee は次回配送4日前までならスキップ・解約できる。1ヶ月単位で気軽にやめられる。もし合わなかったら、迷わず止めて他のジャンルを試せばいい。
 
-本サイトの [コーヒー定期便ジャンル](https://sabusuku.netlify.app/discover/coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription) では PostCoffee 以外の主要サービスも比較してある。各社とも「やめる手順」を併記しているので、最初から「合わなかったら止めるルート」が見える状態で試せる。
+本サイトの [コーヒー定期便ジャンル](https://sabusuku-yameta.com/discover/coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription) では PostCoffee 以外の主要サービスも比較してある。各社とも「やめる手順」を併記しているので、最初から「合わなかったら止めるルート」が見える状態で試せる。
 
-無駄なサブスクをやめる先には、「何か別の体験を始める自由」がある。[サブスク図鑑](https://sabusuku.netlify.app/discover?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription) から、自分の生活に合いそうなジャンルを覗いてみてほしい。
+無駄なサブスクをやめる先には、「何か別の体験を始める自由」がある。[サブスク図鑑](https://sabusuku-yameta.com/discover?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription) から、自分の生活に合いそうなジャンルを覗いてみてほしい。
 
 ---
 
 ### 関連（サブスクやめた）
-- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
-- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
-- 🛒 [やめて買い切りで探す](https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
-- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku.netlify.app/blog/graduated-spotify-tried-coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
+- 📋 [サブスク58サービスの解約方法 一覧・比較](https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
+- 🧮 [固定費の棚卸し（契約中サブスクの年額を1分で可視化・登録不要）](https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
+- 🛒 [やめて買い切りで探す](https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
+- 📖 [この記事の全文・最新版（具体的なサービス情報つき）](https://sabusuku-yameta.com/blog/graduated-spotify-tried-coffee-subscription?utm_source=note&utm_medium=syndication&utm_campaign=graduated-spotify-tried-coffee-subscription)
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
