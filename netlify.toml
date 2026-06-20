@@ -21,6 +21,20 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# 旧 netlify.app サブドメイン → 独自ドメインへ 301（重複URL統合・移行・GSCアドレス変更の前提）
+# force=true でないと SPA フォールバック(/*)に先に拾われて 200 を返してしまう。必ず SPA より前に置く。
+[[redirects]]
+  from = "https://sabusuku.netlify.app/*"
+  to = "https://sabusuku-yameta.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://sabusuku.netlify.app/*"
+  to = "https://sabusuku-yameta.com/:splat"
+  status = 301
+  force = true
+
 # SPA フォールバック：React Router のルートを Netlify でも有効化する
 [[redirects]]
   from = "/*"
