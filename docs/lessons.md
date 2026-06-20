@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-06-20 ★★★★★ 独自ドメイン移行 Phase1 完了（本番=sabusuku-yameta.com・301実測確認）
+
+### 完了（同日夜・私がChrome/MCPで実行）
+- お名前.comで `sabusuku-yameta.com` 取得 → Netlify DNSゾーン作成 → お名前NSを dns1〜4.p07.nsone.net に委譲（Chrome操作）。**NS反映＋HTTPS発行は約15分**（新規ドメインで旧NSキャッシュ無し＝速い）。
+- env差替＝Netlify `VITE_SITE_URL`(MCP manage-env-vars)＋フォールバック定数(config.js/vite-plugin-sitemap.js/site-url.mjs)＋index.html静的タグ＋monitoring/CI を新ドメインに（5bf14be）。**canonical/og:url/sitemap全URL=新ドメインを実測確認**。
+- 旧 `sabusuku.netlify.app/*`→新 301（:splat保持）を実測確認（d7f7512）。
+
+### 学び（再利用可・非自明）
+- **Netlifyは netlify.app サブドメインを独自ドメインへ自動301しない**（200のまま＝重複URL）。`netlify.toml` に **host単位 `from="https://<old>.netlify.app/*"` ＋ `force=true` を SPAフォールバック(/*→/index.html 200)より前** に必須。無いとGSCアドレス変更も不成立。
+- **IndexNowは独自ドメインで初めて通る**：旧 `*.netlify.app` は共有サブドメインでBingがホスト未認証で弾いていた（移行の隠れた効用）。
+- 前準備でenv駆動化済（`scripts/seo/site-url.mjs`・24a6b15）だったので env1個＋静的数箇所で完了＝前準備が効いた。
+
+### 次（Phase2＝外部申請やり直し）
+`docs/DOMAIN_MIGRATION_EXTERNAL_CHECKLIST.md`。鉄則=新ドメインで生きてから申請。AdSense再申請(本命・無料サブドメインが非承認の一因の公算)／GSCドメインプロパティ+アドレス変更／Bing-IndexNow／A8新規サイト登録+提携申請／もしも/Amazon/楽天/VC URL更新／Pinterest claim。
+
 ## 2026-06-20 ★★★★★ SEO基盤は完成・律速はドメイン（独自ドメイン移行が最大の一手）
 
 ### 発見
