@@ -29,7 +29,13 @@ function setCanonical(href) {
 function absolutize(urlOrPath) {
   if (!urlOrPath) return undefined;
   if (/^https?:\/\//.test(urlOrPath)) return urlOrPath;
-  return SITE_URL + (urlOrPath.startsWith('/') ? urlOrPath : '/' + urlOrPath);
+  let path = urlOrPath.startsWith('/') ? urlOrPath : '/' + urlOrPath;
+  // Netlify の配信形（末尾スラッシュ）に合わせて canonical/og:url の 301 を回避。
+  // ルート '/'・ファイル（.png 等）・クエリ/フラグメント付きは除外。
+  if (path !== '/' && !path.includes('?') && !path.includes('#') && !/\.[a-z0-9]+$/i.test(path)) {
+    path = path.replace(/\/+$/, '') + '/';
+  }
+  return SITE_URL + path;
 }
 
 export default function Seo({ title, description, canonical, ogUrl, jsonLd, noindex = false }) {

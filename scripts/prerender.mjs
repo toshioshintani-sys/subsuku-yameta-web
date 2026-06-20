@@ -31,7 +31,9 @@ function getRoutes() {
   const xml = readFileSync(smPath, 'utf8');
   const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => {
     try {
-      return new URL(m[1]).pathname;
+      // sitemap が末尾スラッシュ形でも、訪問は末尾なしで行う（React Router が確実にマッチ）。
+      // 書き出し先は outPathFor がディレクトリ型(/route/index.html)に正規化するため挙動は不変。
+      return new URL(m[1]).pathname.replace(/\/+$/, '') || '/';
     } catch {
       return null;
     }
