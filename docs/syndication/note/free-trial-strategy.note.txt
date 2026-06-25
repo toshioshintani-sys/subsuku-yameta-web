@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜無料体験を上手に活用する3つのコツ（と、やってはいけないこと）
 
-https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
+https://sabusuku-yameta.com/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -12,7 +12,7 @@ https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium
 
 本サイトの 棚卸しダッシュボード も併用すれば、「今月どのサブスクが体験期間中か」が一目で分かる。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
 
 ## コツ2：複数の体験を「同時に」走らせない
 
@@ -67,8 +67,8 @@ https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=free-trial-strategy
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

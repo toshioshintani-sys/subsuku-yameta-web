@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜サブスクの自動更新で「気づいたら課金されてた」を二度と起こさない方法
 
-https://sabusuku.netlify.app/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
+https://sabusuku-yameta.com/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -14,7 +14,7 @@ https://sabusuku.netlify.app/blog/auto-renewal-pitfalls?utm_source=note&utm_medi
 
 本サイトの サブスク棚卸しダッシュボード はまさにこの「点呼」用の道具として作られている。チェック状態は localStorage に保存されるので、毎月開いて「最後に使った月」を更新するだけでよい。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
 
 ## 仕組み2：クレカ明細を「サービス名」でグループ化
 
@@ -50,8 +50,8 @@ Audible・Apple One・Adobe CC などの初月無料サービスは「期間内�
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=auto-renewal-pitfalls
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

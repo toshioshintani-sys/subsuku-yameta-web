@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜家計のサブスク見直し、どこから手をつけるべきか（優先順位の決め方）
 
-https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
+https://sabusuku-yameta.com/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -16,7 +16,7 @@ https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=note&utm
 
 本サイトの サブスク棚卸しダッシュボード では、契約中のサービスをチェックするだけでこの 3 軸スコアを自動計算し、「解約しなさい順」のリストを生成する。個人情報は一切送信せず、すべてあなたのブラウザ内（localStorage）に保存される。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
 
 ## 優先順位の典型例
 
@@ -49,8 +49,8 @@ https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=family-budget-review-order
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

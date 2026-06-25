@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜コンタクトの「都度買い」をやめて定額（サブスク）にすると、どこまで安くなる？【乱視用1day】
 
-https://sabusuku.netlify.app/blog/contact-lens-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
+https://sabusuku-yameta.com/blog/contact-lens-spot-buy-to-subscription?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -10,7 +10,7 @@ https://sabusuku.netlify.app/blog/contact-lens-spot-buy-to-subscription?utm_sour
 
 乱視用1dayを毎日使うと、両目で1日2枚・1ヶ月で約60枚・年で約720枚。これに「あなたが今買っている1枚あたりの単価」を掛ければ、年間のコンタクト代が出る。まずはこの実額を、明細やECの購入履歴から把握するのが出発点だ。固定費全体を見直すなら サブスク棚卸しダッシュボード も使える。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
 
 ## 卒業→入学：定額（サブスク）という選択肢
 
@@ -51,7 +51,7 @@ https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_
 
 コンタクト代を含めた固定費を一度ぜんぶ並べたいなら、サブスク棚卸しダッシュボード で合計額を年額換算で見られる。この記事の dicon へのリンクはアフィリエイトを含む（PR）。掲載順位は提携の有無や報酬では決めていない。詳細は 収益開示 を参照。都度購入のままで十分なら、それも正しい選択だ。
 
-https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
+https://sabusuku-yameta.com/disclosure?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
 
 ## よくある質問
 
@@ -69,8 +69,8 @@ https://sabusuku.netlify.app/disclosure?utm_source=note&utm_medium=syndication&u
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=contact-lens-spot-buy-to-subscription
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

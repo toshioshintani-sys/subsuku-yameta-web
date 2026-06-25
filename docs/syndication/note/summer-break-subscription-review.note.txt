@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜夏休み前のサブスク棚卸し：帰省・長期休みの前に「家庭の動画・学習サブスク」を見直す手順
 
-https://sabusuku.netlify.app/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/summer-break-subscription-review?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -18,7 +18,7 @@ https://sabusuku.netlify.app/blog/summer-break-subscription-review?utm_source=no
 
 本サイトの サブスク棚卸しダッシュボード を使うと、契約中のサービスをチェックするだけで合計月額と「解約しなさい順」が自動で出る。個人情報は送信されず、すべてブラウザ内（localStorage）に保存されるので、家族で順番に開いて追記していくのにも向いている。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 ## ステップ2：動画サブスクの「重複」を見つける
 
@@ -31,7 +31,7 @@ https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_
 
 「家族の誰がどれを実際に開いているか」を1週間だけ観察すると、片方に寄せられる重複が見えてくる。動画配信は多くが「請求日の前日に解約しても請求期間末まで視聴できる」設計なので、損なく止めやすい。サービスごとの違いは 解約のタイミング完全ガイド にまとめてある。
 
-https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/when-to-cancel?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 ## ステップ3：子どもの学習サブスクを「使用頻度」で判定する
 
@@ -50,21 +50,21 @@ https://sabusuku.netlify.app/blog/when-to-cancel?utm_source=note&utm_medium=synd
 
 家族でシェアしている場合は、解約すると全員に影響が及ぶ。オーナーが勝手に止めて揉めないよう、事前の共有が要る。家族プラン特有の注意点は 家族でサブスクをシェアする時の落とし穴 を参照してほしい。
 
-https://sabusuku.netlify.app/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/family-sharing-subscription?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 ## ステップ4：無料体験の「自動課金」を止める
 
 夏休み前のもう1つの落とし穴が、無料体験からの自動課金だ。長期休み向けに「お試し」で登録した動画・学習サービスが、休みが終わる頃にしれっと課金へ移行する。登録した瞬間に、体験終了の2〜3日前へリマインダーを入れておくのが確実だ。無料体験を上手に回すコツは 無料体験を上手に活用する3つのコツ に、自動更新の防ぎ方は 「気づいたら課金されてた」を二度と起こさない方法 にまとめてある。
 
-https://sabusuku.netlify.app/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/free-trial-strategy?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
-https://sabusuku.netlify.app/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/auto-renewal-pitfalls?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 ## どこから手をつけるか迷ったら
 
 契約が10個以上あると、棚卸しそのものに疲れて放置しがちだ。そういうときは「価格 × 解約のしやすさ × 使用頻度」の優先順位で、上から事務的に処理していくと進む。考え方は 家計のサブスク見直し、どこから手をつけるべきか に詳しい。
 
-https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/blog/family-budget-review-order?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
 夏休みの1か月で家を空けるなら、その期間に誰も開かないサブスクは「いったん止める」だけでも年額の一部が浮く。再開はいつでもできる。
 
@@ -79,8 +79,8 @@ https://sabusuku.netlify.app/blog/family-budget-review-order?utm_source=note&utm
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=summer-break-subscription-review
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*

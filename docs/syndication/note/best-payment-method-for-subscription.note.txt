@@ -1,6 +1,6 @@
 📌 この記事の初出（最新版）: サブスクやめた｜サブスクの支払い方法、結局どれが正解？クレカ・PayPay・キャリア決済を比較
 
-https://sabusuku.netlify.app/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
+https://sabusuku-yameta.com/blog/best-payment-method-for-subscription?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
 
 ※元サイトでは、解約方法の一覧・棚卸しツールと一緒に読めます。
 
@@ -32,7 +32,7 @@ https://sabusuku.netlify.app/blog/best-payment-method-for-subscription?utm_sourc
 
 そして最も重要なのは「家計簿アプリと連携できる支払い方法を選ぶ」こと。Money Forward ME や Zaim はクレカ・銀行口座を自動取得する。本サイトの 棚卸しダッシュボード と組み合わせれば、サブスクの「見える化」が完成する。
 
-https://sabusuku.netlify.app/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
+https://sabusuku-yameta.com/tracker?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
 
 ## 支払い方法の比較早見表
 
@@ -65,8 +65,8 @@ Amazon Pay・Apple Pay・Google Payなどプラットフォーム経由の決済
 
 ### 関連（サブスクやめた）
 
-https://sabusuku.netlify.app/compare?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
+https://sabusuku-yameta.com/compare?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
 
-https://sabusuku.netlify.app/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
+https://sabusuku-yameta.com/yamete-kau?utm_source=note&utm_medium=syndication&utm_campaign=best-payment-method-for-subscription
 
-*この記事は「サブスクやめた」(sabusuku.netlify.app) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
+*この記事は「サブスクやめた」(sabusuku-yameta.com) からの転載です。最新版・具体的なサービスリンクは元サイトでご覧いただけます。*
