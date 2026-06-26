@@ -6,6 +6,19 @@
 
 ---
 
+## 2026-06-27 ★★★ ドメイン移行の旧URLは src/ だけでなく「shipされる全サーフェス」を掃く（2日連続でドリフト発見）
+
+### 発見
+- 06-21 の独自ドメイン移行後、`src/` のconfig/canonical/og metaは新ドメインに揃っていたが、**非ソースのshipサーフェスに旧 `sabusuku.netlify.app` が残存していた**：06-26＝`docs/syndication/note/*.note.txt` 21本129箇所のCTA／06-27＝**画像アセット2点のフッター焼き込み**（`public/og-image.svg`＝全体デフォルトOGP・SNSシェアのプレビュー画像／`public/assets/blog/world-cup-2026-where-to-watch.svg`）。
+- og-image.svg は**シェア時に最初に目に入るブランド面**＝旧ドメイン表示は配布レバー（俊雄さんのThreads/note/Pinterestシェア）の効きとブランド一貫性を直接毀損していた。
+
+### なぜ重要か
+- 移行チェックは `grep src/` で止めず、**`public/`（画像・robots・manifest）・`docs/syndication`・`docs/pinterest` 等の貼付け母体まで全文grep**しないと取り逃す。SVGに文字で焼かれたURLは meta置換では直らない。
+- DR0の新ドメインでは「正しいブランドの被リンク／シェア」1件の価値が高い＝素材側の旧ドメイン残存は実損。
+
+### 永続化
+- 次回ドメイン変更時は `grep -rl "<旧ドメイン>" public/ src/ docs/ index.html scripts/` を移行の締めチェックに入れる（src/限定にしない）。本件は29d8479で残存0を検証済。
+
 ## 2026-06-22 ★★★★ 回線アフィ第1動線を実装・公開（光回線記事・stress-test通過・538afd6）＝「次の本丸」完了
 
 ### 発見（確定事実・委員会同期用）
