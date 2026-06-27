@@ -6,6 +6,24 @@
 
 ---
 
+## 2026-06-27 ★★★ 新チャネル：YouTube Shorts×解約手順（誠実トーン・生成は外部AI・段階導入）
+
+### 発見
+- 俊雄さん提案「ショート動画を私が作って投稿」を stress-test（skill本体不在＝型を手動適用）。**発想は妥当**（GROWTH_STRATEGY §E6＝Shortsは恒久・検索ベース）が、**「私が生成も投稿も全自動」版は最リスク**：①この環境で動画生成を担保できない②TikTok自動投稿は凍結リスク③低品質AI動画量産は§4「薄いAI量産禁止」と社会性に反する④account/OAuthは原子操作。
+- 俊雄さん決定（AskUserQuestion）：初手＝**YouTube Shorts／解約手順**、生成は**外部AI（Gemini等）に投げてよい**。→ 私の役割＝「投げれば動画になる完全キット＋正確な台本」の量産。
+- needs-match の一貫性：YouTube＝検索（解約手順がevergreen）／TikTok・Pinterest＝discovery（高intent解約とズレる）。**プラットフォームでコンテンツを変える**（Pinterest失敗の再来を防ぐ）。
+
+### なぜ重要か
+1. **「やるか」でなく「どの production/posting モデルか」を詰める**：チャネル是非より、品質ゲート・ToS・原子操作・段階導入の設計が勝負。全自動・全プラットフォーム一斉は地雷。
+2. **恒久メディアにボイスを資産化しない**：どら猫毒舌はThreads限定、YouTube/note/アプリは誠実トーン（kokuchi-plan §広報運用）。
+3. **手順は実データ（services.js）から引く＝捏造しない**：正確さ＝社会性＝収益の源泉。両論併記は `note` フィールドを活用。
+
+### 永続化
+- `docs/YOUTUBE_SHORTS_PLAYBOOK.md`（フォーマット・UTM・生成プロンプト・第1バッチ台本3本＝Amazonプライム/U-NEXT/Spotify・段階導入/撤退ライン）新規。
+- UTM規約：`utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=<service-id>`。CTAは `/service/:id`。
+
+---
+
 ## 2026-06-27 ★★★★ 集客の律速是正：Pinterest完全停止＋ライフオラクルnote最下段クロス送客を主レバーへ
 
 ### 発見
