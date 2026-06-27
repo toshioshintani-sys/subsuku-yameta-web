@@ -45,9 +45,14 @@
 
 ## 2. 差し込みの実装（結線位置）
 
-- **結線はライフオラクル側の投稿フロー**（`Claude_work` 配下・別プロジェクト＝§9別ブランド・本リポジトリのスコープ外）。本書の最下段ブロックを**唯一の正**として参照し、`free_body` 末尾（関連リンクの後）へ追記してから note の確定(PUT)を呼ぶ。
-- 結線の最小形（このリポジトリの `scripts/note/post-note.mjs` と同じmarkdown→HTML方式の場合）：記事markdownの末尾に §1 のブロックを連結 → 既存の `markdownToNoteHtml(md)` に通すだけ（`<hr>`＋段落＋アンカーに変換される）。専用関数は不要。
-- **テーマ判定**：記事のタグ/タイトルに「お金・固定費・節約・家計・見直し・手放す・ミニマル」が含まれれば B、明確に無関係（占い・スピリチュアル等）なら C、それ以外は A。
+- **参照実装（このリポジトリ）**：`scripts/note/cross-promo-footer.mjs` が §1 の文言・UTM・テーマ判定を**実行可能な単一の正**として持つ。`node scripts/note/cross-promo-footer.mjs` で出力＋不変条件をセルフテストできる（テーマ判定A/B/C・UTM・`<hr>`先頭をassert）。
+- **結線はライフオラクル側の投稿フロー**（`Claude_work` 配下・別プロジェクト＝§9別ブランド・本リポジトリのスコープ外）。上記参照実装を import/コピーし、`free_body`（記事markdown）末尾へ追記してから note の確定(PUT)を呼ぶ：
+  ```js
+  import { crossPromoFooterMarkdown, pickTheme } from './cross-promo-footer.mjs';
+  const md = articleMarkdown + '\n\n' + crossPromoFooterMarkdown(pickTheme(article));
+  // 既存の markdownToNoteHtml(md) に通すだけ（<hr>＋段落＋アンカーに変換される）。
+  ```
+- **テーマ判定**（参照実装に内蔵）：記事のタグ/タイトルに「お金・固定費・節約・家計・見直し・手放す・ミニマル」等が含まれれば B、明確に無関係（占い・スピリチュアル・タロット等）なら C、それ以外は A。
 
 ## 3. 計測（GA4で「ライフオラクルnote経由」を分離）
 
