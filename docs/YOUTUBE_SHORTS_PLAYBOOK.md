@@ -200,5 +200,12 @@ https://sabusuku-yameta.com/service/spotify?utm_source=youtube&utm_medium=social
 サブスク, 解約, 解約方法, Spotify 解約, 節約, 固定費
 ```
 
+## 9. 全自動パイプライン（生成→投稿・俊雄さん決定2026-06-27）
+スマホ手動投稿の負担を外すため、**生成→投稿を全自動化**。実行系＝`scripts/youtube/`（独立package・アプリビルド非影響）。
+- `gen-queue.mjs`：services.js → `queue.json`（spec＋メタ自動生成・`all`で全サービス）。
+- `render-short.mjs`：spec → 1080x1920 mp4（SVGカード→sharp→ffmpeg・**映像生成AI不使用**＝品質安定/コストゼロ/ToS安全）。**この環境で実レンダ検証済**（17秒・H264+AAC・Shorts規格）。
+- `upload-short.mjs` / `run.mjs`：YouTube Data API 自動投稿＋**kill-switch**（既定OFF・既定private・失敗で停止）。
+- セットアップ・運用＝`scripts/youtube/README.md`。初回OAuthのみ俊雄さんの原子操作（`get-token.mjs`）。§8コピペは手動フォールバックとして残す。
+
 ---
-*正データ＝`src/data/services.js`（steps/note/cancelUrl）。トーン規律＝`docs/kokuchi-plan.md`（どら猫はThreads限定）。戦略上位＝`docs/GROWTH_STRATEGY_2026.md` §E6。*
+*正データ＝`src/data/services.js`（steps/note/cancelUrl）。トーン規律＝`docs/kokuchi-plan.md`（どら猫はThreads限定）。戦略上位＝`docs/GROWTH_STRATEGY_2026.md` §E6。実行系＝`scripts/youtube/`。*

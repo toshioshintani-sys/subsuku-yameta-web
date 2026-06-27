@@ -22,6 +22,13 @@
 - `docs/YOUTUBE_SHORTS_PLAYBOOK.md`（フォーマット・UTM・生成プロンプト・第1バッチ台本3本＝Amazonプライム/U-NEXT/Spotify・段階導入/撤退ライン）新規。
 - UTM規約：`utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=<service-id>`。CTAは `/service/:id`。
 
+### 追記（同日・俊雄さん「全自動を目指す」決定→実装）
+- 「スマホ手動投稿はやりづらい」＝stress-testで挙げた**モバイル運用の構造的頭打ち**が実地で顕在化 → 俊雄さんが**全自動（生成→投稿）**を選択。
+- **設計判断**：解約手順の全自動は**映像生成AI(Veo等)でなく、ステップ文字カードをffmpegでプログラム合成**が正解（品質安定・コストゼロ・ToS安全・ブランド統制）。映像AIはUI幻覚＋高コストで解約手順には逆効果。
+- **環境検証**：ffmpegはPATHに無いが `@ffmpeg-installer/ffmpeg`(npm)で導入可・日本語フォントIPAGothic有り。**実際にサンプルShort（17秒/1080x1920/H264+AAC）をレンダリング成功**＝全自動の心臓部が動くことを実証。
+- **実装**：`scripts/youtube/`（独立package＝Vite/Netlify非影響）。gen-queue（services.js→queue）/render-short（SVG→sharp→ffmpeg）/upload-short（YouTube Data API）/run（kill-switch・既定OFF・既定private・失敗で停止）/get-token（初回OAuth）。
+- **教訓**：全自動でも§4不可逆出力ゲートは「kill-switch＋既定OFF＋既定private＋段階公開」で満たせる。account/OAuthだけ俊雄さんの原子操作に限定。
+
 ---
 
 ## 2026-06-27 ★★★★ 集客の律速是正：Pinterest完全停止＋ライフオラクルnote最下段クロス送客を主レバーへ

@@ -1,0 +1,71 @@
+[
+  {
+    "id": "amazon-prime",
+    "name": "Amazon プライム",
+    "hook": "Amazonプライム、“継続する”の大きなボタンに惑わされないで",
+    "steps": [
+      "アカウント＆リスト → 「プライム会員情報」",
+      "「プライム会員資格を終了する」をタップ",
+      "「特典を終了する」→「特典を終了する」で確定"
+    ],
+    "note": "「継続する」ボタンが目立つので注意。解約は小さいリンク",
+    "title": "【惑わされない】Amazonプライムの解約方法｜“継続する”の罠",
+    "description": "Amazon プライムの解約を最短で終わらせる手順です。\n\n▼ 全サブスクの解約手順・無料代替・乗り換え先はこちら（煽らず両論併記）\nhttps://sabusuku-yameta.com/service/amazon-prime?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=amazon-prime\n\n※手順は変更される場合があります。最新は公式をご確認ください。\n#サブスク #解約 #節約",
+    "tags": [
+      "サブスク",
+      "解約",
+      "解約方法",
+      "Amazon プライム 解約",
+      "節約",
+      "固定費"
+    ],
+    "ctaUrl": "https://sabusuku-yameta.com/service/amazon-prime?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=amazon-prime",
+    "status": "pending"
+  },
+  {
+    "id": "u-next",
+    "name": "U-NEXT",
+    "hook": "U-NEXTの解約リンク、わざとページ最下部に隠されてます",
+    "steps": [
+      "マイメニュー → 「契約内容の確認・変更」",
+      "「解約はこちら」（ページ下部にある小さいリンク）",
+      "理由選択 → 「解約する」"
+    ],
+    "note": "解約リンクがとても見つかりにくい。ページ最下部を探して",
+    "title": "【最短】U-NEXTの解約方法｜隠れた解約リンクの場所",
+    "description": "U-NEXTの解約を最短で終わらせる手順です。\n\n▼ 全サブスクの解約手順・無料代替・乗り換え先はこちら（煽らず両論併記）\nhttps://sabusuku-yameta.com/service/u-next?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=u-next\n\n※手順は変更される場合があります。最新は公式をご確認ください。\n#サブスク #解約 #節約",
+    "tags": [
+      "サブスク",
+      "解約",
+      "解約方法",
+      "U-NEXT 解約",
+      "節約",
+      "固定費"
+    ],
+    "ctaUrl": "https://sabusuku-yameta.com/service/u-next?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=u-next",
+    "status": "pending"
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "hook": "Spotify、アプリからは解約できません。理由はこれ",
+    "steps": [
+      "上記URLを開く（アプリからは解約不可）",
+      "「プランを変更する」→「Premiumをキャンセルする」",
+      "手順に沿って完了"
+    ],
+    "note": "アプリからは解約できない。必ずブラウザで",
+    "title": "【なぜ？】Spotifyがアプリで解約できない理由と最短手順",
+    "description": "Spotifyの解約を最短で終わらせる手順です。\n\n▼ 全サブスクの解約手順・無料代替・乗り換え先はこちら（煽らず両論併記）\nhttps://sabusuku-yameta.com/service/spotify?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=spotify\n\n※手順は変更される場合があります。最新は公式をご確認ください。\n#サブスク #解約 #節約",
+    "tags": [
+      "サブスク",
+      "解約",
+      "解約方法",
+      "Spotify 解約",
+      "節約",
+      "固定費"
+    ],
+    "ctaUrl": "https://sabusuku-yameta.com/service/spotify?utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=spotify",
+    "status": "pending"
+  }
+]
