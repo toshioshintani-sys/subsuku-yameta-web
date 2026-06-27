@@ -1,31 +1,20 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Search,
-  ChevronDown,
-  ArrowRight,
-  X,
-  Plus,
-  Gamepad2,
-  Wallet,
-  Armchair,
-  Gift,
-  SquareCheck,
-  Dumbbell,
-  Columns3,
-} from 'lucide-react';
-import { SERVICES, getPopularity, getDefaultMonthly, getPlans } from '../data/services';
+import { Gamepad2, Wallet, Armchair, Gift, SquareCheck, Dumbbell, Columns3 } from 'lucide-react';
+import { SERVICES } from '../data/services';
 import { BIAS_GAMES } from '../data/biasGames';
-import { CategoryIcon } from '../icons';
-import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import SavingsGameLauncher from '../components/SavingsGameLauncher';
+import HeroSearch from '../components/HeroSearch';
+import CostAnchorCard from '../components/CostAnchorCard';
+import EasyWins from '../components/EasyWins';
+import StepsHowTo from '../components/StepsHowTo';
+import ServiceList from '../components/ServiceList';
+import NextMoves from '../components/NextMoves';
+import StickyCtaBar from '../components/StickyCtaBar';
+import { useCostCalculator } from '../hooks/useCostCalculator';
 import styles from './HomePage.module.css';
 
-const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
-
-// 息抜きコーナーの判断ゲームのアイコン。サイト全体と同じ lucide 線アイコンで統一
-// （絵文字はカラー＋環境依存でここだけ浮くため廃止・俊雄さん指摘 2026-06-13）。
+// 息抜きコーナーの判断ゲームのアイコン（サイト共通の lucide 線アイコンで統一）
 const GAME_ICONS = {
   'sunk-cost': Wallet,
   'status-quo': Armchair,
@@ -34,607 +23,60 @@ const GAME_ICONS = {
   'planning-fallacy': Dumbbell,
   'decoy-effect': Columns3,
 };
-const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
-const DIFFICULTY_ORDER = { easy: 0, medium: 1, hard: 2 };
 
-const CATEGORY_LABEL = {
-  video: '動画',
-  music: '音楽',
-  shopping: 'ショッピング',
-  software: 'ソフト・ツール',
-  news: 'ニュース・読み放題',
-  game: 'ゲーム',
-  other: 'その他',
-};
-
-// カテゴリ表示順
-const CATEGORY_ORDER_LIST = ['video', 'music', 'software', 'game', 'news', 'shopping', 'other'];
-
-const SORT_OPTIONS = [
-  { id: 'popular', label: '人気順' },
-  { id: 'name', label: '五十音順' },
-  { id: 'difficulty-asc', label: '解約しやすい順' },
-  { id: 'difficulty-desc', label: '解約しにくい順' },
-];
-
-const HERO_SAMPLE_IDS = ['netflix', 'spotify', 'youtube-premium'];
-
-const NEXT_MOVES = [
-  {
-    label: 'A',
-    title: 'まず、何も契約しない',
-    desc: '契約中の固定費を年額で見て、残すものだけを決める',
-    to: '/tracker',
-    action: '棚卸しする',
-  },
-  {
-    label: 'B',
-    title: '合うものに乗り換える',
-    desc: '解約した後の代替サブスクを、特徴と弱点つきで比較する',
-    to: '/discover',
-    action: '乗り換え先を見る',
-  },
-  {
-    label: 'C',
-    title: '買い切りで済ませる',
-    desc: '月額を増やさず、単発購入で足りるラインを探す',
-    to: '/yamete-kau',
-    action: '買い切りを見る',
-  },
-];
-
-function formatYen(n) {
-  if (!n || n === 0) return '';
-  return `¥${n.toLocaleString('ja-JP')}`;
-}
-
-function AnimatedYen({ value, className, prefix = '¥' }) {
-  const [displayValue, setDisplayValue] = useState(0);
-  const rafRef = useRef(null);
-
-  useEffect(() => {
-    if (
-      typeof window === 'undefined' ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    ) {
-      rafRef.current = requestAnimationFrame(() => setDisplayValue(value));
-      return () => {
-        if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      };
-    }
-
-    const start = performance.now();
-    const duration = 900;
-
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      setDisplayValue(Math.round(value * eased));
-      if (progress < 1) {
-        rafRef.current = requestAnimationFrame(tick);
-      }
-    };
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, [value]);
-
-  return (
-    <span className={className}>
-      {prefix}
-      {displayValue.toLocaleString('ja-JP')}
-    </span>
-  );
-}
-
-function applySort(list, sortBy) {
-  if (sortBy === 'name') {
-    return [...list].sort((a, b) => a.name.localeCompare(b.name, 'ja'));
-  }
-  if (sortBy === 'difficulty-asc') {
-    return [...list].sort((a, b) => DIFFICULTY_ORDER[a.difficulty] - DIFFICULTY_ORDER[b.difficulty]);
-  }
-  if (sortBy === 'difficulty-desc') {
-    return [...list].sort((a, b) => DIFFICULTY_ORDER[b.difficulty] - DIFFICULTY_ORDER[a.difficulty]);
-  }
-  // popular（デフォルト）
-  return [...list].sort((a, b) => {
-    const diff = getPopularity(b.id) - getPopularity(a.id);
-    if (diff !== 0) return diff;
-    return a.name.localeCompare(b.name, 'ja');
-  });
-}
-
-function popularPlanIndex(id) {
-  const plans = getPlans(id);
-  const i = plans.findIndex((p) => p.popular);
-  return i >= 0 ? i : 0;
-}
-
-// ヒーローのインライン・ミニ計算機。
-// よく使う8件のクイックチップ＋「全件検索で追加」で、いま入っているものを選び、
-// 各サービスのプランを自分のコースに合わせると、年間の固定費がカウントアップする。
-// ※一部だけ並べると網羅性=信頼を損なうため、全サービスから追加できるようにしている。
-// 煽らず・正直に（実価格）総額を見せ、棚卸し(/tracker)へ自然につなぐ＝§2-2準拠。
-function HeroCostCalc() {
-  const allPaid = useMemo(
-    () => applySort(SERVICES.filter((s) => getDefaultMonthly(s.id) > 0), 'popular'),
-    []
-  );
-  const quickPicks = useMemo(() => allPaid.slice(0, 8), [allPaid]);
-
-  const [selected, setSelected] = useState(() => new Set(HERO_SAMPLE_IDS));
-  const [planIdx, setPlanIdx] = useState({}); // { serviceId: planIndex }（未設定はpopular）
-  const [showAdd, setShowAdd] = useState(false);
-  const [addQuery, setAddQuery] = useState('');
-
-  const planIndexFor = (id) => (id in planIdx ? planIdx[id] : popularPlanIndex(id));
-  const monthlyFor = (id) => {
-    const plans = getPlans(id);
-    if (plans.length) return plans[planIndexFor(id)]?.monthly ?? getDefaultMonthly(id);
-    return getDefaultMonthly(id);
-  };
-
-  const yearly = useMemo(() => {
-    let sum = 0;
-    selected.forEach((id) => {
-      const plans = getPlans(id);
-      const idx = id in planIdx ? planIdx[id] : popularPlanIndex(id);
-      const monthly = plans.length ? (plans[idx]?.monthly ?? getDefaultMonthly(id)) : getDefaultMonthly(id);
-      sum += monthly * 12;
-    });
-    return sum;
-  }, [selected, planIdx]);
-
-  const add = (id) =>
-    setSelected((prev) => {
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  const remove = (id) =>
-    setSelected((prev) => {
-      const next = new Set(prev);
-      next.delete(id);
-      return next;
-    });
-
-  const selectedServices = useMemo(() => allPaid.filter((s) => selected.has(s.id)), [allPaid, selected]);
-
-  const addResults = useMemo(() => {
-    const q = addQuery.trim().toLowerCase();
-    return allPaid.filter((s) => !selected.has(s.id) && (!q || s.name.toLowerCase().includes(q))).slice(0, 8);
-  }, [allPaid, selected, addQuery]);
-
-  return (
-    <div className={styles.heroCalc}>
-      <p className={styles.heroCalcLead}>いま入っているもの、年いくら？</p>
-
-      <div className={styles.heroCalcChips} role="group" aria-label="契約中のサブスクを選ぶ">
-        {quickPicks.map((s) => {
-          const on = selected.has(s.id);
-          return (
-            <button
-              type="button"
-              key={s.id}
-              className={`${styles.heroCalcChip} ${on ? styles.heroCalcChipOn : ''}`}
-              aria-pressed={on}
-              onClick={() => (on ? remove(s.id) : add(s.id))}
-            >
-              <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={20} />
-              <span className={styles.heroCalcChipName}>{s.name}</span>
-            </button>
-          );
-        })}
-        <button
-          type="button"
-          className={`${styles.heroCalcChip} ${styles.heroCalcAddChip}`}
-          aria-expanded={showAdd}
-          onClick={() => setShowAdd((v) => !v)}
-        >
-          <Plus size={16} strokeWidth={2.2} aria-hidden="true" />
-          <span>他のサブスクを追加</span>
-        </button>
-      </div>
-
-      {showAdd && (
-        <div className={styles.heroCalcAdd}>
-          <div className={styles.heroCalcAddSearch}>
-            <Search size={16} strokeWidth={1.9} aria-hidden="true" />
-            <input
-              type="search"
-              className={styles.heroCalcAddInput}
-              placeholder={`サービス名で検索（全${allPaid.length}件から）`}
-              value={addQuery}
-              onChange={(e) => setAddQuery(e.target.value)}
-              autoComplete="off"
-            />
-          </div>
-          <div className={styles.heroCalcAddResults}>
-            {addResults.length === 0 ? (
-              <span className={styles.heroCalcAddEmpty}>該当なし。棚卸しダッシュボードには全サービスがあります。</span>
-            ) : (
-              addResults.map((s) => (
-                <button
-                  type="button"
-                  key={s.id}
-                  className={styles.heroCalcAddItem}
-                  onClick={() => {
-                    add(s.id);
-                    setAddQuery('');
-                  }}
-                >
-                  <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={18} />
-                  <span className={styles.heroCalcAddItemName}>{s.name}</span>
-                  <Plus size={14} strokeWidth={2.2} aria-hidden="true" />
-                </button>
-              ))
-            )}
-          </div>
-        </div>
-      )}
-
-      {selectedServices.length > 0 && (
-        <div className={styles.heroCalcPlans}>
-          {selectedServices.map((s) => {
-            const plans = getPlans(s.id);
-            const idx = planIndexFor(s.id);
-            const monthly = monthlyFor(s.id);
-            return (
-              <div className={styles.heroCalcPlanRow} key={s.id}>
-                <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={18} />
-                <span className={styles.heroCalcPlanName}>{s.name}</span>
-                {plans.length > 1 ? (
-                  <div className={styles.heroCalcSelectWrap}>
-                    <select
-                      className={styles.heroCalcSelect}
-                      value={idx}
-                      onChange={(e) => setPlanIdx((p) => ({ ...p, [s.id]: Number(e.target.value) }))}
-                      aria-label={`${s.name} のプラン`}
-                    >
-                      {plans.map((p, j) => (
-                        <option key={j} value={j}>
-                          {p.name}（{formatYen(p.monthly)}）
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown size={14} strokeWidth={2} aria-hidden="true" />
-                  </div>
-                ) : (
-                  <span className={styles.heroCalcPlanFixed}>月{formatYen(monthly)}</span>
-                )}
-                <button
-                  type="button"
-                  className={styles.heroCalcRemove}
-                  onClick={() => remove(s.id)}
-                  aria-label={`${s.name} を外す`}
-                >
-                  <X size={14} strokeWidth={2} aria-hidden="true" />
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      <div className={styles.heroCalcResult}>
-        <div className={styles.heroCalcAmountWrap}>
-          <span className={styles.heroCalcAmountLabel}>年間の固定費</span>
-          <AnimatedYen value={yearly} prefix="¥" className={styles.heroCalcAmount} />
-        </div>
-        <Link to="/tracker" className={styles.heroCalcCta}>
-          棚卸しで整理する
-          <ArrowRight size={16} strokeWidth={1.9} aria-hidden="true" />
-        </Link>
-      </div>
-      <p className={styles.heroCalcNote}>
-        全{allPaid.length}件から選べます。プランで料金が変わるので、自分のコースを選んでください（価格は参考値）。
-      </p>
-    </div>
-  );
-}
+// ヒーローの人気チップ（よく解約されるもの）
+const CHIP_IDS = ['netflix', 'spotify', 'amazon-prime'];
 
 export default function HomePage() {
-  const [query, setQuery] = useState('');
-  const [sortBy, setSortBy] = useState('popular');
-  const [collapsedCats, setCollapsedCats] = useState({}); // {videoId: true}
+  // 計算機の状態は1か所で持ち、各セクションへ配る（合計を共有）
+  const cal = useCostCalculator();
 
-  // 検索結果（クエリがあれば全件フィルタ・フラット表示モード）
-  const isSearchMode = query.trim().length > 0;
-
-  const searchResults = useMemo(() => {
-    if (!isSearchMode) return [];
-    const q = query.toLowerCase();
-    const list = SERVICES.filter((s) => s.name.toLowerCase().includes(q));
-    return applySort(list, sortBy);
-  }, [query, sortBy, isSearchMode]);
-
-  // 通常モード：Top10 + カテゴリ別
-  const top10 = useMemo(() => {
-    return applySort(SERVICES, 'popular').slice(0, 10);
-  }, []);
-
-  const top10Ids = useMemo(() => new Set(top10.map((s) => s.id)), [top10]);
-
-  // Top10 を除いた残りを カテゴリ別に分割
-  const restByCategory = useMemo(() => {
-    const rest = SERVICES.filter((s) => !top10Ids.has(s.id));
-    const grouped = {};
-    rest.forEach((s) => {
-      if (!grouped[s.category]) grouped[s.category] = [];
-      grouped[s.category].push(s);
-    });
-    // 各カテゴリ内をソート
-    Object.keys(grouped).forEach((cat) => {
-      grouped[cat] = applySort(grouped[cat], sortBy);
-    });
-    return grouped;
-  }, [top10Ids, sortBy]);
-
-  const toggleCategory = (catId) => {
-    setCollapsedCats((prev) => ({ ...prev, [catId]: !prev[catId] }));
-  };
+  const chipServices = CHIP_IDS.map((id) => SERVICES.find((s) => s.id === id)).filter(Boolean);
+  const amountText = '年' + cal.yen(cal.annual);
 
   return (
     <div className={styles.page}>
       <Seo canonical="/" />
 
-      {/* ヒーロー */}
-      <section className={styles.hero}>
-        {/* 背景帯：キリさんが紐を切る v3 イラスト（装飾・薄く敷く / 紺ヒーロー帯に合わせ dark 版） */}
-        <picture className={styles.heroBg} aria-hidden="true">
-          <source media="(max-width: 600px)" srcSet="/assets/hero/hero-main-mobile-dark.svg" />
-          <img src="/assets/hero/hero-main-dark.svg" alt="" loading="eager" decoding="async" />
-        </picture>
-
-        <div className={styles.heroInner}>
-        <h1 className={styles.heroTitle}>解約したいのに、どこから？</h1>
-        <p className={styles.heroDesc}>
-          各サービスの解約ページへ直接飛べます。手順と注意点もすぐわかります。
-        </p>
-
-        {/* 検索 */}
-        <div className={styles.searchWrap}>
-          <label htmlFor="service-search" className="sr-only">サービス名で検索</label>
-          <span className={styles.searchIcon} aria-hidden="true">
-            <Search size={18} strokeWidth={1.75} />
-          </span>
-          <input
-            id="service-search"
-            className={styles.searchInput}
-            type="search"
-            placeholder="サービス名で検索（例：Netflix）"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            autoComplete="off"
-          />
-          {query && (
-            <button
-              className={styles.clearBtn}
-              onClick={() => setQuery('')}
-              aria-label="検索をクリア"
-              type="button"
-            >
-              <X size={16} strokeWidth={1.8} aria-hidden="true" />
-            </button>
-          )}
-        </div>
-
-        {/* インライン・ミニ計算機（体験型・/tracker へ自然に誘導） */}
-        <HeroCostCalc />
-        </div>
-      </section>
+      {/* ① ヒーロー＋検索（第一印象＝不可侵・全幅） */}
+      <HeroSearch
+        q={cal.q}
+        setQ={cal.setQ}
+        searchResults={cal.searchResults}
+        chipServices={chipServices}
+      />
 
       <div className={styles.content}>
-        {/* 使い方ガイド（初訪問者向け） */}
-        <section className={styles.guide} aria-label="使い方">
-          <ol className={styles.guideList}>
-            <li className={styles.guideItem}>
-              <span className={styles.guideNum}>1</span>
-              <div>
-                <div className={styles.guideTitle}>サービスを探す</div>
-                <div className={styles.guideDesc}>下の検索かカテゴリから選ぶ</div>
-              </div>
-            </li>
-            <li className={styles.guideItem}>
-              <span className={styles.guideNum}>2</span>
-              <div>
-                <div className={styles.guideTitle}>解約ページへ直行</div>
-                <div className={styles.guideDesc}>3ステップ以内の手順と、引き止め画面の対策つき</div>
-              </div>
-            </li>
-            <li className={styles.guideItem}>
-              <span className={styles.guideNum}>3</span>
-              <div>
-                <div className={styles.guideTitle}>まとめて棚卸し</div>
-                <div className={styles.guideDesc}>
-                  <Link to="/tracker" className={styles.guideLink}>棚卸しダッシュボード</Link>で年間総額を可視化
-                </div>
-              </div>
-            </li>
-          </ol>
-          <p className={styles.guideMore}>
-            <Link to="/blog" className={styles.guideLink}>解約・乗り換えのコツをお役立ち記事で読む →</Link>
-          </p>
-        </section>
+        {/* ② 固定費アンカー＋ナッジ（最重要） */}
+        <CostAnchorCard
+          period={cal.period}
+          setPeriod={cal.setPeriod}
+          selectedServices={cal.selectedServices}
+          on={cal.on}
+          addService={cal.addService}
+          removeService={cal.removeService}
+          planIndexFor={cal.planIndexFor}
+          setPlan={cal.setPlan}
+          monthlyFor={cal.monthlyFor}
+          target={cal.target}
+          totalText={cal.totalText}
+          fiveYearText={cal.fiveYearText}
+          topCut={cal.topCut}
+        />
 
-        {/* 並び順切り替え（カテゴリフィルタは2階層レイアウトでは廃止） */}
-        <div className={styles.toolbar}>
-          <p className={styles.count}>
-            {isSearchMode ? `「${query}」の結果：${searchResults.length}件` : `全 ${SERVICES.length}件のサービス`}
-          </p>
-          <label className={styles.sortWrap}>
-            <span className={styles.sortLabel}>並び順</span>
-            <select
-              className={styles.sortSelect}
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              {SORT_OPTIONS.map((o) => (
-                <option key={o.id} value={o.id}>{o.label}</option>
-              ))}
-            </select>
-          </label>
-        </div>
+        {/* ③ かんたんに切れるものから */}
+        <EasyWins count={3} />
 
-        {/* 検索モード：フラットなカードグリッド表示 */}
-        {isSearchMode ? (
-          searchResults.length === 0 ? (
-            <div className={styles.empty}>
-              <p>「{query}」は見つかりませんでした</p>
-              <p className={styles.emptySub}>
-                サービス追加のリクエストは <Link to="/contact" className={styles.emptyLink}>お問い合わせ</Link> から
-              </p>
-            </div>
-          ) : (
-            <div className={styles.grid}>
-              {searchResults.map((service) => (
-                <Link to={`/service/${service.id}`} key={service.id} className={styles.card}>
-                  <div className={styles.cardTop}>
-                    <ServiceIcon serviceId={service.id} category={service.category} domain={service.domain} emoji={service.emoji} size={44} />
-                    <span className={`${styles.badge} ${styles[DIFFICULTY_COLOR[service.difficulty]]}`}>
-                      {DIFFICULTY_LABEL[service.difficulty]}
-                    </span>
-                  </div>
-                  <div className={styles.cardName}>{service.name}</div>
-                  <div className={styles.cardMeta}>{service.steps.length}ステップで完了</div>
-                  <div className={styles.cardArrow}>
-                    <span>解約手順を見る</span>
-                    <ArrowRight size={14} strokeWidth={1.85} aria-hidden="true" />
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )
-        ) : (
-          <>
-            {/* 通常モード：Top10 大タイル + カテゴリ別リスト */}
+        {/* ④ 使い方は3ステップ（解約手順＝不可侵・上部域） */}
+        <StepsHowTo />
 
-            {/* セクション1：Top10 大タイル */}
-            <section className={styles.topSection} aria-label="人気のサブスク Top10">
-              <h2 className={styles.sectionTitle}>
-                <span className={styles.sectionRank}>よく探される</span>
-                人気の <span className={styles.numHighlight}>Top 10</span>
-              </h2>
-              <div className={styles.topGrid}>
-                {top10.map((service, i) => (
-                  <Link to={`/service/${service.id}`} key={service.id} className={styles.topCard}>
-                    <span className={styles.topRank}>{i + 1}</span>
-                    <ServiceIcon
-                      serviceId={service.id}
-                      category={service.category}
-                      domain={service.domain}
-                      emoji={service.emoji}
-                      size={64}
-                    />
-                    <div className={styles.topName}>{service.name}</div>
-                    <div className={styles.topMeta}>
-                      <span className={`${styles.badgeSmall} ${styles[DIFFICULTY_COLOR[service.difficulty]]}`}>
-                        {DIFFICULTY_LABEL[service.difficulty]}
-                      </span>
-                      {getDefaultMonthly(service.id) > 0 && (
-                        <span className={styles.topPrice}>{formatYen(getDefaultMonthly(service.id))}</span>
-                      )}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
+        {/* ⑤ よく探される Top10 */}
+        <ServiceList limit={10} />
 
-            <section className={styles.nextMoveSection} aria-label="やめた後の次の動き">
-              <div className={styles.nextMoveHeader}>
-                <span className={styles.nextMoveKicker}>やめた後の次の動き</span>
-                <h2 className={styles.nextMoveTitle}>解約だけで終わらせず、固定費を組み替える</h2>
-              </div>
-              <div className={styles.nextMoveGrid}>
-                {NEXT_MOVES.map((move) => (
-                  <Link to={move.to} key={move.label} className={styles.nextMoveCard}>
-                    <span className={styles.nextMoveLabel}>{move.label}</span>
-                    <span className={styles.nextMoveText}>
-                      <span className={styles.nextMoveCardTitle}>{move.title}</span>
-                      <span className={styles.nextMoveDesc}>{move.desc}</span>
-                    </span>
-                    <span className={styles.nextMoveAction}>
-                      {move.action}
-                      <ArrowRight size={14} strokeWidth={1.85} aria-hidden="true" />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </section>
+        {/* ⑥ やめた後の次の動き（乗り換え/買い切り＝B層/C層の収益導線・解約より控えめ） */}
+        <NextMoves />
 
-            {/* セクション2：カテゴリ別リスト */}
-            <section className={styles.catSection} aria-label="カテゴリ別すべて">
-              <h2 className={styles.sectionTitle}>
-                すべてのサービス <span className={styles.numHighlight}>{SERVICES.length - 10}</span>
-                <span className={styles.titleSub}>件をカテゴリ別に</span>
-              </h2>
-
-              {CATEGORY_ORDER_LIST.map((catId) => {
-                const items = restByCategory[catId] || [];
-                if (items.length === 0) return null;
-                const isCollapsed = collapsedCats[catId];
-
-                return (
-                  <div key={catId} className={styles.catGroup}>
-                    <button
-                      type="button"
-                      className={styles.catHeader}
-                      onClick={() => toggleCategory(catId)}
-                      aria-expanded={!isCollapsed}
-                    >
-                      <span className={styles.catHeaderLeft}>
-                        <span className={styles.catHeaderIcon} aria-hidden="true">
-                          <CategoryIcon categoryId={catId} size={18} />
-                        </span>
-                        <span className={styles.catHeaderName}>{CATEGORY_LABEL[catId]}</span>
-                        <span className={styles.catHeaderCount}>{items.length}</span>
-                      </span>
-                      <span
-                        className={`${styles.catHeaderChevron} ${isCollapsed ? styles.collapsed : ''}`}
-                        aria-hidden="true"
-                      >
-                        <ChevronDown size={18} strokeWidth={1.75} />
-                      </span>
-                    </button>
-
-                    {!isCollapsed && (
-                      <ul className={styles.catList}>
-                        {items.map((s) => (
-                          <li key={s.id}>
-                            <Link to={`/service/${s.id}`} className={styles.catRow}>
-                              <ServiceIcon
-                                serviceId={s.id}
-                                category={s.category}
-                                domain={s.domain}
-                                emoji={s.emoji}
-                                size={32}
-                              />
-                              <span className={styles.catRowName}>{s.name}</span>
-                              <span className={`${styles.badgeSmall} ${styles[DIFFICULTY_COLOR[s.difficulty]]}`}>
-                                {DIFFICULTY_LABEL[s.difficulty]}
-                              </span>
-                              {getDefaultMonthly(s.id) > 0 && (
-                                <span className={styles.catRowPrice}>月 {formatYen(getDefaultMonthly(s.id))}</span>
-                              )}
-                              <span className={styles.catRowArrow} aria-hidden="true">
-                                <ArrowRight size={15} strokeWidth={1.85} />
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
-            </section>
-          </>
-        )}
-
-        {/* 息抜きコーナー：遊びの入口を下部に集約（ゲームはタブから外しここへ・俊雄さん指示） */}
+        {/* ⑦ 息抜き（既存機能・保持） */}
         <section className={styles.playZone} aria-label="息抜き">
           <h2 className={styles.playTitle}>ちょっと息抜き</h2>
           <p className={styles.playLead}>解約の合間に。遊びながら、固定費との距離感をつかむ。</p>
@@ -671,6 +113,9 @@ export default function HomePage() {
           </div>
         </section>
       </div>
+
+      {/* 親指ゾーン固定CTA（年額ライブ） */}
+      <StickyCtaBar amountText={amountText} />
     </div>
   );
 }

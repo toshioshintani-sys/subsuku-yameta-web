@@ -1,0 +1,53 @@
+.bar {
+  margin-top: 4px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: var(--hm-cream);
+  border-top: 1px solid var(--hm-hairline);
+  box-shadow: var(--hm-shadow-bar);
+}
+
+/* モバイルは親指ゾーンに固定（常時表示）。デスクトップは末尾に in-flow。 */
+@media (max-width: 768px) {
+  .bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    margin-top: 0;
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: 568px;
+  margin: 0 auto;
+  min-height: 48px;
+  padding: 13px 18px;
+  border-radius: 13px;
+  background: var(--hm-teal);
+  color: var(--hm-cta-ink);
+  font-family: var(--hm-font-body);
+  font-size: 13.5px;
+  font-weight: 800;
+  box-shadow: var(--hm-shadow-cta);
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.cta:hover {
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+.label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  flex-wrap: wrap;
+}
+.amount {
+  font-family: var(--hm-font-head);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}

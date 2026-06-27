@@ -1,0 +1,319 @@
+.card {
+  background: var(--hm-card);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 18px;
+  box-shadow: var(--hm-shadow-card);
+  padding: 17px;
+}
+
+/* 1. 逆説の問いかけ */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--hm-eyebrow);
+}
+.question {
+  margin-top: 3px;
+  font-family: var(--hm-font-head);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--hm-ink);
+}
+.reveal {
+  margin-top: 5px;
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--hm-muted);
+}
+.divider {
+  margin: 13px 0;
+  height: 1px;
+  background: var(--hm-hairline);
+}
+
+/* 2. ラベル＋年/月トグル */
+.rowTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.rowTopLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--hm-muted);
+}
+.toggle {
+  display: inline-flex;
+  padding: 2px;
+  background: #f0eadb;
+  border-radius: 999px;
+}
+.toggleBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px 12px;
+  min-height: 30px;
+  border-radius: 999px;
+  font-family: var(--hm-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  color: #8a92ac;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.toggleOn {
+  background: var(--hm-teal-on-navy);
+  color: var(--hm-cta-ink);
+}
+
+/* 3. 主役の金額 */
+.amountWrap {
+  margin-top: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.amount {
+  font-family: var(--hm-font-head);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--hm-ink);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.amountSuffix {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--hm-muted);
+}
+.amountHint {
+  margin-top: 6px;
+  font-size: 9.5px;
+  color: var(--hm-muted-tan);
+}
+
+/* 4. 損失回避バー */
+.lossBar {
+  margin-top: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 9px 11px;
+  background: var(--hm-loss-bg);
+  border: 1px solid var(--hm-loss-border);
+  border-radius: 11px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--hm-loss-ink-2);
+}
+.lossBar svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--hm-loss-ink);
+}
+.lossBar strong {
+  color: var(--hm-loss-ink);
+  font-weight: 800;
+}
+
+/* 5. いちばん効く一手 */
+.topCutBar {
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 9px 11px;
+  background: var(--hm-gold-bg);
+  border: 1px solid var(--hm-gold-border);
+  border-radius: 11px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--hm-gold-ink);
+}
+.topCutBar svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--hm-gold-ink);
+}
+.topCutBar strong {
+  font-weight: 800;
+}
+
+/* 6. サービス行（濃紺・ライブ） */
+.rows {
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.svcRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 9px;
+  background: var(--hm-row);
+  border: 1px solid var(--hm-row-border);
+  border-radius: 12px;
+}
+.check {
+  flex: none;
+  width: 21px;
+  height: 21px;
+  border-radius: 7px;
+  border: none;
+  background: var(--hm-teal-2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.dot {
+  flex: none;
+  display: flex;
+}
+.svcName {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #e7eaf3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.selectWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--hm-select);
+  border: 1px solid var(--hm-select-border);
+  color: #cdd4e6;
+  font-family: var(--hm-font-body);
+  font-size: 9.5px;
+  border-radius: 8px;
+  padding: 4px 20px 4px 8px;
+  max-width: 130px;
+  cursor: pointer;
+}
+.selectWrap svg {
+  position: absolute;
+  right: 5px;
+  pointer-events: none;
+  color: #8a92ac;
+}
+.svcPrice {
+  flex: none;
+  font-family: var(--hm-font-head);
+  font-size: 12px;
+  font-weight: 800;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+.emptyRows {
+  padding: 10px 4px;
+  font-size: 11px;
+  color: var(--hm-muted);
+  text-align: center;
+}
+
+/* ＋ 追加 */
+.addToggle {
+  margin-top: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px dashed var(--hm-card-border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--hm-teal-ink);
+  font-family: var(--hm-font-body);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.add {
+  margin-top: 9px;
+}
+.addSearch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  height: 40px;
+  background: var(--hm-cream);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 10px;
+  color: var(--hm-muted);
+}
+.addInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--hm-font-body);
+  font-size: 12px;
+  color: var(--hm-ink);
+}
+.addResults {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.addItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 7px 9px;
+  border: 1px solid var(--hm-card-border);
+  border-radius: 9px;
+  background: var(--hm-card);
+  color: var(--hm-ink);
+  font-family: var(--hm-font-body);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.addItem:hover {
+  border-color: var(--hm-teal-2);
+}
+.addItemName {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.addItem svg:last-child {
+  flex: none;
+  color: var(--hm-teal-ink);
+}
+.addEmpty {
+  padding: 8px 4px;
+  font-size: 11px;
+  color: var(--hm-muted);
+}
+
+.note {
+  margin-top: 11px;
+  font-size: 9.5px;
+  line-height: 1.5;
+  color: var(--hm-muted-tan);
+  text-align: center;
+}

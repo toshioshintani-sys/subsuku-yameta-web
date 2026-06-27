@@ -1,0 +1,217 @@
+/* ヒーロー（濃紺=第一印象・不可侵。ライト/ダーク共通で常に濃紺） */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 18px 32px;
+  background: radial-gradient(
+    120% 80% at 50% -10%,
+    var(--hm-navy-from) 0%,
+    var(--hm-navy-mid) 46%,
+    var(--hm-navy-to) 100%
+  );
+}
+/* 上部中央のティールのグロー */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -90px;
+  left: 50%;
+  width: 320px;
+  height: 220px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(52, 192, 198, 0.3), transparent);
+  filter: blur(4px);
+  pointer-events: none;
+}
+/* キリさんイラスト（装飾・薄く敷く・現行据え置き） */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.heroBg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.62;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+.title {
+  font-family: var(--hm-font-head);
+  font-size: 25px;
+  line-height: 1.32;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.mark {
+  background: linear-gradient(transparent 60%, rgba(52, 192, 198, 0.5) 60%);
+  padding: 0 1px;
+}
+.sub {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: #cfd6ea;
+  margin-bottom: 16px;
+}
+
+/* 検索ボックス */
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 6px 0 12px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--hm-shadow-search);
+}
+.searchIcon {
+  flex: none;
+  display: flex;
+  color: #9a9fac;
+}
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--hm-font-body);
+  font-size: 12.5px;
+  color: #1b2030;
+  padding: 0 8px;
+}
+.input::placeholder {
+  color: #b3b7c0;
+}
+.clear {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #9a9fac;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.goBtn {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 11px;
+  background: var(--hm-teal);
+  color: var(--hm-cta-ink);
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+.goBtn:hover {
+  filter: brightness(1.04);
+}
+
+/* typeahead 結果カード */
+.results {
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+  overflow: hidden;
+  text-align: left;
+}
+.resultRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 9px 12px;
+  border-bottom: 1px solid #f1eee6;
+  color: #1b2030;
+}
+.resultRow:last-child {
+  border-bottom: none;
+}
+.resultRow:hover {
+  background: #f7f9f9;
+}
+.resultName {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.resultGo {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--hm-teal-ink);
+}
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 14px;
+  color: #5a6072;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 未入力時：✂カットライン＋人気チップ */
+.chipsRow {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.cutline {
+  display: block;
+  height: 0;
+  border-top: 1.5px dashed rgba(120, 140, 180, 0.5);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #eef2f8;
+  font-family: var(--hm-font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.chip:hover {
+  background: rgba(255, 255, 255, 0.16);
+}

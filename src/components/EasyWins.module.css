@@ -1,0 +1,16 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.title {
+  font-family: var(--hm-font-head);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--hm-ink);
+}
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

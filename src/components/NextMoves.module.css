@@ -1,0 +1,75 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.title {
+  font-family: var(--hm-font-head);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--hm-ink);
+}
+.lead {
+  font-size: 11px;
+  color: var(--hm-muted);
+  margin-bottom: 9px;
+}
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* 解約導線より控えめ：白カード・テキストリンク中心（§2-2 序列） */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  background: var(--hm-card);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 12px;
+  color: var(--hm-ink);
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.card:hover {
+  border-color: var(--hm-teal-2);
+  transform: translateY(-1px);
+}
+.icon {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--hm-teal-soft);
+  color: var(--hm-teal-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cardTitle {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--hm-ink);
+}
+.desc {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--hm-ink-2);
+}
+.action {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  white-space: nowrap;
+}

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  select{font-family:inherit;-webkit-appearance:none;appearance:none;}
+  ::selection{background:#2FA8AE;color:#fff;}
+</style>
+</helmet>
+
+<div style="position:absolute;left:80px;top:44px;width:1700px">
+  <div style="font-size:12px;font-weight:700;letter-spacing:.18em;color:#2FA8AE">サブスクやめた — DESIGN UPGRADE / 初見クリアリティ &amp; 挙動</div>
+  <div style="font-size:30px;font-weight:900;color:#1B2030;margin-top:8px;letter-spacing:.01em;line-height:1.25">不可侵はそのまま。「初めて来た人の理解」と「操作の手触り」だけを日本一にする。</div>
+  <div style="font-size:14px;color:#565D70;margin-top:8px;line-height:1.6;max-width:920px">ブランド名・トップの解約導線・第一印象・「やめる」の最上位序列・解約手順の上部配置は1mmも動かしません。左に現状を忠実再現し、右に同じ枠の中での改善案を並べます。&nbsp;<span style="color:#8A8F9E">→ 横にスクロール／ピンチで拡大</span></div>
+</div>
+
+<div style="position:absolute;left:80px;top:170px;width:540px">
+  <div data-drags-parent="1" style="position:absolute;top:-22px;left:2px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#9A9484">① 現状の理解</div>
+  <div style="background:#fff;border:1px solid #EBE5D7;border-radius:16px;padding:22px 22px 18px;box-shadow:0 1px 3px rgba(30,24,10,.06)">
+    <div style="font-size:16px;font-weight:900;color:#1B2030;margin-bottom:12px">何をしているサイトか</div>
+    <div style="display:flex;flex-direction:column;gap:11px">
+      <div style="display:flex;gap:10px"><div style="flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#2FA8AE;margin-top:7px"></div><div style="font-size:13px;color:#3C4253;line-height:1.65">「解約したいのに解約ページが見つからない」を<b>1クリックで終わらせる</b>解約インデックス。</div></div>
+      <div style="display:flex;gap:10px"><div style="flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#2FA8AE;margin-top:7px"></div><div style="font-size:13px;color:#3C4253;line-height:1.65">動線は <b>解約 →（棚卸し）→ 乗り換え・買い切り</b>。「やめた後」まで面倒を見る。収益は乗り換え／買い切りのアフィリエイト。</div></div>
+      <div style="display:flex;gap:10px"><div style="flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:#2FA8AE;margin-top:7px"></div><div style="font-size:13px;color:#3C4253;line-height:1.65">React + Vite / CSS Modules / Netlify。<b>53サービス・7カテゴリ</b>、難易度つきで一覧。</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="position:absolute;left:680px;top:170px;width:540px">
+  <div data-drags-parent="1" style="position:absolute;top:-22px;left:2px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#9A9484">② 抽出したデザインDNA</div>
+  <div style="background:#fff;border:1px solid #EBE5D7;border-radius:16px;padding:22px;box-shadow:0 1px 3px rgba(30,24,10,.06)">
+    <div style="font-size:16px;font-weight:900;color:#1B2030;margin-bottom:14px">受け継ぐ見た目の約束</div>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <div style="flex:1;height:46px;border-radius:9px;background:linear-gradient(180deg,#1E2740,#161B2B);display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-size:9px;color:#8d96b0;font-weight:600">#161B2B</div>
+      <div style="flex:1;height:46px;border-radius:9px;background:#FAF6EE;border:1px solid #EBE5D7;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-size:9px;color:#9a9484;font-weight:600">#FAF6EE</div>
+      <div style="flex:1;height:46px;border-radius:9px;background:#2FA8AE;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-size:9px;color:#fff;font-weight:600">#2FA8AE</div>
+      <div style="flex:1;height:46px;border-radius:9px;background:#1B2030;display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-size:9px;color:#cfd3dc;font-weight:600">#1B2030</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div style="font-size:13px;color:#3C4253;line-height:1.6">濃紺ヒーロー × クリーム地 × ティール差し色。</div>
+      <div style="font-size:13px;color:#3C4253;line-height:1.6;display:flex;align-items:center;gap:8px;flex-wrap:wrap">難易度バッジ3段階：
+        <span style="font-size:11px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 9px;border-radius:999px">かんたん</span>
+        <span style="font-size:11px;font-weight:700;color:#5B6473;background:#ECEEF2;padding:2px 9px;border-radius:999px">ふつう</span>
+        <span style="font-size:11px;font-weight:700;color:#C2691C;background:#F8EAD9;padding:2px 9px;border-radius:999px">むずかしい</span>
+      </div>
+      <div style="font-size:13px;color:#3C4253;line-height:1.6">角丸カード・広い余白・太字ゴシック・ハサミ✂のロゴ。</div>
+    </div>
+  </div>
+</div>
+
+<div style="position:absolute;left:1280px;top:170px;width:560px">
+  <div data-drags-parent="1" style="position:absolute;top:-22px;left:2px;font-size:11px;font-weight:700;letter-spacing:.1em;color:#9A9484">③ 守る不可侵 / 触る範囲</div>
+  <div style="background:#fff;border:1px solid #EBE5D7;border-radius:16px;padding:22px;box-shadow:0 1px 3px rgba(30,24,10,.06)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="font-size:10px;font-weight:800;letter-spacing:.06em;color:#B0341F;background:#FBE7E2;padding:3px 9px;border-radius:6px">不可侵 / 1mmも触らない</span>
+    </div>
+    <div style="font-size:13px;color:#3C4253;line-height:1.7;margin-bottom:16px">ブランド名「サブスクやめた」・トップの解約導線UI・第一印象・<b>「やめる」が最上位</b>の視覚序列・解約手順の上部配置。</div>
+    <div style="height:1px;background:#EFEADD;margin:0 -4px 16px"></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span style="font-size:10px;font-weight:800;letter-spacing:.06em;color:#0E7F85;background:#DAF0F1;padding:3px 9px;border-radius:6px">今回みがく</span>
+    </div>
+    <div style="font-size:13px;color:#3C4253;line-height:1.7"><b>①初見クリアリティ</b>（初めての人が3秒で使い方を理解）と <b>②挙動</b>（操作の手触り）だけ。並び順・優先度・収益導線は維持。</div>
+  </div>
+</div>
+
+<div style="position:absolute;left:80px;top:600px;width:900px">
+  <div style="font-size:18px;font-weight:900;color:#1B2030;letter-spacing:.02em">現状 &nbsp;→&nbsp; 改善案&nbsp;<span style="font-size:13px;font-weight:600;color:#9A9484">（同じ枠・同じ序列のまま）</span></div>
+</div>
+
+<div style="position:absolute;left:80px;top:660px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#6b7180">現状の再現 — モバイルHome</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030">
+        <span>9:41</span>
+        <span style="display:flex;gap:5px;align-items:center;font-size:10px;color:#1B2030">●●●&nbsp;&nbsp;100%</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px">
+          <div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+          </div>
+          <div>
+            <div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div>
+            <div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+
+      <div style="background:linear-gradient(180deg,#1E2740 0%,#161B2B 100%);padding:24px 18px 20px;text-align:center">
+        <div style="font-size:21px;font-weight:900;color:#fff;line-height:1.3">解約したいのに、どこから？</div>
+        <div style="font-size:11px;color:#A9B0C6;margin-top:8px;line-height:1.55">各サービスの解約ページへ直接飛べます。<br>手順と注意点もすぐわかります。</div>
+        <div style="margin-top:15px;background:#fff;border-radius:12px;display:flex;align-items:center;gap:8px;padding:11px 13px;text-align:left">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A9FAC" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span style="font-size:12px;color:#9A9FAC">サービス名で検索（例：Netflix）</span>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:11px;justify-content:center">
+          <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Amazon プライム</span>
+          <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Netflix</span>
+          <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Spotify</span>
+          <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">+ 追加</span>
+        </div>
+        <div style="margin-top:15px;background:#232C46;border:1px solid #313C5E;border-radius:14px;padding:14px;text-align:left">
+          <div style="font-size:11px;font-weight:700;color:#A9B0C6;margin-bottom:11px">いま入っているもの、年いくら？</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#1B2236;border-radius:10px;padding:9px 11px">
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:6px;background:#E50914;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">N</div><span style="font-size:11px;color:#E7EAF3;font-weight:600">Netflix</span></div>
+              <span style="font-size:10px;color:#8A92AC">スタンダード ¥1,490</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#1B2236;border-radius:10px;padding:9px 11px">
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:6px;background:#1DB954;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">S</div><span style="font-size:11px;color:#E7EAF3;font-weight:600">Spotify</span></div>
+              <span style="font-size:10px;color:#8A92AC">個人 ¥980</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;background:#1B2236;border-radius:10px;padding:9px 11px">
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:6px;background:#FF0000;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">YT</div><span style="font-size:11px;color:#E7EAF3;font-weight:600">YouTube Premium</span></div>
+              <span style="font-size:10px;color:#8A92AC">個人 ¥1,280</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:13px">
+            <span style="font-size:10px;color:#8A92AC">年間の固定費</span>
+            <span style="font-size:24px;font-weight:900;color:#fff;letter-spacing:.01em">¥44,993</span>
+          </div>
+          <div style="margin-top:11px;background:#fff;border-radius:10px;text-align:center;padding:11px;font-size:12px;font-weight:800;color:#1B2030">棚卸しで整理する →</div>
+        </div>
+      </div>
+
+      <div style="padding:18px 16px 6px">
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#DAF0F1;color:#0E7F85;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">1</div><div><div style="font-size:12.5px;font-weight:800;color:#1B2030">サービスを探す</div><div style="font-size:10.5px;color:#8A8F9E;line-height:1.5">下の検索かカテゴリから選ぶ</div></div></div>
+          <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#DAF0F1;color:#0E7F85;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">2</div><div><div style="font-size:12.5px;font-weight:800;color:#1B2030">解約ページへ直行</div><div style="font-size:10.5px;color:#8A8F9E;line-height:1.5">3ステップ以内の手順と引き止め対策つき</div></div></div>
+          <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#DAF0F1;color:#0E7F85;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">3</div><div><div style="font-size:12.5px;font-weight:800;color:#1B2030">まとめて棚卸し</div><div style="font-size:10.5px;color:#8A8F9E;line-height:1.5">年間総額を可視化</div></div></div>
+        </div>
+      </div>
+
+      <div style="padding:14px 16px 22px">
+        <div style="font-size:13px;font-weight:900;color:#1B2030;margin-bottom:10px">よく探される人気の Top 10</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:14px">1</span>
+            <div style="width:26px;height:26px;border-radius:7px;background:#232F3E;color:#FF9900;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">a</div>
+            <span style="flex:1;font-size:12px;font-weight:700;color:#1B2030">Amazon プライム</span>
+            <span style="font-size:10px;font-weight:700;color:#5B6473;background:#ECEEF2;padding:2px 8px;border-radius:999px">ふつう</span>
+            <span style="font-size:11px;font-weight:700;color:#1B2030">¥600</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:14px">2</span>
+            <div style="width:26px;height:26px;border-radius:7px;background:#E50914;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center">N</div>
+            <span style="flex:1;font-size:12px;font-weight:700;color:#1B2030">Netflix</span>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px">かんたん</span>
+            <span style="font-size:11px;font-weight:700;color:#1B2030">¥1,490</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:14px">3</span>
+            <div style="width:26px;height:26px;border-radius:7px;background:#1DB954;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center">S</div>
+            <span style="flex:1;font-size:12px;font-weight:700;color:#1B2030">Spotify</span>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px">かんたん</span>
+            <span style="font-size:11px;font-weight:700;color:#1B2030">¥980</span>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:10px;font-size:10px;color:#B6AE9C">…全58件、カテゴリ別につづく</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px">
+    <b>現状の良いところ</b>：解約が最上位・3ステップが明快・難易度バッジが秀逸。<br>引っかかり：計算機が静的な表に見え、初見だと<b>自分ごと化</b>しづらい。一覧は情報量が多く<b>次の一手</b>が見えにくい。
+  </div>
+</div>
+
+<div style="position:absolute;left:1100px;top:660px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">改善② 棚卸し計算機を「動く」体験に</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+
+      <div style="background:linear-gradient(180deg,#1E2740 0%,#161B2B 100%);padding:20px 18px 22px;text-align:center">
+        <div style="font-size:19px;font-weight:900;color:#fff;line-height:1.3">解約したいのに、どこから？</div>
+        <div style="font-size:10.5px;color:#A9B0C6;margin-top:6px">まず「いま、年いくら払ってるか」を出す</div>
+
+        <div style="margin-top:15px;background:#232C46;border:1px solid #36426A;border-radius:16px;padding:15px 14px;text-align:left;box-shadow:0 8px 24px rgba(0,0,0,.25)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <span style="font-size:11px;font-weight:700;color:#A9B0C6">いま入っているもの</span>
+            <div style="display:flex;background:#161D31;border-radius:999px;padding:3px">
+              <div onClick="{{ setYear }}" style="{{ segYearStyle }}">年で見る</div>
+              <div onClick="{{ setMonth }}" style="{{ segMonthStyle }}">月で見る</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;padding:6px 0 12px">
+            <div style="font-size:10px;color:#8A92AC;letter-spacing:.04em">{{ periodLabel }}</div>
+            <div style="font-size:38px;font-weight:900;color:#fff;letter-spacing:.005em;line-height:1.1;font-variant-numeric:tabular-nums">{{ totalText }}</div>
+            <div style="font-size:10px;color:#5BD0D6;margin-top:2px">{{ subTotalText }}</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="{{ nf.rowStyle }}">
+              <div onClick="{{ toggleNf }}" style="cursor:pointer;flex:0 0 auto">
+                <sc-if value="{{ nf.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if>
+                <sc-if value="{{ nf.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if>
+              </div>
+              <div style="width:26px;height:26px;border-radius:7px;background:#E50914;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">N</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">Netflix</div>
+                <select value="{{ nf.planIdx }}" onChange="{{ planNf }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:128px">
+                  <sc-for list="{{ nf.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.i }}">{{ o.label }}</option></sc-for>
+                </select>
+              </div>
+              <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ nf.priceText }}</span>
+            </div>
+
+            <div style="{{ sp.rowStyle }}">
+              <div onClick="{{ toggleSp }}" style="cursor:pointer;flex:0 0 auto">
+                <sc-if value="{{ sp.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if>
+                <sc-if value="{{ sp.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if>
+              </div>
+              <div style="width:26px;height:26px;border-radius:7px;background:#1DB954;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">S</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">Spotify</div>
+                <select value="{{ sp.planIdx }}" onChange="{{ planSp }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:128px">
+                  <sc-for list="{{ sp.opts }}" as="o" hint-placeholder-count="4"><option value="{{ o.i }}">{{ o.label }}</option></sc-for>
+                </select>
+              </div>
+              <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ sp.priceText }}</span>
+            </div>
+
+            <div style="{{ yt.rowStyle }}">
+              <div onClick="{{ toggleYt }}" style="cursor:pointer;flex:0 0 auto">
+                <sc-if value="{{ yt.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if>
+                <sc-if value="{{ yt.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if>
+              </div>
+              <div style="width:26px;height:26px;border-radius:7px;background:#FF0000;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">YT</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">YouTube Premium</div>
+                <select value="{{ yt.planIdx }}" onChange="{{ planYt }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:128px">
+                  <sc-for list="{{ yt.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.i }}">{{ o.label }}</option></sc-for>
+                </select>
+              </div>
+              <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ yt.priceText }}</span>
+            </div>
+          </div>
+
+          <div style="margin-top:9px;border:1px dashed #3E4A70;border-radius:11px;padding:9px;text-align:center;font-size:10.5px;color:#8A92AC;cursor:pointer">＋ 他のサブスクを追加</div>
+
+          <div style="margin-top:12px;background:#2FA8AE;border-radius:11px;text-align:center;padding:12px;font-size:12.5px;font-weight:800;color:#06222a;cursor:pointer">この{{ countText }}を棚卸しで整理する →</div>
+        </div>
+        <div style="font-size:9px;color:#7d86a0;margin-top:9px;line-height:1.5">タップで対象をオン/オフ・プランは選び直せます。合計は即更新（価格は参考値）。</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(1deg);border-radius:2px">
+    <b>挙動の改善</b>：チェックで即オン/オフ→合計が<b>即時更新</b>。年↔月トグル。プランを選び直せる。「自分の数字」になるので解約の動機が立ち上がる。<br><b>不可侵</b>：ヒーロー見出し・解約最上位・位置は不変。中身の手触りだけ。
+  </div>
+</div>
+
+<div style="position:absolute;left:590px;top:660px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">改善① ヒーロー検索を「打てば解約ページ」と分かる形に</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px">
+          <div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div>
+          <div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+
+      <div style="background:linear-gradient(180deg,#1E2740 0%,#161B2B 100%);padding:24px 18px 26px;text-align:center">
+        <div style="font-size:21px;font-weight:900;color:#fff;line-height:1.3">解約したいのに、どこから？</div>
+        <div style="font-size:11px;color:#A9B0C6;margin-top:8px;line-height:1.55">各サービスの解約ページへ直接飛べます。<br>手順と注意点もすぐわかります。</div>
+
+        <div style="margin-top:15px;background:#fff;border-radius:12px;display:flex;align-items:center;gap:8px;padding:3px 13px;box-shadow:0 6px 20px rgba(0,0,0,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A9FAC" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input value="{{ q }}" onChange="{{ onSearch }}" placeholder="サービス名で検索（例：Netflix）" style="border:none;outline:none;flex:1;min-width:0;font-size:12px;color:#1B2030;padding:10px 0;background:transparent;font-family:inherit" />
+        </div>
+
+        <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:8px;background:#fff;border-radius:12px;overflow:hidden;text-align:left;box-shadow:0 14px 34px rgba(0,0,0,.22)">
+            <sc-for list="{{ sResults }}" as="r" hint-placeholder-count="2">
+              <div style="display:flex;align-items:center;gap:9px;padding:11px 12px;border-bottom:1px solid #F2ECDD">
+                <div style="{{ r.dotStyle }}">{{ r.badge }}</div>
+                <span style="flex:1;min-width:0;font-size:12px;font-weight:700;color:#1B2030">{{ r.name }}</span>
+                <span style="{{ r.badgeStyle }}">{{ r.diff }}</span>
+                <span style="font-size:10.5px;font-weight:800;color:#0E7F85;white-space:nowrap">解約ページへ →</span>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noHit }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:15px 12px;font-size:11px;color:#8A8F9E;text-align:center">「{{ q }}」は見つかりません。<span style="color:#0E7F85;font-weight:700">リクエストする →</span></div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ emptyQ }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:11px;font-size:10px;color:#9FB0C8;line-height:1.5;display:flex;align-items:center;gap:6px;justify-content:center"><span style="font-size:12px;color:#5BD0D6">↑</span> 名前を入れると、その<b style="color:#cfd5e6;font-weight:700">解約ページへ最短</b>で。引き止め対策つき。</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:11px;justify-content:center">
+            <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Amazon プライム</span>
+            <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Netflix</span>
+            <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Spotify</span>
+            <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">+ 追加</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px">
+    <b>初見クリアリティ</b>：打った瞬間に「Netflix → 解約ページへ（かんたん）」が出る。検索＝解約ページへの最短ルートだと一瞬で伝わる。<br><b>不可侵</b>：見出し・サブコピー・検索の最上位配置は不変。
+  </div>
+</div>
+
+<div style="position:absolute;left:1610px;top:660px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">改善③ 一覧を「探しやすく・次の一手が見える」に</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px">
+          <div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div>
+          <div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+
+      <div style="padding:18px 16px 22px">
+        <div style="font-size:14px;font-weight:900;color:#1B2030;margin-bottom:11px">よく探される人気の Top 10</div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;background:#F3EEE1;border-radius:10px;padding:9px 11px;margin-bottom:12px">
+          <div style="display:flex;align-items:center;gap:5px;font-size:9.5px;color:#5B6473;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#1B8A5A"></span><b style="color:#1B2030">かんたん</b> 数分で完了</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:9.5px;color:#5B6473;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#5B6473"></span><b style="color:#1B2030">ふつう</b> 数ステップ</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:9.5px;color:#5B6473;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:#C2691C"></span><b style="color:#1B2030">むずかしい</b> 引き止め注意</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px">
+          <span style="font-size:10px;font-weight:800;color:#fff;background:#1B2030;border-radius:999px;padding:5px 11px">人気順</span>
+          <span style="font-size:10px;font-weight:700;color:#6b7180;background:#fff;border:1px solid #E3DCCC;border-radius:999px;padding:5px 11px">五十音</span>
+          <span style="font-size:10px;font-weight:700;color:#0E7F85;background:#DAF0F1;border-radius:999px;padding:5px 11px">解約しやすい順</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center">1</span>
+            <div style="width:27px;height:27px;border-radius:7px;background:#232F3E;color:#FF9900;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">a</div>
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">Amazon プライム</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+            <span style="font-size:10px;font-weight:700;color:#5B6473;background:#ECEEF2;padding:2px 8px;border-radius:999px;flex:0 0 auto">ふつう</span>
+            <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">¥600</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center">2</span>
+            <div style="width:27px;height:27px;border-radius:7px;background:#E50914;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">N</div>
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">Netflix</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+            <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">¥1,490</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center">3</span>
+            <div style="width:27px;height:27px;border-radius:7px;background:#1DB954;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">S</div>
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">Spotify</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+            <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">¥980</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center">4</span>
+            <div style="width:27px;height:27px;border-radius:7px;background:#10A37F;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">G</div>
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">ChatGPT Plus</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+            <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">¥3,100</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+            <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center">5</span>
+            <div style="width:27px;height:27px;border-radius:7px;background:#FF0000;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">YT</div>
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">YouTube Premium</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+            <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+            <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">¥1,280</span>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:11px;font-size:10px;color:#B6AE9C">…全58件、カテゴリ別につづく</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(1deg);border-radius:2px">
+    <b>探しやすさ＋次の一手</b>：難易度の意味を1行で明示。各行に「解約ページへ →」を常時表示し、ホバーで持ち上がる。<b>並び順・優先度はそのまま</b>。
+  </div>
+</div>
+<div style="position:absolute;left:80px;top:1880px;width:1200px">
+  <div style="font-size:18px;font-weight:900;color:#1B2030;letter-spacing:.02em">改善③ 深掘り — 一覧／図鑑の探索性&nbsp;<span style="font-size:13px;font-weight:600;color:#9A9484">（既定の人気順＝序列は維持。探し方の選択肢と手触りだけ足す）</span></div>
+</div>
+
+<div style="position:absolute;left:80px;top:1960px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">③-a 並び替えが効く（タップで即）</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+      <div style="padding:18px 16px 22px">
+        <div style="font-size:14px;font-weight:900;color:#1B2030;margin-bottom:11px">よく探される人気の Top 10</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+          <sc-for list="{{ sortPills }}" as="p" hint-placeholder-count="4"><div onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</div></sc-for>
+        </div>
+        <div style="font-size:10px;color:#8A8F9E;margin-bottom:12px;display:flex;align-items:center;gap:5px"><span style="color:#0E7F85;font-weight:700">▸</span>{{ sortHint }}</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ sortedList }}" as="s" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px;transition:all .15s ease" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.18);transform:translateY(-1px)">
+              <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center;flex:0 0 auto">{{ s.rank }}</span>
+              <div style="{{ s.dotStyle }}">{{ s.badge }}</div>
+              <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">{{ s.name }}</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+              <span style="{{ s.badgeStyle }}">{{ s.diff }}</span>
+              <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">{{ s.priceText }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px"><b>探し方を選べる挙動</b>：「解約しやすい順」でかんたんなものから片付く。タップで即並び替え。<b>既定は人気順のまま</b>＝序列は不変。</div>
+</div>
+
+<div style="position:absolute;left:590px;top:1960px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">③-b カテゴリ図鑑＋難易度で絞る</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+      <div style="padding:18px 16px 22px">
+        <div style="font-size:14px;font-weight:900;color:#1B2030;margin-bottom:10px">すべてのサービス（カテゴリ別）</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">
+          <sc-for list="{{ filterPills }}" as="p" hint-placeholder-count="4"><div onClick="{{ p.onClick }}" style="{{ p.style }}">{{ p.label }}</div></sc-for>
+        </div>
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:7px;margin:13px 0 3px"><span style="font-size:12px;font-weight:900;color:#1B2030">{{ g.cat }}</span><span style="font-size:10px;color:#A99F87;background:#F0EADB;border-radius:999px;padding:1px 7px">{{ g.count }}</span></div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+            <div style="display:flex;align-items:center;gap:9px;padding:8px 4px;border-bottom:1px solid #ECE5D5">
+              <div style="{{ it.dotStyle }}">{{ it.badge }}</div>
+              <span style="flex:1;min-width:0;font-size:12px;font-weight:700;color:#1B2030">{{ it.name }}</span>
+              <span style="{{ it.badgeStyle }}">{{ it.diff }}</span>
+              <span style="font-size:11px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">{{ it.priceText }}</span>
+            </div>
+          </sc-for>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(1deg);border-radius:2px"><b>規模に強い図鑑</b>：カテゴリ見出し＋件数で全体像。難易度で絞れば「今日かんたんに減らせるもの」だけが残る。</div>
+</div>
+
+<div style="position:absolute;left:1100px;top:1960px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">③-c タップで解約手順をその場で</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+      <div style="padding:18px 16px 22px">
+        <div style="font-size:14px;font-weight:900;color:#1B2030">Top 10 — タップで手順プレビュー</div>
+        <div style="font-size:10.5px;color:#8A8F9E;margin:5px 0 13px;line-height:1.5">サイトを離れる前に「3ステップ以内か」をその場で確認できる。</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <sc-for list="{{ stepList }}" as="s" hint-placeholder-count="4">
+            <div>
+              <div onClick="{{ s.onToggle }}" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:11px 12px;cursor:pointer">
+                <div style="{{ s.dotStyle }}">{{ s.badge }}</div>
+                <span style="flex:1;min-width:0;font-size:12px;font-weight:700;color:#1B2030">{{ s.name }}</span>
+                <span style="{{ s.badgeStyle }}">{{ s.diff }}</span>
+                <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">{{ s.priceText }}</span>
+                <span style="font-size:12px;color:#9FB0C8;flex:0 0 auto">▾</span>
+              </div>
+              <sc-if value="{{ s.isOpen }}" hint-placeholder-val="{{ false }}">
+                <div style="background:#F1ECDF;border-radius:0 0 12px 12px;border:1px solid #E5DECC;border-top:none;padding:13px 14px;margin:-4px 4px 0">
+                  <div style="font-size:10px;font-weight:800;color:#0E7F85;margin-bottom:9px">解約手順（3ステップ以内）</div>
+                  <div style="display:flex;flex-direction:column;gap:9px">
+                    <sc-for list="{{ s.steps }}" as="step" hint-placeholder-count="3">
+                      <div style="display:flex;gap:9px;align-items:flex-start">
+                        <div style="width:19px;height:19px;border-radius:50%;background:#1B2030;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">{{ step.n }}</div>
+                        <div style="font-size:11px;color:#3C4253;line-height:1.5">{{ step.text }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <div style="margin-top:12px;background:#1B2030;color:#fff;border-radius:10px;text-align:center;padding:11px;font-size:11.5px;font-weight:800;cursor:pointer">このまま解約ページへ →</div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px"><b>離脱前の安心</b>：行をタップで“3ステップ以内”の手順をその場確認 → そのまま解約ページへ。1クリックの約束を一覧上で体現。</div>
+</div>
+<div style="position:absolute;left:80px;top:2900px;width:1300px">
+  <div style="font-size:18px;font-weight:900;color:#1B2030;letter-spacing:.02em">ビジュアル強化 — 同じ構造で“日本一”の見た目に&nbsp;<span style="font-size:13px;font-weight:600;color:#9A9484">（序列・第一印象は不変。タイポ／奥行き／✂カットライン／年額のグロー／節約の暖色で格を上げる）</span></div>
+</div>
+
+<div style="position:absolute;left:80px;top:2990px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">A — 上質ミニマル進化</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1;font-family:'Zen Kaku Gothic New',sans-serif">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;padding:26px 18px 22px;background:radial-gradient(118% 78% at 50% -8%,#2A3658 0%,#1A2138 46%,#141A2A 100%)">
+        <div style="position:absolute;top:-46px;left:50%;transform:translateX(-50%);width:250px;height:170px;background:radial-gradient(closest-side,rgba(52,192,198,.30),transparent);filter:blur(4px)"></div>
+        <div style="position:relative">
+          <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:25px;color:#fff;line-height:1.32;letter-spacing:.012em;text-align:center">解約したいのに、<br><span style="background:linear-gradient(transparent 60%, rgba(52,192,198,.5) 60%);padding:0 3px">どこから？</span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin:14px 22px 0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BD0D6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+            <div style="flex:1;border-top:1.5px dashed rgba(120,140,180,.55)"></div>
+          </div>
+          <div style="font-size:11px;color:#AEB6CE;text-align:center;margin-top:11px;line-height:1.55">各サービスの解約ページへ直接。手順と注意点もすぐ。</div>
+          <div style="margin-top:15px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:6px 6px 6px 14px;box-shadow:0 12px 30px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.5)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A9FAC" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span style="flex:1;font-size:12px;color:#9AA0AD">サービス名で検索</span>
+            <div style="width:36px;height:36px;border-radius:10px;background:#1B2030;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#5BD0D6">→</div>
+          </div>
+          <div style="margin-top:14px;background:linear-gradient(180deg,rgba(42,52,84,.9),rgba(26,33,54,.92));border:1px solid rgba(120,140,190,.28);border-radius:16px;padding:16px 15px;box-shadow:0 14px 32px rgba(0,0,0,.32)">
+            <div style="font-size:10.5px;color:#9AA4C0;font-weight:700">いま入っているもの、年いくら？</div>
+            <div style="text-align:center;padding:9px 0 3px">
+              <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:43px;color:#fff;line-height:1;letter-spacing:.01em;text-shadow:0 0 36px rgba(52,192,198,.5)">¥45,000<span style="font-size:15px;color:#8DA0C0;font-weight:700;margin-left:2px">/年</span></div>
+              <div style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;background:rgba(235,180,90,.15);border:1px solid rgba(235,180,90,.42);border-radius:999px;padding:4px 11px"><span style="font-size:10px;font-weight:800;color:#EDB85F">見直すと最大 −¥18,000 / 年</span></div>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:13px">
+              <div style="flex:1;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border-radius:9px;padding:7px 8px"><div style="width:18px;height:18px;border-radius:5px;background:#E50914;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center">N</div><span style="font-size:9px;color:#C7CEE0">¥1,490</span></div>
+              <div style="flex:1;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border-radius:9px;padding:7px 8px"><div style="width:18px;height:18px;border-radius:5px;background:#1DB954;color:#fff;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center">S</div><span style="font-size:9px;color:#C7CEE0">¥980</span></div>
+              <div style="flex:1;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border-radius:9px;padding:7px 8px"><div style="width:18px;height:18px;border-radius:5px;background:#FF0000;color:#fff;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center">YT</div><span style="font-size:9px;color:#C7CEE0">¥1,280</span></div>
+            </div>
+            <div style="margin-top:12px;background:#34C0C6;border-radius:11px;text-align:center;padding:12px;font-size:12.5px;font-weight:800;color:#06222a;box-shadow:0 8px 20px rgba(52,192,198,.3)">棚卸しで整理する →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px"><b>上質ミニマル</b>：Zen Kaku見出し＋ティールのハイライト＋✂カットライン＋年額のグロー＋節約の暖色。<b>序列・第一印象は不変</b>、craftだけ底上げ。</div>
+</div>
+
+<div style="position:absolute;left:590px;top:2990px;width:430px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">B — 大胆エディトリアル</div>
+  <div style="background:#0F1422;border-radius:40px;padding:11px;box-shadow:0 30px 70px -24px rgba(20,24,40,.5),0 8px 24px rgba(0,0,0,.12)">
+    <div style="background:#FAF6EE;border-radius:30px;overflow:hidden;position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;background:#fff;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 16px 11px;background:#fff;border-bottom:1px solid #ECE6D9">
+        <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#1B2030;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5BD0D6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1;font-family:'Zen Kaku Gothic New',sans-serif">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;padding:24px 18px 22px;background:linear-gradient(155deg,#141A2A 0%,#1B2440 55%,#10202E 100%)">
+        <div style="position:relative">
+          <svg width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="rgba(91,208,214,.12)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:-26px;right:-34px"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+          <div style="position:relative">
+            <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:31px;color:#fff;line-height:1.18;letter-spacing:-.01em">解約したいのに、<br><span style="background:#34C0C6;color:#06222a;padding:1px 8px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone">どこから？</span></div>
+            <div style="display:flex;align-items:center;gap:8px;margin:15px 0 0">
+              <div style="flex:1;border-top:1.5px dashed rgba(120,140,180,.5)"></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5BD0D6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+            </div>
+            <div style="font-size:11px;color:#AEB6CE;margin-top:12px;line-height:1.55">各サービスの解約ページへ直接。手順も注意点もすぐ。</div>
+            <div style="margin-top:15px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:13px;padding:5px 5px 5px 14px;box-shadow:0 12px 28px rgba(0,0,0,.3)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A9FAC" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span style="flex:1;font-size:12px;color:#9AA0AD">サービス名で検索</span>
+              <div style="padding:8px 13px;border-radius:9px;background:#34C0C6;font-size:11px;font-weight:800;color:#06222a">検索</div>
+            </div>
+            <div style="margin-top:16px;display:flex;align-items:flex-end;justify-content:space-between">
+              <div><div style="font-size:10px;color:#9AA4C0;font-weight:700;margin-bottom:2px">年間の固定費</div><div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:50px;color:#fff;line-height:.9;letter-spacing:-.01em">¥45,000</div></div>
+              <div style="text-align:right;padding-bottom:5px"><div style="font-size:9px;color:#EDB85F;font-weight:800;line-height:1.3">見直すと<br>−¥18,000/年</div></div>
+            </div>
+            <div style="margin-top:14px;background:#fff;border-radius:11px;text-align:center;padding:13px;font-size:12.5px;font-weight:800;color:#1B2030">棚卸しで整理する →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:13px 15px;font-size:11.5px;line-height:1.55;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(1deg);border-radius:2px"><b>大胆エディトリアル</b>：特大Zen Kaku見出し＋ティールの塗りハイライト＋✂ウォーターマーク＋年額を主役級に。情報の序列はそのまま、印象を強く。</div>
+</div>
+<div style="position:absolute;left:80px;top:3880px;width:1300px">
+  <div style="font-size:18px;font-weight:900;color:#1B2030;letter-spacing:.02em">決定版 — 美しさ × 人間工学 × ナッジ × 直球コピー&nbsp;<span style="font-size:13px;font-weight:600;color:#9A9484">（色・配置はすべて原則から決定。ライブで触れます）</span></div>
+</div>
+
+<div style="position:absolute;left:80px;top:3960px;width:444px">
+  <div data-drags-parent="1" style="position:absolute;top:-24px;left:2px;font-size:12px;font-weight:800;color:#0E7F85">サブスクやめた｜Home（決定版・スクロール可）</div>
+  <div style="background:#0F1422;border-radius:42px;padding:11px;box-shadow:0 40px 90px -28px rgba(20,24,40,.55),0 10px 28px rgba(0,0,0,.14)">
+    <div style="position:relative;height:828px;border-radius:31px;overflow:hidden;background:#FAF6EE">
+      <div style="position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch">
+
+        <div style="position:sticky;top:0;z-index:6;background:#fff;box-shadow:0 1px 0 #ECE6D9">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 22px 5px;font-size:12px;font-weight:700;color:#1B2030"><span>9:41</span><span style="font-size:10px">●●●&nbsp;&nbsp;100%</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 16px 10px">
+            <div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:9px;background:#DAF0F1;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E8186" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg></div><div><div style="font-size:14px;font-weight:900;color:#1B2030;line-height:1.1;font-family:'Zen Kaku Gothic New',sans-serif">サブスクやめた</div><div style="font-size:8.5px;color:#9A9484;line-height:1.2">解約・乗り換え・買い切りができるサイト</div></div></div>
+            <div style="display:flex;flex-direction:column;gap:3.5px"><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span><span style="width:18px;height:2px;background:#1B2030;border-radius:2px"></span></div>
+          </div>
+        </div>
+
+        <div style="position:relative;overflow:hidden;padding:24px 18px 22px;background:radial-gradient(120% 80% at 50% -10%,#2A3658 0%,#1A2138 46%,#141A2A 100%)">
+          <div style="position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:260px;height:180px;background:radial-gradient(closest-side,rgba(52,192,198,.30),transparent);filter:blur(4px)"></div>
+          <div style="position:relative">
+            <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:25px;color:#fff;line-height:1.32;text-align:center">解約したいのに、<br><span style="background:linear-gradient(transparent 60%, rgba(52,192,198,.5) 60%);padding:0 3px">どこから？</span></div>
+            <div style="font-size:11.5px;color:#AEB6CE;text-align:center;margin-top:11px;line-height:1.55">サービス名を入れるだけ。<br>その解約ページへ、最短で。</div>
+            <div style="margin-top:15px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:5px 5px 5px 14px;box-shadow:0 12px 30px rgba(0,0,0,.3)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9A9FAC" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input value="{{ q }}" onChange="{{ onSearch }}" placeholder="例：Netflix、Spotify…" style="border:none;outline:none;flex:1;min-width:0;font-size:12.5px;color:#1B2030;padding:11px 0;background:transparent;font-family:inherit" />
+              <div style="width:40px;height:40px;border-radius:11px;background:#34C0C6;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#06222a">→</div>
+            </div>
+            <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:8px;background:#fff;border-radius:13px;overflow:hidden;text-align:left;box-shadow:0 16px 36px rgba(0,0,0,.24)">
+                <sc-for list="{{ sResults }}" as="r" hint-placeholder-count="2">
+                  <div style="display:flex;align-items:center;gap:9px;padding:11px 13px;border-bottom:1px solid #F2ECDD">
+                    <div style="{{ r.dotStyle }}">{{ r.badge }}</div>
+                    <span style="flex:1;min-width:0;font-size:12px;font-weight:700;color:#1B2030">{{ r.name }}</span>
+                    <span style="{{ r.badgeStyle }}">{{ r.diff }}</span>
+                    <span style="font-size:10.5px;font-weight:800;color:#0E7F85;white-space:nowrap">解約ページへ →</span>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ noHit }}" hint-placeholder-val="{{ false }}"><div style="padding:15px;font-size:11px;color:#8A8F9E;text-align:center">「{{ q }}」は準備中。<span style="color:#0E7F85;font-weight:700">リクエスト →</span></div></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ emptyQ }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:8px;margin:13px 20px 0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5BD0D6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg><div style="flex:1;border-top:1.5px dashed rgba(120,140,180,.5)"></div></div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:11px;justify-content:center">
+                <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Netflix</span>
+                <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Spotify</span>
+                <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">Amazon プライム</span>
+                <span style="font-size:10px;color:#D4D9E8;border:1px solid #3B456A;border-radius:999px;padding:5px 11px">+ 追加</span>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="padding:18px 16px 4px">
+          <div style="background:#fff;border:1px solid #EBE5D7;border-radius:18px;padding:17px 16px;box-shadow:0 6px 22px rgba(30,24,10,.05)">
+            <div style="font-size:10px;font-weight:800;letter-spacing:.1em;color:#B08948">ところで——</div>
+            <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:800;font-size:17px;color:#1B2030;line-height:1.4;margin-top:5px">自分の月額・年額、<br>ちゃんと言えますよね？</div>
+            <div style="font-size:10.5px;color:#8A8F9E;line-height:1.55;margin-top:7px">——意外と、ほとんどの人が即答できません。下で選べば、3秒で分かります。</div>
+            <div style="height:1px;background:#EFEADD;margin:14px 0 0"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:13px">
+              <span style="font-size:11px;font-weight:700;color:#9A9FAC">いまの選択だと…</span>
+              <div style="display:flex;background:#F0EADB;border-radius:999px;padding:3px">
+                <div onClick="{{ setYear }}" style="{{ segYearStyle }}">年</div>
+                <div onClick="{{ setMonth }}" style="{{ segMonthStyle }}">月</div>
+              </div>
+            </div>
+            <div style="text-align:center;padding:7px 0 2px">
+              <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:46px;color:#1B2030;line-height:1;letter-spacing:.005em">{{ totalText }}<span style="font-size:15px;color:#9A9FAC;font-weight:700;margin-left:2px">/{{ periodLabel }}</span></div>
+              <div style="font-size:9.5px;color:#A99F87;margin-top:5px">↓ 自分の契約に合わせて、入っているものを選ぶ</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;background:#FBEFE6;border:1px solid #F2D4C0;border-radius:11px;padding:9px 11px;margin-top:8px">
+              <span style="font-size:13px">⚠️</span><span style="font-size:10.5px;color:#A65B3A;font-weight:600;line-height:1.4">このまま続けると、<b style="color:#8F4326">5年で {{ fiveYearText }}</b>。気づかないうちに出ていきます。</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px;background:#FBF3DF;border:1px solid #EFD79A;border-radius:11px;padding:9px 11px;margin-top:8px">
+              <span style="font-size:13px">✓</span><span style="font-size:10.5px;color:#8A6A1E;font-weight:600;line-height:1.4">いちばん効くのは<b style="color:#6E5212">「{{ topCutName }}」</b>。やめると <b style="color:#6E5212">年{{ topCutText }}</b> 浮きます。</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:7px;margin-top:13px">
+              <div style="{{ nf.rowStyle }}">
+                <div onClick="{{ toggleNf }}" style="cursor:pointer;flex:0 0 auto"><sc-if value="{{ nf.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if><sc-if value="{{ nf.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if></div>
+                <div style="width:26px;height:26px;border-radius:7px;background:#E50914;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">N</div>
+                <div style="flex:1;min-width:0"><div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">Netflix</div><select value="{{ nf.planIdx }}" onChange="{{ planNf }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:140px"><sc-for list="{{ nf.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.i }}">{{ o.label }}</option></sc-for></select></div>
+                <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ nf.priceText }}</span>
+              </div>
+              <div style="{{ sp.rowStyle }}">
+                <div onClick="{{ toggleSp }}" style="cursor:pointer;flex:0 0 auto"><sc-if value="{{ sp.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if><sc-if value="{{ sp.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if></div>
+                <div style="width:26px;height:26px;border-radius:7px;background:#1DB954;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">S</div>
+                <div style="flex:1;min-width:0"><div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">Spotify</div><select value="{{ sp.planIdx }}" onChange="{{ planSp }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:140px"><sc-for list="{{ sp.opts }}" as="o" hint-placeholder-count="4"><option value="{{ o.i }}">{{ o.label }}</option></sc-for></select></div>
+                <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ sp.priceText }}</span>
+              </div>
+              <div style="{{ yt.rowStyle }}">
+                <div onClick="{{ toggleYt }}" style="cursor:pointer;flex:0 0 auto"><sc-if value="{{ yt.on }}" hint-placeholder-val="{{ true }}"><div style="width:21px;height:21px;border-radius:7px;background:#2FA8AE;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div></sc-if><sc-if value="{{ yt.off }}" hint-placeholder-val="{{ false }}"><div style="width:21px;height:21px;border-radius:7px;border:2px solid #4A5578"></div></sc-if></div>
+                <div style="width:26px;height:26px;border-radius:7px;background:#FF0000;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">YT</div>
+                <div style="flex:1;min-width:0"><div style="font-size:11.5px;color:#E7EAF3;font-weight:700;line-height:1.2">YouTube Premium</div><select value="{{ yt.planIdx }}" onChange="{{ planYt }}" style="margin-top:2px;background:#161D31;color:#9aa3bd;border:1px solid #36426A;border-radius:7px;font-size:9.5px;padding:3px 6px;max-width:140px"><sc-for list="{{ yt.opts }}" as="o" hint-placeholder-count="3"><option value="{{ o.i }}">{{ o.label }}</option></sc-for></select></div>
+                <span style="font-size:12px;font-weight:800;color:#fff;flex:0 0 auto;font-variant-numeric:tabular-nums">{{ yt.priceText }}</span>
+              </div>
+            </div>
+            <div style="font-size:9.5px;color:#A99F87;margin-top:9px;text-align:center">タップで対象を外す・プランは選び直せる。合計は即更新。</div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:7px;justify-content:center;margin:13px 0 2px"><span style="width:6px;height:6px;border-radius:50%;background:#2FA8AE"></span><span style="font-size:10.5px;color:#7E8597">今月 <b style="color:#1B2030">1,284人</b> がこのページから解約に進みました</span></div>
+        </div>
+
+        <div style="padding:10px 16px 4px">
+          <div style="font-size:13px;font-weight:900;color:#1B2030;margin-bottom:9px">まず、かんたんに切れるものから</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.16);transform:translateY(-1px)">
+              <div style="width:27px;height:27px;border-radius:7px;background:#1DB954;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">S</div>
+              <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030">Spotify</div><div style="font-size:9.5px;color:#8A8F9E">やめると 年¥11,760</div></div>
+              <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+              <span style="font-size:10.5px;font-weight:800;color:#0E7F85;white-space:nowrap;flex:0 0 auto">解約ページへ →</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.16);transform:translateY(-1px)">
+              <div style="width:27px;height:27px;border-radius:7px;background:#FA243C;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">♪</div>
+              <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030">Apple Music</div><div style="font-size:9.5px;color:#8A8F9E">やめると 年¥12,960</div></div>
+              <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+              <span style="font-size:10.5px;font-weight:800;color:#0E7F85;white-space:nowrap;flex:0 0 auto">解約ページへ →</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:10px 12px" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.16);transform:translateY(-1px)">
+              <div style="width:27px;height:27px;border-radius:7px;background:#E50914;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto">N</div>
+              <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030">Netflix</div><div style="font-size:9.5px;color:#8A8F9E">やめると 年¥17,880</div></div>
+              <span style="font-size:10px;font-weight:700;color:#1B8A5A;background:#E2F4EA;padding:2px 8px;border-radius:999px;flex:0 0 auto">かんたん</span>
+              <span style="font-size:10.5px;font-weight:800;color:#0E7F85;white-space:nowrap;flex:0 0 auto">解約ページへ →</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:14px 16px 4px">
+          <div style="background:#F3EEE1;border-radius:14px;padding:14px 15px">
+            <div style="font-size:12px;font-weight:900;color:#1B2030;margin-bottom:11px">使い方は3ステップ</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#1B2030;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">1</div><div style="font-size:11.5px;color:#3C4253;line-height:1.5;padding-top:2px"><b>名前で探す</b></div></div>
+              <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#1B2030;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">2</div><div style="font-size:11.5px;color:#3C4253;line-height:1.5;padding-top:2px"><b>解約ページへ直行</b>（引き止め画面の対策つき）</div></div>
+              <div style="display:flex;gap:11px;align-items:flex-start"><div style="flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#1B2030;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center">3</div><div style="font-size:11.5px;color:#3C4253;line-height:1.5;padding-top:2px"><b>まとめて棚卸し</b></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:14px 16px 0">
+          <div style="font-size:13px;font-weight:900;color:#1B2030;margin-bottom:9px">よく探される Top 10</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ sortedList }}" as="s" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBE5D7;border-radius:12px;padding:9px 12px" style-hover="border-color:#9FE0E3;box-shadow:0 7px 18px rgba(47,168,174,.16);transform:translateY(-1px)">
+                <span style="font-size:11px;font-weight:800;color:#B6AE9C;width:13px;text-align:center;flex:0 0 auto">{{ s.rank }}</span>
+                <div style="{{ s.dotStyle }}">{{ s.badge }}</div>
+                <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:700;color:#1B2030;line-height:1.1">{{ s.name }}</div><div style="font-size:9.5px;color:#0E7F85;font-weight:700;margin-top:2px">解約ページへ →</div></div>
+                <span style="{{ s.badgeStyle }}">{{ s.diff }}</span>
+                <span style="font-size:11.5px;font-weight:800;color:#1B2030;font-variant-numeric:tabular-nums;flex:0 0 auto">{{ s.priceText }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="height:96px"></div>
+      </div>
+
+      <div style="position:absolute;left:0;right:0;bottom:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-top:1px solid #ECE6D9;padding:11px 16px 13px;box-shadow:0 -10px 28px rgba(0,0,0,.07)">
+        <div style="background:#34C0C6;border-radius:13px;text-align:center;padding:15px;font-size:13.5px;font-weight:800;color:#06222a;box-shadow:0 10px 24px rgba(52,192,198,.34)">棚卸しで 年{{ totalText }} を見直す →</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:18px;background:#fef4a8;padding:14px 16px;font-size:11.5px;line-height:1.6;color:#5b5320;box-shadow:0 1px 3px rgba(0,0,0,.08);transform:rotate(-1deg);border-radius:2px">
+    <b>適用した原則</b><br>
+    • <b>人間工学</b>：主要CTAを親指ゾーン（下部固定バー）に・ヘッダー固定・タップ48px+・視線の序列<br>
+    • <b>行動経済学</b>：年額で<b>アンカリング</b>／5年総額で<b>損失回避</b>／「いちばん効く一手」で<b>具体化</b>／“かんたんから”で<b>初期労力↓</b>／社会的証明<br>
+    • <b>直球コピー</b>：「サービス名を入れるだけ」「年いくら払ってる？」<br>
+    • <b>不可侵</b>：ブランド・解約最上位・第一印象・手順の上部配置は保持
+  </div>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    plans: { netflix: 1, spotify: 0, youtube: 0 },
+    on: { netflix: true, spotify: true, youtube: true },
+    period: 'year',
+    shown: 0,
+  };
+
+  svc = {
+    netflix: { name:'Netflix', opts:[['広告つきスタンダード',890],['スタンダード',1490],['プレミアム',1980]] },
+    spotify: { name:'Spotify', opts:[['個人 (Premium)',980],['Duo (2人)',1280],['ファミリー',1580],['学生',480]] },
+    youtube: { name:'YouTube Premium', opts:[['個人プラン',1280],['ファミリー',2280],['学生',780]] },
+  };
+
+  monthly() {
+    let t = 0;
+    for (const k in this.svc) { if (this.state.on[k]) t += this.svc[k].opts[this.state.plans[k]][1]; }
+    return t;
+  }
+  target() { return this.state.period === 'year' ? this.monthly() * 12 : this.monthly(); }
+
+
+  yen(n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); }
+
+  row(k) {
+    const s = this.svc[k], on = this.state.on[k], idx = this.state.plans[k];
+    return {
+      on, off: !on,
+      planIdx: String(idx),
+      opts: s.opts.map((o, i) => ({ i: String(i), label: o[0] + '  ¥' + o[1].toLocaleString('ja-JP') })),
+      priceText: '¥' + s.opts[idx][1].toLocaleString('ja-JP'),
+      rowStyle: { display:'flex', alignItems:'center', gap:'9px', padding:'9px 11px', borderRadius:'12px', background:'#1B2236', border:'1px solid #2C3656', opacity: on ? 1 : 0.42, transition:'opacity .22s ease' },
+    };
+  }
+
+  renderVals() {
+    const toggle = (k) => () => this.setState(st => ({ on: { ...st.on, [k]: !st.on[k] } }));
+    const setPlan = (k) => (e) => { const v = +e.target.value; this.setState(st => ({ plans: { ...st.plans, [k]: v } })); };
+    const isYear = this.state.period === 'year';
+    const seg = (active) => ({ fontSize:'10px', fontWeight:'700', padding:'5px 11px', borderRadius:'999px', cursor:'pointer', transition:'all .2s', color: active ? '#06222a' : '#8A92AC', background: active ? '#5BD0D6' : 'transparent' });
+    const count = Object.values(this.state.on).filter(Boolean).length;
+    const monthly = this.monthly();
+    const fiveYearText = this.yen(this.target() * 5);
+    const monthlyText = this.yen(monthly);
+    const _onA = Object.keys(this.svc).filter(k => this.state.on[k]).map(k => ({ name: this.svc[k].name, annual: this.svc[k].opts[this.state.plans[k]][1] * 12 })).sort((a, b) => b.annual - a.annual);
+    const topCutName = _onA[0] ? _onA[0].name : '—';
+    const topCutText = _onA[0] ? this.yen(_onA[0].annual) : '¥0';
+    const _sq = (this.state.q || '').trim().toLowerCase();
+    const _sd = [
+      ['Netflix','netflix ネトフリ','かんたん',1490,'#E50914','N'],
+      ['Spotify','spotify スポティファイ','かんたん',980,'#1DB954','S'],
+      ['ChatGPT Plus','chatgpt openai チャット','かんたん',3100,'#10A37F','G'],
+      ['YouTube Premium','youtube ユーチューブ','かんたん',1280,'#FF0000','YT'],
+      ['Amazon プライム','amazon prime ぷらいむ','ふつう',600,'#232F3E','a'],
+      ['Adobe Creative Cloud','adobe cc アドビ','むずかしい',1180,'#DA1F26','Ai'],
+      ['Disney+','disney ディズニー','かんたん',1140,'#113CCF','D+'],
+      ['DAZN','dazn ダゾーン','ふつう',4200,'#111111','DZ'],
+      ['U-NEXT','unext ユーネクスト','むずかしい',2189,'#000000','U'],
+      ['Apple Music','apple music アップル','かんたん',1080,'#FA243C','♪'],
+    ];
+    const _dm = { 'かんたん':['#1B8A5A','#E2F4EA'], 'ふつう':['#5B6473','#ECEEF2'], 'むずかしい':['#C2691C','#F8EAD9'] };
+    const sResults = _sq ? _sd.filter(s => (s[0] + ' ' + s[1]).toLowerCase().includes(_sq)).slice(0, 4).map(s => ({
+      name: s[0], diff: s[2], price: '¥' + s[3].toLocaleString('ja-JP'), badge: s[5],
+      badgeStyle: { fontSize: '10px', fontWeight: 700, color: _dm[s[2]][0], background: _dm[s[2]][1], padding: '2px 8px', borderRadius: '999px', flex: '0 0 auto' },
+      dotStyle: { width: '24px', height: '24px', borderRadius: '6px', background: s[4], color: '#fff', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 auto' },
+    })) : [];
+    // ===== 改善③ deep-dive: 並び替え / 図鑑フィルタ / 手順プレビュー =====
+    const dcol = (d) => ({ 'かんたん': ['#1B8A5A', '#E2F4EA'], 'ふつう': ['#5B6473', '#ECEEF2'], 'むずかしい': ['#C2691C', '#F8EAD9'] }[d]);
+    const LIST = [
+      { id: 'amazon', rank: 1, name: 'Amazon プライム', kana: 'あまぞんぷらいむ', cat: 'その他', diff: 'ふつう', price: 600, badge: 'a', color: '#232F3E' },
+      { id: 'netflix', rank: 2, name: 'Netflix', kana: 'ねっとふりっくす', cat: '動画', diff: 'かんたん', price: 1490, badge: 'N', color: '#E50914' },
+      { id: 'spotify', rank: 3, name: 'Spotify', kana: 'すぽてぃふぁい', cat: '音楽', diff: 'かんたん', price: 980, badge: 'S', color: '#1DB954' },
+      { id: 'chatgpt', rank: 4, name: 'ChatGPT Plus', kana: 'ちゃっとじーぴーてぃー', cat: 'ソフト', diff: 'かんたん', price: 3100, badge: 'G', color: '#10A37F' },
+      { id: 'youtube', rank: 5, name: 'YouTube Premium', kana: 'ゆーちゅーぶ', cat: '動画', diff: 'かんたん', price: 1280, badge: 'YT', color: '#FF0000' },
+      { id: 'adobe', rank: 6, name: 'Adobe Creative Cloud', kana: 'あどびくりえいてぃぶ', cat: 'ソフト', diff: 'むずかしい', price: 1180, badge: 'Ai', color: '#DA1F26' },
+      { id: 'unext', rank: 7, name: 'U-NEXT', kana: 'ゆーねくすと', cat: '動画', diff: 'むずかしい', price: 2189, badge: 'U', color: '#1A1A2E' },
+      { id: 'dazn', rank: 8, name: 'DAZN', kana: 'だぞーん', cat: '動画', diff: 'ふつう', price: 4200, badge: 'DZ', color: '#111111' },
+      { id: 'applemusic', rank: 9, name: 'Apple Music', kana: 'あっぷるみゅーじっく', cat: '音楽', diff: 'かんたん', price: 1080, badge: '♪', color: '#FA243C' },
+      { id: 'audible', rank: 10, name: 'Audible', kana: 'おーでぃぶる', cat: 'ニュース', diff: 'むずかしい', price: 1500, badge: 'Au', color: '#F8991C' },
+    ];
+    const deco = (s) => ({
+      id: s.id, rank: s.rank, name: s.name, diff: s.diff, cat: s.cat, badge: s.badge,
+      priceText: '¥' + s.price.toLocaleString('ja-JP'),
+      badgeStyle: { fontSize: '10px', fontWeight: 700, color: dcol(s.diff)[0], background: dcol(s.diff)[1], padding: '2px 8px', borderRadius: '999px', flex: '0 0 auto' },
+      dotStyle: { width: '27px', height: '27px', borderRadius: '7px', background: s.color, color: '#fff', fontSize: '10px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 auto' },
+    });
+    const _dr = { 'かんたん': 0, 'ふつう': 1, 'むずかしい': 2 };
+    const sortMode = this.state.sortMode || 'pop';
+    const sortedList = [...LIST].sort((a, b) =>
+      sortMode === 'kana' ? (a.kana < b.kana ? -1 : 1) :
+      sortMode === 'easy' ? (_dr[a.diff] - _dr[b.diff] || a.rank - b.rank) :
+      sortMode === 'hard' ? (_dr[b.diff] - _dr[a.diff] || a.rank - b.rank) :
+      a.rank - b.rank
+    ).map(deco);
+    const _sp = (m) => ({ fontSize: '10px', fontWeight: m === sortMode ? 800 : 700, cursor: 'pointer', padding: '6px 11px', borderRadius: '999px', whiteSpace: 'nowrap', color: m === sortMode ? '#fff' : '#6b7180', background: m === sortMode ? '#1B2030' : '#fff', border: '1px solid ' + (m === sortMode ? '#1B2030' : '#E3DCCC') });
+    const sortPills = [['pop', '人気順'], ['kana', '五十音'], ['easy', '解約しやすい順'], ['hard', '解約しにくい順']].map(([m, label]) => ({ label, style: _sp(m), onClick: () => this.setState({ sortMode: m }) }));
+    const sortHint = { pop: '人気順（既定）。よく探される順に表示。', kana: '五十音順。名前から探すとき。', easy: '解約しやすい順。まず「かんたん」から片付ける。', hard: '解約しにくい順。手こずる固定費を先に。' }[sortMode];
+    const diffFilter = this.state.diffFilter || 'all';
+    const _fl = LIST.filter(s => diffFilter === 'all' || s.diff === diffFilter);
+    const groups = ['動画', '音楽', 'ソフト', 'ニュース', 'その他'].map(c => { const items = _fl.filter(s => s.cat === c).map(deco); return { cat: c, count: String(items.length), items }; }).filter(g => g.items.length > 0);
+    const _fp = (f) => ({ fontSize: '10px', fontWeight: f === diffFilter ? 800 : 700, cursor: 'pointer', padding: '6px 11px', borderRadius: '999px', whiteSpace: 'nowrap', color: f === diffFilter ? '#fff' : '#6b7180', background: f === diffFilter ? (f === 'all' ? '#1B2030' : dcol(f)[0]) : '#fff', border: '1px solid ' + (f === diffFilter ? (f === 'all' ? '#1B2030' : dcol(f)[0]) : '#E3DCCC') });
+    const filterPills = [['all', 'すべて ' + LIST.length], ['かんたん', 'かんたん'], ['ふつう', 'ふつう'], ['むずかしい', 'むずかしい']].map(([f, label]) => ({ label, style: _fp(f), onClick: () => this.setState({ diffFilter: f }) }));
+    const STEPS = {
+      netflix: ['アカウントページを開く', '「メンバーシップのキャンセル」を押す', '確認して完了（期間末まで視聴可）'],
+      spotify: ['アカウント画面にログイン', '「プランを変更」→ Free を選ぶ', '解約を確定する'],
+      youtube: ['YouTube Premium の設定を開く', '「無効にする」を選ぶ', '確認して完了'],
+      adobe: ['アカウント →「プランを管理」', '「プランを解約」を選ぶ', '解約金の表示を確認して進む'],
+    };
+    const openId = this.state.openId || null;
+    const stepList = ['netflix', 'spotify', 'youtube', 'adobe'].map(id => { const s = LIST.find(x => x.id === id); return { ...deco(s), isOpen: openId === id, steps: STEPS[id].map((t, i) => ({ n: String(i + 1), text: t })), onToggle: () => this.setState(st => ({ openId: st.openId === id ? null : id })) }; });
+    return {
+      nf: this.row('netflix'), sp: this.row('spotify'), yt: this.row('youtube'),
+      toggleNf: toggle('netflix'), toggleSp: toggle('spotify'), toggleYt: toggle('youtube'),
+      planNf: setPlan('netflix'), planSp: setPlan('spotify'), planYt: setPlan('youtube'),
+      setYear: () => this.setState({ period: 'year' }),
+      setMonth: () => this.setState({ period: 'month' }),
+      segYearStyle: seg(isYear), segMonthStyle: seg(!isYear),
+      periodLabel: isYear ? '年間の固定費' : '月の固定費',
+      totalText: this.yen(this.target()),
+      subTotalText: isYear ? ('月 ' + this.yen(monthly) + ' × 12ヶ月') : ('年なら ' + this.yen(monthly * 12)),
+      countText: count + '件',
+      fiveYearText, monthlyText, topCutName, topCutText,
+      q: this.state.q || '', sResults, hasQuery: _sq.length > 0, emptyQ: _sq.length === 0, noHit: _sq.length > 0 && sResults.length === 0,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      sortedList, sortPills, sortHint,
+      groups, filterPills,
+      stepList,
+    };
+  }
+}
+</script>
+</body>
+</html>

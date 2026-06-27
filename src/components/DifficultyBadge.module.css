@@ -1,0 +1,26 @@
+/* 難易度バッジ（design_handoff §7：10px/700・padding 2px 8px・角丸999） */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  font-family: var(--hm-font-body);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.easy {
+  color: var(--hm-easy);
+  background: var(--hm-easy-bg);
+}
+.medium {
+  color: var(--hm-mid);
+  background: var(--hm-mid-bg);
+}
+.hard {
+  color: var(--hm-hard);
+  background: var(--hm-hard-bg);
+}
