@@ -6,6 +6,50 @@
 
 ---
 
+## 2026-07-01 ★★★★★ AdSense不承認の理由確定＝「有用性の低いコンテンツ」／薄いページの本文拡充で対処
+
+### 発見
+- 2026-07-01、新ドメイン sabusuku-yameta.com で AdSense **不承認**（前回6-21は旧netlifyドメインで同結果＝中身同じまま再申請）。
+- **メールは定型文で理由を明記しない**。理由はコンソールの[サイト]ページにのみ表示（俊雄さんスクショで確認）：所有権✅／**ポリシー違反「有用性の低いコンテンツ」**（コンテンツの最小要件・独自性・質の低いコンテンツへのリンク）。
+- コンテンツ実測で裏取り：ServicePageは `EXTENDED_CONTENT[id]`（summary/whyHard/darkPatterns/afterCancel/faq＝約700-900字）を描画するが、**58本中EXTENDED_CONTENTは19本だけ＝39本(67%)が薄い**（steps平均47字＋note15字＋外部/アフィリンクのみ）。サイトの核が外部リンク索引＋流入ほぼ0＝「価値の低い/誘導ページ」判定にドンピシャ。
+
+### なぜ重要か
+1. **AdSense不承認の一次情報はメールでなくコンソール[サイト]ページ**。理由カテゴリで対処が全く変わるので、まず実際の表示を取る（ログイン=原子操作）。
+2. **「有用性の低いコンテンツ」の対処＝薄いページの本文を実のある独自コンテンツで厚くする**。AIパディングは逆効果（まさに罰せられる対象）。実データ(steps/note/difficulty)に基づく正確な本文で埋める＝最上位原則(社会性)・SEO/AI引用(E1/E2)と同じ方向＝ハックでなく本筋。
+3. これは §1「①社会性の土台→③母数(AdSense)」の順序どおり。AdSenseは土台が薄いと通らない＝土台を厚くするのが唯一解。
+
+### 永続化
+- `src/data/services.js` の `EXTENDED_CONTENT` に薄い39本を全て追加＝**58/58本の100%カバレッジ達成**（同日完了）。品質基準＝既存19本＝5キー・平均678字・両論併記・実データ(steps/note/difficulty)ベースで捏造なし・不確かな価格は書かない。
+- 特に正直に書いた注意系：楽天Kobo（「解約」導線が楽天会員退会に直結＝ポイント/市場ごと消える巻き添えを明記）／BOOK☆WALKER・honto（退会＝購入書籍消失）／NHKプラス（プラス退会≠受信契約解約）／Pairs・Match（アプリ内に解約なし・決済経路で分岐・退会と解約の順序）。
+- **次＝俊雄さんの原子操作**：本番反映を確認後、AdSense[サイト]ページで「問題を修正しました」にチェック →「審査をリクエスト」。
+
+---
+
+## 2026-06-27 ★★★ 新チャネル：YouTube Shorts×解約手順（誠実トーン・生成は外部AI・段階導入）
+
+### 発見
+- 俊雄さん提案「ショート動画を私が作って投稿」を stress-test（skill本体不在＝型を手動適用）。**発想は妥当**（GROWTH_STRATEGY §E6＝Shortsは恒久・検索ベース）が、**「私が生成も投稿も全自動」版は最リスク**：①この環境で動画生成を担保できない②TikTok自動投稿は凍結リスク③低品質AI動画量産は§4「薄いAI量産禁止」と社会性に反する④account/OAuthは原子操作。
+- 俊雄さん決定（AskUserQuestion）：初手＝**YouTube Shorts／解約手順**、生成は**外部AI（Gemini等）に投げてよい**。→ 私の役割＝「投げれば動画になる完全キット＋正確な台本」の量産。
+- needs-match の一貫性：YouTube＝検索（解約手順がevergreen）／TikTok・Pinterest＝discovery（高intent解約とズレる）。**プラットフォームでコンテンツを変える**（Pinterest失敗の再来を防ぐ）。
+
+### なぜ重要か
+1. **「やるか」でなく「どの production/posting モデルか」を詰める**：チャネル是非より、品質ゲート・ToS・原子操作・段階導入の設計が勝負。全自動・全プラットフォーム一斉は地雷。
+2. **恒久メディアにボイスを資産化しない**：どら猫毒舌はThreads限定、YouTube/note/アプリは誠実トーン（kokuchi-plan §広報運用）。
+3. **手順は実データ（services.js）から引く＝捏造しない**：正確さ＝社会性＝収益の源泉。両論併記は `note` フィールドを活用。
+
+### 永続化
+- `docs/YOUTUBE_SHORTS_PLAYBOOK.md`（フォーマット・UTM・生成プロンプト・第1バッチ台本3本＝Amazonプライム/U-NEXT/Spotify・段階導入/撤退ライン）新規。
+- UTM規約：`utm_source=youtube&utm_medium=social&utm_campaign=shorts&utm_content=<service-id>`。CTAは `/service/:id`。
+
+### 追記（同日・俊雄さん「全自動を目指す」決定→実装）
+- 「スマホ手動投稿はやりづらい」＝stress-testで挙げた**モバイル運用の構造的頭打ち**が実地で顕在化 → 俊雄さんが**全自動（生成→投稿）**を選択。
+- **設計判断**：解約手順の全自動は**映像生成AI(Veo等)でなく、ステップ文字カードをffmpegでプログラム合成**が正解（品質安定・コストゼロ・ToS安全・ブランド統制）。映像AIはUI幻覚＋高コストで解約手順には逆効果。
+- **環境検証**：ffmpegはPATHに無いが `@ffmpeg-installer/ffmpeg`(npm)で導入可・日本語フォントIPAGothic有り。**実際にサンプルShort（17秒/1080x1920/H264+AAC）をレンダリング成功**＝全自動の心臓部が動くことを実証。
+- **実装**：`scripts/youtube/`（独立package＝Vite/Netlify非影響）。gen-queue（services.js→queue）/render-short（SVG→sharp→ffmpeg）/upload-short（YouTube Data API）/run（kill-switch・既定OFF・既定private・失敗で停止）/get-token（初回OAuth）。
+- **教訓**：全自動でも§4不可逆出力ゲートは「kill-switch＋既定OFF＋既定private＋段階公開」で満たせる。account/OAuthだけ俊雄さんの原子操作に限定。
+
+---
+
 ## 2026-06-27 ★★★★ 集客の律速是正：Pinterest完全停止＋ライフオラクルnote最下段クロス送客を主レバーへ
 
 ### 発見

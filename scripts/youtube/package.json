@@ -1,0 +1,17 @@
+{
+  "name": "subsuku-youtube-autopost",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "サブスクやめた 解約手順Shorts 全自動パイプライン（生成→投稿）。アプリ本体とは独立（Vite/Netlifyビルドに非影響）。",
+  "scripts": {
+    "gen-queue": "node gen-queue.mjs",
+    "render": "node render-short.mjs",
+    "run": "node run.mjs"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "googleapis": "^140.0.0",
+    "sharp": "^0.33.5"
+  }
+}
