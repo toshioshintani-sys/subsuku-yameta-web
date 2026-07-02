@@ -19,8 +19,9 @@
 3. これは §1「①社会性の土台→③母数(AdSense)」の順序どおり。AdSenseは土台が薄いと通らない＝土台を厚くするのが唯一解。
 
 ### 永続化
-- `src/data/services.js` の `EXTENDED_CONTENT` に薄い39本を順次追加（品質基準＝既存19本＝5キー・700字前後・両論併記・捏造なし）。第1バッチ7本（playstation-plus/xbox-game-pass/nintendo-switch-online/apple-tv-plus/amazon-music-unlimited/dropbox/canva-pro）追加＝19→26本。残り32本。
-- 全39本完了後、AdSense[サイト]ページで「問題を修正しました」→再審査リクエスト（俊雄さんの原子操作）。
+- `src/data/services.js` の `EXTENDED_CONTENT` に薄い39本を全て追加＝**58/58本の100%カバレッジ達成**（同日完了）。品質基準＝既存19本＝5キー・平均678字・両論併記・実データ(steps/note/difficulty)ベースで捏造なし・不確かな価格は書かない。
+- 特に正直に書いた注意系：楽天Kobo（「解約」導線が楽天会員退会に直結＝ポイント/市場ごと消える巻き添えを明記）／BOOK☆WALKER・honto（退会＝購入書籍消失）／NHKプラス（プラス退会≠受信契約解約）／Pairs・Match（アプリ内に解約なし・決済経路で分岐・退会と解約の順序）。
+- **次＝俊雄さんの原子操作**：本番反映を確認後、AdSense[サイト]ページで「問題を修正しました」にチェック →「審査をリクエスト」。
 
 ---
 
