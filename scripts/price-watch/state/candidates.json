@@ -1,0 +1,5 @@
+{
+  "generatedAt": "2026-07-05T13:40:01.210Z",
+  "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
+  "events": []
+}

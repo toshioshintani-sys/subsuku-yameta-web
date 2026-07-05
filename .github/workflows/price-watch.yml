@@ -1,0 +1,39 @@
+name: Price Scout (価格偵察部隊)
+
+# 掲載サービスの公式料金ページを巡回し、価格の変化を「検知」する（検知のみ・自動公開しない）。
+# 🛑 AdSense再審査中は手動トリガー(workflow_dispatch)のみ。サイト・リポジトリを変更せず、
+#    検知候補を artifact(candidates.json) として出すだけ。承認後に schedule を有効化する。
+on:
+  workflow_dispatch: {}
+  # schedule:
+  #   - cron: '17 21 * * *'   # AdSense承認後に有効化（毎日 06:17 JST 相当）
+
+permissions:
+  contents: read
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run price scout (detect only / no publish)
+        run: node scripts/price-watch/price-watch.mjs
+
+      - name: Upload verification queue (candidates)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: price-candidates
+          path: scripts/price-watch/state/candidates.json
+          if-no-files-found: warn
+          retention-days: 30
+
+# 注：この workflow は state を commit し戻さない（審査中はリポを変更しない方針）。
+# 承認後に schedule 運用へ切り替える際、ベースラインを日々更新するため
+# state/price_watch_state.json を bot commit するステップを追加する（別PRで）。
