@@ -17,6 +17,11 @@ const SITEMAP = join(DIST, 'sitemap.xml');
 // 800字を「chrome程度では届かない・固有本文が要る」ラインとして採用（P2完了後の実測に基づき調整可）。
 const MIN_BODY_CHARS = 800;
 
+// 性質上どうしても短い正当なユーティリティページ（実測: about2157/privacy1192/disclaimer831/disclosure1155/contact762字）。
+// 薄いコンテンツとして水増しするのではなく、「短くて当然のページ」として本文量チェックから除外する。
+// カテゴリ/discover/blog等の"本来厚みが要る"ページ種別は対象外のまま（実際に薄ければここに追加しない）。
+const UTILITY_EXEMPT = new Set(['/contact', '/about', '/privacy', '/disclaimer', '/disclosure']);
+
 function fail(msgs, msg) {
   msgs.push(`✗ ${msg}`);
 }
@@ -86,7 +91,7 @@ function main() {
     const html = readFileSync(file, 'utf-8');
 
     const bodyLen = extractBodyText(html).length;
-    if (bodyLen < MIN_BODY_CHARS) thin.push([p, bodyLen]);
+    if (bodyLen < MIN_BODY_CHARS && !UTILITY_EXEMPT.has(p.replace(/\/$/, ''))) thin.push([p, bodyLen]);
 
     const title = extractTag(html, /<title>([\s\S]*?)<\/title>/);
     const desc = extractTag(html, /<meta\s+name="description"\s+content="([^"]*)"/);
