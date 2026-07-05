@@ -10,6 +10,7 @@ import {
   buildAmazonSearchUrl,
   buildRakutenSearchUrl,
   trackAffiliateClick,
+  REVIEW_MODE,
 } from '../data/affiliates';
 import styles from './YameteKauPage.module.css';
 
@@ -100,7 +101,7 @@ export default function YameteKauPage() {
                   <a
                     href={buildAmazonSearchUrl(product.amazonQuery)}
                     target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
+                    rel={REVIEW_MODE ? 'nofollow noopener noreferrer' : 'nofollow sponsored noopener noreferrer'}
                     className={styles.cardLink}
                     onClick={() =>
                       trackAffiliateClick({
@@ -117,7 +118,7 @@ export default function YameteKauPage() {
                   <a
                     href={buildRakutenSearchUrl(product.rakutenQuery)}
                     target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
+                    rel={REVIEW_MODE ? 'nofollow noopener noreferrer' : 'nofollow sponsored noopener noreferrer'}
                     className={styles.cardLink}
                     onClick={() =>
                       trackAffiliateClick({
@@ -131,7 +132,7 @@ export default function YameteKauPage() {
                   >
                     楽天で探す <ExternalLink size={11} strokeWidth={2} aria-hidden="true" />
                   </a>
-                  <span className={styles.prLabel} aria-label="広告">PR</span>
+                  {!REVIEW_MODE && <span className={styles.prLabel} aria-label="広告">PR</span>}
                 </div>
               </li>
             ))}
