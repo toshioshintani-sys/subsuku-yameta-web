@@ -55,14 +55,19 @@
    - 完了条件: REVIEW_MODE=true ビルドでアフィURL（a8mat/moshimo/hb.afl.rakuten/amazon tag=）出現ゼロ→ P4-1 preflightで機械検証。
 
 ### P4. 技術ゲートとインデックス（P4-1実行中・P4-2/3は俊雄さん原子操作）
-1. 🔄 **preflight スクリプト新規** `scripts/seo/adsense-preflight.mjs`（実装済み）：ビルド後の dist/ を走査し、①sitemap⇄実ファイル整合 ②各ページのメインテキスト量≥800字 ③title/description の存在と重複 ④JSON-LDのパース可否 ⑤アフィURL出現数（REVIEW_MODE時ゼロ）を機械判定して合否表を出す。**`npm run build`（フルプリレンダ・115ルート）実行中→完了後に本スクリプトで検証予定**。
-   - 完了条件: `node scripts/seo/adsense-preflight.mjs` が全緑。以後これを再審査前の恒久ゲートにする。
+1. ✅ **preflight スクリプト完了・全緑達成（2026-07-02）** `scripts/seo/adsense-preflight.mjs`：①sitemap⇄実ファイル整合 ②本文量≥800字 ③title/description重複ゼロ ④JSON-LDパース可否 ⑤アフィURL残存ゼロ、の6項目すべて115ページで合格。
+   - 過程で2つの実バグを発見・修正:
+     a) **VITE_REVIEW_MODE を Netlify 環境変数（netlify.toml）としてのみ設定していたため、ローカル `npm run build` では一度も有効化されていなかった**＝最初の検証は無意味な対象を見ていた。`VITE_REVIEW_MODE=true npm run build` と明示して再ビルドし解決。
+     b) discover.js の「+hana（タスハナ）」で **officialUrl 自体が affiliateUrl と同一の a8mat 追跡URLになっていた**（REVIEW_MODEのフォールバック先が機能しない実データ不備）。WebSearchで正しい公式サイトを確認し訂正（他ジャンル全件を機械スキャンし同種の問題が他にないことも確認済み）。
+   - また、俊雄さん指摘「AIっぽい句読点だらけの文」を受け、Workflowで39サービス分のEXTENDED_CONTENTを監査（8エージェント・43件検出）→ 助言キャップの反復・複文詰め込み・生成崩れバグ（英単語混入）等を全修正。事実は変更なし。
+   - 完了条件（達成）: `VITE_REVIEW_MODE=true node scripts/seo/adsense-preflight.mjs` が全緑。以後これを再審査前の恒久ゲートにする。
 2. **IndexNow 全URL ping**（既存 `scripts/seo/indexnow-ping.mjs`）＋ **GSC で sitemap.xml 提出・カバレッジ確認**（GSC操作=俊雄さんの原子操作。提出だけ・結果は数日待ち）。
 3. **note名義転載の新規投稿を承認まで一時停止**（重複コンテンツの芽E）。✅ **俊雄さんYES承認済（2026-07-02）**。既公開分は削除不要（初出リンクあり）。ライフオラクルnoteの最下段リンクは**継続**（リンクであってコピーではない＝無関係）。WEEKLY_SPRINTにも反映済み。
 4. soft-404（未知URL200）は記録のみ（AdSense審査への影響は小・Netlify構成変更のリスクの方が大）。
 
-### P5. 最終ゲート → 再審査（担当: 俊雄さん）
+### P5. 最終ゲート → 再審査（担当: 俊雄さん・P1〜P4-1完了・残るはこれだけ）
 1. P1〜P4 マージ後、本番反映を確認（`sabusuku-yameta.com/service/canva-pro` 等で新本文の目視）。
+   ⚠️ **本番デプロイは Netlify環境変数 `VITE_REVIEW_MODE=true` を実際に設定しないと有効にならない**（ローカルビルドと同じ罠。netlify.tomlの既定値だけで足りるはずだが、Netlifyの環境変数UIで上書きされていないか要確認）。
 2. preflight 全緑のログを確認。
 3. **AdSenseコンソール**：[サイト] →「問題を修正しました」チェック →「審査をリクエスト」。
 4. **落ちた場合のループ**：コンソールの理由表示を再取得 → 本計画 §0 に差分追記 → 該当フェーズだけ再実行。感情で追加工事をしない（理由ベースで摘む）。
