@@ -53,7 +53,7 @@
 ### P3. アフィリエイト密度の圧縮（担当: opus-4.8・**俊雄さん確認1点**）
 1. **審査モード実装**：`VITE_REVIEW_MODE=true` で全アフィリエイト導線（Discover図鑑のアフィリンク・ServicePage代替カードの外部アフィ・YameteKau物販ボタン・AdSlot以外のアフィ全般）を**非表示**にするフラグを実装。内部リンク・解約導線・本文は不変。
    - 根拠: 現収益¥0＝機会損失ゼロ。thin affiliation 判定の芽を審査期間だけ物理的に消す。承認後にOFFで即復元。
-   - **俊雄さん確認**: 審査期間中アフィ非表示にしてよいか（既定=YES想定・拒否なら rel対応のみ）。Netlify環境変数の設定は俊雄さんの原子操作（またはnetlify.toml既定値で私が設定）。
+   - **俊雄さん確認**: ✅ **YES承認済（2026-07-02）**。netlify.toml の既定値で REVIEW_MODE=ON にする（環境変数の原子操作不要）。承認後にOFFへ戻すのを忘れないこと（本計画P5に復元手順を含む）。
 2. **rel属性の総点検**：残る外部リンクに `rel="nofollow sponsored"`（アフィ）/ `rel="noopener"`（解約直リンク）が付いているか監査し、欠落を補修。
    - 完了条件: ビルド後distをgrepしてアフィURL（a8/moshimo/rakuten/amazon Associate）に sponsored 欠落ゼロ。REVIEW_MODE=true ビルドでアフィURL出現ゼロ。
 
@@ -61,7 +61,7 @@
 1. **preflight スクリプト新規** `scripts/seo/adsense-preflight.mjs`：ビルド後の dist/ を走査し、①sitemap⇄実ファイル整合 ②各ページのメインテキスト量≥300字 ③title/description の存在と重複 ④JSON-LDのパース可否 ⑤アフィURL出現数（REVIEW_MODE時ゼロ）を機械判定して合否表を出す。
    - 完了条件: `node scripts/seo/adsense-preflight.mjs` が全緑。以後これを再審査前の恒久ゲートにする。
 2. **IndexNow 全URL ping**（既存 `scripts/seo/indexnow-ping.mjs`）＋ **GSC で sitemap.xml 提出・カバレッジ確認**（GSC操作=俊雄さんの原子操作。提出だけ・結果は数日待ち）。
-3. **note名義転載の新規投稿を承認まで一時停止**（重複コンテンツの芽E）。既公開分は削除不要（初出リンクあり）。ライフオラクルnoteの最下段リンクは**継続**（リンクであってコピーではない＝無関係）。
+3. **note名義転載の新規投稿を承認まで一時停止**（重複コンテンツの芽E）。✅ **俊雄さんYES承認済（2026-07-02）**。既公開分は削除不要（初出リンクあり）。ライフオラクルnoteの最下段リンクは**継続**（リンクであってコピーではない＝無関係）。WEEKLY_SPRINTにも反映済み。
 4. soft-404（未知URL200）は記録のみ（AdSense審査への影響は小・Netlify構成変更のリスクの方が大）。
 
 ### P5. 最終ゲート → 再審査（担当: 俊雄さん）
