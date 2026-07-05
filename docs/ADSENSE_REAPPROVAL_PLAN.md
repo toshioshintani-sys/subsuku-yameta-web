@@ -35,30 +35,27 @@
 
 > 実行セッションへの依頼文はこのファイルを丸ごと渡し「P◯を実行して」でよい。**各タスクは完了条件（検証コマンド）を満たすまで完了と言わない**。コミットは1フェーズ1PR。BAE/不可侵(CLAUDE.md§2)は常に上位。
 
-### P1. 定型感の摘み取り（担当: sonnet-5・軽作業）
-1. **使い回し文13件の書き分け**：`src/data/services.js` の EXTENDED_CONTENT で、複数ページに完全一致で出る文（§0の検出スクリプト参照）を各ページ固有の言い回しに書き分け。意味は変えない・捏造しない。
-   - 完了条件: 検出スクリプト（下記）で「複数ページ完全一致文（12字以上）= **5件以下**」（自然な残存は許容）。
-   ```bash
-   node -e "const {EXTENDED_CONTENT}=await import('./src/data/services.js');const m=new Map();for(const [id,e] of Object.entries(EXTENDED_CONTENT)){const t=[e.summary,e.whyHard,e.afterCancel,...(e.darkPatterns||[]).flatMap(d=>[d.trigger,d.response]),...(e.faq||[]).flatMap(f=>[f.q,f.a])].join('。').split(/[。\n]/).map(s=>s.trim()).filter(s=>s.length>=12);for(const s of new Set(t)){if(!m.has(s))m.set(s,[]);m.get(s).push(id)}}console.log([...m.values()].filter(v=>v.length>=2).length)"
-   ```
-2. **meta description の一意性**：category 7ページ・discover 各ページ・games 各ページの `<Seo description>` が定型文の場合、ページ固有の1文に。
-   - 完了条件: 全ルートの description を列挙して重複ゼロ（目視＋grep）。
+### P1. 定型感の摘み取り（実行済み・2026-07-02）
+1. ✅ **使い回し文13件の書き分け完了**：`src/data/services.js` の EXTENDED_CONTENT。検出スクリプトで**残存0件**（目標5件以下を超過達成）。書き分け例：dazn/disney-plusのafterCancel、chatgpt-plus/claude-proの為替FAQ等、意味を変えず・捏造せず言い回しのみ分岐。
+2. ✅ **meta description の一意性**：DiscoverGenrePage/GameDetailPageは元から genre.name/game.term を差し込む動的生成で一意。CategoryPageも `${category.label}` 差し込みで一意（文面の型は共通だが、これはP2で本文側を補強して対処——型が同じこと自体はSEO上の問題ではなく、ページ本文が薄いことが問題だった）。
 
-### P2. 薄い周辺ページの補強（担当: opus-4.8）
-1. **GamesPage / GameDetailPage**：各ゲームに「なぜこのゲームか（行動経済学の背景）・遊び方・学べること」の解説本文（300字以上）を追加。ゲーム=おまけでなく教育コンテンツとして自立させる。
-2. **DiscoverIndexPage / BlogIndexPage**：導入文（このページで何が分かるか・選び方の軸）を150字以上追加。
-3. **CategoryPage（7本）**：カテゴリ解説（このカテゴリのサブスクの特徴・解約時の共通注意）を200字以上追加。データ駆動でよい（SERVICES から件数・難易度分布を集計して文章化）。
-   - 完了条件: sitemap掲載の全ルートで「メイン本文のテキスト量 ≥ 300字」（P4-1のpreflightで機械判定）。
+### P2. 薄い周辺ページの補強（実行済み・2026-07-02・対象を実測で絞り込み）
+- 実測の結果、**GamesPage(2段落の導入文)・GameDetailPage(バイアス解説246〜330字+ゲーム本体)・DiscoverIndexPage(heroDesc+heroHint+note)は既に本文が十分**と判明。無理な水増しは§4「薄いAI量産禁止」に反するため**触っていない**（薄いという当初仮説を実測で棄却＝正直な記録）。
+- **本当に薄かった2ページを実装**：
+  1. ✅ **CategoryPage（7カテゴリ共通）**：`CATEGORY_INTRO`（カテゴリごとの手書き解説・7本）＋`stats`（SERVICESから難易度分布・注意サービス・注記件数を実測集計した1文）を追加。データ駆動・捏造なし。
+  2. ✅ **BlogIndexPage**：記事本数・2大系統（体験談/買い切り移行）・方針（ランキング/★スコア不使用）を明記した導入文を追加。
+   - 完了条件: sitemap掲載の全ルートで「メイン本文のテキスト量 ≥ 800字」（P4-1のpreflightで機械判定・chrome込みの実測値に基づき閾値800字に確定）。
 
-### P3. アフィリエイト密度の圧縮（担当: opus-4.8・**俊雄さん確認1点**）
-1. **審査モード実装**：`VITE_REVIEW_MODE=true` で全アフィリエイト導線（Discover図鑑のアフィリンク・ServicePage代替カードの外部アフィ・YameteKau物販ボタン・AdSlot以外のアフィ全般）を**非表示**にするフラグを実装。内部リンク・解約導線・本文は不変。
-   - 根拠: 現収益¥0＝機会損失ゼロ。thin affiliation 判定の芽を審査期間だけ物理的に消す。承認後にOFFで即復元。
-   - **俊雄さん確認**: ✅ **YES承認済（2026-07-02）**。netlify.toml の既定値で REVIEW_MODE=ON にする（環境変数の原子操作不要）。承認後にOFFへ戻すのを忘れないこと（本計画P5に復元手順を含む）。
-2. **rel属性の総点検**：残る外部リンクに `rel="nofollow sponsored"`（アフィ）/ `rel="noopener"`（解約直リンク）が付いているか監査し、欠落を補修。
-   - 完了条件: ビルド後distをgrepしてアフィURL（a8/moshimo/rakuten/amazon Associate）に sponsored 欠落ゼロ。REVIEW_MODE=true ビルドでアフィURL出現ゼロ。
+### P3. アフィリエイト密度の圧縮（実行済み・2026-07-02・「非表示」から「非収益化URLへのフォールバック」に設計変更）
+1. ✅ **審査モード実装**：`VITE_REVIEW_MODE=true` で発生源5箇所を全て中和。
+   - **設計変更の理由**：当初案「非表示」は、審査中にボタンが消えてページが不完全に見える＝別の負のシグナルになりうると判断。代わりに**「アフィリエイトURLを元の（非収益化）URLに差し替える」**方式に変更。UI/ボタンは温存＝ページの完全性を保ちつつ、収益化シグナルだけを消す。
+   - 発生源と対処：①`src/data/affiliates.js` の `getAffiliateUrl`/`buildAmazonSearchUrl`/`buildRakutenSearchUrl`（3関数とも `REVIEW_MODE` で素のURLを返す）②`DiscoverGenrePage.jsx`（`s.affiliateUrl` を無視し `officialUrl` を使用・PRタグ非表示）③`ServicePage.jsx`（代替カードの `rel="sponsored"`・PRラベルをREVIEW_MODE中は外す）④`YameteKauPage.jsx`（同様に `rel`・PRラベル）⑤`BlogPostPage.jsx`／`posts.js`（本文に直書きされた `<a href="...a8mat=...">` を新設 `sanitizeReviewHtml()` でリンク解除・テキストは保持）。
+   - **俊雄さん確認**: ✅ **YES承認済（2026-07-02）**。netlify.toml の既定値で `VITE_REVIEW_MODE = "true"` に設定済み（環境変数の原子操作不要）。承認後にOFFへ戻すのを忘れないこと（本計画P5に復元手順を含む）。
+2. ✅ **rel属性の総点検**：REVIEW_MODE中は `sponsored`/`nofollow sponsored` を `noopener`/`nofollow noopener` に変更（実際に非収益化URLになるため、sponsored表記自体が不正確になるのを防止）。PRラベルもREVIEW_MODE中は非表示。
+   - 完了条件: REVIEW_MODE=true ビルドでアフィURL（a8mat/moshimo/hb.afl.rakuten/amazon tag=）出現ゼロ→ P4-1 preflightで機械検証。
 
-### P4. 技術ゲートとインデックス（担当: sonnet-5＋俊雄さん原子操作）
-1. **preflight スクリプト新規** `scripts/seo/adsense-preflight.mjs`：ビルド後の dist/ を走査し、①sitemap⇄実ファイル整合 ②各ページのメインテキスト量≥300字 ③title/description の存在と重複 ④JSON-LDのパース可否 ⑤アフィURL出現数（REVIEW_MODE時ゼロ）を機械判定して合否表を出す。
+### P4. 技術ゲートとインデックス（P4-1実行中・P4-2/3は俊雄さん原子操作）
+1. 🔄 **preflight スクリプト新規** `scripts/seo/adsense-preflight.mjs`（実装済み）：ビルド後の dist/ を走査し、①sitemap⇄実ファイル整合 ②各ページのメインテキスト量≥800字 ③title/description の存在と重複 ④JSON-LDのパース可否 ⑤アフィURL出現数（REVIEW_MODE時ゼロ）を機械判定して合否表を出す。**`npm run build`（フルプリレンダ・115ルート）実行中→完了後に本スクリプトで検証予定**。
    - 完了条件: `node scripts/seo/adsense-preflight.mjs` が全緑。以後これを再審査前の恒久ゲートにする。
 2. **IndexNow 全URL ping**（既存 `scripts/seo/indexnow-ping.mjs`）＋ **GSC で sitemap.xml 提出・カバレッジ確認**（GSC操作=俊雄さんの原子操作。提出だけ・結果は数日待ち）。
 3. **note名義転載の新規投稿を承認まで一時停止**（重複コンテンツの芽E）。✅ **俊雄さんYES承認済（2026-07-02）**。既公開分は削除不要（初出リンクあり）。ライフオラクルnoteの最下段リンクは**継続**（リンクであってコピーではない＝無関係）。WEEKLY_SPRINTにも反映済み。

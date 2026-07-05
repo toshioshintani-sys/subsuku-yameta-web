@@ -16,6 +16,7 @@ import {
   buildRakutenSearchUrl,
   trackAffiliateClick,
   detectAsp,
+  REVIEW_MODE,
 } from '../data/affiliates';
 import {
   Scissors,
@@ -417,7 +418,9 @@ export default function ServicePage() {
           <section className={styles.alternatives}>
             <div className={styles.altHeader}>
               <h2 className={styles.altTitle}>もし「次に何か」を検討するなら</h2>
-              <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+              {!REVIEW_MODE && (
+                <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+              )}
             </div>
             <p className={styles.altLead}>
               似た用途で使えるサービスを情報として置いておきます。
@@ -440,7 +443,7 @@ export default function ServicePage() {
                     key={i}
                     href={alt.href}
                     target="_blank"
-                    rel="sponsored noopener noreferrer"
+                    rel={REVIEW_MODE ? 'noopener noreferrer' : 'sponsored noopener noreferrer'}
                     className={styles.altCard}
                     onClick={() =>
                       trackAffiliateClick({
