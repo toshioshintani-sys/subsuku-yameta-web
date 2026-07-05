@@ -24,7 +24,8 @@
 - 安全ガード：審査中は情報掲載のみ（乗り換えアフィリンクの新規追加はしない）／REVIEW_MODE=true維持／変更後 `adsense-preflight.mjs` 全緑を必須／ブランチ＋draft PR。
 - 誤報ゼロ（生命線）：初期データは world-oracle-staging の検証済み記録（`content/pricing/changelog.json`・`logs/verified_prices.json`・`docs/PRICE_VERIFICATION_*.md`）を「確認日つきの過去事実」として移植。各エントリに公式sourceURL・現在価格は書かない（変更の事実のみ）・公開前に公式一次確認（AI_RADAR原則の全サービス版）。
 - 実装＝`src/data/services.js` の `PRICE_HISTORY`（EXTENDED_CONTENT同型・idキー）＋ ServicePage の履歴セクション＋ HowTo の dateModified 連動。初期移植＝github-copilot / notion / chatgpt-plus（検証済み変動あり）。
-- 検証：`VITE_REVIEW_MODE=true npm run build` → `adsense-preflight.mjs` が**全緑（115ページ・prerender 115/115成功・本文≥800字・JSON-LD全パース可・アフィURL残存0）**。lint中立（HEAD版と同じ7エラー＝新規0）。
+- 検証：`VITE_REVIEW_MODE=true npm run build` → `adsense-preflight.mjs` が**全緑（115ページ・prerender 115/115成功・本文≥800字・JSON-LD全パース可・アフィURL残存0）**。lint中立（HEAD版と同じ7エラー＝新規0）。Netlify deploy-preview もpass・実レンダリングで履歴セクション/$表記/解約手順を目視確認。
+- **誤報ゼロ検証（多エージェントWorkflowで公式一次突合・2026-07-05）**：notion / chatgpt-go は全項目一致・捏造ゼロ・修正不要。github-copilot は内容（クレジット内包額 Pro$15/Pro+$70・コード補完無制限・新規登録停止・Max$100）は公式一致だが**日付のみ不正確**＝従量課金移行は「06-07」でなく公式値**06-01**・Max も「06-02の別イベント」でなく**06-01（切替と同時）** → 修正済。教訓：移植データは"事実"だけでなく"日付"も一次突合する（誤報ゼロは日付にも及ぶ）。
 
 ---
 

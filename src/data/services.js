@@ -1749,21 +1749,21 @@ export function formatMonthlyRange(serviceId) {
 export const PRICE_HISTORY = {
   'github-copilot': [
     {
-      date: '2026-06-07',
+      date: '2026-06-01',
       item: '料金体系',
       direction: 'restructure',
       change:
-        '従量課金制へ移行。Pro は月$15分、Pro+ は月$70分の AI クレジットを内包（コード補完はクレジットを消費せず無制限のまま）。個人向けの新規サインアップは2026年4月以降停止中（既存ユーザーはプラン変更・解約は可能）。',
+        '従量課金制（GitHub AI クレジット・1クレジット＝$0.01）へ移行。Pro（月$10）は$15分、Pro+（月$39）は$70分の AI クレジットを内包し、コード補完・Next Edit 提案はクレジットを消費せず無制限のまま。個人向けの新規サインアップ（Pro / Pro+ / Student）は2026年4月中旬から一時停止中（既存ユーザーはプラン変更・解約は可能）。',
       source: 'https://github.com/features/copilot/plans',
-      verifiedAt: '2026-06-07',
+      verifiedAt: '2026-07-05',
     },
     {
-      date: '2026-06-02',
+      date: '2026-06-01',
       item: 'プラン',
       direction: 'new',
-      change: '上位ティア「Copilot Max」を月$100で新設（既存の Pro / Pro+ の上位）。',
+      change: '上位ティア「Copilot Max」を月$100（$200分の AI クレジットを内包）で新設（従量課金への切替と同時）。',
       source: 'https://github.com/features/copilot/plans',
-      verifiedAt: '2026-06-02',
+      verifiedAt: '2026-07-05',
     },
   ],
   'notion': [
