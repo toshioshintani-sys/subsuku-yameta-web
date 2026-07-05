@@ -1741,6 +1741,55 @@ export function formatMonthlyRange(serviceId) {
 // 拡張コンテンツ（ServicePage で長文化・FAQPage JSON-LD に出力）
 // Top10 サービス（流入見込み大）から優先的に充実させる
 // ---------------------------------------------------------------------------
+// 価格・仕様の変更履歴（下層・2026-07-05〜）。EXTENDED_CONTENT と同型（id をキーにした別オブジェクト）。
+// 初期データは stack letter（world-oracle-staging）の検証済み記録を「確認日つきの過去事実」として移植。
+// 誤報ゼロ（生命線）：各エントリは verifiedAt 時点で公式ページ照合済み・source は公式料金ページ・
+//   現在価格そのものは書かない（"何が・いつ変わったか"の事実のみ）。小さな変動はここに蓄積する。
+// direction: 'up'=値上げ / 'down'=値下げ / 'new'=新プラン・新ティア / 'restructure'=料金体系の変更。
+export const PRICE_HISTORY = {
+  'github-copilot': [
+    {
+      date: '2026-06-07',
+      item: '料金体系',
+      direction: 'restructure',
+      change:
+        '従量課金制へ移行。Pro は月$15分、Pro+ は月$70分の AI クレジットを内包（コード補完はクレジットを消費せず無制限のまま）。個人向けの新規サインアップは2026年4月以降停止中（既存ユーザーはプラン変更・解約は可能）。',
+      source: 'https://github.com/features/copilot/plans',
+      verifiedAt: '2026-06-07',
+    },
+    {
+      date: '2026-06-02',
+      item: 'プラン',
+      direction: 'new',
+      change: '上位ティア「Copilot Max」を月$100で新設（既存の Pro / Pro+ の上位）。',
+      source: 'https://github.com/features/copilot/plans',
+      verifiedAt: '2026-06-02',
+    },
+  ],
+  'notion': [
+    {
+      date: '2026-06-10',
+      item: 'AI の提供形態',
+      direction: 'restructure',
+      change:
+        '新規ワークスペースでは Notion AI を Business / Enterprise プランに同梱化。単体の $10/メンバー add-on は新規の Free / Plus では購入不可に（既存契約者は継続利用可）。新たに従量課金の AI（Custom Agents）が登場し、無料お試し後は月1,000クレジットあたり $10。',
+      source: 'https://www.notion.com/pricing',
+      verifiedAt: '2026-06-10',
+    },
+  ],
+  'chatgpt-plus': [
+    {
+      date: '2026-05-31',
+      item: 'プラン',
+      direction: 'new',
+      change:
+        'Plus の下位に月$8の「ChatGPT Go」ティアが定着（2026年1月中旬導入）。チャット中心の人向けの格安オプションとして確立。',
+      source: 'https://openai.com/chatgpt/pricing/',
+      verifiedAt: '2026-05-31',
+    },
+  ],
+};
+
 export const EXTENDED_CONTENT = {
   'playstation-plus': {
     summary:

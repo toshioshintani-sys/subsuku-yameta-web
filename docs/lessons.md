@@ -6,6 +6,46 @@
 
 ---
 
+## 2026-07-05 ★★★★ 価格変動トラッキング「器（下層）」着手＝Phase前倒しの明示的上書き（AdSense再審査中の安全スコープ）
+
+### 発見
+- 俊雄さん発案・fable設計・GO（2026-07-05）で「価格変動トラッキング」を常設機能化（stack letterの後継・GROWTH_STRATEGY E5＝値上げ速報の実装／更新シグナル／一次データの堀）。
+- §10 Phase計画では /news 相当は Phase 4（8月中旬〜）、NOT_DOING に「Phase前倒し禁止」。本件は形式上その前倒しに当たる。
+- proposal-stress-test で検証（Step0で前提の割れを発見）：提案の二層は AdSense再審査中という局面での評価が正反対。
+  - **下層**（各ServicePageの「価格・仕様の変更履歴」セクション＋更新日）＝不承認理由(thin content/E-E-A-T)への直球の追加対策＝「厚く・新しく・いつ確認したか」。新機能でなく**既存価格情報の品質保守**とも読める。
+  - **上層**（横断フィード・/news単独記事・ルート追加・検知自動化）＝真の Phase 4 前倒し＋審査中の新規薄ページ/構造変更/アフィ増設リスク。
+
+### なぜ重要か
+- AdSenseが 2026-07-01「有用性の低いコンテンツ」で不承認→7/2 大規模対策→7/5 再審査中。この最も繊細な局面で新規薄ページ・構造変更・アフィ増設は禁物。下層は逆に審査にプラス。
+- よって stress-test の結論＝「**下層のみ今着手・上層は審査結果後**」（残存致命否定0・機会根拠多数）。
+
+### 永続化（決定＝明示的上書き）
+- **Phase前倒しの上書き決定**：下層（価格履歴セクション）は「Phase 4新機能の前倒し」ではなく「現Phaseの既存情報の品質保守＝thin content対策」と位置づけて今着手を許可（俊雄さんGO・stress-test済）。上層は Phase 4 のまま＝審査結果が出るまで着手しない。
+- 安全ガード：審査中は情報掲載のみ（乗り換えアフィリンクの新規追加はしない）／REVIEW_MODE=true維持／変更後 `adsense-preflight.mjs` 全緑を必須／ブランチ＋draft PR。
+- 誤報ゼロ（生命線）：初期データは world-oracle-staging の検証済み記録（`content/pricing/changelog.json`・`logs/verified_prices.json`・`docs/PRICE_VERIFICATION_*.md`）を「確認日つきの過去事実」として移植。各エントリに公式sourceURL・現在価格は書かない（変更の事実のみ）・公開前に公式一次確認（AI_RADAR原則の全サービス版）。
+- 実装＝`src/data/services.js` の `PRICE_HISTORY`（EXTENDED_CONTENT同型・idキー）＋ ServicePage の履歴セクション＋ HowTo の dateModified 連動。初期移植＝github-copilot / notion / chatgpt-plus（検証済み変動あり）。
+- 検証：`VITE_REVIEW_MODE=true npm run build` → `adsense-preflight.mjs` が**全緑（115ページ・prerender 115/115成功・本文≥800字・JSON-LD全パース可・アフィURL残存0）**。lint中立（HEAD版と同じ7エラー＝新規0）。
+
+---
+
+## 2026-07-05 ★★★★ 価格偵察部隊（検知）を安全モードで構築＝stack letter price_watch.py を Node移植（58部隊）
+
+### 発見
+- 俊雄さん依頼：「stack letter が日々どう価格を集めていたか（＝スキル）をサブスクやめた用に改修して58の偵察部隊が必要」。
+- stack letter の検知＝`world-oracle-staging/agents/_runtime/price_watch.py`：公式料金ページの生HTMLから価格トークン集合を署名化→前回とdiffで変化検知（**検知のみ・単一責任・公開しない**）。
+- これを Node へ移植し **¥/円/$ 対応**＝`scripts/price-watch/`（engine `price-watch.mjs` ＋ `watch-list.json`(58) ＋ README ＋ `.github/workflows/price-watch.yml`）。
+
+### なぜ重要か（安全スコープの判断＝記録として残す）
+- stress-testでは「検知（上層）は審査後」としたが、危険なのは**自動公開**であって**検知ツールを作ること自体**ではない。検知＝候補キュー生成のみ・**自動公開しない**・サイト構造/アフィ/広告を触らない設計なら、AdSense再審査中でも安全＋依頼を満たす。
+- 分業：①機械が候補を見つける（`state/candidates.json`）②公開前に必ず人/Claudeが公式ページで一次確認（LLM記憶で価格を書かない）③正しければ `PRICE_HISTORY` に手で書く（誤報ゼロ）。Actionsは審査中 `workflow_dispatch` のみ・`schedule` は承認後に有効化。
+
+### 永続化
+- `scripts/price-watch/`（engine＋58 watch-list＋README＋state）／`.github/workflows/price-watch.yml`（手動・candidates を artifact 出力・サイト/リポ不変）。
+- baseline実測(2026-07-05)：**17部隊が稼働**（価格取得成功）／9=JS描画で空／4=URLエラー／28=要URL調査。**framework完成・カバレッジは url 精緻化で育てる**段階。
+- 生HTMLに価格が出ない（SPA）サイトはこの方式では拾えない＝将来 headless 取得で対応（別タスク）。
+
+---
+
 ## 2026-07-01 ★★★★★ AdSense不承認の理由確定＝「有用性の低いコンテンツ」／薄いページの本文拡充で対処
 
 ### 発見
