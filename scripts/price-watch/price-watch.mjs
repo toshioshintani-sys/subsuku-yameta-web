@@ -28,10 +28,19 @@ const STATE_DIR = join(__dir, 'state');
 const STATE_FILE = join(STATE_DIR, 'price_watch_state.json');
 const CANDIDATES_FILE = join(STATE_DIR, 'candidates.json');
 
+const SCRIPT_STYLE = /<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi;
 const TAG = /<[^>]+>/g;
 const WS = /\s+/g;
 // 価格トークン: ¥1,200 / ¥ 1,200.00 / 1,200円 / 980 円 / $12.99 / $ 1,200
+// 直後に英小文字/ハイフンが続くトークンは呼び出し側で手動除外する（下記参照）。
+// 注：ここに (?![a-z-]) の否定先読みを付けると、桁数の多い数字が正規表現のバックトラックで
+//   1桁ずつ短くマッチし直してしまい「除外」でなく「縮んで残る」誤りになる
+//   （例: "$2722514a-..." が "$272251"+"4a..." にバックトラックして通過＝2026-07-06に発見した実バグ）。
+//   そのため除外判定は matchAll 後、m[0] の直後の1文字を手動チェックする方式にする。
 const PRICE_TOK = /(?:¥\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*\s?円|\$\s?\d[\d,]*(?:\.\d+)?)/g;
+const FOLLOWED_BY_SLUG = /^[a-z-]/;
+// 従量課金・コンピュート課金の文脈（"per hour" "per container" 等）は、サブスク価格でないので除外する。
+const COMPUTE_CONTEXT = /per\s+(hour|container|token|request|minute|second|gb|call)/i;
 
 function loadJson(path, fallback) {
   try { return JSON.parse(readFileSync(path, 'utf-8')); } catch { return fallback; }
@@ -42,10 +51,41 @@ function saveJson(path, data) {
 }
 
 // ページから価格トークンのユニーク集合（ソート）を作る＝署名。
-function sigPrices(rawHtml) {
-  const text = rawHtml.replace(TAG, ' ').replace(WS, ' ');
+// 2026-07-06 修正（俊雄さん指摘で判明したノイズの根本原因への対処。1回目は script/style を
+// 一律除去したが、それが逆に playstation-plus(JSON-LD構造化データの本物の価格) や
+// deepl-pro(React RSCハイドレーションデータ内の本物の価格) を壊す新規回帰を起こしたため、
+// 「一律」ではなく「サービスごとのオプトイン」設計に修正した＝詳細は各項目を参照：
+//   1) stripScriptStyle:true が指定された時だけ <script>/<style> の中身を除去する
+//      （hulu=JSバンドルの正規表現置換文字列"$1"、figma=Next.js RSC参照ID"$56"等、
+//      価格でないものを誤検出するページ**のみ**有効化。他のページは script 内の
+//      JSON-LD/ハイドレーションデータに本物の価格が入っていることがあるため既定は false）。
+//   2) 価格トークンの直後に英小文字/ハイフンが続く場合は除外（evernoteのUUID/スラグ断片
+//      "$2722514a-15d3-..." の誤検出防止・script除去なしでも安全に効く一般則）。
+//   3) "per hour"/"per container" 等の従量課金・コンピュート課金の文脈にある金額は除外。
+//   4) dataPlanPrefix が指定されていれば、その data-plan="<prefix>*" 属性を持つ要素の値だけを
+//      拾う「スコープ限定抽出」に切り替える（claude-pro: 1ページにFree/Pro/Team/Enterprise/APIが
+//      並ぶが data-plan="pro_monthly" 等でProだけ機械的に切り出せることを診断で確認）。
+// 注：script除去もdata-plan属性も無く、1ページに複数国・複数プランの価格が並ぶ場合
+//   （多地域比較記事等）は、この関数だけでは対象を選り分けられない。既知の限界として残す。
+function sigPrices(rawHtml, opts = {}) {
+  if (opts.dataPlanPrefix) {
+    const re = new RegExp(
+      `data-plan="(${opts.dataPlanPrefix.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})[a-z0-9_]*"[^>]*>\\s*\\$?([\\d.,]+)`,
+      'gi'
+    );
+    const toks = new Set();
+    for (const m of rawHtml.matchAll(re)) toks.add('$' + m[2]);
+    return [...toks].sort();
+  }
+  const base = opts.stripScriptStyle ? rawHtml.replace(SCRIPT_STYLE, ' ') : rawHtml;
+  const text = base.replace(TAG, ' ').replace(WS, ' ');
   const toks = new Set();
-  for (const m of text.matchAll(PRICE_TOK)) toks.add(m[0].replace(/\s/g, ''));
+  for (const m of text.matchAll(PRICE_TOK)) {
+    const after = text.slice(m.index + m[0].length, m.index + m[0].length + 40);
+    if (FOLLOWED_BY_SLUG.test(after)) continue; // UUID/スラグ断片の誤検出防止（バックトラックしない安全な除外）
+    if (COMPUTE_CONTEXT.test(after)) continue;
+    toks.add(m[0].replace(/\s/g, ''));
+  }
   return [...toks].sort();
 }
 
@@ -95,7 +135,7 @@ async function main() {
     }
     await sleep(delay);
 
-    const sig = sigPrices(raw);
+    const sig = sigPrices(raw, { dataPlanPrefix: w.dataPlanPrefix, stripScriptStyle: w.stripScriptStyle });
     const now = new Date().toISOString();
     const prev = state[w.id]?.sig;
 
