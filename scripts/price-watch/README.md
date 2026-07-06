@@ -48,14 +48,25 @@ node scripts/price-watch/price-watch.mjs --only netflix,claude-pro
 - `enabled:false` は「価格がJS描画で生HTMLに出ない」または「料金URL未確定」＝要URL調査。
 - 生HTMLに価格が出ないサイト（SPA）は、この方式では拾えない（将来 headless 取得で対応）。
 
-## 現在のカバレッジ（2026-07-05 baseline 実測）
+## 現在のカバレッジ（2026-07-05 baseline 実測・正直な内訳）
 
-| 状態 | 件数 | 意味 |
+⚠️ **重要**：「価格取得できた」＝「信頼できる」ではない。署名(signature)の中身を目視で確認したところ、
+17件中5件は**ノイズ（無関係な数値）を価格として誤検出**しており、このまま運用すると偽陽性の差分を
+量産し、確認作業（誤報ゼロの砦）を疲弊させる。**次に着手する時は、まずこのノイズ5件の修正を最優先**にする。
+
+| 状態 | 件数 | 内容 |
 |---|---|---|
-| ✅ 稼働（価格取得） | **17** | netflix / apple-music / hulu / dazn / apple-tv+ / microsoft-365 / notion / playstation-plus / claude-pro / evernote / apple-one / icloud+ / figma / deepl-pro / github-copilot / crunchyroll / discord-nitro |
-| ⚠️ 空（JS描画） | 9 | spotify / youtube-premium / adobe-cc / dropbox / canva-pro / xbox-game-pass / google-one / vimeo / soundcloud-go（要 headless か別URL） |
-| ⚠️ エラー | 4 | nintendo-switch-online(404) / nikkei(403) / chatgpt-plus(403 bot) / niconico(404)＝URL要修正 |
-| ⏸ 未設定 | 28 | enabled:false＝要URL調査（JS描画/URL不明） |
+| ✅ **クリーン**（信頼できる価格取得） | **12** | netflix / apple-music / dazn / apple-tv+ / microsoft-365 / notion / playstation-plus / apple-one / github-copilot / deepl-pro / crunchyroll / discord-nitro |
+| 🛑 **ノイズ**（取得はできるが誤検出混入・要修正） | **5** | **evernote**（`$2722514` `$60150` 等ゴミ値混入）／**icloud-plus**（署名65件中ほとんどがゴミ）／**claude-pro**（API従量課金の単価表を誤取得・実際のサブスク価格でない）／**figma**（座席計算等の値を誤って価格トークン扱い）／**hulu**（本来¥のみのはずが謎の`$`表記が混入） |
+| ⚠️ 空（JS描画で価格が生HTMLに出ない） | 9 | spotify / youtube-premium / adobe-cc / dropbox / canva-pro / xbox-game-pass / google-one / vimeo / soundcloud-go（**Puppeteerは本リポの既存依存**＝新規導入なしで対応できる見込みだが未着手） |
+| ⚠️ URLエラー | 4 | nintendo-switch-online(404) / nikkei(403) / chatgpt-plus(403 bot) / niconico(404)＝URL要修正（比較的安価な修正） |
+| ⏸ 未着手 | 28 | enabled:false＝URLすら調べていない |
+
+### 次に着手する時のbacklog（優先順）
+1. **ノイズ5件の修正**（最優先）：署名抽出のフィルタ強化（例：$記号のみ許可し円のみのサイトでは$を無視する／価格らしくない桁数・並びを除外する）か、直しきれなければ一旦 `enabled:false` にして偽陽性を止める。
+2. URLエラー4件の修正（正しい料金ページURLへ差し替え）。
+3. JS描画9件：Puppeteerで生HTML化してから同じ署名ロジックを通す（技術的には既存依存で可能）。
+4. 未着手28件：正しい料金ページURLの調査。
 
 → **58部隊のロースターは揃い、17部隊が即稼働**。残りは url の精緻化で順次オンにする（framework完成・データは育てる段階）。
 
