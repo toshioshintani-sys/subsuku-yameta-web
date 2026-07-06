@@ -92,17 +92,19 @@ export default function SavingsGame({ onClose }) {
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
 
-    state.current.playerX = GAME_WIDTH / 2 - PLAYER_SIZE / 2;
-    state.current.moveDir = 0;
-    state.current.items = [];
-    state.current.score = 0;
-    state.current.startTime = performance.now();
-    state.current.lastSpawn = 0;
+    // ref を1回だけローカル変数化し、以降このクロージャ全体（spawnItem/loop含む）で使い回す。
+    const s = state.current;
+    s.playerX = GAME_WIDTH / 2 - PLAYER_SIZE / 2;
+    s.moveDir = 0;
+    s.items = [];
+    s.score = 0;
+    s.startTime = performance.now();
+    s.lastSpawn = 0;
 
     function spawnItem(now) {
       // 8割コイン・2割衝動買い
       const isBad = Math.random() < 0.2;
-      state.current.items.push({
+      s.items.push({
         x: Math.random() * (GAME_WIDTH - ITEM_SIZE),
         y: -ITEM_SIZE,
         isBad,
@@ -111,7 +113,6 @@ export default function SavingsGame({ onClose }) {
     }
 
     function loop(now) {
-      const s = state.current;
       const elapsed = now - s.startTime;
       const remaining = Math.max(0, GAME_DURATION_MS - elapsed);
 
