@@ -17,6 +17,11 @@
 //   node scripts/price-watch/price-watch.mjs           # 全 enabled サービスを巡回（初回=ベースライン記録）
 //   node scripts/price-watch/price-watch.mjs --only netflix,spotify
 // 出力：state/price_watch_state.json（署名）／state/candidates.json（検知候補＝要一次確認）
+//
+// headlessモード（2026-07-07追加）：watch-list.jsonのエントリに "renderMode": "headless" を
+//   付けると、素のfetchでなく Puppeteer（本リポの prerender.mjs と同じ既存依存・新規導入なし）で
+//   実描画したHTMLを取得する。SPA/JS描画のみで価格が生HTMLに出ないページ用のオプトイン。
+//   常時Puppeteerを使わないのは、大半のページは軽量fetchで十分だからコストを絞る設計。
 // =============================================================================
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -37,7 +42,9 @@ const WS = /\s+/g;
 //   1桁ずつ短くマッチし直してしまい「除外」でなく「縮んで残る」誤りになる
 //   （例: "$2722514a-..." が "$272251"+"4a..." にバックトラックして通過＝2026-07-06に発見した実バグ）。
 //   そのため除外判定は matchAll 後、m[0] の直後の1文字を手動チェックする方式にする。
-const PRICE_TOK = /(?:¥\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*\s?円|\$\s?\d[\d,]*(?:\.\d+)?)/g;
+// ￥(U+FFE5 全角円記号)は ¥(U+00A5 半角)と別コードポイント。YouTube/Dropbox/Google One/Amazon等が
+// 全角￥を使っており、半角のみのパターンだと price 0件になる誤りを2026-07-07に発見・修正。
+const PRICE_TOK = /(?:[¥￥]\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*\s?円|\$\s?\d[\d,]*(?:\.\d+)?)/g;
 const FOLLOWED_BY_SLUG = /^[a-z-]/;
 // 従量課金・コンピュート課金の文脈（"per hour" "per container" 等）は、サブスク価格でないので除外する。
 const COMPUTE_CONTEXT = /per\s+(hour|container|token|request|minute|second|gb|call)/i;
@@ -79,12 +86,15 @@ function sigPrices(rawHtml, opts = {}) {
   }
   const base = opts.stripScriptStyle ? rawHtml.replace(SCRIPT_STYLE, ' ') : rawHtml;
   const text = base.replace(TAG, ' ').replace(WS, ' ');
+  const exclude = new Set((opts.excludeTokens || []).map((t) => t.replace(/\s/g, '')));
   const toks = new Set();
   for (const m of text.matchAll(PRICE_TOK)) {
     const after = text.slice(m.index + m[0].length, m.index + m[0].length + 40);
     if (FOLLOWED_BY_SLUG.test(after)) continue; // UUID/スラグ断片の誤検出防止（バックトラックしない安全な除外）
     if (COMPUTE_CONTEXT.test(after)) continue;
-    toks.add(m[0].replace(/\s/g, ''));
+    const tok = m[0].replace(/\s/g, '');
+    if (exclude.has(tok)) continue; // ページ内の無関係な金額（機能説明等）を個別に除外（watch-list.jsonのexcludeTokensで明示指定）
+    toks.add(tok);
   }
   return [...toks].sort();
 }
@@ -105,6 +115,35 @@ async function fetchHtml(url, ua, timeoutMs) {
   }
 }
 
+// prerender.mjs と同じ既存依存(puppeteer)を流用。ここでの起動は price-watch.mjs 実行時のみ、
+// かつ renderMode:"headless" のエントリが1件以上ある時だけ（起動コストを不要な時は払わない）。
+const AD_BLOCK = /googlesyndication|doubleclick|google-analytics|googletagmanager|\/gtag\/|adservice\.google|pagead2|adsbygoogle/i;
+
+async function fetchHtmlHeadless(browser, url, timeoutMs, opts = {}) {
+  const page = await browser.newPage();
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36');
+  if (!opts.noAdBlock) {
+    // 一部サイト(例: adobe.com)はリクエスト中断を挟むと net::ERR_HTTP2_PROTOCOL_ERROR で
+    // 落ちる。watch-list.jsonで "noAdBlock": true を指定したエントリはインターセプトをスキップする
+    // （2026-07-07発見・adobe-ccで確認）。
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+      if (AD_BLOCK.test(req.url())) req.abort();
+      else req.continue();
+    });
+  }
+  try {
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: timeoutMs });
+    // React/Vue等のハイドレーション完了を軽く待つ（固定待機ではなく本文量で判定）
+    await page
+      .waitForFunction(() => document.body && document.body.innerText.replace(/\s/g, '').length > 100, { timeout: 8000 })
+      .catch(() => {});
+    return await page.evaluate(() => document.documentElement.outerHTML);
+  } finally {
+    await page.close();
+  }
+}
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function main() {
@@ -121,42 +160,58 @@ async function main() {
   const events = [];
   const report = [];
 
-  for (const w of cfg.watch) {
-    if (onlyIds && !onlyIds.includes(w.id)) continue;
-    if (w.enabled === false) { report.push({ id: w.id, status: 'skipped' }); continue; }
+  const targets = cfg.watch.filter((w) => !onlyIds || onlyIds.includes(w.id));
+  const needsHeadless = targets.some((w) => w.enabled !== false && w.renderMode === 'headless');
+  let browser = null;
+  if (needsHeadless) {
+    const puppeteer = (await import('puppeteer')).default;
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
+    });
+  }
 
-    let raw;
-    try {
-      raw = await fetchHtml(w.url, ua, timeoutMs);
-    } catch (e) {
-      report.push({ id: w.id, status: 'error', error: String((e && e.message) || e) });
+  try {
+    for (const w of targets) {
+      if (w.enabled === false) { report.push({ id: w.id, status: 'skipped' }); continue; }
+
+      let raw;
+      try {
+        raw = w.renderMode === 'headless'
+          ? await fetchHtmlHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
+          : await fetchHtml(w.url, ua, timeoutMs);
+      } catch (e) {
+        report.push({ id: w.id, status: 'error', error: String((e && e.message) || e) });
+        await sleep(delay);
+        continue;
+      }
       await sleep(delay);
-      continue;
-    }
-    await sleep(delay);
 
-    const sig = sigPrices(raw, { dataPlanPrefix: w.dataPlanPrefix, stripScriptStyle: w.stripScriptStyle });
-    const now = new Date().toISOString();
-    const prev = state[w.id]?.sig;
+      const sig = sigPrices(raw, { dataPlanPrefix: w.dataPlanPrefix, stripScriptStyle: w.stripScriptStyle, excludeTokens: w.excludeTokens });
+      const now = new Date().toISOString();
+      const prev = state[w.id]?.sig;
 
-    if (!prev) {
+      if (!prev) {
+        state[w.id] = { sig, checkedAt: now };
+        report.push({ id: w.id, status: sig.length ? 'baseline' : 'baseline_empty', sigSize: sig.length });
+        continue;
+      }
+
+      const prevSet = new Set(prev);
+      const curSet = new Set(sig);
+      const added = sig.filter((x) => !prevSet.has(x));
+      const removed = prev.filter((x) => !curSet.has(x));
       state[w.id] = { sig, checkedAt: now };
-      report.push({ id: w.id, status: sig.length ? 'baseline' : 'baseline_empty', sigSize: sig.length });
-      continue;
-    }
 
-    const prevSet = new Set(prev);
-    const curSet = new Set(sig);
-    const added = sig.filter((x) => !prevSet.has(x));
-    const removed = prev.filter((x) => !curSet.has(x));
-    state[w.id] = { sig, checkedAt: now };
-
-    if (!added.length && !removed.length) {
-      report.push({ id: w.id, status: 'nochange', sigSize: sig.length });
-      continue;
+      if (!added.length && !removed.length) {
+        report.push({ id: w.id, status: 'nochange', sigSize: sig.length });
+        continue;
+      }
+      events.push({ id: w.id, name: w.name, url: w.url, added, removed, detectedAt: now });
+      report.push({ id: w.id, status: 'CHANGED', added: added.length, removed: removed.length });
     }
-    events.push({ id: w.id, name: w.name, url: w.url, added, removed, detectedAt: now });
-    report.push({ id: w.id, status: 'CHANGED', added: added.length, removed: removed.length });
+  } finally {
+    if (browser) await browser.close();
   }
 
   saveJson(STATE_FILE, state);

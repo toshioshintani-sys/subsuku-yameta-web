@@ -55,27 +55,47 @@ node scripts/price-watch/price-watch.mjs --only netflix,claude-pro
 - `dataPlanPrefix: ["pro_"]` — ページに `data-plan="pro_monthly"` 等の属性がある場合、その値だけを価格として
   抽出する「スコープ限定抽出」。1ページに複数プラン（Free/Pro/Team/Enterprise等）が並び、通常の抽出では
   対象外のプランの価格まで拾ってしまう場合に使う（claude-pro専用に導入）。
-- 生HTMLに価格が全く出ないサイト（SPA・APIクライアント経由の描画等）は、この方式では拾えない
-  （将来 Puppeteer 取得で対応。本リポは prerender.mjs で既に Puppeteer に依存済みなので新規導入は不要）。
+- `renderMode: "headless"` — 生HTMLに価格が出ないSPA/クライアント描画サイトをPuppeteerで実際にレンダリング
+  してから抽出する。起動コストがあるため、1件以上該当エントリがある時だけ遅延起動する。
+- `excludeTokens: ["100,000円"]` — ページ内に実在するが無関係な金額（機能説明の上限額・記事タイトルの数字等）
+  を個別に除外する明示リスト。広い正規表現ヒューリスティックで誤魔化さず、監査可能な形で1件ずつ指定する。
+- `noAdBlock: true` — headlessモードで広告ブロック用のrequest interceptionをスキップする。一部サイト
+  （adobe.com等）はリクエスト中断があるとHTTP/2接続が壊れるため。
+- 生HTMLに価格が全く出ないサイト（SPA・APIクライアント経由の描画等）は、`renderMode:"headless"`で対応する
+  （本リポは prerender.mjs で既に Puppeteer に依存済みなので新規導入は不要）。
 
-## 現在のカバレッジ（2026-07-06 実測・正直な内訳）
+## 現在のカバレッジ（2026-07-07 実測・正直な内訳）
 
-⚠️ **重要な教訓（2026-07-05→06に2回の指摘で発覚）**：「価格取得できた」件数だけでは何もわからない。
-1回目の指摘で「17件中5件がノイズ」と判明。2回目の指摘（「クリーン12以外は真剣に調べていないのでは」）を受けて
-①移植データの鮮度再確認 ②残り41件のURL実調査（前回は32並列でレート制限に全滅→5グループに再編成して成功）
-③ノイズ修正を「script/style一律除去」で試みたところ**別の3件を新規に壊す回帰**を起こし、
-「サービスごとのオプトイン」設計に修正 ④修正後も新たに稼働した20件超を目視で全数スポットチェックし、
-u-next/pairs/rakuten-tv/bookwalkerでも同様のJS誤検出を発見・修正——を実施。
+⚠️ **重要な教訓（2026-07-05→07に3回の指摘/深掘りで発覚）**：「価格取得できた」件数だけでは何もわからない。
+07-05/06の2回の指摘（詳細は下の教訓アーカイブ参照）に続き、07-07は「JS描画で空振りだった16件」を
+Puppeteer headless化した上で**個別に深掘り**した結果、**コード側の実バグ**を発見・修正した：
+
+- **PRICE_TOKが半角¥(U+00A5)のみ対応で全角￥(U+FFE5)を検出できていなかった**。YouTube/Dropbox/Google One/
+  Amazon等は全角￥を使うため、これらは「JS描画の問題」ではなく**正規表現の文字クラス漏れ**が真因だった。
+  一箇所直しただけで4サービスが同時に復活し、副次的にdazn/xbox-game-pass/chatgpt-plusの検出精度も上がった。
+- **spotifyはURLが壊れていた**（`jp-ja/premium`がソフト404で「お探しのページが見つかりません」に着地）。
+  正しいURL(`jp/premium`)に直したら素のfetchだけで即解決（headless不要）。
+- **adobe-ccのnet::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interceptionそのもの**だった。
+  Adobe側のbot対策ではなかった。`noAdBlock`オプションをコードに追加して解消。
+- **soundcloud-goは日本非提供が実態**（ページ本文に"still working on launching...in your country"と明記。
+  このマシンのIPは既に日本）。patreonと同型の構造的監視不能として無効化。
+- **nintendo-switch-onlineは価格がテキストとして存在しない**（headless化・スクロール・iframe/ShadowDOM調査
+  すべて実施したが本文に金額が一切出現せず。関連リンクも全て同一URLに集約）。おそらく画像/SVG埋め込み。
+- **kindle-unlimitedは匿名スクレイピングでは価格ページに到達できない**（headless化してもログイン前提と
+  思われる一般ストア画面が返るのみ。代替URLは書籍個別価格に化ける無関係ページへリダイレクト）。
 
 | 状態 | 件数 | 内容 |
 |---|---|---|
-| ✅ **クリーン**（内容を目視確認・信頼できる） | **35** | pairs(40)/1password(18)/rakuten-music(13)/nikkei(12)/rakuten-magazine(12)/linkedin-premium(12)/apple-one(11)/github-copilot(11)/microsoft-365(10)/playstation-plus(9)/figma(8)/line-music(8)/deepl-pro(6)/notion(5)/icloud-plus(5)/crunchyroll(5)/wowow-on-demand(5)/apple-music(4)/disney-plus(4)/u-next(4)/dmagazine(4)/yahoo-premium(4)/netflix(3)/apple-tv-plus(3)/claude-pro(3)/danime(3)/rakuten-tv(3)/discord-nitro(2)/abema-premium(2)/amazon-music-unlimited(2)/lemino(2)/dmm-premium(2)/dazn(1)/niconico-premium(1)/bookwalker(1) |
-| ⚠️ 空（JS描画で価格が生HTMLに一切出ない・要Puppeteer） | **15** | spotify/youtube-premium/hulu/evernote/adobe-cc/dropbox/canva-pro/xbox-game-pass/google-one/vimeo-pro/soundcloud-go/amazon-prime/nintendo-switch-online(価格がSVG画像埋め込み)/kindle-unlimited/note-premium |
-| ⚠️ URLエラー | **1** | chatgpt-plus（openai.com配下は日本語URLに変えても403継続・bot対策が強固） |
-| ⏸ 除外・保留 | **7** | nhk-plus(受信料契約の特殊料金)／patreon(価格がクリエイター毎で固定なし)／honto・rakuten-kobo(**そもそも月額読み放題プラン自体が存在しない**都度課金ストア＝2026-07-06調査で確認)／fod・match(公式ページに直接アクセスできず未解決)／audible(今回の調査対象外・未着手のまま) |
+| ✅ **実価格を検出**（enabled中すべて・空振りゼロ） | **48/48** | pairs(40)/1password(18)/rakuten-music(13)/nikkei(12)/rakuten-magazine(12)/linkedin-premium(12)/apple-one(11)/github-copilot(11)/microsoft-365(10)/google-one(10)/playstation-plus(9)/line-music(8)/figma(8)/chatgpt-plus(6)/deepl-pro(6)/vimeo-pro(6)/spotify(5)/youtube-premium(5)/notion(5)/evernote(5)/wowow-on-demand(5)/icloud-plus(5)/crunchyroll(5)/apple-music(4)/disney-plus(4)/u-next(4)/dazn(4)/dropbox(4)/xbox-game-pass(4)/dmagazine(4)/yahoo-premium(4)/netflix(3)/amazon-prime(3)/apple-tv-plus(3)/canva-pro(3)/danime(3)/rakuten-tv(3)/claude-pro(3)/abema-premium(2)/amazon-music-unlimited(2)/lemino(2)/dmm-premium(2)/discord-nitro(2)/hulu(1)/adobe-cc(1)/note-premium(1)/niconico-premium(1)/bookwalker(1) |
+| ⏸ 除外・保留（enabled:false・理由は各noteに明記） | **10** | nhk-plus(受信料契約の特殊料金)／patreon・soundcloud-go(クリエイター毎/地域未提供で構造的に固定価格なし)／honto・rakuten-kobo(**そもそも月額読み放題プラン自体が存在しない**都度課金ストア)／nintendo-switch-online(価格がテキストで存在しない・画像の可能性)／kindle-unlimited(ログイン前提でスクレイピング到達不可)／fod・match・audible(公式URL/アクセス手段が未解決のまま) |
 
-**35+15+1+7=58**。うち「本当に手つかず」なのは audible の1件のみ。honto/rakuten-kobo/patreon/nhk-plusの4件は
+**48+10=58**。「本当に手つかず」はaudible/fod/matchの3件のみ（URL/bot対策が未解決）。他7件は
 「調べた結果、監視対象になり得ないと判明した」正しい除外で、「怠慢による除外」ではない。
+
+### 既知の不安定性（バグではなく実測で確認した揺れ・候補に出ても無視してよい）
+- **chatgpt-plus**: Business料金2件(￥3,050/￥3,850)が非同期読み込みで4回中2回しか出現しない(sig=4⇄6)。
+- **evernote**: ¥10が同様にsig=5⇄6を往復する。
+- どちらも「一次確認したら価格は変わっていなかった」という前提で処理してよい（実際に3〜4回連続実測で確認済み）。
 
 ### 修正の技術詳細（同じ轍を踏まないための記録）
 - **バグA（UUID/スラグ誤検出）**：evernoteの`"id":"default_accordion$2722514a-15d3-..."`のような、Prismic CMS
@@ -95,12 +115,19 @@ u-next/pairs/rakuten-tv/bookwalkerでも同様のJS誤検出を発見・修正�
   `dataPlanPrefix: ["pro_"]`でスコープ限定抽出するよう対応（Pro単体=$17/$20/$200の3件のみに）。
 - **バグE（誤った公式URL）**：icloud-plusは旧URLが「多国比較の一覧記事」で65個中ほぼ全てが日本以外の
   通貨だった。`apple.com/jp/icloud/`という別の公式ページに差し替えて解決（コードでなくデータの誤り）。
+- **バグF（全角￥の文字クラス漏れ・2026-07-07発見）**：PRICE_TOKが半角¥(U+00A5)のみで、YouTube/Dropbox/
+  Google One/Amazonが使う全角￥(U+FFE5)を検出できていなかった。`[¥￥]`に拡張して解決。「JS描画で価格が
+  出ない」と思っていた案件の半分は、実際はレンダリングの問題ではなく**この文字コード漏れ**が真因だった。
+  日本語サイトの価格抽出では常に全角/半角の両方をカバーすること。
+- **バグG（request interceptionがHTTP/2を壊す・2026-07-07発見）**：adobe-ccでheadless化時に
+  `net::ERR_HTTP2_PROTOCOL_ERROR`が3回連続発生し、当初「Adobe側のbot対策」と誤診断していた。実際は
+  広告ブロック用の`page.setRequestInterception(true)`自体が原因で、外すと解決した。`noAdBlock: true`
+  オプションを追加（該当ページだけインターセプトをスキップ）。「JSエラーの見た目」を安易にサイト側の
+  せいにせず、まず自分のコードの副作用を疑うこと。
 
 ### 残るbacklog（優先順）
-1. **chatgpt-plus の403回避**：openai.com配下が一貫してbot拒否。別の取得経路（Puppeteer等）が必要か検討。
-2. **JS描画15件のPuppeteer対応**：本リポは`prerender.mjs`で既にPuppeteerに依存済み＝新規導入なしで着手できる。
-3. **fod・match・audibleの公式URL確定**：WebSearchでも直接アクセスできず／未着手のまま。
-4. **予告済みの将来の価格変動を監視**（発生後にPRICE_HISTORYへ追記）：
+1. **fod・match・audibleの公式URL確定**：WebSearchでも直接アクセスできず／未着手のまま。
+2. **予告済みの将来の価格変動を監視**（発生後にPRICE_HISTORYへ追記）：
    - Notion「Workers」機能がベータ無料→**2026-08-11に有料化**（Custom Agentsと同じ$10/1,000クレジット）。
    - ニコニコプレミアムが**2026-08-01に料金改定予定**（blog.nicovideo.jp/niconews/1841で告知）。
 

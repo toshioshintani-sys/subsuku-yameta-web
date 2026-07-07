@@ -1685,6 +1685,27 @@ URLと表示内容が変わっても、Reactは同じ位置・同じコンポー
 
 ---
 
+## 2026-07-07 ★4 価格偵察部隊「JS描画で空振り」の半分は文字コード漏れという実バグだった
+
+### 発見
+07-06に「35/58クリーン・残り23件は空振り/エラー/保留」で一区切りしていたが、俊雄さんから「修正できることがあれば深堀りしておいて」と再指示があり、`renderMode:"headless"`化した16件を1つずつ実測で深掘りした。結果、**「JS描画の問題」と思っていたものの正体はコード側の実バグだった**：
+
+- **PRICE_TOK正規表現が半角¥(U+00A5)のみで、全角￥(U+FFE5)を検出できていなかった**。YouTube Premium/Dropbox/Google One/Amazon Primeは全角￥を使うサイトで、`[¥￥]`に1文字拡張しただけで4サービス同時に復活。ついでにDAZN/Xbox Game Pass/ChatGPT Plusの検出精度も底上げされた（今まで拾えていなかった実価格が追加で見つかった）。
+- **spotifyはURLがソフト404だった**（`jp-ja/premium`→実質「お探しのページが見つかりません」）。正しいURL（`jp/premium`）に直したら素のfetchだけで即解決。
+- **adobe-ccのnet::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interceptionそのもの**だった。「Adobe側のbot対策」と誤診断しかけたが、interceptionを外したら一発で解決（`noAdBlock`オプションを追加）。
+- soundcloud-goは実際に日本非提供（ページ本文に明記）、nintendo-switch-onlineは価格がテキストとして存在しない（画像の可能性）、kindle-unlimitedはログイン前提でスクレイピング到達不可——この3件は「コードのバグ」ではなく実在する制約で、無効化が正しい判断。
+- 結果：enabled 48件中48件が実価格を検出（空振りゼロ）。disabled 10件は全て理由を個別note化。
+
+### なぜ重要か
+「JS描画だから空振り」という説明は、実際に文脈を見に行かないと本当かどうか分からない。今回、半分近く（16件中少なくとも4件+URL1件+HTTP2の1件=6件）が「レンダリングの問題」ではなく「自分のコードの文字クラス漏れ／間違ったURL／自分の副作用（request interception）」だった。**「相手のサイトが悪い」と決めつける前に、まず自分のコード・自分の入力を疑う**のが正しい順序。この教訓は次のAI_RADARスキル化にもそのまま持ち込む。
+
+### 永続化
+- コード：`scripts/price-watch/price-watch.mjs`（PRICE_TOK全角対応・noAdBlockオプション追加）
+- データ：`scripts/price-watch/watch-list.json`（spotify URL修正・soundcloud-go/nintendo-switch-online/kindle-unlimited無効化・各種note更新）
+- ドキュメント：`scripts/price-watch/README.md`（カバレッジ表を2026-07-07版に更新・バグF/G追記）
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
