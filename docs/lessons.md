@@ -6,6 +6,25 @@
 
 ---
 
+## 2026-07-07 ★★★★★ 本番mainで「やめたつもり貯金」ゲームが起動時に必ずクラッシュ（俊雄さん報告→再現→修正→PR化）
+
+### 発見
+- 俊雄さん報告：「ゲームが壊れています、何回やっても動きませんでした」。ゲーム名を確認したところ `SavingsGame.jsx`（HomePage下部の「やめたつもり貯金」8bit風キャッチゲーム）だった。BiasGame（判断ゲームシリーズ）とは別コンポーネントで、直近セッションの未コミット差分（BiasGame.jsx等）とも無関係。
+- ブラウザ実機（preview_eval + windowのerrorイベントリスナー注入）で再現：「スタート」を押した瞬間 `Uncaught ReferenceError: s is not defined at SavingsGame.jsx:204` でクラッシュ。React が `<SavingsGame>` を丸ごとアンマウントし、モーダルもランチャーボタンも消える（＝ページの一部が壊れたように見える）。
+- 原因：`requestAnimationFrame` の初回登録とクリーンアップ（`useEffect` 本体・`loop()`関数の**外側**）が `s.rafId = ...` / `cancelAnimationFrame(s.rafId)` と書かれていたが、`const s = state.current` は `loop()` 関数内だけのローカル変数だった。ゲームループ内部（`loop()`）は正しく動いていたが、それを起動する直前の1行が必ず例外を投げていた。
+- **`git show origin/main:src/components/SavingsGame.jsx` で確認：本番mainにも全く同一のバグが存在**。つまりこれは新しいセッションでの作業ミスではなく、既存の本番不具合。実際のユーザーがこのクラッシュに遭遇していた。
+
+### なぜ重要か
+1. **「壊れている」という曖昧な報告でも、まず実機で再現してからでないと直せない**。BiasGame/SavingsGame等ゲームが複数あるサイトでは、どのゲームか俊雄さんに確認するのが最短路（今回は聞き返して確定できた）。
+2. **`window.addEventListener('error', ...)` を注入してから再現する手法が、canvas/rAFベースのゲームで有効**だった。preview_screenshot・canvas.getImageDataはヘッドレス環境のバックグラウンドタブでの描画スロットルにより信頼できないことがある（rAFが1回しか発火しない等）ため、エラー捕捉と`--only`的な段階検証で代替した。
+3. **ESLint の `react-hooks/exhaustive-deps` 警告は、応急処置的な修正の副作用を教えてくれる**：最初 `s.rafId`→`state.current.rafId` と外側だけ直したら警告が出た。より正しい修正（`const s = state.current` をuseEffect本体の先頭に1回だけ宣言し、内部関数全体で使い回す）に直したら警告ゼロになった。応急処置で満足せず、lintが指す「より良い形」まで踏み込むこと。
+
+### 永続化
+- 修正：`src/components/SavingsGame.jsx`（1ファイル・スコープの付け替えのみ・ロジック無変更）。
+- **本番反映はPR経由**：mainへの直接pushは自動モードの安全装置でブロックされた（「レビューを経ないpushは俊雄さんの明示許可が要る」）。git worktreeで隔離環境を作りcherry-pick→ブランチpush→PR化（**PR #17** `hotfix/savings-game-crash` → main）。作業中の未コミット差分（BiasGame.jsx等・別セッションの作業）は一切乱していない。
+- **マージは俊雄さんの判断待ち**（帰宅後）。マージ後 Netlify が自動ビルド＆本番デプロイする。
+- 教訓：**緊急バグ修正でも、mainへの直接pushは許可なくやらない**。PRという「あと1クリックでデプロイできる状態」まで持っていくのが、ユーザー不在時の正しい到達点。
+
 ## 2026-07-01 ★★★★★ AdSense不承認の理由確定＝「有用性の低いコンテンツ」／薄いページの本文拡充で対処
 
 ### 発見
