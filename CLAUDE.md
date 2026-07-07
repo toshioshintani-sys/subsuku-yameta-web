@@ -248,7 +248,9 @@ VITE_VC_MEDIA_ID=（バリューコマース・提携完了後に設定）  ← 
 
 ---
 
-## 11. push 後 Slack 通知の運用（2026-05-30 追加）
+## 11. push 後 Slack 通知の運用（2026-05-30 追加・2026-07-07 停止）
+
+> 🛑 **本ルールは 2026-07-07 に停止した。** Slack報告が事実上機能していなかったため、俊雄さんの指示で push 後の Slack 通知（Chrome MCP・Webhook直送とも）は行わない。push 成功/失敗は通常の応答（このセッションの発言）でのみ報告する。以下は過去の運用記録として残すが、**再開が明示的に指示されるまで実行しない**。
 
 俊雄さんが平日昼間稼働不可のため、Claude Code が main に push した結果を
 Slack で受け取れるようにする運用ルール。
@@ -322,6 +324,9 @@ https://github.com/toshioshintani-sys/subsuku-yameta-web/commit/<SHA>
 ---
 
 ## 12. 改訂履歴
+
+### 2026-07-07（§11 停止）
+- push後Slack通知（Chrome MCP／Webhook直送とも）を停止。Slack報告が事実上機能していなかったため、俊雄さんの指示で運用ルールごと停止。再開は明示指示があるまで行わない。ローカルタスクスケジューラ側の朝会・監視系ジョブ停止は別途ご自身のPCでの対応が必要（このリモート環境からは操作不可）。
 
 ### 2026-06-12（§11 改訂）
 - §11 push通知を「Webhook一本化（Chrome全廃）」→「ハイブリッド（Chrome優先・Webhookフォールバック）」に是正（proposal-stress-test 経由・俊雄さん決定）。前提「Chromeは API非消費」を検証＝外部金銭/外部APIは非消費だが Anthropic トークンは消費（messaging用途でWebhookの約100倍）。コスト承知の上でChrome優先を採用。
