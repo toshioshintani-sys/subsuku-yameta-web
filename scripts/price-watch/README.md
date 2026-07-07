@@ -142,4 +142,6 @@ Puppeteer headless化した上で**個別に深掘り**した結果、**コー�
 - エンジンの原型：`world-oracle-staging/agents/_runtime/price_watch.py`（stack letter）。
 - 検証済み初期データの出所：同 `content/pricing/changelog.json` / `logs/verified_prices.json`。
 - 表示先（器）：`src/data/services.js` の `PRICE_HISTORY` ＋ `src/pages/ServicePage.jsx`。
-- 判断の記録：`docs/lessons.md` 2026-07-05（Phase前倒しの上書き＋検知の安全スコープ）。
+- 判断の記録：`docs/lessons.md` 2026-07-05（Phase前倒しの上書き＋検知の安全スコープ）・2026-07-07（全角￥バグ等）。
+- **調査の実務手順（右往左往防止）**：`~/.claude/skills/subsuku-price-scout/SKILL.md`
+  （ライフオラクルのAI_RADARの方法論をサブスクやめた向けに再定義したスキル・2026-07-07作成）。
