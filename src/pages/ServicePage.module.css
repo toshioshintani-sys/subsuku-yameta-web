@@ -939,7 +939,7 @@
 
 .historyItemLabel {
   font-size: 12px;
-  color: var(--text-muted, #6b6257);
+  color: var(--text-sub);
 }
 
 .historyChange {
@@ -965,6 +965,6 @@
 
 .historyNote {
   font-size: 12px;
-  color: var(--text-muted, #6b6257);
+  color: var(--text-sub);
   margin: 10px 0 0;
 }
