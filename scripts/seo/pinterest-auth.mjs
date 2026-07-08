@@ -48,11 +48,12 @@ const res = await fetch('https://api.pinterest.com/v5/oauth/token', {
 const text = await res.text();
 if (!res.ok) {
   console.error(`トークン交換失敗 HTTP ${res.status}: ${text.slice(0, 400)}`);
-  process.exit(1);
-}
-const j = JSON.parse(text);
-console.log(JSON.stringify(j, null, 2));
-if (j.access_token) {
-  console.log('\n→ この access_token を PINTEREST_TOKEN にセットして:');
-  console.log('   $env:PINTEREST_TOKEN="' + j.access_token + '"; node scripts/seo/post-pinterest.mjs --dry-run');
+  process.exitCode = 1;
+} else {
+  const j = JSON.parse(text);
+  console.log(JSON.stringify(j, null, 2));
+  if (j.access_token) {
+    console.log('\n→ この access_token を PINTEREST_TOKEN にセットして:');
+    console.log('   $env:PINTEREST_TOKEN="' + j.access_token + '"; node scripts/seo/post-pinterest.mjs --dry-run');
+  }
 }
