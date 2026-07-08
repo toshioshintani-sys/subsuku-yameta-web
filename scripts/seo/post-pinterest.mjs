@@ -22,6 +22,10 @@ const API = 'https://api.pinterest.com/v5';
 const TOKEN = process.env.PINTEREST_TOKEN;
 const dryRun = process.argv.includes('--dry-run');
 const keysArgIdx = process.argv.indexOf('--keys');
+if (keysArgIdx >= 0 && !process.argv[keysArgIdx + 1]) {
+  console.error('--keys の後に値がありません。例: --keys tracker,buyout,games');
+  process.exit(1);
+}
 const onlyKeys = keysArgIdx >= 0 ? new Set(process.argv[keysArgIdx + 1].split(',').map((s) => s.trim())) : null;
 const POSTED = resolve(ROOT, 'docs/pinterest/.posted.json');
 
@@ -118,5 +122,7 @@ async function main() {
 
 main().catch((e) => {
   console.error('例外:', e.message);
-  process.exit(1);
+  // process.exit()をfetch()由来の非同期処理直後に呼ぶとWindows Node v24でlibuvのハンドルクローズが
+  // 競合しクラッシュする（pinterest-auth.mjsで確認済み・同一パターン）。exitCode設定→自然終了に統一。
+  process.exitCode = 1;
 });
