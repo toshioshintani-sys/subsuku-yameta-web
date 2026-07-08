@@ -6,6 +6,66 @@
 
 ---
 
+## 2026-07-05 ★★★★ 価格変動トラッキング「器（下層）」着手＝Phase前倒しの明示的上書き（AdSense再審査中の安全スコープ）
+
+### 発見
+- 俊雄さん発案・fable設計・GO（2026-07-05）で「価格変動トラッキング」を常設機能化（stack letterの後継・GROWTH_STRATEGY E5＝値上げ速報の実装／更新シグナル／一次データの堀）。
+- §10 Phase計画では /news 相当は Phase 4（8月中旬〜）、NOT_DOING に「Phase前倒し禁止」。本件は形式上その前倒しに当たる。
+- proposal-stress-test で検証（Step0で前提の割れを発見）：提案の二層は AdSense再審査中という局面での評価が正反対。
+  - **下層**（各ServicePageの「価格・仕様の変更履歴」セクション＋更新日）＝不承認理由(thin content/E-E-A-T)への直球の追加対策＝「厚く・新しく・いつ確認したか」。新機能でなく**既存価格情報の品質保守**とも読める。
+  - **上層**（横断フィード・/news単独記事・ルート追加・検知自動化）＝真の Phase 4 前倒し＋審査中の新規薄ページ/構造変更/アフィ増設リスク。
+
+### なぜ重要か
+- AdSenseが 2026-07-01「有用性の低いコンテンツ」で不承認→7/2 大規模対策→7/5 再審査中。この最も繊細な局面で新規薄ページ・構造変更・アフィ増設は禁物。下層は逆に審査にプラス。
+- よって stress-test の結論＝「**下層のみ今着手・上層は審査結果後**」（残存致命否定0・機会根拠多数）。
+
+### 永続化（決定＝明示的上書き）
+- **Phase前倒しの上書き決定**：下層（価格履歴セクション）は「Phase 4新機能の前倒し」ではなく「現Phaseの既存情報の品質保守＝thin content対策」と位置づけて今着手を許可（俊雄さんGO・stress-test済）。上層は Phase 4 のまま＝審査結果が出るまで着手しない。
+- 安全ガード：審査中は情報掲載のみ（乗り換えアフィリンクの新規追加はしない）／REVIEW_MODE=true維持／変更後 `adsense-preflight.mjs` 全緑を必須／ブランチ＋draft PR。
+- 誤報ゼロ（生命線）：初期データは world-oracle-staging の検証済み記録（`content/pricing/changelog.json`・`logs/verified_prices.json`・`docs/PRICE_VERIFICATION_*.md`）を「確認日つきの過去事実」として移植。各エントリに公式sourceURL・現在価格は書かない（変更の事実のみ）・公開前に公式一次確認（AI_RADAR原則の全サービス版）。
+- 実装＝`src/data/services.js` の `PRICE_HISTORY`（EXTENDED_CONTENT同型・idキー）＋ ServicePage の履歴セクション＋ HowTo の dateModified 連動。初期移植＝github-copilot / notion / chatgpt-plus（検証済み変動あり）。
+- 検証：`VITE_REVIEW_MODE=true npm run build` → `adsense-preflight.mjs` が**全緑（115ページ・prerender 115/115成功・本文≥800字・JSON-LD全パース可・アフィURL残存0）**。lint中立（HEAD版と同じ7エラー＝新規0）。Netlify deploy-preview もpass・実レンダリングで履歴セクション/$表記/解約手順を目視確認。
+- **誤報ゼロ検証（多エージェントWorkflowで公式一次突合・2026-07-05）**：notion / chatgpt-go は全項目一致・捏造ゼロ・修正不要。github-copilot は内容（クレジット内包額 Pro$15/Pro+$70・コード補完無制限・新規登録停止・Max$100）は公式一致だが**日付のみ不正確**＝従量課金移行は「06-07」でなく公式値**06-01**・Max も「06-02の別イベント」でなく**06-01（切替と同時）** → 修正済。教訓：移植データは"事実"だけでなく"日付"も一次突合する（誤報ゼロは日付にも及ぶ）。
+
+---
+
+## 2026-07-05 ★★★★ 価格偵察部隊（検知）を安全モードで構築＝stack letter price_watch.py を Node移植（58部隊）
+
+### 発見
+- 俊雄さん依頼：「stack letter が日々どう価格を集めていたか（＝スキル）をサブスクやめた用に改修して58の偵察部隊が必要」。
+- stack letter の検知＝`world-oracle-staging/agents/_runtime/price_watch.py`：公式料金ページの生HTMLから価格トークン集合を署名化→前回とdiffで変化検知（**検知のみ・単一責任・公開しない**）。
+- これを Node へ移植し **¥/円/$ 対応**＝`scripts/price-watch/`（engine `price-watch.mjs` ＋ `watch-list.json`(58) ＋ README ＋ `.github/workflows/price-watch.yml`）。
+
+### なぜ重要か（安全スコープの判断＝記録として残す）
+- stress-testでは「検知（上層）は審査後」としたが、危険なのは**自動公開**であって**検知ツールを作ること自体**ではない。検知＝候補キュー生成のみ・**自動公開しない**・サイト構造/アフィ/広告を触らない設計なら、AdSense再審査中でも安全＋依頼を満たす。
+- 分業：①機械が候補を見つける（`state/candidates.json`）②公開前に必ず人/Claudeが公式ページで一次確認（LLM記憶で価格を書かない）③正しければ `PRICE_HISTORY` に手で書く（誤報ゼロ）。Actionsは審査中 `workflow_dispatch` のみ・`schedule` は承認後に有効化。
+
+### 永続化
+- `scripts/price-watch/`（engine＋58 watch-list＋README＋state）／`.github/workflows/price-watch.yml`（手動・candidates を artifact 出力・サイト/リポ不変）。
+- baseline実測(2026-07-05)：**17部隊が稼働**（価格取得成功）／9=JS描画で空／4=URLエラー／28=要URL調査。**framework完成・カバレッジは url 精緻化で育てる**段階。
+- 生HTMLに価格が出ない（SPA）サイトはこの方式では拾えない＝将来 headless 取得で対応（別タスク）。
+
+### 追記 2026-07-06 ★★★★ 「17稼働」の実態は12クリーン＋5ノイズ（俊雄さんの指摘で発覚・正直な記録）
+- 俊雄さんから「58のうち41が直らないなら中途半端では」と指摘を受け、17件の署名を目視精査した結果、**5件（evernote/icloud-plus/claude-pro/figma/hulu）は価格でない数値を誤検出しているノイズ**と判明（例：evernote `$2722514`・icloud-plus 65件中ほぼゴミ・claude-proはAPI従量課金の単価表を誤取得）。「価格取得できた」≠「信頼できる」だった。
+- 俊雄さんの決定：**58件の枠組みはこのまま残し、修正は後日**（スコープは変えない）。ただし README/lessonsの数字が実態と食い違ったまま残ると次回セッションが誤解する（「17件動いてる」と信じて着手しかねない）ため、ドキュメントの数字のみ正直に訂正（コード・スコープは無変更）。
+- 永続化：`scripts/price-watch/README.md` の「現在のカバレッジ」を12クリーン/5ノイズ/9空/4エラー/28未着手に訂正し、backlog（ノイズ修正が最優先→URLエラー→Puppeteer化→URL調査）を明記。
+- 教訓：**検知ツールの「動いた」報告は、署名の中身まで見て初めて信頼できる**。件数（17）だけを見て「動いている」と判断しない。
+
+### 追記2 2026-07-06 ★★★★★ 「12以外は投げ出した」への応答＝実際に41件に手をつけて35件クリーンまで前進
+- 俊雄さんの再指摘：「クリーンの12以外は真剣に調べておらず、投げ出したと見て取れる」「難易度が高いなら保留でよいが、チャレンジすらしない姿勢は疑問」。事実として正しい指摘だった（`enabled:false`の28件は「JS描画・要URL調査」と書いただけで**1件もURLを調べていなかった**）。
+- 対応（実際に着手・逃げなかった）：
+  1. **鮮度チェック**：移植3件（github-copilot/notion/chatgpt-plus）に、記録日以降さらに新しい変更がないかWebSearchで確認。修正不要と確定＋Notion「Workers」が2026-08-11有料化予定という新事実をbacklogに追加。
+  2. **32件のURL調査**：1回目は32並列で**レート制限に全滅**（0/32成功）。5グループに再編成（1エージェントあたり2〜9件をまとめて依頼）して再実行し成功。29件で新URL発見（3件=fod/honto/rakuten-kobo等は「そもそもプラン無し/アクセス不能」と正直な報告）。
+  3. **ノイズ5件の根本原因を実際に特定**：huluは JS正規表現置換文字列(`.replace(t?n:i,"$1")`)・evernoteはPrismic CMSのUUID断片・figmaはNext.js RSC参照ID(`$56`)・claude-proはAPI従量課金と複数プラン混在・icloud-plusは旧URLが多国比較記事（誤ったURL選定）と判明。
+  4. **1回目の修正（script/style一律除去）が別の3件を壊す回帰を発生させた**（playstation-plus/deepl-pro/crunchyrollの本物の価格がJSON-LD/RSCハイドレーション内にあり、一律除去で消えた）。これも隠さず記録：**サービスごとのオプトイン**（`stripScriptStyle`フラグ）に設計し直して回帰を解消。
+  5. **正規表現のバックトラックで「除外」のつもりが「縮んで残る」別バグも発見**（`$2722514a-...`が`$272251`に縮んで通過）→ matchAll後に手動チェックする方式に修正。
+  6. **claude-proは`data-plan="pro_*"`属性でProプランだけスコープ限定抽出**する新機能(`dataPlanPrefix`)を追加し解決（$17/$20/$200の3件のみに）。
+  7. 新規稼働した20件超を**全数スポットチェック**（件数が多いものは特に疑い、実際にu-next/pairs/rakuten-tv/bookwalkerで同じRSC/JSライブラリ誤検出を発見・同じ手法で修正）。1password・nikkei等の「疑わしく見えた」ものは中身を見て実在の正規価格と確認（誤って壊さなかった）。
+- **最終結果**：クリーン **12→35**（21%→60%）／JS描画で空 **15**（Puppeteer未実装のため今は拾えないが正直に分類・prerender.mjsで既にPuppeteer依存済みなので新規導入なしで着手可）／エラー **1**（chatgpt-plusのみ・bot対策強固）／除外・保留 **7**（うちhonto/rakuten-kobo/patreon/nhk-plusの4件は「調べた結果プラン自体が存在しないと判明」という正しい除外・本当に未着手なのはaudibleの1件のみ）。
+- 教訓：**「難しそうだから保留」と「実際に試して本当に無理だった」は違う**。前者は指摘されて当然。59分（このセッション）本気でやれば12→35まで動く実例になった。次にこの種の指摘を受けたら、まず本当に手をつけたかを自問する。
+
+---
+
 ## 2026-07-07 ★★★★★ 本番mainで「やめたつもり貯金」ゲームが起動時に必ずクラッシュ（俊雄さん報告→再現→修正→PR化）
 
 ### 発見
@@ -1641,6 +1701,27 @@ URLと表示内容が変わっても、Reactは同じ位置・同じコンポー
 
 ### 永続化
 `GameDetailPage.jsx` の `<BiasGame>` に `key={game.id}` を設定。完走後切替・途中切替・直接表示をブラウザで確認する。
+
+---
+
+## 2026-07-07 ★4 価格偵察部隊「JS描画で空振り」の半分は文字コード漏れという実バグだった
+
+### 発見
+07-06に「35/58クリーン・残り23件は空振り/エラー/保留」で一区切りしていたが、俊雄さんから「修正できることがあれば深堀りしておいて」と再指示があり、`renderMode:"headless"`化した16件を1つずつ実測で深掘りした。結果、**「JS描画の問題」と思っていたものの正体はコード側の実バグだった**：
+
+- **PRICE_TOK正規表現が半角¥(U+00A5)のみで、全角￥(U+FFE5)を検出できていなかった**。YouTube Premium/Dropbox/Google One/Amazon Primeは全角￥を使うサイトで、`[¥￥]`に1文字拡張しただけで4サービス同時に復活。ついでにDAZN/Xbox Game Pass/ChatGPT Plusの検出精度も底上げされた（今まで拾えていなかった実価格が追加で見つかった）。
+- **spotifyはURLがソフト404だった**（`jp-ja/premium`→実質「お探しのページが見つかりません」）。正しいURL（`jp/premium`）に直したら素のfetchだけで即解決。
+- **adobe-ccのnet::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interceptionそのもの**だった。「Adobe側のbot対策」と誤診断しかけたが、interceptionを外したら一発で解決（`noAdBlock`オプションを追加）。
+- soundcloud-goは実際に日本非提供（ページ本文に明記）、nintendo-switch-onlineは価格がテキストとして存在しない（画像の可能性）、kindle-unlimitedはログイン前提でスクレイピング到達不可——この3件は「コードのバグ」ではなく実在する制約で、無効化が正しい判断。
+- 結果：enabled 48件中48件が実価格を検出（空振りゼロ）。disabled 10件は全て理由を個別note化。
+
+### なぜ重要か
+「JS描画だから空振り」という説明は、実際に文脈を見に行かないと本当かどうか分からない。今回、半分近く（16件中少なくとも4件+URL1件+HTTP2の1件=6件）が「レンダリングの問題」ではなく「自分のコードの文字クラス漏れ／間違ったURL／自分の副作用（request interception）」だった。**「相手のサイトが悪い」と決めつける前に、まず自分のコード・自分の入力を疑う**のが正しい順序。この教訓は次のAI_RADARスキル化にもそのまま持ち込む。
+
+### 永続化
+- コード：`scripts/price-watch/price-watch.mjs`（PRICE_TOK全角対応・noAdBlockオプション追加）
+- データ：`scripts/price-watch/watch-list.json`（spotify URL修正・soundcloud-go/nintendo-switch-online/kindle-unlimited無効化・各種note更新）
+- ドキュメント：`scripts/price-watch/README.md`（カバレッジ表を2026-07-07版に更新・バグF/G追記）
 
 ---
 
