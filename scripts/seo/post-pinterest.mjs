@@ -8,6 +8,8 @@
 // 使い方:
 //   $env:PINTEREST_TOKEN="xxx"; node scripts/seo/post-pinterest.mjs --dry-run   # 何を投稿するか表示のみ
 //   $env:PINTEREST_TOKEN="xxx"; node scripts/seo/post-pinterest.mjs             # 実投稿（ボード自動作成→投稿）
+//   $env:PINTEREST_TOKEN="xxx"; node scripts/seo/post-pinterest.mjs --keys tracker,buyout,games,d-coffee,b-whycant
+//     # keyを指定した分だけ投稿（段階導入用。2026-07-08 stress-test後の初回バッチ＝各ボード代表1枚）
 //
 // 冪等: docs/pinterest/.posted.json に投稿済みkeyを記録。再実行時はスキップ（重複投稿しない）。
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -19,6 +21,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const API = 'https://api.pinterest.com/v5';
 const TOKEN = process.env.PINTEREST_TOKEN;
 const dryRun = process.argv.includes('--dry-run');
+const keysArgIdx = process.argv.indexOf('--keys');
+const onlyKeys = keysArgIdx >= 0 ? new Set(process.argv[keysArgIdx + 1].split(',').map((s) => s.trim())) : null;
 const POSTED = resolve(ROOT, 'docs/pinterest/.posted.json');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -80,6 +84,7 @@ async function main() {
   let fail = 0;
   for (const p of PINS) {
     const m = pinMeta(p);
+    if (onlyKeys && !onlyKeys.has(m.key)) continue;
     if (posted[m.key]) {
       skip++;
       continue;
