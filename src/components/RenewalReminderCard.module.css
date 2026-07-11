@@ -36,6 +36,13 @@
   text-decoration: underline;
 }
 
+.planField {
+  margin-top: 14px;
+}
+.planField .fieldLabel {
+  color: var(--hm-teal-ink);
+}
+
 .row {
   display: flex;
   align-items: flex-end;

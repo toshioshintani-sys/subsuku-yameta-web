@@ -299,7 +299,8 @@ export default function ServicePage() {
           <section className={styles.section}>
             <RenewalReminderCard
               serviceName={service.name}
-              monthlyDisplay={monthlyDisplay}
+              plans={plans}
+              fallbackMonthlyDisplay={monthlyDisplay}
               cancelUrl={service.cancelUrl}
               renewalCheckUrl={service.renewalCheckUrl}
             />

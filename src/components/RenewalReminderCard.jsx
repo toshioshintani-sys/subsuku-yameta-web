@@ -1,18 +1,45 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CalendarPlus, Download, ExternalLink } from 'lucide-react';
 import styles from './RenewalReminderCard.module.css';
+
+const yen = (n) => '¥' + Math.round(n || 0).toLocaleString('ja-JP');
+
+function popularPlanIndex(plans) {
+  const i = plans.findIndex((p) => p.popular);
+  return i >= 0 ? i : 0;
+}
 
 // 「続ける人」向けの更新日リマインダー（信頼はしご 第2段=カレンダー直結／第3段=.icsダウンロード）。
 // サーバー・localStorageのどちらにも更新日を保存しない。生成物（URL・ファイル）は本人の
 // カレンダーに置くだけで、このサイトには何も残らない＝「更新日はあなたの端末にしか無い」と
 // 言い切れる設計（docs/lessons.md 2026-07-11 参照）。
-export default function RenewalReminderCard({ serviceName, monthlyDisplay, cancelUrl, renewalCheckUrl }) {
+//
+// ★複数プラン対応（2026-07-11 修正）：以前は formatMonthlyRange の「¥890〜¥1,980」という
+// 範囲表示をそのままカレンダーに書き込んでいた。これは「次回いくら請求されるか」という
+// リマインダー本来の目的を果たさない。プランが複数ある場合は本人に選んでもらい、
+// 選んだプランの実額（範囲でなく一意の金額）をカレンダー・.icsに埋め込む。
+export default function RenewalReminderCard({ serviceName, plans = [], fallbackMonthlyDisplay, cancelUrl, renewalCheckUrl }) {
   const [date, setDate] = useState('');
   const [interval, setIntervalType] = useState('year'); // 'year' | 'month'
+  const [planIdx, setPlanIdx] = useState(() => (plans.length ? popularPlanIndex(plans) : 0));
+
+  const hasPlans = plans.length > 0;
+  const selectedPlan = hasPlans ? plans[planIdx] : null;
+
+  // カレンダーに書く「現在の目安料金」は必ず一意の金額にする（範囲表示は使わない）
+  const priceLine = useMemo(() => {
+    if (selectedPlan) {
+      const planLabel = plans.length > 1 ? `（${selectedPlan.name}）` : '';
+      return `現在の料金${planLabel}: ${yen(selectedPlan.monthly)}/月`;
+    }
+    return fallbackMonthlyDisplay
+      ? `現在の目安料金: ${fallbackMonthlyDisplay}/月`
+      : '現在の料金: 不明（ご自身の契約でご確認ください）';
+  }, [selectedPlan, plans.length, fallbackMonthlyDisplay]);
 
   const title = `${serviceName}の更新日`;
   const details = [
-    `現在の目安料金: ${monthlyDisplay || '不明（ご自身の契約でご確認ください）'}`,
+    priceLine,
     `解約ページ: ${cancelUrl}`,
     'このリマインダーはサブスクやめた（sabusuku-yameta.com）で作成しました。',
   ].join('\n');
@@ -88,6 +115,23 @@ export default function RenewalReminderCard({ serviceName, monthlyDisplay, cance
           更新日が分からない方はこちらで確認できます
           <ExternalLink size={12} strokeWidth={1.75} aria-hidden="true" />
         </a>
+      )}
+
+      {hasPlans && plans.length > 1 && (
+        <label className={`${styles.field} ${styles.planField}`}>
+          <span className={styles.fieldLabel}>あなたのプランは？（金額の思い違いを防ぐため必ず確認）</span>
+          <select
+            className={styles.dateInput}
+            value={planIdx}
+            onChange={(e) => setPlanIdx(Number(e.target.value))}
+          >
+            {plans.map((p, i) => (
+              <option key={i} value={i}>
+                {p.name}（{yen(p.monthly)}/月）
+              </option>
+            ))}
+          </select>
+        </label>
       )}
 
       <div className={styles.row}>
