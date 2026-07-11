@@ -1,0 +1,81 @@
+name: GSC Report
+
+# Google Search Console の Search Analytics（impression / CTR / position）を取得し、
+# 「配布律速の切り分け」を Actions ログに出力する。
+#   - NOT_SHOWN      → 検索結果に出ていない（権威/インデックス律速＝被リンク・時間が必要）
+#   - SHOWN_NO_CLICK → 出てはいるがクリックされない（順位/タイトル/CTR 律速）
+#   - CLICKS_FLOWING → 検索流入が流れ始めている
+#
+# 認証は Indexing API と同じ secret（GOOGLE_SERVICE_ACCOUNT_JSON）を再利用する。
+# その SA が GSC プロパティの「所有者」であれば追加設定は不要（docs/GSC_SETUP.md 第2段階で設定済みの想定）。
+# secret 未設定でも fail させず、未設定である旨だけ出す。
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "GSC property (sc-domain:sabusuku-yameta.com か https://sabusuku-yameta.com/)"
+        required: false
+        default: "sc-domain:sabusuku-yameta.com"
+      days:
+        description: "集計日数"
+        required: false
+        default: "28"
+  schedule:
+    # 毎週月曜 21:30 UTC（JST 火 06:30）。週次スプリントの律速確認に合わせる。
+    - cron: "30 21 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  gsc-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install google-auth requests -q
+
+      - name: Run GSC collector
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE: ${{ github.event.inputs.site || 'sc-domain:sabusuku-yameta.com' }}
+          GSC_DAYS: ${{ github.event.inputs.days || '28' }}
+        run: |
+          if [ -z "$GOOGLE_SERVICE_ACCOUNT_JSON" ]; then
+            echo "GOOGLE_SERVICE_ACCOUNT_JSON not set."
+            echo "→ docs/GSC_SETUP.md 第2段階の Service Account を Secrets に登録すれば動きます。"
+            exit 0
+          fi
+          python monitoring/scripts/collect_gsc.py --site "$GSC_SITE" --days "$GSC_DAYS" | tee gsc_result.json
+          echo ""
+          echo "=== 切り分け判定 ==="
+          python - <<'PY'
+          import json
+          d = json.load(open("gsc_result.json", encoding="utf-8"))
+          err = d.get("error")
+          if err:
+              print("ERROR:", err)
+              if "PERMISSION_DENIED" in err:
+                  print("→ サービスアカウントが GSC プロパティの『所有者』になっていません。")
+                  print("  https://search.google.com/search-console/users で client_email を所有者追加してください。")
+              if "SITE_NOT_FOUND" in err:
+                  print("→ --site の文字列がプロパティと不一致。ドメインプロパティなら sc-domain:、URLプレフィックスなら https://…/ 。")
+              raise SystemExit(1)
+          t = d["totals"]
+          v = d["verdict"]
+          print(f"期間 {d['date_start']}〜{d['date_end']}  site={d['site']}")
+          print(f"impressions={t['impressions']}  clicks={t['clicks']}  ctr={t['ctr']}  position={t['position']}")
+          print(f"VERDICT = {v}")
+          label = {
+              "NOT_SHOWN": "検索結果に出ていない（権威/インデックス律速＝被リンク・時間が要る）",
+              "SHOWN_NO_CLICK": "出てはいるがクリックされない（順位/タイトル/CTR 律速）",
+              "CLICKS_FLOWING": "検索流入が流れ始めている",
+          }.get(v, "")
+          print("→", label)
+          PY

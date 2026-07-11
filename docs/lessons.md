@@ -6,6 +6,26 @@
 
 ---
 
+## 2026-06-29 ★★★ 未使用ケイパビリティ棚卸し：Ahrefs MCPはプラン制約で投資対象／配布診断はGSC直結が無料で本命
+
+### 発見
+- 「今やっている事に使えるのに未使用のskill/ルール/オーケストラ/MCP」を棚卸し。最大律速＝集客(SEO/AI引用)に直結するのに未使用の能力が多数あった（Ahrefs MCPフルスイート・GSC系・Calendar/Cronで判定トリガー実体化・実エージェント並列(部長制は今は1コンテキストのロールプレイ)・code-review/security-review/session-start-hook・§11Slack通知やWEEKLY_SPRINT読込のhook化、等）。
+- **Ahrefs MCP（項目1）を実測確定**：`subscription-info`（本来無料・units 0）も `management-projects` も **`Insufficient plan`** で全滅。通るのは `public-domain-rating-free` のみ（DR=`sabusuku-yameta.com`=**0.0** で移行前と不変）。＝keywords-explorer/brand-radar(AI引用)/site-explorer(被リンク)/gsc-* は**現プランでは引けない**。前回レポートの「site/keywords-explorerはプラン内で動くかも」という楽観は**否定**。日報(06-25)の「Insufficient plan」見立ては正しく今も有効。
+- **結論の差し替え**：AI引用実測・ロングテール語・被リンク源特定をAhrefsでやるには**有料プラン＝外部金銭支出(ORG§1 費用ゲート・継続課金なのでproposal-stress-test対象)**。独断採用しない。**配布律速の切り分け(「インデックスされてるが順位/CTRで0」か「権威で0」か)は、Ahrefs経由ではなく自前GSCサービスアカウントで無料で取れる**＝こちらが本命だった。
+- **実装まで到達**：`indexing-ping.yml` が既にSA(`GOOGLE_SERVICE_ACCOUNT_JSON` secret)を使い、`GSC_SETUP.md`第2段階でそのSAをGSC「所有者」に追加済みの想定。**所有者はSearch Analytics(webmasters.readonly)も読める**＝追加の原子操作ゼロで impression/CTR/position が引ける。`monitoring/scripts/collect_gsc.py`（GA4コレクタと同作法・診断コード・依存自動install）と `.github/workflows/gsc-report.yml`（既存secretでCI実行・俊雄さんは"Run workflow"押すだけ）を実装。無認証/不正認証パスはsmoke検証済（CRED_MISSING/CRED_INVALIDで綺麗にexit 1）。ライブ実行はsecret有りのCIで確認待ち。
+
+### なぜ重要か
+1. **「接続済み≠使える」を実測で確定する型**：MCPが繋がっていてもプランで全滅しうる。1回叩いて費用ゲート該当か(=有料)を切り分けてから戦略に組み込む。2回punt(06-24/06-25)していた確認を本セッションで終端化。
+2. **同じ診断がコストゼロで取れる経路を優先**：Ahrefs課金の前に、Googleの自前GSC APIで impression切り分けが無料で取れた。「金を払う前に、既にある無料の一次ソースを使い切る」。
+3. **既存基盤の再利用で原子操作を増やさない**：Indexing API用に追加済みのSA所有権を流用＝俊雄さんの新規操作ゼロ。新機能でも既存secret/作法に寄せれば即運用化できる。
+
+### 永続化
+- `monitoring/scripts/collect_gsc.py`（GSC Search Analytics収集・切り分けverdict）新規。
+- `.github/workflows/gsc-report.yml`（週次＋手動・既存secret流用・Actionsログに切り分け出力）新規。
+- 棚卸し全体（未使用skill/ルール/オーケストラ/他MCP）は本エントリに集約。Ahrefs有料化は費用ゲート提案待ち＝独断不可。
+
+---
+
 ## 2026-07-05 ★★★★ 価格変動トラッキング「器（下層）」着手＝Phase前倒しの明示的上書き（AdSense再審査中の安全スコープ）
 
 ### 発見
