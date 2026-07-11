@@ -18,6 +18,7 @@ export const SERVICES = [
     emoji: '🎬',
     domain: 'netflix.com',
     cancelUrl: 'https://www.netflix.com/cancelplan',
+    renewalCheckUrl: 'https://www.netflix.com/youraccount',
     difficulty: 'easy',
     steps: [
       '右上のアイコン → 「アカウント」',
@@ -33,6 +34,7 @@ export const SERVICES = [
     emoji: '📦',
     domain: 'amazon.co.jp',
     cancelUrl: 'https://www.amazon.co.jp/gp/primecentral',
+    renewalCheckUrl: 'https://www.amazon.co.jp/gp/primecentral',
     difficulty: 'medium',
     steps: [
       'アカウント＆リスト → 「プライム会員情報」',
@@ -48,6 +50,7 @@ export const SERVICES = [
     emoji: '🎵',
     domain: 'spotify.com',
     cancelUrl: 'https://www.spotify.com/jp/account/subscription/',
+    renewalCheckUrl: 'https://www.spotify.com/jp/account/subscription/',
     difficulty: 'easy',
     steps: [
       '上記URLを開く（アプリからは解約不可）',
@@ -63,6 +66,7 @@ export const SERVICES = [
     emoji: '🍎',
     domain: 'apple.com',
     cancelUrl: 'https://support.apple.com/ja-jp/118428',
+    renewalCheckUrl: 'https://account.apple.com/account/manage/section/subscriptions',
     difficulty: 'easy',
     steps: [
       'iPhoneの「設定」→ 一番上のApple ID名',
@@ -78,6 +82,7 @@ export const SERVICES = [
     emoji: '▶️',
     domain: 'youtube.com',
     cancelUrl: 'https://www.youtube.com/paid_memberships',
+    renewalCheckUrl: 'https://www.youtube.com/paid_memberships',
     difficulty: 'easy',
     steps: [
       '上記URLを開く、または右上アイコン → 「購入とメンバーシップ」',
@@ -93,6 +98,7 @@ export const SERVICES = [
     emoji: '🏰',
     domain: 'disneyplus.com',
     cancelUrl: 'https://www.disneyplus.com/ja-jp/account',
+    renewalCheckUrl: 'https://www.disneyplus.com/ja-jp/account',
     difficulty: 'easy',
     steps: [
       '右上アイコン → 「アカウント」',
@@ -108,6 +114,7 @@ export const SERVICES = [
     emoji: '📺',
     domain: 'hulu.jp',
     cancelUrl: 'https://help.hulu.jp/article/cancellation',
+    renewalCheckUrl: 'https://www.hulu.jp/account',
     difficulty: 'medium',
     steps: [
       'マイページ → 「登録情報」',
@@ -242,6 +249,7 @@ export const SERVICES = [
     emoji: '💼',
     domain: 'microsoft.com',
     cancelUrl: 'https://account.microsoft.com/services',
+    renewalCheckUrl: 'https://account.microsoft.com/services',
     difficulty: 'medium',
     steps: [
       '「サービスとサブスクリプション」',
@@ -257,6 +265,7 @@ export const SERVICES = [
     emoji: '🎨',
     domain: 'adobe.com',
     cancelUrl: 'https://account.adobe.com/ja/plans',
+    renewalCheckUrl: 'https://account.adobe.com/ja/plans',
     difficulty: 'hard',
     steps: [
       '「プランを管理」→「プランをキャンセル」',
@@ -422,6 +431,7 @@ export const SERVICES = [
     emoji: '🤖',
     domain: 'openai.com',
     cancelUrl: 'https://chat.openai.com/settings',
+    renewalCheckUrl: 'https://chat.openai.com/settings',
     difficulty: 'easy',
     steps: [
       '左下のアカウント名 → 「マイプラン」',

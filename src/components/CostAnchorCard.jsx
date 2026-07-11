@@ -92,13 +92,13 @@ export default function CostAnchorCard({
         </div>
       )}
 
-      {/* 5. いちばん効く一手（年額最大を可視化・解約を後押し） */}
+      {/* 5. 事実提示（年額最大のものを可視化するだけ・解約するかどうかは本人が決める） */}
       {topCut && (
         <div className={styles.topCutBar}>
           <Check size={14} strokeWidth={2.4} aria-hidden="true" />
           <span>
-            いちばん効くのは<strong>「{topCut.name}」</strong>。やめると{' '}
-            <strong>年{topCut.annualText}</strong> 浮きます。
+            いちばん金額が大きいのは<strong>「{topCut.name}」</strong>（
+            <strong>年{topCut.annualText}</strong>）。
           </span>
         </div>
       )}

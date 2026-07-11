@@ -32,6 +32,7 @@ import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
 import AdSlot from '../components/AdSlot';
 import ShareButtons from '../components/ShareButtons';
+import RenewalReminderCard from '../components/RenewalReminderCard';
 import { SITE_URL } from '../config';
 import styles from './ServicePage.module.css';
 
@@ -292,6 +293,17 @@ export default function ServicePage() {
               <p className={styles.paragraph}>{extended.afterCancel}</p>
             </section>
           )}
+
+          {/* 更新日リマインダー（信頼はしご 第2段+第3段。続ける判断をした人への価値提供・
+              サーバー保存なし＝解約サイトとしての信頼を壊さない設計。2026-07-11追加） */}
+          <section className={styles.section}>
+            <RenewalReminderCard
+              serviceName={service.name}
+              monthlyDisplay={monthlyDisplay}
+              cancelUrl={service.cancelUrl}
+              renewalCheckUrl={service.renewalCheckUrl}
+            />
+          </section>
 
           {/* FAQ */}
           {extended?.faq?.length > 0 && (
