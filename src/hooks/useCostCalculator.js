@@ -7,7 +7,12 @@ import { SERVICES, getPlans, getDefaultMonthly, getPopularity, getKana } from '.
 //   requestAnimationFrame のカウントアップ等に依存させない（プロトで踏んだ
 //   「表示が実値とズレる」罠の回避）。視覚アニメを足すなら表示の正しさと分離すること。
 
-const DEFAULT_SEED = ['netflix', 'spotify', 'youtube-premium'];
+// 初期選択は空にする（2026-07-11 俊雄さん決定）。
+// 以前は netflix/spotify/youtube-premium を勝手に選択して「あなたの固定費 ¥45,000」と
+// 見せていたが、訪問者が契約していないものを本人の金額のように断定する形になっており、
+// 特に「そのサービスが好きで続けている人」に対して信頼を壊す。合計・いちばん大きい項目は
+// 本人がサービスを追加して初めて表示する（入力起点の道具に徹する）。
+const DEFAULT_SEED = [];
 
 function popularPlanIndex(id) {
   const plans = getPlans(id);
