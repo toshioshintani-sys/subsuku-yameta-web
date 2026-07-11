@@ -9,6 +9,7 @@ import {
   getPlans,
   getPlanCheckHint,
   formatMonthlyRange,
+  PRICE_HISTORY,
 } from '../data/services';
 import {
   getAffiliateUrl,
@@ -16,6 +17,7 @@ import {
   buildRakutenSearchUrl,
   trackAffiliateClick,
   detectAsp,
+  REVIEW_MODE,
 } from '../data/affiliates';
 import {
   Scissors,
@@ -35,6 +37,7 @@ import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
+const DIRECTION_LABEL = { up: '値上げ', down: '値下げ', new: '新プラン', restructure: '体系変更' };
 
 const CATEGORY_LABEL = {
   video: '動画',
@@ -54,6 +57,7 @@ export default function ServicePage() {
   const { id } = useParams();
   const service = SERVICES.find((s) => s.id === id);
   const extended = service ? EXTENDED_CONTENT[service.id] : null;
+  const priceHistory = service ? PRICE_HISTORY[service.id] || null : null;
   const monthly = service ? getDefaultMonthly(service.id) : 0;
   const plans = service ? getPlans(service.id) : [];
   const planCheckHint = service ? getPlanCheckHint(service.id) : null;
@@ -65,6 +69,10 @@ export default function ServicePage() {
     if (!service) return null;
     const list = [];
 
+    // 価格変更履歴の最新確認日（あれば dateModified に＝鮮度シグナル）。useMemo 内で算出し外部依存を増やさない。
+    const ph = PRICE_HISTORY[service.id];
+    const latestPriceDate = ph?.length ? [...ph].map((h) => h.date).sort().slice(-1)[0] : null;
+
     // HowTo
     if (service.steps?.length) {
       list.push({
@@ -72,6 +80,7 @@ export default function ServicePage() {
         '@type': 'HowTo',
         name: `${service.name}の解約方法`,
         description: `${service.name}の解約ページへの直リンクと、${service.steps.length}ステップで完了する手順。`,
+        ...(latestPriceDate ? { dateModified: latestPriceDate } : {}),
         step: service.steps.map((text, i) => ({
           '@type': 'HowToStep',
           position: i + 1,
@@ -343,6 +352,44 @@ export default function ServicePage() {
             </section>
           )}
 
+          {/* 価格・仕様の変更履歴（stack letter後継の下層。本文の厚み＋鮮度＝E-E-A-T。誤報ゼロ＝確認日つき・公式ソース） */}
+          {priceHistory?.length > 0 && (
+            <section className={styles.section}>
+              <h2 className={styles.sectionTitle}>価格・仕様の変更履歴</h2>
+              <p className={styles.paragraphLead}>
+                {service.name} の料金・プランで確認できた変更を、公式ページで確認した日付とともに記録しています。
+              </p>
+              <ul className={styles.historyList}>
+                {priceHistory.map((h, i) => (
+                  <li key={i} className={styles.historyItem}>
+                    <div className={styles.historyMeta}>
+                      <time className={styles.historyDate} dateTime={h.date}>{h.date}</time>
+                      <span className={`${styles.historyDir} ${styles[`dir_${h.direction}`] || ''}`}>
+                        {DIRECTION_LABEL[h.direction] || '変更'}
+                      </span>
+                      {h.item && <span className={styles.historyItemLabel}>{h.item}</span>}
+                    </div>
+                    <p className={styles.historyChange}>{h.change}</p>
+                    {h.source && (
+                      <a
+                        className={styles.historySource}
+                        href={h.source}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        公式料金ページで確認（{h.verifiedAt || h.date} 時点）
+                        <ExternalLinkIcon size={12} strokeWidth={1.75} aria-hidden="true" />
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <p className={styles.historyNote}>
+                ※ 各変更は記載日時点で公式ページを確認した内容です。最新の料金は公式ページでご確認ください。
+              </p>
+            </section>
+          )}
+
           {/* 損失可視化ブロック（BAE：行動経済学のナッジ - 損失回避） */}
           {monthly > 0 && (
             <div className={styles.lossViz} aria-label="年額試算">
@@ -417,7 +464,9 @@ export default function ServicePage() {
           <section className={styles.alternatives}>
             <div className={styles.altHeader}>
               <h2 className={styles.altTitle}>もし「次に何か」を検討するなら</h2>
-              <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+              {!REVIEW_MODE && (
+                <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+              )}
             </div>
             <p className={styles.altLead}>
               似た用途で使えるサービスを情報として置いておきます。
@@ -440,7 +489,7 @@ export default function ServicePage() {
                     key={i}
                     href={alt.href}
                     target="_blank"
-                    rel="sponsored noopener noreferrer"
+                    rel={REVIEW_MODE ? 'noopener noreferrer' : 'sponsored noopener noreferrer'}
                     className={styles.altCard}
                     onClick={() =>
                       trackAffiliateClick({

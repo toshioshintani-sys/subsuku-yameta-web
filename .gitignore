@@ -16,3 +16,6 @@ scripts/threads/.4koma-state.json
 # Netlify CLI link state
 .netlify/
 docs/pinterest/.posted.json
+
+# GSC/GA4監視スクリプトのサービスアカウント鍵（ローカル配置のみ・collect_gsc.pyが参照する想定パス）
+monitoring/config/sa.json

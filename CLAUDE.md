@@ -18,6 +18,9 @@
 5. **`docs/AFFILIATE_DESIGN_PRINCIPLES.md`** — BAE 設計憲法 v2.0（実装の判断軸）
 6. **`docs/STRATEGY.md`** — 戦略文書（Phase 計画）
 
+> 価格・サービス情報を調べる作業（price-watch のデバッグ・新サービス調査・PRICE_HISTORY一次確認等）は
+> `~/.claude/skills/subsuku-price-scout/SKILL.md` を使う（2026-07-07追加・誤報ゼロの実務手順を集約）。
+
 > 全プロジェクト共通の自律運用の型 = `~/.claude/AUTONOMY_OPERATING_RULES.md`。サブスクやめたは**部長制(ORG)＋週次スプリント**で原則を満たす（原則1/4/5/7は部長制で既達・原則2/6を2026-06-07に補強）。**固有決定が既定に勝つ**（例：Xは送客最下位＝採択しない・画像4コマは在席手動のみ）。
 
 「サブスクやめた」関連かどうかの判定基準：

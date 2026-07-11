@@ -1,7 +1,7 @@
 import { useMemo, useCallback } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { POST_BY_SLUG, POSTS } from '../data/posts';
-import { detectAsp, trackAffiliateClick } from '../data/affiliates';
+import { detectAsp, trackAffiliateClick, sanitizeReviewHtml } from '../data/affiliates';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import AdSlot from '../components/AdSlot';
@@ -16,7 +16,7 @@ function renderBlock(block, i) {
     return (
       <ul key={i} className={styles.ul}>
         {block.items.map((item, j) => (
-          <li key={j} dangerouslySetInnerHTML={{ __html: item }} />
+          <li key={j} dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(item) }} />
         ))}
       </ul>
     );
@@ -39,7 +39,7 @@ function renderBlock(block, i) {
     );
   }
   // default: paragraph (may contain inline HTML for links)
-  return <p key={i} className={styles.p} dangerouslySetInnerHTML={{ __html: block.text }} />;
+  return <p key={i} className={styles.p} dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(block.text) }} />;
 }
 
 export default function BlogPostPage() {

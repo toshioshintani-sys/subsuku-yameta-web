@@ -23,6 +23,14 @@ const AMAZON_ASSOCIATE_ID = ENV.VITE_AMAZON_ASSOCIATE_ID;
 const RAKUTEN_AFFILIATE_ID = ENV.VITE_RAKUTEN_AFFILIATE_ID;
 
 // ============================================================
+// REVIEW_MODE：AdSense審査中の一時措置（docs/ADSENSE_REAPPROVAL_PLAN.md P3）
+// true の間、全アフィリエイトURLを「元の（非収益化）URL」にフォールバックする。
+// ボタン・UIは変えない（非表示にはしない＝ページの完全性を保つ）。UXはそのまま、
+// 収益化シグナルだけを消す。承認後は netlify.toml の既定値を false に戻す。
+// ============================================================
+export const REVIEW_MODE = ENV.VITE_REVIEW_MODE === 'true';
+
+// ============================================================
 // ASP_FULL_URLS：俊雄さんが ASP 管理画面で取得した「完成済みの追跡 URL」
 // 提携完了したら、ここに serviceId → URL でマップする
 // ============================================================
@@ -124,6 +132,9 @@ function withRakutenAffiliate(url) {
  * @returns {string} アフィリエイト URL または 元の URL（フォールバック）
  */
 export function getAffiliateUrl(serviceId, originalUrl) {
+  // REVIEW_MODE中は収益化シグナルを一切出さない（元URLのみ）
+  if (REVIEW_MODE) return originalUrl;
+
   // 1. ASP_FULL_URLS に直接マップがあれば最優先
   if (serviceId && ASP_FULL_URLS[serviceId]) {
     return ASP_FULL_URLS[serviceId];
@@ -156,6 +167,7 @@ export function getAffiliateUrl(serviceId, originalUrl) {
  */
 export function buildAmazonSearchUrl(query) {
   const base = `https://www.amazon.co.jp/s?k=${encodeURIComponent(query)}`;
+  if (REVIEW_MODE) return base;
   return withAmazonTag(base);
 }
 
@@ -166,6 +178,7 @@ export function buildAmazonSearchUrl(query) {
  */
 export function buildRakutenSearchUrl(query) {
   const base = `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(query)}/`;
+  if (REVIEW_MODE) return base;
   // 楽天検索URLは hb.afl 形式に変換できないので、id=tagで対応
   if (!RAKUTEN_AFFILIATE_ID) return base;
   return `https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${encodeURIComponent(base)}&link_type=text`;
@@ -201,6 +214,15 @@ export function trackAffiliateClick(params) {
   } catch {
     // 失敗してもユーザー体験は阻害しない
   }
+}
+
+// ブログ本文（posts.js）に直接埋め込まれた <a href="...a8mat=...·af.moshimo.com·hb.afl.rakuten..."> を
+// REVIEW_MODE中だけ「リンクなしのテキスト」に変換する（元の非アフィURLを復元できないため、
+// 収益化リンクとして送客しないのが安全側の対応。テキスト自体は失わない）。
+const AFFILIATE_HTML_LINK = /<a\s+[^>]*href="[^"]*(?:a8mat=|af\.moshimo\.com|hb\.afl\.rakuten)[^"]*"[^>]*>(.*?)<\/a>/g;
+export function sanitizeReviewHtml(html) {
+  if (!REVIEW_MODE || !html) return html;
+  return html.replace(AFFILIATE_HTML_LINK, '$1');
 }
 
 /**

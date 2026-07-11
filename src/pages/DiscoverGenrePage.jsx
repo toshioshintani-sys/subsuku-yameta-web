@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import { DISCOVER_GENRES_BY_ID, DISCOVER_GENRES } from '../data/discover';
-import { trackAffiliateClick, detectAsp } from '../data/affiliates';
+import { trackAffiliateClick, detectAsp, REVIEW_MODE } from '../data/affiliates';
 import AdSlot from '../components/AdSlot';
 import { DiscoverIcon } from '../icons';
 import Seo from '../components/Seo';
@@ -102,7 +102,10 @@ export default function DiscoverGenrePage() {
           <h2 className={styles.h2}>主要 {genre.services.length} 社の比較</h2>
           <p className={styles.lead}>順位ではなく、特徴で並べています。あなたの暮らしに合うものを選んでください。</p>
           <div className={styles.serviceGrid}>
-            {genre.services.map((s, i) => (
+            {genre.services.map((s, i) => {
+              // REVIEW_MODE中は収益化シグナルを出さない（公式URLのみ・PRタグなし）
+              const effectiveAffiliateUrl = REVIEW_MODE ? null : s.affiliateUrl;
+              return (
               <article key={i} className={styles.serviceCard}>
                 <header className={styles.serviceHead}>
                   <h3 className={styles.serviceName}>{s.name}</h3>
@@ -114,21 +117,21 @@ export default function DiscoverGenrePage() {
                   {s.cancel}
                 </div>
                 <div className={styles.serviceFooter}>
-                  {s.affiliateUrl && (
+                  {effectiveAffiliateUrl && (
                     <span className={styles.prTag} title="広告（アフィリエイト）を含みます">
                       PR
                     </span>
                   )}
                   <a
-                    href={s.affiliateUrl || s.officialUrl}
+                    href={effectiveAffiliateUrl || s.officialUrl}
                     target="_blank"
-                    rel={s.affiliateUrl ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
+                    rel={effectiveAffiliateUrl ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
                     className={styles.serviceLink}
                     onClick={
-                      s.affiliateUrl
+                      effectiveAffiliateUrl
                         ? () =>
                             trackAffiliateClick({
-                              asp: detectAsp(s.affiliateUrl),
+                              asp: detectAsp(effectiveAffiliateUrl),
                               service: s.id || s.name,
                               placement: 'discover_genre',
                               position: i + 1,
@@ -142,7 +145,8 @@ export default function DiscoverGenrePage() {
                   </a>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </section>
 

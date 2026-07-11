@@ -13,18 +13,27 @@ export default function Analytics() {
   // 初回ロード時に gtag.js を読み込んで GA4 を初期化
   useEffect(() => {
     if (!GA_ID || typeof window === 'undefined') return;
-    if (document.getElementById('ga-script')) return;
 
-    const script = document.createElement('script');
-    script.id = 'ga-script';
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-    document.head.appendChild(script);
-
+    // dataLayer/gtag関数は常に用意する。プリレンダ時にビルド用ヘッドレスブラウザが
+    // このeffectを一度実行するため、<script id="ga-script"> タグ自体は静的HTMLに
+    // 焼き込まれた状態で配信される。以前はタグの有無だけを見て早期returnしていたため、
+    // 実ユーザーのブラウザでdataLayer/gtagの初期化とconfig呼び出しが一度も走らず、
+    // GA4に何も送信されないまま数週間気づかなかった（2026-07-09発見）。
     window.dataLayer = window.dataLayer || [];
-    window.gtag = function gtag() {
-      window.dataLayer.push(arguments);
-    };
+    if (!window.gtag) {
+      window.gtag = function gtag() {
+        window.dataLayer.push(arguments);
+      };
+    }
+
+    if (!document.getElementById('ga-script')) {
+      const script = document.createElement('script');
+      script.id = 'ga-script';
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+      document.head.appendChild(script);
+    }
+
     window.gtag('js', new Date());
     // send_page_view: false にして、ルート変更時の useEffect 側で page_view を送る
     // （SPA で初回二重計測を防ぐため）

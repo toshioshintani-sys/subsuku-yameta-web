@@ -74,11 +74,11 @@ export const DISCOVER_GENRES = [
       },
       {
         name: '+hana（タスハナ）',
-        domain: 'tasuhana（＋hana）',
+        domain: 'tasuhana.com',
         monthly: 858,
         usp: '月858円〜（送料込）の最安級・全プランポスト投函。ロスフラワー活用',
         cancel: '⚠️最低5回の継続が必要。5回目の出荷後にマイページから解約可（次回配送10日前まで）。スキップは半年に1回は注文が要る',
-        officialUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+37I782+4XOY+5YJRM',
+        officialUrl: 'https://tasuhana.com/Landing/Formlp/hana_lp.aspx',
         affiliateUrl: 'https://px.a8.net/svt/ejp?a8mat=4B3XB5+37I782+4XOY+5YJRM',
       },
     ],
