@@ -1343,6 +1343,85 @@ export const POSTS = [
       },
     ],
   },
+  {
+    slug: 'mystery-charge-subscription-lookup',
+    title: '身に覚えのない請求、何のサブスクか調べる方法',
+    description:
+      'クレカ明細の「NETFLIX COM」「GOOGLE PLAY JAPAN」等の見慣れない表記が何のサブスクか、実際の表記例から調べる方法。App Store/Google Play経由の見え方や、表記不明サービスの確認手順もまとめた。',
+    published: '2026-07-13',
+    tags: ['身に覚えのない請求', 'クレジットカード明細', 'サブスク調べ方', '加盟店記述子', '解約手順'],
+    body: [
+      {
+        type: 'p',
+        text: 'クレジットカードの明細をなんとなく見返していたら、見覚えのない請求が並んでいて、一瞬「え、これ何」と手が止まる——そんな経験、たぶん一度はあるはず。「GOOGLE PLAY JAPAN 1,280円」とか「NETFLIX COM 1,590円」とか、自分が申し込んだはずのサービス名とはぜんぜん違う文字列が並ぶので、最初は不正利用を疑ってしまう。実はこれ、詐欺でも何でもなく、サブスクの明細表記がサービス名と一致していないだけ、というケースが多い。',
+      },
+      {
+        type: 'p',
+        text: '明細に載る店名（加盟店記述子）は、サービスの提供元ではなくカード会社や決済代行会社側が決めていることが多い。だから同じNetflixでも、カード会社によって表記が微妙に違うし、契約した経路（Webから直接／iPhoneのApp Store経由／AndroidのGoogle Play経由）によっても文字列がまったく別物になる。まずは自分の請求が、身に覚えのあるサービスと一致しないか、以下と照らし合わせてみてほしい。',
+      },
+      { type: 'h2', text: '動画配信サービス' },
+      {
+        type: 'ul',
+        items: [
+          '<strong>Netflix</strong>：「NETFLIX COM」「NETFLIX.COM」といった表記が代表的。半角スペース区切りかドット区切りかはカード会社によって違う。<a href="/service/netflix">Netflixの解約手順</a>',
+          '<strong>Disney+</strong>：ドコモ経由でdアカウントに登録したカードで契約している場合は「ディズニープラス（ドコモ課金）」という表記になる。直接disneyplus.comで契約した場合の表記は確認が取れなかったので、公式サイトの支払い履歴で照合するのが確実。<a href="/service/disney-plus">Disney+の解約手順</a>',
+          '<strong>Hulu</strong>：直接カード登録した場合の明細表記は確認が取れなかった。hulu.jpにログインして契約状況を照合するのが早い。<a href="/service/hulu">Huluの解約手順</a>',
+          '<strong>YouTube Premium</strong>：「GOOGLE PLAY JAPAN」という表記で出ることが多く、最近は「グーグル・ペーメント・ジャパン」というカタカナ表記の報告も出てきている。YouTube専用の表記ではなくGoogle Play購入全般に共通するので、月額1,280円前後という金額とあわせて確認するのが安全。<a href="/service/youtube-premium">YouTube Premiumの解約手順</a>',
+          '<strong>U-NEXT</strong>：「ユーネクストサービス利用料」「U-NEXT SERVICE」といった表記が代表的（カナ表記で「ユーネクストシヨウリョウ」となる場合もある）。決済直後の与信段階では決済代行会社名の「SP.LINKS」表示になることがあるが、請求が確定すると正式な表記に切り替わる。<a href="/service/u-next">U-NEXTの解約手順</a>',
+        ],
+      },
+      { type: 'h2', text: '音楽・AIツール' },
+      {
+        type: 'ul',
+        items: [
+          '<strong>Spotify</strong>：「SPOTIFY STOCKHOLM」のように本社所在地（スウェーデン）を示す文字列が付くことが多い。<a href="/service/spotify">Spotifyの解約手順</a>',
+          '<strong>ChatGPT Plus</strong>：「OPENAI」を含む表記（「OPENAI *CHATGPT SUBSCR」など）が中心。<a href="/service/chatgpt-plus">ChatGPT Plusの解約手順</a>',
+          '<strong>Claude Pro</strong>：「ANTHROPIC」という表記で出るのが基本。<a href="/service/claude-pro">Claude Proの解約手順</a>',
+        ],
+      },
+      { type: 'h2', text: 'そのほかよく見かける表記' },
+      {
+        type: 'ul',
+        items: [
+          '<strong>Amazon プライム</strong>：「Amazonプライム会費」「アマゾンプライムカイヒ」といった表記が代表的。JCB・エポスカードなど複数のカード会社が公式サイトで案内している表記で、カードによっては「AMAZON PRIME*」に英数字の参照コードが続く形になることもある。<a href="/service/amazon-prime">Amazon プライムの解約手順</a>',
+          '<strong>Nintendo Switch Online</strong>：「Nintendo」から始まる表記（ニンテンドーeショップ、Nintendo Storeなど）。<a href="/service/nintendo-switch-online">Nintendo Switch Onlineの解約手順</a>',
+          '<strong>Kindle Unlimited</strong>：「AMAZON DOWNLOADS」という表記が代表的。ただしKindle本の単発購入も同じ表記になるので、月額980円かどうかで判断するのが確実。<a href="/service/kindle-unlimited">Kindle Unlimitedの解約手順</a>',
+        ],
+      },
+      {
+        type: 'quote',
+        text: '同じサービスでも、カード発行会社・決済代行会社・契約した経路によって明細の表記は普通に変わる。「文字列が1文字でも違うから別物のはず」と決めつけず、金額と請求日を手がかりに、最終的にはサービス側のアカウント画面で契約状況を確認するのが一番確実。',
+      },
+      { type: 'h2', text: 'App Store・Google Play経由だとサービス名自体が出ないことも' },
+      {
+        type: 'p',
+        text: 'スマホのアプリ内課金で契約した場合、明細にはサービス名がまったく出ず、AppleやGoogleの請求としてまとめて表示されることが多い。iPhoneなら「設定→[自分の名前]→サブスクリプション」、Androidなら「Google Playアプリ→プロフィール→お支払いと定期購入→定期購入」から、実際に契約しているものを直接確認できる。ここを見れば、明細の文字列を推理するより早く答えが出ることも多い。',
+      },
+      { type: 'h2', text: '表記が確認できなかったサービス' },
+      {
+        type: 'p',
+        text: '<a href="/service/microsoft-365">Microsoft 365</a>、<a href="/service/adobe-cc">Adobe Creative Cloud</a>、<a href="/service/notion">Notion</a>、<a href="/service/github-copilot">GitHub Copilot</a>については、信頼できる明細表記の情報が見つからなかった。いずれも同じ会社の別サービス（Microsoft 365ならXbox・OneDriveなど、AdobeならAcrobatなど）と表記を共有しているため、文字列だけでは特定できない。無理に推測するより、各サービスのアプリやサイトにログインして契約中のプランを直接確認したほうが早い。',
+      },
+      {
+        type: 'p',
+        text: '見覚えのある請求の正体がわかったら、そのままにせず一度使う頻度を振り返ってみるのも悪くない。契約中のサブスクをまとめて洗い出したいときは、<a href="/tracker">サブスク棚卸しダッシュボード</a>に登録すると、今払っている固定費が一目で見える。',
+      },
+    ],
+    faq: [
+      {
+        q: '身に覚えのない請求は詐欺の可能性もある？',
+        a: 'まず金額と請求日を確認し、契約した記憶のあるサービスの月額と一致するか照らし合わせるのが最初の一歩。一致するサービスが見つからず、金額もバラバラで不審な場合は、詐欺利用の可能性もあるためカード会社に直接問い合わせて利用停止・再発行を相談したほうが安全。',
+      },
+      {
+        q: '同じサービスなのに人によって明細の表記が違うのはなぜ？',
+        a: '明細の店名（加盟店記述子）は、サービス提供元ではなくカード会社や決済代行会社側が管理しているケースが多いため。契約した経路（Web直接／App Store／Google Play）によっても表記が変わる。',
+      },
+      {
+        q: '明細を見ても該当サービスが分からない時はどうすればいい？',
+        a: '一番確実なのは各サービスに直接ログインして契約状況を確認すること。スマホアプリ経由ならiPhoneの「設定→サブスクリプション」、Androidの「Google Play→定期購入」からも、契約中のものが一覧で見られる。',
+      },
+    ],
+  },
 ];
 
 export const POST_BY_SLUG = Object.fromEntries(POSTS.map((p) => [p.slug, p]));
