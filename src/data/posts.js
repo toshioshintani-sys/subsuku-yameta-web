@@ -1367,6 +1367,7 @@ export const POSTS = [
           '<strong>Disney+</strong>：ドコモ経由でdアカウントに登録したカードで契約している場合は「ディズニープラス（ドコモ課金）」という表記になる。直接disneyplus.comで契約した場合の表記は確認が取れなかったので、公式サイトの支払い履歴で照合するのが確実。<a href="/service/disney-plus">Disney+の解約手順</a>',
           '<strong>Hulu</strong>：直接カード登録した場合の明細表記は確認が取れなかった。hulu.jpにログインして契約状況を照合するのが早い。<a href="/service/hulu">Huluの解約手順</a>',
           '<strong>YouTube Premium</strong>：「GOOGLE PLAY JAPAN」という表記で出ることが多く、最近は「グーグル・ペーメント・ジャパン」というカタカナ表記の報告も出てきている。YouTube専用の表記ではなくGoogle Play購入全般に共通するので、月額1,280円前後という金額とあわせて確認するのが安全。<a href="/service/youtube-premium">YouTube Premiumの解約手順</a>',
+          '<strong>U-NEXT</strong>：「ユーネクストサービス利用料」「U-NEXT SERVICE」といった表記が代表的（カナ表記で「ユーネクストシヨウリョウ」となる場合もある）。決済直後の与信段階では決済代行会社名の「SP.LINKS」表示になることがあるが、請求が確定すると正式な表記に切り替わる。<a href="/service/u-next">U-NEXTの解約手順</a>',
         ],
       },
       { type: 'h2', text: '音楽・AIツール' },
@@ -1382,6 +1383,7 @@ export const POSTS = [
       {
         type: 'ul',
         items: [
+          '<strong>Amazon プライム</strong>：「Amazonプライム会費」「アマゾンプライムカイヒ」といった表記が代表的。JCB・エポスカードなど複数のカード会社が公式サイトで案内している表記で、カードによっては「AMAZON PRIME*」に英数字の参照コードが続く形になることもある。<a href="/service/amazon-prime">Amazon プライムの解約手順</a>',
           '<strong>Nintendo Switch Online</strong>：「Nintendo」から始まる表記（ニンテンドーeショップ、Nintendo Storeなど）。<a href="/service/nintendo-switch-online">Nintendo Switch Onlineの解約手順</a>',
           '<strong>Kindle Unlimited</strong>：「AMAZON DOWNLOADS」という表記が代表的。ただしKindle本の単発購入も同じ表記になるので、月額980円かどうかで判断するのが確実。<a href="/service/kindle-unlimited">Kindle Unlimitedの解約手順</a>',
         ],
@@ -1398,7 +1400,7 @@ export const POSTS = [
       { type: 'h2', text: '表記が確認できなかったサービス' },
       {
         type: 'p',
-        text: '<a href="/service/amazon-prime">Amazon プライム</a>、<a href="/service/microsoft-365">Microsoft 365</a>、<a href="/service/adobe-cc">Adobe Creative Cloud</a>、<a href="/service/u-next">U-NEXT</a>、<a href="/service/notion">Notion</a>、<a href="/service/github-copilot">GitHub Copilot</a>については、信頼できる明細表記の情報が見つからなかった。無理に文字列で推測するより、各サービスのアプリやサイトにログインして契約中のプランを直接確認したほうが早い。',
+        text: '<a href="/service/microsoft-365">Microsoft 365</a>、<a href="/service/adobe-cc">Adobe Creative Cloud</a>、<a href="/service/notion">Notion</a>、<a href="/service/github-copilot">GitHub Copilot</a>については、信頼できる明細表記の情報が見つからなかった。いずれも同じ会社の別サービス（Microsoft 365ならXbox・OneDriveなど、AdobeならAcrobatなど）と表記を共有しているため、文字列だけでは特定できない。無理に推測するより、各サービスのアプリやサイトにログインして契約中のプランを直接確認したほうが早い。',
       },
       {
         type: 'p',
