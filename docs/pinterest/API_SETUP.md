@@ -3,6 +3,21 @@
 > 目的：ブラウザ自動化（画像アップロードのサンドボックスで詰まる）を捨て、**Pinterest API v5** でピンを自律投稿する。
 > 一度トークンを発行すれば、`post-pinterest.mjs` が20ピンを各ボードに投稿（ボードも自動作成）。以後はThreadsのように自律で回せる。
 
+## 🛑 現状（2026-07-14 確認）：本番投稿には使えない（Trialアクセスのまま）
+
+`https://developers.pinterest.com/apps/1582125/` で確認済み。**現在のアクセスレベル＝「Trialのアクセスが許可されました」**。
+発行できるトークンのスコープは読み取り系のみ（`pins:read, boards:read, user_accounts:read, ads:read, catalogs:read`）で、
+**`pins:write` / `boards:write` が含まれない**＝下記「3. 投稿する」を実行しても `HTTP 403 Apps with Trial access may not create Pins in production` で確実に失敗する（2026-07-08 に実測済み・`docs/lessons.md` 参照）。
+
+**Standardアクセスへのアップグレードには審査が必要**（`/apps/1582125/upgrade` で確認済み・実際のフォーム項目）：
+- **デモ動画（.mp4・2GB未満）必須** — 「アプリがPinterestユーザーを認証する仕組み」「ユーザーが使うPinterestの主な機能」を映すこと。ボイスオーバー任意
+- アプリ名・ビジネス名・ビジネスサイトURL・プライバシーポリシーURL・アプリの目的（自由記述）・使用目的/オーディエンス（チェックボックス）
+- **ビジネスサイトURL・プライバシーポリシーURLの入力欄が旧ドメイン `sabusuku.netlify.app` のまま**（現行は `sabusuku-yameta.com`）になっている点は提出前に要修正
+
+この審査は「自社アカウントへの投稿専用の内部スクリプト」というこのアプリの実態と噛み合っているとは限らない（Pinterestの審査項目はユーザー向け一般公開アプリを前提にした質問が多い＝ユーザー認証フロー・広告主/マーチャント/ユーザー等のオーディエンス選択）。動画撮影・審査提出は俊雄さんの原子操作（ORG運用モデル＝アカウント操作・法的身元に相当）。**Claude側だけでは完成できない**。
+
+再開する時は、上記チェックを済ませてから審査を提出し、承認後に「3. 投稿する」に進むこと。承認が下りない/見送る場合は、2026-07-08に実施した手動「Pin It」URL方式（`docs/pinterest/MANUAL_POST_CHECKLIST.md`）が引き続き唯一の投稿経路になる。
+
 ## 仕組み（前工程はすべて用意済み）
 - ピン画像は **公開URL** 化済み：`https://sabusuku-yameta.com/pins/pin-<key>.png`（`public/pins/`・deploy済）
 - ピンのタイトル/説明/リンク/ボードは `scripts/seo/pins-data.mjs`（画像生成と同じ単一ソース）
