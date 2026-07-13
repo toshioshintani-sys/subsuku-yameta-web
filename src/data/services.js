@@ -726,6 +726,145 @@ export const SERVICES = [
     note: '期間末まで利用可能。会社契約の場合は管理者経由。なお個人向けの新規サインアップは2026年4月以降停止中（既存ユーザーはプラン変更・解約は可）。解約すると再契約できない場合があるため、迷う場合はプラン変更（下位プラン）も検討を',
   },
   {
+    id: 'cursor',
+    name: 'Cursor',
+    category: 'software',
+    emoji: '💻',
+    domain: 'cursor.com',
+    cancelUrl: 'https://cursor.com/dashboard/billing',
+    renewalCheckUrl: 'https://cursor.com/dashboard/billing',
+    difficulty: 'easy',
+    steps: [
+      'ログイン後 cursor.com/dashboard/billing の「Billing」ページを開く',
+      '「Manage Subscription」をクリックしてStripeの請求ポータルへ',
+      '「Cancel Subscription」をクリックして確認（期間終了後、自動でHobby無料プランへ移行）',
+    ],
+    note: 'iOSアプリ経由で購読した場合はApple側の設定から解約が必要（上記のWeb手順は使えない）',
+  },
+  {
+    id: 'gemini-advanced',
+    name: 'Google AI Pro（旧 Gemini Advanced）',
+    category: 'software',
+    emoji: '✨',
+    domain: 'gemini.google.com',
+    cancelUrl: 'https://one.google.com/settings',
+    difficulty: 'easy',
+    steps: [
+      'Google One（one.google.com）にアクセスしてログイン',
+      '「設定」→「メンバーシップを解約」をクリック',
+      '確認画面で「メンバーシップを解約」をクリックして確定',
+    ],
+    note: '解約はGemini単体の画面ではなく、必ずGoogle Oneの「メンバーシップを解約」から行う',
+  },
+  {
+    id: 'google-workspace',
+    name: 'Google Workspace',
+    category: 'software',
+    emoji: '📧',
+    domain: 'workspace.google.com',
+    cancelUrl: 'https://admin.google.com/ac/billing/subscriptions',
+    difficulty: 'medium',
+    steps: [
+      '管理コンソール（admin.google.com）にログイン →「お支払い」→「サブスクリプション」を開く',
+      '対象のサブスクリプションを選択 →「その他」→「サブスクリプションをキャンセル」をクリック',
+      '解約理由を選んで続行 → 確認事項にチェックしメールアドレスを入力 →「サブスクリプションを解約する」をクリック',
+    ],
+    note: '解約後はWorkspaceデータが削除され復元不可。事前にデータのダウンロードが必要',
+  },
+  {
+    id: 'google-play-pass',
+    name: 'Google Play Pass',
+    category: 'game',
+    emoji: '🎮',
+    domain: 'play.google.com',
+    cancelUrl: 'https://play.google.com/store/account/subscriptions',
+    difficulty: 'easy',
+    steps: [
+      'Playストアアプリを開き、右上のプロフィールアイコン→「お支払いと定期購入」をタップ',
+      '「定期購入」→「Play Pass」を選択',
+      '「定期購入を解約」をタップし、画面の指示に従って完了',
+    ],
+    note: null,
+  },
+  {
+    id: 'youtube-music',
+    name: 'YouTube Music Premium（単体プラン）',
+    category: 'music',
+    emoji: '🎵',
+    domain: 'music.youtube.com',
+    cancelUrl: 'https://www.youtube.com/paid_memberships',
+    renewalCheckUrl: 'https://myaccount.google.com/subscriptions',
+    difficulty: 'easy',
+    steps: [
+      'youtube.com/paid_memberships にアクセスしてログイン',
+      '「メンバーシップの管理」→「無効にする」をクリック',
+      '解約理由を選択して「続行」→「解約」をクリックして完了',
+    ],
+    note: 'YouTube Premium（動画+音楽）とは別料金の単体プラン。App Store/Google Play経由の契約は各プラットフォーム側で解約',
+  },
+  {
+    id: 'perplexity-pro',
+    name: 'Perplexity Pro',
+    category: 'software',
+    emoji: '🔎',
+    domain: 'perplexity.ai',
+    cancelUrl: 'https://www.perplexity.ai/settings/account',
+    difficulty: 'easy',
+    steps: [
+      '設定（Settings）画面を開き、「Perplexity Pro」内の「Subscription」欄までスクロール',
+      '「Manage Subscription」をクリックしてプラン管理画面へ移動',
+      '「Cancel subscription」をクリックして解約完了（次の請求日から無料版に戻る）',
+    ],
+    note: 'ソフトバンク/Y!mobile経由の特典契約の場合は課金元が異なるため、キャリア側の手続きが必要',
+  },
+  {
+    id: 'midjourney',
+    name: 'Midjourney',
+    category: 'software',
+    emoji: '🎨',
+    domain: 'midjourney.com',
+    cancelUrl: 'https://www.midjourney.com/account',
+    renewalCheckUrl: 'https://www.midjourney.com/account',
+    difficulty: 'easy',
+    steps: [
+      'midjourney.com にログイン →「Manage Subscription」（購読管理）ページを開く',
+      'プラン詳細ページの「Cancel Plan」ボタンをクリック',
+      '確認ポップアップで「Confirm Cancellation」をクリックして解約完了（現在の請求サイクル終了まで利用可）',
+    ],
+    note: '解約はDiscordではなく公式サイト（midjourney.com）のアカウントページで行う。アップグレード/ダウングレード予約中は先に「Cancel Change」で取り消してから解約',
+  },
+  {
+    id: 'windsurf',
+    name: 'Windsurf（現Devin Desktop）',
+    category: 'software',
+    emoji: '🏄',
+    domain: 'windsurf.com',
+    cancelUrl: 'https://windsurf.com/subscription/manage-plan',
+    renewalCheckUrl: 'https://windsurf.com/subscription/manage-plan',
+    difficulty: 'easy',
+    steps: [
+      'windsurf.com/subscription/manage-plan にアクセスしてログイン',
+      'プラン管理画面で対象プランの「キャンセル」を選択',
+      '確認してキャンセル完了（請求期間終了まで利用可・その後Freeプランへ自動移行）',
+    ],
+    note: '2026年6月にブランドが「Devin Desktop」へ統合されたが、既存ユーザーの請求・解約導線はwindsurf.comのまま継続',
+  },
+  {
+    id: 'runway',
+    name: 'Runway',
+    category: 'software',
+    emoji: '🎬',
+    domain: 'runwayml.com',
+    cancelUrl: 'https://app.runwayml.com/settings/billing',
+    difficulty: 'easy',
+    steps: [
+      '右上のアバターアイコン →「Settings」→「Billing」（または直接 app.runwayml.com/settings/billing へ）',
+      '「Cancel Plan」をクリック',
+      '解約理由を選択して「Continue」で確定',
+    ],
+    note: null,
+  },
+  {
     id: 'niconico-premium',
     name: 'ニコニコ動画プレミアム',
     category: 'video',
@@ -1167,6 +1306,15 @@ export const PRICING = {
   'rakuten-tv': 0,           // 都度課金がメイン
   'chatgpt-plus': 3000,
   'claude-pro': 3000,
+  cursor: 3000,              // Pro $20/mo（1ドル=150円換算）
+  'gemini-advanced': 2900,   // Google AI Pro（5TB・Gemini使用量4倍）
+  'google-workspace': 800,   // Business Starter
+  'google-play-pass': 600,
+  'youtube-music': 1080,     // 個人プラン単体
+  'perplexity-pro': 3000,    // $20/mo（1ドル=150円換算）
+  midjourney: 4500,          // Standard $30/mo（1ドル=150円換算）
+  windsurf: 3000,            // Pro $20/mo（1ドル=150円換算）
+  runway: 2250,              // Standard $15/mo（1ドル=150円換算）
   evernote: 1100,
   audible: 1500,
   'rakuten-magazine': 418,
@@ -1238,6 +1386,7 @@ export const POPULARITY = {
   'line-music': 65,
   'rakuten-music': 50,
   'soundcloud-go': 35,
+  'youtube-music': 52,
 
   // ソフト・ツール
   'microsoft-365': 90,
@@ -1252,12 +1401,20 @@ export const POPULARITY = {
   'deepl-pro': 70,
   '1password': 65,
   evernote: 50,
+  cursor: 68,
+  'gemini-advanced': 75,
+  'google-workspace': 68,
+  'perplexity-pro': 55,
+  midjourney: 72,
+  windsurf: 45,
+  runway: 47,
 
   // ゲーム
   'nintendo-switch-online': 85,
   'playstation-plus': 80,
   'xbox-game-pass': 75,
   'discord-nitro': 50,
+  'google-play-pass': 30,
 
   // ニュース・読み放題
   'kindle-unlimited': 85,
@@ -1660,6 +1817,80 @@ export const PLANS = {
     ],
     howToCheck: 'Lemino →「マイページ」→「契約情報」で確認できます',
   },
+  cursor: {
+    plans: [
+      { name: 'Hobby', monthly: 0, note: '無料・クレジットカード登録不要・利用制限あり' },
+      { name: 'Pro', monthly: 3000, popular: true, note: '$20/mo。個人向け主力プラン' },
+      { name: 'Pro+', monthly: 9000, note: '$60/mo' },
+      { name: 'Ultra', monthly: 30000, note: '$200/mo' },
+    ],
+    howToCheck: 'cursor.com にログイン →「Settings」→「Billing」で確認できます',
+  },
+  'gemini-advanced': {
+    plans: [
+      { name: 'Google AI Plus', monthly: 725, note: '400GBストレージ・Gemini使用量2倍' },
+      { name: 'Google AI Pro', monthly: 2900, popular: true, note: '5TBストレージ・Gemini使用量4倍・YouTube Premium Lite付帯（旧Gemini Advanced相当）' },
+      { name: 'Google AI Ultra', monthly: 14500, note: '20TB〜ストレージ・Gemini使用量20倍・YouTube Premium個人プラン付帯' },
+    ],
+    howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
+  },
+  'google-workspace': {
+    plans: [
+      { name: 'Business Starter', monthly: 800, popular: true, note: '最安プラン。新規は最初3ヶ月50%オフ' },
+      { name: 'Business Standard', monthly: 1600, note: 'ストレージ2TB・録画機能・NotebookLM利用可' },
+      { name: 'Business Plus', monthly: 2500, note: 'ストレージ5TB・Vault・高度なセキュリティ' },
+    ],
+    howToCheck: '管理コンソール（admin.google.com）→「お支払い」→「サブスクリプション」で確認できます',
+  },
+  'google-play-pass': {
+    plans: [
+      { name: '月額プラン', monthly: 600, popular: true, note: '初回1ヶ月無料トライアルあり' },
+      { name: '年額プラン', monthly: 450, yearly: 5400, note: '年払いで月額換算450円相当' },
+    ],
+    howToCheck: 'Playストアアプリ →「お支払いと定期購入」→「定期購入」で確認できます',
+  },
+  'youtube-music': {
+    plans: [
+      { name: '個人', monthly: 1080, popular: true, note: '初月無料トライアルあり' },
+      { name: 'ファミリー', monthly: 1680, note: '家族5名まで追加可能' },
+      { name: '学生', monthly: 580, note: '学生認証が必要・毎年更新' },
+    ],
+    howToCheck: 'youtube.com/paid_memberships で確認できます',
+  },
+  'perplexity-pro': {
+    plans: [
+      { name: '月払い', monthly: 3000, note: '$20/月' },
+      { name: '年払い', monthly: 2500, yearly: 30000, popular: true, note: '$200/年（月あたり約$16.67）' },
+    ],
+    howToCheck: 'perplexity.ai →「Settings」→「Perplexity Pro」で確認できます',
+  },
+  midjourney: {
+    plans: [
+      { name: 'Basic', monthly: 1500, yearly: 14400, note: '$10/月、年払い$96/年' },
+      { name: 'Standard', monthly: 4500, yearly: 43200, popular: true, note: '$30/月、年払い$288/年。コミュニティで最も選ばれる定番プラン' },
+      { name: 'Pro', monthly: 9000, yearly: 86400, note: '$60/月、年払い$576/年' },
+      { name: 'Mega', monthly: 18000, yearly: 172800, note: '$120/月、年払い$1,152/年' },
+    ],
+    howToCheck: 'midjourney.com →「Manage Subscription」で確認できます',
+  },
+  windsurf: {
+    plans: [
+      { name: 'Free', monthly: 0, note: '軽量クオータ・限定モデル' },
+      { name: 'Pro', monthly: 3000, popular: true, note: '$20/月' },
+      { name: 'Max', monthly: 30000, note: '$200/月' },
+      { name: 'Teams', monthly: 12000, note: '$80/月ベース＋$40/月/席' },
+    ],
+    howToCheck: 'windsurf.com/subscription/manage-plan で確認できます',
+  },
+  runway: {
+    plans: [
+      { name: 'Free', monthly: 0, note: '125クレジット（買い切り・一回限り）' },
+      { name: 'Standard', monthly: 2250, yearly: 21600, popular: true, note: '$15/月、年払い$12/月' },
+      { name: 'Pro', monthly: 5250, yearly: 50400, note: '$35/月、年払い$28/月' },
+      { name: 'Max', monthly: 14250, yearly: 136800, note: '$95/月、年払い$76/月' },
+    ],
+    howToCheck: 'app.runwayml.com →「Settings」→「Billing」で確認できます',
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -1677,6 +1908,11 @@ const USD_JPY_PREV = 150;
 export const USD_PRICED = {
   'chatgpt-plus': 20,
   'claude-pro': 20,
+  cursor: 20,
+  'perplexity-pro': 20,
+  midjourney: 30,
+  windsurf: 20,
+  runway: 15,
 };
 for (const [id] of Object.entries(USD_PRICED)) {
   const adjust = (yen) => Math.round((yen * USD_JPY) / USD_JPY_PREV);

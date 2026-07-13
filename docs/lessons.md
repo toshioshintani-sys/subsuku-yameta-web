@@ -1840,6 +1840,25 @@ URLと表示内容が変わっても、Reactは同じ位置・同じコンポー
 
 ---
 
+## 2026-07-13 ★★★ Google系・AIツール9サービス追加：`USD_PRICED`為替自動調整の仕組みを見落とさず後付け登録
+
+### 発見
+- 俊雄さんの指摘（「Google系がほぼ無い」「CursorやGeminiが無い」）を受け、services.jsの実サービスIDを棚卸ししたところ、Google系はyoutube-premium/google-oneの2件のみ、Cursor/Geminiは0件だった。9サービス（cursor, gemini-advanced, google-workspace, google-play-pass, youtube-music, perplexity-pro, midjourney, windsurf, runway）をResearch→Verifyの2段Workflowで追加（反証0件・windsurfのみfound:falseの内部矛盾を検証エージェントが是正）。
+- **`USD_PRICED`辞書の存在を見落としかけた**：services.jsには「$建てサービスは USD_PRICED に {id: USD月額} を登録すると、為替レート変動時（`USD_JPY`定数を書き換えるだけ）にPRICING/PLANSの円価格が自動で比例調整される」という既存の仕組みがあった（chatgpt-plus/claude-proが登録済み）。新規のUSD建て5サービス（cursor/perplexity-pro/midjourney/windsurf/runway）をこの辞書に登録し忘れると、為替が動いた時にこの5件だけ更新から取り残される「サイレントな部分的陳腐化」が発生するところだった。SERVICES/PRICING/POPULARITY/PLANSの4箇所を埋めて満足せず、コード全体をgrepして「同種の既存サービスが他に触れている箇所」を洗い出したことで発見。
+- **windsurf周りの実態変化**：2026-06-02にCognition Labsが「Windsurf」ブランドを「Devin Desktop」へ正式統合していた。調査エージェントは律儀にfound:falseとしたが、検証エージェントが「解約導線・価格・手順はすべて実在し生きている、単にブランド名が変わっただけ」と是正。ブランド消滅とサービス終了は別物、という区別を機械的に見抜けた好例。
+- **既存`google-one`のPLANSに「AIプレミアム（2TB+Gemini Advanced）月2,900円」という項目が既にあった**：今回リサーチした最新情報（Google AI Pro=5TB・月2,900円）と矛盾する古いデータ（恐らく旧ティア構成の名残）。今回は新規`gemini-advanced`サービスとして別立てし、既存google-oneのこの古い項目は触っていない（スコープ外・別タスクとして残存）。
+
+### なぜ重要か
+1. **新規サービス追加は「4つのdictに書けば終わり」ではなく、既存サービスが触れている全ての仕組み（為替自動調整・PRICE_HISTORY・EXTENDED_CONTENT等）を横断的にgrepしてから機能要否を判断する**必要がある。今回はUSD_PRICEDを見つけられたので事なきを得たが、見落としたまま公開していたら「なぜかCursorだけ為替更新されない」という気づきにくいバグになっていた。
+2. **ブランド名変更とサービス終了を混同しない**：AIエージェントの調査結果でfound:falseが出ても、鵜呑みにせず「本当に契約できない/解約できないのか、それとも名前が変わっただけか」を反証エージェントに再確認させる価値がある（windsurfのケース）。
+3. **既存データとの矛盾を発見したら、その場で直さず記録して次のタスクに回す判断も正しい**：google-oneの古いAIプレミアム項目を今回のスコープで無理に直さなかったのは、「一括変更」を避けたい今回のタスク範囲（新規追加のみ）を守るため。ただし次に価格調査をする時のために記録は残す。
+
+### 永続化
+- `src/data/services.js`（9サービス追加・`feature/add-google-ai-tool-services`ブランチ）。`USD_PRICED`に5件追加登録済み。
+- 未着手の関連課題：`google-one`のPLANSにある古い「AIプレミアム」項目（2TB表記）と新設`gemini-advanced`（5TB表記）の整合性確認・要すり合わせ。
+
+---
+
 ## 2026-07-12 ★★★ 「不明」6件を切り口を変えて再調査→2件（amazon-prime・u-next）が独立2ソースで確定・4件は再現性のある「不明」
 
 ### 発見
