@@ -1720,9 +1720,8 @@ export const PLANS = {
     plans: [
       { name: 'ベーシック（100GB）', monthly: 250, popular: true, yearly: 2500 },
       { name: 'プレミアム（2TB）', monthly: 1300, yearly: 13000 },
-      { name: 'AI プレミアム（2TB + Gemini Advanced）', monthly: 2900 },
     ],
-    howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
+    howToCheck: 'one.google.com にログインして「会員情報」で確認できます（Gemini込みの上位プランは「Google AI Pro」を参照）',
   },
   audible: {
     plans: [
