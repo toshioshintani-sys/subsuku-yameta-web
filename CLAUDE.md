@@ -71,7 +71,7 @@
 - `/news` 新サービスニュース（Phase 4 予定）
 
 ### 収益モデル：
-- Google AdSense（控えめ配置）
+- Google AdSense（控えめ配置）**※2026-07-15休眠中**（3回連続不承認・再開トリガーは`docs/NOT_DOING.md`参照。コードは温存）
 - アフィリエイト：A8.net / もしもアフィリエイト / Amazon アソシエイト / 楽天アフィリエイト / **バリューコマース（v2.0 新規）**
 - 実装フレームワーク：BAE（Behavioral Affiliate Engine、`docs/AFFILIATE_DESIGN_PRINCIPLES.md` 参照）
 

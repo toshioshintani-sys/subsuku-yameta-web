@@ -52,6 +52,46 @@
   font-weight: 700;
 }
 
+.ruleCard {
+  margin: 0 0 22px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-2);
+  text-align: left;
+}
+
+.ruleTitle {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.ruleList {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  color: var(--text-sub);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.ruleCriterion {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text-sub);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.ruleCriterion strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--accent-text);
+  font-size: 12px;
+}
+
 .startBtn,
 .againBtn {
   display: inline-block;
@@ -118,7 +158,14 @@
   font-size: 20px;
   font-weight: 800;
   color: var(--text);
+  margin: 0 0 6px;
+}
+
+.question {
   margin: 0 0 16px;
+  color: var(--text-sub);
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* 事実カード */
