@@ -12,10 +12,26 @@
   padding: 8px 0 20px;
 }
 
-.heroMascot {
+.heroMascotWrap {
   flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.heroMascot {
   width: 92px;
   height: 92px;
+}
+
+.heroMascotQuote {
+  font-size: 11px;
+  color: var(--text-sub);
+  text-align: center;
+  line-height: 1.35;
+  max-width: 104px;
+  margin: 0;
 }
 
 .heroText {
@@ -329,6 +345,9 @@
   .heroMascot {
     width: 64px;
     height: 64px;
+  }
+  .heroMascotQuote {
+    display: none;
   }
   .scrollHint {
     display: block;

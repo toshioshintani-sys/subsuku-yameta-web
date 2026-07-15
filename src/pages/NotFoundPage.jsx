@@ -13,8 +13,9 @@ export default function NotFoundPage() {
         width="160"
         height="160"
       />
+      <p className={styles.notFoundQuote}>「おや、道に迷いましたね。このページも“解約”されちゃったのかも」</p>
       <div className={styles.notFoundCode}>404</div>
-      <p className={styles.notFoundText}>道に迷っちゃいました。お探しのページは見つかりませんでした。</p>
+      <p className={styles.notFoundText}>お探しのページは見つかりませんでした。</p>
       <div className={styles.notFoundActions}>
         <Link to="/" className={styles.backLink}>← トップに戻る</Link>
         <Link to="/discover" className={styles.backLink}>サブスクを探す</Link>
