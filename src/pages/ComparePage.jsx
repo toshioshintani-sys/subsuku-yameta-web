@@ -76,14 +76,16 @@ export default function ComparePage() {
       />
 
       <header className={styles.hero}>
-        <img
-          src="/assets/mascot/mascot-jito.svg"
-          alt=""
-          width="92"
-          height="92"
-          className={styles.heroMascot}
-          aria-hidden="true"
-        />
+        <div className={styles.heroMascotWrap}>
+          <img
+            src="/assets/mascot/mascot-jito.svg"
+            alt="キリさん"
+            width="92"
+            height="92"
+            className={styles.heroMascot}
+          />
+          <p className={styles.heroMascotQuote}>知ってる会社ほど、見直す価値があったり</p>
+        </div>
         <div className={styles.heroText}>
           <p className={styles.kicker}>解約方法 一覧・比較</p>
           <h1 className={styles.title}>サブスク{SERVICES.length}サービスの解約方法、1枚で見渡す</h1>

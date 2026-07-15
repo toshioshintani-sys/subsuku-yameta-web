@@ -132,6 +132,13 @@
   display: block;
 }
 
+.notFoundQuote {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-sub);
+  margin: 0 0 4px;
+}
+
 .notFoundActions {
   display: flex;
   gap: 12px;
