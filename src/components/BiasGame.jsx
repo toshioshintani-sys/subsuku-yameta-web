@@ -26,19 +26,19 @@ function trackEvent(name, params) {
 function verdict(game, score, total) {
   if (score >= total) {
     return {
-      head: `${game.scoreLabel}が高い`,
-      body: 'その場の気持ちではなく「これからの損得」で判断できています。サブスク事業者が一番苦手なタイプです。',
+      head: '3問とも、条件に合う判断でした',
+      body: `「${game.term}」に流されず、書かれている条件を比べて選べています。`,
     };
   }
   if (score >= total - 1) {
     return {
-      head: '惜しい。あと一歩',
-      body: `1つだけ、${game.term}に引っ張られたかも。引き止めの言葉ではなく、これからの損得で見てみましょう。`,
+      head: '2問は、条件に合う判断でした',
+      body: `間違い探しではありません。迷った1問だけ解説を思い出せば、「${game.term}」を見抜く練習は十分です。`,
     };
   }
   return {
-    head: `${game.term}の罠にかかりやすいタイプ`,
-    body: `でも大丈夫。「${game.term}」というクセがあると知るだけで、次から見抜けます。サブスクの多くは、これであなたを引き止めています。`,
+    head: `${score}問、条件に合う判断でした`,
+    body: `これは性格診断ではありません。「${game.term}」という仕組みと判断基準を知るための練習です。点数で人を評価するものではありません。`,
   };
 }
 
@@ -85,11 +85,23 @@ export default function BiasGame({ game }) {
           あとで知る → この心のクセは「<strong>{game.term}</strong>」と呼ばれています
         </p>
         <p className={styles.lead}>{game.lead}</p>
+        <div className={styles.ruleCard}>
+          <p className={styles.ruleTitle}>遊び方</p>
+          <ol className={styles.ruleList}>
+            <li>3つの場面を読む</li>
+            <li>書かれた条件なら、どちらを選ぶか答える</li>
+            <li>回答後の解説で、判断の基準を確認する</li>
+          </ol>
+          <p className={styles.ruleCriterion}>
+            <strong>このゲームの判断基準</strong>
+            {game.lesson}
+          </p>
+        </div>
         <button type="button" className={styles.startBtn} onClick={start}>
-          はじめる（30秒）
+          3問やってみる
         </button>
         <p className={styles.note}>
-          ※ あなたを誘導するゲームではありません。逆に、サブスクがあなたに使う"クセ"を見抜く練習です。
+          正解数で性格を診断するゲームではありません。条件を比べる練習です。
         </p>
       </div>
     );
@@ -102,7 +114,7 @@ export default function BiasGame({ game }) {
       <div className={styles.game}>
         <div className={styles.badge}>結果</div>
         <div className={styles.scoreWrap}>
-          <span className={styles.scoreLabel}>{game.scoreLabel}</span>
+          <span className={styles.scoreLabel}>条件に合う判断ができた数</span>
           <span className={styles.scoreValue}>
             {score}
             <span className={styles.scoreMax}> / {total}</span>
@@ -161,6 +173,7 @@ export default function BiasGame({ game }) {
       </div>
 
       <h3 className={styles.scenarioTitle}>{sc.title}</h3>
+      <p className={styles.question}>この条件なら、あなたはどちらを選びますか？</p>
 
       <div className={styles.facts}>
         {sc.facts.map((f, i) => (
@@ -184,9 +197,9 @@ export default function BiasGame({ game }) {
       ) : (
         <div className={`${styles.reveal} ${correct ? styles.revealOk : styles.revealNg}`}>
           <p className={styles.revealHead}>
-            {correct ? '◎ これからの損得で判断できました' : '△ その場の気持ちに引っ張られたかも'}
+            {correct ? 'この条件では、その選び方で合っています' : 'この条件では、もう一方が合っています'}
             <span className={styles.revealAnswer}>
-              合理的なのは「{game.choices.find((c) => c.key === sc.rational)?.label}」
+              判断：{game.choices.find((c) => c.key === sc.rational)?.label}
             </span>
           </p>
           <p className={styles.revealText}>{sc.explain}</p>

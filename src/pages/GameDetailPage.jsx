@@ -49,7 +49,7 @@ export default function GameDetailPage() {
         </nav>
 
         <section className={styles.gameSection} aria-label={game.headline}>
-          <BiasGame game={game} />
+          <BiasGame key={game.id} game={game} />
         </section>
 
         <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_GAMES || import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
@@ -68,7 +68,7 @@ export default function GameDetailPage() {
               <li key={g.id} className={styles.upcomingItem}>
                 <Link to={`/games/${g.id}`} className={styles.upcomingLink}>
                   <span className={styles.upcomingDesc}>{g.headline}</span>
-                  <span className={styles.upcomingName}>＝行動経済学でいう「{g.term}」　遊ぶ →</span>
+                  <span className={styles.upcomingName}>＝行動経済学でいう「{g.term}」 遊ぶ →</span>
                 </Link>
               </li>
             ))}

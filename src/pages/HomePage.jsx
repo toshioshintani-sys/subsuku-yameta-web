@@ -3,7 +3,6 @@ import { Gamepad2, Wallet, Armchair, Gift, SquareCheck, Dumbbell, Columns3 } fro
 import { SERVICES } from '../data/services';
 import { BIAS_GAMES } from '../data/biasGames';
 import Seo from '../components/Seo';
-import SavingsGameLauncher from '../components/SavingsGameLauncher';
 import HeroSearch from '../components/HeroSearch';
 import CostAnchorCard from '../components/CostAnchorCard';
 import EasyWins from '../components/EasyWins';
@@ -81,7 +80,6 @@ export default function HomePage() {
           <h2 className={styles.playTitle}>ちょっと息抜き</h2>
           <p className={styles.playLead}>解約の合間に。遊びながら、固定費との距離感をつかむ。</p>
           <div className={styles.playLayout}>
-            <SavingsGameLauncher />
             <div className={styles.gameMiniWrap}>
               <p className={styles.gameMiniHead}>
                 <Gamepad2 size={15} strokeWidth={1.75} aria-hidden="true" />
