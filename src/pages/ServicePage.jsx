@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import {
   SERVICES,
   ALTERNATIVES,
+  BUYOUT_ALTERNATIVES,
   EXTENDED_CONTENT,
   PRICING,
   getDefaultMonthly,
@@ -19,6 +20,7 @@ import {
   detectAsp,
   REVIEW_MODE,
 } from '../data/affiliates';
+import { POST_BY_SLUG } from '../data/posts';
 import {
   Scissors,
   AlertTriangle,
@@ -128,6 +130,10 @@ export default function ServicePage() {
 
   // 同カテゴリのサービスを最大3件
   const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
+
+  // C層（整理層）：買い切り・単発購入への切り替え提案（該当するサービスのみ）
+  const buyout = service ? BUYOUT_ALTERNATIVES[service.id] || null : null;
+  const buyoutArticle = buyout?.articleSlug ? POST_BY_SLUG[buyout.articleSlug] || null : null;
 
   // 解約後の選択肢
   const alternatives = useMemo(() => {
@@ -520,6 +526,90 @@ export default function ServicePage() {
                 )
               ))}
             </div>
+            <p className={styles.altDisclosure}>
+              掲載順位は提携の有無や報酬で決まりません。詳細は
+              <Link to="/disclosure">収益開示</Link>をご覧ください。
+            </p>
+          </section>
+        )}
+
+        {/* 買い切り・単発購入への切り替え（C層・BAE §6/§11・該当するサービスのみ表示） */}
+        {buyout && (
+          <section className={styles.alternatives}>
+            <div className={styles.altHeader}>
+              <h2 className={styles.altTitle}>単発購入・買い切りに切り替えるなら</h2>
+              {!REVIEW_MODE && (
+                <span className={styles.prLabel} aria-label="一部のリンクはアフィリエイトです">PR</span>
+              )}
+            </div>
+            <p className={styles.altLead}>
+              継続課金をやめて、<strong>一度の購入で完結させる</strong>という選択肢もあります。
+              使い方によっては合わないこともあるので、デメリットもあわせて書いておきます。
+            </p>
+            {buyoutArticle ? (
+              <div className={styles.altGrid}>
+                <Link to={`/blog/${buyoutArticle.slug}`} className={styles.altCard}>
+                  <div className={styles.altCardTop}>
+                    <span className={styles.altCardExternalIcon}>📄</span>
+                    <span className={styles.altCardName}>{buyout.label}</span>
+                  </div>
+                  <p className={styles.altCardReason}>{buyoutArticle.description}</p>
+                  <span className={styles.altCardArrow}>損益分岐と一緒に読む →</span>
+                </Link>
+              </div>
+            ) : (
+              <>
+                <div className={styles.altGrid}>
+                  <a
+                    href={buildAmazonSearchUrl(buyout.query)}
+                    target="_blank"
+                    rel={REVIEW_MODE ? 'noopener noreferrer' : 'sponsored noopener noreferrer'}
+                    className={styles.altCard}
+                    onClick={() =>
+                      trackAffiliateClick({
+                        asp: 'amazon',
+                        service: service.id,
+                        placement: 'service_page_bottom',
+                        position: 1,
+                        layer: 'C',
+                      })
+                    }
+                  >
+                    <div className={styles.altCardTop}>
+                      <span className={styles.altCardExternalIcon}>↗</span>
+                      <span className={styles.altCardName}>{buyout.label}（Amazonで探す）</span>
+                    </div>
+                    <p className={styles.altCardReason}>{buyout.reason}</p>
+                    <span className={styles.altCardArrow}>Amazonで探す ↗</span>
+                  </a>
+                  <a
+                    href={buildRakutenSearchUrl(buyout.query)}
+                    target="_blank"
+                    rel={REVIEW_MODE ? 'noopener noreferrer' : 'sponsored noopener noreferrer'}
+                    className={styles.altCard}
+                    onClick={() =>
+                      trackAffiliateClick({
+                        asp: 'rakuten',
+                        service: service.id,
+                        placement: 'service_page_bottom',
+                        position: 2,
+                        layer: 'C',
+                      })
+                    }
+                  >
+                    <div className={styles.altCardTop}>
+                      <span className={styles.altCardExternalIcon}>↗</span>
+                      <span className={styles.altCardName}>{buyout.label}（楽天市場で探す）</span>
+                    </div>
+                    <p className={styles.altCardReason}>{buyout.reason}</p>
+                    <span className={styles.altCardArrow}>楽天市場で探す ↗</span>
+                  </a>
+                </div>
+                <p className={styles.altLead} style={{ marginTop: 10, marginBottom: 0 }}>
+                  <strong>正直なデメリット：</strong>{buyout.caveat}
+                </p>
+              </>
+            )}
             <p className={styles.altDisclosure}>
               掲載順位は提携の有無や報酬で決まりません。詳細は
               <Link to="/disclosure">収益開示</Link>をご覧ください。
