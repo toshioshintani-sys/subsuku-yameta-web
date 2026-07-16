@@ -142,6 +142,43 @@
 .topCutBar strong {
   font-weight: 800;
 }
+.topCutLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 6px;
+  font-weight: 800;
+  color: var(--hm-gold-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.topCutLink svg {
+  margin-top: 0;
+}
+
+/* 折りたたみ招待状態（既定）の展開ボタン */
+.teaserBtn {
+  margin-top: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  border: 1px solid var(--hm-card-border);
+  border-radius: 12px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  cursor: pointer;
+}
+.teaserBtn:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
 
 /* 6. サービス行（濃紺・ライブ） */
 .rows {

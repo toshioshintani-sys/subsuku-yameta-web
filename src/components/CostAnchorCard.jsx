@@ -1,15 +1,22 @@
 import { useMemo, useState } from 'react';
-import { Search, ChevronDown, Plus, Check, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Search, ChevronDown, Plus, Check, AlertTriangle, ArrowRight } from 'lucide-react';
 import ServiceIcon from './ServiceIcon';
 import { SERVICES, getPlans, getDefaultMonthly, getPopularity } from '../data/services';
+import { trackUiEvent } from '../data/analytics';
 import styles from './CostAnchorCard.module.css';
 
 const yen = (n) => '¥' + Math.round(n || 0).toLocaleString('ja-JP');
 
-// 固定費アンカー＋行動経済学ナッジ（design_handoff §5.3・最重要・ライブ）。
+// 固定費アンカー＋行動経済学ナッジ（design_handoff §5.3・ライブ）。
 // 状態は親（HomePage）の useCostCalculator から props で受ける。
 // ★合計は target を毎レンダー直接表示（rAF カウントアップに依存させない＝§6 のバグ回避）。
 // ※「社会的証明（今月◯人）」は最上位原則（誇大表現禁止）に反するため実装しない（俊雄さん 2.a）。
+//
+// ★折りたたみ招待型に変更（2026-07-16・6視点パネル判定）：
+// 7/11 の空スタート化以降、初訪問者に見えるのは「¥0」と入力促しだけの614pxの空箱で、
+// アンカリング・損失回避は入力完了まで一切発火していなかった（配置と機能のミスマッチ）。
+// 既定は1行の招待カードに圧縮し、タップで展開。機能・ロジックは一切削らない。
 export default function CostAnchorCard({
   period,
   setPeriod,
@@ -25,6 +32,7 @@ export default function CostAnchorCard({
   fiveYearText,
   topCut,
 }) {
+  const [open, setOpen] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [addQuery, setAddQuery] = useState('');
 
@@ -41,6 +49,28 @@ export default function CostAnchorCard({
   }, [allPaid, on, addQuery]);
 
   const suffix = period === 'year' ? '/年' : '/月';
+
+  // 折りたたみ状態（既定）：問いかけ＋展開ボタンだけの招待カード
+  // ※フック宣言より必ず後に置く（早期returnでフック順が変わるとReactが壊れる）
+  if (!open) {
+    return (
+      <div className={styles.card}>
+        <p className={styles.eyebrow}>ところで——</p>
+        <p className={styles.question}>自分の月額・年額、ちゃんと言えますか？</p>
+        <button
+          type="button"
+          className={styles.teaserBtn}
+          onClick={() => {
+            setOpen(true);
+            trackUiEvent('home_calc_open', {});
+          }}
+        >
+          3秒で計算してみる
+          <ChevronDown size={15} strokeWidth={2.2} aria-hidden="true" />
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.card}>
@@ -92,13 +122,22 @@ export default function CostAnchorCard({
         </div>
       )}
 
-      {/* 5. 事実提示（年額最大のものを可視化するだけ・解約するかどうかは本人が決める） */}
+      {/* 5. 事実提示（年額最大のものを可視化するだけ・解約するかどうかは本人が決める）
+          ＋解約手順への直接リンク（2026-07-16追加：棚卸し→行動への橋渡しが欠落していた） */}
       {topCut && (
         <div className={styles.topCutBar}>
           <Check size={14} strokeWidth={2.4} aria-hidden="true" />
           <span>
             いちばん金額が大きいのは<strong>「{topCut.name}」</strong>（
             <strong>年{topCut.annualText}</strong>）。
+            <Link
+              to={`/service/${topCut.id}`}
+              className={styles.topCutLink}
+              onClick={() => trackUiEvent('home_topcut_click', { service: topCut.id })}
+            >
+              解約方法を見る
+              <ArrowRight size={12} strokeWidth={2.2} aria-hidden="true" />
+            </Link>
           </span>
         </div>
       )}

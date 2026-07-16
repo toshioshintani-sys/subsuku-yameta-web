@@ -1,0 +1,129 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-family: var(--hm-font-head);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--hm-ink);
+}
+
+.count {
+  color: var(--hm-teal-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group {
+  background: var(--hm-card);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 15px;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary::after {
+  content: '＋';
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--hm-muted);
+  flex-shrink: 0;
+}
+
+.group[open] .summary::after {
+  content: '−';
+}
+
+.summaryLabel {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--hm-ink);
+}
+
+.summaryCount {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--hm-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hm-hairline);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  min-height: 44px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--hm-hairline);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.itemName {
+  flex: 1;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--hm-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemArrow {
+  color: var(--hm-muted);
+  flex-shrink: 0;
+}
+
+.seeAll {
+  display: block;
+  padding: 12px 14px;
+  min-height: 44px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  background: var(--hm-card);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+.seeAll:hover {
+  text-decoration: underline;
+}
