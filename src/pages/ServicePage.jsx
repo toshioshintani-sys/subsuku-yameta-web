@@ -30,7 +30,6 @@ import {
 import ServiceIcon from '../components/ServiceIcon';
 import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
-import AdSlot from '../components/AdSlot';
 import ShareButtons from '../components/ShareButtons';
 import RenewalReminderCard from '../components/RenewalReminderCard';
 import { SITE_URL } from '../config';
@@ -468,9 +467,6 @@ export default function ServicePage() {
           title={`${service.name}の解約方法｜サブスクやめた`}
           hashtags={['サブスクやめた', service.name.replace(/\s+/g, '')]}
         />
-
-        {/* 広告（解約手順が終わった直後の自然なブレイク。ない場合は何も描画しない） */}
-        <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         {/* 解約後の選択肢（記事末尾・BAE準拠：押し売り厳禁・PR表示・厳選3つまで） */}
         {alternatives.length > 0 && (

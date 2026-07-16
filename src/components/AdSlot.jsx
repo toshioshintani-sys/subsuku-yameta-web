@@ -5,6 +5,13 @@ import styles from './AdSlot.module.css';
 // VITE_ADSENSE_CLIENT （ca-pub-XXXX...）が未設定の場合は何も描画しない＝完全に無害
 // 各 AdSlot は slot プロパティで個別の data-ad-slot ID を渡す
 //
+// ⚠️ 現在どのページからも使われていない（2026-07-16）：
+//   AdSense休眠（2026-07-15・docs/NOT_DOING.md参照）に伴い、未承認のまま
+//   「広告」ラベル＋予約高さの空枠だけが全ページに出続けていたため、
+//   4ページ（Service/DiscoverGenre/BlogPost/GameDetail）から配置を撤去した。
+//   コンポーネント自体は再開トリガー（月間オーガニック1,000セッション＋記事30本）
+//   到達時に再配置できるよう温存している。
+//
 // 配置ポリシー（STRATEGY.md / AFFILIATE_DESIGN_PRINCIPLES.md §2-1・原則B 準拠）：
 //   - 解約導線を邪魔しない位置にだけ置く（解約 CTA の上には絶対置かない）
 //   - 1ページ最大1スロット。HomePage には置かない
