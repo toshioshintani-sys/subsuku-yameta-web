@@ -3,7 +3,6 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
-import AdSlot from '../components/AdSlot';
 import BiasGame from '../components/BiasGame';
 import { BIAS_GAME_BY_ID, BIAS_GAMES } from '../data/biasGames';
 import { SITE_URL } from '../config';
@@ -51,8 +50,6 @@ export default function GameDetailPage() {
         <section className={styles.gameSection} aria-label={game.headline}>
           <BiasGame key={game.id} game={game} />
         </section>
-
-        <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_GAMES || import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         <section className={styles.explainer}>
           <h2 className={styles.h2}>{game.explainerHead}</h2>

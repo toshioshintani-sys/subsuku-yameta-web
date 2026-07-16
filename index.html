@@ -23,15 +23,20 @@
       2026-06-13 有効化：審査が「準備中」から進まない原因が「コードが全てコメントアウト状態＝
       Google審査クローラから不可視」だったため。承認前は広告が出ないだけで無害。
       プリレンダ中は scripts/prerender.mjs の BLOCK 正規表現がリクエストを遮断（ポリシー順守）。
+
+      2026-07-16 ローダー再コメントアウト：AdSense休眠（3回連続不承認・docs/NOT_DOING.md）に伴い、
+      毎ページ約200KBのadsbygoogle.jsを広告ゼロのまま読み込む状態を解消。メタタグは無害なので残置。
+      審査を再開する時は下のscriptタグを戻すこと（AdSlot.jsxの再配置もセットで）。
     -->
     <meta name="google-adsense-account" content="ca-pub-0787387437486917" />
-    <!-- id は AdSlot.jsx の二重注入ガード（getElementById('adsense-script')）と整合させる -->
+    <!-- id は AdSlot.jsx の二重注入ガード（getElementById('adsense-script')）と整合させる
     <script
       id="adsense-script"
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0787387437486917"
       crossorigin="anonymous"
     ></script>
+    -->
 
     <title>サブスクやめた｜解約ページへ1クリックで飛べるサイト</title>
     <meta

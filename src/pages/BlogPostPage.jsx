@@ -4,7 +4,6 @@ import { POST_BY_SLUG, POSTS } from '../data/posts';
 import { detectAsp, trackAffiliateClick, sanitizeReviewHtml } from '../data/affiliates';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
-import AdSlot from '../components/AdSlot';
 import { SITE_URL } from '../config';
 import styles from './BlogPostPage.module.css';
 
@@ -155,9 +154,6 @@ export default function BlogPostPage() {
             </section>
           )}
         </article>
-
-        {/* 広告（記事を読み終えた自然なブレイク・解約導線より下・未設定なら非表示） */}
-        <AdSlot slot={import.meta.env.VITE_ADSENSE_SLOT_BLOG || import.meta.env.VITE_ADSENSE_SLOT_SERVICE} label="広告" />
 
         {/* シェア */}
         <ShareButtons
