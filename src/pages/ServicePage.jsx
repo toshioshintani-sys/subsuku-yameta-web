@@ -1,11 +1,9 @@
-import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   SERVICES,
   ALTERNATIVES,
   BUYOUT_ALTERNATIVES,
   EXTENDED_CONTENT,
-  PRICING,
   getDefaultMonthly,
   getPlans,
   getPlanCheckHint,
@@ -26,7 +24,6 @@ import {
   AlertTriangle,
   Lightbulb,
   BarChart3,
-  ArrowUpRight,
   ExternalLink as ExternalLinkIcon,
 } from 'lucide-react';
 import ServiceIcon from '../components/ServiceIcon';
@@ -67,11 +64,13 @@ export default function ServicePage() {
   const monthlyDisplay = service ? formatMonthlyRange(service.id) : '';
 
   // 構造化データ（HowTo + FAQPage + BreadcrumbList）
-  const jsonLd = useMemo(() => {
+  // ※手動useMemoはReact Compilerの自動メモ化と衝突して最適化がスキップされていたため撤去
+  //   （計算コストは小さく、メモ化はCompilerに任せる。2026-07-17 lint一掃）
+  const jsonLd = (() => {
     if (!service) return null;
     const list = [];
 
-    // 価格変更履歴の最新確認日（あれば dateModified に＝鮮度シグナル）。useMemo 内で算出し外部依存を増やさない。
+    // 価格変更履歴の最新確認日（あれば dateModified に＝鮮度シグナル）
     const ph = PRICE_HISTORY[service.id];
     const latestPriceDate = ph?.length ? [...ph].map((h) => h.date).sort().slice(-1)[0] : null;
 
@@ -126,7 +125,7 @@ export default function ServicePage() {
     });
 
     return list;
-  }, [service, extended]);
+  })();
 
   // 同カテゴリのサービスを最大3件
   const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
@@ -135,8 +134,8 @@ export default function ServicePage() {
   const buyout = service ? BUYOUT_ALTERNATIVES[service.id] || null : null;
   const buyoutArticle = buyout?.articleSlug ? POST_BY_SLUG[buyout.articleSlug] || null : null;
 
-  // 解約後の選択肢
-  const alternatives = useMemo(() => {
+  // 解約後の選択肢（手動useMemo撤去・メモ化はReact Compilerに任せる）
+  const alternatives = (() => {
     if (!service) return [];
     const raw = ALTERNATIVES[service.id] || [];
     return raw
@@ -164,7 +163,7 @@ export default function ServicePage() {
         };
       })
       .filter(Boolean);
-  }, [service]);
+  })();
 
   if (!service) {
     return (

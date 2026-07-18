@@ -15,17 +15,12 @@ const STORAGE_KEY = 'sabusuku-theme';
  * 暗所での視認性を確保するため accent カラー輪郭で光らせる。
  */
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('system');
-
-  // 初回マウント時：localStorage 読込
-  useEffect(() => {
+  // 初期値は localStorage から遅延初期化（マウント後の setState による再レンダーを避ける。
+  // main.jsx は createRoot（hydration なし）なのでプリレンダーHTMLとの不一致問題はない）
+  const [theme, setTheme] = useState(() => {
     const saved = typeof localStorage !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
-    if (saved === 'light' || saved === 'dark') {
-      setTheme(saved);
-    } else {
-      setTheme('system');
-    }
-  }, []);
+    return saved === 'light' || saved === 'dark' ? saved : 'system';
+  });
 
   // theme 変化を <html data-theme=""> に反映
   useEffect(() => {

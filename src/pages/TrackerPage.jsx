@@ -128,11 +128,6 @@ export default function TrackerPage() {
     });
   }, [state.lastUsed, state.plan]);
 
-  const selectedIds = useMemo(
-    () => Object.entries(state.selected).filter(([, v]) => v).map(([k]) => k),
-    [state.selected]
-  );
-
   const selectedItems = useMemo(
     () => enriched.filter((s) => state.selected[s.id]),
     [enriched, state.selected]
