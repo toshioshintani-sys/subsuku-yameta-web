@@ -58,7 +58,7 @@ import {
 } from 'lucide-react';
 
 // カテゴリ → アイコン
-export const CATEGORY_ICON = {
+const CATEGORY_ICON = {
   all: LayoutGrid,
   video: Tv,
   music: Music,
@@ -70,7 +70,7 @@ export const CATEGORY_ICON = {
 };
 
 // discover ジャンル → アイコン
-export const DISCOVER_ICON = {
+const DISCOVER_ICON = {
   flower: Flower2,
   'fashion-rental': Shirt,
   'frozen-meal': UtensilsCrossed,
@@ -82,7 +82,7 @@ export const DISCOVER_ICON = {
 };
 
 // UI 用途別エイリアス（意味で呼び出せるように）
-export const UI_ICON = {
+const UI_ICON = {
   cancel: Scissors,
   home: Home,
   catalog: LayoutGrid,

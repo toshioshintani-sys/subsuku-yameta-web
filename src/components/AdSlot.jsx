@@ -28,21 +28,19 @@ const CLIENT = import.meta.env.VITE_ADSENSE_CLIENT;
 export default function AdSlot({ slot, label = '広告' }) {
   const wrapRef = useRef(null);
   const pushedRef = useRef(false);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  // IntersectionObserver 非対応環境では最初から即ロード（effect内setStateを避ける）
+  const [shouldLoad, setShouldLoad] = useState(
+    () => typeof window !== 'undefined' && typeof IntersectionObserver === 'undefined'
+  );
 
   // ビューポート接近を検知して shouldLoad を立てる（描画 ≠ ロード）
   useEffect(() => {
     if (!CLIENT || !slot) return;
     if (typeof window === 'undefined') return; // SSR/プリレンダ時は何もしない
+    if (typeof IntersectionObserver === 'undefined') return; // 非対応環境は初期値で対応済み
 
     const el = wrapRef.current;
     if (!el) return;
-
-    // IntersectionObserver 非対応環境ではフォールバックで即ロード
-    if (typeof IntersectionObserver === 'undefined') {
-      setShouldLoad(true);
-      return;
-    }
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -81,7 +79,6 @@ export default function AdSlot({ slot, label = '広告' }) {
       pushedRef.current = true;
     } catch (err) {
       // 広告ブロッカーや初期化失敗時は静かに無視
-      // eslint-disable-next-line no-console
       console.debug('[AdSlot] adsbygoogle push skipped:', err?.message);
     }
   }, [shouldLoad, slot]);
