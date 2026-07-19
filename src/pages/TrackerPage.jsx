@@ -6,6 +6,7 @@ import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import styles from './TrackerPage.module.css';
 import { SITE_URL } from '../config';
+import { trackOfficialCancelClick } from '../utils/analytics';
 
 // 解約マネジメント・ダッシュボード
 // - ユーザーが契約中サブスクを選択（localStorage で永続化）
@@ -299,6 +300,14 @@ export default function TrackerPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={styles.recCancelBtn}
+                      onClick={() =>
+                        trackOfficialCancelClick({
+                          service: s.id,
+                          placement: 'tracker_recommendation',
+                          url: s.cancelUrl,
+                          difficulty: s.difficulty,
+                        })
+                      }
                     >
                       解約 ↗
                     </a>

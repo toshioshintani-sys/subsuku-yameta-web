@@ -5,6 +5,7 @@ import { SERVICES, CATEGORIES, getDefaultMonthly } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
 import { SITE_URL } from '../config';
+import { trackOfficialCancelClick } from '../utils/analytics';
 import styles from './ComparePage.module.css';
 
 // difficulty は「手順の多さ・導線の深さ」に基づく事実ラベル（優劣のランキングではない）。
@@ -157,7 +158,20 @@ export default function ComparePage() {
                   <td className={styles.price}>{monthly ? `¥${monthly.toLocaleString()}` : '—'}</td>
                   <td className={styles.note}>{s.note || '—'}</td>
                   <td>
-                    <a href={s.cancelUrl} target="_blank" rel="noopener noreferrer" className={styles.cancelLink}>
+                    <a
+                      href={s.cancelUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.cancelLink}
+                      onClick={() =>
+                        trackOfficialCancelClick({
+                          service: s.id,
+                          placement: 'compare_table',
+                          url: s.cancelUrl,
+                          difficulty: s.difficulty,
+                        })
+                      }
+                    >
                       解約ページ
                       <ExternalLink size={13} strokeWidth={2} aria-hidden="true" />
                     </a>

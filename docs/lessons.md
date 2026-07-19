@@ -1941,6 +1941,23 @@ URLと表示内容が変わっても、Reactは同じ位置・同じコンポー
 
 ---
 
+## 2026-07-19 ★5 コア価値は page_view ではなく「公式解約ページへ送れたか」で測る
+
+### 発見
+- GA4のSPA初期化と `affiliate_click` は存在したが、サイトの主目的である公式解約リンクのクリックがイベント化されていなかった。
+- 公式解約リンクは ServicePage だけでなく ComparePage と TrackerPage にもあり、画面ごとの個別実装だけでは計測漏れが起きる。
+- ホーム検索も表示・遷移だけで、検索成功・該当なしを評価できるイベントが無かった。
+
+### なぜ重要か
+PVや滞在時間だけでは「解約を助けられたか」を判断できない。`official_cancel_click` を最上位の価値指標、`service_search` をその手前の探索指標、`affiliate_click` を二次収益指標として分離すると、社会性と収益性を同じファネルで評価できる。
+
+### 永続化
+- `src/utils/analytics.js` に安全な共通送信関数と `official_cancel_click` / `service_search` を集約。
+- ServicePage・ComparePage・TrackerPage の全公式解約リンクから同じパラメータ体系（service / placement / position / layer / asp）で送信。
+- 検索語は明らかなメールアドレス・電話番号を `(redacted)` にし、GA4へ個人情報を送らない。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：

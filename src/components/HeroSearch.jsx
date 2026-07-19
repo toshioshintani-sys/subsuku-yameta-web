@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Search, ArrowRight, X } from 'lucide-react';
 import ServiceIcon from './ServiceIcon';
 import DifficultyBadge from './DifficultyBadge';
+import { trackServiceSearch } from '../utils/analytics';
 import styles from './HeroSearch.module.css';
 
 // ヒーロー＋検索（design_handoff §5.2）。
@@ -11,7 +12,33 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    if (searchResults[0]) navigate(`/service/${searchResults[0].id}`);
+    const selected = searchResults[0];
+    trackServiceSearch({
+      term: q,
+      resultCount: searchResults.length,
+      selectedService: selected?.id,
+      method: 'submit',
+      position: selected ? 1 : 0,
+    });
+    if (selected) navigate(`/service/${selected.id}`);
+  };
+
+  const trackResultSelection = (service, position) => {
+    trackServiceSearch({
+      term: q,
+      resultCount: searchResults.length,
+      selectedService: service.id,
+      method: 'result_click',
+      position,
+    });
+  };
+
+  const trackNoResultRequest = () => {
+    trackServiceSearch({
+      term: q,
+      resultCount: 0,
+      method: 'no_result_request',
+    });
   };
 
   const querying = q.trim().length > 0;
@@ -59,13 +86,18 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
         {querying ? (
           <div className={styles.results}>
             {searchResults.length === 0 ? (
-              <Link to="/contact" className={styles.empty}>
+              <Link to="/contact" className={styles.empty} onClick={trackNoResultRequest}>
                 <span>「{q.trim()}」は準備中。リクエスト</span>
                 <ArrowRight size={13} strokeWidth={1.9} aria-hidden="true" />
               </Link>
             ) : (
-              searchResults.map((s) => (
-                <Link key={s.id} to={`/service/${s.id}`} className={styles.resultRow}>
+              searchResults.map((s, i) => (
+                <Link
+                  key={s.id}
+                  to={`/service/${s.id}`}
+                  className={styles.resultRow}
+                  onClick={() => trackResultSelection(s, i + 1)}
+                >
                   <ServiceIcon
                     serviceId={s.id}
                     category={s.category}

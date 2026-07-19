@@ -1,3 +1,5 @@
+import { sendAnalyticsEvent } from '../utils/analytics';
+
 // アフィリエイトリンク統合（BAE: Behavioral Affiliate Engine）
 //
 // 設計原則：docs/AFFILIATE_DESIGN_PRINCIPLES.md
@@ -201,19 +203,13 @@ export function buildRakutenSearchUrl(query) {
  * asp='internal' で発火し、改修前後のB/C出口クリックをGA4で比較するための物差し（2026-06-12）。
  */
 export function trackAffiliateClick(params) {
-  if (typeof window === 'undefined') return;
-  if (typeof window.gtag !== 'function') return;
-  try {
-    window.gtag('event', 'affiliate_click', {
-      asp: params.asp || 'unknown',
-      service: params.service || 'unknown',
-      placement: params.placement || 'unknown',
-      position: params.position || 0,
-      layer: params.layer || 'unknown',
-    });
-  } catch {
-    // 失敗してもユーザー体験は阻害しない
-  }
+  return sendAnalyticsEvent('affiliate_click', {
+    asp: params.asp || 'unknown',
+    service: params.service || 'unknown',
+    placement: params.placement || 'unknown',
+    position: params.position || 0,
+    layer: params.layer || 'unknown',
+  });
 }
 
 // ブログ本文（posts.js）に直接埋め込まれた <a href="...a8mat=...·af.moshimo.com·hb.afl.rakuten..."> を
