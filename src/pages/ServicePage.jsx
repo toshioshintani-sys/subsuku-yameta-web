@@ -32,6 +32,7 @@ import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import RenewalReminderCard from '../components/RenewalReminderCard';
 import { SITE_URL } from '../config';
+import { trackOfficialCancelClick } from '../utils/analytics';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
@@ -227,6 +228,14 @@ export default function ServicePage() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.cancelBtn}
+            onClick={() =>
+              trackOfficialCancelClick({
+                service: service.id,
+                placement: 'service_page_primary',
+                url: service.cancelUrl,
+                difficulty: service.difficulty,
+              })
+            }
           >
             <Scissors size={18} strokeWidth={2} aria-hidden="true" />
             <span>{service.name}の解約ページを開く</span>
