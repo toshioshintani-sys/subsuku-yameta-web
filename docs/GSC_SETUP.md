@@ -2,9 +2,15 @@
 
 「サブスクやめた」を Google 検索に最速でインデックスさせるための設定手順。
 
+> **2026-07-20 更新**：本ドキュメントは 2026-05-22 時点（旧ドメイン `sabusuku.netlify.app`）の手順書として書かれたが、
+> 2026-06-21 に独自ドメイン `sabusuku-yameta.com` へ移行済み。第1段階（GSC サイト登録・所有権確認・sitemap 送信）は
+> **新ドメインで完了済み**（`docs/lessons.md` 2026-06-20 節：ドメインプロパティを Netlify DNS の TXT で検証→sitemap 送信成功114件→
+> 旧→新アドレス変更 active）。以下の第1段階は**完了済みの記録**として残す。第2段階以降は現行ドメインで未着手の場合は本手順のまま使える
+> （URL は `sabusuku-yameta.com` に読み替えること）。
+
 ---
 
-## 第1段階：GSC にサイト登録（必須・5分）
+## 第1段階：GSC にサイト登録（完了済み・記録）
 
 ### 1. Search Console にアクセス
 
@@ -12,39 +18,16 @@ https://search.google.com/search-console にログイン（toshio.shintani@gmail
 
 ### 2. プロパティを追加
 
-- 「プロパティを追加」→「**URL プレフィックス**」を選択
-- URL：`https://sabusuku.netlify.app/`
-- 「続行」
+- ~~URL プレフィックス `https://sabusuku.netlify.app/`~~ → **ドメインプロパティ `sabusuku-yameta.com`** で登録済み（DNS TXT検証・旧プロパティは資産引き継ぎのため残置）
 
 ### 3. 所有権確認
 
-「HTML タグ」方式が最も簡単：
-
-1. 表示される `<meta name="google-site-verification" content="..." />` の **content の値だけ** をコピー
-2. このリポジトリの `index.html` を開く
-3. 既に用意してあるコメント箇所に貼り付け：
-
-```html
-<!--
-  Google Search Console の所有権確認 meta タグはここに貼り付ける：
-  <meta name="google-site-verification" content="..." />
--->
-```
-
-の代わりに
-
-```html
-<meta name="google-site-verification" content="ここに content の値を貼る" />
-```
-
-4. git push → Netlify 自動デプロイ
-5. GSC で「確認」をクリック → 完了
+旧 URL プレフィックスプロパティは「HTML タグ」方式で確認済み（`public/googlef48b6b57fcb30d8a.html` は旧プロパティ用に温存）。新ドメインプロパティは DNS TXT レコードで確認済み。
 
 ### 4. sitemap 登録
 
-- GSC 左メニュー「サイトマップ」
-- 「新しいサイトマップの追加」に `sitemap.xml` と入力 → 送信
-- これで 82 URL が Google にインデックス申請される
+- ✅ **完了済み**：`sitemap.xml`（新ドメイン）を送信し、114 URL が正常に検出された（`docs/lessons.md` 2026-06-20 節）。
+- 新しいルート（サービス・記事・ジャンル追加時）は `vite-plugin-sitemap.js` の `buildRoutes()` が自動反映するので、再送信は不要。
 
 ---
 
@@ -114,7 +97,7 @@ public/a1b2c3d4e5f6g7h8i9j0.txt
 ### 4. Bing Webmaster Tools
 
 - https://www.bing.com/webmasters/ にアクセス
-- サイト追加：`https://sabusuku.netlify.app`
+- サイト追加：`https://sabusuku-yameta.com`
 - IndexNow オプションで「キー」を入力
 
 これで Bing にも自動 ping される。
@@ -162,7 +145,7 @@ GSC と同じく `sitemap.xml` を登録。
 
 ### sitemap.xml が GSC で「取得できませんでした」になる
 
-- `https://sabusuku.netlify.app/sitemap.xml` を直接ブラウザで開いて XML が返るか確認
+- `https://sabusuku-yameta.com/sitemap.xml` を直接ブラウザで開いて XML が返るか確認
 - 返らない場合は Netlify デプロイ失敗。`netlify.toml` の SPA リダイレクトが `/sitemap.xml` を `/index.html` に飛ばしていないか確認
 
 ### GitHub Actions で「rate limit」エラー
