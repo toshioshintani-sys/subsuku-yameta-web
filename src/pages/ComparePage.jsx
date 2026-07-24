@@ -146,7 +146,7 @@ export default function ComparePage() {
               return (
                 <tr key={s.id}>
                   <th scope="row" className={styles.thName}>
-                    <Link to={`/service/${s.id}`} className={styles.svcLink}>
+                    <Link to={`/service/${s.id}/`} className={styles.svcLink}>
                       <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={26} />
                       <span>{s.name}</span>
                     </Link>
@@ -175,7 +175,7 @@ export default function ComparePage() {
                       解約ページ
                       <ExternalLink size={13} strokeWidth={2} aria-hidden="true" />
                     </a>
-                    <Link to={`/service/${s.id}`} className={styles.stepsLink}>手順を見る</Link>
+                    <Link to={`/service/${s.id}/`} className={styles.stepsLink}>手順を見る</Link>
                   </td>
                 </tr>
               );
@@ -190,11 +190,11 @@ export default function ComparePage() {
       </p>
 
       <div className={styles.next}>
-        <Link to="/tracker" className={styles.nextCard}>
+        <Link to="/tracker/" className={styles.nextCard}>
           <span className={styles.nextTitle}>固定費の棚卸し →</span>
           <span className={styles.nextSub}>契約中サブスクの「これからの年額」を1分で可視化（登録不要）</span>
         </Link>
-        <Link to="/yamete-kau" className={styles.nextCard}>
+        <Link to="/yamete-kau/" className={styles.nextCard}>
           <span className={styles.nextTitle}>やめて買い切りで探す →</span>
           <span className={styles.nextSub}>月額をやめて単発購入で済ます。向く人・向かない人で正直に</span>
         </Link>

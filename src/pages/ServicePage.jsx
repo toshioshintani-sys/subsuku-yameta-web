@@ -146,7 +146,7 @@ export default function ServicePage() {
           if (!target) return null;
           return {
             kind: 'internal',
-            href: `/service/${target.id}`,
+            href: `/service/${target.id}/`,
             name: target.name,
             emoji: target.emoji,
             domain: target.domain,
@@ -192,7 +192,7 @@ export default function ServicePage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to={`/category/${service.category}`}>{CATEGORY_LABEL[service.category]}</Link>
+          <Link to={`/category/${service.category}/`}>{CATEGORY_LABEL[service.category]}</Link>
           <span> › </span>
           <span>{service.name}</span>
         </nav>
@@ -477,7 +477,7 @@ export default function ServicePage() {
 
         {/* シェア（他の困っている人へ） */}
         <ShareButtons
-          path={`/service/${service.id}`}
+          path={`/service/${service.id}/`}
           title={`${service.name}の解約方法｜サブスクやめた`}
           hashtags={['サブスクやめた', service.name.replace(/\s+/g, '')]}
         />
@@ -536,7 +536,7 @@ export default function ServicePage() {
             </div>
             <p className={styles.altDisclosure}>
               掲載順位は提携の有無や報酬で決まりません。詳細は
-              <Link to="/disclosure">収益開示</Link>をご覧ください。
+              <Link to="/disclosure/">収益開示</Link>をご覧ください。
             </p>
           </section>
         )}
@@ -556,7 +556,7 @@ export default function ServicePage() {
             </p>
             {buyoutArticle ? (
               <div className={styles.altGrid}>
-                <Link to={`/blog/${buyoutArticle.slug}`} className={styles.altCard}>
+                <Link to={`/blog/${buyoutArticle.slug}/`} className={styles.altCard}>
                   <div className={styles.altCardTop}>
                     <span className={styles.altCardExternalIcon}>📄</span>
                     <span className={styles.altCardName}>{buyout.label}</span>
@@ -620,13 +620,13 @@ export default function ServicePage() {
             )}
             <p className={styles.altDisclosure}>
               掲載順位は提携の有無や報酬で決まりません。詳細は
-              <Link to="/disclosure">収益開示</Link>をご覧ください。
+              <Link to="/disclosure/">収益開示</Link>をご覧ください。
             </p>
           </section>
         )}
 
         {/* サブスク棚卸しダッシュボードへの送客 */}
-        <Link to="/tracker" className={styles.trackerCta}>
+        <Link to="/tracker/" className={styles.trackerCta}>
           <div className={styles.trackerCtaIcon} aria-hidden="true">
             <BarChart3 size={28} strokeWidth={1.5} />
           </div>
@@ -644,7 +644,7 @@ export default function ServicePage() {
             </h2>
             <div className={styles.relatedGrid}>
               {related.map((s) => (
-                <Link to={`/service/${s.id}`} key={s.id} className={styles.relatedCard}>
+                <Link to={`/service/${s.id}/`} key={s.id} className={styles.relatedCard}>
                   <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={28} />
                   <span className={styles.relatedName}>{s.name}</span>
                   <span className={styles.relatedArrow}>→</span>

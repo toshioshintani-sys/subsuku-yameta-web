@@ -131,7 +131,7 @@ export default function CostAnchorCard({
             いちばん金額が大きいのは<strong>「{topCut.name}」</strong>（
             <strong>年{topCut.annualText}</strong>）。
             <Link
-              to={`/service/${topCut.id}`}
+              to={`/service/${topCut.id}/`}
               className={styles.topCutLink}
               onClick={() => trackUiEvent('home_topcut_click', { service: topCut.id })}
             >

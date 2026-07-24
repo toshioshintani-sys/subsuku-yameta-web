@@ -27,7 +27,7 @@ export default function GameDetailPage() {
     ];
   }, [game]);
 
-  if (!game) return <Navigate to="/games" replace />;
+  if (!game) return <Navigate to="/games/" replace />;
 
   const others = BIAS_GAMES.filter((g) => g.id !== game.id);
 
@@ -44,7 +44,7 @@ export default function GameDetailPage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to="/games">サブスク判断ゲーム</Link>
+          <Link to="/games/">サブスク判断ゲーム</Link>
         </nav>
 
         <section className={styles.gameSection} aria-label={game.headline}>
@@ -63,7 +63,7 @@ export default function GameDetailPage() {
           <ul className={styles.upcomingList}>
             {others.map((g) => (
               <li key={g.id} className={styles.upcomingItem}>
-                <Link to={`/games/${g.id}`} className={styles.upcomingLink}>
+                <Link to={`/games/${g.id}/`} className={styles.upcomingLink}>
                   <span className={styles.upcomingDesc}>{g.headline}</span>
                   <span className={styles.upcomingName}>＝行動経済学でいう「{g.term}」 遊ぶ →</span>
                 </Link>
@@ -73,12 +73,12 @@ export default function GameDetailPage() {
         </section>
 
         <ShareButtons
-          path={`/games/${game.id}`}
+          path={`/games/${game.id}/`}
           title={`${game.headline}｜サブスク判断ゲーム`}
           hashtags={['サブスクやめた', game.term, '行動経済学']}
         />
 
-        <Link to="/tracker" className={styles.trackerCta}>
+        <Link to="/tracker/" className={styles.trackerCta}>
           <div>
             <div className={styles.trackerCtaTitle}>遊んだら、実際のサブスクで試そう</div>
             <div className={styles.trackerCtaSub}>
@@ -87,7 +87,7 @@ export default function GameDetailPage() {
           </div>
         </Link>
 
-        <Link to="/games" className={styles.backLink}>← ゲーム一覧に戻る</Link>
+        <Link to="/games/" className={styles.backLink}>← ゲーム一覧に戻る</Link>
       </div>
     </div>
   );

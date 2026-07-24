@@ -106,7 +106,7 @@ export default function BlogPostPage() {
   }, [post]);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/blog/" replace />;
   }
 
   return (
@@ -122,7 +122,7 @@ export default function BlogPostPage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to="/blog">ブログ</Link>
+          <Link to="/blog/">ブログ</Link>
         </nav>
 
         <article className={styles.article}>
@@ -157,13 +157,13 @@ export default function BlogPostPage() {
 
         {/* シェア */}
         <ShareButtons
-          path={`/blog/${post.slug}`}
+          path={`/blog/${post.slug}/`}
           title={post.title}
           hashtags={['サブスクやめた', ...(post.tags || [])]}
         />
 
         {/* Tracker CTA */}
-        <Link to="/tracker" className={styles.cta}>
+        <Link to="/tracker/" className={styles.cta}>
           <div className={styles.ctaIcon}>📊</div>
           <div>
             <div className={styles.ctaTitle}>サブスクの棚卸しダッシュボード</div>
@@ -177,7 +177,7 @@ export default function BlogPostPage() {
             <ul className={styles.relatedList}>
               {related.map((r) => (
                 <li key={r.slug}>
-                  <Link to={`/blog/${r.slug}`} className={styles.relatedCard}>
+                  <Link to={`/blog/${r.slug}/`} className={styles.relatedCard}>
                     <span className={styles.relatedCardTitle}>{r.title}</span>
                     <span className={styles.relatedArrow}>→</span>
                   </Link>
@@ -187,7 +187,7 @@ export default function BlogPostPage() {
           </section>
         )}
 
-        <Link to="/blog" className={styles.backLink}>← ブログ一覧に戻る</Link>
+        <Link to="/blog/" className={styles.backLink}>← ブログ一覧に戻る</Link>
       </div>
     </div>
   );

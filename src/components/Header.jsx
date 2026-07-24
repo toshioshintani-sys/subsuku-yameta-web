@@ -9,11 +9,11 @@ import styles from './Header.module.css';
 // デスクトップ＝横一列のフルラベル／モバイル(≤768px)＝ハンバーガー→ドロワー（フルラベル縦並び）。
 // 横スクロール式はロゴと衝突し最後の項目が切れて美しくないため廃止（2026-06-13）。
 const NAV_ITEMS = [
-  { to: '/tracker', label: '固定費の棚卸し', Icon: ListChecks, aria: '固定費の棚卸し（契約中サブスクを年額で見る）' },
-  { to: '/discover', label: '乗り換え先を探す', Icon: LayoutGrid, aria: 'サブスク図鑑（乗り換え先を特徴と弱点つきで比較）' },
-  { to: '/yamete-kau', label: '買い切りで探す', Icon: ShoppingBag, aria: 'やめて買う（月額をやめて単発購入で済ます）' },
-  { to: '/blog', label: 'お役立ち記事', Icon: FileText, aria: '解約・乗り換えのお役立ち記事' },
-  { to: '/games', label: '判断ゲーム', Icon: Gamepad2, aria: 'サブスク判断ゲーム' },
+  { to: '/tracker/', label: '固定費の棚卸し', Icon: ListChecks, aria: '固定費の棚卸し（契約中サブスクを年額で見る）' },
+  { to: '/discover/', label: '乗り換え先を探す', Icon: LayoutGrid, aria: 'サブスク図鑑（乗り換え先を特徴と弱点つきで比較）' },
+  { to: '/yamete-kau/', label: '買い切りで探す', Icon: ShoppingBag, aria: 'やめて買う（月額をやめて単発購入で済ます）' },
+  { to: '/blog/', label: 'お役立ち記事', Icon: FileText, aria: '解約・乗り換えのお役立ち記事' },
+  { to: '/games/', label: '判断ゲーム', Icon: Gamepad2, aria: 'サブスク判断ゲーム' },
 ];
 
 export default function Header() {

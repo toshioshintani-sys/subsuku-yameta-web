@@ -149,8 +149,8 @@ export default function YameteKauPage() {
         </p>
         <p className={styles.safetyLinks}>
           ほかの選択肢も見るなら：
-          <Link to="/tracker">固定費の棚卸し</Link>・
-          <Link to="/discover">乗り換え先を探す</Link>
+          <Link to="/tracker/">固定費の棚卸し</Link>・
+          <Link to="/discover/">乗り換え先を探す</Link>
         </p>
       </aside>
     </article>

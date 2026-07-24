@@ -27,7 +27,7 @@ export default function BlogIndexPage() {
         <ul className={styles.list}>
           {POSTS.map((post) => (
             <li key={post.slug} className={styles.item}>
-              <Link to={`/blog/${post.slug}`} className={styles.card}>
+              <Link to={`/blog/${post.slug}/`} className={styles.card}>
                 <div className={styles.cardMeta}>
                   <span className={styles.date}>{post.published}</span>
                   {post.tags?.slice(0, 2).map((tag) => (

@@ -27,7 +27,7 @@ export default function ServiceRow({ service, rank, savingAnnual }) {
   const displaySaving = isMultiPlan ? minMonthly(plans) * 12 : savingAnnual;
   const showPrice = savingAnnual == null && monthly > 0;
   return (
-    <Link to={`/service/${service.id}`} className={styles.row}>
+    <Link to={`/service/${service.id}/`} className={styles.row}>
       {rank != null && <span className={styles.rank}>{rank}</span>}
       <ServiceIcon
         serviceId={service.id}

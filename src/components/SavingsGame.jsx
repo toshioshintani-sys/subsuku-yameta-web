@@ -294,7 +294,7 @@ export default function SavingsGame({ onClose }) {
                   <strong>{suggested.name}</strong>
                   <span className={styles.suggestionPrice}>{suggested.priceHint}</span>
                 </p>
-                <Link to="/yamete-kau" onClick={onClose} className={styles.suggestionLink}>
+                <Link to="/yamete-kau/" onClick={onClose} className={styles.suggestionLink}>
                   「やめて買う」をもっと見る →
                 </Link>
               </div>

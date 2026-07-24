@@ -57,14 +57,14 @@ export default function DisclosurePage() {
             当サイトは、行動経済学とユーザーインターフェースの研究知見をもとに、読者が本当に必要なサービスだけを選び取れる環境を提供することを目指しています。
           </p>
           <p>
-            「アフィリエイト導線が過剰だ」「掲載に違和感を覚えた」などのご意見は、<Link to="/contact">お問い合わせページ</Link>からお寄せください。検証のうえ、必要に応じて掲載内容を修正します。
+            「アフィリエイト導線が過剰だ」「掲載に違和感を覚えた」などのご意見は、<Link to="/contact/">お問い合わせページ</Link>からお寄せください。検証のうえ、必要に応じて掲載内容を修正します。
           </p>
 
           <h2>関連ページ</h2>
           <ul>
-            <li><Link to="/privacy">プライバシーポリシー</Link></li>
-            <li><Link to="/disclaimer">免責事項</Link></li>
-            <li><Link to="/contact">お問い合わせ</Link></li>
+            <li><Link to="/privacy/">プライバシーポリシー</Link></li>
+            <li><Link to="/disclaimer/">免責事項</Link></li>
+            <li><Link to="/contact/">お問い合わせ</Link></li>
           </ul>
         </div>
 
