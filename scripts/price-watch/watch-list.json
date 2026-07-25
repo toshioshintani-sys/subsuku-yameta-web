@@ -114,10 +114,11 @@
     {
       "id": "line-music",
       "name": "LINE MUSIC",
-      "url": "https://music.line.me/top/plan/",
+      "url": "https://music.line.me/aboutus/plan/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: 公式プランページ。エージェントはページが重くWebFetchできず未検証(URLの信頼度は高)"
+      "note": "2026-07-25 修正: 旧URL /top/plan/ は本文が197文字しか描画されず（JS/アプリ前提）、生HTML内の古い数字(320/480/980/1680)をノイズとして拾っていた。/aboutus/plan/ は「一般なら月額1,080円、学生なら月額580円」を本文で明示するのでこちらへ変更。ファミリープランの金額は両ページとも記載が無く未確認。",
+      "renderMode": "headless"
     },
     {
       "id": "amazon-music-unlimited",
@@ -253,13 +254,14 @@
     {
       "id": "claude-pro",
       "name": "Claude Pro",
-      "url": "https://www.anthropic.com/pricing",
+      "url": "https://claude.com/pricing",
       "mode": "prices",
       "enabled": true,
       "dataPlanPrefix": [
         "pro_"
       ],
-      "note": "2026-07-06修正: ページがFree/Pro/Team/Enterprise/APIを1つに列挙するためdata-plan=\"pro_*\"属性でProプランだけ抽出するよう限定(診断で発見・$17/$20/$200の3件のみでクリーンと確認済み)"
+      "note": "2026-07-25 修正: 旧URL anthropic.com/pricing は API のトークン単価ページで、個人向けサブスクの価格が無い（$0.08 等を拾っていた）。claude.com/pricing が個人向け。日本向けは「10% JCT込み」注記つきのドル建て表示（Pro $22/月）。",
+      "renderMode": "headless"
     },
     {
       "id": "evernote",
@@ -518,7 +520,8 @@
       "url": "https://one.google.com/about/google-ai-plans/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-25追加(実測$10/$20/$40/$100)。/intl/ja/ でもUSD表示のまま＝日本円は取得不可。プラン改編の検知目的で登録（日本価格¥2,900の変動検知には使えない・限界を承知で監視）"
+      "note": "2026-07-25 修正: 素のfetchだと価格が取れない回があるため headless 化。日本向けは one.google.com/about/google-ai-plans/ が ￥725/￥2,900/￥14,500/￥32,000 を表示する。",
+      "renderMode": "headless"
     },
     {
       "id": "google-workspace",
