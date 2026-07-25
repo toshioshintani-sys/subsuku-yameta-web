@@ -1378,7 +1378,7 @@ export const PRICING = {
   'canva-pro': 1500,
   'nintendo-switch-online': 306,
   'playstation-plus': 850,
-  'xbox-game-pass': 1100,
+  'xbox-game-pass': 1300,    // PC Game Pass。2026-07-25 公式確認（旧1100）
   nikkei: 4277,
   'kindle-unlimited': 980,
   danime: 660,               // 2026-07-25 公式確認（旧550）
@@ -1712,9 +1712,12 @@ export const PLANS = {
   },
   'xbox-game-pass': {
     plans: [
-      { name: 'Core', monthly: 842, note: 'マルチプレイ + 限定タイトル' },
-      { name: 'PC Game Pass', monthly: 1100, popular: true, note: 'PC ゲーム遊び放題' },
-      { name: 'Ultimate', monthly: 1680, note: 'PC + Console + EA Play + クラウド' },
+      // 2026-07-25 公式（xbox.com/ja-JP/xbox-game-pass）で再確認。Core が Essential に変わり、
+      // Premium が新設され、Ultimate は 1,680→1,550 に下がっていた（2回の取得で同一値を確認）。
+      { name: 'Essential', monthly: 850, note: 'マルチプレイ + 限定タイトル（旧 Core）' },
+      { name: 'PC Game Pass', monthly: 1300, popular: true, note: 'PC ゲーム遊び放題' },
+      { name: 'Premium', monthly: 1300, note: 'コンソール向け・発売から少し後のタイトル中心' },
+      { name: 'Ultimate', monthly: 1550, note: 'PC + Console + EA Play + クラウド' },
     ],
     howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
   },
