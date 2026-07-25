@@ -4,6 +4,8 @@ import { POST_BY_SLUG, POSTS } from '../data/posts';
 import { detectAsp, trackAffiliateClick, sanitizeReviewHtml } from '../data/affiliates';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
+import ServiceIcon from '../components/ServiceIcon';
+import { getServicesForPost } from '../data/serviceGuides';
 import { SITE_URL } from '../config';
 import styles from './BlogPostPage.module.css';
 
@@ -45,11 +47,14 @@ export default function BlogPostPage() {
   const { slug } = useParams();
   const post = POST_BY_SLUG[slug];
 
-  // 関連記事は同タグ最大3件
-  const related = useMemo(() => {
+  // この記事に関係するサービスの解約手順（記事⇔サービスの内部リンク・2026-07-25）
+  const relatedServices = getServicesForPost(post, 4);
+
+  // 関連記事は同タグ最大3件（手動useMemo撤去・メモ化はReact Compilerに任せる＝7/17 lint一掃と同方針）
+  const related = (() => {
     if (!post) return [];
     return POSTS.filter((p) => p.slug !== post.slug && p.tags?.some((t) => post.tags?.includes(t))).slice(0, 3);
-  }, [post]);
+  })();
 
   const jsonLd = useMemo(() => {
     if (!post) return null;
@@ -170,6 +175,30 @@ export default function BlogPostPage() {
             <div className={styles.ctaSub}>月額・年額の合計と「解約しなさい順」を1分で可視化（個人情報不要）</div>
           </div>
         </Link>
+
+        {/* この記事に出てくるサービスの解約手順（内部リンク・選出は serviceGuides.js） */}
+        {relatedServices.length > 0 && (
+          <section className={styles.related}>
+            <h2 className={styles.relatedTitle}>この記事に出てくるサービスの解約手順</h2>
+            <ul className={styles.relatedList}>
+              {relatedServices.map((s) => (
+                <li key={s.id}>
+                  <Link to={`/service/${s.id}/`} className={styles.relatedCard}>
+                    <ServiceIcon
+                      serviceId={s.id}
+                      category={s.category}
+                      domain={s.domain}
+                      emoji={s.emoji}
+                      size={22}
+                    />
+                    <span className={styles.relatedCardTitle}>{s.name}の解約方法</span>
+                    <span className={styles.relatedArrow}>→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className={styles.related}>

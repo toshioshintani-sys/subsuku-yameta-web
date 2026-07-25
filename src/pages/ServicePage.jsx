@@ -19,11 +19,13 @@ import {
   REVIEW_MODE,
 } from '../data/affiliates';
 import { POST_BY_SLUG } from '../data/posts';
+import { getGuidesForService } from '../data/serviceGuides';
 import {
   Scissors,
   AlertTriangle,
   Lightbulb,
   BarChart3,
+  FileText,
   ExternalLink as ExternalLinkIcon,
 } from 'lucide-react';
 import ServiceIcon from '../components/ServiceIcon';
@@ -130,6 +132,9 @@ export default function ServicePage() {
 
   // 同カテゴリのサービスを最大3件
   const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
+
+  // 解約前に読む記事（内部リンク・選出ロジックは serviceGuides.js）
+  const guides = getGuidesForService(service, 3);
 
   // C層（整理層）：買い切り・単発購入への切り替え提案（該当するサービスのみ）
   const buyout = service ? BUYOUT_ALTERNATIVES[service.id] || null : null;
@@ -635,6 +640,30 @@ export default function ServicePage() {
             <div className={styles.trackerCtaSub}>月額・年額の合計と「解約しなさい順」を1分で可視化 → /tracker</div>
           </div>
         </Link>
+
+        {/* 解約前に読んでおくと迷いにくい記事（内部リンク・2026-07-25 追加）
+            記事⇔サービス間に内部リンクが一本も無く、GSCで表示は出ているのに
+            順位が上がりきらないページ（例:「figma 解約方法」90回表示/14位）への
+            オーソリティ導線が欠けていたため。選出ロジック=src/data/serviceGuides.js */}
+        {guides.length > 0 && (
+          <section className={styles.related}>
+            <h2 className={styles.relatedTitle}>解約の前に読んでおくと迷いにくい記事</h2>
+            <div className={styles.guideList}>
+              {guides.map((g) => (
+                <Link to={`/blog/${g.slug}/`} key={g.slug} className={styles.guideCard}>
+                  <span className={styles.guideIcon} aria-hidden="true">
+                    <FileText size={17} strokeWidth={1.75} />
+                  </span>
+                  <span className={styles.guideBody}>
+                    <span className={styles.guideTitle}>{g.title}</span>
+                    <span className={styles.guideDesc}>{g.description}</span>
+                  </span>
+                  <span className={styles.relatedArrow}>→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* 同カテゴリの他サービス */}
         {related.length > 0 && (

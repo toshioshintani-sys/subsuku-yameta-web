@@ -968,3 +968,64 @@
   color: var(--text-sub);
   margin: 10px 0 0;
 }
+
+/* 解約前に読む記事（記事⇔サービスの内部リンク・2026-07-25） */
+.guideList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guideCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.guideCard:hover {
+  border-color: var(--accent);
+}
+
+.guideIcon {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.guideBody {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.guideTitle {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.guideDesc {
+  font-size: 11.5px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
