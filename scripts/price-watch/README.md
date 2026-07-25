@@ -92,6 +92,35 @@ Puppeteer headless化した上で**個別に深掘り**した結果、**コー�
 **48+10=58**。「本当に手つかず」はaudible/fod/matchの3件のみ（URL/bot対策が未解決）。他7件は
 「調べた結果、監視対象になり得ないと判明した」正しい除外で、「怠慢による除外」ではない。
 
+### 🔄 2026-07-25 更新：カバレッジ 58件 → **67件（services.js 全件）**／有効 48 → 55件
+
+**発覚した穴**：services.jsには67サービスあるのにwatch-listは58件しかなく、**AI系9サービスが丸ごと
+監視対象外**だった（services.jsへ追加した時にwatch-listへ登録する手順が無かったのが原因）。
+以後は下のコマンドで差分チェックすること：
+
+```bash
+python -X utf8 -c "
+import json,io,re
+d=json.load(io.open('scripts/price-watch/watch-list.json',encoding='utf-8'))
+watched={w['id'] for w in d['watch']}
+s=io.open('src/data/services.js',encoding='utf-8').read()
+seg=s[s.find('export const SERVICES = ['):s.find('export const ALTERNATIVES')]
+print('未監視:', sorted(set(re.findall(r\"id: '([a-z0-9-]+)',\", seg))-watched) or 'なし')
+"
+```
+
+| 今回の対応 | サービス | 結果 |
+|---|---|---|
+| ✅ 新規登録・有効 | cursor / gemini-advanced / google-workspace / runway / windsurf | 素のfetchで取得成功（windsurfは devin.ai へリダイレクト＝ブランド統合を裏付け） |
+| ✅ **多角調査で復活** | **youtube-music** | 素のfetchは0件 → **headless化で5件**（￥580/￥1,080/￥1,680/￥10,800） |
+| ✅ **多角調査で復活** | **audible** | `/ep/member-benefits`・`/ep/pricing` は0件 → **トップページ**で￥1,500/￥880。旧noteの「未着手」表記のおかげで再挑戦できた |
+| ⏸ 新規登録・無効 | google-play-pass | `/about/pass/` はストアへリダイレクト。`/store/pass/getstarted` で「600 円」は取れるが**「アプリ内購入が600円オフ」の特典表記**で月額ではない（誤報の温床）。月額はログインの先 |
+| ⏸ 新規登録・無効 | midjourney / perplexity-pro | 素のfetchもheadlessも403＋Cloudflare系bot検証（Ray ID付き）。**明示的な拒否なので回避策は取らない** |
+
+**無効12件の内訳**：構造的に不可能5（nhk-plus/honto/rakuten-kobo/patreon/soundcloud-go）／
+bot拒否3（match/midjourney/perplexity-pro）／要ログイン・技術的未解決4（nintendo-switch-online/
+kindle-unlimited/fod/google-play-pass）。
+
 ### 既知の不安定性（バグではなく実測で確認した揺れ・候補に出ても無視してよい）
 - **chatgpt-plus**: Business料金2件(￥3,050/￥3,850)が非同期読み込みで4回中2回しか出現しない(sig=4⇄6)。
 - **evernote**: ¥10が同様にsig=5⇄6を往復する。
@@ -131,11 +160,44 @@ Puppeteer headless化した上で**個別に深掘り**した結果、**コー�
    - Notion「Workers」機能がベータ無料→**2026-08-11に有料化**（Custom Agentsと同じ$10/1,000クレジット）。
    - ニコニコプレミアムが**2026-08-01に料金改定予定**（blog.nicovideo.jp/niconews/1841で告知）。
 
-## 自動化（GitHub Actions）
+## 自動化（2026-07-25 全面更新）
 
-`.github/workflows/price-watch.yml`。**AdSense再審査中は手動トリガー（workflow_dispatch）のみ**で、
-検知結果を artifact（candidates.json）として出す（サイト・リポは変更しない）。**承認後に schedule を有効化**し、
-毎日巡回→候補を人/Claude が確認→ PRICE_HISTORY に反映、の運用へ。
+### ✅ 現在の本番運用＝ローカルのWindowsタスク（毎朝7:10）
+
+```powershell
+Get-ScheduledTask     -TaskName "Subsuku_PriceWatch_0710" | Select-Object TaskName, State
+Get-ScheduledTaskInfo -TaskName "Subsuku_PriceWatch_0710" | Select-Object LastRunTime, LastTaskResult, NextRunTime
+```
+
+> 🛑 **2026-07-25に発覚した最大の事故：このタスクが存在せず、偵察部隊は2026-07-07から18日間まったく
+> 動いていなかった。** その空白期間にAppleが日本の全サブスクを値上げしたが、**「いつ変わったか」は
+> 永久に特定できなくなった**（前回観測7/7・今回7/25なので「18日間のどこか」としか書けない）。
+> `candidates.json` にも7/7の検知が未処理のまま放置されていた。
+> **時系列データは、取らなかった瞬間に永久に失われる。作業の最後に必ず「動いているか」を確認すること。**
+
+登録コマンド（再登録が必要になった時）：
+
+```powershell
+$repo = "C:\Users\user\Desktop\Claude_work\subsukuyametaweb\subsuku-yameta-web"
+$action  = New-ScheduledTaskAction -Execute "C:\Program Files\nodejs\node.exe" -Argument "scripts\price-watch\price-watch.mjs" -WorkingDirectory $repo
+$trigger = New-ScheduledTaskTrigger -Daily -At 7:10am
+$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopIfGoingOnBatteries -AllowStartIfOnBatteries -ExecutionTimeLimit (New-TimeSpan -Hours 1)
+Register-ScheduledTask -TaskName "Subsuku_PriceWatch_0710" -Action $action -Trigger $trigger -Settings $settings -Force
+```
+
+### ⏸ GitHub Actions（`.github/workflows/price-watch.yml`）は現状 手動トリガーのみ
+
+scheduleがコメントアウトされており、その理由は「**AdSense承認後に有効化**」。
+しかし **AdSenseは2026-07-15に休眠決定済み**（`docs/NOT_DOING.md`）なので、**この待機理由は既に消滅している**。
+
+ただし有効化する前に、以下の設計上の穴を先に塞ぐ必要がある（2026-07-25 発見）：
+
+- 現ワークフローは `permissions: contents: read` で、実行後に **`state/price_watch_state.json` をコミットして
+  戻していない**。このままscheduleを有効化すると、毎回リポジトリ上の古いstateと比較することになり、
+  **同じ差分を毎日検知し続ける**（＝候補が永久に消えない）。
+- 対処するなら「実行後にstateをコミットするステップ追加＋`contents: write`」が要るが、CIに書き込み権限を
+  与える変更なので、着手前に是非を判断すること。
+- **当面はローカルのWindowsタスクが本番**（stateがローカルに正しく蓄積されるため）。Actionsは手動の予備。
 
 ## 由来と関連
 

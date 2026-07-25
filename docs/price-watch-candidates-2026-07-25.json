@@ -1,0 +1,170 @@
+{
+  "generatedAt": "2026-07-25T10:36:23.487Z",
+  "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
+  "events": [
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "url": "https://www.apple.com/jp/apple-music/",
+      "added": [
+        "1,180円",
+        "1,350円",
+        "1,980円",
+        "180円",
+        "480円",
+        "680円"
+      ],
+      "removed": [
+        "1,080円",
+        "1,200円",
+        "1,680円",
+        "580円"
+      ],
+      "detectedAt": "2026-07-25T10:33:59.017Z"
+    },
+    {
+      "id": "apple-tv-plus",
+      "name": "Apple TV+",
+      "url": "https://www.apple.com/jp/apple-tv-plus/",
+      "added": [
+        "1,350円",
+        "680円"
+      ],
+      "removed": [
+        "580円",
+        "900円"
+      ],
+      "detectedAt": "2026-07-25T10:34:27.860Z"
+    },
+    {
+      "id": "amazon-music-unlimited",
+      "name": "Amazon Music Unlimited",
+      "url": "https://www.amazon.co.jp/music/unlimited",
+      "added": [
+        "0円"
+      ],
+      "removed": [],
+      "detectedAt": "2026-07-25T10:34:32.653Z"
+    },
+    {
+      "id": "rakuten-music",
+      "name": "楽天ミュージック",
+      "url": "https://music.rakuten.co.jp/plan/",
+      "added": [
+        "1,180円"
+      ],
+      "removed": [],
+      "detectedAt": "2026-07-25T10:34:34.352Z"
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "url": "https://www.dropbox.com/plans",
+      "added": [],
+      "removed": [
+        "￥2,000"
+      ],
+      "detectedAt": "2026-07-25T10:34:58.015Z"
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "added": [],
+      "removed": [
+        "￥3,050",
+        "￥3,850"
+      ],
+      "detectedAt": "2026-07-25T10:35:25.190Z"
+    },
+    {
+      "id": "apple-one",
+      "name": "Apple One",
+      "url": "https://www.apple.com/jp/apple-one/",
+      "added": [
+        "1,180円",
+        "1,350円",
+        "180円",
+        "2,110円",
+        "2,120円",
+        "2,500円",
+        "3,460円",
+        "4,620円",
+        "540円"
+      ],
+      "removed": [
+        "1,080円",
+        "1,680円",
+        "1,830円",
+        "1,950円",
+        "150円",
+        "3,030円",
+        "3,930円",
+        "450円"
+      ],
+      "detectedAt": "2026-07-25T10:35:47.294Z"
+    },
+    {
+      "id": "icloud-plus",
+      "name": "iCloud+",
+      "url": "https://www.apple.com/jp/icloud/",
+      "added": [
+        "1,800円",
+        "11,000円",
+        "180円",
+        "5,500円",
+        "540円"
+      ],
+      "removed": [
+        "¥1,500",
+        "¥150",
+        "¥4,500",
+        "¥450",
+        "¥9,000"
+      ],
+      "detectedAt": "2026-07-25T10:35:53.213Z"
+    },
+    {
+      "id": "deepl-pro",
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro",
+      "added": [
+        "$27",
+        "$29",
+        "$42",
+        "$43",
+        "$45"
+      ],
+      "removed": [
+        "$11",
+        "$13",
+        "$23",
+        "$24",
+        "$26"
+      ],
+      "detectedAt": "2026-07-25T10:35:58.708Z"
+    },
+    {
+      "id": "vimeo-pro",
+      "name": "Vimeo",
+      "url": "https://vimeo.com/upgrade",
+      "added": [
+        "￥1,200",
+        "￥10,610",
+        "￥2,000",
+        "￥3,625",
+        "￥6,041",
+        "￥6,346"
+      ],
+      "removed": [
+        "¥1,200",
+        "¥10,610",
+        "¥2,000",
+        "¥3,625",
+        "¥6,041",
+        "¥6,346"
+      ],
+      "detectedAt": "2026-07-25T10:36:19.042Z"
+    }
+  ]
+}
