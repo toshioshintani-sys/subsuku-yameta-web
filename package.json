@@ -13,7 +13,8 @@
     "price:check": "node scripts/price-watch/check-consistency.mjs",
     "preview": "vite preview",
     "threads:post": "node scripts/threads/post.mjs",
-    "threads:dry": "node scripts/threads/post.mjs --dry-run"
+    "threads:dry": "node scripts/threads/post.mjs --dry-run",
+    "price:fetch": "node scripts/price-watch/fetch-pages.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
