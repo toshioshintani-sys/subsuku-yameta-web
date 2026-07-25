@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "npm run price:check && vite build && node scripts/prerender.mjs",
     "build:nossg": "vite build",
     "lint": "eslint .",
+    "price:watch": "node scripts/price-watch/price-watch.mjs",
+    "price:reconcile": "node scripts/price-watch/reconcile.mjs",
+    "price:check": "node scripts/price-watch/check-consistency.mjs",
     "preview": "vite preview",
     "threads:post": "node scripts/threads/post.mjs",
     "threads:dry": "node scripts/threads/post.mjs --dry-run"
