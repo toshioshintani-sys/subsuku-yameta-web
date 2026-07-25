@@ -1,9 +1,19 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { POSTS } from '../data/posts';
 import Seo from '../components/Seo';
 import styles from './BlogIndexPage.module.css';
 
 export default function BlogIndexPage() {
+  // 公開日の新しい順に並べる（2026-07-25 俊雄さん指示）。
+  // それまでは posts.js の配列順のまま出していたため、日付を表示しているのに
+  // 並びが日付と一致せず、新しく書いた記事が一覧の最下部に埋もれていた。
+  // 同日に複数本ある場合は、posts.js の記載順を維持する（sort が安定ソートのため）。
+  const posts = useMemo(
+    () => [...POSTS].sort((a, b) => (a.published < b.published ? 1 : a.published > b.published ? -1 : 0)),
+    []
+  );
+
   return (
     <div className={styles.page}>
       <Seo
@@ -25,11 +35,19 @@ export default function BlogIndexPage() {
 
       <div className={styles.content}>
         <ul className={styles.list}>
-          {POSTS.map((post) => (
+          {posts.map((post) => (
             <li key={post.slug} className={styles.item}>
               <Link to={`/blog/${post.slug}`} className={styles.card}>
                 <div className={styles.cardMeta}>
                   <span className={styles.date}>{post.published}</span>
+                  {/* 扱っているAIサービスのバッジ（2026-07-25 追加）。
+                      どのAIの話かを一覧で見分けられるようにするためのもので、
+                      執筆者の表示ではない。post.ai が無い記事には何も出ない。 */}
+                  {post.ai?.map((name) => (
+                    <span key={name} className={styles.aiTag}>
+                      {name}
+                    </span>
+                  ))}
                   {post.tags?.slice(0, 2).map((tag) => (
                     <span key={tag} className={styles.tag}>#{tag}</span>
                   ))}
