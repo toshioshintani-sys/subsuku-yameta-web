@@ -1383,8 +1383,8 @@ export const PRICING = {
   'kindle-unlimited': 980,
   danime: 660,               // 2026-07-25 公式確認（旧550）
   'rakuten-tv': 0,           // 都度課金がメイン
-  'chatgpt-plus': 3000,
-  'claude-pro': 3000,
+  'chatgpt-plus': 3000,      // 円建て実額（2026-07-25 公式JPページで実測・USD換算しない）
+  'claude-pro': 3300,        // $22（$20＋JCT10%）を150円換算。USD_PRICEDが155円へ補正する
   cursor: 3000,              // Pro $20/mo（1ドル=150円換算）
   'gemini-advanced': 2900,   // Google AI Pro（5TB・Gemini使用量4倍）
   'google-workspace': 800,   // Business Starter
@@ -1721,19 +1721,28 @@ export const PLANS = {
     ],
     howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式（chatgpt.com/ja-JP/pricing）で実測して更新。
+  // ⚠️ ChatGPT は日本では**円建て**で価格が提示される（Plus ￥3,000）。ドル換算ではないので
+  //    USD_PRICED からは外してある。ここに書く数字はそのまま表示される実額。
   'chatgpt-plus': {
     plans: [
-      { name: 'Plus（個人）', monthly: 3000, popular: true, note: 'GPT-4o・画像生成・優先アクセス' },
-      { name: 'Team（チーム）', monthly: 4500, note: '人数分課金・最低2人〜' },
-      { name: 'Pro', monthly: 30000, note: 'o1 無制限・上級モデル' },
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Go', monthly: 1400, note: 'Plus より安い入門プラン。Sora・レガシーモデルは対象外' },
+      { name: 'Plus（個人）', monthly: 3000, popular: true, note: '上位モデルの推論・エージェントモード月40回' },
+      { name: 'Pro', monthly: 16800, note: '公式表示は「月額 ￥16,800 から」。上位ティアは米ドル建て' },
     ],
-    howToCheck: 'ChatGPT →「Settings」→「Subscription」で確認できます',
+    howToCheck: 'ChatGPT →「設定」→「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式（claude.com/pricing）で確認。
+  // ⚠️ Claude は日本でも**米ドル建て**で請求され、表示に「10% JCT（消費税）込み」と注記される
+  //    （Pro は $20 + JCT = $22/月）。為替で円換算額が動くため USD_PRICED のまま扱う。
+  //    ここの円値は 150円/USD 換算で書くこと（USD_PRICED が 155円へ自動補正する）。
   'claude-pro': {
     plans: [
-      { name: 'Pro', monthly: 3000, popular: true, note: '5倍多くメッセージ送信可' },
-      { name: 'Max（5x）', monthly: 15000, note: 'Pro の5倍利用枠' },
-      { name: 'Max（20x）', monthly: 30000, note: 'Pro の20倍利用枠' },
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Pro', monthly: 3300, popular: true, note: '$20＋消費税＝$22/月。年払いは割安（$200/年）' },
+      { name: 'Max（5x）', monthly: 16500, note: '$100＋消費税＝$110/月。Pro の5倍利用枠' },
+      { name: 'Max（20x）', monthly: 33000, note: '$200＋消費税＝$220/月。Pro の20倍利用枠' },
     ],
     howToCheck: 'Claude →「Settings」→「Plans & Billing」で確認できます',
   },
@@ -1934,9 +1943,13 @@ export const PLANS = {
   },
   'gemini-advanced': {
     plans: [
+      // 2026-07-25 公式（one.google.com/about/google-ai-plans/）で全段階を再確認。
+      // Ultra は 5x / 20x の2段階に分かれている。
+      { name: '無料（Googleアカウントのみ）', monthly: 0 },
       { name: 'Google AI Plus', monthly: 725, note: '400GBストレージ・Gemini使用量2倍' },
       { name: 'Google AI Pro', monthly: 2900, popular: true, note: '5TBストレージ・Gemini使用量4倍・YouTube Premium Lite付帯（旧Gemini Advanced相当）' },
-      { name: 'Google AI Ultra', monthly: 14500, note: '20TB〜ストレージ・Gemini使用量20倍・YouTube Premium個人プラン付帯' },
+      { name: 'Google AI Ultra 5x', monthly: 14500, note: '20TBストレージ・Gemini使用量5倍' },
+      { name: 'Google AI Ultra 20x', monthly: 32000, note: '30TBストレージ・Gemini使用量20倍' },
     ],
     howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
   },
@@ -2012,8 +2025,10 @@ export const USD_JPY = 155;
 //    155円で直接書くと二重換算になる。
 const USD_JPY_PREV = 150;
 export const USD_PRICED = {
-  'chatgpt-plus': 20,
-  'claude-pro': 20,
+  // 'chatgpt-plus' は 2026-07-25 に除外。日本では chatgpt.com/ja-JP/pricing が
+  // 円建てで価格を提示しており（Free ￥0 / Go ￥1,400 / Plus ￥3,000 / Pro ￥16,800〜）、
+  // ドル換算するとその実額とズレる（￥3,000 が ￥3,100 と表示されていた）。
+  'claude-pro': 22, // $20 + 10% JCT（日本向け表示は $22/月・claude.com/pricing で確認）
   cursor: 20,
   'perplexity-pro': 20,
   midjourney: 30,
