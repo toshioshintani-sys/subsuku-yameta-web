@@ -3050,7 +3050,7 @@ export const EXTENDED_CONTENT = {
   },
   'apple-music': {
     summary:
-      'Apple Music は Apple が提供する音楽ストリーミングサービス。月額1080円（個人プラン）で1億曲以上が聴き放題。空間オーディオ・ロスレス音質に対応し、iPhone との連携が抜群。',
+      'Apple Music は Apple が提供する音楽ストリーミングサービス。月額1180円（個人プラン）で1億曲以上が聴き放題。空間オーディオ・ロスレス音質に対応し、iPhone との連携が抜群。',
     whyHard:
       'Apple Music の解約は「かんたん」。iPhoneの設定アプリから3クリックで完了する。ただし、登録経路（Apple経由 vs ドコモ・KDDI経由）で解約画面が完全に異なる点に注意。',
     darkPatterns: [
@@ -3085,7 +3085,7 @@ export const EXTENDED_CONTENT = {
   },
   'microsoft-365': {
     summary:
-      'Microsoft 365 Personal（旧 Office 365 Solo）は Word・Excel・PowerPoint・OneDrive 1TB が含まれた月額1490円（年額12984円）のサブスク。Microsoft アカウントで管理。',
+      'Microsoft 365 Personal（旧 Office 365 Solo）は Word・Excel・PowerPoint・OneDrive 1TB が含まれた月額2130円（年額21300円）のサブスク。Microsoft アカウントで管理。',
     whyHard:
       'Microsoft 365 の解約は「ふつう」レベル。「サービスとサブスクリプション」から進めば3〜5クリックで完了する。年間契約の場合は途中解約時の返金可否が混乱しやすい。',
     darkPatterns: [
@@ -3187,7 +3187,7 @@ export const EXTENDED_CONTENT = {
   },
   notion: {
     summary:
-      'Notion はオールインワン型のドキュメント・データベース・タスク管理ツール。個人プラン（無料）でも豊富な機能、Plus プラン（月額1500円）で履歴無制限・ファイル制限解除など。ビジネス用途も拡大中。',
+      'Notion はオールインワン型のドキュメント・データベース・タスク管理ツール。個人プラン（無料）でも豊富な機能、Plus プラン（月額1650円）で履歴無制限・ファイル制限解除など。ビジネス用途も拡大中。',
     whyHard:
       'Notion の有料プラン解約は「かんたん」。設定→「Plans」から「Cancel Plan」で完結。ただし、ワークスペース自体の削除と混同しやすい点に注意。',
     darkPatterns: [
