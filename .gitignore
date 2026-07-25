@@ -2,7 +2,9 @@ node_modules/
 dist/
 .env
 .env.local
-.claude/
+.claude/*
+# skill はプロジェクトの資産としてコミットする（設定・権限まわりは従来どおり無視）
+!.claude/skills/
 
 # Threads auto-poster (secrets & local state)
 scripts/threads/.credentials.json
