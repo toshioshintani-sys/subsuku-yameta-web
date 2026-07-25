@@ -2148,7 +2148,18 @@ export function getRecentPriceChanges(windowDays = 3, now = new Date()) {
       const d = new Date(h.date + 'T00:00:00+09:00');
       if (Number.isNaN(d.getTime())) return;
       if (d < cutoff) return;
-      rows.push({ serviceId, serviceName, date: h.date, item: h.item || '', direction: h.direction || 'restructure' });
+      rows.push({
+        serviceId,
+        serviceName,
+        date: h.date,
+        item: h.item || '',
+        direction: h.direction || 'restructure',
+        // change / source もそのまま渡す。トップの一覧はこれをその場で開いて見せるため
+        // （見出しだけ出して解約ページへ飛ばすと「値上げを煽って解約させる」形になり、
+        //   読み手が知りたい「いくら上がったか」に答えられない）。
+        change: h.change || '',
+        source: h.source || '',
+      });
     });
   });
 
