@@ -1361,9 +1361,9 @@ export const PRICING = {
   spotify: 1080,             // 2026-07-25 公式確認（旧980）
   'apple-music': 1180,       // 2026-07-25 公式確認（旧1080）
   'youtube-premium': 1280,
-  'disney-plus': 990,
+  'disney-plus': 1250,       // 2026-07-26 公式確認（旧990＝2世代前）
   hulu: 1026,
-  'abema-premium': 1080,
+  'abema-premium': 1180,     // 2026-04-01 値上げ。2026-07-26 公式確認（旧1080）
   'u-next': 2189,
   dazn: 4200,
   'apple-tv-plus': 1200,     // 2026-07-25 公式確認（旧900）
@@ -1400,7 +1400,7 @@ export const PRICING = {
   dmagazine: 580,
   'wowow-on-demand': 2530,
   fod: 976,
-  lemino: 990,
+  lemino: 1540,              // 2026-02-01 値上げ。2026-07-26 公式確認（旧990）
   'yahoo-premium': 508,
   'dmm-premium': 550,
   'apple-one': 1200,
@@ -1610,8 +1610,9 @@ export const PLANS = {
   },
   'disney-plus': {
     plans: [
-      { name: 'スタンダード', monthly: 1140, popular: true, note: 'フルHD画質・4台同時視聴' },
-      { name: 'プレミアム', monthly: 1520, note: '4K画質・Dolby Atmos対応' },
+      // 2026-07-26 公式（disneyplus.com/ja-jp）で再確認。2026-03-25（新規）／05-01（既存）施行の値上げ。
+      { name: 'スタンダード', monthly: 1250, yearly: 12500, popular: true, note: 'フルHD画質・4台同時視聴' },
+      { name: 'プレミアム', monthly: 1670, yearly: 16700, note: '4K画質・Dolby Atmos対応。Apple経由の年額契約のみ16,800円' },
     ],
     howToCheck: 'Disney+ にログイン →「アカウント」→「サブスクリプション」で確認できます',
   },
@@ -1626,9 +1627,13 @@ export const PLANS = {
   },
   dazn: {
     plans: [
-      { name: '月額プラン', monthly: 4200, popular: true },
-      { name: '年額プラン（月払い）', monthly: 3000, yearly: 36000, note: '月額より大幅にお得・解約縛りあり' },
-      { name: '年額プラン（一括払い）', monthly: 2500, yearly: 30000, note: '最もお得・全額前払い' },
+      // 2026-07-26 公式ヘルプで再確認。月額は据え置きだが年間プランが値上げされていた。
+      // ※このほかに視聴範囲を絞った限定プランがある（DAZN BASEBALL 年27,600円＝月換算2,300円・
+      //   プロ野球専用／DAZN GLOBAL 月980円・ボクシング等のみ）。STANDARD の全コンテンツは
+      //   含まないため、ここには載せない（載せると「月¥980〜」と表示され実態を誤らせる）。
+      { name: '月額プラン', monthly: 4200, popular: true, note: '縛りなし。ほかに視聴範囲を絞った限定プランあり' },
+      { name: '年額プラン（月払い）', monthly: 3200, yearly: 38400, note: '月額より安いが1年縛りあり' },
+      { name: '年額プラン（一括払い）', monthly: 2667, yearly: 32000, note: '全額前払い。月額換算は概算（公式は年額のみ表示）' },
     ],
     howToCheck: 'DAZN にログイン →「マイ・アカウント」→「マイ・プラン」で確認できます',
   },
@@ -1654,10 +1659,16 @@ export const PLANS = {
   },
   'adobe-cc': {
     plans: [
-      { name: 'フォトプラン（Photoshop + Lightroom）', monthly: 1180, popular: true },
-      { name: '単体プラン（Photoshop のみ等）', monthly: 2728 },
-      { name: 'コンプリートプラン（全アプリ）', monthly: 6480 },
-      { name: '学生・教職員向け', monthly: 1980, note: '本人確認必要・最初の1年' },
+      // 2026-07-26 公式（adobe.com/jp/creativecloud/plans.html）で再確認。体系が変わっていた。
+      // 学生・教職員の1,980円は現在存在せず、980円→2,180円→4,180円の3段階に変わっているため
+      // 単一の月額では表せない。誤解を招くので項目ごと削除した。
+      { name: 'フォトプラン（Photoshop + Lightroom）', monthly: 2380, popular: true, note: '1TBストレージ付き' },
+      { name: '単体プラン（Photoshop のみ等）', monthly: 3280 },
+      { name: 'Creative Cloud Standard（全アプリ）', monthly: 6480, note: '旧コンプリートプラン' },
+      { name: 'Creative Cloud Pro（全アプリ＋生成AI）', monthly: 9080, note: '新設の上位プラン。旧オールアプリの実質後継' },
+      // 学生・教職員の 1,980円 は 2026-07-26 時点で公式に存在しない。
+      // 現在は 980円（1〜3か月）→ 2,180円（4〜12か月）→ 4,180円（2年目〜）の3段階で、
+      // 単一の月額では表せないため項目ごと削除した（誤解を招く数字を残さない）。
     ],
     howToCheck: 'Adobe アカウント →「プラン情報」で確認できます',
   },
@@ -1679,9 +1690,14 @@ export const PLANS = {
   },
   dropbox: {
     plans: [
-      { name: 'Plus（2TB）', monthly: 1200, popular: true },
-      { name: 'Essentials（3TB）', monthly: 2400 },
-      { name: 'Family（2TB・最大6人）', monthly: 2000 },
+      // 2026-07-26 公式で再確認。表示は既定が「年払いの月額換算」で、月払いだと高くなる。
+      // Essentials は dropbox.com/buy/essentials に「Dropbox Essentials プランは利用できなくなり、
+      // Dropbox Professional に変えられました。」と明記があり、名称・価格とも変わっていた。
+      { name: 'Plus（2TB）', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと1,500円' },
+      { name: 'Professional（3TB）', monthly: 2000, note: '旧 Essentials。年払いの月額換算。月払いのみだと2,400円' },
+      // ⚠️ Family の月額は購入導線がログイン必須で、公式に金額が出ていない（2026-07-26 確認）。
+      //    この 2,000 は 2020年の発表値と一致するだけで裏が取れていない。要ログイン確認。
+      { name: 'Family（2TB・最大6人）', monthly: 2000, note: '公式が金額を非公開（要ログイン）。参考値' },
     ],
     howToCheck: 'Dropbox →「アカウント設定」→「プラン」で確認できます',
   },
@@ -1893,8 +1909,10 @@ export const PLANS = {
   },
   evernote: {
     plans: [
-      { name: 'Personal', monthly: 1100, popular: true },
-      { name: 'Professional', monthly: 1550 },
+      // 2026-07-26 公式（evernote.com/ja-jp/compare-plans）で再確認。
+      // 個人向け有料プランは現在 Starter / Advanced の2つ。旧称 Personal / Professional。
+      { name: 'Starter（旧 Personal）', monthly: 1100, yearly: 7099, popular: true },
+      { name: 'Advanced（旧 Professional）', monthly: 1799, yearly: 17899 },
     ],
     howToCheck: 'Evernote →「アカウント設定」→「請求情報」で確認できます',
   },
@@ -1928,7 +1946,9 @@ export const PLANS = {
   },
   lemino: {
     plans: [
-      { name: 'プレミアム月額', monthly: 990, popular: true },
+      // 2026-07-26 公式で再確認。2026-02-01 に 990円 → 1,540円へ改定されていた。
+      { name: 'プレミアム月額（Web申込）', monthly: 1540, popular: true },
+      { name: 'プレミアム月額（アプリ内課金）', monthly: 1650, note: 'App Store / Google Play 経由は110円高い' },
     ],
     howToCheck: 'Lemino →「マイページ」→「契約情報」で確認できます',
   },
@@ -2963,7 +2983,7 @@ export const EXTENDED_CONTENT = {
   },
   'adobe-cc': {
     summary:
-      'Adobe Creative Cloud（CC）は Photoshop・Illustrator・Premiere Pro 等のプロ向けクリエイティブツール群。月額6480円（コンプリートプラン）。単一アプリプランは2728円から。',
+      'Adobe Creative Cloud（CC）は Photoshop・Illustrator・Premiere Pro 等のプロ向けクリエイティブツール群。月額6480円（Creative Cloud Standard・旧コンプリートプラン）。単一アプリプランは3280円から。生成AIを多く使う上位版として Creative Cloud Pro（9080円）もある。',
     whyHard:
       'Adobe の解約は「むずかしい」。年間契約が標準で、途中解約には残り月数の50%相当の違約金が発生する場合がある。さらに引き止め画面が6〜8段階あり、Adobe側から「割引オファー」を提示されることも。',
     darkPatterns: [
@@ -3034,7 +3054,7 @@ export const EXTENDED_CONTENT = {
   },
   'disney-plus': {
     summary:
-      'Disney+ はディズニー・ピクサー・マーベル・スター・ウォーズ・ナショジオの作品が見放題。月額990円のスタンダードプランから。アニメ・洋画ファンに人気。',
+      'Disney+ はディズニー・ピクサー・マーベル・スター・ウォーズ・ナショジオの作品が見放題。月額1250円のスタンダードプランから。アニメ・洋画ファンに人気。',
     whyHard:
       'Disney+ の解約は「かんたん」。アカウントページから直接「解約する」ボタンが見える素直な UI。引き止めも控えめで2〜3ステップで完了。',
     darkPatterns: [
@@ -3136,7 +3156,7 @@ export const EXTENDED_CONTENT = {
   },
   'abema-premium': {
     summary:
-      'ABEMA プレミアムはサイバーエージェント運営の動画配信サービスの有料プラン。月額1080円で見逃し配信・ダウンロード・広告非表示・倍速再生などが利用可能。バラエティとオリジナル番組に強い。',
+      'ABEMA プレミアムはサイバーエージェント運営の動画配信サービスの有料プラン。月額1180円で見逃し配信・ダウンロード・広告非表示・倍速再生などが利用可能。広告つきの安い版（680円）もある。バラエティとオリジナル番組に強い。',
     whyHard:
       'ABEMA プレミアムの解約は「ふつう」レベル。マイページの「ABEMAプレミアム」セクションから「自動更新を停止する」を選択。3クリック程度で完了するが、文言が分かりにくい。',
     darkPatterns: [
@@ -3153,7 +3173,7 @@ export const EXTENDED_CONTENT = {
   },
   dazn: {
     summary:
-      'DAZN は世界最大級のスポーツ動画配信サービス。月額4200円（年契約だと月額換算3700円）でプロ野球・サッカー・F1・ボクシング・テニスなどが見放題。日本ではJリーグ独占配信で知られる。',
+      'DAZN は世界最大級のスポーツ動画配信サービス。月額4200円（年契約だと月額換算3200円）でプロ野球・サッカー・F1・ボクシング・テニスなどが見放題。日本ではJリーグ独占配信で知られる。',
     whyHard:
       'DAZN の解約は「ふつう」レベルだが、引き止めオファーが複数回出る。年契約の場合は途中解約時の違約金規定が複雑で、ユーザー側で確認が必要。',
     darkPatterns: [
@@ -3163,7 +3183,7 @@ export const EXTENDED_CONTENT = {
     afterCancel:
       '支払い済み期間の末日までは引き続き視聴でき、ダウンロード再生も使える。視聴履歴・お気に入りも消えずに残る。年契約の場合は、解約前に違約金の有無と金額を確認しておこう。',
     faq: [
-      { q: 'DAZN の年契約と月契約の違いは？', a: '年契約は月額換算3700円（年44280円一括）、月契約は月額4200円。年契約は途中解約に違約金がかかる場合あり。' },
+      { q: 'DAZN の年契約と月契約の違いは？', a: '年契約は月々払いで月額3200円（年38400円）、一括払いなら年32000円。月契約は月額4200円で縛りがありません。年契約は最低利用期間が1年で、途中で解約しても残りの契約期間の請求は続き、返金はありません。' },
       { q: 'ドコモ経由の DAZN（DAZN for docomo）の解約方法は？', a: 'My docomo から解約します。DAZN 公式アプリでは解約できません。料金はドコモから請求されます。' },
       { q: '解約後にダウンロード済みのコンテンツは見られますか？', a: '視聴可能期間（48時間以内）であれば見られます。期間外はアクセス不可になります。' },
     ],

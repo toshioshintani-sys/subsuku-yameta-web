@@ -1,17 +1,78 @@
 {
-  "generatedAt": "2026-07-25T10:53:21.580Z",
+  "generatedAt": "2026-07-25T22:13:21.657Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "line-music",
+      "name": "LINE MUSIC",
+      "url": "https://music.line.me/aboutus/plan/",
+      "added": [
+        "1,080円",
+        "580円"
+      ],
+      "removed": [],
+      "detectedAt": "2026-07-25T22:10:55.577Z"
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "url": "https://www.dropbox.com/plans",
+      "added": [],
+      "removed": [
+        "￥2,000"
+      ],
+      "detectedAt": "2026-07-25T22:11:23.387Z"
+    },
+    {
+      "id": "claude-pro",
+      "name": "Claude Pro",
+      "url": "https://claude.com/pricing",
+      "added": [
+        "$18",
+        "$22",
+        "$220"
+      ],
+      "removed": [
+        "$17",
+        "$20",
+        "$200"
+      ],
+      "detectedAt": "2026-07-25T22:12:01.842Z"
+    },
+    {
+      "id": "evernote",
+      "name": "Evernote",
+      "url": "https://evernote.com/compare-plans",
+      "added": [],
+      "removed": [
+        "¥10"
+      ],
+      "detectedAt": "2026-07-25T22:12:09.781Z"
+    },
+    {
+      "id": "gemini-advanced",
+      "name": "Google AI Pro（旧Gemini Advanced）",
+      "url": "https://one.google.com/about/google-ai-plans/",
+      "added": [
+        "￥1,000",
+        "￥14,500",
+        "￥2,900",
+        "￥32,000",
+        "￥725"
+      ],
+      "removed": [],
+      "detectedAt": "2026-07-25T22:13:07.784Z"
+    },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [],
-      "removed": [
+      "added": [
         "￥1,250",
         "￥400"
       ],
-      "detectedAt": "2026-07-25T10:53:10.609Z"
+      "removed": [],
+      "detectedAt": "2026-07-25T22:13:11.558Z"
     }
   ]
 }
