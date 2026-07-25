@@ -1359,16 +1359,16 @@ export const PRICING = {
   netflix: 890,              // 広告つきスタンダード。スタンダード1590、プレミアム2290（2026-07-25確認）
   'amazon-prime': 600,       // 年間プランは5900（月額換算492）
   spotify: 1080,             // 2026-07-25 公式確認（旧980）
-  'apple-music': 1080,
+  'apple-music': 1180,       // 2026-07-25 公式確認（旧1080）
   'youtube-premium': 1280,
   'disney-plus': 990,
   hulu: 1026,
   'abema-premium': 1080,
   'u-next': 2189,
   dazn: 4200,
-  'apple-tv-plus': 900,
+  'apple-tv-plus': 1200,     // 2026-07-25 公式確認（旧900）
   'nhk-plus': 0,             // 受信料に内包
-  'line-music': 980,
+  'line-music': 1080,        // 2026-07-25 公式確認（旧980）
   'amazon-music-unlimited': 1080,
   'rakuten-music': 980,
   'microsoft-365': 2130,     // 2026-07-25 公式確認（旧1490）
@@ -1381,7 +1381,7 @@ export const PRICING = {
   'xbox-game-pass': 1100,
   nikkei: 4277,
   'kindle-unlimited': 980,
-  danime: 550,
+  danime: 660,               // 2026-07-25 公式確認（旧550）
   'rakuten-tv': 0,           // 都度課金がメイン
   'chatgpt-plus': 3000,
   'claude-pro': 3000,
@@ -1396,7 +1396,7 @@ export const PRICING = {
   runway: 2250,              // Standard $15/mo（1ドル=150円換算）
   evernote: 1100,
   audible: 1500,
-  'rakuten-magazine': 418,
+  'rakuten-magazine': 597,   // 2026-07-25 公式確認（旧418）
   dmagazine: 580,
   'wowow-on-demand': 2530,
   fod: 976,
@@ -1405,7 +1405,7 @@ export const PRICING = {
   'dmm-premium': 550,
   'apple-one': 1200,
   'google-one': 290,         // 100GB(Basic)プラン。2026-07-25 公式確認（旧250）
-  'icloud-plus': 130,        // 50GB プラン
+  'icloud-plus': 180,        // 50GB プラン。2026-07-25 公式確認（旧130＝2世代前）
   '1password': 450,
   figma: 1800,
   'deepl-pro': 1200,
@@ -1663,7 +1663,8 @@ export const PLANS = {
   },
   danime: {
     plans: [
-      { name: '月額プラン', monthly: 550, popular: true, note: 'docomo 以外でも契約可' },
+      // 2026-07-25 公式（anime.dmkt-sp.jp）で再確認（旧550円）
+      { name: '月額プラン', monthly: 660, popular: true, note: 'docomo 以外でも契約可' },
     ],
     howToCheck: 'dアニメストア →「マイページ」→「契約内容の確認」で確認できます',
   },
@@ -1774,7 +1775,9 @@ export const PLANS = {
   },
   'line-music': {
     plans: [
-      { name: '一般プラン', monthly: 980, popular: true },
+      // 2026-07-25 公式（music.line.me/aboutus/plan/）で一般・学生を再確認（一般は旧980円）。
+      // ファミリーは同ページに記載が無く未確認のため据え置き（要再確認）。
+      { name: '一般プラン', monthly: 1080, popular: true },
       { name: '学生プラン', monthly: 580, note: '中高大生・本人確認必要' },
       { name: 'ファミリープラン', monthly: 1480, note: '最大6人' },
     ],
@@ -1790,8 +1793,11 @@ export const PLANS = {
   },
   'apple-tv-plus': {
     plans: [
-      { name: '月額プラン', monthly: 900, popular: true },
-      { name: '年額プラン', monthly: 750, yearly: 9000, note: '月額より150円安い' },
+      // 2026-07-25 公式（tv.apple.com/jp）で月額を再確認（旧900円）。
+      // 年額プラン（旧: 月750円／年9,000円）は apple.com/jp・tv.apple.com/jp・サポートの
+      // いずれにも記載が見つからず、月額900円時代の値のままだった。未確認の金額を出すより
+      // 出さない方が誤報リスクが小さいので削除した。日本での年額提供を確認できたら復活させること。
+      { name: '月額プラン', monthly: 1200, popular: true },
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
@@ -1831,8 +1837,12 @@ export const PLANS = {
   },
   'rakuten-magazine': {
     plans: [
-      { name: '月額プラン', monthly: 418, popular: true, note: '700誌以上が読み放題' },
-      { name: '年額プラン', monthly: 350, yearly: 4180 },
+      // 2026-07-25 公式（magazine.rakuten.co.jp）で再確認（旧418円／年額4,180円）。
+      // アプリ経由の申込は月額710円と別価格（公式に明記あり）。
+      { name: '月額プラン', monthly: 597, popular: true, note: '700誌以上が読み放題。アプリ申込は710円' },
+      // 3カ月プランに yearly は入れない（1,650円は3カ月分の請求額で、年額ではない）。
+      { name: '3カ月プラン', monthly: 550, note: '3カ月まとめて1,650円' },
+      { name: '年額プラン', monthly: 499, yearly: 5980 },
     ],
     howToCheck: '楽天マガジン → ログイン →「契約状況の確認」で確認できます',
   },
