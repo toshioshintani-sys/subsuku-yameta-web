@@ -1,9 +1,9 @@
 {
   "_note": "サブスクやめた 価格偵察部隊の監視リスト（58サービスの全ロースター）。各サービスの公式料金ページを price-watch.mjs が巡回し、価格トークンの差分で変化を検知する（検知のみ・自動公開しない）。enabled:false は『価格がJS描画/画像/ログイン必須で生HTMLに出ない』『サブスクプラン自体が存在しない』『地域未提供』のいずれか（理由はnote参照）。誤報ゼロ＝検知候補は必ず人/Claudeが公式一次確認してから PRICE_HISTORY に書く。2026-07-07時点: 48件enabled中48件が実価格検出済み（空振りゼロ）・10件disabled(理由別に個別note記載)。",
-  "_updated": "2026-07-25",
+  "_updated": "2026-07-26",
   "settings": {
     "userAgent": "Mozilla/5.0 (compatible; SabusukuYameta-PriceScout/0.1; +https://sabusuku-yameta.com)",
-    "timeoutMs": 20000,
+    "timeoutMs": 35000,
     "perHostDelayMs": 1500
   },
   "watch": [
@@ -55,7 +55,7 @@
       "url": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: エージェントのWebFetchで「スタンダードプラン月額1,250円」等をテキスト確認済み"
+      "note": "2026-07-26: トップページ（disneyplus.com/ja-jp/）は両プランの価格を出すが、headless でも35秒で開けず必ずタイムアウトするため、確実に開けるこのページに戻した。ただしこのページはスタンダード（1,250円/年12,500円）しか価格を出さない。プレミアム（1,670円/年16,700円）は監視対象外になるので、棚卸し（reconcile）では毎回「プレミアムがページに無い」と出る＝既知の偽陽性。"
     },
     {
       "id": "hulu",
@@ -90,10 +90,10 @@
     {
       "id": "dazn",
       "name": "DAZN",
-      "url": "https://www.dazn.com/ja-JP/welcome",
+      "url": "https://www.dazn.com/ja-JP/help/articles/16308524311581",
       "mode": "prices",
       "enabled": true,
-      "note": ""
+      "note": "2026-07-26 修正: /ja-JP/welcome は限定プラン（GLOBAL 980円・BASEBALL 2,300円等）しか出さず、STANDARDの月額4,200円が取れなかった。全プランの料金を一覧している公式ヘルプ記事へ変更。"
     },
     {
       "id": "apple-tv-plus",
@@ -266,12 +266,12 @@
     {
       "id": "evernote",
       "name": "Evernote",
-      "url": "https://evernote.com/compare-plans",
+      "url": "https://evernote.com/ja-jp/compare-plans",
       "mode": "prices",
       "enabled": true,
       "renderMode": "headless",
       "stripScriptStyle": true,
-      "note": "2026-07-07: 素のfetchでは価格が全てNext.js RSC経由(script)にしか無くstripしても0件だったためheadless(Puppeteer)化。既知の不安定性: ¥10が複数回実測でsig=5/6を往復(非同期要素の可能性)・実価格変更ではない"
+      "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。"
     },
     {
       "id": "audible",
