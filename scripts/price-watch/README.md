@@ -199,6 +199,31 @@ scheduleがコメントアウトされており、その理由は「**AdSense承
   与える変更なので、着手前に是非を判断すること。
 - **当面はローカルのWindowsタスクが本番**（stateがローカルに正しく蓄積されるため）。Actionsは手動の予備。
 
+## 3つのツールの役割分担（2026-07-25 追加・混同すると穴が開く）
+
+| ツール | 比べるもの | 見つかるもの | 実行 |
+|---|---|---|---|
+| `price-watch.mjs` | 公式ページの**今日 vs 前回スナップショット** | **変化**（値上げ・値下げが起きた瞬間） | 毎日7:10（Windowsタスク） |
+| `reconcile.mjs` | 公式ページ **vs うちの `PRICING`/`PLANS`** | **ズレ**（表示価格がそもそも古い） | 随時 `npm run price:reconcile` |
+| `check-consistency.mjs` | `PRICE_HISTORY` **vs `PRICING`/`PLANS`** | **直し忘れ**（履歴だけ更新して表示が古い） | `npm run build` に組込み済 |
+
+**なぜ3つ要るのか。** `price-watch.mjs` は *変化* しか見ていない。初回スナップショットの時点で
+services.js が既に古ければ、その誤りは**永遠に「変化なし」と報告され続ける**。実際2026-07-25に
+Netflix（1,490→実1,590）・Spotify（980→実1,080）・iCloud+（130円＝2世代前）が、監視が緑のまま
+長期間の誤報になっていたことが判明した。**時間軸の監視（watch）と在庫の棚卸し（reconcile）は別物。**
+
+`check-consistency.mjs` は `npm run build` の先頭で走るので、「値上げしました」と履歴に書いたのに
+表示価格が古いままの状態では**ビルドが落ちてデプロイされない**＝矛盾したサイトは公開できない。
+
+```bash
+npm run price:reconcile                    # 全サービスの棚卸し
+npm run price:reconcile -- --only netflix  # 1件だけ
+npm run price:check                        # 履歴と表示の整合（build時に自動実行）
+```
+
+⚠️ reconcile の出力は**疑い候補**であって断定ではない。年額のみ表示・税別・JS描画・ログイン必須の
+ページでは正常でも不一致になる。**必ず公式を目視で一次確認してから直す**（誤報ゼロ）。
+
 ## 由来と関連
 
 - エンジンの原型：`world-oracle-staging/agents/_runtime/price_watch.py`（stack letter）。

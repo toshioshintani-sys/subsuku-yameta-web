@@ -5,6 +5,7 @@ import { SERVICES, getPopularity } from '../data/services';
 import { BIAS_GAMES } from '../data/biasGames';
 import Seo from '../components/Seo';
 import HeroSearch from '../components/HeroSearch';
+import RecentChanges from '../components/RecentChanges';
 import CostAnchorCard from '../components/CostAnchorCard';
 import StepsHowTo from '../components/StepsHowTo';
 import ServiceList from '../components/ServiceList';
@@ -66,7 +67,15 @@ export default function HomePage() {
       />
 
       <div className={styles.content}>
-        {/* ② よく探される Top10（解約導線＝来訪目的への最短応答を検索直下に）
+        {/* ② 最近の変更（2026-07-25 追加・俊雄さん指示）
+            価格・仕様の変更があった時だけ、直近3日分を日付つき箇条書きで出す。
+            変更が無い日は要素ごと描画されない（null を返す）ので、
+            通常時の第一印象・レイアウトは従来と完全に同じ＝§2-1 不可侵を保つ。
+            ヒーロー（第一印象）の下・Top10 の上に置き、リンク先は解約手順ページ
+            なので解約導線を弱めず、むしろ入口を増やす側に働く。 */}
+        <RecentChanges />
+
+        {/* ③ よく探される Top10（解約導線＝来訪目的への最短応答を検索直下に）
             2026-07-16 構成改訂（6視点パネル判定）：来訪者のジョブ（自分のサービスを
             見つけて解約する）に応える「探す層」を計算機より先に置く。
             「かんたんに切れるもの」はTop10と顔ぶれが重複していたため統合（難易度

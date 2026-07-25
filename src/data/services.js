@@ -1356,9 +1356,9 @@ export const BUYOUT_ALTERNATIVES = {
 //   - 価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
 // ---------------------------------------------------------------------------
 export const PRICING = {
-  netflix: 890,              // 広告つきベーシック。スタンダード1490、プレミアム1980
+  netflix: 890,              // 広告つきスタンダード。スタンダード1590、プレミアム2290（2026-07-25確認）
   'amazon-prime': 600,       // 年間プランは5900（月額換算492）
-  spotify: 980,
+  spotify: 1080,             // 2026-07-25 公式確認（旧980）
   'apple-music': 1080,
   'youtube-premium': 1280,
   'disney-plus': 990,
@@ -1371,9 +1371,9 @@ export const PRICING = {
   'line-music': 980,
   'amazon-music-unlimited': 1080,
   'rakuten-music': 980,
-  'microsoft-365': 1490,
+  'microsoft-365': 2130,     // 2026-07-25 公式確認（旧1490）
   'adobe-cc': 6480,          // コンプリートプラン
-  notion: 1500,
+  notion: 1650,              // 2026-07-25 公式確認（旧1500）
   dropbox: 1200,
   'canva-pro': 1500,
   'nintendo-switch-online': 306,
@@ -1404,7 +1404,7 @@ export const PRICING = {
   'yahoo-premium': 508,
   'dmm-premium': 550,
   'apple-one': 1200,
-  'google-one': 250,         // 100GB プラン
+  'google-one': 290,         // 100GB(Basic)プラン。2026-07-25 公式確認（旧250）
   'icloud-plus': 130,        // 50GB プラン
   '1password': 450,
   figma: 1800,
@@ -1560,11 +1560,12 @@ export function getKana(serviceId) {
 // 注：価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
 // ---------------------------------------------------------------------------
 export const PLANS = {
+  // 2026-07-25 公式ヘルプ（help.netflix.com/ja/node/24926）で再確認して更新
   netflix: {
     plans: [
       { name: '広告つきスタンダード', monthly: 890 },
-      { name: 'スタンダード', monthly: 1490, popular: true },
-      { name: 'プレミアム', monthly: 1980, note: '4K対応・4台同時視聴' },
+      { name: 'スタンダード', monthly: 1590, popular: true },
+      { name: 'プレミアム', monthly: 2290, note: '4K対応・4台同時視聴' },
     ],
     howToCheck: 'Netflix にログイン →「アカウント」→「プランの詳細」で確認できます',
   },
@@ -1576,12 +1577,13 @@ export const PLANS = {
     ],
     howToCheck: 'Amazon にログイン →「アカウント＆リスト」→「プライム会員情報の管理」で確認できます',
   },
+  // 2026-07-25 公式（spotify.com/jp/premium/）で全4プラン再確認して更新
   spotify: {
     plans: [
-      { name: '個人プラン（Premium）', monthly: 980, popular: true },
-      { name: 'Duo（2人用）', monthly: 1280, note: '同居家族で2人まで利用可' },
-      { name: 'ファミリー（最大6人）', monthly: 1580, note: '同居家族で6人まで' },
-      { name: '学生プラン', monthly: 480, note: '大学生・専門学生限定' },
+      { name: '個人プラン（Premium）', monthly: 1080, popular: true },
+      { name: 'Duo（2人用）', monthly: 1480, note: '同居家族で2人まで利用可' },
+      { name: 'ファミリー（最大6人）', monthly: 1880, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 580, note: '大学生・専門学生限定' },
     ],
     howToCheck: 'Spotify にログイン →「アカウント」→「定期プラン」で確認できます',
   },
@@ -1613,11 +1615,12 @@ export const PLANS = {
     ],
     howToCheck: 'Disney+ にログイン →「アカウント」→「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/apple-music/）で全プラン再確認して更新
   'apple-music': {
     plans: [
-      { name: '個人プラン', monthly: 1080, popular: true },
-      { name: 'ファミリープラン（最大6人）', monthly: 1680, note: '同居家族で6人まで' },
-      { name: '学生プラン', monthly: 580, note: '大学生・専門学生限定' },
+      { name: '個人プラン', monthly: 1180, popular: true },
+      { name: 'ファミリープラン（最大6人）', monthly: 1980, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 680, note: '大学生・専門学生限定' },
     ],
     howToCheck: '「設定」→ Apple ID →「メディアと購入」→「サブスクリプション」で確認できます',
   },
@@ -1629,19 +1632,23 @@ export const PLANS = {
     ],
     howToCheck: 'DAZN にログイン →「マイ・アカウント」→「マイ・プラン」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/apple-one/）で再確認して更新。
+  // プレミアプラン（3,580円）は日本では提供されていない（News+ が日本未提供のため）ので削除した。
   'apple-one': {
     plans: [
-      { name: '個人プラン', monthly: 1200, popular: true, note: 'Music + TV+ + Arcade + iCloud 50GB' },
-      { name: 'ファミリープラン', monthly: 1980, note: 'iCloud 200GB に増量・最大5人共有' },
-      { name: 'プレミアプラン', monthly: 3580, note: 'iCloud 2TB・Fitness+・News+ も追加' },
+      { name: '個人プラン', monthly: 1350, popular: true, note: 'Music + TV+ + Arcade + iCloud 50GB' },
+      { name: 'ファミリープラン', monthly: 2500, note: 'iCloud 200GB に増量・最大5人共有' },
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
   // ---- Top11-30（2026-05-23 追加） ----
+  // 2026-07-25 公式（microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products）で再確認。
+  // Copilot 同梱に伴う改定で全プラン値上げ、Premium が新設されていた。
   'microsoft-365': {
     plans: [
-      { name: 'Personal（1人用）', monthly: 1490, yearly: 14900, popular: true, note: 'Office 全アプリ + OneDrive 1TB' },
-      { name: 'Family（最大6人）', monthly: 2100, yearly: 21000, note: '家族で 1TB×6 = 6TB のクラウド' },
+      { name: 'Personal（1人用）', monthly: 2130, yearly: 21300, popular: true, note: 'Office 全アプリ + OneDrive 1TB' },
+      { name: 'Family（最大6人）', monthly: 2740, yearly: 27400, note: '家族で 1TB×6 = 6TB のクラウド' },
+      { name: 'Premium（1人用）', monthly: 3200, yearly: 32000, note: 'Copilot の利用上限が最も広い' },
     ],
     howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
   },
@@ -1660,11 +1667,12 @@ export const PLANS = {
     ],
     howToCheck: 'dアニメストア →「マイページ」→「契約内容の確認」で確認できます',
   },
+  // 2026-07-25 公式（notion.com/pricing）で再確認して更新
   notion: {
     plans: [
       { name: 'Free（無料）', monthly: 0 },
-      { name: 'Plus', monthly: 1500, popular: true, note: '無制限ファイル・30日履歴' },
-      { name: 'Business', monthly: 2250, note: 'SAML SSO・90日履歴' },
+      { name: 'Plus', monthly: 1650, popular: true, note: '無制限ファイル・30日履歴' },
+      { name: 'Business', monthly: 3150, note: 'SAML SSO・90日履歴' },
     ],
     howToCheck: 'Notion →「Settings & members」→「Plans」で確認できます',
   },
@@ -1693,9 +1701,11 @@ export const PLANS = {
   },
   'playstation-plus': {
     plans: [
-      { name: 'Essential', monthly: 850, yearly: 8600, popular: true, note: '従来のPS Plus 相当' },
-      { name: 'Extra', monthly: 1300, yearly: 13900, note: 'カタログから400本以上遊び放題' },
-      { name: 'Premium', monthly: 1550, yearly: 16700, note: 'クラシックタイトル + クラウドストリーミング' },
+      // 2026-07-25 公式（playstation.com/ja-jp/ps-plus/）で年額を再確認。
+      // 月額は正しかったが年額が1段ずつズレていた（旧: 8,600/13,900/16,700）。
+      { name: 'Essential', monthly: 850, yearly: 6800, popular: true, note: '従来のPS Plus 相当' },
+      { name: 'Extra', monthly: 1300, yearly: 11700, note: 'カタログから400本以上遊び放題' },
+      { name: 'Premium', monthly: 1550, yearly: 13900, note: 'クラシックタイトル + クラウドストリーミング' },
     ],
     howToCheck: 'PlayStation →「設定」→「アカウント管理」→「サブスクリプション」で確認できます',
   },
@@ -1785,21 +1795,25 @@ export const PLANS = {
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/icloud/）で全5段階を再確認して更新。
+  // 旧値（130/400/1300/3900/7900）は2世代前で、間の改定（→150/450/1500/4500/9000）を取りこぼしていた。
   'icloud-plus': {
     plans: [
-      { name: '50GB', monthly: 130, popular: true },
-      { name: '200GB', monthly: 400, note: '家族共有可' },
-      { name: '2TB', monthly: 1300, note: 'プライベートリレー対応' },
-      { name: '6TB', monthly: 3900 },
-      { name: '12TB', monthly: 7900 },
+      { name: '50GB', monthly: 180, popular: true },
+      { name: '200GB', monthly: 540, note: '家族共有可' },
+      { name: '2TB', monthly: 1800, note: 'プライベートリレー対応' },
+      { name: '6TB', monthly: 5500 },
+      { name: '12TB', monthly: 11000 },
     ],
     howToCheck: '「設定」→ Apple ID →「iCloud」→「ストレージプラン」で確認できます',
   },
+  // 2026-07-25 公式（one.google.com/about/plans）で再確認。AIプラン中心の体系に再編されていた。
+  // 年額は月額×10（2か月分無料）でページ表示と一致することを確認済み。
   'google-one': {
     plans: [
-      { name: 'ベーシック（100GB）', monthly: 250, popular: true, yearly: 2500 },
-      { name: 'プレミアム（2TB）', monthly: 1300, yearly: 13000 },
-      { name: 'AI プレミアム（2TB + Gemini Advanced）', monthly: 2900 },
+      { name: 'Basic（100GB）', monthly: 290, popular: true, yearly: 2900 },
+      { name: 'Google AI Plus（2TB）', monthly: 1450, yearly: 14500 },
+      { name: 'Google AI Pro（5TB）', monthly: 2900, yearly: 29000 },
     ],
     howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
   },
@@ -2060,6 +2074,38 @@ export function formatMonthlyRange(serviceId) {
   const max = Math.max(...amounts);
   if (min === max) return `¥${min.toLocaleString('ja-JP')}`;
   return `¥${min.toLocaleString('ja-JP')}〜¥${max.toLocaleString('ja-JP')}`;
+}
+
+// ---------------------------------------------------------------------------
+// 直近の価格・仕様変更（トップページの「最近の変更」に使う・2026-07-25 追加）
+//
+// 設計意図（俊雄さん指示）：価格変動があった時だけトップに数日だけ出し、それ以外は裏で蓄積する。
+//   - 直近 windowDays 日以内の変更が無ければ **空配列を返す**（＝トップに何も出さない）。
+//     これにより「データが少なくてスカスカに見える」問題が構造的に発生しない。
+//   - PRICE_HISTORY の date は「確認日」。偵察部隊が毎朝走るので、実際の変更から数日以内に載る。
+// ---------------------------------------------------------------------------
+export function getRecentPriceChanges(windowDays = 3, now = new Date()) {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const cutoff = new Date(now);
+  cutoff.setDate(cutoff.getDate() - windowDays);
+
+  const rows = [];
+  Object.entries(PRICE_HISTORY).forEach(([serviceId, entries]) => {
+    if (!Array.isArray(entries)) return;
+    // services.js に存在しない id は表示しない（リンク切れ防止）
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return;
+    entries.forEach((h) => {
+      if (!h?.date) return;
+      const d = new Date(h.date + 'T00:00:00+09:00');
+      if (Number.isNaN(d.getTime())) return;
+      if (d < cutoff) return;
+      rows.push({ serviceId, serviceName, date: h.date, item: h.item || '', direction: h.direction || 'restructure' });
+    });
+  });
+
+  // 新しい順 → 同日ならサービス名の五十音順（表示順を安定させる）
+  return rows.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.serviceName.localeCompare(b.serviceName, 'ja')));
 }
 
 // ---------------------------------------------------------------------------
@@ -2818,7 +2864,7 @@ export const EXTENDED_CONTENT = {
   },
   netflix: {
     summary:
-      'Netflix は世界最大の動画配信サービス。会員数は2.7億人を超え、オリジナル作品『ストレンジャー・シングス』『イカゲーム』などで知られる。月額890円（広告つきベーシック）から1980円（プレミアム）の3プラン。',
+      'Netflix は世界最大の動画配信サービス。会員数は2.7億人を超え、オリジナル作品『ストレンジャー・シングス』『イカゲーム』などで知られる。月額890円（広告つきスタンダード）から2290円（プレミアム）の3プラン。',
     whyHard:
       'Netflix の解約は実は「かんたん」な部類。アカウントページから3クリックで完了する設計で、引き止めも控えめ。ただし「メンバーシップを一時停止」と「キャンセル」が並んで表示されるため、間違って一時停止を選ばないよう注意。',
     darkPatterns: [
@@ -2853,7 +2899,7 @@ export const EXTENDED_CONTENT = {
   },
   spotify: {
     summary:
-      'Spotify は世界最大の音楽ストリーミングサービス。月額980円のプレミアムで広告なし・オフライン再生・高音質。無料プラン（広告あり・シャッフル制限）も継続提供。',
+      'Spotify は世界最大の音楽ストリーミングサービス。月額1080円のプレミアムで広告なし・オフライン再生・高音質。無料プラン（広告あり・シャッフル制限）も継続提供。',
     whyHard:
       'Spotify の解約自体は3クリックで完了する。ただしスマホアプリからは解約できず、必ずブラウザでアクセスする必要がある。これを知らずに「設定→サブスクリプション」を探しても見つからないので、最初で詰まる人が多い。',
     darkPatterns: [
