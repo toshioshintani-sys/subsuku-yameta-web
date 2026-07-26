@@ -1406,9 +1406,9 @@ export const PRICING = {
   'apple-one': 1200,
   'google-one': 290,         // 100GB(Basic)プラン。2026-07-25 公式確認（旧250）
   'icloud-plus': 180,        // 50GB プラン。2026-07-25 公式確認（旧130＝2世代前）
-  '1password': 450,
-  figma: 1800,
-  'deepl-pro': 1200,
+  '1password': 449,          // $2.99を150円換算。USD_PRICEDが155円へ補正
+  figma: 2400,               // プロフェッショナルのフルシート。2026-07-26 公式確認（旧1800）
+  'deepl-pro': 1150,        // 2026-07-26 公式確認（年払いの月額換算・旧1200）
   pairs: 3700,
   'note-premium': 500,
   'github-copilot': 1500,
@@ -1417,7 +1417,7 @@ export const PRICING = {
   honto: 0,                  // 都度購入がメイン
   'rakuten-kobo': 0,         // 都度購入がメイン
   crunchyroll: 850,
-  'vimeo-pro': 2700,
+  'vimeo-pro': 1200,         // Starter（年払いの月額換算）。2026-07-26 公式確認（旧2700）
   patreon: 1500,             // 平均的なクリエイター月額
   match: 4490,
   'soundcloud-go': 770,
@@ -1764,17 +1764,24 @@ export const PLANS = {
   },
   figma: {
     plans: [
-      { name: 'Starter（無料）', monthly: 0 },
-      { name: 'Professional', monthly: 1800, yearly: 18000, popular: true },
-      { name: 'Organization', monthly: 6750, note: 'デザインシステム機能 + SSO' },
+      // 2026-07-26 公式（figma.com/pricing）で再確認。**シート課金へ体系変更**されていた。
+      // 同じプランの中でも「フルシート／Devシート／コラボシート」で金額が違う。
+      // 代表としてフルシート（年払いの月額換算）を載せ、他シートは note に書く。
+      { name: 'スターター（無料）', monthly: 0 },
+      { name: 'プロフェッショナル（フルシート）', monthly: 2400, popular: true, note: '年払いの月額換算。Devシート1,800円・コラボシート450円' },
+      { name: '組織（フルシート）', monthly: 8300, note: '年払いの月額換算。Devシート3,750円・コラボシート750円' },
+      { name: 'エンタープライズ（フルシート）', monthly: 13600, note: '年払いの月額換算。Devシート5,250円・コラボシート750円' },
     ],
     howToCheck: 'Figma →「Settings」→「Plan & billing」で確認できます',
   },
   'github-copilot': {
     plans: [
-      { name: 'Individual', monthly: 1500, yearly: 15000, popular: true },
-      { name: 'Business', monthly: 2900, note: 'ライセンス管理 + プライバシー強化' },
-      { name: 'Enterprise', monthly: 5550, note: '内製モデル + ナレッジベース統合' },
+      // 2026-07-26 公式（github.com/features/copilot/plans）で再確認。
+      // ドル建て表示のみ。ここの円値は150円換算で書く（USD_PRICED が155円へ自動補正する）。
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Pro', monthly: 1500, popular: true, note: '$10/月' },
+      { name: 'Pro+', monthly: 5850, note: '$39/月' },
+      { name: 'Max', monthly: 15000, note: '$100/月' },
     ],
     howToCheck: 'GitHub →「Settings」→「Billing and plans」→「Copilot」で確認できます',
   },
@@ -1892,20 +1899,38 @@ export const PLANS = {
     ],
     howToCheck: 'DMM.com →「マイアカウント」→「メンバーシップ」で確認できます',
   },
+  // 2026-07-26 公式（1password.com/pricing/password-manager）で再確認。ドル建て表示のみ。
+  // ここの円値は150円換算で書く（USD_PRICED が155円へ自動補正する）。
+  // ⚠️ ページには Individual に $2.99 と $3.99 が並んでいるが、どちらが年払いでどちらが
+  //    月払いかを本文から確定できなかった（注記が両方にかかる形で出ている）。
+  //    安い方＝年払いの月額換算とみなして採用している。要再確認。
   '1password': {
     plans: [
-      { name: '個人プラン', monthly: 450, popular: true, yearly: 4500 },
-      { name: 'ファミリー（5人）', monthly: 750, yearly: 7500, note: '家族で共有可' },
+      { name: '個人プラン', monthly: 449, popular: true, yearly: 5382, note: '$2.99/月（年払い）。もう一方の$3.99の位置づけは未確認' },
+      { name: 'ファミリー（5人）', monthly: 674, yearly: 8082, note: '$4.49/月（年払い）。家族で共有可' },
     ],
     howToCheck: '1Password →「マイプロフィール」→「アカウント」で確認できます',
   },
   'deepl-pro': {
     plans: [
-      { name: 'Starter', monthly: 1200, popular: true, note: '文字数無制限・ファイル翻訳' },
-      { name: 'Advanced', monthly: 3800, note: 'カスタム用語集' },
-      { name: 'Ultimate', monthly: 7500, note: 'CAT 連携・API 大規模' },
+      // 2026-07-26 公式（deepl.com/pro）で再確認。プラン名が Starter/Advanced/Ultimate から
+      // Individual/Team/Business に変わっており、金額も改定されていた。
+      // 公式が出しているのは「年払いの月額換算」のみで、月払い単体の金額は表示されない。
+      { name: 'Individual', monthly: 1150, popular: true, note: '年払いの月額換算。文字数無制限・ファイル翻訳' },
+      { name: 'Team', monthly: 3750, note: '年払いの月額換算。ユーザー1人あたり' },
+      { name: 'Business', monthly: 7500, note: '年払いの月額換算。ユーザー1人あたり' },
     ],
     howToCheck: 'DeepL →「アカウント」→「サブスクリプション」で確認できます',
+  },
+  // 2026-07-26 公式（vimeo.com/upgrade）で確認して新規追加（それまでPLANSが無く、
+  // 代表月額2,700円だけが載っていた）。表示は「年払いの月額換算／月払いの月額」の並記。
+  'vimeo-pro': {
+    plans: [
+      { name: 'Starter', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと2,000円' },
+      { name: 'Standard', monthly: 3625, note: '年払いの月額換算。月払いのみだと6,041円' },
+      { name: 'Advanced', monthly: 6346, note: '年払いの月額換算。月払いのみだと10,610円' },
+    ],
+    howToCheck: 'Vimeo →「Settings」→「Plans」で確認できます',
   },
   evernote: {
     plans: [
@@ -2049,6 +2074,8 @@ export const USD_PRICED = {
   // 円建てで価格を提示しており（Free ￥0 / Go ￥1,400 / Plus ￥3,000 / Pro ￥16,800〜）、
   // ドル換算するとその実額とズレる（￥3,000 が ￥3,100 と表示されていた）。
   'claude-pro': 22, // $20 + 10% JCT（日本向け表示は $22/月・claude.com/pricing で確認）
+  'github-copilot': 10, // Pro $10/月（2026-07-26 公式確認・ドル建て表示のみ）
+  '1password': 2.99, // Individual $2.99/月（年払い）
   cursor: 20,
   'perplexity-pro': 20,
   midjourney: 30,
