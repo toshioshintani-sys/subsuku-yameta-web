@@ -13,7 +13,15 @@
       "url": "https://help.netflix.com/ja/node/24926",
       "mode": "prices",
       "enabled": true,
-      "note": "料金プランのヘルプ記事（サーバー描画で¥が出やすい）"
+      "note": "料金プランのヘルプ記事（サーバー描画で¥が出やすい）",
+      "fetch": {
+        "status": "ok",
+        "ms": 3803,
+        "moneyLines": 3,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
     },
     {
       "id": "amazon-prime",
@@ -30,7 +38,13 @@
       "url": "https://www.spotify.com/jp/premium/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-07: 旧URL(jp-ja/premium)はソフト404(お探しのページが見つかりませんページに実質誘導)で空振りだった。正しいURL(jp/premium)に修正・素のfetchで¥1,080等5トークン取得確認済み・headless不要"
+      "note": "2026-07-07: 旧URL(jp-ja/premium)はソフト404(お探しのページが見つかりませんページに実質誘導)で空振りだった。正しいURL(jp/premium)に修正・素のfetchで¥1,080等5トークン取得確認済み・headless不要",
+      "fetch": {
+        "status": "ok",
+        "ms": 5733,
+        "moneyLines": 16,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "apple-music",
@@ -118,7 +132,13 @@
       "mode": "prices",
       "enabled": true,
       "note": "2026-07-25 修正: 旧URL /top/plan/ は本文が197文字しか描画されず（JS/アプリ前提）、生HTML内の古い数字(320/480/980/1680)をノイズとして拾っていた。/aboutus/plan/ は「一般なら月額1,080円、学生なら月額580円」を本文で明示するのでこちらへ変更。ファミリープランの金額は両ページとも記載が無く未確認。",
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "fetch": {
+        "status": "ok",
+        "ms": 9176,
+        "moneyLines": 1,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "amazon-music-unlimited",
@@ -178,7 +198,13 @@
       "mode": "prices",
       "enabled": true,
       "renderMode": "headless",
-      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "no-money",
+        "ms": 7731,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "nintendo-switch-online",
@@ -261,7 +287,15 @@
         "pro_"
       ],
       "note": "2026-07-25 修正: 旧URL anthropic.com/pricing は API のトークン単価ページで、個人向けサブスクの価格が無い（$0.08 等を拾っていた）。claude.com/pricing が個人向け。日本向けは「10% JCT込み」注記つきのドル建て表示（Pro $22/月）。",
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "fetch": {
+        "status": "ok",
+        "ms": 19254,
+        "moneyLines": 4,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
     },
     {
       "id": "evernote",
@@ -368,7 +402,13 @@
       "url": "https://1password.com/pricing/password-manager",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）"
+      "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）",
+      "fetch": {
+        "status": "ok",
+        "ms": 9453,
+        "moneyLines": 6,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "figma",
@@ -377,7 +417,13 @@
       "mode": "prices",
       "enabled": true,
       "stripScriptStyle": true,
-      "note": "2026-07-06修正: Next.js RSC参照ID($56等)を価格と誤検出していたため、このページに限りscript/style除去を有効化。除去後の8トークンは全て実在の座席別価格と確認済み"
+      "note": "2026-07-06修正: Next.js RSC参照ID($56等)を価格と誤検出していたため、このページに限りscript/style除去を有効化。除去後の8トークンは全て実在の座席別価格と確認済み",
+      "fetch": {
+        "status": "ok",
+        "ms": 17858,
+        "moneyLines": 9,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "deepl-pro",
@@ -385,7 +431,13 @@
       "url": "https://www.deepl.com/pro",
       "mode": "prices",
       "enabled": true,
-      "note": ""
+      "note": "",
+      "fetch": {
+        "status": "ok",
+        "ms": 18354,
+        "moneyLines": 4,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "pairs",
@@ -414,7 +466,13 @@
       "url": "https://github.com/features/copilot/plans",
       "mode": "prices",
       "enabled": true,
-      "note": "PRICE_HISTORY移植元と同じ"
+      "note": "PRICE_HISTORY移植元と同じ",
+      "fetch": {
+        "status": "ok",
+        "ms": 10131,
+        "moneyLines": 13,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "niconico-premium",
@@ -431,7 +489,13 @@
       "mode": "prices",
       "enabled": true,
       "stripScriptStyle": true,
-      "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化"
+      "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
+      "fetch": {
+        "status": "ok",
+        "ms": 20231,
+        "moneyLines": 1,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "honto",
@@ -455,7 +519,13 @@
       "url": "https://www.crunchyroll.com/ja/premium",
       "mode": "prices",
       "enabled": true,
-      "note": "baselineで確認"
+      "note": "baselineで確認",
+      "fetch": {
+        "status": "short-body",
+        "ms": 7492,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "vimeo-pro",
@@ -464,7 +534,13 @@
       "mode": "prices",
       "enabled": true,
       "renderMode": "headless",
-      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "ok",
+        "ms": 5745,
+        "moneyLines": 6,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "patreon",
@@ -496,7 +572,13 @@
       "url": "https://discord.com/nitro",
       "mode": "prices",
       "enabled": true,
-      "note": "baselineで確認"
+      "note": "baselineで確認",
+      "fetch": {
+        "status": "no-money",
+        "ms": 10598,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "linkedin-premium",
@@ -504,7 +586,13 @@
       "url": "https://premium.linkedin.com/careers/career",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）"
+      "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
+      "fetch": {
+        "status": "no-money",
+        "ms": 6121,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
     },
     {
       "id": "cursor",
@@ -512,7 +600,15 @@
       "url": "https://cursor.com/pricing",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）"
+      "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
+      "fetch": {
+        "status": "ok",
+        "ms": 9417,
+        "moneyLines": 2,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
     },
     {
       "id": "gemini-advanced",
@@ -529,7 +625,18 @@
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL"
+      "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 5570,
+        "moneyLines": 3,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26",
+        "suspects": [
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
     },
     {
       "id": "runway",
