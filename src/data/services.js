@@ -2152,6 +2152,124 @@ export function formatMonthlyRange(serviceId) {
 }
 
 // ---------------------------------------------------------------------------
+// 入口価格（新規登録者向けの期間限定価格）— 2026-07-26 追加
+//
+// ■ なぜ要るのか（実際に起きたこと）
+//   トップの「最近の変更」で「Apple Musicが値上げ」を見た人が、公式ページを確認しに行くと、
+//   そこには「3か月180円」が大きく出ている。実際に運営者本人がこう反応した：
+//     ①「さっきの嘘じゃん」（うちが1,180円と出していたので、嘘に見えた）
+//     ②「180円ならやってもいいか」（＝契約しそうになった）
+//   つまり**解約を助けるサイトが、値上げを告げることで人を入口へ送り込んでいた**。
+//   ①は信頼の毀損、②はミッションの裏切り。両方を止めるためのデータ。
+//
+// ■ PRICE_HISTORY には絶対に混ぜない（重要）
+//   ServicePage は PRICE_HISTORY を**日付フィルタなしで無期限表示**する（ServicePage.jsx 382行）。
+//   入口価格の話を change 文字列に混ぜ込むと、下の30日失効がそこでは効かず、
+//   終わったキャンペーンを永久に「今出ています」と言い続けることになる。だから別オブジェクトにする。
+//
+// ■ 壊れにくさのための決まり
+//   - **通常価格をここに複製しない。** PLANS / PRICING から都度引く。
+//     （今日だけで9件の価格を更新した。複製すると片方だけ古くなる事故が必ず起きる）
+//   - **「1年でいくら」も保存しない。** 都度計算する。保存した計算値は腐っても気づけない。
+//   - 「180円」が総額か月額かを取り違えないよう、totalForPeriod（期間の合計）と
+//     periodMonths（月数）に分けて持つ。
+//   - endDate は任意。公式に書かれていないことも多い。書いてあれば必ず入れる。
+//   - verifiedAt から30日で自動的に非表示（腐ったまま出続けない）。
+//   - 必須項目が欠けていたら黙って非表示にする（fail-closed）。壊れたデータを出すより出さない。
+//   - **キャンペーンが無いのが普通。** 無いサービスはキー自体を作らない。
+//     （2026-07-26 時点で確認した3件のうち、あるのは Apple Music だけ）
+//   - コード上も「キャンペーン」と呼ばない。売る側の語彙なので INTRO_OFFERS とする。
+// ---------------------------------------------------------------------------
+const INTRO_OFFER_TTL_DAYS = 30;
+
+export const INTRO_OFFERS = {
+  'apple-music': [
+    {
+      planName: '個人プラン',
+      totalForPeriod: 180, // 3か月**合計**で180円（月180円ではない）
+      periodMonths: 3,
+      // 公式脚注の原文：「最新のオペレーティングシステムソフトウェアを搭載したiPhone、iPad、Mac、
+      //   またはApple Vision Proで本特典を利用する、新規登録の方のみが対象です。」
+      // 括弧を入れ子にしないこと（表示側で「（条件・期限）」の括弧に入るため、
+      // ここに括弧を書くと「（A（B）・C）」となってスマホで読めなくなる）
+      eligibility: '新規登録かつ対象のApple製デバイスで利用する方のみ',
+      endDate: '2026-08-19', // 公式脚注に「2026年7月21日から2026年8月19日まで有効」と明記
+      source: 'https://www.apple.com/jp/apple-music/',
+      verifiedAt: '2026-07-26',
+    },
+    {
+      planName: 'ファミリープラン（最大6人）',
+      totalForPeriod: 480,
+      periodMonths: 3,
+      // 括弧を入れ子にしないこと（表示側で「（条件・期限）」の括弧に入るため、
+      // ここに括弧を書くと「（A（B）・C）」となってスマホで読めなくなる）
+      eligibility: '新規登録かつ対象のApple製デバイスで利用する方のみ',
+      endDate: '2026-08-19',
+      source: 'https://www.apple.com/jp/apple-music/',
+      verifiedAt: '2026-07-26',
+    },
+    // 学生プランは公式に入口価格の記載が無いためエントリを作らない（＝対象外を不在で表す）
+  ],
+  // 'apple-one' / 'icloud-plus' はキーごと無い＝2026-07-26 時点で入口価格の表示なし
+};
+
+function introOfferDaysSince(dateStr, now) {
+  const d = new Date(dateStr + 'T00:00:00+09:00');
+  if (Number.isNaN(d.getTime())) return Infinity; // 日付が壊れていたら失効扱い（fail-closed）
+  return Math.floor((now.getTime() - d.getTime()) / 86400000);
+}
+
+/**
+ * 今出してよい入口価格だけを返す。
+ * 鮮度切れ（確認から30日）・終了日超過・必須項目の欠落は、いずれも黙って除外する。
+ * 呼び出し側は INTRO_OFFERS を直接読まず、必ずこれを通すこと。
+ */
+export function getActiveIntroOffers(serviceId, now = new Date()) {
+  const offers = INTRO_OFFERS[serviceId];
+  if (!Array.isArray(offers)) return [];
+  return offers.filter((o) => {
+    if (!o?.verifiedAt || !o?.source) return false;
+    if (typeof o.totalForPeriod !== 'number' || typeof o.periodMonths !== 'number') return false;
+    if (o.periodMonths < 1) return false;
+    if (introOfferDaysSince(o.verifiedAt, now) > INTRO_OFFER_TTL_DAYS) return false;
+    if (o.endDate) {
+      const end = new Date(o.endDate + 'T23:59:59+09:00');
+      if (!Number.isNaN(end.getTime()) && end.getTime() < now.getTime()) return false;
+    }
+    return true;
+  });
+}
+
+/**
+ * 表示に必要な金額を、その場で計算して返す（保存しない）。
+ * 通常価格は PLANS → PRICING の順で引く。どちらからも取れなければ null を返し、
+ * 呼び出し側は金額の断定を避ける。
+ */
+export function computeIntroOfferSummary(serviceId, offer) {
+  const plans = PLANS[serviceId]?.plans;
+  let regularMonthly = null;
+  if (Array.isArray(plans) && plans.length > 0) {
+    const hit = offer.planName
+      ? plans.find((p) => p.name === offer.planName)
+      : plans.find((p) => p.popular) || plans[0];
+    if (hit && typeof hit.monthly === 'number') regularMonthly = hit.monthly;
+  }
+  if (regularMonthly === null && typeof PRICING[serviceId] === 'number') {
+    regularMonthly = PRICING[serviceId];
+  }
+  if (regularMonthly === null || regularMonthly <= 0) {
+    return { regularMonthly: null, firstYearTotal: null, laterYearTotal: null };
+  }
+  const rest = Math.max(0, 12 - offer.periodMonths);
+  return {
+    regularMonthly,
+    firstYearTotal: offer.totalForPeriod + regularMonthly * rest,
+    laterYearTotal: regularMonthly * 12,
+    restMonths: rest,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // 直近の価格・仕様変更（トップページの「最近の変更」に使う・2026-07-25 追加）
 //
 // 設計意図（俊雄さん指示）：価格変動があった時だけトップに数日だけ出し、それ以外は裏で蓄積する。
