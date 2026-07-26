@@ -234,6 +234,22 @@ async function main() {
   console.log('--- 集計 ---', JSON.stringify(counts));
   console.log(`--- 検知候補(要一次確認): ${events.length} 件 → ${CANDIDATES_FILE}`);
   for (const ev of events) console.log(`  ⚑ ${ev.name}: 追加[${ev.added.join(', ')}] 消失[${ev.removed.join(', ')}]`);
+
+  // 検知結果を Slack へ送る（2026-07-26 追加）。
+  // それまでは結果が candidates.json にローカル保存されるだけで**誰にも届いていなかった**。
+  // 俊雄さんは平日日中にPCへ触れないので、スマホに届かない限り日次監視は意味を持たない。
+  // 検知ゼロの日は notify 側が黙るので、ここでは無条件に呼んでよい。
+  // ⚠️ 通知に失敗しても監視自体は成功しているので、絶対にここで異常終了させない（fail-open）。
+  try {
+    const { spawnSync } = await import('node:child_process');
+    // __dir は fileURLToPath 済みなので、Windows でもそのままパスとして使える
+    // （URL.pathname を自前で削るとドライブレターの扱いで壊れる）
+    const r = spawnSync(process.execPath, [join(__dir, 'notify.mjs')], { encoding: 'utf-8' });
+    if (r.stdout) process.stdout.write(r.stdout);
+    if (r.status !== 0 && r.stderr) console.error('通知でエラー:', r.stderr.slice(0, 300));
+  } catch (e) {
+    console.error('通知の起動に失敗（監視自体は成功）:', e.message);
+  }
 }
 
 main().catch((e) => {
