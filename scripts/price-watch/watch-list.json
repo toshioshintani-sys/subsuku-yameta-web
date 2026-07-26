@@ -404,10 +404,15 @@
       "enabled": true,
       "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）",
       "fetch": {
-        "status": "ok",
-        "ms": 9453,
+        "status": "ok-suspect",
+        "ms": 2263,
         "moneyLines": 6,
-        "checkedAt": "2026-07-26"
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26",
+        "suspects": [
+          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
+        ]
       }
     },
     {
@@ -417,13 +422,16 @@
       "mode": "prices",
       "enabled": true,
       "stripScriptStyle": true,
-      "note": "2026-07-06修正: Next.js RSC参照ID($56等)を価格と誤検出していたため、このページに限りscript/style除去を有効化。除去後の8トークンは全て実在の座席別価格と確認済み",
+      "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。シート課金（フルシート/Devシート/コラボシート）で、同じプラン内でも金額が3種ある。うちはフルシートを代表にしている。",
       "fetch": {
         "status": "ok",
-        "ms": 17858,
+        "ms": 5819,
         "moneyLines": 9,
-        "checkedAt": "2026-07-26"
-      }
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      },
+      "renderMode": "headless"
     },
     {
       "id": "deepl-pro",
@@ -431,13 +439,19 @@
       "url": "https://www.deepl.com/pro",
       "mode": "prices",
       "enabled": true,
-      "note": "",
+      "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
-        "status": "ok",
-        "ms": 18354,
+        "status": "ok-suspect",
+        "ms": 11697,
         "moneyLines": 4,
-        "checkedAt": "2026-07-26"
-      }
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26",
+        "suspects": [
+          "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
+        ]
+      },
+      "renderMode": "headless"
     },
     {
       "id": "pairs",
