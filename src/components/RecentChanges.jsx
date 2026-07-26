@@ -1,6 +1,39 @@
 import { Link } from 'react-router-dom';
-import { getRecentPriceChanges } from '../data/services';
+import {
+  getRecentPriceChanges,
+  getActiveIntroOffers,
+  computeIntroOfferSummary,
+} from '../data/services';
 import styles from './RecentChanges.module.css';
+
+const yen = (n) => `${n.toLocaleString('ja-JP')}円`;
+
+function formatEndDate(iso) {
+  const [y, m, d] = iso.split('-');
+  return `${Number(y)}年${Number(m)}月${Number(d)}日`;
+}
+
+// 入口価格の一文を、データから組み立てる（文章を手書きで持たない）。
+// 手書きの文章に金額を埋め込むと、価格を直したときに文章側が古いまま残る。
+// ここで組み立てれば、PLANS を直せば自動的に追随する。
+function introOfferSentence(serviceId, offer) {
+  const s = computeIntroOfferSummary(serviceId, offer);
+  const head = `${offer.planName || 'このサービス'}は${offer.periodMonths}か月${yen(offer.totalForPeriod)}`;
+  const cond = [offer.eligibility, offer.endDate ? `${formatEndDate(offer.endDate)}まで` : null]
+    .filter(Boolean)
+    .join('・');
+
+  // 通常価格が引けない時は金額を断定しない（誤報ゼロ）
+  if (s.regularMonthly === null) {
+    return `${head}${cond ? `（${cond}）` : ''}。${offer.periodMonths}か月を過ぎると通常価格に戻る。`;
+  }
+  return (
+    `${head}${cond ? `（${cond}）` : ''}。` +
+    `${offer.periodMonths + 1}か月目から自動的に月${yen(s.regularMonthly)}になり、` +
+    `初年度は${yen(offer.totalForPeriod)}＋${yen(s.regularMonthly)}×${s.restMonths}か月＝${yen(s.firstYearTotal)}、` +
+    `2年目以降は年${yen(s.laterYearTotal)}。`
+  );
+}
 
 // トップページ「最近の変更」（2026-07-25 追加／2026-07-26 挙動を修正）
 //
@@ -56,6 +89,33 @@ export default function RecentChanges() {
               </summary>
               <div className={styles.body}>
                 {c.change && <p className={styles.change}>{c.change}</p>}
+
+                {/* 入口価格（2026-07-26 追加）
+                    値上げを告げて公式ページへ送ると、そこで新規登録者向けの安い価格に
+                    出会って契約してしまう——実際に起きた事故を塞ぐための段落。
+                    ※記号や枠で浮かせず、上の変更内容と同じ体裁の地の文にする。
+                    「180円」を視覚的に強調すると、それ自体がアンカーとして働いてしまう。 */}
+                {(() => {
+                  const offers = getActiveIntroOffers(c.serviceId);
+                  if (offers.length === 0) return null;
+                  return (
+                    <>
+                      {offers.map((offer, i) => (
+                        <p key={offer.planName || i} className={styles.change}>
+                          {i === 0 && '公式ページには今、新規登録者向けの安い価格も出ている。'}
+                          {introOfferSentence(c.serviceId, offer)}
+                        </p>
+                      ))}
+                      {/* 開示の副作用を塞ぐ：「◯か月で解約すれば得」という新しい契約動機を
+                          作らないための一文。特定プランの話に見えないよう独立した段落にする。
+                          意思の弱さのせいにせず、構造の話として置く。 */}
+                      <p className={styles.change}>
+                        {`${offers[0].periodMonths}か月で解約すれば安く済むが、その日を覚えていて手続きまでする人は多くない。`}
+                      </p>
+                    </>
+                  );
+                })()}
+
                 <p className={styles.links}>
                   {c.source && (
                     <a
@@ -76,7 +136,14 @@ export default function RecentChanges() {
           </li>
         ))}
       </ul>
-      <p className={styles.note}>公式ページで確認した日付です。見出しをタップすると中身が開きます。</p>
+      {/* 沈黙の誤報を防ぐ常設の一文（2026-07-26 追加）。
+          入口価格の注記が付くのは、値上げを確認できたサービスだけ。
+          注記が無い＝安い入口価格が無い、と読まれると逆に危ないので、
+          個別データを持たない一般的な注意をここに常時置く（維持コストゼロ）。 */}
+      <p className={styles.note}>
+        公式ページで確認した日付です。見出しをタップすると中身が開きます。ここに載せているのは通常価格で、
+        公式ページには新規登録者向けの安い価格が別に出ていることがあります。
+      </p>
     </section>
   );
 }
