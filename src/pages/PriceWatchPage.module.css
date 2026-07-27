@@ -1,0 +1,248 @@
+/* 価格・仕様の変更ログ（2026-07-28 追加）
+   ComparePage と同じデザイントークン（--accent / --text / --text-sub / --border / --surface / --bg）で揃える。
+   煽らない：警告色・強い塗り・スコア・順位は使わない。日付順に事実を置くだけ。 */
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+/* ヒーロー */
+.hero {
+  padding: 8px 0 20px;
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 4px;
+}
+
+.heroTitle {
+  font-size: clamp(22px, 3.4vw, 32px);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+
+.heroDesc {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-sub);
+  margin: 0 0 12px;
+}
+
+.summary {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-sub);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 14px;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.h2 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+
+.lead {
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--text-sub);
+  margin: 0;
+}
+
+/* 入口価格 */
+.offer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.offerHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.offerHead:hover {
+  color: var(--accent);
+}
+
+.offerBody {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text);
+  margin: 8px 0 6px;
+}
+
+.offerNote {
+  font-size: 11px;
+  color: var(--text-sub);
+  margin: 0;
+}
+
+/* 日付グループ */
+.dateGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-sub);
+  margin: 14px 0 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 1件の記録 */
+.item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.itemHead {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.itemName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.itemName:hover {
+  color: var(--accent);
+}
+
+/* 方向のラベル。色は「事実の分類」であって警告ではないので、彩度を抑える */
+.dir {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+.dir_up {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.itemLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin: 8px 0 0;
+}
+
+.change {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--text);
+  margin: 6px 0 0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: 11.5px;
+  color: var(--text-sub);
+  margin: 10px 0 0;
+}
+
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* 次の動き */
+.next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.nextCard {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.nextCard:hover {
+  border-color: var(--accent);
+}
+
+.nextTitle {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.nextDesc {
+  font-size: 11.5px;
+  color: var(--text-sub);
+  line-height: 1.6;
+}
+
+.disclaimer {
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: var(--text-sub);
+  margin: 0;
+}

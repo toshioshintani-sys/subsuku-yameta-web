@@ -2274,6 +2274,58 @@ export function computeIntroOfferSummary(serviceId, offer) {
 }
 
 // ---------------------------------------------------------------------------
+// 確認できた価格・仕様の変更の**全記録**（/price-watch に使う・2026-07-28 追加）
+//
+// なぜ要るのか：トップの「最近の変更」は直近3日しか出ない。3日を過ぎると消える。
+// 実際 2026-07-28 の時点で、Apple 3件の値上げも、その前日に作った「入口価格の崖」も
+// **どこからも見えない状態**になっていた。22サービスの価格を公式確認で直しても、
+// 外から見ると何も起きていないのと同じだった。
+// 溜めた記録に置き場所が無かったのが原因なので、全部を時系列で出す先を作る。
+//
+// 返すのは「確認できた事実」だけ。推測や未確認のものは PRICE_HISTORY に入れていないので、
+// このページが誤報になることは原理的に無い（＝安全に自動で増やせる唯一の面）。
+// ---------------------------------------------------------------------------
+export function getAllPriceChanges() {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const rows = [];
+  Object.entries(PRICE_HISTORY).forEach(([serviceId, entries]) => {
+    if (!Array.isArray(entries)) return;
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return; // services.js に無い id は出さない（リンク切れ防止）
+    entries.forEach((h) => {
+      if (!h?.date) return;
+      rows.push({
+        serviceId,
+        serviceName,
+        date: h.date,
+        item: h.item || '',
+        direction: h.direction || 'restructure',
+        change: h.change || '',
+        source: h.source || '',
+        verifiedAt: h.verifiedAt || h.date,
+      });
+    });
+  });
+  return rows.sort((a, b) =>
+    a.date < b.date ? 1 : a.date > b.date ? -1 : a.serviceName.localeCompare(b.serviceName, 'ja')
+  );
+}
+
+/** 今わかっている入口価格を、サービスをまたいで全部返す（鮮度切れは getActiveIntroOffers が落とす） */
+export function getAllActiveIntroOffers(now = new Date()) {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const rows = [];
+  Object.keys(INTRO_OFFERS).forEach((serviceId) => {
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return;
+    for (const offer of getActiveIntroOffers(serviceId, now)) {
+      rows.push({ serviceId, serviceName, offer, summary: computeIntroOfferSummary(serviceId, offer) });
+    }
+  });
+  return rows;
+}
+
+// ---------------------------------------------------------------------------
 // 直近の価格・仕様変更（トップページの「最近の変更」に使う・2026-07-25 追加）
 //
 // 設計意図（俊雄さん指示）：価格変動があった時だけトップに数日だけ出し、それ以外は裏で蓄積する。

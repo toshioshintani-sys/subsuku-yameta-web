@@ -160,3 +160,44 @@
   color: var(--hm-muted-tan);
   margin: 0;
 }
+
+/* 変更が無い日の1行（2026-07-28 追加）。
+   セクションごと消すと記録への導線もトップから消えるので、静かに1行だけ残す。
+   見出しも枠も付けない＝第一印象の重さを変えない。 */
+.emptyLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--hm-muted-tan);
+  margin: 0;
+}
+
+/* 3日窓から落ちた記録への導線（2026-07-28 追加） */
+.more {
+  align-self: flex-start;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  text-decoration: none;
+}
+
+.more:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .more {
+    color: var(--hm-teal-2);
+  }
+}
+
+:root[data-theme='dark'] .more {
+  color: var(--hm-teal-2);
+}
+
+:root[data-theme='light'] .more {
+  color: var(--hm-teal-ink);
+}

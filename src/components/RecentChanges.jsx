@@ -68,7 +68,22 @@ function formatDate(iso) {
 
 export default function RecentChanges() {
   const changes = getRecentPriceChanges(WINDOW_DAYS);
-  if (changes.length === 0) return null;
+
+  // 直近3日に変更が無い日（＝ほとんどの日）。
+  // 2026-07-28 まではここで null を返して丸ごと消していたが、それだと
+  // **溜めた記録へ辿り着く導線がトップから消える**（実際 7/28 に0件になり、
+  // 22サービスの価格修正も入口価格の崖も、外からは何も見えない状態になっていた）。
+  // 空状態を大きく出すのは避けたいので、事実を1行だけ置いて記録へ送る。
+  if (changes.length === 0) {
+    return (
+      <p className={styles.emptyLine}>
+        直近3日の価格変更はありません。
+        <Link to="/price-watch/" className={styles.more}>
+          これまでの記録を見る →
+        </Link>
+      </p>
+    );
+  }
 
   return (
     <section className={styles.wrap} aria-label="最近の価格・仕様の変更">
@@ -144,6 +159,11 @@ export default function RecentChanges() {
         公式ページで確認した日付です。見出しをタップすると中身が開きます。ここに載せているのは通常価格で、
         公式ページには新規登録者向けの安い価格が別に出ていることがあります。
       </p>
+      {/* 3日を過ぎた記録の行き先（2026-07-28 追加）。
+          ここが無いと、窓から落ちた変更はどこからも辿れなくなる。 */}
+      <Link to="/price-watch/" className={styles.more}>
+        これまでの変更をすべて見る →
+      </Link>
     </section>
   );
 }
