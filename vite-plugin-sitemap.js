@@ -21,7 +21,7 @@ function withSlash(path) {
 }
 
 function buildRoutes() {
-  const staticRoutes = ['/', '/compare', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
+  const staticRoutes = ['/', '/compare', '/price-watch', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
   const categoryRoutes = CATEGORIES
     .filter((c) => c.id !== 'all')
     .map((c) => `/category/${c.id}`);
