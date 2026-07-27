@@ -39,12 +39,23 @@ const LOG = resolve(HERE, 'state/detection_log.json');
 const SLACK_SENDER =
   'C:\\Users\\user\\Desktop\\Claude_work\\world-oracle-staging\\notifications\\_shared\\slack_sender.py';
 
+// 日付は必ず JST で取る（2026-07-28 修正）。
+// それまで toISOString().slice(0,10) を使っていたため UTC の日付になり、
+// 7:10 実行だと JST では翌日なのに**前日の日付**で記録・通知していた
+// （7/28 の朝に「価格監視 2026-07-27」と送っていた）。
+const jstDate = (d = new Date()) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(d);
+
 // 通貨ごとに分けて数値化する。ドル建てを円の感覚で見ると誤検知する
 // （実測：Claude Pro の $18/$22 を「桁が不自然」と誤って鳴らしていた）。
+//
+// ⚠️ 0円を捨てないこと（2026-07-28 修正）。
+//   それまで n <= 0 を除外していたため、Amazon Music Unlimited の
+//   「最初の3か月0円」が消えた＝**キャンペーン終了という本物の情報**を握り潰していた。
+//   0円は「無料期間」を意味する有効な価格。
 const parseTok = (tok) => {
   const s = String(tok);
   const n = Number(s.replace(/[¥￥$,\s円]/g, ''));
-  if (!Number.isFinite(n) || n <= 0) return null;
+  if (!Number.isFinite(n) || n < 0) return null;
   return { value: n, usd: s.includes('$') };
 };
 
@@ -58,6 +69,16 @@ function inspect(ev, ours) {
   const added = addedTok.map((t) => t.value);
   const removed = removedTok.map((t) => t.value);
   const signals = [];
+
+  // --- 無料期間（0円）の出入りは、キャンペーンの開始・終了を意味する ---
+  // 通常価格は変わらないが、入口価格の表示（INTRO_OFFERS）を見直す合図になるので必ず知らせる。
+  // 実測：2026-07-28 に Amazon Music Unlimited の「最初の3か月0円」（フジロック配信記念）が消えた。
+  if (removed.includes(0)) {
+    signals.push({ name: '「0円」の表示が消えた＝無料キャンペーンが終わった可能性', kind: '本物より' });
+  }
+  if (added.includes(0)) {
+    signals.push({ name: '「0円」の表示が出た＝無料キャンペーンが始まった可能性', kind: '本物より' });
+  }
 
   // --- 偽陽性である可能性を上げる signal を先に見る ---
   // （2026-07-25〜26 に実際に起きた型を、そのまま検査項目にしてある）
@@ -93,7 +114,9 @@ function inspect(ev, ours) {
   }
 
   // ④ 桁が不自然。円とドルで基準を分ける（ドルを円の感覚で見ると $18 が異常値になる）
+  //    0 は「無料期間」という意味のある値なので、桁の異常には含めない（上で別途扱っている）
   const extreme = [...addedTok, ...removedTok]
+    .filter((t) => t.value !== 0)
     .filter((t) => (t.usd ? t.value < 1 || t.value > 5000 : t.value < 50 || t.value > 500000))
     .map((t) => (t.usd ? `$${t.value}` : t.value));
   if (extreme.length) {
@@ -114,8 +137,10 @@ function inspect(ev, ours) {
   }
 
   // --- 本物である可能性を上げる signal ---
-  // 偽陽性の signal が鳴っている時は出さない（両方出ると人が迷うだけ）
-  const suspicious = signals.length > 0;
+  // 偽陽性の signal が鳴っている時は出さない（両方出ると人が迷うだけ）。
+  // ⚠️ signals.length で判定しないこと。上の 0円 signal は「本物より」なので、
+  //    それを数えると本物同士で打ち消し合ってしまう。
+  const suspicious = signals.some((s) => s.kind === '偽陽性より');
   if (!suspicious) {
     if (removed.some((v) => ours.has(v))) {
       signals.push({ name: 'うちの表示価格がページから消えた', kind: '本物より' });
@@ -161,7 +186,7 @@ async function main() {
     return set;
   };
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = jstDate();
   const lines = [`🔍 サブスクやめた 価格監視 ${today}`, `検知 ${events.length}件（公式で確認するまで services.js は書き換えません）`, ''];
   const logEntries = [];
 

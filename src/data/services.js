@@ -1369,7 +1369,7 @@ export const PRICING = {
   'apple-tv-plus': 1200,     // 2026-07-25 公式確認（旧900）
   'nhk-plus': 0,             // 受信料に内包
   'line-music': 1080,        // 2026-07-25 公式確認（旧980）
-  'amazon-music-unlimited': 1080,
+  'amazon-music-unlimited': 1180,  // 一般価格。プライム会員は1,080円。2026-07-28 公式確認（旧1080＝会員価格だった）
   'rakuten-music': 980,
   'microsoft-365': 2130,     // 2026-07-25 公式確認（旧1490）
   'adobe-cc': 6480,          // コンプリートプラン
@@ -1802,7 +1802,11 @@ export const PLANS = {
   // ---- Top31-50（2026-05-23 追加・人気度60〜75） ----
   'amazon-music-unlimited': {
     plans: [
-      { name: '個人プラン', monthly: 1080, popular: true, note: 'Prime会員は980円' },
+      // 2026-07-28 公式（amazon.co.jp/music/unlimited）で再確認。
+      // 「無料体験終了後は月額1,180円（Amazonプライム会員は月額1,080円）」と明記。
+      // それまで代表を1,080円にしていたが、これは**プライム会員のみの価格**で、
+      // 一般価格の1,180円を1円も出していなかった。会員でない人には誤報だった。
+      { name: '個人プラン', monthly: 1180, popular: true, note: 'Amazonプライム会員は1,080円' },
       { name: 'ファミリープラン', monthly: 1680, note: '最大6人' },
       { name: '学生プラン', monthly: 580 },
     ],

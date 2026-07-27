@@ -1,25 +1,27 @@
 [
   {
     "date": "2026-07-26",
-    "serviceId": "line-music",
-    "name": "LINE MUSIC",
+    "serviceId": "claude-pro",
+    "name": "Claude Pro",
     "added": [
-      1080,
-      580
+      18,
+      22,
+      220
     ],
-    "removed": [],
+    "removed": [
+      17,
+      20,
+      200
+    ],
     "ours": [
-      1080,
-      580,
-      1480
+      3410,
+      17050,
+      34100
     ],
-    "signals": [
-      {
-        "name": "出現した値が全部うちの表示と一致＝価格は変わっていない（取得方法を変えた直後に起きる）",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": null
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "監視URLを anthropic.com（API料金）から claude.com に変えた直後の差分",
+    "judgedAt": "2026-07-28"
   },
   {
     "date": "2026-07-26",
@@ -39,29 +41,9 @@
         "kind": "本物より"
       }
     ],
-    "verdict": null
-  },
-  {
-    "date": "2026-07-26",
-    "serviceId": "claude-pro",
-    "name": "Claude Pro",
-    "added": [
-      18,
-      22,
-      220
-    ],
-    "removed": [
-      17,
-      20,
-      200
-    ],
-    "ours": [
-      3410,
-      17050,
-      34100
-    ],
-    "signals": [],
-    "verdict": null
+    "verdict": "偽陽性",
+    "verdictReason": "Family の ¥2,000 が消えたり出たりするページ側の揺れ。通常価格は不変",
+    "judgedAt": "2026-07-28"
   },
   {
     "date": "2026-07-26",
@@ -83,7 +65,9 @@
         "kind": "偽陽性より"
       }
     ],
-    "verdict": null
+    "verdict": "偽陽性",
+    "verdictReason": "¥10 の単発ノイズ。出たり消えたりしている",
+    "judgedAt": "2026-07-28"
   },
   {
     "date": "2026-07-26",
@@ -109,7 +93,9 @@
         "kind": "偽陽性より"
       }
     ],
-    "verdict": null
+    "verdict": "偽陽性",
+    "verdictReason": "headless 化した直後の差分。価格は不変",
+    "judgedAt": "2026-07-28"
   },
   {
     "date": "2026-07-26",
@@ -135,6 +121,250 @@
         "kind": "偽陽性より"
       }
     ],
-    "verdict": null
+    "verdict": "偽陽性",
+    "verdictReason": "割引価格と通常価格の並記。うちが載せている通常価格は不変",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-26",
+    "serviceId": "line-music",
+    "name": "LINE MUSIC",
+    "added": [
+      1080,
+      580
+    ],
+    "removed": [],
+    "ours": [
+      1080,
+      580,
+      1480
+    ],
+    "signals": [
+      {
+        "name": "出現した値が全部うちの表示と一致＝価格は変わっていない（取得方法を変えた直後に起きる）",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "監視URLを /top/plan/ から /aboutus/plan/ に変えた直後の差分。価格は不変",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-27",
+    "serviceId": "dazn",
+    "name": "DAZN",
+    "added": [
+      2980,
+      3480,
+      3700,
+      38400,
+      4200,
+      980,
+      2300,
+      27600,
+      3200,
+      32000,
+      4200,
+      980
+    ],
+    "removed": [
+      2300,
+      3200
+    ],
+    "ours": [
+      4200,
+      3200,
+      38400,
+      2667,
+      32000
+    ],
+    "signals": [
+      {
+        "name": "変化した金額が多すぎる（14件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "監視URLを welcome から公式ヘルプ記事に変えた直後の差分",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-27",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      1150,
+      3750,
+      7500
+    ],
+    "removed": [],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "出現した値が全部うちの表示と一致＝価格は変わっていない（取得方法を変えた直後に起きる）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "headless 化した直後の差分。価格は不変",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-27",
+    "serviceId": "figma",
+    "name": "Figma",
+    "added": [
+      1800,
+      13600,
+      2400,
+      3750,
+      450,
+      5250,
+      750,
+      8300
+    ],
+    "removed": [
+      12,
+      16,
+      25,
+      3,
+      35,
+      5,
+      55,
+      90
+    ],
+    "ours": [
+      2400,
+      8300,
+      13600
+    ],
+    "signals": [
+      {
+        "name": "変化した金額が多すぎる（16件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "headless 化した直後の差分。価格は不変",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-28",
+    "serviceId": "amazon-music-unlimited",
+    "name": "Amazon Music Unlimited",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1080,
+      1680,
+      580
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "桁が不自然な値（0）",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "本物",
+    "verdictReason": "フジロック配信記念の「最初の3か月0円」が終了。追跡した結果、代表価格1,080円が**プライム会員のみの価格**で、一般価格1,180円を出していないという別の誤りも判明し修正した",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-28",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      2000
+    ],
+    "removed": [],
+    "ours": [
+      1200,
+      2000
+    ],
+    "signals": [
+      {
+        "name": "出現した値が全部うちの表示と一致＝価格は変わっていない（取得方法を変えた直後に起きる）",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "Family の ¥2,000 が消えたり出たりするページ側の揺れ。通常価格は不変",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-28",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [
+      10
+    ],
+    "removed": [],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "¥10 の単発ノイズ。出たり消えたりしている",
+    "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-28",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [
+      1280,
+      2000,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
+    "verdictReason": "割引価格と通常価格の並記。うちが載せている通常価格は不変",
+    "judgedAt": "2026-07-28"
   }
 ]
