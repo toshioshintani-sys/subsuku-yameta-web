@@ -2062,12 +2062,48 @@ export const PLANS = {
 };
 
 // ---------------------------------------------------------------------------
-// 為替レート（USD→JPY）— 2026-06-01 俊雄さん指示
-// ・USD建てサブスク（ChatGPT Plus / Claude Pro 等）は ¥USD_JPY で換算する
-// ・±5円超 変動するまで 155 で固定。為替が大きく動いたら、この数値だけを更新する
-// ・USD_PRICED に { serviceId: 月額USD } を足すと、PRICING / 単一PLAN が自動換算される
+// 為替レート（USD→JPY）— 2026-07-31 全面改訂
+//
+// ■ 何が問題だったか
+//   それまでは「1ドル=155円」を手で決め打ちし、その換算結果を**価格として断言**していた。
+//   これは2つの意味で嘘だった。
+//     ① レートが古い。2026-07-30 の公表仲値は 163.51、7/31 の実勢は約157。155はどちらでもない。
+//     ② 仮にレートが正しくても、実際の請求額はカード会社ごとのレート＋海外事務手数料で決まる。
+//        **どのカードの請求とも一致しない数字**を、円の価格として置いていた。
+//   公式ページが $20 と書いているものを ¥3,100 と断言する——これは Apple Music の
+//   「3か月180円」で俊雄さんが味わった「さっきの嘘じゃん」と同じ形をしている。
+//
+// ■ どう直したか
+//   **ドルを事実として主表示し、円は「どのレートで計算したか」を明示した概算にする。**
+//     × 「¥3,100です」            → どのカードの請求とも一致しない。常に嘘
+//     ○ 「1ドル163.51円で約3,270円」→ 検証可能に真。レートが動いても文は間違いにならない
+//   価格と同じ作法（観測した事実＋出典＋確認日）に揃えただけ。
+//
+// ■ 更新ルール（毎月1日と15日）
+//   7:30 の判定ルーティン（scripts/price-watch/daily_judge_prompt.md）が
+//   USD_JPY_SOURCE を取得し、ページに書かれた相場日と TTS/TTB を読んで TTM を計算する。
+//   **記憶で書いてはいけない。** 取得できなければ更新せず報告して終わる。
+//
+// ■ 土日・祝日（1年24回のうち6回は土日。次の 2026-08-01 と 08-15 が両方とも土曜）
+//   市場が閉じている日に「その日のレート」は存在しない。公表相場ページは最終営業日の値を
+//   保持し続けるので、取得自体はできる。**ページに書かれた相場日をそのまま USD_JPY_AS_OF に
+//   入れる**ことで、土日に読んでも嘘にならない（表示側が注釈を出す・getFxNote 参照）。
+//
+// ■ 為替の変動を PRICE_HISTORY に書いてはいけない（重要）
+//   サービスが値段を変えていないのに円換算額が動くのは、**値上げではない**。
+//   これを履歴に混ぜると /price-watch が為替の揺れで埋まり、本物の価格改定が埋没する。
 // ---------------------------------------------------------------------------
-export const USD_JPY = 155;
+
+/** 換算に使うレート。三菱UFJ銀行 公表仲値(TTM) = (TTS + TTB) / 2 */
+export const USD_JPY = 163.51;
+/** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
+export const USD_JPY_AS_OF = '2026-07-30';
+/** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
+export const USD_JPY_READ_ON = '2026-07-31';
+/** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
+export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
+/** 出典の名前（表示に出す） */
+export const USD_JPY_SOURCE_NAME = '三菱UFJ銀行 公表仲値';
 // 既存の PRICING / PLANS の円価格は旧レート（1ドル=150円）で作られている。
 // USD建てサービスは新レートへ等比補正する（例: Plus 3000=$20 → 3100）。
 // ⚠️ USD_PRICED のサービスは、PRICING/PLANS を常に「150円換算の円値」で記述すること。
@@ -2096,6 +2132,64 @@ for (const [id] of Object.entries(USD_PRICED)) {
       if (typeof p.yearly === 'number') p.yearly = adjust(p.yearly);
     }
   }
+}
+
+/**
+ * ドル建てで請求されるサービスなら月額USDを返す。そうでなければ null。
+ * 表示側はこれが null かどうかで「ドルを主に出すか」を切り替える。
+ * @param {string} serviceId
+ * @returns {number|null}
+ */
+export function getUsdMonthly(serviceId) {
+  return USD_PRICED[serviceId] ?? null;
+}
+
+/** $20 は整数、$2.99 は小数のまま出す */
+export function formatUsd(usd) {
+  return `$${Number.isInteger(usd) ? usd : usd.toFixed(2)}`;
+}
+
+/**
+ * 表示する円の額から、そのままドル額を割り戻す。
+ *
+ * USD_PRICED の値（代表プランのドル額）をそのまま使うと、**別のプランのドルと円を
+ * 並べてしまう事故**が起きる。実例：Perplexity の代表プランは年払い（月あたり$16.67）
+ * なのに USD_PRICED は月払いの $20 なので、`$20（約2,725円）` という
+ * それ自体で矛盾した表示になっていた（2,725円 ÷ 163.51 = $16.67）。
+ *
+ * 表示している円から割り戻せば、2つの数字は必ず同じプランを指す。
+ * PRICING/PLANS の円は 150円換算で書く決まりなので、割り戻しは常に元のドル額に一致する。
+ */
+export function usdFromYen(yen) {
+  return Math.round((yen / USD_JPY) * 100) / 100;
+}
+
+function formatFxDate(iso) {
+  const [, m, d] = iso.split('-');
+  return `${Number(m)}月${Number(d)}日`;
+}
+
+/**
+ * ドル建てサービスの価格に必ず添える注釈。
+ *
+ * 円の金額を出す以上、それが「誰かに請求される金額」ではなく
+ * 「どのレートで計算した概算か」を必ず同じ場所で言う。これを省くと、
+ * 公式ページが $20 と書いているものを円で断言することになる。
+ *
+ * 相場日（AS_OF）と読み取り日（READ_ON）がずれている＝土日・祝日に読んだ場合は、
+ * 「その時点で最新の公表値」と補う。市場が閉じている日のレートは存在しないので、
+ * 最終営業日の値であることを隠さない。
+ */
+export function getFxNote() {
+  const asOf = formatFxDate(USD_JPY_AS_OF);
+  const stale =
+    USD_JPY_AS_OF !== USD_JPY_READ_ON
+      ? `（${formatFxDate(USD_JPY_READ_ON)}時点で最新の公表値）`
+      : '';
+  return (
+    `円は1ドル${USD_JPY}円で計算した概算です。${asOf}の${USD_JPY_SOURCE_NAME}${stale}。` +
+    `実際の請求額はカード会社のレートと手数料によって変わります。`
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -2142,6 +2236,19 @@ export function getPlanCheckHint(serviceId) {
  * @returns {string}
  */
 export function formatMonthlyRange(serviceId) {
+  // ドル建てで請求されるサービスは、**ドルを事実として先に出す**。
+  // 公式ページが $20 と書いているものを ¥3,270 と断言すると、読者が公式を見た瞬間に
+  // 食い違う（Apple Music の「3か月180円」で実際に起きた「さっきの嘘じゃん」と同じ形）。
+  // 円は「約」を付けた概算として添えるだけにし、根拠は getFxNote() が同じ画面で言う。
+  const usd = getUsdMonthly(serviceId);
+  if (usd != null) {
+    const yen = getDefaultMonthly(serviceId);
+    // ドルは USD_PRICED からではなく、いま表示する円から割り戻す（usdFromYen 参照）。
+    return yen > 0
+      ? `${formatUsd(usdFromYen(yen))}（約${yen.toLocaleString('ja-JP')}円）`
+      : formatUsd(usd);
+  }
+
   const plans = getPlans(serviceId);
   if (plans.length === 0) {
     const v = getDefaultMonthly(serviceId);

@@ -24,20 +24,13 @@ function Send-Slack($message) {
 }
 
 try {
-    # 検知がゼロなら claude を起動しない（無駄なトークンを使わない）
-    $eventCount = 0
-    if (Test-Path $candPath) {
-        try {
-            $cand = Get-Content -Raw -Encoding UTF8 $candPath | ConvertFrom-Json
-            if ($cand.events) { $eventCount = @($cand.events).Count }
-        } catch { $eventCount = -1 }
-    }
-    if ($eventCount -eq 0) {
-        Write-Output "検知ゼロのため判定はスキップ"
-        exit 0
-    }
-
-    # 判定前の未判定件数を数えておく（罠4：成果ゼロでも exit 0 で緑になる事故の検出用）
+    # 起動の判断は「今日の検知があるか」ではなく **「未判定が残っているか」** で行う。
+    #
+    # 今日の検知の有無で判断すると、次の2つで積み残しが永久に判定されなくなる。
+    #   - 7:10 の巡回が長引いて 7:30 に間に合わなかった日（その日の検知が宙に浮く）
+    #   - 翌日の検知がゼロだった日（前日の積み残しごとスキップされる）
+    # 未判定の残数だけを見れば、いつ溜まったものでも次の実行が必ず拾う（自己修復する）。
+    # 同時にこれは冪等ガードにもなる＝手動テストと定時実行が重なっても2回目は走らない。
     $today = Get-Date -Format "yyyy-MM-dd"
     $beforeUnjudged = 0
     $todayEntries = 0
@@ -49,17 +42,23 @@ try {
         } catch {}
     }
 
-    # 検知はあるのに今日の記録が台帳に1件も無い＝7:10 の巡回で通知/記録が失敗している。
-    # ここで黙って終わると、検知が誰にも見られないまま消える。
-    if ($todayEntries -eq 0) {
-        Send-Slack "サブスクやめた 価格判定（無人）を中止`n検知 $eventCount 件があるのに、台帳に今日($today)の記録が1件もありません。7:10 の巡回側で記録に失敗した可能性があります。"
-        exit 1
+    $eventCount = 0
+    if (Test-Path $candPath) {
+        try {
+            $cand = Get-Content -Raw -Encoding UTF8 $candPath | ConvertFrom-Json
+            if ($cand.events) { $eventCount = @($cand.events).Count }
+        } catch { $eventCount = -1 }
     }
 
-    # 未判定がゼロ＝すでに判定済み。二重起動（手動テストと定時実行が重なる等）で
-    # 同じ検知をもう一度 claude に投げないための冪等ガード。
     if ($beforeUnjudged -eq 0) {
-        Write-Output "未判定ゼロのため判定はスキップ（すでに判定済み）"
+        # 検知はあるのに今日の記録が台帳に1件も無い＝巡回側の記録/通知が失敗している。
+        # 判定すべきものが本当に無いのか、記録に失敗して見えていないだけなのかは別物なので、
+        # 後者は黙って緑にせず知らせる（検知が誰にも見られないまま消えるのを防ぐ）。
+        if ($eventCount -gt 0 -and $todayEntries -eq 0) {
+            Send-Slack "サブスクやめた 価格判定（無人）を中止`n検知 $eventCount 件があるのに、台帳に今日($today)の記録が1件もありません。7:10 の巡回が終わっていないか、記録に失敗した可能性があります。"
+            exit 1
+        }
+        Write-Output "未判定ゼロのため判定はスキップ（検知 $eventCount 件・すべて判定済み）"
         exit 0
     }
 
