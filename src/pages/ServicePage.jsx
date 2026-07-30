@@ -8,6 +8,8 @@ import {
   getPlans,
   getPlanCheckHint,
   formatMonthlyRange,
+  getUsdMonthly,
+  getFxNote,
   PRICE_HISTORY,
 } from '../data/services';
 import {
@@ -216,6 +218,14 @@ export default function ServicePage() {
               </div>
             </div>
           </div>
+
+          {/* 為替の注釈（ドル建てで請求されるサービスのみ）
+              円の金額を出す以上、それが「請求される金額」ではなく「どのレートで計算した
+              概算か」を同じ画面で必ず言う。省くと、公式が $20 と書いているものを円で
+              断言することになる。土日に読んだ日は最終営業日の値である旨も自動で入る。 */}
+          {getUsdMonthly(service.id) != null && (
+            <p className={styles.fxNote}>{getFxNote()}</p>
+          )}
 
           {/* 概要（拡張コンテンツがあれば） */}
           {extended?.summary && (
