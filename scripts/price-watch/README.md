@@ -185,6 +185,45 @@ $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopIfGoingOnB
 Register-ScheduledTask -TaskName "Subsuku_PriceWatch_0710" -Action $action -Trigger $trigger -Settings $settings -Force
 ```
 
+### ✅ 判定担当＝ローカルのWindowsタスク（毎朝7:30・2026-07-31 追加・意図的な登録）
+
+巡回（7:10）が検知を出しても、**それを公式ページで確かめて判定する人が居ないと何も起きない。**
+実際 2026-07-28〜30 の3日間、監視は無人で正常に走り続けていたのに検知12件が未判定のまま溜まり、
+サイトの情報は7/28から一度も更新されなかった。**監視の律速は検知ではなく判定だった。**
+そこで判定を無人ルーティンに載せた（俊雄さん指示「ルーティーン作業に登録・情報更新と改修をセットで」）。
+
+| | |
+|---|---|
+| タスク名 | `Subsuku_PriceJudge_0730`（毎日7:30 JST・7:10の巡回の20分後） |
+| 実体 | `run_daily_judge.ps1` → `claude -p` に `daily_judge_prompt.md` を渡す |
+| 課金 | Maxサブスク枠（ランナー冒頭で `ANTHROPIC_API_KEY` を除去。残すとAPI課金に化ける） |
+| やること | 検知を公式ページで確認 → `detection_log.json` に verdict/evidence を記入 → 本物なら `services.js` と `PRICE_HISTORY` を修正 → **PR作成まで** |
+| やらないこと | **main への直接push・PRのマージ**。誤報ゼロは最上位原則なので、公開に出る一歩手前で必ず人が止める |
+
+```powershell
+Get-ScheduledTask     -TaskName "Subsuku_PriceJudge_0730" | Select-Object TaskName, State
+Get-ScheduledTaskInfo -TaskName "Subsuku_PriceJudge_0730" | Select-Object LastRunTime, LastTaskResult, NextRunTime
+Start-ScheduledTask   -TaskName "Subsuku_PriceJudge_0730"   # 手動で走らせる（動作確認は必ずこの経路で）
+Disable-ScheduledTask -TaskName "Subsuku_PriceJudge_0730"   # 止める（削除しない）
+```
+
+> ⚠️ **なぜマージまで自動化しないか。** 検知の的中率は実測で4%（25件中1件・2026-07-31時点）。
+> 判定を誤った1件がそのまま公開価格になる経路を作ると、**機械が単独で誤報を出せてしまう**。
+> このサイトの収益は信頼の上にしか立たないので、そこだけは人のゲートを残す。
+> 自動マージまで進めたい場合は `proposal-stress-test` を経由すること（憲法§5-B）。
+
+無人実行で踏みうる罠と対処は `~/.claude/skills/headless-claude-runner/SKILL.md` に集約されている。
+特に **`.ps1` は UTF-8 BOM 付きで保存**（BOM無しだとTask Scheduler経由の `powershell.exe` が
+日本語パスを誤読して落ちる）、**動作確認は `Start-ScheduledTask` で実タスクを起動**（対話PowerShellでの
+実行は別経路なので確認にならない）の2点は、このランナーでも同じように効く。
+
+ランナー側のガード（無人で静かに死なせないため）：
+
+- 検知ゼロの日は `claude` を起動しない（トークンを使わない）
+- 検知はあるのに台帳に今日の記録が無い＝巡回側の記録失敗 → Slackに投げて中止
+- 未判定ゼロ＝すでに判定済み → スキップ（手動テストと定時実行の二重起動を防ぐ）
+- exit 0 なのに未判定が減っていない → 空振りとしてSlack通知して exit 1
+
 ### ⏸ GitHub Actions（`.github/workflows/price-watch.yml`）は現状 手動トリガーのみ
 
 scheduleがコメントアウトされており、その理由は「**AdSense承認後に有効化**」。
