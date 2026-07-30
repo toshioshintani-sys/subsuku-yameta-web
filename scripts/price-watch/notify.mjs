@@ -136,6 +136,20 @@ function inspect(ev, ours) {
     signals.push({ name: '消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性', kind: '偽陽性より' });
   }
 
+  // ⑦ 追加ゼロで消失だけ（2026-07-31 追加）
+  //    値上げ・値下げは「古い値が消えて新しい値が出る」ので、必ず両方が動く。
+  //    消えただけなら、価格改定ではなく**ページが数字を出さなくなった**だけの可能性が高い
+  //    （表示の揺れ・要素の出し分け・プランの非公開化など）。
+  //    実測：25件中9件が検査に引っかからなかったが、うち6件がこの型だった
+  //    （Dropbox×3・1Password・Google Workspace・Runway）。全部 偽陽性 だった。
+  //    ⚠️ ただしプラン廃止の可能性は残るので「偽陽性より」であって「無視してよい」ではない。
+  if (added.length === 0 && removed.length > 0) {
+    signals.push({
+      name: '追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止',
+      kind: '偽陽性より',
+    });
+  }
+
   // --- 本物である可能性を上げる signal ---
   // 偽陽性の signal が鳴っている時は出さない（両方出ると人が迷うだけ）。
   // ⚠️ signals.length で判定しないこと。上の 0円 signal は「本物より」なので、
@@ -187,14 +201,38 @@ async function main() {
   };
 
   const today = jstDate();
-  const lines = [`🔍 サブスクやめた 価格監視 ${today}`, `検知 ${events.length}件（公式で確認するまで services.js は書き換えません）`, ''];
   const logEntries = [];
 
-  for (const ev of events) {
+  // 検知を「要確認」と「既知のノイズ型」に分ける（2026-07-31 追加）。
+  //
+  // 実測（25件・5日分）で、検知の96%は偽陽性だった。全部を同じ顔で並べると、
+  // 毎朝12件みたいな塊が溜まって「あとで見る」になり、実際7/28〜7/30で12件溜まった。
+  // 偽陽性の検査が1つでも鳴っているものは「様子見でよい」側に寄せ、
+  // **何も鳴らなかったものだけを「要確認」に上げる**。
+  //
+  // ⚠️ 検査の結果で verdict（本物/偽陽性）を自動で埋めることは**しない**。
+  //    検査の当たり外れを測っているのに、検査が答えを書いたら循環になって測定が無意味になる。
+  //    あくまで「人がどれを先に見るか」の並べ替えに留める。
+  const triaged = events.map((ev) => {
     const ours = oursOf(ev.id);
-    const { added, removed, signals } = inspect(ev, ours);
+    return { ev, ours, ...inspect(ev, ours) };
+  });
+  const needsCheck = triaged.filter((t) => !t.signals.some((s) => s.kind === '偽陽性より'));
+  const likelyNoise = triaged.filter((t) => t.signals.some((s) => s.kind === '偽陽性より'));
 
-    lines.push(`▼ ${ev.name}`);
+  const lines = [`🔍 サブスクやめた 価格監視 ${today}`];
+  if (needsCheck.length === 0) {
+    lines.push(`検知 ${events.length}件。**すべて既知のノイズ型でした。対応不要です。**`);
+  } else {
+    lines.push(`検知 ${events.length}件のうち、**${needsCheck.length}件は検査が何も鳴っていません**（要確認）。`);
+  }
+  lines.push('公式で確認するまで services.js は書き換えません。');
+  lines.push('');
+
+  for (const t of [...needsCheck, ...likelyNoise]) {
+    const { ev, ours, added, removed, signals } = t;
+    const head = signals.some((s) => s.kind === '偽陽性より') ? '▽' : '▼ 要確認';
+    lines.push(`${head} ${ev.name}`);
     lines.push(`   ${ev.url}`);
     if (ev.added.length) lines.push(`   出現: ${ev.added.join(', ')}`);
     if (ev.removed.length) lines.push(`   消失: ${ev.removed.join(', ')}`);
@@ -233,19 +271,26 @@ async function main() {
       log = [];
     }
   }
+  // dry-run は「送らない」だけでなく「書かない」。
+  //
+  // 2026-07-31 に踏んだ罠：本文の確認のつもりで --dry-run を叩いたら、前日(7/30)の
+  // candidates.json の中身が **今日の日付で** 台帳に入った。しかも下の重複除去が
+  // (日付, サービス) で効くので、そのあと 7:10 の本物の巡回が同じサービスを検知しても
+  // 「もう記録済み」として黙って捨てられる。＝確認作業が実測データを壊す。
+  // 的中率を測るための台帳なので、書き込むのは本番実行のときだけにする。
+  if (dryRun) {
+    console.log('--- dry-run（送信しない・台帳にも書かない）---');
+    console.log(body);
+    console.log(`--- 本番なら台帳へ ${logEntries.length}件追記（現在 ${log.length}件）---`);
+    return;
+  }
+
   // 同じ日・同じサービスの重複は入れない（手動で複数回走らせても台帳が汚れないように）
   for (const e of logEntries) {
     if (!log.some((x) => x.date === e.date && x.serviceId === e.serviceId)) log.push(e);
   }
   mkdirSync(dirname(LOG), { recursive: true });
   writeFileSync(LOG, JSON.stringify(log, null, 2) + '\n', 'utf-8');
-
-  if (dryRun) {
-    console.log('--- dry-run（送信しない）---');
-    console.log(body);
-    console.log(`--- 台帳: ${log.length}件（今回 ${logEntries.length}件追記）---`);
-    return;
-  }
 
   const r = spawnSync('python', ['-X', 'utf8', SLACK_SENDER, 'SUBSUKU_DAILY', body], {
     encoding: 'utf-8',

@@ -366,5 +366,305 @@
     "dateNote": "UTCズレを2026-07-28に補正（7:10実行分は前日日付で記録されていた）",
     "verdictReason": "割引価格と通常価格の並記。うちが載せている通常価格は不変",
     "judgedAt": "2026-07-28"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [],
+    "removed": [
+      2000
+    ],
+    "ours": [
+      1200,
+      2000
+    ],
+    "signals": [
+      {
+        "name": "うちの表示価格がページから消えた",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "Family の ¥2,000 が出たり消えたりするページ側の揺れ。通常価格は不変",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [],
+    "removed": [
+      10
+    ],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "¥10 の単発ノイズ。毎日のように出入りしている",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [
+      0
+    ],
+    "removed": [],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "¥0 は常設の「30日間無料体験」。月額￥1,500はうちと一致。新規キャンペーンではない",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "1password",
+    "name": "1Password",
+    "added": [],
+    "removed": [
+      10.99,
+      12.99,
+      24.95,
+      29.95,
+      34.95
+    ],
+    "ours": [
+      464,
+      5561,
+      696,
+      8351
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "公式は $2.99/$3.99/$4.49/$5.99 でうちと一致。法人プランや宣伝文中の大きな数字を拾っていた",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      28,
+      44,
+      46
+    ],
+    "removed": [
+      27,
+      29,
+      42,
+      45
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "Team 3,750 と Business 7,500 が本当に2倍の関係。半額ペア検査の想定内の空振り",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      29
+    ],
+    "removed": [
+      21
+    ],
+    "ours": [
+      3100,
+      9300,
+      31000
+    ],
+    "signals": [
+      {
+        "name": "1つの金額が1つに置き換わった（単純な置換）",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "公式は個人$20・Teams$40でうちと一致。$21→$29 はページ内の別要素の揺れ",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "割引価格と通常価格の並記。うちが載せている通常価格は不変",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-29",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      10,
+      18,
+      34
+    ],
+    "removed": [
+      11,
+      19
+    ],
+    "ours": [
+      2325,
+      22320,
+      5425,
+      52080,
+      14725,
+      141360
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "公式は Standard $15 / Pro $35 でうちと一致。年払い表示との混在による揺れ",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-30",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [
+      10
+    ],
+    "removed": [],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "¥10 の単発ノイズ。毎日のように出入りしている",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-30",
+    "serviceId": "1password",
+    "name": "1Password",
+    "added": [
+      0,
+      1000000,
+      250000
+    ],
+    "removed": [],
+    "ours": [
+      464,
+      5561,
+      696,
+      8351
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "桁が不自然な値（$1000000, $250000）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "公式は $2.99/$3.99/$4.49/$5.99 でうちと一致。法人プランや宣伝文中の大きな数字を拾っていた",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-30",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "verdictReason": "割引価格と通常価格の並記。うちが載せている通常価格は不変",
+    "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-30",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [],
+    "removed": [
+      34
+    ],
+    "ours": [
+      2325,
+      22320,
+      5425,
+      52080,
+      14725,
+      141360
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "verdictReason": "公式は Standard $15 / Pro $35 でうちと一致。年払い表示との混在による揺れ",
+    "judgedAt": "2026-07-31"
   }
 ]
