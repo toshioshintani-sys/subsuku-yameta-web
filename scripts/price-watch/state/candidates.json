@@ -1,27 +1,7 @@
 {
-  "generatedAt": "2026-07-27T22:13:57.910Z",
+  "generatedAt": "2026-07-29T22:13:21.927Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
-    {
-      "id": "amazon-music-unlimited",
-      "name": "Amazon Music Unlimited",
-      "url": "https://www.amazon.co.jp/music/unlimited",
-      "added": [],
-      "removed": [
-        "0円"
-      ],
-      "detectedAt": "2026-07-27T22:11:17.143Z"
-    },
-    {
-      "id": "dropbox",
-      "name": "Dropbox",
-      "url": "https://www.dropbox.com/plans",
-      "added": [
-        "￥2,000"
-      ],
-      "removed": [],
-      "detectedAt": "2026-07-27T22:11:43.220Z"
-    },
     {
       "id": "evernote",
       "name": "Evernote",
@@ -30,7 +10,19 @@
         "¥10"
       ],
       "removed": [],
-      "detectedAt": "2026-07-27T22:12:29.538Z"
+      "detectedAt": "2026-07-29T22:11:59.233Z"
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "url": "https://1password.com/pricing/password-manager",
+      "added": [
+        "$0",
+        "$1,000,000",
+        "$250,000"
+      ],
+      "removed": [],
+      "detectedAt": "2026-07-29T22:12:22.374Z"
     },
     {
       "id": "google-workspace",
@@ -40,12 +32,18 @@
         "￥1,250",
         "￥400"
       ],
+      "removed": [],
+      "detectedAt": "2026-07-29T22:13:11.526Z"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "added": [],
       "removed": [
-        "￥1,280",
-        "￥2,000",
-        "￥640"
+        "$34"
       ],
-      "detectedAt": "2026-07-27T22:13:42.454Z"
+      "detectedAt": "2026-07-29T22:13:13.844Z"
     }
   ]
 }
