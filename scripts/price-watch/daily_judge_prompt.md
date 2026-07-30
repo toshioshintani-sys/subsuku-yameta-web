@@ -27,6 +27,9 @@ Slack に「本日の検知はありません」の1行を送って、そこで�
 
     npm run price:fetch -- サービスid
 
+金額の並びだけでは判断できないときは、末尾に --full を足すとページ本文が丸ごと取れます。
+なお price:fetch は取得結果を watch-list.json に書き戻します（成否や連続失敗回数の蓄積）。これは正常です。
+
 取れた本文に出ている金額と、src/data/services.js の PRICING / PLANS の値を突き合わせます。
 判断の材料は、取得した本文だけです。検索結果や記憶は使わないでください。
 
@@ -72,7 +75,10 @@ source には実際に見た公式ページのURLを入れてください。
 **main への直接 push は禁止です。PR のマージも絶対にしないでください。** 人が見て押します。
 
 - ブランチ名は price/auto- に今日の日付をつけたもの
-- git add してよいのは src/data/services.js と scripts/price-watch/state/ の中だけです。それ以外は add しないでください
+- git add してよいのは次の3つだけです。それ以外は add しないでください
+  - src/data/services.js
+  - scripts/price-watch/state/
+  - scripts/price-watch/watch-list.json
 - push が non-fast-forward で弾かれたら git pull --rebase してから再push。それでも駄目なら報告して終了。force push は禁止
 - 本物がゼロで、台帳の verdict だけ更新した場合も、同じルールでブランチを切って PR にしてください
 
