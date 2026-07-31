@@ -666,5 +666,97 @@
     "verdict": "偽陽性",
     "verdictReason": "公式は Standard $15 / Pro $35 でうちと一致。年払い表示との混在による揺れ",
     "judgedAt": "2026-07-31"
+  },
+  {
+    "date": "2026-07-31",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      29,
+      45,
+      47
+    ],
+    "removed": [
+      28,
+      43,
+      46
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [],
+    "verdict": null
+  },
+  {
+    "date": "2026-07-31",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      14,
+      31
+    ],
+    "removed": [
+      10
+    ],
+    "ours": [
+      2325,
+      22320,
+      5425,
+      52080,
+      14725,
+      141360
+    ],
+    "signals": [],
+    "verdict": null
+  },
+  {
+    "date": "2026-07-31",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1580
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": null
+  },
+  {
+    "date": "2026-07-31",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [],
+    "removed": [
+      10
+    ],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": null
   }
 ]
