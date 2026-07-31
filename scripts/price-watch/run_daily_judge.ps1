@@ -73,6 +73,25 @@ try {
     $result | Out-File -FilePath $logFile -Encoding utf8
 
     if ($exitCode -ne 0) {
+        # 失敗の中身を見て、**何をすればいいか**まで書く。
+        #
+        # 2026-07-14 にCLIの認証が失効し、7/20・7/27 の委員会と 7/31 の価格判定が全滅した。
+        # 通知は出ていたのに「exit code 1」としか書いておらず、2週間気づかれなかった。
+        # 原因の種類まで通知が言えば、受け取った人がその場で動ける。
+        $raw = ($result | Out-String)
+        if ($raw -match 'authentication_error|OAuth access token has expired|Invalid authentication credentials|401') {
+            Send-Slack ("サブスクやめた 価格判定（無人）が停止：**CLIの認証が失効しています**`n" +
+                "検知 $eventCount 件は未判定のまま残っています。`n`n" +
+                "対処（俊雄さんの操作が必要です）：ターミナルで claude auth login を実行し、" +
+                "ブラウザで承認してください。`n" +
+                "毎回切れるのを止めたい場合は claude setup-token で長期トークンに切り替えられます" +
+                "（無人実行用・Claudeサブスクが必要）。`n`n" +
+                "※ claude auth status は「ログイン済み」と出ますが、保存済みトークンが失効していると" +
+                "リクエスト時に401になります。status だけでは判定できません。`n" +
+                "※ 同じ認証を使うライフオラクル週次委員会も同時に止まります。`n" +
+                "ログ: $logFile")
+            exit 1
+        }
         Send-Slack "サブスクやめた 価格判定（無人）が失敗`nclaude -p が exit code $exitCode で終了。検知 $eventCount 件は未判定のまま残っています。`nログ: $logFile"
         exit 1
     }
