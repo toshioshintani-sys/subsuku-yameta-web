@@ -175,8 +175,8 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 15103,
-        "moneyLines": 29,
+        "ms": 11394,
+        "moneyLines": 31,
         "checkedAt": "2026-08-01",
         "fails": 0,
         "lastOkAt": "2026-08-01",
