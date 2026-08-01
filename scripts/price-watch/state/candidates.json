@@ -1,28 +1,16 @@
 {
-  "generatedAt": "2026-08-01T00:17:50.303Z",
+  "generatedAt": "2026-08-01T22:14:07.624Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "adobe-cc",
       "name": "Adobe Creative Cloud",
       "url": "https://www.adobe.com/jp/creativecloud/plans.html",
-      "added": [],
-      "removed": [
+      "added": [
         "1,580円"
       ],
-      "detectedAt": "2026-08-01T00:13:33.315Z"
-    },
-    {
-      "id": "niconico-premium",
-      "name": "ニコニコ動画プレミアム",
-      "url": "https://premium.nicovideo.jp/payment/premium_detail",
-      "added": [
-        "990円"
-      ],
-      "removed": [
-        "790円"
-      ],
-      "detectedAt": "2026-08-01T00:16:05.687Z"
+      "removed": [],
+      "detectedAt": "2026-08-01T22:11:43.402Z"
     }
   ]
 }
