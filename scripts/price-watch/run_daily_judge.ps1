@@ -68,9 +68,24 @@ try {
     # サブスク課金の保証：環境に ANTHROPIC_API_KEY が居ると claude -p が API 課金に化ける
     Remove-Item Env:\ANTHROPIC_API_KEY -ErrorAction SilentlyContinue
 
-    $result = & $claudeBin -p --permission-mode bypassPermissions --model claude-sonnet-5 --output-format json $prompt 2>&1
-    $exitCode = $LASTEXITCODE
-    $result | Out-File -FilePath $logFile -Encoding utf8
+    # claude の標準出力はUTF-8だが、Task Scheduler が起動するクラシック PowerShell は
+    # 既定のコンソール符号化（日本語環境では CP932）で読むため、日本語が文字化けする。
+    # 2026-08-02 のログが「## 螳御ｺ・ｱ蜻・」のように壊れていた。
+    # 読めないログは、無人実行で何が起きたかを後から追えなくする＝失敗の診断が効かなくなる。
+    # 入出力とも UTF-8 に固定してから呼ぶ。
+    $prevOut = [Console]::OutputEncoding
+    $prevOutputEncoding = $OutputEncoding
+    try {
+        [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+        $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+        $result = & $claudeBin -p --permission-mode bypassPermissions --model claude-sonnet-5 --output-format json $prompt 2>&1
+        $exitCode = $LASTEXITCODE
+    } finally {
+        [Console]::OutputEncoding = $prevOut
+        $OutputEncoding = $prevOutputEncoding
+    }
+    # -Encoding utf8 は Windows PowerShell 5.1 だと BOM 付きになるので、BOMなしで書く
+    [System.IO.File]::WriteAllText($logFile, ($result | Out-String), [System.Text.UTF8Encoding]::new($false))
 
     if ($exitCode -ne 0) {
         # 失敗の中身を見て、**何をすればいいか**まで書く。
