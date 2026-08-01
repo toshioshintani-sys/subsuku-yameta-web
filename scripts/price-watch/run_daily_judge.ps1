@@ -80,6 +80,16 @@ try {
         # 原因の種類まで通知が言えば、受け取った人がその場で動ける。
         $raw = ($result | Out-String)
         if ($raw -match 'authentication_error|OAuth access token has expired|Invalid authentication credentials|401') {
+            # 認証切れは「直るまで毎回同じ状態」なので、通知は1日1回に絞る。
+            # 2026-08-01 にスリープ対策で4時間ごとの再試行を入れたため、これが無いと
+            # 認証が切れている間ずっと同じ通知が1日4回届き、肝心な時に読み飛ばされる。
+            # （2週間気づかれなかった原因が「通知が読まれなかったこと」なので、量を増やさない）
+            $marker = Join-Path $logDir ("auth_alert_" + $today + ".txt")
+            if (Test-Path $marker) {
+                Write-Output "認証エラー（本日通知済みのためSlackは送らない）"
+                exit 1
+            }
+            Set-Content -Path $marker -Value $today -Encoding UTF8
             Send-Slack ("サブスクやめた 価格判定（無人）が停止：**CLIの認証が失効しています**`n" +
                 "検知 $eventCount 件は未判定のまま残っています。`n`n" +
                 "対処（俊雄さんの操作が必要です）：ターミナルで claude auth login を実行し、" +
