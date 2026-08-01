@@ -1412,7 +1412,7 @@ export const PRICING = {
   pairs: 3700,
   'note-premium': 500,
   'github-copilot': 1500,
-  'niconico-premium': 790,
+  'niconico-premium': 990,  // 2026-08-01 公式確認（旧790円）
   bookwalker: 836,
   honto: 0,                  // 都度購入がメイン
   'rakuten-kobo': 0,         // 都度購入がメイン
@@ -1787,7 +1787,8 @@ export const PLANS = {
   },
   'niconico-premium': {
     plans: [
-      { name: 'プレミアム会員', monthly: 790, popular: true },
+      // 2026-08-01 公式（premium.nicovideo.jp/payment/premium_detail）で再確認（旧790円）
+      { name: 'プレミアム会員', monthly: 990, popular: true },
     ],
     howToCheck: 'ニコニコ →「アカウント」→「プレミアム会員」で確認できます',
   },
@@ -2564,6 +2565,16 @@ export const PRICE_HISTORY = {
         'Plus の下位に月$8の「ChatGPT Go」ティアが定着（2026年1月中旬導入）。チャット中心の人向けの格安オプションとして確立。',
       source: 'https://openai.com/chatgpt/pricing/',
       verifiedAt: '2026-05-31',
+    },
+  ],
+  'niconico-premium': [
+    {
+      date: '2026-08-01',
+      item: 'プレミアム会員',
+      direction: 'up',
+      change: '月額790円→990円に値上げ（事前告知どおり2026-08-01に実施）。',
+      source: 'https://premium.nicovideo.jp/payment/premium_detail',
+      verifiedAt: '2026-08-01',
     },
   ],
 };

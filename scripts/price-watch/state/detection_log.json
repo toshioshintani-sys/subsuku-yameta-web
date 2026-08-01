@@ -687,7 +687,11 @@
       7500
     ],
     "signals": [],
-    "verdict": null
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "本文に「ユーザーあたり￥1,150/月（年払い、VAT込）」「￥3,750」「￥7,500」が明記されうちと一致。29/45/47等の小さい値は無関係な端数の揺れ",
+    "verdictReason": "headline価格（1150/3750/7500）は不変。揺れは無関係な端数",
+    "judgedAt": "2026-08-01"
   },
   {
     "date": "2026-07-31",
@@ -709,7 +713,11 @@
       141360
     ],
     "signals": [],
-    "verdict": null
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "Standard $15（年払い$12）、Pro $35（年払い$28）、Unlimited $95（年払い$76）と明記。月額本体は不変",
+    "verdictReason": "公式は Standard $15 / Pro $35 でうちと一致。年払い表示との混在による揺れ",
+    "judgedAt": "2026-08-01"
   },
   {
     "date": "2026-07-31",
@@ -731,7 +739,11 @@
         "kind": "偽陽性より"
       }
     ],
-    "verdict": null
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "1,580円/月は「Adobe Firefly Standard」という別プランの価格（うちが監視しているCreative Cloud Standard 6,480円等とは無関係）。非同期読み込みで出たり消えたりしている",
+    "verdictReason": "うちが追跡するCC本体プラン（6480/2380/3280/9080）は不変。1580はFirefly単体プランの表示揺れ",
+    "judgedAt": "2026-08-01"
   },
   {
     "date": "2026-07-31",
@@ -757,6 +769,65 @@
         "kind": "偽陽性より"
       }
     ],
-    "verdict": null
+    "verdict": "偽陽性",
+    "checkedUrl": "https://evernote.com/ja-jp/compare-plans",
+    "evidence": "プラン比較表に「10個」（マイリスト等の件数上限セル）という表記があり、これが¥10と誤検出されている。実際の価格は¥591.58/月・¥1491.58/月（年払い時の月額換算）でうちの年額7099/17899と一致",
+    "verdictReason": "¥10はプラン比較表の「10個」という件数表記の誤検出。価格自体は不変",
+    "judgedAt": "2026-08-01"
+  },
+  {
+    "date": "2026-08-01",
+    "serviceId": "niconico-premium",
+    "name": "ニコニコ動画プレミアム",
+    "added": [
+      990
+    ],
+    "removed": [
+      790
+    ],
+    "ours": [
+      790
+    ],
+    "signals": [
+      {
+        "name": "うちの表示価格がページから消えた",
+        "kind": "本物より"
+      },
+      {
+        "name": "1つの金額が1つに置き換わった（単純な置換）",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "本物",
+    "checkedUrl": "https://premium.nicovideo.jp/payment/premium_detail",
+    "evidence": "ページ末尾に「月額990円（税込）」と明記。790円の記載は無し",
+    "verdictReason": "blog.nicovideo.jpで告知済みだった2026-08-01の料金改定が実施された。790→990円へ値上げ。services.jsのPRICING/PLANS/PRICE_HISTORYを修正済み",
+    "judgedAt": "2026-08-01"
+  },
+  {
+    "date": "2026-08-01",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "再取得したところ1,580円/月（Adobe Firefly Standard）はページに存在していた。うちが追跡するCC本体プラン（6480/2380/3280/9080）は全て不変",
+    "verdictReason": "07-31と同一原因（Firefly Standard単体プランの非同期読み込みによる出入り）。うちの追跡対象価格は不変",
+    "judgedAt": "2026-08-01"
   }
 ]
