@@ -172,7 +172,19 @@
       "enabled": true,
       "renderMode": "headless",
       "noAdBlock": true,
-      "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み"
+      "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 15103,
+        "moneyLines": 29,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01",
+        "suspects": [
+          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
     },
     {
       "id": "notion",
@@ -305,7 +317,15 @@
       "enabled": true,
       "renderMode": "headless",
       "stripScriptStyle": true,
-      "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。"
+      "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
+      "fetch": {
+        "status": "ok",
+        "ms": 3700,
+        "moneyLines": 5,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01"
+      }
     },
     {
       "id": "audible",
@@ -442,11 +462,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 11697,
+        "ms": 8078,
         "moneyLines": 4,
-        "checkedAt": "2026-07-26",
+        "checkedAt": "2026-08-01",
         "fails": 0,
-        "lastOkAt": "2026-07-26",
+        "lastOkAt": "2026-08-01",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -494,7 +514,18 @@
       "url": "https://premium.nicovideo.jp/payment/premium_detail",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06修正: 旧URLは404。このURLでエージェントのWebFetchが「月額790円」をテキスト確認済み。⚠️2026-08-01に料金改定予定のアナウンスあり(blog.nicovideo.jp/niconews/1841)＝backlogで再確認"
+      "note": "2026-07-06修正: 旧URLは404。このURLでエージェントのWebFetchが「月額790円」をテキスト確認済み。⚠️2026-08-01に料金改定予定のアナウンスあり(blog.nicovideo.jp/niconews/1841)＝backlogで再確認",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 5013,
+        "moneyLines": 2,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01",
+        "suspects": [
+          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
+        ]
+      }
     },
     {
       "id": "bookwalker",
@@ -658,7 +689,15 @@
       "url": "https://runwayml.com/pricing",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示"
+      "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
+      "fetch": {
+        "status": "ok",
+        "ms": 2928,
+        "moneyLines": 10,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01"
+      }
     },
     {
       "id": "windsurf",
