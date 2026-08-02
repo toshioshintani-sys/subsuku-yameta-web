@@ -61,7 +61,15 @@
       "mode": "prices",
       "enabled": true,
       "renderMode": "headless",
-      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "ok",
+        "ms": 5269,
+        "moneyLines": 21,
+        "checkedAt": "2026-08-02",
+        "fails": 0,
+        "lastOkAt": "2026-08-02"
+      }
     },
     {
       "id": "disney-plus",

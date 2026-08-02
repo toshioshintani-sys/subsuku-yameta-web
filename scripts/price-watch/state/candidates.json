@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-08-01T22:14:07.624Z",
+  "generatedAt": "2026-08-02T22:13:31.847Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "adobe-cc",
-      "name": "Adobe Creative Cloud",
-      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
       "added": [
-        "1,580円"
+        "￥1,480"
       ],
       "removed": [],
-      "detectedAt": "2026-08-01T22:11:43.402Z"
+      "detectedAt": "2026-08-02T22:10:31.406Z"
     }
   ]
 }
