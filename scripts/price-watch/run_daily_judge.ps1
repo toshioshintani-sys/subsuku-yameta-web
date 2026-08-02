@@ -50,7 +50,34 @@ try {
         } catch { $eventCount = -1 }
     }
 
-    if ($beforeUnjudged -eq 0) {
+    # 為替の更新が滞っていないか（2026-08-03 追加）。
+    #
+    # 為替更新の手順はプロンプト §4.5 にあるが、それは claude を起動して初めて実行される。
+    # 起動条件が「未判定が残っているか」だけだと、**検知がない日・すでに判定済みの日は
+    # 為替チェックそのものが走らない**。前日 7:30 に判定を終えていれば、その後の再試行は
+    # すべて未判定ゼロで降りるので、結果として為替は永久に更新されなかった。
+    #
+    # さらに公表仲値の公表は午前10時頃なので、7:30 の実行では月曜でも前営業日しか出ていない。
+    # ＝為替を取りに行くべき時刻は 7:30 ではなく、10時を過ぎてからの再試行のとき。
+    #
+    # そこで「保存レートが直近の区切り(1日/15日)より古い」かつ「10:30 以降」なら、
+    # 未判定がゼロでも claude を起動する。ただし空振りで毎回起動しないよう1日1回に絞る。
+    $fxStale = $false
+    try {
+        $svc = Get-Content -Raw -Encoding UTF8 (Join-Path $repoRoot 'src\data\services.js')
+        if ($svc -match "USD_JPY_AS_OF\s*=\s*'(\d{4}-\d{2}-\d{2})'") {
+            $asOf = [datetime]::ParseExact($Matches[1], 'yyyy-MM-dd', $null)
+            $now = Get-Date
+            # 直近に過ぎた 1日 / 15日
+            $boundary = if ($now.Day -ge 15) { Get-Date -Year $now.Year -Month $now.Month -Day 15 }
+                        else { Get-Date -Year $now.Year -Month $now.Month -Day 1 }
+            $fxStale = $asOf.Date -lt $boundary.Date
+        }
+    } catch {}
+    $fxMarker = Join-Path $logDir ("fx_attempt_" + $today + ".txt")
+    $fxDue = $fxStale -and ((Get-Date).TimeOfDay -ge [timespan]'10:30:00') -and -not (Test-Path $fxMarker)
+
+    if ($beforeUnjudged -eq 0 -and -not $fxDue) {
         # 検知はあるのに今日の記録が台帳に1件も無い＝巡回側の記録/通知が失敗している。
         # 判定すべきものが本当に無いのか、記録に失敗して見えていないだけなのかは別物なので、
         # 後者は黙って緑にせず知らせる（検知が誰にも見られないまま消えるのを防ぐ）。
@@ -58,8 +85,13 @@ try {
             Send-Slack "サブスクやめた 価格判定（無人）を中止`n検知 $eventCount 件があるのに、台帳に今日($today)の記録が1件もありません。7:10 の巡回が終わっていないか、記録に失敗した可能性があります。"
             exit 1
         }
-        Write-Output "未判定ゼロのため判定はスキップ（検知 $eventCount 件・すべて判定済み）"
+        Write-Output "未判定ゼロ・為替も最新のため判定はスキップ（検知 $eventCount 件）"
         exit 0
+    }
+    if ($fxDue) {
+        # 起動理由が為替だけの回もあるので、記録を残しておく（同日の再起動を防ぐ）
+        Set-Content -Path $fxMarker -Value $today -Encoding UTF8
+        Write-Output "為替が区切りより古いため起動（未判定 $beforeUnjudged 件）"
     }
 
     $prompt = Get-Content -Raw -Encoding UTF8 $promptFile
