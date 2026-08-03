@@ -127,7 +127,7 @@
    ダーク値（#79c9a5）が入ったので、トークンをそのまま使えば両モードで成立する。 */
 
 .note {
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.6;
   color: var(--hm-muted-tan);
   margin: 0;
