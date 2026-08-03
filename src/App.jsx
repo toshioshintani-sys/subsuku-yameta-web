@@ -38,7 +38,7 @@ function PageLoader() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#6b7280',
+        color: 'var(--text-faint)',
         fontSize: '13px',
       }}
     >
