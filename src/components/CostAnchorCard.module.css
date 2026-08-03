@@ -23,7 +23,7 @@
 }
 .reveal {
   margin-top: 5px;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.55;
   color: var(--hm-muted);
 }
@@ -92,7 +92,7 @@
 }
 .amountHint {
   margin-top: 6px;
-  font-size: 9.5px;
+  font-size: 11px;
   color: var(--hm-muted-tan);
 }
 
@@ -106,7 +106,7 @@
   background: var(--hm-loss-bg);
   border: 1px solid var(--hm-loss-border);
   border-radius: 11px;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--hm-loss-ink-2);
 }
@@ -130,7 +130,7 @@
   background: var(--hm-gold-bg);
   border: 1px solid var(--hm-gold-border);
   border-radius: 11px;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--hm-gold-ink);
 }
@@ -236,7 +236,7 @@
   border: 1px solid var(--hm-select-border);
   color: #cfd8d2;
   font-family: var(--hm-font-body);
-  font-size: 9.5px;
+  font-size: 11px;
   border-radius: 8px;
   padding: 4px 20px 4px 8px;
   max-width: 130px;
@@ -349,7 +349,7 @@
 
 .note {
   margin-top: 11px;
-  font-size: 9.5px;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--hm-muted-tan);
   text-align: center;
