@@ -167,9 +167,16 @@
   white-space: nowrap;
 }
 
+/* 値上げ＝黒、値下げ＝緑。改修前は .dir_up がプライマリ（緑）で、
+   上がるほうに「良い色」が付いていた。方向はラベルの矢印記号でも担保する。 */
 .dir_up {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--hard);
+  color: var(--hard);
+}
+
+.dir_down {
+  border-color: var(--easy);
+  color: var(--easy);
 }
 
 .itemLabel {

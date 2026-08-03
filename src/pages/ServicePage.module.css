@@ -373,7 +373,7 @@
   padding: 10px 14px;
   background: var(--medium-bg);
   font-size: 13px;
-  color: #78350f;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -578,10 +578,12 @@
   padding-top: 2px;
 }
 
-/* 注意 */
+/* 注意
+   サフラン（ナッジ）には寄せない。ここは「読ませる情報」であって次の一手ではないので、
+   暖色を持たせるとナッジの独占が崩れる（Design判断 2026-08-04）。 */
 .note {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
   display: flex;
@@ -598,7 +600,7 @@
 
 .note p {
   font-size: 14px;
-  color: #78350f;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -955,10 +957,13 @@
   color: var(--text);
 }
 
-.dir_up { background: rgba(200, 60, 60, 0.12); color: #b23b3b; }
-.dir_down { background: rgba(52, 150, 92, 0.14); color: #2f8a56; }
-.dir_new { background: rgba(59, 110, 240, 0.12); color: #3b6ef0; }
-.dir_restructure { background: rgba(150, 120, 40, 0.14); color: #8c6f28; }
+/* 方向は色2つ（緑=下がる／黒=上がる）＋灰。値上げは「方向の記号」ではなく損失そのものなので
+   赤にしない（§8）。改修前は色だけで4方向を区別していたため、色覚特性のある読者には
+   最初から3色に見えていた。方向はラベルの矢印記号で担保する。 */
+.dir_up { background: var(--hard-bg); color: var(--hard); }
+.dir_down { background: var(--easy-bg); color: var(--easy); }
+.dir_new { background: var(--medium-bg); color: var(--medium); }
+.dir_restructure { background: var(--medium-bg); color: var(--medium); }
 
 .historyItemLabel {
   font-size: 12px;

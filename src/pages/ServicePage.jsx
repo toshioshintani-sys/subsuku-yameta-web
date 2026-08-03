@@ -39,7 +39,8 @@ import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
-const DIRECTION_LABEL = { up: '値上げ', down: '値下げ', new: '新プラン', restructure: '体系変更' };
+// 方向は色だけに頼らず矢印でも示す（色覚特性のある読者向け・2026-08-04）
+const DIRECTION_LABEL = { up: '↑ 値上げ', down: '↓ 値下げ', new: '新プラン', restructure: '体系変更' };
 
 const CATEGORY_LABEL = {
   video: '動画',
