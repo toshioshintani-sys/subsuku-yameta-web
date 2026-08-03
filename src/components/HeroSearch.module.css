@@ -50,7 +50,7 @@
   font-size: 25px;
   line-height: 1.32;
   font-weight: 900;
-  color: #fff;
+  color: #f2efe8;
   margin-bottom: 8px;
 }
 .mark {
@@ -72,7 +72,7 @@
   align-items: center;
   height: 50px;
   padding: 0 6px 0 12px;
-  background: #fff;
+  background: var(--hm-card);
   border-radius: 14px;
   box-shadow: var(--hm-shadow-search);
 }
@@ -130,7 +130,7 @@
 /* typeahead 結果カード */
 .results {
   margin-top: 10px;
-  background: #fff;
+  background: var(--hm-card);
   border-radius: 13px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
   overflow: hidden;

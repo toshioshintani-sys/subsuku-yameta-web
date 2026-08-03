@@ -11,7 +11,7 @@
 .heroTitle {
   font-size: 28px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 10px;
 }
@@ -68,7 +68,7 @@
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(59, 110, 240, 0.12);
+  box-shadow: 0 4px 20px rgba(23, 33, 43, 0.12);
   transform: translateY(-2px);
 }
 

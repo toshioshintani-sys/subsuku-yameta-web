@@ -65,7 +65,7 @@
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-  background: rgba(59, 110, 240, 0.08);
+  background: var(--surface-2);
   padding: 3px 10px;
   border-radius: 10px;
 }
@@ -240,7 +240,7 @@
   padding: 10px 16px;
   border-radius: 10px;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 800;
   text-decoration: none;

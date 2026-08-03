@@ -12,7 +12,7 @@
 .heroTitle {
   font-size: 30px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
@@ -32,7 +32,7 @@
 }
 
 .heroDesc strong {
-  color: #fff;
+  color: #f2efe8;
 }
 
 /* サマリーバー */
@@ -264,7 +264,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -349,7 +349,7 @@
 
 .recCancelBtn {
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .recCancelBtn:hover {

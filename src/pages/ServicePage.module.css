@@ -399,12 +399,12 @@
 
 .dpTriggerLabel {
   background: var(--medium);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .dpResponseLabel {
   background: var(--easy);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 /* FAQ */
@@ -479,7 +479,7 @@
 }
 
 .trackerCta:hover {
-  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.12);
+  box-shadow: 0 4px 16px rgba(44, 95, 74, 0.12);
   transform: translateY(-1px);
 }
 
@@ -508,7 +508,7 @@
   gap: 10px;
   width: 100%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   text-align: center;
   padding: 16px;
   border-radius: 12px;
@@ -561,7 +561,7 @@
   height: 26px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -607,7 +607,7 @@
 /* 免責 */
 .disclaimer {
   font-size: 12px;
-  color: #aaa;
+  color: var(--text-faint);
   line-height: 1.8;
   margin-top: 8px;
 }
@@ -805,7 +805,7 @@
 
 .altCard:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(59, 110, 240, 0.1);
+  box-shadow: 0 2px 8px rgba(23, 33, 43, 0.1);
 }
 
 .altCardTop {
@@ -878,7 +878,7 @@
 
 .relatedCard:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(59, 110, 240, 0.1);
+  box-shadow: 0 2px 8px rgba(23, 33, 43, 0.1);
 }
 
 .relatedEmoji {
@@ -926,11 +926,11 @@
 }
 
 .historyItem {
-  border: 1px solid var(--border, #e5e0d8);
+  border: 1px solid var(--border, #e2dbc8);
   border-left: 3px solid var(--accent);
   border-radius: 10px;
   padding: 12px 14px;
-  background: var(--surface, #fff);
+  background: var(--surface, #fffdf9);
 }
 
 .historyMeta {
