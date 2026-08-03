@@ -63,12 +63,54 @@ const parseTok = (tok) => {
  * 検知1件を検査する。返すのは「鳴った検査の名前」と「人が最初に見るべき点」。
  * ここでスコアは付けない。名前で返す方が、あとで「どの検査が当たったか」を数えられる。
  */
-function inspect(ev, ours) {
+/**
+ * 過去に同じ値で偽陽性と判定されたことがあるか（2026-08-04 追加）。
+ *
+ * ■ 何を解決するか
+ *   Adobe CC が3日連続で同じ検知を出した（7/31 追加[1580] → 8/01 消失[1580] → 8/02 追加[1580]）。
+ *   非同期読み込みで 1,580円（Firefly生成AIクレジットの追加購入オプション）が出たり消えたりする。
+ *   毎朝ノイズが確実に出る状態は「またAdobeか」を育て、**それが本物を見逃す入口**になる。
+ *
+ * ■ なぜ「無視リスト」にしないか
+ *   watch-list に 1580 を無視値として登録すると、**Adobeが本当に1,580円のプランを作った日に
+ *   見逃す**。誤報ゼロを掲げるサイトが、自分から盲点を作ることになる。
+ *
+ * ■ 代わりにすること＝抑制ではなく「ラベル」
+ *   台帳（detection_log）に、同じサービス・同じ値で偽陽性と判定された記録があれば、
+ *   それを事実として添える。判定そのものは今まで通り公式ページで行うので盲点は生まれない。
+ *   人（および判定担当）が「どれから見るか」を決める材料が増えるだけ。
+ */
+function seenAsFalsePositive(serviceId, values, log) {
+  if (!Array.isArray(log) || values.length === 0) return null;
+  const past = log.filter(
+    (x) => x.serviceId === serviceId && x.verdict === '偽陽性'
+  );
+  if (past.length === 0) return null;
+  const hits = values.filter((v) =>
+    past.some((x) => (x.added || []).includes(v) || (x.removed || []).includes(v))
+  );
+  if (hits.length === 0) return null;
+  const times = past.filter((x) =>
+    hits.some((v) => (x.added || []).includes(v) || (x.removed || []).includes(v))
+  ).length;
+  return { values: hits, times };
+}
+
+function inspect(ev, ours, log) {
   const addedTok = ev.added.map(parseTok).filter(Boolean);
   const removedTok = ev.removed.map(parseTok).filter(Boolean);
   const added = addedTok.map((t) => t.value);
   const removed = removedTok.map((t) => t.value);
   const signals = [];
+
+  // --- 同じ値で過去に偽陽性と判定されている（抑制ではなくラベル・上のコメント参照） ---
+  const seen = seenAsFalsePositive(ev.id, [...added, ...removed], log);
+  if (seen) {
+    signals.push({
+      name: `同じ値（${seen.values.slice(0, 3).join(', ')}）で過去${seen.times}回、公式確認のうえ偽陽性と判定済み`,
+      kind: '偽陽性より',
+    });
+  }
 
   // --- 無料期間（0円）の出入りは、キャンペーンの開始・終了を意味する ---
   // 通常価格は変わらないが、入口価格の表示（INTRO_OFFERS）を見直す合図になるので必ず知らせる。
@@ -203,6 +245,18 @@ async function main() {
   const today = jstDate();
   const logEntries = [];
 
+  // 台帳は検査（inspect）でも使うので先に読む。
+  // 「同じ値で過去に偽陽性と判定済み」を言うために、過去の判定結果が要る。
+  let log = [];
+  if (existsSync(LOG)) {
+    try {
+      log = JSON.parse(readFileSync(LOG, 'utf-8'));
+      if (!Array.isArray(log)) log = [];
+    } catch {
+      log = [];
+    }
+  }
+
   // 検知を「要確認」と「既知のノイズ型」に分ける（2026-07-31 追加）。
   //
   // 実測（25件・5日分）で、検知の96%は偽陽性だった。全部を同じ顔で並べると、
@@ -215,7 +269,7 @@ async function main() {
   //    あくまで「人がどれを先に見るか」の並べ替えに留める。
   const triaged = events.map((ev) => {
     const ours = oursOf(ev.id);
-    return { ev, ours, ...inspect(ev, ours) };
+    return { ev, ours, ...inspect(ev, ours, log) };
   });
   const needsCheck = triaged.filter((t) => !t.signals.some((s) => s.kind === '偽陽性より'));
   const likelyNoise = triaged.filter((t) => t.signals.some((s) => s.kind === '偽陽性より'));
@@ -261,16 +315,7 @@ async function main() {
 
   const body = lines.join('\n');
 
-  // 判定を記録する台帳に追記（的中率の実測用）
-  let log = [];
-  if (existsSync(LOG)) {
-    try {
-      log = JSON.parse(readFileSync(LOG, 'utf-8'));
-      if (!Array.isArray(log)) log = [];
-    } catch {
-      log = [];
-    }
-  }
+  // 台帳（log）は上で読み込み済み。ここでは追記だけ行う（的中率の実測用）。
   // dry-run は「送らない」だけでなく「書かない」。
   //
   // 2026-07-31 に踏んだ罠：本文の確認のつもりで --dry-run を叩いたら、前日(7/30)の
