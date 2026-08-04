@@ -126,17 +126,39 @@ TTM（公表仲値）= (TTS + TTB) / 2 を計算し、次の3つを書き換え�
 ⚠️ **為替の変更を PRICE_HISTORY に書いてはいけません。** サービスが値段を変えていないのに
 円換算額が動くのは値上げではありません。履歴に混ぜると /price-watch が為替の揺れで埋まります。
 
-### 5. ブランチを作って PR まで
+### 5. 記録を残す（PR にするか、そのまま main へ入れるか）
 
-**main への直接 push は禁止です。PR のマージも絶対にしないでください。** 人が見て押します。
+**分かれ目は「価格が動いたかどうか」だけです。**
+
+git add してよいのは次の3つだけです。それ以外は絶対に add しないでください。
+
+- src/data/services.js
+- scripts/price-watch/state/
+- scripts/price-watch/watch-list.json
+
+#### A. 全件が偽陽性で、services.js を一切変更していない場合 → main へ直接 push
+
+この日は**サイトの表示が1ミリも変わりません**。記録が増えるだけです。人の承認を挟む意味がなく、
+毎朝ひとつずつPRが溜まって「マージ作業が日課」になるほうが害が大きい（2026-08-05 に2日分が
+溜まって実際そうなりかけた）。よって台帳と巡回状態だけを main に直接入れます。
+
+**この経路を使ってよい条件（ひとつでも欠けたら B に回す）：**
+
+1. 今日つけた verdict に **本物 が1件も無い**
+2. 今日つけた verdict に **保留 が1件も無い**
+3. `git diff` で **src/data/services.js に変更が無い**（為替を更新した日も B に回すこと）
+
+コミットメッセージは「〇月〇日の検知N件を判定（全件偽陽性）」の形にしてください。
+push が non-fast-forward で弾かれたら `git pull --rebase` してから再push。
+それでも駄目なら報告して終了。**force push は禁止**です。
+
+#### B. 本物がある／保留がある／services.js を変更した場合 → ブランチを切って PR
+
+**この場合は main への直接 push を禁止します。PR のマージも絶対にしないでください。** 人が見て押します。
+表示価格が変わる、あるいは判断が割れている日なので、公開の一歩手前に人のゲートを置きます。
 
 - ブランチ名は price/auto- に今日の日付をつけたもの
-- git add してよいのは次の3つだけです。それ以外は add しないでください
-  - src/data/services.js
-  - scripts/price-watch/state/
-  - scripts/price-watch/watch-list.json
-- push が non-fast-forward で弾かれたら git pull --rebase してから再push。それでも駄目なら報告して終了。force push は禁止
-- 本物がゼロで、台帳の verdict だけ更新した場合も、同じルールでブランチを切って PR にしてください
+- push の失敗時の扱いは A と同じ（pull --rebase → 駄目なら報告・force 禁止）
 
 ### 6. Slack に報告する
 
