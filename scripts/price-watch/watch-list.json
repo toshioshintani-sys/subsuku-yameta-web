@@ -64,11 +64,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5269,
+        "ms": 5400,
         "moneyLines": 21,
-        "checkedAt": "2026-08-02",
+        "checkedAt": "2026-08-04",
         "fails": 0,
-        "lastOkAt": "2026-08-02"
+        "lastOkAt": "2026-08-04"
       }
     },
     {
@@ -183,11 +183,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 11394,
+        "ms": 13072,
         "moneyLines": 31,
-        "checkedAt": "2026-08-01",
+        "checkedAt": "2026-08-03",
         "fails": 0,
-        "lastOkAt": "2026-08-01",
+        "lastOkAt": "2026-08-03",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -470,11 +470,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8078,
+        "ms": 7440,
         "moneyLines": 4,
-        "checkedAt": "2026-08-01",
+        "checkedAt": "2026-08-03",
         "fails": 0,
-        "lastOkAt": "2026-08-01",
+        "lastOkAt": "2026-08-03",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -590,9 +590,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5745,
+        "ms": 3391,
         "moneyLines": 6,
-        "checkedAt": "2026-07-26"
+        "checkedAt": "2026-08-04",
+        "fails": 0,
+        "lastOkAt": "2026-08-04"
       }
     },
     {
@@ -681,13 +683,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5570,
+        "ms": 4096,
         "moneyLines": 3,
-        "checkedAt": "2026-07-26",
+        "checkedAt": "2026-08-04",
         "fails": 0,
-        "lastOkAt": "2026-07-26",
+        "lastOkAt": "2026-08-04",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },

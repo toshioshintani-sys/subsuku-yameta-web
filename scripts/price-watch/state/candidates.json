@@ -1,16 +1,46 @@
 {
-  "generatedAt": "2026-08-02T22:13:31.847Z",
+  "generatedAt": "2026-08-04T22:13:23.832Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "youtube-premium",
       "name": "YouTube Premium",
       "url": "https://www.youtube.com/premium",
-      "added": [
+      "added": [],
+      "removed": [
         "￥1,480"
       ],
+      "detectedAt": "2026-08-04T22:10:25.274Z"
+    },
+    {
+      "id": "vimeo-pro",
+      "name": "Vimeo",
+      "url": "https://vimeo.com/upgrade",
+      "added": [
+        "$0",
+        "$12",
+        "$125",
+        "$144",
+        "$20",
+        "$25",
+        "$300",
+        "$41",
+        "$75",
+        "$900"
+      ],
       "removed": [],
-      "detectedAt": "2026-08-02T22:10:31.406Z"
+      "detectedAt": "2026-08-04T22:12:59.764Z"
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
+      "added": [
+        "￥1,250",
+        "￥400"
+      ],
+      "removed": [],
+      "detectedAt": "2026-08-04T22:13:12.883Z"
     }
   ]
 }
