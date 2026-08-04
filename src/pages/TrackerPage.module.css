@@ -4,7 +4,7 @@
 
 /* ヒーロー */
 .hero {
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  background: linear-gradient(135deg, var(--hm-navy-mid) 0%, var(--hm-navy-from) 100%);
   padding: 48px 24px 40px;
   text-align: center;
 }
@@ -12,7 +12,7 @@
 .heroTitle {
   font-size: 30px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
@@ -32,7 +32,7 @@
 }
 
 .heroDesc strong {
-  color: #fff;
+  color: #f2efe8;
 }
 
 /* サマリーバー */
@@ -195,7 +195,7 @@
 }
 
 .savingsSub {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-sub);
   margin-top: 4px;
 }
@@ -264,7 +264,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -294,7 +294,7 @@
 }
 
 .recBadge {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 12px;
@@ -349,7 +349,7 @@
 
 .recCancelBtn {
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .recCancelBtn:hover {

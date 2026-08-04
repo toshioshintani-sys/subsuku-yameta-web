@@ -95,7 +95,7 @@
   font-size: 14px;
   font-weight: 700;
   color: #fff;
-  background: #0a7c7c;
+  background: var(--accent);
   border: 2px solid #0a1530;
   border-radius: 6px;
   cursor: pointer;
@@ -226,7 +226,7 @@
 
 .againBtn {
   color: #fff;
-  background: #0a7c7c;
+  background: var(--accent);
   border: 1px solid #064e4e;
 }
 

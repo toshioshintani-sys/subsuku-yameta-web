@@ -27,7 +27,7 @@
   height: 22px;
   border-radius: 999px;
   background: var(--hm-ink);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-family: var(--hm-font-head);
   font-size: 12px;
   font-weight: 800;

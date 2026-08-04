@@ -3,7 +3,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  background: linear-gradient(135deg, var(--hm-navy-mid) 0%, var(--hm-navy-from) 100%);
   padding: 48px 24px 40px;
   text-align: center;
 }
@@ -11,7 +11,7 @@
 .heroTitle {
   font-size: 28px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 10px;
 }
@@ -68,7 +68,7 @@
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(59, 110, 240, 0.12);
+  box-shadow: 0 4px 20px rgba(23, 33, 43, 0.12);
   transform: translateY(-2px);
 }
 
@@ -105,7 +105,7 @@
   padding: 1px 6px;
   color: var(--text);
   font-weight: 700;
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.01em;
   white-space: nowrap;
 }

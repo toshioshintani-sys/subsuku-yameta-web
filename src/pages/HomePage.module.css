@@ -110,7 +110,7 @@
 .gameMini:hover .gameMiniIcon,
 .gameMini:focus-visible .gameMiniIcon {
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 .gameMiniLabel {
   font-size: 11px;

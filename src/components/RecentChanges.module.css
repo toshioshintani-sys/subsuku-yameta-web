@@ -121,41 +121,13 @@
   text-decoration: underline;
 }
 
-/* --hm-teal-ink (#0e7f85) はダークモード用の定義が無い固定色で、暗い背景だと
-   コントラストが 3.7:1 まで落ちて小さい文字が読めない（--hm-ink には dark 定義がある）。
-   共有トークン自体を書き換えると他コンポーネントに影響が出るので、
-   ここだけ明るい方のティール (--hm-teal-2 #2fa8ae ≒ 6.3:1) に差し替える。
-   index.css と同じく、OSの設定とサイトのテーマ切替の両方に対応させる。 */
-@media (prefers-color-scheme: dark) {
-  .link {
-    color: var(--hm-teal-2);
-  }
-  .marker {
-    border-right-color: var(--hm-teal-2);
-    border-bottom-color: var(--hm-teal-2);
-  }
-}
-
-:root[data-theme='dark'] .link {
-  color: var(--hm-teal-2);
-}
-
-:root[data-theme='dark'] .marker {
-  border-right-color: var(--hm-teal-2);
-  border-bottom-color: var(--hm-teal-2);
-}
-
-:root[data-theme='light'] .link {
-  color: var(--hm-teal-ink);
-}
-
-:root[data-theme='light'] .marker {
-  border-right-color: var(--hm-teal-ink);
-  border-bottom-color: var(--hm-teal-ink);
-}
+/* 2026-08-04：ここにあった --hm-teal-2 への差し替えハックを削除した。
+   --hm-teal-ink がダーク値を持たない固定色（旧 #0e7f85）だったため、暗い面で
+   3.7:1 まで落ちるのを回避していたもの。新パレットで --hm-teal-ink に
+   ダーク値（#79c9a5）が入ったので、トークンをそのまま使えば両モードで成立する。 */
 
 .note {
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.6;
   color: var(--hm-muted-tan);
   margin: 0;
@@ -188,16 +160,5 @@
   text-decoration: underline;
 }
 
-@media (prefers-color-scheme: dark) {
-  .more {
-    color: var(--hm-teal-2);
-  }
-}
-
-:root[data-theme='dark'] .more {
-  color: var(--hm-teal-2);
-}
-
-:root[data-theme='light'] .more {
-  color: var(--hm-teal-ink);
-}
+/* 2026-08-04：.link と同じ理由で、ここにあった --hm-teal-2 への差し替えも削除。
+   残すと同じコンポーネント内で .link と .more が別の緑になる。 */

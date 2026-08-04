@@ -155,22 +155,9 @@
   color: var(--accent);
 }
 
-/* 方向のラベル。色は「事実の分類」であって警告ではないので、彩度を抑える */
-.dir {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--text-sub);
-  background: var(--bg);
-  white-space: nowrap;
-}
-
-.dir_up {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+/* 2026-08-04：方向のラベル（.dir / .dir_*）は components/DirectionBadge へ移した。
+   ServicePage と別々に色を定義していた結果、こちらだけ「値上げ＝プライマリ（緑）」＝
+   上がるほうに良い色が付いていた。見た目は variant="outlined" で保持している。 */
 
 .itemLabel {
   font-size: 12px;

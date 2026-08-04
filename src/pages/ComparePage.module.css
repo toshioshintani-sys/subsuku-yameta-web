@@ -114,7 +114,7 @@
 .chipActive {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .sort {
@@ -236,19 +236,22 @@
   white-space: nowrap;
 }
 
+/* 難易度は 緑 → 灰 → 黒。かんたんだけ色がつく。
+   easy もプライマリ（--accent）ではなく難易度トークンを参照する。今は同値だが、
+   直接参照していると CTA の色を触ったとき難易度まで一緒に動く。 */
 .badge_easy {
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--easy-bg);
+  color: var(--easy);
 }
 
 .badge_medium {
-  background: #fff4e0;
-  color: #9a6516;
+  background: var(--medium-bg);
+  color: var(--medium);
 }
 
 .badge_hard {
-  background: #fde7e0;
-  color: #b1492a;
+  background: var(--hard-bg);
+  color: var(--hard);
 }
 
 .price {

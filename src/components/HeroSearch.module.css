@@ -19,7 +19,7 @@
   width: 320px;
   height: 220px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(52, 192, 198, 0.3), transparent);
+  background: radial-gradient(closest-side, rgba(121, 201, 165, 0.28), transparent);
   filter: blur(4px);
   pointer-events: none;
 }
@@ -50,17 +50,18 @@
   font-size: 25px;
   line-height: 1.32;
   font-weight: 900;
-  color: #fff;
+  color: #f2efe8;
   margin-bottom: 8px;
 }
 .mark {
-  background: linear-gradient(transparent 60%, rgba(52, 192, 198, 0.5) 60%);
+  /* 検索は「やめる」ではなく回遊なので、下線マーカーはサフラン（ナッジ）にする */
+  background: linear-gradient(transparent 60%, rgba(240, 180, 73, 0.55) 60%);
   padding: 0 1px;
 }
 .sub {
   font-size: 11.5px;
   line-height: 1.6;
-  color: #cfd6ea;
+  color: #c8d4cd;
   margin-bottom: 16px;
 }
 
@@ -71,14 +72,14 @@
   align-items: center;
   height: 50px;
   padding: 0 6px 0 12px;
-  background: #fff;
+  background: var(--hm-card);
   border-radius: 14px;
   box-shadow: var(--hm-shadow-search);
 }
 .searchIcon {
   flex: none;
   display: flex;
-  color: #9a9fac;
+  color: var(--hm-muted);
 }
 .input {
   flex: 1 1 auto;
@@ -89,11 +90,11 @@
   background: transparent;
   font-family: var(--hm-font-body);
   font-size: 12.5px;
-  color: #1b2030;
+  color: var(--hm-ink);
   padding: 0 8px;
 }
 .input::placeholder {
-  color: #b3b7c0;
+  color: var(--hm-muted);
 }
 .clear {
   flex: none;
@@ -104,7 +105,7 @@
   height: 30px;
   border: none;
   background: transparent;
-  color: #9a9fac;
+  color: var(--hm-muted);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -129,7 +130,7 @@
 /* typeahead 結果カード */
 .results {
   margin-top: 10px;
-  background: #fff;
+  background: var(--hm-card);
   border-radius: 13px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
   overflow: hidden;
@@ -141,14 +142,14 @@
   gap: 9px;
   min-height: 48px;
   padding: 9px 12px;
-  border-bottom: 1px solid #f1eee6;
-  color: #1b2030;
+  border-bottom: 1px solid var(--hm-hairline);
+  color: var(--hm-ink);
 }
 .resultRow:last-child {
   border-bottom: none;
 }
 .resultRow:hover {
-  background: #f7f9f9;
+  background: var(--hm-cream);
 }
 .resultName {
   flex: 1 1 auto;
@@ -164,7 +165,7 @@
   display: inline-flex;
   align-items: center;
   gap: 2px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   color: var(--hm-teal-ink);
 }
@@ -175,7 +176,7 @@
   gap: 8px;
   min-height: 48px;
   padding: 12px 14px;
-  color: #5a6072;
+  color: var(--hm-ink-2);
   font-size: 12px;
   font-weight: 600;
 }
@@ -190,7 +191,7 @@
 .cutline {
   display: block;
   height: 0;
-  border-top: 1.5px dashed rgba(120, 140, 180, 0.5);
+  border-top: 1.5px dashed rgba(110, 130, 120, 0.5);
 }
 .chips {
   display: flex;
@@ -206,7 +207,7 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #eef2f8;
+  color: #f2efe8;
   font-family: var(--hm-font-body);
   font-size: 11.5px;
   font-weight: 600;

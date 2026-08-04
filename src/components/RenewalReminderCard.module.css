@@ -91,7 +91,7 @@
 }
 .toggleOn {
   background: var(--hm-teal);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .actions {
@@ -117,7 +117,7 @@
 
 .btnPrimary {
   background: var(--hm-teal);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 .btnPrimary:hover {
   background: var(--hm-teal-2, var(--hm-teal-ink));
