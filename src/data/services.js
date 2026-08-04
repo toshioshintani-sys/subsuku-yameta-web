@@ -1542,10 +1542,62 @@ export const KANA = {
   'youtube-premium': 'ゆーちゅーぶぷれみあむ ようつべ ゆうちゅうぶ',
   'disney-plus': 'でぃずにーぷらす でぃずにー',
   dazn: 'だぞーん だ・ぞーん',
-  abema: 'あべま アベマ',
+  // 2026-08-04 修正：キーが 'abema' になっていて、実在するID 'abema-premium' と
+  // 一致しないため一度も引かれていなかった（KANA_ORPHANS で検出）
+  'abema-premium': 'あべま アベマ あべまぷれみあむ',
 };
+
+/**
+ * KANA のキーで、実在しないサービスIDになっているもの（2026-08-04 追加）。
+ *
+ * 'abema' が実際のID 'abema-premium' と食い違っていて、書いた本人は効いているつもりで
+ * まったく引かれていなかった。**書き間違えても何も起きない**のがこの表の怖いところなので、
+ * ビルド時に気づけるようにする（price:check と同じ考え方＝黙って効かない状態を作らない）。
+ */
+export const KANA_ORPHANS = Object.keys(KANA).filter(
+  (id) => !SERVICES.some((s) => s.id === id)
+);
 export function getKana(serviceId) {
   return KANA[serviceId] ?? '';
+}
+
+/**
+ * 検索用にゆらぎを潰す（2026-08-04 追加）
+ *
+ * ■ 直した不具合
+ *   「ネットフリックス」（カタカナ）で検索しても何も出なかった。
+ *   KANA が 'ねっとふりっくす ねとふり' とひらがなだけで、照合が単純な includes
+ *   だったため、カタカナ入力が一致しなかった。
+ *   u-next と abema だけ手作業でカタカナを併記してあったのは、この穴に対する
+ *   その場しのぎの回避（2件だけ塞いでも残りは開いたまま）。
+ *
+ * ■ 潰すゆらぎ
+ *   カタカナ → ひらがな（ネ→ね）／全角英数 → 半角（Ｎ→n）／大文字 → 小文字
+ *   中黒・空白・ハイフン類は落とす（「ｄ・ぞーん」「ネット フリックス」も一致させる）
+ *   長音は残す（「ふーる」と「ふうる」は KANA 側に両方書いてある）
+ */
+export function normalizeForSearch(text) {
+  return String(text ?? '')
+    // 全角英数・記号 → 半角
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+    // カタカナ → ひらがな（濁点つきも含む。長音符 ー はそのまま）
+    .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .toLowerCase()
+    // 区切り記号は無視（中黒・全角/半角スペース・各種ハイフン）
+    // 全角スペースは書かない：JSの \s は U+3000 を含むので冗長なうえ、
+    // リテラルで置くと eslint の no-irregular-whitespace で落ちる
+    .replace(/[・\s\-‐‑–—+_.]/g, '');
+}
+
+/**
+ * サービスが検索語に一致するか。
+ * 名前・ID・かな別名のすべてを正規化して照合する（IDを含めるので "netflix" でも引ける）。
+ */
+export function matchesQuery(service, query) {
+  const q = normalizeForSearch(query);
+  if (!q) return false;
+  const hay = normalizeForSearch(`${service.name} ${service.id} ${getKana(service.id)}`);
+  return hay.includes(q);
 }
 
 // ---------------------------------------------------------------------------
