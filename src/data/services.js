@@ -2488,6 +2488,23 @@ export function getRecentPriceChanges(windowDays = 3, now = new Date()) {
 // 誤報ゼロ（生命線）：各エントリは verifiedAt 時点で公式ページ照合済み・source は公式料金ページ・
 //   現在価格そのものは書かない（"何が・いつ変わったか"の事実のみ）。小さな変動はここに蓄積する。
 // direction: 'up'=値上げ / 'down'=値下げ / 'new'=新プラン・新ティア / 'restructure'=料金体系の変更。
+/**
+ * PRICE_HISTORY の direction を人が読む言葉にする（2026-08-04 一本化）。
+ *
+ * 以前は ServicePage / PriceWatchPage / RecentChanges の3ファイルに複製されており、
+ * 色の規則も2ファイルで別々に書かれていた結果、PriceWatchPage だけ
+ * 「値上げ＝プライマリ（緑）」＝上がるほうに良い色が付いていた。
+ *
+ * 矢印を付けているのは、色だけで方向を示すと色覚特性のある読者に伝わらないため
+ * （表示は components/DirectionBadge が担当）。
+ */
+export const DIRECTION_LABEL = {
+  up: '↑ 値上げ',
+  down: '↓ 値下げ',
+  new: '新プラン',
+  restructure: '体系変更',
+};
+
 export const PRICE_HISTORY = {
   // ── 2026-07-25 追加：Apple 日本の一斉値上げ（価格偵察部隊が検知→公式ページで一次確認済み）
   // ⚠️ 変更日について：2026-07-07時点では旧価格だったことを監視状態ファイルで確認済みだが、

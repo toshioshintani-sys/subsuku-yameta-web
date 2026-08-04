@@ -3,6 +3,7 @@ import {
   getRecentPriceChanges,
   getActiveIntroOffers,
   computeIntroOfferSummary,
+  DIRECTION_LABEL,
 } from '../data/services';
 import styles from './RecentChanges.module.css';
 
@@ -58,8 +59,7 @@ function introOfferSentence(serviceId, offer) {
 //
 // 煽らない（§2-2）：見出しは「値上げ」等の事実ラベルのみ。感嘆符・警告色・件数の誇張はしない。
 
-// 方向は色だけに頼らず矢印でも示す（色覚特性のある読者向け・2026-08-04）
-const DIRECTION_LABEL = { up: '↑ 値上げ', down: '↓ 値下げ', new: '新プラン', restructure: '体系変更' };
+// ラベルは DirectionBadge に一本化（ここは地の文なのでバッジは使わず文字列だけ借りる）
 const WINDOW_DAYS = 3;
 
 function formatDate(iso) {

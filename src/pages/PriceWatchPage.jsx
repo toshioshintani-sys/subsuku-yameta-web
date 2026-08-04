@@ -4,6 +4,7 @@ import { ExternalLink } from 'lucide-react';
 import { getAllPriceChanges, getAllActiveIntroOffers, SERVICES } from '../data/services';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
+import DirectionBadge from '../components/DirectionBadge';
 import styles from './PriceWatchPage.module.css';
 
 // 価格・仕様の変更ログ（2026-07-28 追加・俊雄さん指示）
@@ -24,9 +25,6 @@ import styles from './PriceWatchPage.module.css';
 //   全67サービスを表にすると、記録があるのは数件なので空欄だらけに見える。
 //   時系列のログなら件数が少なくても「最近の観測」として自然に読める。
 //   順位もスコアも付けない（BAE §5 禁則）。事実を日付順に置くだけ。
-
-// 方向は色だけに頼らず矢印でも示す（色覚特性のある読者向け・2026-08-04）
-const DIRECTION_LABEL = { up: '↑ 値上げ', down: '↓ 値下げ', new: '新プラン', restructure: '体系変更' };
 
 const yen = (n) => `${n.toLocaleString('ja-JP')}円`;
 
@@ -128,9 +126,7 @@ export default function PriceWatchPage() {
                         <ServiceIcon serviceId={c.serviceId} size={20} />
                         <span>{c.serviceName}</span>
                       </Link>
-                      <span className={`${styles.dir} ${styles['dir_' + c.direction] || ''}`}>
-                        {DIRECTION_LABEL[c.direction] || '変更'}
-                      </span>
+                      <DirectionBadge direction={c.direction} variant="outlined" />
                     </div>
                     {c.item && <p className={styles.itemLabel}>{c.item}</p>}
                     {c.change && <p className={styles.change}>{c.change}</p>}

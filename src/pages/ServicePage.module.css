@@ -948,22 +948,9 @@
   font-variant-numeric: tabular-nums;
 }
 
-.historyDir {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--text);
-}
-
-/* 方向は色2つ（緑=下がる／黒=上がる）＋灰。値上げは「方向の記号」ではなく損失そのものなので
-   赤にしない（§8）。改修前は色だけで4方向を区別していたため、色覚特性のある読者には
-   最初から3色に見えていた。方向はラベルの矢印記号で担保する。 */
-.dir_up { background: var(--hard-bg); color: var(--hard); }
-.dir_down { background: var(--easy-bg); color: var(--easy); }
-.dir_new { background: var(--medium-bg); color: var(--medium); }
-.dir_restructure { background: var(--medium-bg); color: var(--medium); }
+/* 2026-08-04：方向バッジ（.historyDir / .dir_*）は components/DirectionBadge へ移した。
+   ここと PriceWatchPage の2箇所で色の規則が別々に定義されていて、片方だけ
+   「値上げ＝緑」になっていたため。見た目の差は variant="filled" で保持している。 */
 
 .historyItemLabel {
   font-size: 12px;

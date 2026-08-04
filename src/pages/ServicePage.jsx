@@ -33,14 +33,13 @@ import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import RenewalReminderCard from '../components/RenewalReminderCard';
+import DirectionBadge from '../components/DirectionBadge';
 import { SITE_URL } from '../config';
 import { trackOfficialCancelClick } from '../utils/analytics';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
-// 方向は色だけに頼らず矢印でも示す（色覚特性のある読者向け・2026-08-04）
-const DIRECTION_LABEL = { up: '↑ 値上げ', down: '↓ 値下げ', new: '新プラン', restructure: '体系変更' };
 
 const CATEGORY_LABEL = {
   video: '動画',
@@ -401,9 +400,7 @@ export default function ServicePage() {
                   <li key={i} className={styles.historyItem}>
                     <div className={styles.historyMeta}>
                       <time className={styles.historyDate} dateTime={h.date}>{h.date}</time>
-                      <span className={`${styles.historyDir} ${styles[`dir_${h.direction}`] || ''}`}>
-                        {DIRECTION_LABEL[h.direction] || '変更'}
-                      </span>
+                      <DirectionBadge direction={h.direction} variant="filled" />
                       {h.item && <span className={styles.historyItemLabel}>{h.item}</span>}
                     </div>
                     <p className={styles.historyChange}>{h.change}</p>
