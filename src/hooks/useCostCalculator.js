@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { SERVICES, getPlans, getDefaultMonthly, getPopularity, getKana } from '../data/services';
+import { SERVICES, getPlans, getDefaultMonthly, getPopularity, matchesQuery } from '../data/services';
 
 // Home「決定版」の固定費アンカー計算機ロジック（design_handoff_home_redesign §6 を移植）。
 //
@@ -75,14 +75,12 @@ export function useCostCalculator(seedIds = DEFAULT_SEED) {
     return best ? { ...best, annualText: yen(best.annual) } : null;
   }, [selectedServices, monthlyFor]);
 
-  // 検索（name ＋ かな別名・部分一致・上位4件）
+  // 検索（name ＋ ID ＋ かな別名・部分一致・上位4件）
+  // 照合は matchesQuery に一本化：カタカナ/ひらがな・全角/半角・中黒や空白のゆらぎを
+  // 潰してから比べる（「ネットフリックス」で引けなかった不具合の修正・2026-08-04）
   const searchResults = useMemo(() => {
-    const query = q.trim().toLowerCase();
-    if (!query) return [];
-    return SERVICES.filter((s) => (s.name + ' ' + getKana(s.id)).toLowerCase().includes(query)).slice(
-      0,
-      4
-    );
+    if (!q.trim()) return [];
+    return SERVICES.filter((s) => matchesQuery(s, q)).slice(0, 4);
   }, [q]);
 
   const toggle = useCallback((id) => setOn((prev) => ({ ...prev, [id]: !prev[id] })), []);

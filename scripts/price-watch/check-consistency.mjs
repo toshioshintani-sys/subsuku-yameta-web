@@ -101,4 +101,22 @@ if (problems.length === 0) {
   console.log(`❌ ${problems.length}件、履歴と表示がズレています。`);
 }
 
-if (problems.length > 0 && !process.argv.includes('--warn')) process.exit(1);
+// ---------------------------------------------------------------------------
+// KANA（検索用かな別名）のキーが実在するサービスIDか（2026-08-04 追加）
+//
+// 'abema' というキーが書かれていたが実在するIDは 'abema-premium' で、
+// この行は一度も引かれていなかった。**書き間違えても何も起きない**表なので、
+// 表示価格の整合と同じくビルド時に落とす。
+// ---------------------------------------------------------------------------
+const kanaOrphans = svc.KANA_ORPHANS ?? [];
+
+console.log('\n===== 検索用かな別名（KANA）のキー検査 =====');
+if (kanaOrphans.length === 0) {
+  console.log('✅ すべてのキーが実在するサービスIDです。');
+} else {
+  console.log(`❌ 実在しないIDがキーになっています: ${kanaOrphans.join(', ')}`);
+  console.log('   → その行は検索で一度も引かれません。正しいIDに直してください。');
+}
+
+const failed = problems.length > 0 || kanaOrphans.length > 0;
+if (failed && !process.argv.includes('--warn')) process.exit(1);
