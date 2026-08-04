@@ -94,6 +94,12 @@ try {
         Write-Output "為替が区切りより古いため起動（未判定 $beforeUnjudged 件）"
     }
 
+    # 実行前の main の位置を控える（2026-08-05 追加）。
+    # 全件偽陽性の日は無人実行が main へ直接 push してよい運用にしたので、
+    # **機械が main に何を入れたか**を実行後に機械で検算する。
+    # 許してよいのは台帳と巡回状態だけで、src/ に手が入っていたらルール違反。
+    $shaBefore = (& git rev-parse HEAD 2>$null)
+
     $prompt = Get-Content -Raw -Encoding UTF8 $promptFile
     $claudeBin = (Get-Command claude -ErrorAction Stop).Source
 
@@ -164,6 +170,34 @@ try {
     if ($afterUnjudged -ge $beforeUnjudged -and $beforeUnjudged -gt 0) {
         Send-Slack "サブスクやめた 価格判定（無人）が空振り`nexit 0 で終わったのに未判定が $beforeUnjudged 件から減っていません。`nログ: $logFile"
         exit 1
+    }
+
+    # main に何を入れたかを検算する（2026-08-05 追加）。
+    #
+    # 全件偽陽性の日は無人実行が main へ直接 push してよい運用にした。表示が変わらない日に
+    # PR を積み上げても、マージ作業が日課になるだけで誰の役にも立たないため（実際 8/5 に
+    # 2日分が溜まった）。ただし **機械が main を触れる経路を作った以上、触った範囲は
+    # 機械で確かめる**。許すのは台帳と巡回状態だけ。src/ に手が入っていたらルール違反で、
+    # 表示価格が人の目を通らずに公開された可能性がある＝すぐ知らせる。
+    $shaAfter = (& git rev-parse HEAD 2>$null)
+    if ($shaBefore -and $shaAfter -and $shaBefore -ne $shaAfter) {
+        $touched = @(& git diff --name-only $shaBefore $shaAfter 2>$null)
+        $allowed = @('scripts/price-watch/state/', 'scripts/price-watch/watch-list.json')
+        $violations = @($touched | Where-Object {
+            $p = $_
+            -not ($allowed | Where-Object { $p.StartsWith($_) })
+        })
+        if ($violations.Count -gt 0) {
+            Send-Slack ("サブスクやめた 価格判定（無人）が**許可外のファイルを main に入れました**`n" +
+                "全件偽陽性の日だけ直接pushしてよい運用ですが、その日は台帳と巡回状態しか" +
+                "変えないはずです。`n`n" +
+                "許可外: " + ($violations -join ', ') + "`n" +
+                "コミット: $shaBefore → $shaAfter`n" +
+                "表示価格が人の目を通らずに公開された可能性があります。差分を確認してください。`n" +
+                "ログ: $logFile")
+            exit 1
+        }
+        Write-Output "main に直接入れた変更: $($touched -join ', ')"
     }
 
     Write-Output "判定完了（検知 $eventCount 件・未判定 $beforeUnjudged → $afterUnjudged）"
