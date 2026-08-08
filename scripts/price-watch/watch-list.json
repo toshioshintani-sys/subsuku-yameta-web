@@ -64,11 +64,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 7665,
+        "ms": 5400,
         "moneyLines": 21,
-        "checkedAt": "2026-08-08",
+        "checkedAt": "2026-08-04",
         "fails": 0,
-        "lastOkAt": "2026-08-08"
+        "lastOkAt": "2026-08-04"
       }
     },
     {
@@ -182,12 +182,16 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "short-body",
-        "ms": 6516,
-        "moneyLines": 0,
-        "checkedAt": "2026-08-07",
-        "fails": 1,
-        "lastOkAt": "2026-08-03"
+        "status": "ok-suspect",
+        "ms": 13072,
+        "moneyLines": 31,
+        "checkedAt": "2026-08-03",
+        "fails": 0,
+        "lastOkAt": "2026-08-03",
+        "suspects": [
+          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
+        ]
       }
     },
     {
@@ -466,7 +470,7 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8616,
+        "ms": 6541,
         "moneyLines": 4,
         "checkedAt": "2026-08-08",
         "fails": 0,
@@ -679,13 +683,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4096,
+        "ms": 4152,
         "moneyLines": 3,
-        "checkedAt": "2026-08-04",
+        "checkedAt": "2026-08-08",
         "fails": 0,
-        "lastOkAt": "2026-08-04",
+        "lastOkAt": "2026-08-08",
         "suspects": [
-          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -698,11 +702,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 2928,
+        "ms": 3260,
         "moneyLines": 10,
-        "checkedAt": "2026-08-01",
+        "checkedAt": "2026-08-08",
         "fails": 0,
-        "lastOkAt": "2026-08-01"
+        "lastOkAt": "2026-08-08"
       }
     },
     {
