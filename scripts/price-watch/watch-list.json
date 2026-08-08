@@ -64,11 +64,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5400,
+        "ms": 7665,
         "moneyLines": 21,
-        "checkedAt": "2026-08-04",
+        "checkedAt": "2026-08-08",
         "fails": 0,
-        "lastOkAt": "2026-08-04"
+        "lastOkAt": "2026-08-08"
       }
     },
     {
@@ -182,16 +182,12 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 11954,
-        "moneyLines": 29,
-        "checkedAt": "2026-08-06",
-        "fails": 0,
-        "lastOkAt": "2026-08-06",
-        "suspects": [
-          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
-          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
-        ]
+        "status": "short-body",
+        "ms": 6516,
+        "moneyLines": 0,
+        "checkedAt": "2026-08-07",
+        "fails": 1,
+        "lastOkAt": "2026-08-03"
       }
     },
     {
@@ -470,11 +466,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6778,
+        "ms": 8616,
         "moneyLines": 4,
-        "checkedAt": "2026-08-06",
+        "checkedAt": "2026-08-08",
         "fails": 0,
-        "lastOkAt": "2026-08-06",
+        "lastOkAt": "2026-08-08",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -702,11 +698,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3393,
+        "ms": 2928,
         "moneyLines": 10,
-        "checkedAt": "2026-08-06",
+        "checkedAt": "2026-08-01",
         "fails": 0,
-        "lastOkAt": "2026-08-06"
+        "lastOkAt": "2026-08-01"
       }
     },
     {
