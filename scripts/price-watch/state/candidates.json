@@ -1,38 +1,18 @@
 {
-  "generatedAt": "2026-08-08T22:13:36.086Z",
+  "generatedAt": "2026-08-09T22:14:58.540Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
-    {
-      "id": "adobe-cc",
-      "name": "Adobe Creative Cloud",
-      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
-      "added": [
-        "1,580円"
-      ],
-      "removed": [],
-      "detectedAt": "2026-08-08T22:11:18.921Z"
-    },
-    {
-      "id": "dmagazine",
-      "name": "dマガジン",
-      "url": "https://dmagazine.docomo.ne.jp/",
-      "added": [
-        "100円"
-      ],
-      "removed": [],
-      "detectedAt": "2026-08-08T22:12:19.480Z"
-    },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [
-        "￥2,000"
-      ],
+      "added": [],
       "removed": [
-        "￥1,750"
+        "￥1,280",
+        "￥2,000",
+        "￥640"
       ],
-      "detectedAt": "2026-08-08T22:13:26.036Z"
+      "detectedAt": "2026-08-09T22:14:47.116Z"
     }
   ]
 }
