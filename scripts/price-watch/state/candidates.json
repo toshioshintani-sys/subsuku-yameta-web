@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-10T22:13:44.288Z",
+  "generatedAt": "2026-08-11T22:13:36.450Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [
+      "added": [],
+      "removed": [
         "￥1,250",
         "￥400"
       ],
-      "removed": [],
-      "detectedAt": "2026-08-10T22:13:33.649Z"
+      "detectedAt": "2026-08-11T22:13:25.664Z"
     }
   ]
 }
