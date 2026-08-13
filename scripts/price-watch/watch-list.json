@@ -64,7 +64,7 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 6712,
+        "ms": 18799,
         "moneyLines": 21,
         "checkedAt": "2026-08-13",
         "fails": 0,
@@ -481,7 +481,7 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 7573,
+        "ms": 8647,
         "moneyLines": 4,
         "checkedAt": "2026-08-13",
         "fails": 0,
@@ -706,7 +706,7 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3993,
+        "ms": 4569,
         "moneyLines": 3,
         "checkedAt": "2026-08-13",
         "fails": 0,
