@@ -64,11 +64,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5452,
+        "ms": 8490,
         "moneyLines": 21,
-        "checkedAt": "2026-08-12",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-12"
+        "lastOkAt": "2026-08-13"
       }
     },
     {
@@ -183,11 +183,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 11645,
+        "ms": 11399,
         "moneyLines": 29,
-        "checkedAt": "2026-08-08",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-08",
+        "lastOkAt": "2026-08-13",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -360,11 +360,11 @@
       "note": "2026-07-06修正: 旧URL(magazine.dmkt-sp.jp)は現在このURLへ301リダイレクトのみ。リダイレクト先でエージェントのWebFetchが「月額580円」をテキスト確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 14955,
+        "ms": 12949,
         "moneyLines": 8,
-        "checkedAt": "2026-08-12",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-12",
+        "lastOkAt": "2026-08-13",
         "suspects": [
           "ちょうど半額の組がある（100 と 200）＝割引価格と通常価格の並記の疑い"
         ]
@@ -481,11 +481,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 7810,
+        "ms": 6634,
         "moneyLines": 4,
-        "checkedAt": "2026-08-12",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-12",
+        "lastOkAt": "2026-08-13",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -502,11 +502,11 @@
       "note": "2026-07-06修正: figma等と同じNext.js RSC参照ID(SVGパスデータ\"$57\"等含む)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3908,
+        "ms": 4240,
         "moneyLines": 82,
-        "checkedAt": "2026-08-12",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-12",
+        "lastOkAt": "2026-08-13",
         "suspects": [
           "金額の種類が多すぎる（73種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（810 と 1620）＝割引価格と通常価格の並記の疑い"
@@ -706,13 +706,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4102,
+        "ms": 4218,
         "moneyLines": 3,
-        "checkedAt": "2026-08-12",
+        "checkedAt": "2026-08-13",
         "fails": 0,
-        "lastOkAt": "2026-08-12",
+        "lastOkAt": "2026-08-13",
         "suspects": [
-          "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },

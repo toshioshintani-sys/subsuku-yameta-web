@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T22:13:34.530Z",
+  "generatedAt": "2026-08-13T04:13:23.457Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
@@ -10,7 +10,17 @@
         "￥1,480"
       ],
       "removed": [],
-      "detectedAt": "2026-08-12T22:10:31.087Z"
+      "detectedAt": "2026-08-13T04:10:27.372Z"
+    },
+    {
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "added": [],
+      "removed": [
+        "1,580円"
+      ],
+      "detectedAt": "2026-08-13T04:11:12.204Z"
     },
     {
       "id": "dmagazine",
@@ -20,7 +30,7 @@
         "3500円"
       ],
       "removed": [],
-      "detectedAt": "2026-08-12T22:12:14.973Z"
+      "detectedAt": "2026-08-13T04:12:09.628Z"
     },
     {
       "id": "deepl-pro",
@@ -37,7 +47,7 @@
         "$46",
         "$48"
       ],
-      "detectedAt": "2026-08-12T22:12:49.334Z"
+      "detectedAt": "2026-08-13T04:12:40.604Z"
     },
     {
       "id": "pairs",
@@ -86,7 +96,7 @@
         "1,617円",
         "968円"
       ],
-      "detectedAt": "2026-08-12T22:12:51.059Z"
+      "detectedAt": "2026-08-13T04:12:42.447Z"
     },
     {
       "id": "google-workspace",
@@ -97,7 +107,7 @@
         "￥400"
       ],
       "removed": [],
-      "detectedAt": "2026-08-12T22:13:23.063Z"
+      "detectedAt": "2026-08-13T04:13:13.288Z"
     }
   ]
 }
