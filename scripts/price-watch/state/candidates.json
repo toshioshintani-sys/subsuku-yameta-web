@@ -1,17 +1,114 @@
 {
-  "generatedAt": "2026-08-11T22:13:36.450Z",
+  "generatedAt": "2026-08-13T08:13:15.505Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
+      "added": [
+        "￥1,480"
+      ],
+      "removed": [],
+      "detectedAt": "2026-08-13T08:10:24.703Z"
+    },
+    {
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "added": [],
+      "removed": [
+        "1,580円",
+        "9,080円"
+      ],
+      "detectedAt": "2026-08-13T08:11:02.498Z"
+    },
+    {
+      "id": "dmagazine",
+      "name": "dマガジン",
+      "url": "https://dmagazine.docomo.ne.jp/",
+      "added": [
+        "3500円"
+      ],
+      "removed": [],
+      "detectedAt": "2026-08-13T08:12:00.359Z"
+    },
+    {
+      "id": "deepl-pro",
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro",
+      "added": [
+        "$11",
+        "$29",
+        "$8"
+      ],
+      "removed": [
+        "$25",
+        "$45",
+        "$46",
+        "$48"
+      ],
+      "detectedAt": "2026-08-13T08:12:32.407Z"
+    },
+    {
+      "id": "pairs",
+      "name": "Pairs",
+      "url": "https://www.pairs.lv/price",
+      "added": [
+        "1,075円",
+        "1,181円",
+        "1,300円",
+        "1,600円",
+        "1,616円",
+        "1,760円",
+        "1,800円",
+        "1,866円",
+        "1,950円",
+        "1,980円",
+        "10,200円",
+        "10,800円",
+        "11,800円",
+        "14,400円",
+        "15,800円",
+        "2,600円",
+        "2,633円",
+        "2,780円",
+        "20,800円",
+        "22,400円",
+        "3,400円",
+        "3,980円",
+        "331円",
+        "4,200円",
+        "4,300円",
+        "4,800円",
+        "433円",
+        "463円",
+        "48,800円",
+        "586円",
+        "600円",
+        "660円",
+        "7,800円",
+        "900円",
+        "967円",
+        "983円"
+      ],
+      "removed": [
+        "1,182円",
+        "1,617円",
+        "968円"
+      ],
+      "detectedAt": "2026-08-13T08:12:34.260Z"
+    },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [],
-      "removed": [
+      "added": [
         "￥1,250",
         "￥400"
       ],
-      "detectedAt": "2026-08-11T22:13:25.664Z"
+      "removed": [],
+      "detectedAt": "2026-08-13T08:13:05.004Z"
     }
   ]
 }
