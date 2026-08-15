@@ -1,37 +1,50 @@
 {
-  "generatedAt": "2026-08-13T22:23:28.096Z",
+  "generatedAt": "2026-08-14T22:13:42.639Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [],
-      "removed": [
-        "￥1,480"
-      ],
-      "detectedAt": "2026-08-13T22:11:56.843Z"
-    },
-    {
-      "id": "deepl-pro",
-      "name": "DeepL Pro",
-      "url": "https://www.deepl.com/pro",
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
       "added": [
-        "$28"
+        "1,580円"
       ],
       "removed": [],
-      "detectedAt": "2026-08-13T22:21:23.775Z"
+      "detectedAt": "2026-08-14T22:11:22.748Z"
+    },
+    {
+      "id": "vimeo-pro",
+      "name": "Vimeo",
+      "url": "https://vimeo.com/upgrade",
+      "added": [
+        "￥1,200",
+        "￥10,610",
+        "￥2,000",
+        "￥3,625",
+        "￥6,041",
+        "￥6,346"
+      ],
+      "removed": [
+        "¥1,200",
+        "¥10,610",
+        "¥2,000",
+        "¥3,625",
+        "¥6,041",
+        "¥6,346"
+      ],
+      "detectedAt": "2026-08-14T22:13:13.892Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [],
-      "removed": [
+      "added": [
+        "￥1,120",
         "￥1,250",
-        "￥400"
+        "￥640"
       ],
-      "detectedAt": "2026-08-13T22:22:52.161Z"
+      "removed": [],
+      "detectedAt": "2026-08-14T22:13:28.780Z"
     }
   ]
 }
