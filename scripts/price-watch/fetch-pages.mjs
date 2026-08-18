@@ -284,7 +284,13 @@ async function main() {
   }
 
   if (record) {
-    const today = new Date().toISOString().slice(0, 10);
+    // JST で日付を作る（2026-08-19 修正）。
+    // toISOString() は UTC なので、00:00-09:00 JST の実行だと1日前の日付になる。
+    // 毎朝の判定は 07:30 JST に走る＝**常にこの窓の中**なので、checkedAt と lastOkAt は
+    // 事実上いつも1日ずれて記録されていた。同じバグは notify.mjs で既に直っていたが、
+    // このファイルが掃き残されていた。判断には使っていない記録専用の欄だが、
+    // 「いつ確かめたか」がずれた記録は後で人を惑わせる。
+    const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(new Date());
     let updated = 0;
     for (const w of list) {
       const p = profile.get(w.id);
