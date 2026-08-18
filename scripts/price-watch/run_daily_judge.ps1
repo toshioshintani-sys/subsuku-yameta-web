@@ -99,13 +99,25 @@ try {
         } catch {}
     }
     if (-not $reconcileFresh) {
+        # npm の出力は UTF-8 だが、Task Scheduler が起動するクラシック PowerShell は
+        # 既定のコンソール符号化(CP932)で読むため、そのまま受けると日本語が化ける。
+        # 2026-08-19 の初回実行で実際に化けた（見出しも判定ラベルも読めない状態で保存された）。
+        # 判定エージェントが読む資料なので、化けた資料を渡すと判断材料が壊れる。claude の
+        # 呼び出しと同じように、入出力とも UTF-8 に固定してから呼ぶ。
+        $rcPrevOut = [Console]::OutputEncoding
+        $rcPrevOutputEncoding = $OutputEncoding
         try {
+            [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+            $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
             $rc = & npm run price:reconcile 2>&1 | Out-String
             [System.IO.File]::WriteAllText($reconcilePath, ($today + "`n" + $rc), [System.Text.UTF8Encoding]::new($false))
             Write-Output "reconcile を実行しました"
         } catch {
             [System.IO.File]::WriteAllText($reconcilePath, ($today + "`n(reconcile の実行に失敗: " + $_.Exception.Message + ")"), [System.Text.UTF8Encoding]::new($false))
             Write-Output "reconcile に失敗（判定は続行）"
+        } finally {
+            [Console]::OutputEncoding = $rcPrevOut
+            $OutputEncoding = $rcPrevOutputEncoding
         }
         $reconcileRanNow = $true
     }
