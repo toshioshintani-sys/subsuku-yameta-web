@@ -1409,7 +1409,7 @@ export const PRICING = {
   '1password': 449,          // $2.99を150円換算。USD_PRICEDが155円へ補正
   figma: 2400,               // プロフェッショナルのフルシート。2026-07-26 公式確認（旧1800）
   'deepl-pro': 1150,        // 2026-07-26 公式確認（年払いの月額換算・旧1200）
-  pairs: 3700,
+  pairs: 4100,       // 2026-08-13 公式確認（旧3700は表示誤り。公式に3,700円の記載は存在しない）
   'note-premium': 500,
   'github-copilot': 1500,
   'niconico-premium': 990,  // 2026-08-01 公式確認（旧790円）
@@ -2062,8 +2062,8 @@ export const PLANS = {
   },
   pairs: {
     plans: [
-      { name: '男性会員（クレカ）', monthly: 3700, popular: true },
-      { name: '男性会員（Apple/Google）', monthly: 4300 },
+      { name: '男性会員（クレカ）', monthly: 4100, popular: true },
+      { name: '男性会員（Apple/Google）', monthly: 4800 },
       { name: '女性会員', monthly: 0, note: '基本無料（プレミアム機能のみ有料）' },
     ],
     howToCheck: 'Pairs → マイページ →「ご契約情報」で確認できます',
@@ -2210,14 +2210,14 @@ export const PLANS = {
 // ---------------------------------------------------------------------------
 
 /** 換算に使うレート。三菱UFJ銀行 公表仲値(TTM) = (TTS + TTB) / 2
- *  2026-08-03: TTS 156.79 / TTB 154.79 → TTM 155.79
- *  ⚠️ 同じページに「外貨現金両替相場」（この日は 158.59 / 152.79）が並んでいる。**別物**。
+ *  2026-08-18: TTS 160.50 / TTB 158.50 → TTM 159.50
+ *  ⚠️ 同じページに「外貨現金両替相場」が並んでいる。**別物**。
  *     必ず上段の対顧客電信相場（US Dollar / 米ドル / USD の行）の TTS・TTB を使うこと。 */
-export const USD_JPY = 155.79;
+export const USD_JPY = 159.50;
 /** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
-export const USD_JPY_AS_OF = '2026-08-03';
+export const USD_JPY_AS_OF = '2026-08-18';
 /** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
-export const USD_JPY_READ_ON = '2026-08-03';
+export const USD_JPY_READ_ON = '2026-08-19';
 /** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
 export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
 /** 出典の名前（表示に出す） */
@@ -2706,6 +2706,17 @@ export const PRICE_HISTORY = {
       change: '月額790円→990円に値上げ（事前告知どおり2026-08-01に実施）。',
       source: 'https://premium.nicovideo.jp/payment/premium_detail',
       verifiedAt: '2026-08-01',
+    },
+  ],
+  pairs: [
+    {
+      date: '2026-08-13',
+      item: '男性有料会員プラン（1ヶ月）',
+      direction: 'up',
+      change:
+        '表示価格の誤りを修正（価格改定ではなく記載ミスの訂正）。従来クレカ3,700円・Apple/Google 4,300円と表示していたが、公式ページに3,700円の記載は存在せず、監視履歴上も一度も検出されていなかった。正しくはWeb購入4,100円・アプリ内購入4,800円。',
+      source: 'https://www.pairs.lv/price',
+      verifiedAt: '2026-08-13',
     },
   ],
 };
