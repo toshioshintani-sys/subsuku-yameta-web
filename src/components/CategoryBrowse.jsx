@@ -57,7 +57,7 @@ export default function CategoryBrowse({ excludeIds }) {
             </summary>
             <div className={styles.items}>
               {g.services.map((s) => (
-                <Link key={s.id} to={`/service/${s.id}`} className={styles.item}>
+                <Link key={s.id} to={`/service/${s.id}/`} className={styles.item}>
                   <ServiceIcon
                     serviceId={s.id}
                     category={s.category}
@@ -75,7 +75,7 @@ export default function CategoryBrowse({ excludeIds }) {
         ))}
       </div>
       <Link
-        to="/compare"
+        to="/compare/"
         className={styles.seeAll}
         onClick={() => trackUiEvent('home_see_all_click', {})}
       >

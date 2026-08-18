@@ -42,7 +42,7 @@ export default function DiscoverGenrePage() {
     ];
   }, [genre]);
 
-  if (!genre) return <Navigate to="/discover" replace />;
+  if (!genre) return <Navigate to="/discover/" replace />;
 
   return (
     <div className={styles.page}>
@@ -57,7 +57,7 @@ export default function DiscoverGenrePage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to="/discover">サブスク図鑑</Link>
+          <Link to="/discover/">サブスク図鑑</Link>
           <span> › </span>
           <span>{genre.name}</span>
         </nav>
@@ -156,17 +156,17 @@ export default function DiscoverGenrePage() {
           </h2>
           <p className={styles.p}>{genre.cancelGuide}</p>
           <p className={styles.cancelFootnote}>
-            それでも迷ったら、本サイトの <Link to="/" className={styles.inlineLink}>解約手順インデックス</Link> や <Link to="/tracker" className={styles.inlineLink}>サブスク棚卸しダッシュボード</Link> も併せてご活用ください。
+            それでも迷ったら、本サイトの <Link to="/" className={styles.inlineLink}>解約手順インデックス</Link> や <Link to="/tracker/" className={styles.inlineLink}>サブスク棚卸しダッシュボード</Link> も併せてご活用ください。
           </p>
         </section>
 
         <ShareButtons
-          path={`/discover/${genre.id}`}
+          path={`/discover/${genre.id}/`}
           title={`${genre.name}のサブスクを比較｜サブスクやめた`}
           hashtags={['サブスクやめた', genre.name.replace(/\s+/g, '')]}
         />
 
-        <Link to="/discover" className={styles.backLink}>← サブスク図鑑に戻る</Link>
+        <Link to="/discover/" className={styles.backLink}>← サブスク図鑑に戻る</Link>
       </div>
 
       {/* 関連ジャンル */}
@@ -175,7 +175,7 @@ export default function DiscoverGenrePage() {
         <ul className={styles.relatedList}>
           {DISCOVER_GENRES.filter((g) => g.id !== genre.id).slice(0, 5).map((g) => (
             <li key={g.id}>
-              <Link to={`/discover/${g.id}`} className={styles.relatedCard}>
+              <Link to={`/discover/${g.id}/`} className={styles.relatedCard}>
                 <span className={styles.relatedEmoji} aria-hidden="true">
                   <DiscoverIcon genreId={g.id} size={20} />
                 </span>

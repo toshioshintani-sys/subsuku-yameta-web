@@ -9,10 +9,10 @@ import styles from './BottomNav.module.css';
 // ゲームは憲法（GAME_POSITIONING）で"おまけ"位置づけのため一次タブから外す（入れ替え可）。
 const TABS = [
   { to: '/', label: '解約', Icon: Home, end: true },
-  { to: '/tracker', label: '棚卸し', Icon: ListChecks },
-  { to: '/discover', label: '乗り換え', Icon: LayoutGrid },
-  { to: '/yamete-kau', label: '買い切り', Icon: ShoppingBag },
-  { to: '/blog', label: '記事', Icon: FileText },
+  { to: '/tracker/', label: '棚卸し', Icon: ListChecks },
+  { to: '/discover/', label: '乗り換え', Icon: LayoutGrid },
+  { to: '/yamete-kau/', label: '買い切り', Icon: ShoppingBag },
+  { to: '/blog/', label: '記事', Icon: FileText },
 ];
 
 export default function BottomNav() {

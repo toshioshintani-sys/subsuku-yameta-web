@@ -343,7 +343,7 @@ export default function TrackerPage() {
                     </div>
                   </div>
                   <div className={styles.recActions}>
-                    <Link to={`/service/${s.id}`} className={styles.recDetailBtn}>手順を見る</Link>
+                    <Link to={`/service/${s.id}/`} className={styles.recDetailBtn}>手順を見る</Link>
                     <a
                       href={s.cancelUrl}
                       target="_blank"
@@ -377,7 +377,7 @@ export default function TrackerPage() {
             </p>
             <div className={styles.nextMovesGrid}>
               <Link
-                to="/discover"
+                to="/discover/"
                 className={styles.nextMoveCard}
                 onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 1, layer: 'B' })}
               >
@@ -385,7 +385,7 @@ export default function TrackerPage() {
                 <div className={styles.nextMoveDesc}>近い代替を特徴と弱点つきで比較（サブスク図鑑）</div>
               </Link>
               <Link
-                to="/yamete-kau"
+                to="/yamete-kau/"
                 className={styles.nextMoveCard}
                 onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 2, layer: 'C' })}
               >

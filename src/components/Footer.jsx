@@ -20,33 +20,33 @@ export default function Footer() {
             <div className={styles.colTitle}>このサイトでできること</div>
             <ul className={styles.list}>
               <li>
-                <Link to="/compare">解約方法の一覧・比較</Link>
+                <Link to="/compare/">解約方法の一覧・比較</Link>
                 <div className={styles.listDesc}>{SERVICES.length}サービスの解約難易度・直リンクを1枚で</div>
               </li>
               <li>
                 {/* 価格・仕様の変更ログ（2026-07-28 追加）。ヘッダーのナビは既に5項目で
                     これ以上増やすと窮屈なので、まずフッターから入れる */}
-                <Link to="/price-watch">値上げ・価格変更の記録</Link>
+                <Link to="/price-watch/">値上げ・価格変更の記録</Link>
                 <div className={styles.listDesc}>毎朝の巡回で確認できた変更を日付つきで</div>
               </li>
               <li>
-                <Link to="/tracker">サブスク棚卸し</Link>
+                <Link to="/tracker/">サブスク棚卸し</Link>
                 <div className={styles.listDesc}>契約中の月額・年額合計と見直し順を可視化</div>
               </li>
               <li>
-                <Link to="/discover">サブスク図鑑</Link>
+                <Link to="/discover/">サブスク図鑑</Link>
                 <div className={styles.listDesc}>乗り換え先を特徴と弱点つきで比較</div>
               </li>
               <li>
-                <Link to="/yamete-kau">やめて買う</Link>
+                <Link to="/yamete-kau/">やめて買う</Link>
                 <div className={styles.listDesc}>月額をやめて買い切りで済ます代替案</div>
               </li>
               <li>
-                <Link to="/blog">お役立ち記事</Link>
+                <Link to="/blog/">お役立ち記事</Link>
                 <div className={styles.listDesc}>解約・乗り換え・買い切りの解説記事</div>
               </li>
               <li>
-                <Link to="/games">サブスク判断ゲーム</Link>
+                <Link to="/games/">サブスク判断ゲーム</Link>
                 <div className={styles.listDesc}>課金の心理クセを2分で体験</div>
               </li>
             </ul>
@@ -57,7 +57,7 @@ export default function Footer() {
             <ul className={styles.list}>
               {categoryItems.map((c) => (
                 <li key={c.id}>
-                  <Link to={`/category/${c.id}`}>{c.label}</Link>
+                  <Link to={`/category/${c.id}/`}>{c.label}</Link>
                 </li>
               ))}
             </ul>
@@ -66,11 +66,11 @@ export default function Footer() {
           <div className={styles.col}>
             <div className={styles.colTitle}>サイト情報</div>
             <ul className={styles.list}>
-              <li><Link to="/about">このサイトについて</Link></li>
-              <li><Link to="/privacy">プライバシーポリシー</Link></li>
-              <li><Link to="/disclaimer">免責事項</Link></li>
-              <li><Link to="/disclosure">収益開示</Link></li>
-              <li><Link to="/contact">お問い合わせ</Link></li>
+              <li><Link to="/about/">このサイトについて</Link></li>
+              <li><Link to="/privacy/">プライバシーポリシー</Link></li>
+              <li><Link to="/disclaimer/">免責事項</Link></li>
+              <li><Link to="/disclosure/">収益開示</Link></li>
+              <li><Link to="/contact/">お問い合わせ</Link></li>
             </ul>
           </div>
         </div>

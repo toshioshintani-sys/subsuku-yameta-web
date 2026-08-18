@@ -37,7 +37,7 @@ export default function BlogIndexPage() {
         <ul className={styles.list}>
           {posts.map((post) => (
             <li key={post.slug} className={styles.item}>
-              <Link to={`/blog/${post.slug}`} className={styles.card}>
+              <Link to={`/blog/${post.slug}/`} className={styles.card}>
                 <div className={styles.cardMeta}>
                   <span className={styles.date}>{post.published}</span>
                   {/* 扱っているAIサービスのバッジ（2026-07-25 追加）。

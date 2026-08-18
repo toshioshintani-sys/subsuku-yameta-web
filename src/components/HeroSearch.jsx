@@ -20,7 +20,7 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
       method: 'submit',
       position: selected ? 1 : 0,
     });
-    if (selected) navigate(`/service/${selected.id}`);
+    if (selected) navigate(`/service/${selected.id}/`);
   };
 
   const trackResultSelection = (service, position) => {
@@ -86,7 +86,7 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
         {querying ? (
           <div className={styles.results}>
             {searchResults.length === 0 ? (
-              <Link to="/contact" className={styles.empty} onClick={trackNoResultRequest}>
+              <Link to="/contact/" className={styles.empty} onClick={trackNoResultRequest}>
                 <span>「{q.trim()}」は準備中。リクエスト</span>
                 <ArrowRight size={13} strokeWidth={1.9} aria-hidden="true" />
               </Link>
@@ -94,7 +94,7 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
               searchResults.map((s, i) => (
                 <Link
                   key={s.id}
-                  to={`/service/${s.id}`}
+                  to={`/service/${s.id}/`}
                   className={styles.resultRow}
                   onClick={() => trackResultSelection(s, i + 1)}
                 >
@@ -121,7 +121,7 @@ export default function HeroSearch({ q, setQ, searchResults, chipServices = [] }
               <span className={styles.cutline} aria-hidden="true" />
               <div className={styles.chips}>
                 {chipServices.map((s) => (
-                  <Link key={s.id} to={`/service/${s.id}`} className={styles.chip}>
+                  <Link key={s.id} to={`/service/${s.id}/`} className={styles.chip}>
                     <ServiceIcon
                       serviceId={s.id}
                       category={s.category}

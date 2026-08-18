@@ -32,7 +32,7 @@ export default function DiscoverIndexPage() {
         <ul className={styles.list}>
           {DISCOVER_GENRES.map((g) => (
             <li key={g.id} className={styles.item}>
-              <Link to={`/discover/${g.id}`} className={styles.card}>
+              <Link to={`/discover/${g.id}/`} className={styles.card}>
                 <div className={styles.cardEmoji} aria-hidden="true">
                   <DiscoverIcon genreId={g.id} size={26} />
                 </div>

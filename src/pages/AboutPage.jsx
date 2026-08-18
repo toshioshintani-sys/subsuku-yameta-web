@@ -49,11 +49,11 @@ export default function AboutPage() {
           <h2>このサイトでできること</h2>
           <ul>
             <li><Link to="/">解約手順の直リンク集</Link>：各サービスの解約ページへ最短で飛ぶ。手順は3ステップ以内に要約し、引き止め対策も併記</li>
-            <li><Link to="/discover">サブスク図鑑</Link>：ジャンル別に、特徴と料金を順位ではなく並列で比較</li>
-            <li><Link to="/tracker">サブスク棚卸し</Link>：契約中のサブスクの合計額と「解約しなさい順」を、個人情報なしで可視化</li>
-            <li><Link to="/yamete-kau">やめて買う</Link>：サブスクをやめて「買い切り」に切り替える選択肢を提案</li>
-            <li><Link to="/games">サブスク判断ゲーム</Link>：やめられない理由（心のクセ）を、ミニゲームで体験して見抜く</li>
-            <li><Link to="/blog">お役立ち記事</Link>：解約・乗り換え・買い切りの判断を助ける読み物</li>
+            <li><Link to="/discover/">サブスク図鑑</Link>：ジャンル別に、特徴と料金を順位ではなく並列で比較</li>
+            <li><Link to="/tracker/">サブスク棚卸し</Link>：契約中のサブスクの合計額と「解約しなさい順」を、個人情報なしで可視化</li>
+            <li><Link to="/yamete-kau/">やめて買う</Link>：サブスクをやめて「買い切り」に切り替える選択肢を提案</li>
+            <li><Link to="/games/">サブスク判断ゲーム</Link>：やめられない理由（心のクセ）を、ミニゲームで体験して見抜く</li>
+            <li><Link to="/blog/">お役立ち記事</Link>：解約・乗り換え・買い切りの判断を助ける読み物</li>
           </ul>
         </div>
 
@@ -75,7 +75,7 @@ export default function AboutPage() {
             当サイトは、Google AdSense による広告と、Amazon・楽天・各ASPを通じたアフィリエイトによって運営されています。
             ただし、<strong>掲載順位は提携の有無や報酬では決めていません</strong>。読者の利益に反する商品は紹介しません。
             アフィリエイトを含むリンクには「PR」と明記しています。詳しくは
-            <Link to="/disclosure">収益開示</Link>をご覧ください。
+            <Link to="/disclosure/">収益開示</Link>をご覧ください。
           </p>
           <p>
             広告やアフィリエイトは、「解約を助けるサイト」としての信頼の上に成り立つ二次的な収益です。
@@ -88,8 +88,8 @@ export default function AboutPage() {
           <ul>
             <li><strong>サイト名</strong>：サブスクやめた</li>
             <li><strong>運営</strong>：サブスクやめた 編集部（個人運営）</li>
-            <li><strong>連絡先</strong>：<Link to="/contact">お問い合わせ</Link>よりご連絡ください</li>
-            <li><strong>収益の開示</strong>：<Link to="/disclosure">収益開示</Link>に記載</li>
+            <li><strong>連絡先</strong>：<Link to="/contact/">お問い合わせ</Link>よりご連絡ください</li>
+            <li><strong>収益の開示</strong>：<Link to="/disclosure/">収益開示</Link>に記載</li>
           </ul>
           <p>
             当サイトは特定企業に属さない個人運営の情報サイトです。掲載する各サービスの運営元とは資本・提携関係にありません
@@ -101,7 +101,7 @@ export default function AboutPage() {
           <h2>お問い合わせ</h2>
           <p>
             掲載内容の誤り・解約手順の変更・サービス追加のご要望などは、
-            <Link to="/contact">お問い合わせ</Link>からご連絡ください。解約手順はサービス側の仕様変更で変わることがあるため、
+            <Link to="/contact/">お問い合わせ</Link>からご連絡ください。解約手順はサービス側の仕様変更で変わることがあるため、
             気づいた点を教えていただけると、他の読者の助けになります。
           </p>
         </div>

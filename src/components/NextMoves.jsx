@@ -9,14 +9,14 @@ const MOVES = [
     icon: Repeat,
     title: '合うものに乗り換える',
     desc: '解約した後の代替サブスクを、特徴と弱点つきで比較する',
-    to: '/discover',
+    to: '/discover/',
     action: '乗り換え先を見る',
   },
   {
     icon: Package,
     title: '買い切りで済ませる',
     desc: '月額を増やさず、単発購入で足りるラインを探す',
-    to: '/yamete-kau',
+    to: '/yamete-kau/',
     action: '買い切りを見る',
   },
 ];

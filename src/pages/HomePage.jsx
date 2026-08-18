@@ -134,7 +134,7 @@ export default function HomePage() {
                   return (
                     <Link
                       key={g.id}
-                      to={`/games/${g.id}`}
+                      to={`/games/${g.id}/`}
                       className={styles.gameMini}
                       aria-label={`判断ゲーム：${g.headline}`}
                     >
@@ -146,7 +146,7 @@ export default function HomePage() {
                   );
                 })}
               </div>
-              <Link to="/games" className={styles.gameMiniMore}>
+              <Link to="/games/" className={styles.gameMiniMore}>
                 判断ゲームをまとめて見る →
               </Link>
             </div>
