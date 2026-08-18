@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-08-18T04:13:36.417Z",
+  "generatedAt": "2026-08-18T08:13:19.872Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
+      "added": [
+        "￥1,480"
+      ],
+      "removed": [],
+      "detectedAt": "2026-08-18T08:10:30.051Z"
+    },
     {
       "id": "adobe-cc",
       "name": "Adobe Creative Cloud",
@@ -11,7 +21,7 @@
         "1,580円",
         "9,080円"
       ],
-      "detectedAt": "2026-08-18T04:11:16.878Z"
+      "detectedAt": "2026-08-18T08:11:10.303Z"
     },
     {
       "id": "deepl-pro",
@@ -26,7 +36,7 @@
         "$28",
         "$8"
       ],
-      "detectedAt": "2026-08-18T04:12:48.224Z"
+      "detectedAt": "2026-08-18T08:12:37.155Z"
     },
     {
       "id": "google-workspace",
@@ -38,7 +48,7 @@
         "￥1,750",
         "￥560"
       ],
-      "detectedAt": "2026-08-18T04:13:24.984Z"
+      "detectedAt": "2026-08-18T08:13:09.373Z"
     }
   ]
 }

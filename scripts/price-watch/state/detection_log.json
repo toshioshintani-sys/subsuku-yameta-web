@@ -2119,5 +2119,118 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "現在のページ表示は通常価格のみ（Starter ¥800・Standard ¥1,600・Plus ¥2,500）でservices.jsと完全一致。今回のadded(1250,400)/removed(1120,1750,560)は3か月間の割引プロモ表記（30%/50%オフ等）の入れ替わりで、過去15回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-08-18",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      2280,
+      780
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去7回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "個人￥1,280/月・ファミリー￥2,280/月・学生/Premium Lite ￥780/月のみ表示。￥1,480は本文中どこにも出現せず。過去7回と同型の空振り"
+  },
+  {
+    "date": "2026-08-18",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580,
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580, 9080）で過去10回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "通常価格：9,080円/月（Creative Cloud Pro）が本文に明記され現行値と一致。1,580円（生成AIクレジット追加購入）も文言として存在を確認。朝の巡回時はJS描画が間に合わずsigが空(0件)になっていたための空振りで、価格自体に変化なし。過去10回と同型"
+  },
+  {
+    "date": "2026-08-18",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      12,
+      9
+    ],
+    "removed": [
+      11,
+      28,
+      8
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（11, 28, 8）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "Individual ￥1,150・Team ￥3,750・Business ￥7,500（年払い月額換算・税込）が明記され現行値と完全一致。検知の$12/$9/$11/$28/$8は本文中どこにも出現せず（USD表記自体が無い）。過去4回と同型の空振り"
+  },
+  {
+    "date": "2026-08-18",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [],
+    "removed": [
+      1120,
+      1750,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1120, 1750, 560）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter ¥400¥800・Standard ¥800¥1,600・Plus ¥1,250¥2,500（3か月50%オフ／通常価格の併記）。通常価格800/1600/2500はservices.jsと一致し変化なし。今回のremoved(1120,1750,560)は前日の「3か月30%オフ」表示時の割引値で、オフ率の表示が30%→50%に入れ替わっただけ。過去14回と同型の偽陽性"
   }
 ]
