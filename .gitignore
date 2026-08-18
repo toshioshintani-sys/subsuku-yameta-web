@@ -22,3 +22,5 @@ monitoring/config/sa.json
 
 # 価格判定ランナーの実行ログ（2026-07-31 追加・肥大するのでコミットしない）
 scripts/price-watch/logs/
+# reconcile の日次キャッシュ（台帳ではなくその日の作業ファイル）
+scripts/price-watch/state/reconcile_today.txt

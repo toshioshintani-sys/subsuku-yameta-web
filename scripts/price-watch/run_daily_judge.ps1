@@ -77,7 +77,40 @@ try {
     $fxMarker = Join-Path $logDir ("fx_attempt_" + $today + ".txt")
     $fxDue = $fxStale -and ((Get-Date).TimeOfDay -ge [timespan]'10:30:00') -and -not (Test-Path $fxMarker)
 
-    if ($beforeUnjudged -eq 0 -and -not $fxDue) {
+    # 掲載価格の棚卸し（reconcile）を1日1回だけ走らせる（2026-08-19 追加）。
+    #
+    # 毎朝の検知(price-watch)は「公式ページが前回から変わったか」しか見ない。
+    # こちらの取り込み漏れ・古いままの掲載は、公式が動かない限り**原理的に検出できない**。
+    # 8/13、判定エージェントは Pairs の掲載(3,700/4,300)が公式(4,100/4,800)と違うことを
+    # 自力で見つけていたのに、それが偽陽性エントリの evidence 欄に埋もれ6日間直らなかった。
+    # 捕まえる網は reconcile しかないのに、日次で回していなかった。
+    #
+    # **早期リターンより前に置くこと。** 検知ゼロ・未判定ゼロの日は下で降りてしまうが、
+    # 掲載ズレは検知がゼロの日にも同じだけ存在する（むしろ他に見る者がいない）。
+    # 55件を実際に取得するので150秒前後かかる。判定は取りこぼし再試行で1日4回走るため、
+    # 毎回は走らせず今日の分があれば使い回す。失敗しても判定は止めない。
+    $reconcilePath = Join-Path $repoRoot 'scripts/price-watch/state/reconcile_today.txt'
+    $reconcileRanNow = $false
+    $reconcileFresh = $false
+    if (Test-Path $reconcilePath) {
+        try {
+            $head = (Get-Content -TotalCount 1 -Encoding UTF8 $reconcilePath)
+            if ($head -eq $today) { $reconcileFresh = $true }
+        } catch {}
+    }
+    if (-not $reconcileFresh) {
+        try {
+            $rc = & npm run price:reconcile 2>&1 | Out-String
+            [System.IO.File]::WriteAllText($reconcilePath, ($today + "`n" + $rc), [System.Text.UTF8Encoding]::new($false))
+            Write-Output "reconcile を実行しました"
+        } catch {
+            [System.IO.File]::WriteAllText($reconcilePath, ($today + "`n(reconcile の実行に失敗: " + $_.Exception.Message + ")"), [System.Text.UTF8Encoding]::new($false))
+            Write-Output "reconcile に失敗（判定は続行）"
+        }
+        $reconcileRanNow = $true
+    }
+
+    if ($beforeUnjudged -eq 0 -and -not $fxDue -and -not $reconcileRanNow) {
         # 検知はあるのに今日の記録が台帳に1件も無い＝巡回側の記録/通知が失敗している。
         # 判定すべきものが本当に無いのか、記録に失敗して見えていないだけなのかは別物なので、
         # 後者は黙って緑にせず知らせる（検知が誰にも見られないまま消えるのを防ぐ）。
