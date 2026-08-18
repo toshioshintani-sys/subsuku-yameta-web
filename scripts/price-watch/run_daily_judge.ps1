@@ -233,12 +233,28 @@ try {
             -not ($allowed | Where-Object { $p.StartsWith($_) })
         })
         if ($violations.Count -gt 0) {
-            Send-Slack ("サブスクやめた 価格判定（無人）が**許可外のファイルを main に入れました**`n" +
-                "全件偽陽性の日だけ直接pushしてよい運用ですが、その日は台帳と巡回状態しか" +
-                "変えないはずです。`n`n" +
-                "許可外: " + ($violations -join ', ') + "`n" +
-                "コミット: $shaBefore → $shaAfter`n" +
-                "表示価格が人の目を通らずに公開された可能性があります。差分を確認してください。`n" +
+            # 差分は「機械が入れたもの」とは限らない（2026-08-19 修正）。
+            #
+            # 実行中に人が main へ commit すると、HEAD の前後を比べるこのガードは
+            # それを機械の違反として報告する。実際 8/19、判定の実行中(07:47-08:00)に
+            # 私が 07:51 に lessons を commit したせいで「表示価格が人の目を通らずに
+            # 公開された可能性があります」という誤報が飛んだ。
+            #
+            # 検知は緩めない（怪しい差分は必ず出す）が、**受け取った人がその場で
+            # どちらか判断できる**ように、範囲内のコミットを著者と時刻つきで並べる。
+            # 危険な言い回しは src/ が実際に動いた時だけにする。
+            $srcTouched = @($violations | Where-Object { $_.StartsWith('src/') })
+            $commits = (& git log --format='  %h %ad %an  %s' --date=format:'%H:%M:%S' "$shaBefore..$shaAfter" 2>$null) -join "`n"
+            $head = if ($srcTouched.Count -gt 0) {
+                "サブスクやめた 価格判定（無人）の実行中に **src/ が main で変わりました**`n" +
+                "表示価格が人の目を通らずに公開された可能性があります。差分を確認してください。"
+            } else {
+                "サブスクやめた 価格判定（無人）の実行中に、許可リスト外のファイルが main で変わりました`n" +
+                "src/ は動いていないので表示価格は変わっていません。"
+            }
+            Send-Slack ($head + "`n`n" +
+                "許可外: " + ($violations -join ', ') + "`n`n" +
+                "範囲内のコミット（人が同時に commit した場合もここに出ます）:`n" + $commits + "`n`n" +
                 "ログ: $logFile")
             exit 1
         }
