@@ -23,6 +23,53 @@ function renderBlock(block, i) {
   if (block.type === 'quote') {
     return <blockquote key={i} className={styles.quote}>{block.text}</blockquote>;
   }
+  // 比較表（2026-07-25 追加）。3社比較のように「並べて見る」情報を、
+  // 段落に散らさず一目で比べられるようにするための最小の表ブロック。
+  //   { type: 'table', caption?, head: ['項目','A','B'], rows: [['行見出し','値','値'], ...] }
+  // 各行の先頭セルは行見出し（th scope="row"）として扱う。
+  // 狭い画面でははみ出さずに横スクロールさせる（本文の横スクロールは絶対に起こさない）。
+  // ★スコアや順位は入れないこと（BAE §5 禁則）。事実だけを並べる。
+  if (block.type === 'table') {
+    return (
+      <div
+        key={i}
+        className={styles.tableWrap}
+        role="region"
+        aria-label={block.caption || '比較表'}
+        tabIndex={0}
+      >
+        <table className={styles.table}>
+          {block.caption && <caption className={styles.tableCaption}>{block.caption}</caption>}
+          <thead>
+            <tr>
+              {block.head.map((h, j) => (
+                <th key={j} scope="col">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {block.rows.map((row, j) => (
+              <tr key={j}>
+                {row.map((cell, k) =>
+                  k === 0 ? (
+                    <th
+                      key={k}
+                      scope="row"
+                      dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(cell) }}
+                    />
+                  ) : (
+                    <td key={k} dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(cell) }} />
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   if (block.type === 'img') {
     return (
       <figure key={i} className={styles.figure}>

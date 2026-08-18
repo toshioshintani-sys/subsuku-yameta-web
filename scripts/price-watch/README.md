@@ -92,6 +92,35 @@ Puppeteer headless化した上で**個別に深掘り**した結果、**コー�
 **48+10=58**。「本当に手つかず」はaudible/fod/matchの3件のみ（URL/bot対策が未解決）。他7件は
 「調べた結果、監視対象になり得ないと判明した」正しい除外で、「怠慢による除外」ではない。
 
+### 🔄 2026-07-25 更新：カバレッジ 58件 → **67件（services.js 全件）**／有効 48 → 55件
+
+**発覚した穴**：services.jsには67サービスあるのにwatch-listは58件しかなく、**AI系9サービスが丸ごと
+監視対象外**だった（services.jsへ追加した時にwatch-listへ登録する手順が無かったのが原因）。
+以後は下のコマンドで差分チェックすること：
+
+```bash
+python -X utf8 -c "
+import json,io,re
+d=json.load(io.open('scripts/price-watch/watch-list.json',encoding='utf-8'))
+watched={w['id'] for w in d['watch']}
+s=io.open('src/data/services.js',encoding='utf-8').read()
+seg=s[s.find('export const SERVICES = ['):s.find('export const ALTERNATIVES')]
+print('未監視:', sorted(set(re.findall(r\"id: '([a-z0-9-]+)',\", seg))-watched) or 'なし')
+"
+```
+
+| 今回の対応 | サービス | 結果 |
+|---|---|---|
+| ✅ 新規登録・有効 | cursor / gemini-advanced / google-workspace / runway / windsurf | 素のfetchで取得成功（windsurfは devin.ai へリダイレクト＝ブランド統合を裏付け） |
+| ✅ **多角調査で復活** | **youtube-music** | 素のfetchは0件 → **headless化で5件**（￥580/￥1,080/￥1,680/￥10,800） |
+| ✅ **多角調査で復活** | **audible** | `/ep/member-benefits`・`/ep/pricing` は0件 → **トップページ**で￥1,500/￥880。旧noteの「未着手」表記のおかげで再挑戦できた |
+| ⏸ 新規登録・無効 | google-play-pass | `/about/pass/` はストアへリダイレクト。`/store/pass/getstarted` で「600 円」は取れるが**「アプリ内購入が600円オフ」の特典表記**で月額ではない（誤報の温床）。月額はログインの先 |
+| ⏸ 新規登録・無効 | midjourney / perplexity-pro | 素のfetchもheadlessも403＋Cloudflare系bot検証（Ray ID付き）。**明示的な拒否なので回避策は取らない** |
+
+**無効12件の内訳**：構造的に不可能5（nhk-plus/honto/rakuten-kobo/patreon/soundcloud-go）／
+bot拒否3（match/midjourney/perplexity-pro）／要ログイン・技術的未解決4（nintendo-switch-online/
+kindle-unlimited/fod/google-play-pass）。
+
 ### 既知の不安定性（バグではなく実測で確認した揺れ・候補に出ても無視してよい）
 - **chatgpt-plus**: Business料金2件(￥3,050/￥3,850)が非同期読み込みで4回中2回しか出現しない(sig=4⇄6)。
 - **evernote**: ¥10が同様にsig=5⇄6を往復する。
@@ -131,11 +160,108 @@ Puppeteer headless化した上で**個別に深掘り**した結果、**コー�
    - Notion「Workers」機能がベータ無料→**2026-08-11に有料化**（Custom Agentsと同じ$10/1,000クレジット）。
    - ニコニコプレミアムが**2026-08-01に料金改定予定**（blog.nicovideo.jp/niconews/1841で告知）。
 
-## 自動化（GitHub Actions）
+## 自動化（2026-07-25 全面更新）
 
-`.github/workflows/price-watch.yml`。**AdSense再審査中は手動トリガー（workflow_dispatch）のみ**で、
-検知結果を artifact（candidates.json）として出す（サイト・リポは変更しない）。**承認後に schedule を有効化**し、
-毎日巡回→候補を人/Claude が確認→ PRICE_HISTORY に反映、の運用へ。
+### ✅ 現在の本番運用＝ローカルのWindowsタスク（毎朝7:10）
+
+```powershell
+Get-ScheduledTask     -TaskName "Subsuku_PriceWatch_0710" | Select-Object TaskName, State
+Get-ScheduledTaskInfo -TaskName "Subsuku_PriceWatch_0710" | Select-Object LastRunTime, LastTaskResult, NextRunTime
+```
+
+> 🛑 **2026-07-25に発覚した最大の事故：このタスクが存在せず、偵察部隊は2026-07-07から18日間まったく
+> 動いていなかった。** その空白期間にAppleが日本の全サブスクを値上げしたが、**「いつ変わったか」は
+> 永久に特定できなくなった**（前回観測7/7・今回7/25なので「18日間のどこか」としか書けない）。
+> `candidates.json` にも7/7の検知が未処理のまま放置されていた。
+> **時系列データは、取らなかった瞬間に永久に失われる。作業の最後に必ず「動いているか」を確認すること。**
+
+登録コマンド（再登録が必要になった時）：
+
+```powershell
+$repo = "C:\Users\user\Desktop\Claude_work\subsukuyametaweb\subsuku-yameta-web"
+$action  = New-ScheduledTaskAction -Execute "C:\Program Files\nodejs\node.exe" -Argument "scripts\price-watch\price-watch.mjs" -WorkingDirectory $repo
+$trigger = New-ScheduledTaskTrigger -Daily -At 7:10am
+$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopIfGoingOnBatteries -AllowStartIfOnBatteries -ExecutionTimeLimit (New-TimeSpan -Hours 1)
+Register-ScheduledTask -TaskName "Subsuku_PriceWatch_0710" -Action $action -Trigger $trigger -Settings $settings -Force
+```
+
+### ✅ 判定担当＝ローカルのWindowsタスク（毎朝7:30・2026-07-31 追加・意図的な登録）
+
+巡回（7:10）が検知を出しても、**それを公式ページで確かめて判定する人が居ないと何も起きない。**
+実際 2026-07-28〜30 の3日間、監視は無人で正常に走り続けていたのに検知12件が未判定のまま溜まり、
+サイトの情報は7/28から一度も更新されなかった。**監視の律速は検知ではなく判定だった。**
+そこで判定を無人ルーティンに載せた（俊雄さん指示「ルーティーン作業に登録・情報更新と改修をセットで」）。
+
+| | |
+|---|---|
+| タスク名 | `Subsuku_PriceJudge_0730`（毎日7:30 JST・7:10の巡回の20分後） |
+| 実体 | `run_daily_judge.ps1` → `claude -p` に `daily_judge_prompt.md` を渡す |
+| 課金 | Maxサブスク枠（ランナー冒頭で `ANTHROPIC_API_KEY` を除去。残すとAPI課金に化ける） |
+| やること | 検知を公式ページで確認 → `detection_log.json` に verdict/evidence を記入 → 本物なら `services.js` と `PRICE_HISTORY` を修正 → **PR作成まで** |
+| やらないこと | **main への直接push・PRのマージ**。誤報ゼロは最上位原則なので、公開に出る一歩手前で必ず人が止める |
+
+```powershell
+Get-ScheduledTask     -TaskName "Subsuku_PriceJudge_0730" | Select-Object TaskName, State
+Get-ScheduledTaskInfo -TaskName "Subsuku_PriceJudge_0730" | Select-Object LastRunTime, LastTaskResult, NextRunTime
+Start-ScheduledTask   -TaskName "Subsuku_PriceJudge_0730"   # 手動で走らせる（動作確認は必ずこの経路で）
+Disable-ScheduledTask -TaskName "Subsuku_PriceJudge_0730"   # 止める（削除しない）
+```
+
+> ⚠️ **なぜマージまで自動化しないか。** 検知の的中率は実測で4%（25件中1件・2026-07-31時点）。
+> 判定を誤った1件がそのまま公開価格になる経路を作ると、**機械が単独で誤報を出せてしまう**。
+> このサイトの収益は信頼の上にしか立たないので、そこだけは人のゲートを残す。
+> 自動マージまで進めたい場合は `proposal-stress-test` を経由すること（憲法§5-B）。
+
+無人実行で踏みうる罠と対処は `~/.claude/skills/headless-claude-runner/SKILL.md` に集約されている。
+特に **`.ps1` は UTF-8 BOM 付きで保存**（BOM無しだとTask Scheduler経由の `powershell.exe` が
+日本語パスを誤読して落ちる）、**動作確認は `Start-ScheduledTask` で実タスクを起動**（対話PowerShellでの
+実行は別経路なので確認にならない）の2点は、このランナーでも同じように効く。
+
+ランナー側のガード（無人で静かに死なせないため）：
+
+- 検知ゼロの日は `claude` を起動しない（トークンを使わない）
+- 検知はあるのに台帳に今日の記録が無い＝巡回側の記録失敗 → Slackに投げて中止
+- 未判定ゼロ＝すでに判定済み → スキップ（手動テストと定時実行の二重起動を防ぐ）
+- exit 0 なのに未判定が減っていない → 空振りとしてSlack通知して exit 1
+
+### ⏸ GitHub Actions（`.github/workflows/price-watch.yml`）は現状 手動トリガーのみ
+
+scheduleがコメントアウトされており、その理由は「**AdSense承認後に有効化**」。
+しかし **AdSenseは2026-07-15に休眠決定済み**（`docs/NOT_DOING.md`）なので、**この待機理由は既に消滅している**。
+
+ただし有効化する前に、以下の設計上の穴を先に塞ぐ必要がある（2026-07-25 発見）：
+
+- 現ワークフローは `permissions: contents: read` で、実行後に **`state/price_watch_state.json` をコミットして
+  戻していない**。このままscheduleを有効化すると、毎回リポジトリ上の古いstateと比較することになり、
+  **同じ差分を毎日検知し続ける**（＝候補が永久に消えない）。
+- 対処するなら「実行後にstateをコミットするステップ追加＋`contents: write`」が要るが、CIに書き込み権限を
+  与える変更なので、着手前に是非を判断すること。
+- **当面はローカルのWindowsタスクが本番**（stateがローカルに正しく蓄積されるため）。Actionsは手動の予備。
+
+## 3つのツールの役割分担（2026-07-25 追加・混同すると穴が開く）
+
+| ツール | 比べるもの | 見つかるもの | 実行 |
+|---|---|---|---|
+| `price-watch.mjs` | 公式ページの**今日 vs 前回スナップショット** | **変化**（値上げ・値下げが起きた瞬間） | 毎日7:10（Windowsタスク） |
+| `reconcile.mjs` | 公式ページ **vs うちの `PRICING`/`PLANS`** | **ズレ**（表示価格がそもそも古い） | 随時 `npm run price:reconcile` |
+| `check-consistency.mjs` | `PRICE_HISTORY` **vs `PRICING`/`PLANS`** | **直し忘れ**（履歴だけ更新して表示が古い） | `npm run build` に組込み済 |
+
+**なぜ3つ要るのか。** `price-watch.mjs` は *変化* しか見ていない。初回スナップショットの時点で
+services.js が既に古ければ、その誤りは**永遠に「変化なし」と報告され続ける**。実際2026-07-25に
+Netflix（1,490→実1,590）・Spotify（980→実1,080）・iCloud+（130円＝2世代前）が、監視が緑のまま
+長期間の誤報になっていたことが判明した。**時間軸の監視（watch）と在庫の棚卸し（reconcile）は別物。**
+
+`check-consistency.mjs` は `npm run build` の先頭で走るので、「値上げしました」と履歴に書いたのに
+表示価格が古いままの状態では**ビルドが落ちてデプロイされない**＝矛盾したサイトは公開できない。
+
+```bash
+npm run price:reconcile                    # 全サービスの棚卸し
+npm run price:reconcile -- --only netflix  # 1件だけ
+npm run price:check                        # 履歴と表示の整合（build時に自動実行）
+```
+
+⚠️ reconcile の出力は**疑い候補**であって断定ではない。年額のみ表示・税別・JS描画・ログイン必須の
+ページでは正常でも不一致になる。**必ず公式を目視で一次確認してから直す**（誤報ゼロ）。
 
 ## 由来と関連
 

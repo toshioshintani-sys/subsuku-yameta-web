@@ -3,7 +3,7 @@
 }
 
 .hero {
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  background: linear-gradient(135deg, var(--hm-navy-mid) 0%, var(--hm-navy-from) 100%);
   padding: 48px 24px 40px;
   text-align: center;
 }
@@ -11,7 +11,7 @@
 .heroTitle {
   font-size: 30px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 14px;
 }
@@ -31,7 +31,7 @@
 }
 
 .heroDesc strong {
-  color: #fff;
+  color: #f2efe8;
 }
 
 .heroHint {
@@ -114,7 +114,7 @@
 .card:hover .cardEmoji {
   transform: scale(1.05);
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .cardBody {

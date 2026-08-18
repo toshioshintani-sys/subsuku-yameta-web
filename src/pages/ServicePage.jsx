@@ -8,6 +8,8 @@ import {
   getPlans,
   getPlanCheckHint,
   formatMonthlyRange,
+  getUsdMonthly,
+  getFxNote,
   PRICE_HISTORY,
 } from '../data/services';
 import {
@@ -31,13 +33,13 @@ import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import RenewalReminderCard from '../components/RenewalReminderCard';
+import DirectionBadge from '../components/DirectionBadge';
 import { SITE_URL } from '../config';
 import { trackOfficialCancelClick } from '../utils/analytics';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
-const DIRECTION_LABEL = { up: '値上げ', down: '値下げ', new: '新プラン', restructure: '体系変更' };
 
 const CATEGORY_LABEL = {
   video: '動画',
@@ -217,6 +219,14 @@ export default function ServicePage() {
             </div>
           </div>
 
+          {/* 為替の注釈（ドル建てで請求されるサービスのみ）
+              円の金額を出す以上、それが「請求される金額」ではなく「どのレートで計算した
+              概算か」を同じ画面で必ず言う。省くと、公式が $20 と書いているものを円で
+              断言することになる。土日に読んだ日は最終営業日の値である旨も自動で入る。 */}
+          {getUsdMonthly(service.id) != null && (
+            <p className={styles.fxNote}>{getFxNote()}</p>
+          )}
+
           {/* 概要（拡張コンテンツがあれば） */}
           {extended?.summary && (
             <p className={styles.summary}>{extended.summary}</p>
@@ -390,9 +400,7 @@ export default function ServicePage() {
                   <li key={i} className={styles.historyItem}>
                     <div className={styles.historyMeta}>
                       <time className={styles.historyDate} dateTime={h.date}>{h.date}</time>
-                      <span className={`${styles.historyDir} ${styles[`dir_${h.direction}`] || ''}`}>
-                        {DIRECTION_LABEL[h.direction] || '変更'}
-                      </span>
+                      <DirectionBadge direction={h.direction} variant="filled" />
                       {h.item && <span className={styles.historyItemLabel}>{h.item}</span>}
                     </div>
                     <p className={styles.historyChange}>{h.change}</p>

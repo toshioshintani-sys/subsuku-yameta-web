@@ -1,0 +1,58 @@
+/* 価格変更の方向バッジ（2026-08-04 共通化）
+   ServicePage と PriceWatchPage で色の規則が別々に定義されており、
+   PriceWatchPage 側だけ「値上げ＝プライマリ（緑）」＝上がるほうに良い色が付いていた。
+   意味論（どの方向が何色か・ラベル・矢印）をここに一本化する。
+
+   見た目の2種類は意図的な差なので variant で残す：
+     filled   … ServicePage の履歴（12px・面）
+     outlined … PriceWatchPage の記録（11px・線）
+
+   色は2つ＋灰。値上げは「方向の記号」ではなく損失そのものなので赤にしない
+   （_STYLE_GUIDE §8）。色だけで4方向を区別すると色覚特性のある読者には
+   3色に見えるため、方向はラベルの矢印記号でも担保する。 */
+
+.base {
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.filled {
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text);
+}
+
+.outlined {
+  font-size: 11px;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  background: var(--bg);
+}
+
+/* 面の版：4方向すべてに面色を与える */
+.filled.up {
+  background: var(--hard-bg);
+  color: var(--hard);
+}
+.filled.down {
+  background: var(--easy-bg);
+  color: var(--easy);
+}
+.filled.new,
+.filled.restructure {
+  background: var(--medium-bg);
+  color: var(--medium);
+}
+
+/* 線の版：上下だけ色を付け、それ以外は既定の灰のまま
+   （「事実の分類」であって警告ではないので彩度を抑える） */
+.outlined.up {
+  border-color: var(--hard);
+  color: var(--hard);
+}
+.outlined.down {
+  border-color: var(--easy);
+  color: var(--easy);
+}

@@ -19,3 +19,6 @@ docs/pinterest/.posted.json
 
 # GSC/GA4監視スクリプトのサービスアカウント鍵（ローカル配置のみ・collect_gsc.pyが参照する想定パス）
 monitoring/config/sa.json
+
+# 価格判定ランナーの実行ログ（2026-07-31 追加・肥大するのでコミットしない）
+scripts/price-watch/logs/

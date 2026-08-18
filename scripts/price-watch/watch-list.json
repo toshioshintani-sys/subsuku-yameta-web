@@ -1,69 +1,777 @@
 {
   "_note": "サブスクやめた 価格偵察部隊の監視リスト（58サービスの全ロースター）。各サービスの公式料金ページを price-watch.mjs が巡回し、価格トークンの差分で変化を検知する（検知のみ・自動公開しない）。enabled:false は『価格がJS描画/画像/ログイン必須で生HTMLに出ない』『サブスクプラン自体が存在しない』『地域未提供』のいずれか（理由はnote参照）。誤報ゼロ＝検知候補は必ず人/Claudeが公式一次確認してから PRICE_HISTORY に書く。2026-07-07時点: 48件enabled中48件が実価格検出済み（空振りゼロ）・10件disabled(理由別に個別note記載)。",
-  "_updated": "2026-07-07",
+  "_updated": "2026-07-26",
   "settings": {
     "userAgent": "Mozilla/5.0 (compatible; SabusukuYameta-PriceScout/0.1; +https://sabusuku-yameta.com)",
-    "timeoutMs": 20000,
+    "timeoutMs": 35000,
     "perHostDelayMs": 1500
   },
   "watch": [
-    { "id": "netflix", "name": "Netflix", "url": "https://help.netflix.com/ja/node/24926", "mode": "prices", "enabled": true, "note": "料金プランのヘルプ記事（サーバー描画で¥が出やすい）" },
-    { "id": "amazon-prime", "name": "Amazon プライム", "url": "https://www.amazon.co.jp/amazonprime", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化" },
-    { "id": "spotify", "name": "Spotify", "url": "https://www.spotify.com/jp/premium/", "mode": "prices", "enabled": true, "note": "2026-07-07: 旧URL(jp-ja/premium)はソフト404(お探しのページが見つかりませんページに実質誘導)で空振りだった。正しいURL(jp/premium)に修正・素のfetchで¥1,080等5トークン取得確認済み・headless不要" },
-    { "id": "apple-music", "name": "Apple Music", "url": "https://www.apple.com/jp/apple-music/", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "youtube-premium", "name": "YouTube Premium", "url": "https://www.youtube.com/premium", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: JS描画のためheadless(Puppeteer)化" },
-    { "id": "disney-plus", "name": "Disney+", "url": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで「スタンダードプラン月額1,250円」等をテキスト確認済み" },
-    { "id": "hulu", "name": "Hulu", "url": "https://www.hulu.jp/", "mode": "prices", "enabled": true, "renderMode": "headless", "stripScriptStyle": true, "excludeTokens": ["1,000円"], "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外" },
-    { "id": "abema-premium", "name": "ABEMAプレミアム", "url": "https://abema.tv/lp/new-premiumplan", "mode": "prices", "enabled": true, "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み" },
-    { "id": "u-next", "name": "U-NEXT", "url": "https://help.unext.jp/guide/detail/types-of-service-plan", "mode": "prices", "enabled": true, "stripScriptStyle": true, "note": "2026-07-06修正: figma/evernoteと同じNext.js RSC参照ID($L6,$L17等)を価格と誤検出していたためscript/style除去を有効化" },
-    { "id": "dazn", "name": "DAZN", "url": "https://www.dazn.com/ja-JP/welcome", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "apple-tv-plus", "name": "Apple TV+", "url": "https://www.apple.com/jp/apple-tv-plus/", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "nhk-plus", "name": "NHKプラス", "url": "https://www.nhk.or.jp/nhkplus/", "mode": "prices", "enabled": false, "note": "受信料契約に紐づく特殊料金・監視対象外候補" },
-    { "id": "line-music", "name": "LINE MUSIC", "url": "https://music.line.me/top/plan/", "mode": "prices", "enabled": true, "note": "2026-07-06調査: 公式プランページ。エージェントはページが重くWebFetchできず未検証(URLの信頼度は高)" },
-    { "id": "amazon-music-unlimited", "name": "Amazon Music Unlimited", "url": "https://www.amazon.co.jp/music/unlimited", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認" },
-    { "id": "rakuten-music", "name": "楽天ミュージック", "url": "https://music.rakuten.co.jp/plan/", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで「月額980円」等をテキスト確認済み・サーバー描画" },
-    { "id": "microsoft-365", "name": "Microsoft 365", "url": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "adobe-cc", "name": "Adobe Creative Cloud", "url": "https://www.adobe.com/jp/creativecloud/plans.html", "mode": "prices", "enabled": true, "renderMode": "headless", "noAdBlock": true, "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み" },
-    { "id": "notion", "name": "Notion", "url": "https://www.notion.com/pricing", "mode": "prices", "enabled": true, "note": "PRICE_HISTORY移植元と同じ（$表記のことあり）" },
-    { "id": "dropbox", "name": "Dropbox", "url": "https://www.dropbox.com/plans", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: JS描画のためheadless(Puppeteer)化" },
-    { "id": "canva-pro", "name": "Canva Pro", "url": "https://www.canva.com/pricing/", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: JS描画のためheadless(Puppeteer)化" },
-    { "id": "nintendo-switch-online", "name": "Nintendo Switch Online", "url": "https://www.nintendo.com/jp/nintendo-switch-online/plan/index.html", "mode": "prices", "enabled": false, "note": "2026-07-07実測確認: headless化・スクロール誘発・iframe/ShadowDOM調査すべて実施したが本文に円マーク/金額が一切出現しない（機能比較表のみでテキスト価格なし＝価格はおそらく別途SVG/画像扱い）。関連リンクも全て同一URLに集約・別の詳細ページなし。構造的にテキスト監視不能なため無効化（audible/match同様の正直な保留）" },
-    { "id": "playstation-plus", "name": "PlayStation Plus", "url": "https://www.playstation.com/ja-jp/ps-plus/", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "xbox-game-pass", "name": "Xbox Game Pass", "url": "https://www.xbox.com/ja-JP/xbox-game-pass", "mode": "prices", "enabled": true, "renderMode": "headless", "stripScriptStyle": true, "note": "2026-07-07: headless化後もmicrosoft.com JSライブラリの正規表現置換文字列($1,$3等)を誤検出したためstripScriptStyleも併用" },
-    { "id": "nikkei", "name": "日本経済新聞 電子版", "url": "https://www.nikkei.com/help/subscribe/price/", "mode": "prices", "enabled": true, "note": "2026-07-06修正: 旧URLは403。ヘルプセンター内の料金ページはエージェントのWebFetchで「個人プラン4,277円」等をテーブルとして確認済み" },
-    { "id": "kindle-unlimited", "name": "Kindle Unlimited", "url": "https://www.amazon.co.jp/kindle-dbs/hz/subscribe/ku", "mode": "prices", "enabled": false, "note": "2026-07-07実測確認: headless化しても200 OKで返るのは価格を含まない一般Amazonストア画面（Kindleストアのカテゴリ一覧相当）で、実際の申込/価格提示フローはログインセッション前提の可能性大。node=2478980051等の代替URLも試したが検索結果ページにリダイレクトされ書籍個別価格(￥13,000等)しか取れずKU月額とは無関係。公式価格は980円/月で既知だが、この匿名スクレイピング経路では取得不能なため無効化（adobe-cc同様の正直な撤退）" },
-    { "id": "danime", "name": "dアニメストア", "url": "https://animestore.docomo.ne.jp/animestore/CF/help_qa_charge", "mode": "prices", "enabled": true, "note": "2026-07-06調査: dmkt-sp.jpはログイン後マイページ系。animestore.docomo.ne.jpが公式料金案内。エージェントのWebFetchで「月額660円」等をテキスト確認済み" },
-    { "id": "rakuten-tv", "name": "楽天TV", "url": "https://tv.rakuten.co.jp/static/svod_guidance/", "mode": "prices", "enabled": true, "stripScriptStyle": true, "note": "2026-07-06修正: huluと同一のJSバンドル(Sentry SDK・正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化。基本月額プランがなくチャンネル別課金の構造のため単一料金ページとしては不完全な点は残る" },
-    { "id": "chatgpt-plus", "name": "ChatGPT Plus", "url": "https://openai.com/ja-JP/chatgpt/pricing/", "mode": "prices", "enabled": true, "renderMode": "headless", "excludeTokens": ["$100"], "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい" },
-    { "id": "claude-pro", "name": "Claude Pro", "url": "https://www.anthropic.com/pricing", "mode": "prices", "enabled": true, "dataPlanPrefix": ["pro_"], "note": "2026-07-06修正: ページがFree/Pro/Team/Enterprise/APIを1つに列挙するためdata-plan=\"pro_*\"属性でProプランだけ抽出するよう限定(診断で発見・$17/$20/$200の3件のみでクリーンと確認済み)" },
-    { "id": "evernote", "name": "Evernote", "url": "https://evernote.com/compare-plans", "mode": "prices", "enabled": true, "renderMode": "headless", "stripScriptStyle": true, "note": "2026-07-07: 素のfetchでは価格が全てNext.js RSC経由(script)にしか無くstripしても0件だったためheadless(Puppeteer)化。既知の不安定性: ¥10が複数回実測でsig=5/6を往復(非同期要素の可能性)・実価格変更ではない" },
-    { "id": "audible", "name": "Audible", "url": "https://www.audible.co.jp/", "mode": "prices", "enabled": false, "note": "JS描画・要URL調査（今回の32件調査の対象外・未着手のまま）" },
-    { "id": "rakuten-magazine", "name": "楽天マガジン", "url": "https://magazine.rakuten.co.jp/service.html", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで「月額プラン597円」等をテキスト確認済み・サーバー描画" },
-    { "id": "dmagazine", "name": "dマガジン", "url": "https://dmagazine.docomo.ne.jp/", "mode": "prices", "enabled": true, "note": "2026-07-06修正: 旧URL(magazine.dmkt-sp.jp)は現在このURLへ301リダイレクトのみ。リダイレクト先でエージェントのWebFetchが「月額580円」をテキスト確認済み" },
-    { "id": "wowow-on-demand", "name": "WOWOWオンデマンド", "url": "https://support.wowow.co.jp/answer/61bffb829e474a001c1cd7ff/", "mode": "prices", "enabled": true, "note": "2026-07-06調査: 公式サポートサイト。エージェントのWebFetchで「月額2,530円」等をテキスト確認済み" },
-    { "id": "fod", "name": "FOD", "url": "https://fod.fujitv.co.jp/plan/", "mode": "prices", "enabled": false, "note": "2026-07-06調査: エージェントもfod.fujitv.co.jpドメイン自体にWebFetchできず。公式URL未確定のまま要再調査（正直な未解決）" },
-    { "id": "lemino", "name": "Lemino", "url": "https://lemino.docomo.ne.jp/ft/0000014/", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み" },
-    { "id": "yahoo-premium", "name": "Yahoo!プレミアム", "url": "https://premium.yahoo.co.jp/", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで「月額508円」をテキスト確認済み・現行LYPプレミアム" },
-    { "id": "dmm-premium", "name": "DMMプレミアム", "url": "https://support.dmm.com/premium/article/47489", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchは本文空白でJS描画の可能性大。URLは特定できたので実挙動は本スクリプトで要確認" },
-    { "id": "apple-one", "name": "Apple One", "url": "https://www.apple.com/jp/apple-one/", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "google-one", "name": "Google One", "url": "https://one.google.com/about/plans", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: JS描画のためheadless(Puppeteer)化" },
-    { "id": "icloud-plus", "name": "iCloud+", "url": "https://www.apple.com/jp/icloud/", "mode": "prices", "enabled": true, "note": "2026-07-06修正: 旧URL(support記事)は多国比較で65個の内ほぼ全てゴミ。apple.com/jp/icloud/(公式マーケティングページ)は¥150/450/1500/4500/9000の5個のみでクリーン" },
-    { "id": "1password", "name": "1Password", "url": "https://1password.com/pricing/password-manager", "mode": "prices", "enabled": true, "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）" },
-    { "id": "figma", "name": "Figma", "url": "https://www.figma.com/pricing/", "mode": "prices", "enabled": true, "stripScriptStyle": true, "note": "2026-07-06修正: Next.js RSC参照ID($56等)を価格と誤検出していたため、このページに限りscript/style除去を有効化。除去後の8トークンは全て実在の座席別価格と確認済み" },
-    { "id": "deepl-pro", "name": "DeepL Pro", "url": "https://www.deepl.com/pro", "mode": "prices", "enabled": true, "note": "" },
-    { "id": "pairs", "name": "Pairs", "url": "https://www.pairs.lv/price", "mode": "prices", "enabled": true, "stripScriptStyle": true, "note": "2026-07-06修正: figma等と同じNext.js RSC参照ID(SVGパスデータ\"$57\"等含む)を価格と誤検出していたためscript/style除去を有効化" },
-    { "id": "note-premium", "name": "noteプレミアム", "url": "https://premium.lp-note.com/", "mode": "prices", "enabled": true, "renderMode": "headless", "excludeTokens": ["100,000円"], "note": "2026-07-07: headless化で「月額500円」を確認。ただしページ内の別機能説明(有料記事の販売価格上限)にある「100,000円」を無関係ノイズとして誤検出したためexcludeTokensで個別除外" },
-    { "id": "github-copilot", "name": "GitHub Copilot", "url": "https://github.com/features/copilot/plans", "mode": "prices", "enabled": true, "note": "PRICE_HISTORY移植元と同じ" },
-    { "id": "niconico-premium", "name": "ニコニコ動画プレミアム", "url": "https://premium.nicovideo.jp/payment/premium_detail", "mode": "prices", "enabled": true, "note": "2026-07-06修正: 旧URLは404。このURLでエージェントのWebFetchが「月額790円」をテキスト確認済み。⚠️2026-08-01に料金改定予定のアナウンスあり(blog.nicovideo.jp/niconews/1841)＝backlogで再確認" },
-    { "id": "bookwalker", "name": "BOOK☆WALKER", "url": "https://bookwalker.jp/subscription/", "mode": "prices", "enabled": true, "stripScriptStyle": true, "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化" },
-    { "id": "honto", "name": "honto", "url": "https://honto.jp/", "mode": "prices", "enabled": false, "note": "2026-07-06調査: 読み放題サブスクプラン自体が存在しない（都度課金の電子書籍ストア）。旧「hontoクラブ」は2023-09-30に終了済み。監視対象外が正しい" },
-    { "id": "rakuten-kobo", "name": "楽天Kobo", "url": "https://www.kobo.com/jp/ja/", "mode": "prices", "enabled": false, "note": "2026-07-06調査: 月額読み放題プラン自体が存在しない（都度課金の電子書籍ストア。読み放題は別サービスの楽天マガジン）。監視対象外が正しい" },
-    { "id": "crunchyroll", "name": "Crunchyroll", "url": "https://www.crunchyroll.com/ja/premium", "mode": "prices", "enabled": true, "note": "baselineで確認" },
-    { "id": "vimeo-pro", "name": "Vimeo", "url": "https://vimeo.com/upgrade", "mode": "prices", "enabled": true, "renderMode": "headless", "note": "2026-07-07: JS描画のためheadless(Puppeteer)化" },
-    { "id": "patreon", "name": "Patreon", "url": "https://www.patreon.com/", "mode": "prices", "enabled": false, "note": "価格はクリエイターごとの設定で固定料金なし・構造的に監視不可能（正しい除外）" },
-    { "id": "match", "name": "マッチドットコム", "url": "https://jp.match.com/", "mode": "prices", "enabled": false, "note": "2026-07-06調査: 本体サイトが403でbot拒否。ヘルプセンター記事は具体的な現行価格を明記せず確信度low。日本向け公式ページ未確認のため未解決のまま保留" },
-    { "id": "soundcloud-go", "name": "SoundCloud Go", "url": "https://soundcloud.com/go", "mode": "prices", "enabled": false, "note": "2026-07-07: headless(Puppeteer)化しても価格0件。実際にページ本文が「Sorry, we're still working on launching SoundCloud Go+ in your country.」＝日本では現状申込不可のページに固定表示（このマシンのIPは既に日本）。構造的に監視不能（patreonと同型の正しい除外）" },
-    { "id": "discord-nitro", "name": "Discord Nitro", "url": "https://discord.com/nitro", "mode": "prices", "enabled": true, "note": "baselineで確認" },
-    { "id": "linkedin-premium", "name": "LinkedIn Premium", "url": "https://premium.linkedin.com/careers/career", "mode": "prices", "enabled": true, "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）" }
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "url": "https://help.netflix.com/ja/node/24926",
+      "mode": "prices",
+      "enabled": true,
+      "note": "料金プランのヘルプ記事（サーバー描画で¥が出やすい）",
+      "fetch": {
+        "status": "ok",
+        "ms": 3803,
+        "moneyLines": 3,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "amazon-prime",
+      "name": "Amazon プライム",
+      "url": "https://www.amazon.co.jp/amazonprime",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "url": "https://www.spotify.com/jp/premium/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-07: 旧URL(jp-ja/premium)はソフト404(お探しのページが見つかりませんページに実質誘導)で空振りだった。正しいURL(jp/premium)に修正・素のfetchで¥1,080等5トークン取得確認済み・headless不要",
+      "fetch": {
+        "status": "ok",
+        "ms": 5733,
+        "moneyLines": 16,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "url": "https://www.apple.com/jp/apple-music/",
+      "mode": "prices",
+      "enabled": true,
+      "note": ""
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "ok",
+        "ms": 8428,
+        "moneyLines": 21,
+        "checkedAt": "2026-08-15",
+        "fails": 0,
+        "lastOkAt": "2026-08-15"
+      }
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "url": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-26: トップページ（disneyplus.com/ja-jp/）は両プランの価格を出すが、headless でも35秒で開けず必ずタイムアウトするため、確実に開けるこのページに戻した。ただしこのページはスタンダード（1,250円/年12,500円）しか価格を出さない。プレミアム（1,670円/年16,700円）は監視対象外になるので、棚卸し（reconcile）では毎回「プレミアムがページに無い」と出る＝既知の偽陽性。"
+    },
+    {
+      "id": "hulu",
+      "name": "Hulu",
+      "url": "https://www.hulu.jp/",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "stripScriptStyle": true,
+      "excludeTokens": [
+        "1,000円"
+      ],
+      "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外"
+    },
+    {
+      "id": "abema-premium",
+      "name": "ABEMAプレミアム",
+      "url": "https://abema.tv/lp/new-premiumplan",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み"
+    },
+    {
+      "id": "u-next",
+      "name": "U-NEXT",
+      "url": "https://help.unext.jp/guide/detail/types-of-service-plan",
+      "mode": "prices",
+      "enabled": true,
+      "stripScriptStyle": true,
+      "note": "2026-07-06修正: figma/evernoteと同じNext.js RSC参照ID($L6,$L17等)を価格と誤検出していたためscript/style除去を有効化"
+    },
+    {
+      "id": "dazn",
+      "name": "DAZN",
+      "url": "https://www.dazn.com/ja-JP/help/articles/16308524311581",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-26 修正: /ja-JP/welcome は限定プラン（GLOBAL 980円・BASEBALL 2,300円等）しか出さず、STANDARDの月額4,200円が取れなかった。全プランの料金を一覧している公式ヘルプ記事へ変更。"
+    },
+    {
+      "id": "apple-tv-plus",
+      "name": "Apple TV+",
+      "url": "https://www.apple.com/jp/apple-tv-plus/",
+      "mode": "prices",
+      "enabled": true,
+      "note": ""
+    },
+    {
+      "id": "nhk-plus",
+      "name": "NHKプラス",
+      "url": "https://www.nhk.or.jp/nhkplus/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "受信料契約に紐づく特殊料金・監視対象外候補"
+    },
+    {
+      "id": "line-music",
+      "name": "LINE MUSIC",
+      "url": "https://music.line.me/aboutus/plan/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25 修正: 旧URL /top/plan/ は本文が197文字しか描画されず（JS/アプリ前提）、生HTML内の古い数字(320/480/980/1680)をノイズとして拾っていた。/aboutus/plan/ は「一般なら月額1,080円、学生なら月額580円」を本文で明示するのでこちらへ変更。ファミリープランの金額は両ページとも記載が無く未確認。",
+      "renderMode": "headless",
+      "fetch": {
+        "status": "ok",
+        "ms": 9176,
+        "moneyLines": 1,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "amazon-music-unlimited",
+      "name": "Amazon Music Unlimited",
+      "url": "https://www.amazon.co.jp/music/unlimited",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認"
+    },
+    {
+      "id": "rakuten-music",
+      "name": "楽天ミュージック",
+      "url": "https://music.rakuten.co.jp/plan/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchで「月額980円」等をテキスト確認済み・サーバー描画"
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "url": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+      "mode": "prices",
+      "enabled": true,
+      "note": ""
+    },
+    {
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "noAdBlock": true,
+      "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 12368,
+        "moneyLines": 31,
+        "checkedAt": "2026-08-15",
+        "fails": 0,
+        "lastOkAt": "2026-08-15",
+        "suspects": [
+          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "url": "https://www.notion.com/pricing",
+      "mode": "prices",
+      "enabled": true,
+      "note": "PRICE_HISTORY移植元と同じ（$表記のことあり）"
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "url": "https://www.dropbox.com/plans",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+    },
+    {
+      "id": "canva-pro",
+      "name": "Canva Pro",
+      "url": "https://www.canva.com/pricing/",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "no-money",
+        "ms": 7731,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "nintendo-switch-online",
+      "name": "Nintendo Switch Online",
+      "url": "https://www.nintendo.com/jp/nintendo-switch-online/plan/index.html",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-07実測確認: headless化・スクロール誘発・iframe/ShadowDOM調査すべて実施したが本文に円マーク/金額が一切出現しない（機能比較表のみでテキスト価格なし＝価格はおそらく別途SVG/画像扱い）。関連リンクも全て同一URLに集約・別の詳細ページなし。構造的にテキスト監視不能なため無効化（audible/match同様の正直な保留）"
+    },
+    {
+      "id": "playstation-plus",
+      "name": "PlayStation Plus",
+      "url": "https://www.playstation.com/ja-jp/ps-plus/",
+      "mode": "prices",
+      "enabled": true,
+      "note": ""
+    },
+    {
+      "id": "xbox-game-pass",
+      "name": "Xbox Game Pass",
+      "url": "https://www.xbox.com/ja-JP/xbox-game-pass",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "stripScriptStyle": true,
+      "note": "2026-07-07: headless化後もmicrosoft.com JSライブラリの正規表現置換文字列($1,$3等)を誤検出したためstripScriptStyleも併用"
+    },
+    {
+      "id": "nikkei",
+      "name": "日本経済新聞 電子版",
+      "url": "https://www.nikkei.com/help/subscribe/price/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06修正: 旧URLは403。ヘルプセンター内の料金ページはエージェントのWebFetchで「個人プラン4,277円」等をテーブルとして確認済み"
+    },
+    {
+      "id": "kindle-unlimited",
+      "name": "Kindle Unlimited",
+      "url": "https://www.amazon.co.jp/kindle-dbs/hz/subscribe/ku",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-07実測確認: headless化しても200 OKで返るのは価格を含まない一般Amazonストア画面（Kindleストアのカテゴリ一覧相当）で、実際の申込/価格提示フローはログインセッション前提の可能性大。node=2478980051等の代替URLも試したが検索結果ページにリダイレクトされ書籍個別価格(￥13,000等)しか取れずKU月額とは無関係。公式価格は980円/月で既知だが、この匿名スクレイピング経路では取得不能なため無効化（adobe-cc同様の正直な撤退）"
+    },
+    {
+      "id": "danime",
+      "name": "dアニメストア",
+      "url": "https://animestore.docomo.ne.jp/animestore/CF/help_qa_charge",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: dmkt-sp.jpはログイン後マイページ系。animestore.docomo.ne.jpが公式料金案内。エージェントのWebFetchで「月額660円」等をテキスト確認済み"
+    },
+    {
+      "id": "rakuten-tv",
+      "name": "楽天TV",
+      "url": "https://tv.rakuten.co.jp/static/svod_guidance/",
+      "mode": "prices",
+      "enabled": true,
+      "stripScriptStyle": true,
+      "note": "2026-07-06修正: huluと同一のJSバンドル(Sentry SDK・正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化。基本月額プランがなくチャンネル別課金の構造のため単一料金ページとしては不完全な点は残る"
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "excludeTokens": [
+        "$100"
+      ],
+      "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい"
+    },
+    {
+      "id": "claude-pro",
+      "name": "Claude Pro",
+      "url": "https://claude.com/pricing",
+      "mode": "prices",
+      "enabled": true,
+      "dataPlanPrefix": [
+        "pro_"
+      ],
+      "note": "2026-07-25 修正: 旧URL anthropic.com/pricing は API のトークン単価ページで、個人向けサブスクの価格が無い（$0.08 等を拾っていた）。claude.com/pricing が個人向け。日本向けは「10% JCT込み」注記つきのドル建て表示（Pro $22/月）。",
+      "renderMode": "headless",
+      "fetch": {
+        "status": "ok",
+        "ms": 19254,
+        "moneyLines": 4,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "evernote",
+      "name": "Evernote",
+      "url": "https://evernote.com/ja-jp/compare-plans",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "stripScriptStyle": true,
+      "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
+      "fetch": {
+        "status": "ok",
+        "ms": 3700,
+        "moneyLines": 5,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01"
+      }
+    },
+    {
+      "id": "audible",
+      "name": "Audible",
+      "url": "https://www.audible.co.jp/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う"
+    },
+    {
+      "id": "rakuten-magazine",
+      "name": "楽天マガジン",
+      "url": "https://magazine.rakuten.co.jp/service.html",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchで「月額プラン597円」等をテキスト確認済み・サーバー描画"
+    },
+    {
+      "id": "dmagazine",
+      "name": "dマガジン",
+      "url": "https://dmagazine.docomo.ne.jp/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06修正: 旧URL(magazine.dmkt-sp.jp)は現在このURLへ301リダイレクトのみ。リダイレクト先でエージェントのWebFetchが「月額580円」をテキスト確認済み",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 12912,
+        "moneyLines": 8,
+        "checkedAt": "2026-08-13",
+        "fails": 0,
+        "lastOkAt": "2026-08-13",
+        "suspects": [
+          "ちょうど半額の組がある（100 と 200）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
+    },
+    {
+      "id": "wowow-on-demand",
+      "name": "WOWOWオンデマンド",
+      "url": "https://support.wowow.co.jp/answer/61bffb829e474a001c1cd7ff/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: 公式サポートサイト。エージェントのWebFetchで「月額2,530円」等をテキスト確認済み"
+    },
+    {
+      "id": "fod",
+      "name": "FOD",
+      "url": "https://fod.fujitv.co.jp/plan/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-06調査: エージェントもfod.fujitv.co.jpドメイン自体にWebFetchできず。公式URL未確定のまま要再調査（正直な未解決）"
+    },
+    {
+      "id": "lemino",
+      "name": "Lemino",
+      "url": "https://lemino.docomo.ne.jp/ft/0000014/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み"
+    },
+    {
+      "id": "yahoo-premium",
+      "name": "Yahoo!プレミアム",
+      "url": "https://premium.yahoo.co.jp/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchで「月額508円」をテキスト確認済み・現行LYPプレミアム"
+    },
+    {
+      "id": "dmm-premium",
+      "name": "DMMプレミアム",
+      "url": "https://support.dmm.com/premium/article/47489",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchは本文空白でJS描画の可能性大。URLは特定できたので実挙動は本スクリプトで要確認"
+    },
+    {
+      "id": "apple-one",
+      "name": "Apple One",
+      "url": "https://www.apple.com/jp/apple-one/",
+      "mode": "prices",
+      "enabled": true,
+      "note": ""
+    },
+    {
+      "id": "google-one",
+      "name": "Google One",
+      "url": "https://one.google.com/about/plans",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+    },
+    {
+      "id": "icloud-plus",
+      "name": "iCloud+",
+      "url": "https://www.apple.com/jp/icloud/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06修正: 旧URL(support記事)は多国比較で65個の内ほぼ全てゴミ。apple.com/jp/icloud/(公式マーケティングページ)は¥150/450/1500/4500/9000の5個のみでクリーン"
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "url": "https://1password.com/pricing/password-manager",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 2263,
+        "moneyLines": 6,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26",
+        "suspects": [
+          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
+        ]
+      }
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "url": "https://www.figma.com/pricing/",
+      "mode": "prices",
+      "enabled": true,
+      "stripScriptStyle": true,
+      "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。シート課金（フルシート/Devシート/コラボシート）で、同じプラン内でも金額が3種ある。うちはフルシートを代表にしている。",
+      "fetch": {
+        "status": "ok",
+        "ms": 5819,
+        "moneyLines": 9,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      },
+      "renderMode": "headless"
+    },
+    {
+      "id": "deepl-pro",
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 8647,
+        "moneyLines": 4,
+        "checkedAt": "2026-08-13",
+        "fails": 0,
+        "lastOkAt": "2026-08-13",
+        "suspects": [
+          "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
+        ]
+      },
+      "renderMode": "headless"
+    },
+    {
+      "id": "pairs",
+      "name": "Pairs",
+      "url": "https://www.pairs.lv/price",
+      "mode": "prices",
+      "enabled": true,
+      "stripScriptStyle": true,
+      "note": "2026-07-06修正: figma等と同じNext.js RSC参照ID(SVGパスデータ\"$57\"等含む)を価格と誤検出していたためscript/style除去を有効化",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 3915,
+        "moneyLines": 82,
+        "checkedAt": "2026-08-13",
+        "fails": 0,
+        "lastOkAt": "2026-08-13",
+        "suspects": [
+          "金額の種類が多すぎる（73種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（810 と 1620）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
+    },
+    {
+      "id": "note-premium",
+      "name": "noteプレミアム",
+      "url": "https://premium.lp-note.com/",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "excludeTokens": [
+        "100,000円"
+      ],
+      "note": "2026-07-07: headless化で「月額500円」を確認。ただしページ内の別機能説明(有料記事の販売価格上限)にある「100,000円」を無関係ノイズとして誤検出したためexcludeTokensで個別除外"
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot/plans",
+      "mode": "prices",
+      "enabled": true,
+      "note": "PRICE_HISTORY移植元と同じ",
+      "fetch": {
+        "status": "ok",
+        "ms": 10131,
+        "moneyLines": 13,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "niconico-premium",
+      "name": "ニコニコ動画プレミアム",
+      "url": "https://premium.nicovideo.jp/payment/premium_detail",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06修正: 旧URLは404。このURLでエージェントのWebFetchが「月額790円」をテキスト確認済み。⚠️2026-08-01に料金改定予定のアナウンスあり(blog.nicovideo.jp/niconews/1841)＝backlogで再確認",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 5013,
+        "moneyLines": 2,
+        "checkedAt": "2026-08-01",
+        "fails": 0,
+        "lastOkAt": "2026-08-01",
+        "suspects": [
+          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
+        ]
+      }
+    },
+    {
+      "id": "bookwalker",
+      "name": "BOOK☆WALKER",
+      "url": "https://bookwalker.jp/subscription/",
+      "mode": "prices",
+      "enabled": true,
+      "stripScriptStyle": true,
+      "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
+      "fetch": {
+        "status": "ok",
+        "ms": 20231,
+        "moneyLines": 1,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "honto",
+      "name": "honto",
+      "url": "https://honto.jp/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-06調査: 読み放題サブスクプラン自体が存在しない（都度課金の電子書籍ストア）。旧「hontoクラブ」は2023-09-30に終了済み。監視対象外が正しい"
+    },
+    {
+      "id": "rakuten-kobo",
+      "name": "楽天Kobo",
+      "url": "https://www.kobo.com/jp/ja/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-06調査: 月額読み放題プラン自体が存在しない（都度課金の電子書籍ストア。読み放題は別サービスの楽天マガジン）。監視対象外が正しい"
+    },
+    {
+      "id": "crunchyroll",
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/ja/premium",
+      "mode": "prices",
+      "enabled": true,
+      "note": "baselineで確認",
+      "fetch": {
+        "status": "short-body",
+        "ms": 7492,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "vimeo-pro",
+      "name": "Vimeo",
+      "url": "https://vimeo.com/upgrade",
+      "mode": "prices",
+      "enabled": true,
+      "renderMode": "headless",
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "fetch": {
+        "status": "ok",
+        "ms": 3391,
+        "moneyLines": 6,
+        "checkedAt": "2026-08-04",
+        "fails": 0,
+        "lastOkAt": "2026-08-04"
+      }
+    },
+    {
+      "id": "patreon",
+      "name": "Patreon",
+      "url": "https://www.patreon.com/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "価格はクリエイターごとの設定で固定料金なし・構造的に監視不可能（正しい除外）"
+    },
+    {
+      "id": "match",
+      "name": "マッチドットコム",
+      "url": "https://jp.match.com/",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-06調査: 本体サイトが403でbot拒否。ヘルプセンター記事は具体的な現行価格を明記せず確信度low。日本向け公式ページ未確認のため未解決のまま保留"
+    },
+    {
+      "id": "soundcloud-go",
+      "name": "SoundCloud Go",
+      "url": "https://soundcloud.com/go",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-07: headless(Puppeteer)化しても価格0件。実際にページ本文が「Sorry, we're still working on launching SoundCloud Go+ in your country.」＝日本では現状申込不可のページに固定表示（このマシンのIPは既に日本）。構造的に監視不能（patreonと同型の正しい除外）"
+    },
+    {
+      "id": "discord-nitro",
+      "name": "Discord Nitro",
+      "url": "https://discord.com/nitro",
+      "mode": "prices",
+      "enabled": true,
+      "note": "baselineで確認",
+      "fetch": {
+        "status": "no-money",
+        "ms": 10598,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "linkedin-premium",
+      "name": "LinkedIn Premium",
+      "url": "https://premium.linkedin.com/careers/career",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
+      "fetch": {
+        "status": "no-money",
+        "ms": 6121,
+        "moneyLines": 0,
+        "checkedAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
+      "fetch": {
+        "status": "ok",
+        "ms": 9417,
+        "moneyLines": 2,
+        "checkedAt": "2026-07-26",
+        "fails": 0,
+        "lastOkAt": "2026-07-26"
+      }
+    },
+    {
+      "id": "gemini-advanced",
+      "name": "Google AI Pro（旧Gemini Advanced）",
+      "url": "https://one.google.com/about/google-ai-plans/",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25 修正: 素のfetchだと価格が取れない回があるため headless 化。日本向けは one.google.com/about/google-ai-plans/ が ￥725/￥2,900/￥14,500/￥32,000 を表示する。",
+      "renderMode": "headless"
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
+      "fetch": {
+        "status": "ok-suspect",
+        "ms": 6149,
+        "moneyLines": 3,
+        "checkedAt": "2026-08-16",
+        "fails": 0,
+        "lastOkAt": "2026-08-16",
+        "suspects": [
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+        ]
+      }
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
+      "fetch": {
+        "status": "ok",
+        "ms": 3260,
+        "moneyLines": 10,
+        "checkedAt": "2026-08-08",
+        "fails": 0,
+        "lastOkAt": "2026-08-08"
+      }
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf（現Devin Desktop）",
+      "url": "https://windsurf.com/pricing",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示"
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com/plans",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-25 多角調査したが未解決。素のfetchもheadless(Puppeteer)も HTTP 403 で、本文は「セキュリティ検証の実行…悪意のあるボットから保護するため(Ray ID付き)」＝Cloudflare系のbot検証。docs.midjourney.com/docs/plans・/account も同じ。**これは相手の明示的なbot拒否なので回避策は取らない**（chatgpt-plusはheadlessで通ったが、こちらは検証ページ自体が出るため性質が異なる）"
+    },
+    {
+      "id": "perplexity-pro",
+      "name": "Perplexity Pro",
+      "url": "https://www.perplexity.ai/pro",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-25 多角調査したが未解決。/pro・/hub/faq・/settings/account すべて素のfetchもheadlessもHTTP 403＋Cloudflare系bot検証ページ。midjourneyと同型。**回避策は取らない**"
+    },
+    {
+      "id": "google-play-pass",
+      "name": "Google Play Pass",
+      "url": "https://play.google.com/store/pass/getstarted",
+      "mode": "prices",
+      "enabled": false,
+      "note": "2026-07-25 多角調査したが未解決（要ログイン）。①/about/pass/ と /intl/ja/about/pass/ は play.google.com/store/games/ へリダイレクトされ、取れる￥900は個別ゲーム価格。②ヘルプ記事(answer/9411950)は404。③正しい入口は /store/pass/getstarted だが、ここに出る「600 円」は月額ではなく**「アプリ内購入がすべて600円オフ」という特典表記**で、登録すると誤報の温床になる（文脈確認で判明）。月額本体は「ログインして開始」の先にあり匿名取得は不可＝kindle-unlimitedと同型。無効のまま保留"
+    },
+    {
+      "id": "youtube-music",
+      "name": "YouTube Music Premium",
+      "url": "https://www.youtube.com/musicpremium",
+      "mode": "prices",
+      "enabled": true,
+      "note": "2026-07-25 headless化で解決。素のfetchは価格0件だったがPuppeteerで￥580(学生)/￥1,080(個人)/￥1,680(ファミリー)/￥10,800(年額)/￥0(無料体験)を取得＝JS描画が原因だった。music.youtube.com/music_premium はブラウザ非対応メッセージのみ・youtube.com/premium はYouTube Premium(￥1,280)で別サービスなので使わない",
+      "renderMode": "headless"
+    }
   ]
 }

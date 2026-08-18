@@ -53,8 +53,30 @@ export default defineConfig({
           /^\/llms\.txt/,
           /^\/[0-9a-f]{32}\.txt$/,
         ],
-        // ロゴ画像（Clearbit）は SWR（古いキャッシュを返しつつバックグラウンドで更新）
         runtimeCaching: [
+          // ページ本体（HTML）は必ずネットワークを先に見る（2026-07-26 追加）
+          //
+          // これを入れる前は、デプロイ直後の**1回目のアクセスが古いキャッシュ**を表示していた。
+          // 実測：価格を直して本番反映した直後にスマホ幅で開くと Spotify ¥480〜・
+          // ChatGPT ¥3,100〜 と旧価格が出て、「最近の変更」も出なかった。
+          // 2回目の読み込みで正しくなる（registerType:'autoUpdate' が新SWを適用するのは
+          // 表示後なので、初回は古いHTMLが配られる）。
+          //
+          // このサイトは価格の正確さが存在意義なので、「初回だけ古い価格を見せる」のは
+          // 実質的な誤報にあたる。HTMLだけ NetworkFirst にして、必ず新しい方を出す。
+          // オフライン時は3秒でキャッシュに切り替わるので、
+          // 「オフラインでも解約手順を読める」というPWAの利点は保たれる。
+          {
+            urlPattern: ({ request }) => request.mode === 'navigate',
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'pages',
+              networkTimeoutSeconds: 3, // 圏外・低速時はここでキャッシュに切り替える
+              expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 7 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+          // ロゴ画像（Clearbit）は SWR（古いキャッシュを返しつつバックグラウンドで更新）
           {
             urlPattern: /^https:\/\/logo\.clearbit\.com\/.*/,
             handler: 'StaleWhileRevalidate',

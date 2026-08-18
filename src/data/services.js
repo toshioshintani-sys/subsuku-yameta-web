@@ -1356,35 +1356,35 @@ export const BUYOUT_ALTERNATIVES = {
 //   - 価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
 // ---------------------------------------------------------------------------
 export const PRICING = {
-  netflix: 890,              // 広告つきベーシック。スタンダード1490、プレミアム1980
+  netflix: 890,              // 広告つきスタンダード。スタンダード1590、プレミアム2290（2026-07-25確認）
   'amazon-prime': 600,       // 年間プランは5900（月額換算492）
-  spotify: 980,
-  'apple-music': 1080,
+  spotify: 1080,             // 2026-07-25 公式確認（旧980）
+  'apple-music': 1180,       // 2026-07-25 公式確認（旧1080）
   'youtube-premium': 1280,
-  'disney-plus': 990,
+  'disney-plus': 1250,       // 2026-07-26 公式確認（旧990＝2世代前）
   hulu: 1026,
-  'abema-premium': 1080,
+  'abema-premium': 1180,     // 2026-04-01 値上げ。2026-07-26 公式確認（旧1080）
   'u-next': 2189,
   dazn: 4200,
-  'apple-tv-plus': 900,
+  'apple-tv-plus': 1200,     // 2026-07-25 公式確認（旧900）
   'nhk-plus': 0,             // 受信料に内包
-  'line-music': 980,
-  'amazon-music-unlimited': 1080,
+  'line-music': 1080,        // 2026-07-25 公式確認（旧980）
+  'amazon-music-unlimited': 1180,  // 一般価格。プライム会員は1,080円。2026-07-28 公式確認（旧1080＝会員価格だった）
   'rakuten-music': 980,
-  'microsoft-365': 1490,
+  'microsoft-365': 2130,     // 2026-07-25 公式確認（旧1490）
   'adobe-cc': 6480,          // コンプリートプラン
-  notion: 1500,
+  notion: 1650,              // 2026-07-25 公式確認（旧1500）
   dropbox: 1200,
   'canva-pro': 1500,
   'nintendo-switch-online': 306,
   'playstation-plus': 850,
-  'xbox-game-pass': 1100,
+  'xbox-game-pass': 1300,    // PC Game Pass。2026-07-25 公式確認（旧1100）
   nikkei: 4277,
   'kindle-unlimited': 980,
-  danime: 550,
+  danime: 660,               // 2026-07-25 公式確認（旧550）
   'rakuten-tv': 0,           // 都度課金がメイン
-  'chatgpt-plus': 3000,
-  'claude-pro': 3000,
+  'chatgpt-plus': 3000,      // 円建て実額（2026-07-25 公式JPページで実測・USD換算しない）
+  'claude-pro': 3300,        // $22（$20＋JCT10%）を150円換算。USD_PRICEDが155円へ補正する
   cursor: 3000,              // Pro $20/mo（1ドル=150円換算）
   'gemini-advanced': 2900,   // Google AI Pro（5TB・Gemini使用量4倍）
   'google-workspace': 800,   // Business Starter
@@ -1396,28 +1396,28 @@ export const PRICING = {
   runway: 2250,              // Standard $15/mo（1ドル=150円換算）
   evernote: 1100,
   audible: 1500,
-  'rakuten-magazine': 418,
+  'rakuten-magazine': 597,   // 2026-07-25 公式確認（旧418）
   dmagazine: 580,
   'wowow-on-demand': 2530,
   fod: 976,
-  lemino: 990,
+  lemino: 1540,              // 2026-02-01 値上げ。2026-07-26 公式確認（旧990）
   'yahoo-premium': 508,
   'dmm-premium': 550,
   'apple-one': 1200,
-  'google-one': 250,         // 100GB プラン
-  'icloud-plus': 130,        // 50GB プラン
-  '1password': 450,
-  figma: 1800,
-  'deepl-pro': 1200,
-  pairs: 3700,
+  'google-one': 290,         // 100GB(Basic)プラン。2026-07-25 公式確認（旧250）
+  'icloud-plus': 180,        // 50GB プラン。2026-07-25 公式確認（旧130＝2世代前）
+  '1password': 449,          // $2.99を150円換算。USD_PRICEDが155円へ補正
+  figma: 2400,               // プロフェッショナルのフルシート。2026-07-26 公式確認（旧1800）
+  'deepl-pro': 1150,        // 2026-07-26 公式確認（年払いの月額換算・旧1200）
+  pairs: 4100,       // 2026-08-13 公式確認（旧3700は表示誤り。公式に3,700円の記載は存在しない）
   'note-premium': 500,
   'github-copilot': 1500,
-  'niconico-premium': 790,
+  'niconico-premium': 990,  // 2026-08-01 公式確認（旧790円）
   bookwalker: 836,
   honto: 0,                  // 都度購入がメイン
   'rakuten-kobo': 0,         // 都度購入がメイン
   crunchyroll: 850,
-  'vimeo-pro': 2700,
+  'vimeo-pro': 1200,         // Starter（年払いの月額換算）。2026-07-26 公式確認（旧2700）
   patreon: 1500,             // 平均的なクリエイター月額
   match: 4490,
   'soundcloud-go': 770,
@@ -1542,10 +1542,124 @@ export const KANA = {
   'youtube-premium': 'ゆーちゅーぶぷれみあむ ようつべ ゆうちゅうぶ',
   'disney-plus': 'でぃずにーぷらす でぃずにー',
   dazn: 'だぞーん だ・ぞーん',
-  abema: 'あべま アベマ',
+  // 2026-08-04 修正：キーが 'abema' になっていて、実在するID 'abema-premium' と
+  // 一致しないため一度も引かれていなかった（KANA_ORPHANS で検出）
+  'abema-premium': 'あべま アベマ あべまぷれみあむ',
+
+  // 2026-08-05 追加：ここから下は「日本語で検索しても出なかった」53件。
+  // 名前が英語のサービスは、正規化を入れても**引く先の読みが無ければ一致しようがない**。
+  // 表記はひらがなで書けば足りる（normalizeForSearch がカタカナ入力をひらがなへ寄せる）。
+  // 略称・通称も併記する：人は正式名称で検索しない（「ぷれすて」「ようつべ」の類）。
+  'apple-tv-plus': 'あっぷるてぃーびー あっぷるてぃーびーぷらす',
+  'nhk-plus': 'えぬえいちけーぷらす えぬえいちけー',
+  'line-music': 'らいんみゅーじっく らいんみゅうじっく',
+  'amazon-music-unlimited': 'あまぞんみゅーじっく あまぞんみゅーじっくあんりみてっど',
+  'rakuten-music': 'らくてんみゅーじっく',
+  'microsoft-365': 'まいくろそふと まいくろそふと365 おふぃす おふぃす365',
+  'adobe-cc': 'あどび あどびくりえいてぃぶくらうど くりえいてぃぶくらうど',
+  notion: 'のーしょん のうしょん',
+  dropbox: 'どろっぷぼっくす',
+  'canva-pro': 'きゃんば きゃんばぷろ',
+  'nintendo-switch-online': 'にんてんどーすいっちおんらいん すいっちおんらいん にんてんどう',
+  'playstation-plus': 'ぷれいすてーしょんぷらす ぷれすて ぷれすてぷらす',
+  'xbox-game-pass': 'えっくすぼっくす えっくすぼっくすげーむぱす げーむぱす',
+  nikkei: 'にほんけいざいしんぶん にっけい にっけいでんししばん',
+  'kindle-unlimited': 'きんどるあんりみてっど きんどる',
+  danime: 'でぃーあにめすとあ でぃーあにめ',
+  'rakuten-tv': 'らくてんてぃーびー',
+  'chatgpt-plus': 'ちゃっとじーぴーてぃー ちゃっとgpt ちゃっとじーぴーてぃーぷらす',
+  'claude-pro': 'くろーど くろーどぷろ',
+  evernote: 'えばーのーと えぶあーのーと',
+  audible: 'おーでぃぶる おーでぃぼー',
+  'rakuten-magazine': 'らくてんまがじん',
+  dmagazine: 'でぃーまがじん',
+  'wowow-on-demand': 'わうわうおんでまんど わうわう',
+  fod: 'えふおーでぃー ふじてれびおんでまんど',
+  lemino: 'れみの でぃーてぃーびー',
+  'yahoo-premium': 'やふーぷれみあむ やふー',
+  'dmm-premium': 'でぃーえむえむぷれみあむ でぃーえむえむ',
+  'apple-one': 'あっぷるわん',
+  'google-one': 'ぐーぐるわん',
+  'icloud-plus': 'あいくらうど あいくらうどぷらす',
+  '1password': 'わんぱすわーど',
+  figma: 'ふぃぐま',
+  'deepl-pro': 'でぃーぷえる でぃーぷえるぷろ',
+  pairs: 'ぺあーず ぺあず',
+  'note-premium': 'のーとぷれみあむ のーと',
+  'github-copilot': 'ぎっとはぶこぱいろっと こぱいろっと ぎっとはぶ',
+  cursor: 'かーそる かーさー',
+  'gemini-advanced': 'じぇみに ぐーぐるえーあいぷろ じぇみないあどばんすと',
+  'google-workspace': 'ぐーぐるわーくすぺーす わーくすぺーす',
+  'google-play-pass': 'ぐーぐるぷれいぱす ぷれいぱす',
+  'youtube-music': 'ゆーちゅーぶみゅーじっく ようつべみゅーじっく',
+  'perplexity-pro': 'ぱーぷれきしてぃ ぱーぷれ',
+  midjourney: 'みっどじゃーにー',
+  windsurf: 'うぃんどさーふ でびん でびんですくとっぷ',
+  runway: 'らんうぇい',
+  'niconico-premium': 'にこにこどうがぷれみあむ にこにこ にこどう',
+  bookwalker: 'ぶっくうぉーかー ぶっくをーかー',
+  honto: 'ほんと',
+  'rakuten-kobo': 'らくてんこぼ こぼ',
+  crunchyroll: 'くらんちろーる',
+  'vimeo-pro': 'びめお ゔぃめお',
+  patreon: 'ぱとれおん',
+  match: 'まっちどっとこむ まっち',
+  'soundcloud-go': 'さうんどくらうど さうんどくらうどごー',
+  'discord-nitro': 'でぃすこーどにとろ でぃすこーど にとろ',
+  'linkedin-premium': 'りんくといんぷれみあむ りんくといん りんくどいん',
 };
+
+/**
+ * KANA のキーで、実在しないサービスIDになっているもの（2026-08-04 追加）。
+ *
+ * 'abema' が実際のID 'abema-premium' と食い違っていて、書いた本人は効いているつもりで
+ * まったく引かれていなかった。**書き間違えても何も起きない**のがこの表の怖いところなので、
+ * ビルド時に気づけるようにする（price:check と同じ考え方＝黙って効かない状態を作らない）。
+ */
+export const KANA_ORPHANS = Object.keys(KANA).filter(
+  (id) => !SERVICES.some((s) => s.id === id)
+);
 export function getKana(serviceId) {
   return KANA[serviceId] ?? '';
+}
+
+/**
+ * 検索用にゆらぎを潰す（2026-08-04 追加）
+ *
+ * ■ 直した不具合
+ *   「ネットフリックス」（カタカナ）で検索しても何も出なかった。
+ *   KANA が 'ねっとふりっくす ねとふり' とひらがなだけで、照合が単純な includes
+ *   だったため、カタカナ入力が一致しなかった。
+ *   u-next と abema だけ手作業でカタカナを併記してあったのは、この穴に対する
+ *   その場しのぎの回避（2件だけ塞いでも残りは開いたまま）。
+ *
+ * ■ 潰すゆらぎ
+ *   カタカナ → ひらがな（ネ→ね）／全角英数 → 半角（Ｎ→n）／大文字 → 小文字
+ *   中黒・空白・ハイフン類は落とす（「ｄ・ぞーん」「ネット フリックス」も一致させる）
+ *   長音は残す（「ふーる」と「ふうる」は KANA 側に両方書いてある）
+ */
+export function normalizeForSearch(text) {
+  return String(text ?? '')
+    // 全角英数・記号 → 半角
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+    // カタカナ → ひらがな（濁点つきも含む。長音符 ー はそのまま）
+    .replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60))
+    .toLowerCase()
+    // 区切り記号は無視（中黒・全角/半角スペース・各種ハイフン）
+    // 全角スペースは書かない：JSの \s は U+3000 を含むので冗長なうえ、
+    // リテラルで置くと eslint の no-irregular-whitespace で落ちる
+    .replace(/[・\s\-‐‑–—+_.]/g, '');
+}
+
+/**
+ * サービスが検索語に一致するか。
+ * 名前・ID・かな別名のすべてを正規化して照合する（IDを含めるので "netflix" でも引ける）。
+ */
+export function matchesQuery(service, query) {
+  const q = normalizeForSearch(query);
+  if (!q) return false;
+  const hay = normalizeForSearch(`${service.name} ${service.id} ${getKana(service.id)}`);
+  return hay.includes(q);
 }
 
 // ---------------------------------------------------------------------------
@@ -1560,11 +1674,12 @@ export function getKana(serviceId) {
 // 注：価格改定が頻繁なため、参考値として扱う（正確な額は各サービス側を要確認）
 // ---------------------------------------------------------------------------
 export const PLANS = {
+  // 2026-07-25 公式ヘルプ（help.netflix.com/ja/node/24926）で再確認して更新
   netflix: {
     plans: [
       { name: '広告つきスタンダード', monthly: 890 },
-      { name: 'スタンダード', monthly: 1490, popular: true },
-      { name: 'プレミアム', monthly: 1980, note: '4K対応・4台同時視聴' },
+      { name: 'スタンダード', monthly: 1590, popular: true },
+      { name: 'プレミアム', monthly: 2290, note: '4K対応・4台同時視聴' },
     ],
     howToCheck: 'Netflix にログイン →「アカウント」→「プランの詳細」で確認できます',
   },
@@ -1576,12 +1691,13 @@ export const PLANS = {
     ],
     howToCheck: 'Amazon にログイン →「アカウント＆リスト」→「プライム会員情報の管理」で確認できます',
   },
+  // 2026-07-25 公式（spotify.com/jp/premium/）で全4プラン再確認して更新
   spotify: {
     plans: [
-      { name: '個人プラン（Premium）', monthly: 980, popular: true },
-      { name: 'Duo（2人用）', monthly: 1280, note: '同居家族で2人まで利用可' },
-      { name: 'ファミリー（最大6人）', monthly: 1580, note: '同居家族で6人まで' },
-      { name: '学生プラン', monthly: 480, note: '大学生・専門学生限定' },
+      { name: '個人プラン（Premium）', monthly: 1080, popular: true },
+      { name: 'Duo（2人用）', monthly: 1480, note: '同居家族で2人まで利用可' },
+      { name: 'ファミリー（最大6人）', monthly: 1880, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 580, note: '大学生・専門学生限定' },
     ],
     howToCheck: 'Spotify にログイン →「アカウント」→「定期プラン」で確認できます',
   },
@@ -1608,71 +1724,94 @@ export const PLANS = {
   },
   'disney-plus': {
     plans: [
-      { name: 'スタンダード', monthly: 1140, popular: true, note: 'フルHD画質・4台同時視聴' },
-      { name: 'プレミアム', monthly: 1520, note: '4K画質・Dolby Atmos対応' },
+      // 2026-07-26 公式（disneyplus.com/ja-jp）で再確認。2026-03-25（新規）／05-01（既存）施行の値上げ。
+      { name: 'スタンダード', monthly: 1250, yearly: 12500, popular: true, note: 'フルHD画質・4台同時視聴' },
+      { name: 'プレミアム', monthly: 1670, yearly: 16700, note: '4K画質・Dolby Atmos対応。Apple経由の年額契約のみ16,800円' },
     ],
     howToCheck: 'Disney+ にログイン →「アカウント」→「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/apple-music/）で全プラン再確認して更新
   'apple-music': {
     plans: [
-      { name: '個人プラン', monthly: 1080, popular: true },
-      { name: 'ファミリープラン（最大6人）', monthly: 1680, note: '同居家族で6人まで' },
-      { name: '学生プラン', monthly: 580, note: '大学生・専門学生限定' },
+      { name: '個人プラン', monthly: 1180, popular: true },
+      { name: 'ファミリープラン（最大6人）', monthly: 1980, note: '同居家族で6人まで' },
+      { name: '学生プラン', monthly: 680, note: '大学生・専門学生限定' },
     ],
     howToCheck: '「設定」→ Apple ID →「メディアと購入」→「サブスクリプション」で確認できます',
   },
   dazn: {
     plans: [
-      { name: '月額プラン', monthly: 4200, popular: true },
-      { name: '年額プラン（月払い）', monthly: 3000, yearly: 36000, note: '月額より大幅にお得・解約縛りあり' },
-      { name: '年額プラン（一括払い）', monthly: 2500, yearly: 30000, note: '最もお得・全額前払い' },
+      // 2026-07-26 公式ヘルプで再確認。月額は据え置きだが年間プランが値上げされていた。
+      // ※このほかに視聴範囲を絞った限定プランがある（DAZN BASEBALL 年27,600円＝月換算2,300円・
+      //   プロ野球専用／DAZN GLOBAL 月980円・ボクシング等のみ）。STANDARD の全コンテンツは
+      //   含まないため、ここには載せない（載せると「月¥980〜」と表示され実態を誤らせる）。
+      { name: '月額プラン', monthly: 4200, popular: true, note: '縛りなし。ほかに視聴範囲を絞った限定プランあり' },
+      { name: '年額プラン（月払い）', monthly: 3200, yearly: 38400, note: '月額より安いが1年縛りあり' },
+      { name: '年額プラン（一括払い）', monthly: 2667, yearly: 32000, note: '全額前払い。月額換算は概算（公式は年額のみ表示）' },
     ],
     howToCheck: 'DAZN にログイン →「マイ・アカウント」→「マイ・プラン」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/apple-one/）で再確認して更新。
+  // プレミアプラン（3,580円）は日本では提供されていない（News+ が日本未提供のため）ので削除した。
   'apple-one': {
     plans: [
-      { name: '個人プラン', monthly: 1200, popular: true, note: 'Music + TV+ + Arcade + iCloud 50GB' },
-      { name: 'ファミリープラン', monthly: 1980, note: 'iCloud 200GB に増量・最大5人共有' },
-      { name: 'プレミアプラン', monthly: 3580, note: 'iCloud 2TB・Fitness+・News+ も追加' },
+      { name: '個人プラン', monthly: 1350, popular: true, note: 'Music + TV+ + Arcade + iCloud 50GB' },
+      { name: 'ファミリープラン', monthly: 2500, note: 'iCloud 200GB に増量・最大5人共有' },
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
   // ---- Top11-30（2026-05-23 追加） ----
+  // 2026-07-25 公式（microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products）で再確認。
+  // Copilot 同梱に伴う改定で全プラン値上げ、Premium が新設されていた。
   'microsoft-365': {
     plans: [
-      { name: 'Personal（1人用）', monthly: 1490, yearly: 14900, popular: true, note: 'Office 全アプリ + OneDrive 1TB' },
-      { name: 'Family（最大6人）', monthly: 2100, yearly: 21000, note: '家族で 1TB×6 = 6TB のクラウド' },
+      { name: 'Personal（1人用）', monthly: 2130, yearly: 21300, popular: true, note: 'Office 全アプリ + OneDrive 1TB' },
+      { name: 'Family（最大6人）', monthly: 2740, yearly: 27400, note: '家族で 1TB×6 = 6TB のクラウド' },
+      { name: 'Premium（1人用）', monthly: 3200, yearly: 32000, note: 'Copilot の利用上限が最も広い' },
     ],
     howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
   },
   'adobe-cc': {
     plans: [
-      { name: 'フォトプラン（Photoshop + Lightroom）', monthly: 1180, popular: true },
-      { name: '単体プラン（Photoshop のみ等）', monthly: 2728 },
-      { name: 'コンプリートプラン（全アプリ）', monthly: 6480 },
-      { name: '学生・教職員向け', monthly: 1980, note: '本人確認必要・最初の1年' },
+      // 2026-07-26 公式（adobe.com/jp/creativecloud/plans.html）で再確認。体系が変わっていた。
+      // 学生・教職員の1,980円は現在存在せず、980円→2,180円→4,180円の3段階に変わっているため
+      // 単一の月額では表せない。誤解を招くので項目ごと削除した。
+      { name: 'フォトプラン（Photoshop + Lightroom）', monthly: 2380, popular: true, note: '1TBストレージ付き' },
+      { name: '単体プラン（Photoshop のみ等）', monthly: 3280 },
+      { name: 'Creative Cloud Standard（全アプリ）', monthly: 6480, note: '旧コンプリートプラン' },
+      { name: 'Creative Cloud Pro（全アプリ＋生成AI）', monthly: 9080, note: '新設の上位プラン。旧オールアプリの実質後継' },
+      // 学生・教職員の 1,980円 は 2026-07-26 時点で公式に存在しない。
+      // 現在は 980円（1〜3か月）→ 2,180円（4〜12か月）→ 4,180円（2年目〜）の3段階で、
+      // 単一の月額では表せないため項目ごと削除した（誤解を招く数字を残さない）。
     ],
     howToCheck: 'Adobe アカウント →「プラン情報」で確認できます',
   },
   danime: {
     plans: [
-      { name: '月額プラン', monthly: 550, popular: true, note: 'docomo 以外でも契約可' },
+      // 2026-07-25 公式（anime.dmkt-sp.jp）で再確認（旧550円）
+      { name: '月額プラン', monthly: 660, popular: true, note: 'docomo 以外でも契約可' },
     ],
     howToCheck: 'dアニメストア →「マイページ」→「契約内容の確認」で確認できます',
   },
+  // 2026-07-25 公式（notion.com/pricing）で再確認して更新
   notion: {
     plans: [
       { name: 'Free（無料）', monthly: 0 },
-      { name: 'Plus', monthly: 1500, popular: true, note: '無制限ファイル・30日履歴' },
-      { name: 'Business', monthly: 2250, note: 'SAML SSO・90日履歴' },
+      { name: 'Plus', monthly: 1650, popular: true, note: '無制限ファイル・30日履歴' },
+      { name: 'Business', monthly: 3150, note: 'SAML SSO・90日履歴' },
     ],
     howToCheck: 'Notion →「Settings & members」→「Plans」で確認できます',
   },
   dropbox: {
     plans: [
-      { name: 'Plus（2TB）', monthly: 1200, popular: true },
-      { name: 'Essentials（3TB）', monthly: 2400 },
-      { name: 'Family（2TB・最大6人）', monthly: 2000 },
+      // 2026-07-26 公式で再確認。表示は既定が「年払いの月額換算」で、月払いだと高くなる。
+      // Essentials は dropbox.com/buy/essentials に「Dropbox Essentials プランは利用できなくなり、
+      // Dropbox Professional に変えられました。」と明記があり、名称・価格とも変わっていた。
+      { name: 'Plus（2TB）', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと1,500円' },
+      { name: 'Professional（3TB）', monthly: 2000, note: '旧 Essentials。年払いの月額換算。月払いのみだと2,400円' },
+      // ⚠️ Family の月額は購入導線がログイン必須で、公式に金額が出ていない（2026-07-26 確認）。
+      //    この 2,000 は 2020年の発表値と一致するだけで裏が取れていない。要ログイン確認。
+      { name: 'Family（2TB・最大6人）', monthly: 2000, note: '公式が金額を非公開（要ログイン）。参考値' },
     ],
     howToCheck: 'Dropbox →「アカウント設定」→「プラン」で確認できます',
   },
@@ -1693,55 +1832,77 @@ export const PLANS = {
   },
   'playstation-plus': {
     plans: [
-      { name: 'Essential', monthly: 850, yearly: 8600, popular: true, note: '従来のPS Plus 相当' },
-      { name: 'Extra', monthly: 1300, yearly: 13900, note: 'カタログから400本以上遊び放題' },
-      { name: 'Premium', monthly: 1550, yearly: 16700, note: 'クラシックタイトル + クラウドストリーミング' },
+      // 2026-07-25 公式（playstation.com/ja-jp/ps-plus/）で年額を再確認。
+      // 月額は正しかったが年額が1段ずつズレていた（旧: 8,600/13,900/16,700）。
+      { name: 'Essential', monthly: 850, yearly: 6800, popular: true, note: '従来のPS Plus 相当' },
+      { name: 'Extra', monthly: 1300, yearly: 11700, note: 'カタログから400本以上遊び放題' },
+      { name: 'Premium', monthly: 1550, yearly: 13900, note: 'クラシックタイトル + クラウドストリーミング' },
     ],
     howToCheck: 'PlayStation →「設定」→「アカウント管理」→「サブスクリプション」で確認できます',
   },
   'xbox-game-pass': {
     plans: [
-      { name: 'Core', monthly: 842, note: 'マルチプレイ + 限定タイトル' },
-      { name: 'PC Game Pass', monthly: 1100, popular: true, note: 'PC ゲーム遊び放題' },
-      { name: 'Ultimate', monthly: 1680, note: 'PC + Console + EA Play + クラウド' },
+      // 2026-07-25 公式（xbox.com/ja-JP/xbox-game-pass）で再確認。Core が Essential に変わり、
+      // Premium が新設され、Ultimate は 1,680→1,550 に下がっていた（2回の取得で同一値を確認）。
+      { name: 'Essential', monthly: 850, note: 'マルチプレイ + 限定タイトル（旧 Core）' },
+      { name: 'PC Game Pass', monthly: 1300, popular: true, note: 'PC ゲーム遊び放題' },
+      { name: 'Premium', monthly: 1300, note: 'コンソール向け・発売から少し後のタイトル中心' },
+      { name: 'Ultimate', monthly: 1550, note: 'PC + Console + EA Play + クラウド' },
     ],
     howToCheck: 'Microsoft アカウント →「サービスとサブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式（chatgpt.com/ja-JP/pricing）で実測して更新。
+  // ⚠️ ChatGPT は日本では**円建て**で価格が提示される（Plus ￥3,000）。ドル換算ではないので
+  //    USD_PRICED からは外してある。ここに書く数字はそのまま表示される実額。
   'chatgpt-plus': {
     plans: [
-      { name: 'Plus（個人）', monthly: 3000, popular: true, note: 'GPT-4o・画像生成・優先アクセス' },
-      { name: 'Team（チーム）', monthly: 4500, note: '人数分課金・最低2人〜' },
-      { name: 'Pro', monthly: 30000, note: 'o1 無制限・上級モデル' },
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Go', monthly: 1400, note: 'Plus より安い入門プラン。Sora・レガシーモデルは対象外' },
+      { name: 'Plus（個人）', monthly: 3000, popular: true, note: '上位モデルの推論・エージェントモード月40回' },
+      { name: 'Pro', monthly: 16800, note: '公式表示は「月額 ￥16,800 から」。上位ティアは米ドル建て' },
     ],
-    howToCheck: 'ChatGPT →「Settings」→「Subscription」で確認できます',
+    howToCheck: 'ChatGPT →「設定」→「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式（claude.com/pricing）で確認。
+  // ⚠️ Claude は日本でも**米ドル建て**で請求され、表示に「10% JCT（消費税）込み」と注記される
+  //    （Pro は $20 + JCT = $22/月）。為替で円換算額が動くため USD_PRICED のまま扱う。
+  //    ここの円値は 150円/USD 換算で書くこと（USD_PRICED が 155円へ自動補正する）。
   'claude-pro': {
     plans: [
-      { name: 'Pro', monthly: 3000, popular: true, note: '5倍多くメッセージ送信可' },
-      { name: 'Max（5x）', monthly: 15000, note: 'Pro の5倍利用枠' },
-      { name: 'Max（20x）', monthly: 30000, note: 'Pro の20倍利用枠' },
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Pro', monthly: 3300, popular: true, note: '$20＋消費税＝$22/月。年払いは割安（$200/年）' },
+      { name: 'Max（5x）', monthly: 16500, note: '$100＋消費税＝$110/月。Pro の5倍利用枠' },
+      { name: 'Max（20x）', monthly: 33000, note: '$200＋消費税＝$220/月。Pro の20倍利用枠' },
     ],
     howToCheck: 'Claude →「Settings」→「Plans & Billing」で確認できます',
   },
   figma: {
     plans: [
-      { name: 'Starter（無料）', monthly: 0 },
-      { name: 'Professional', monthly: 1800, yearly: 18000, popular: true },
-      { name: 'Organization', monthly: 6750, note: 'デザインシステム機能 + SSO' },
+      // 2026-07-26 公式（figma.com/pricing）で再確認。**シート課金へ体系変更**されていた。
+      // 同じプランの中でも「フルシート／Devシート／コラボシート」で金額が違う。
+      // 代表としてフルシート（年払いの月額換算）を載せ、他シートは note に書く。
+      { name: 'スターター（無料）', monthly: 0 },
+      { name: 'プロフェッショナル（フルシート）', monthly: 2400, popular: true, note: '年払いの月額換算。Devシート1,800円・コラボシート450円' },
+      { name: '組織（フルシート）', monthly: 8300, note: '年払いの月額換算。Devシート3,750円・コラボシート750円' },
+      { name: 'エンタープライズ（フルシート）', monthly: 13600, note: '年払いの月額換算。Devシート5,250円・コラボシート750円' },
     ],
     howToCheck: 'Figma →「Settings」→「Plan & billing」で確認できます',
   },
   'github-copilot': {
     plans: [
-      { name: 'Individual', monthly: 1500, yearly: 15000, popular: true },
-      { name: 'Business', monthly: 2900, note: 'ライセンス管理 + プライバシー強化' },
-      { name: 'Enterprise', monthly: 5550, note: '内製モデル + ナレッジベース統合' },
+      // 2026-07-26 公式（github.com/features/copilot/plans）で再確認。
+      // ドル建て表示のみ。ここの円値は150円換算で書く（USD_PRICED が155円へ自動補正する）。
+      { name: 'Free（無料）', monthly: 0 },
+      { name: 'Pro', monthly: 1500, popular: true, note: '$10/月' },
+      { name: 'Pro+', monthly: 5850, note: '$39/月' },
+      { name: 'Max', monthly: 15000, note: '$100/月' },
     ],
     howToCheck: 'GitHub →「Settings」→「Billing and plans」→「Copilot」で確認できます',
   },
   'niconico-premium': {
     plans: [
-      { name: 'プレミアム会員', monthly: 790, popular: true },
+      // 2026-08-01 公式（premium.nicovideo.jp/payment/premium_detail）で再確認（旧790円）
+      { name: 'プレミアム会員', monthly: 990, popular: true },
     ],
     howToCheck: 'ニコニコ →「アカウント」→「プレミアム会員」で確認できます',
   },
@@ -1756,7 +1917,11 @@ export const PLANS = {
   // ---- Top31-50（2026-05-23 追加・人気度60〜75） ----
   'amazon-music-unlimited': {
     plans: [
-      { name: '個人プラン', monthly: 1080, popular: true, note: 'Prime会員は980円' },
+      // 2026-07-28 公式（amazon.co.jp/music/unlimited）で再確認。
+      // 「無料体験終了後は月額1,180円（Amazonプライム会員は月額1,080円）」と明記。
+      // それまで代表を1,080円にしていたが、これは**プライム会員のみの価格**で、
+      // 一般価格の1,180円を1円も出していなかった。会員でない人には誤報だった。
+      { name: '個人プラン', monthly: 1180, popular: true, note: 'Amazonプライム会員は1,080円' },
       { name: 'ファミリープラン', monthly: 1680, note: '最大6人' },
       { name: '学生プラン', monthly: 580 },
     ],
@@ -1764,7 +1929,9 @@ export const PLANS = {
   },
   'line-music': {
     plans: [
-      { name: '一般プラン', monthly: 980, popular: true },
+      // 2026-07-25 公式（music.line.me/aboutus/plan/）で一般・学生を再確認（一般は旧980円）。
+      // ファミリーは同ページに記載が無く未確認のため据え置き（要再確認）。
+      { name: '一般プラン', monthly: 1080, popular: true },
       { name: '学生プラン', monthly: 580, note: '中高大生・本人確認必要' },
       { name: 'ファミリープラン', monthly: 1480, note: '最大6人' },
     ],
@@ -1780,26 +1947,33 @@ export const PLANS = {
   },
   'apple-tv-plus': {
     plans: [
-      { name: '月額プラン', monthly: 900, popular: true },
-      { name: '年額プラン', monthly: 750, yearly: 9000, note: '月額より150円安い' },
+      // 2026-07-25 公式（tv.apple.com/jp）で月額を再確認（旧900円）。
+      // 年額プラン（旧: 月750円／年9,000円）は apple.com/jp・tv.apple.com/jp・サポートの
+      // いずれにも記載が見つからず、月額900円時代の値のままだった。未確認の金額を出すより
+      // 出さない方が誤報リスクが小さいので削除した。日本での年額提供を確認できたら復活させること。
+      { name: '月額プラン', monthly: 1200, popular: true },
     ],
     howToCheck: '「設定」→ Apple ID →「サブスクリプション」で確認できます',
   },
+  // 2026-07-25 公式ページ（apple.com/jp/icloud/）で全5段階を再確認して更新。
+  // 旧値（130/400/1300/3900/7900）は2世代前で、間の改定（→150/450/1500/4500/9000）を取りこぼしていた。
   'icloud-plus': {
     plans: [
-      { name: '50GB', monthly: 130, popular: true },
-      { name: '200GB', monthly: 400, note: '家族共有可' },
-      { name: '2TB', monthly: 1300, note: 'プライベートリレー対応' },
-      { name: '6TB', monthly: 3900 },
-      { name: '12TB', monthly: 7900 },
+      { name: '50GB', monthly: 180, popular: true },
+      { name: '200GB', monthly: 540, note: '家族共有可' },
+      { name: '2TB', monthly: 1800, note: 'プライベートリレー対応' },
+      { name: '6TB', monthly: 5500 },
+      { name: '12TB', monthly: 11000 },
     ],
     howToCheck: '「設定」→ Apple ID →「iCloud」→「ストレージプラン」で確認できます',
   },
+  // 2026-07-25 公式（one.google.com/about/plans）で再確認。AIプラン中心の体系に再編されていた。
+  // 年額は月額×10（2か月分無料）でページ表示と一致することを確認済み。
   'google-one': {
     plans: [
-      { name: 'ベーシック（100GB）', monthly: 250, popular: true, yearly: 2500 },
-      { name: 'プレミアム（2TB）', monthly: 1300, yearly: 13000 },
-      { name: 'AI プレミアム（2TB + Gemini Advanced）', monthly: 2900 },
+      { name: 'Basic（100GB）', monthly: 290, popular: true, yearly: 2900 },
+      { name: 'Google AI Plus（2TB）', monthly: 1450, yearly: 14500 },
+      { name: 'Google AI Pro（5TB）', monthly: 2900, yearly: 29000 },
     ],
     howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
   },
@@ -1817,8 +1991,12 @@ export const PLANS = {
   },
   'rakuten-magazine': {
     plans: [
-      { name: '月額プラン', monthly: 418, popular: true, note: '700誌以上が読み放題' },
-      { name: '年額プラン', monthly: 350, yearly: 4180 },
+      // 2026-07-25 公式（magazine.rakuten.co.jp）で再確認（旧418円／年額4,180円）。
+      // アプリ経由の申込は月額710円と別価格（公式に明記あり）。
+      { name: '月額プラン', monthly: 597, popular: true, note: '700誌以上が読み放題。アプリ申込は710円' },
+      // 3カ月プランに yearly は入れない（1,650円は3カ月分の請求額で、年額ではない）。
+      { name: '3カ月プラン', monthly: 550, note: '3カ月まとめて1,650円' },
+      { name: '年額プラン', monthly: 499, yearly: 5980 },
     ],
     howToCheck: '楽天マガジン → ログイン →「契約状況の確認」で確認できます',
   },
@@ -1840,32 +2018,52 @@ export const PLANS = {
     ],
     howToCheck: 'DMM.com →「マイアカウント」→「メンバーシップ」で確認できます',
   },
+  // 2026-07-26 公式（1password.com/pricing/password-manager）で再確認。ドル建て表示のみ。
+  // ここの円値は150円換算で書く（USD_PRICED が155円へ自動補正する）。
+  // ⚠️ ページには Individual に $2.99 と $3.99 が並んでいるが、どちらが年払いでどちらが
+  //    月払いかを本文から確定できなかった（注記が両方にかかる形で出ている）。
+  //    安い方＝年払いの月額換算とみなして採用している。要再確認。
   '1password': {
     plans: [
-      { name: '個人プラン', monthly: 450, popular: true, yearly: 4500 },
-      { name: 'ファミリー（5人）', monthly: 750, yearly: 7500, note: '家族で共有可' },
+      { name: '個人プラン', monthly: 449, popular: true, yearly: 5382, note: '$2.99/月（年払い）。もう一方の$3.99の位置づけは未確認' },
+      { name: 'ファミリー（5人）', monthly: 674, yearly: 8082, note: '$4.49/月（年払い）。家族で共有可' },
     ],
     howToCheck: '1Password →「マイプロフィール」→「アカウント」で確認できます',
   },
   'deepl-pro': {
     plans: [
-      { name: 'Starter', monthly: 1200, popular: true, note: '文字数無制限・ファイル翻訳' },
-      { name: 'Advanced', monthly: 3800, note: 'カスタム用語集' },
-      { name: 'Ultimate', monthly: 7500, note: 'CAT 連携・API 大規模' },
+      // 2026-07-26 公式（deepl.com/pro）で再確認。プラン名が Starter/Advanced/Ultimate から
+      // Individual/Team/Business に変わっており、金額も改定されていた。
+      // 公式が出しているのは「年払いの月額換算」のみで、月払い単体の金額は表示されない。
+      { name: 'Individual', monthly: 1150, popular: true, note: '年払いの月額換算。文字数無制限・ファイル翻訳' },
+      { name: 'Team', monthly: 3750, note: '年払いの月額換算。ユーザー1人あたり' },
+      { name: 'Business', monthly: 7500, note: '年払いの月額換算。ユーザー1人あたり' },
     ],
     howToCheck: 'DeepL →「アカウント」→「サブスクリプション」で確認できます',
   },
+  // 2026-07-26 公式（vimeo.com/upgrade）で確認して新規追加（それまでPLANSが無く、
+  // 代表月額2,700円だけが載っていた）。表示は「年払いの月額換算／月払いの月額」の並記。
+  'vimeo-pro': {
+    plans: [
+      { name: 'Starter', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと2,000円' },
+      { name: 'Standard', monthly: 3625, note: '年払いの月額換算。月払いのみだと6,041円' },
+      { name: 'Advanced', monthly: 6346, note: '年払いの月額換算。月払いのみだと10,610円' },
+    ],
+    howToCheck: 'Vimeo →「Settings」→「Plans」で確認できます',
+  },
   evernote: {
     plans: [
-      { name: 'Personal', monthly: 1100, popular: true },
-      { name: 'Professional', monthly: 1550 },
+      // 2026-07-26 公式（evernote.com/ja-jp/compare-plans）で再確認。
+      // 個人向け有料プランは現在 Starter / Advanced の2つ。旧称 Personal / Professional。
+      { name: 'Starter（旧 Personal）', monthly: 1100, yearly: 7099, popular: true },
+      { name: 'Advanced（旧 Professional）', monthly: 1799, yearly: 17899 },
     ],
     howToCheck: 'Evernote →「アカウント設定」→「請求情報」で確認できます',
   },
   pairs: {
     plans: [
-      { name: '男性会員（クレカ）', monthly: 3700, popular: true },
-      { name: '男性会員（Apple/Google）', monthly: 4300 },
+      { name: '男性会員（クレカ）', monthly: 4100, popular: true },
+      { name: '男性会員（Apple/Google）', monthly: 4800 },
       { name: '女性会員', monthly: 0, note: '基本無料（プレミアム機能のみ有料）' },
     ],
     howToCheck: 'Pairs → マイページ →「ご契約情報」で確認できます',
@@ -1892,7 +2090,9 @@ export const PLANS = {
   },
   lemino: {
     plans: [
-      { name: 'プレミアム月額', monthly: 990, popular: true },
+      // 2026-07-26 公式で再確認。2026-02-01 に 990円 → 1,540円へ改定されていた。
+      { name: 'プレミアム月額（Web申込）', monthly: 1540, popular: true },
+      { name: 'プレミアム月額（アプリ内課金）', monthly: 1650, note: 'App Store / Google Play 経由は110円高い' },
     ],
     howToCheck: 'Lemino →「マイページ」→「契約情報」で確認できます',
   },
@@ -1907,9 +2107,13 @@ export const PLANS = {
   },
   'gemini-advanced': {
     plans: [
+      // 2026-07-25 公式（one.google.com/about/google-ai-plans/）で全段階を再確認。
+      // Ultra は 5x / 20x の2段階に分かれている。
+      { name: '無料（Googleアカウントのみ）', monthly: 0 },
       { name: 'Google AI Plus', monthly: 725, note: '400GBストレージ・Gemini使用量2倍' },
       { name: 'Google AI Pro', monthly: 2900, popular: true, note: '5TBストレージ・Gemini使用量4倍・YouTube Premium Lite付帯（旧Gemini Advanced相当）' },
-      { name: 'Google AI Ultra', monthly: 14500, note: '20TB〜ストレージ・Gemini使用量20倍・YouTube Premium個人プラン付帯' },
+      { name: 'Google AI Ultra 5x', monthly: 14500, note: '20TBストレージ・Gemini使用量5倍' },
+      { name: 'Google AI Ultra 20x', monthly: 32000, note: '30TBストレージ・Gemini使用量20倍' },
     ],
     howToCheck: 'one.google.com にログインして「会員情報」で確認できます',
   },
@@ -1973,20 +2177,63 @@ export const PLANS = {
 };
 
 // ---------------------------------------------------------------------------
-// 為替レート（USD→JPY）— 2026-06-01 俊雄さん指示
-// ・USD建てサブスク（ChatGPT Plus / Claude Pro 等）は ¥USD_JPY で換算する
-// ・±5円超 変動するまで 155 で固定。為替が大きく動いたら、この数値だけを更新する
-// ・USD_PRICED に { serviceId: 月額USD } を足すと、PRICING / 単一PLAN が自動換算される
+// 為替レート（USD→JPY）— 2026-07-31 全面改訂
+//
+// ■ 何が問題だったか
+//   それまでは「1ドル=155円」を手で決め打ちし、その換算結果を**価格として断言**していた。
+//   これは2つの意味で嘘だった。
+//     ① レートが古い。2026-07-30 の公表仲値は 163.51、7/31 の実勢は約157。155はどちらでもない。
+//     ② 仮にレートが正しくても、実際の請求額はカード会社ごとのレート＋海外事務手数料で決まる。
+//        **どのカードの請求とも一致しない数字**を、円の価格として置いていた。
+//   公式ページが $20 と書いているものを ¥3,100 と断言する——これは Apple Music の
+//   「3か月180円」で俊雄さんが味わった「さっきの嘘じゃん」と同じ形をしている。
+//
+// ■ どう直したか
+//   **ドルを事実として主表示し、円は「どのレートで計算したか」を明示した概算にする。**
+//     × 「¥3,100です」            → どのカードの請求とも一致しない。常に嘘
+//     ○ 「1ドル163.51円で約3,270円」→ 検証可能に真。レートが動いても文は間違いにならない
+//   価格と同じ作法（観測した事実＋出典＋確認日）に揃えただけ。
+//
+// ■ 更新ルール（毎月1日と15日）
+//   7:30 の判定ルーティン（scripts/price-watch/daily_judge_prompt.md）が
+//   USD_JPY_SOURCE を取得し、ページに書かれた相場日と TTS/TTB を読んで TTM を計算する。
+//   **記憶で書いてはいけない。** 取得できなければ更新せず報告して終わる。
+//
+// ■ 土日・祝日（1年24回のうち6回は土日。次の 2026-08-01 と 08-15 が両方とも土曜）
+//   市場が閉じている日に「その日のレート」は存在しない。公表相場ページは最終営業日の値を
+//   保持し続けるので、取得自体はできる。**ページに書かれた相場日をそのまま USD_JPY_AS_OF に
+//   入れる**ことで、土日に読んでも嘘にならない（表示側が注釈を出す・getFxNote 参照）。
+//
+// ■ 為替の変動を PRICE_HISTORY に書いてはいけない（重要）
+//   サービスが値段を変えていないのに円換算額が動くのは、**値上げではない**。
+//   これを履歴に混ぜると /price-watch が為替の揺れで埋まり、本物の価格改定が埋没する。
 // ---------------------------------------------------------------------------
-export const USD_JPY = 155;
+
+/** 換算に使うレート。三菱UFJ銀行 公表仲値(TTM) = (TTS + TTB) / 2
+ *  2026-08-18: TTS 160.50 / TTB 158.50 → TTM 159.50
+ *  ⚠️ 同じページに「外貨現金両替相場」が並んでいる。**別物**。
+ *     必ず上段の対顧客電信相場（US Dollar / 米ドル / USD の行）の TTS・TTB を使うこと。 */
+export const USD_JPY = 159.50;
+/** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
+export const USD_JPY_AS_OF = '2026-08-18';
+/** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
+export const USD_JPY_READ_ON = '2026-08-19';
+/** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
+export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
+/** 出典の名前（表示に出す） */
+export const USD_JPY_SOURCE_NAME = '三菱UFJ銀行 公表仲値';
 // 既存の PRICING / PLANS の円価格は旧レート（1ドル=150円）で作られている。
 // USD建てサービスは新レートへ等比補正する（例: Plus 3000=$20 → 3100）。
 // ⚠️ USD_PRICED のサービスは、PRICING/PLANS を常に「150円換算の円値」で記述すること。
 //    155円で直接書くと二重換算になる。
 const USD_JPY_PREV = 150;
 export const USD_PRICED = {
-  'chatgpt-plus': 20,
-  'claude-pro': 20,
+  // 'chatgpt-plus' は 2026-07-25 に除外。日本では chatgpt.com/ja-JP/pricing が
+  // 円建てで価格を提示しており（Free ￥0 / Go ￥1,400 / Plus ￥3,000 / Pro ￥16,800〜）、
+  // ドル換算するとその実額とズレる（￥3,000 が ￥3,100 と表示されていた）。
+  'claude-pro': 22, // $20 + 10% JCT（日本向け表示は $22/月・claude.com/pricing で確認）
+  'github-copilot': 10, // Pro $10/月（2026-07-26 公式確認・ドル建て表示のみ）
+  '1password': 2.99, // Individual $2.99/月（年払い）
   cursor: 20,
   'perplexity-pro': 20,
   midjourney: 30,
@@ -2003,6 +2250,64 @@ for (const [id] of Object.entries(USD_PRICED)) {
       if (typeof p.yearly === 'number') p.yearly = adjust(p.yearly);
     }
   }
+}
+
+/**
+ * ドル建てで請求されるサービスなら月額USDを返す。そうでなければ null。
+ * 表示側はこれが null かどうかで「ドルを主に出すか」を切り替える。
+ * @param {string} serviceId
+ * @returns {number|null}
+ */
+export function getUsdMonthly(serviceId) {
+  return USD_PRICED[serviceId] ?? null;
+}
+
+/** $20 は整数、$2.99 は小数のまま出す */
+export function formatUsd(usd) {
+  return `$${Number.isInteger(usd) ? usd : usd.toFixed(2)}`;
+}
+
+/**
+ * 表示する円の額から、そのままドル額を割り戻す。
+ *
+ * USD_PRICED の値（代表プランのドル額）をそのまま使うと、**別のプランのドルと円を
+ * 並べてしまう事故**が起きる。実例：Perplexity の代表プランは年払い（月あたり$16.67）
+ * なのに USD_PRICED は月払いの $20 なので、`$20（約2,725円）` という
+ * それ自体で矛盾した表示になっていた（2,725円 ÷ 163.51 = $16.67）。
+ *
+ * 表示している円から割り戻せば、2つの数字は必ず同じプランを指す。
+ * PRICING/PLANS の円は 150円換算で書く決まりなので、割り戻しは常に元のドル額に一致する。
+ */
+export function usdFromYen(yen) {
+  return Math.round((yen / USD_JPY) * 100) / 100;
+}
+
+function formatFxDate(iso) {
+  const [, m, d] = iso.split('-');
+  return `${Number(m)}月${Number(d)}日`;
+}
+
+/**
+ * ドル建てサービスの価格に必ず添える注釈。
+ *
+ * 円の金額を出す以上、それが「誰かに請求される金額」ではなく
+ * 「どのレートで計算した概算か」を必ず同じ場所で言う。これを省くと、
+ * 公式ページが $20 と書いているものを円で断言することになる。
+ *
+ * 相場日（AS_OF）と読み取り日（READ_ON）がずれている＝土日・祝日に読んだ場合は、
+ * 「その時点で最新の公表値」と補う。市場が閉じている日のレートは存在しないので、
+ * 最終営業日の値であることを隠さない。
+ */
+export function getFxNote() {
+  const asOf = formatFxDate(USD_JPY_AS_OF);
+  const stale =
+    USD_JPY_AS_OF !== USD_JPY_READ_ON
+      ? `（${formatFxDate(USD_JPY_READ_ON)}時点で最新の公表値）`
+      : '';
+  return (
+    `円は1ドル${USD_JPY}円で計算した概算です。${asOf}の${USD_JPY_SOURCE_NAME}${stale}。` +
+    `実際の請求額はカード会社のレートと手数料によって変わります。`
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -2049,6 +2354,19 @@ export function getPlanCheckHint(serviceId) {
  * @returns {string}
  */
 export function formatMonthlyRange(serviceId) {
+  // ドル建てで請求されるサービスは、**ドルを事実として先に出す**。
+  // 公式ページが $20 と書いているものを ¥3,270 と断言すると、読者が公式を見た瞬間に
+  // 食い違う（Apple Music の「3か月180円」で実際に起きた「さっきの嘘じゃん」と同じ形）。
+  // 円は「約」を付けた概算として添えるだけにし、根拠は getFxNote() が同じ画面で言う。
+  const usd = getUsdMonthly(serviceId);
+  if (usd != null) {
+    const yen = getDefaultMonthly(serviceId);
+    // ドルは USD_PRICED からではなく、いま表示する円から割り戻す（usdFromYen 参照）。
+    return yen > 0
+      ? `${formatUsd(usdFromYen(yen))}（約${yen.toLocaleString('ja-JP')}円）`
+      : formatUsd(usd);
+  }
+
   const plans = getPlans(serviceId);
   if (plans.length === 0) {
     const v = getDefaultMonthly(serviceId);
@@ -2063,6 +2381,219 @@ export function formatMonthlyRange(serviceId) {
 }
 
 // ---------------------------------------------------------------------------
+// 入口価格（新規登録者向けの期間限定価格）— 2026-07-26 追加
+//
+// ■ なぜ要るのか（実際に起きたこと）
+//   トップの「最近の変更」で「Apple Musicが値上げ」を見た人が、公式ページを確認しに行くと、
+//   そこには「3か月180円」が大きく出ている。実際に運営者本人がこう反応した：
+//     ①「さっきの嘘じゃん」（うちが1,180円と出していたので、嘘に見えた）
+//     ②「180円ならやってもいいか」（＝契約しそうになった）
+//   つまり**解約を助けるサイトが、値上げを告げることで人を入口へ送り込んでいた**。
+//   ①は信頼の毀損、②はミッションの裏切り。両方を止めるためのデータ。
+//
+// ■ PRICE_HISTORY には絶対に混ぜない（重要）
+//   ServicePage は PRICE_HISTORY を**日付フィルタなしで無期限表示**する（ServicePage.jsx 382行）。
+//   入口価格の話を change 文字列に混ぜ込むと、下の30日失効がそこでは効かず、
+//   終わったキャンペーンを永久に「今出ています」と言い続けることになる。だから別オブジェクトにする。
+//
+// ■ 壊れにくさのための決まり
+//   - **通常価格をここに複製しない。** PLANS / PRICING から都度引く。
+//     （今日だけで9件の価格を更新した。複製すると片方だけ古くなる事故が必ず起きる）
+//   - **「1年でいくら」も保存しない。** 都度計算する。保存した計算値は腐っても気づけない。
+//   - 「180円」が総額か月額かを取り違えないよう、totalForPeriod（期間の合計）と
+//     periodMonths（月数）に分けて持つ。
+//   - endDate は任意。公式に書かれていないことも多い。書いてあれば必ず入れる。
+//   - verifiedAt から30日で自動的に非表示（腐ったまま出続けない）。
+//   - 必須項目が欠けていたら黙って非表示にする（fail-closed）。壊れたデータを出すより出さない。
+//   - **キャンペーンが無いのが普通。** 無いサービスはキー自体を作らない。
+//     （2026-07-26 時点で確認した3件のうち、あるのは Apple Music だけ）
+//   - コード上も「キャンペーン」と呼ばない。売る側の語彙なので INTRO_OFFERS とする。
+// ---------------------------------------------------------------------------
+const INTRO_OFFER_TTL_DAYS = 30;
+
+export const INTRO_OFFERS = {
+  'apple-music': [
+    {
+      planName: '個人プラン',
+      totalForPeriod: 180, // 3か月**合計**で180円（月180円ではない）
+      periodMonths: 3,
+      // 公式脚注の原文：「最新のオペレーティングシステムソフトウェアを搭載したiPhone、iPad、Mac、
+      //   またはApple Vision Proで本特典を利用する、新規登録の方のみが対象です。」
+      // 括弧を入れ子にしないこと（表示側で「（条件・期限）」の括弧に入るため、
+      // ここに括弧を書くと「（A（B）・C）」となってスマホで読めなくなる）
+      eligibility: '新規登録かつ対象のApple製デバイスで利用する方のみ',
+      endDate: '2026-08-19', // 公式脚注に「2026年7月21日から2026年8月19日まで有効」と明記
+      source: 'https://www.apple.com/jp/apple-music/',
+      verifiedAt: '2026-07-26',
+    },
+    {
+      planName: 'ファミリープラン（最大6人）',
+      totalForPeriod: 480,
+      periodMonths: 3,
+      // 括弧を入れ子にしないこと（表示側で「（条件・期限）」の括弧に入るため、
+      // ここに括弧を書くと「（A（B）・C）」となってスマホで読めなくなる）
+      eligibility: '新規登録かつ対象のApple製デバイスで利用する方のみ',
+      endDate: '2026-08-19',
+      source: 'https://www.apple.com/jp/apple-music/',
+      verifiedAt: '2026-07-26',
+    },
+    // 学生プランは公式に入口価格の記載が無いためエントリを作らない（＝対象外を不在で表す）
+  ],
+  // 'apple-one' / 'icloud-plus' はキーごと無い＝2026-07-26 時点で入口価格の表示なし
+};
+
+function introOfferDaysSince(dateStr, now) {
+  const d = new Date(dateStr + 'T00:00:00+09:00');
+  if (Number.isNaN(d.getTime())) return Infinity; // 日付が壊れていたら失効扱い（fail-closed）
+  return Math.floor((now.getTime() - d.getTime()) / 86400000);
+}
+
+/**
+ * 今出してよい入口価格だけを返す。
+ * 鮮度切れ（確認から30日）・終了日超過・必須項目の欠落は、いずれも黙って除外する。
+ * 呼び出し側は INTRO_OFFERS を直接読まず、必ずこれを通すこと。
+ */
+export function getActiveIntroOffers(serviceId, now = new Date()) {
+  const offers = INTRO_OFFERS[serviceId];
+  if (!Array.isArray(offers)) return [];
+  return offers.filter((o) => {
+    if (!o?.verifiedAt || !o?.source) return false;
+    if (typeof o.totalForPeriod !== 'number' || typeof o.periodMonths !== 'number') return false;
+    if (o.periodMonths < 1) return false;
+    if (introOfferDaysSince(o.verifiedAt, now) > INTRO_OFFER_TTL_DAYS) return false;
+    if (o.endDate) {
+      const end = new Date(o.endDate + 'T23:59:59+09:00');
+      if (!Number.isNaN(end.getTime()) && end.getTime() < now.getTime()) return false;
+    }
+    return true;
+  });
+}
+
+/**
+ * 表示に必要な金額を、その場で計算して返す（保存しない）。
+ * 通常価格は PLANS → PRICING の順で引く。どちらからも取れなければ null を返し、
+ * 呼び出し側は金額の断定を避ける。
+ */
+export function computeIntroOfferSummary(serviceId, offer) {
+  const plans = PLANS[serviceId]?.plans;
+  let regularMonthly = null;
+  if (Array.isArray(plans) && plans.length > 0) {
+    const hit = offer.planName
+      ? plans.find((p) => p.name === offer.planName)
+      : plans.find((p) => p.popular) || plans[0];
+    if (hit && typeof hit.monthly === 'number') regularMonthly = hit.monthly;
+  }
+  if (regularMonthly === null && typeof PRICING[serviceId] === 'number') {
+    regularMonthly = PRICING[serviceId];
+  }
+  if (regularMonthly === null || regularMonthly <= 0) {
+    return { regularMonthly: null, firstYearTotal: null, laterYearTotal: null };
+  }
+  const rest = Math.max(0, 12 - offer.periodMonths);
+  return {
+    regularMonthly,
+    firstYearTotal: offer.totalForPeriod + regularMonthly * rest,
+    laterYearTotal: regularMonthly * 12,
+    restMonths: rest,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// 確認できた価格・仕様の変更の**全記録**（/price-watch に使う・2026-07-28 追加）
+//
+// なぜ要るのか：トップの「最近の変更」は直近3日しか出ない。3日を過ぎると消える。
+// 実際 2026-07-28 の時点で、Apple 3件の値上げも、その前日に作った「入口価格の崖」も
+// **どこからも見えない状態**になっていた。22サービスの価格を公式確認で直しても、
+// 外から見ると何も起きていないのと同じだった。
+// 溜めた記録に置き場所が無かったのが原因なので、全部を時系列で出す先を作る。
+//
+// 返すのは「確認できた事実」だけ。推測や未確認のものは PRICE_HISTORY に入れていないので、
+// このページが誤報になることは原理的に無い（＝安全に自動で増やせる唯一の面）。
+// ---------------------------------------------------------------------------
+export function getAllPriceChanges() {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const rows = [];
+  Object.entries(PRICE_HISTORY).forEach(([serviceId, entries]) => {
+    if (!Array.isArray(entries)) return;
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return; // services.js に無い id は出さない（リンク切れ防止）
+    entries.forEach((h) => {
+      if (!h?.date) return;
+      rows.push({
+        serviceId,
+        serviceName,
+        date: h.date,
+        item: h.item || '',
+        direction: h.direction || 'restructure',
+        change: h.change || '',
+        source: h.source || '',
+        verifiedAt: h.verifiedAt || h.date,
+      });
+    });
+  });
+  return rows.sort((a, b) =>
+    a.date < b.date ? 1 : a.date > b.date ? -1 : a.serviceName.localeCompare(b.serviceName, 'ja')
+  );
+}
+
+/** 今わかっている入口価格を、サービスをまたいで全部返す（鮮度切れは getActiveIntroOffers が落とす） */
+export function getAllActiveIntroOffers(now = new Date()) {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const rows = [];
+  Object.keys(INTRO_OFFERS).forEach((serviceId) => {
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return;
+    for (const offer of getActiveIntroOffers(serviceId, now)) {
+      rows.push({ serviceId, serviceName, offer, summary: computeIntroOfferSummary(serviceId, offer) });
+    }
+  });
+  return rows;
+}
+
+// ---------------------------------------------------------------------------
+// 直近の価格・仕様変更（トップページの「最近の変更」に使う・2026-07-25 追加）
+//
+// 設計意図（俊雄さん指示）：価格変動があった時だけトップに数日だけ出し、それ以外は裏で蓄積する。
+//   - 直近 windowDays 日以内の変更が無ければ **空配列を返す**（＝トップに何も出さない）。
+//     これにより「データが少なくてスカスカに見える」問題が構造的に発生しない。
+//   - PRICE_HISTORY の date は「確認日」。偵察部隊が毎朝走るので、実際の変更から数日以内に載る。
+// ---------------------------------------------------------------------------
+export function getRecentPriceChanges(windowDays = 3, now = new Date()) {
+  const nameById = new Map(SERVICES.map((s) => [s.id, s.name]));
+  const cutoff = new Date(now);
+  cutoff.setDate(cutoff.getDate() - windowDays);
+
+  const rows = [];
+  Object.entries(PRICE_HISTORY).forEach(([serviceId, entries]) => {
+    if (!Array.isArray(entries)) return;
+    // services.js に存在しない id は表示しない（リンク切れ防止）
+    const serviceName = nameById.get(serviceId);
+    if (!serviceName) return;
+    entries.forEach((h) => {
+      if (!h?.date) return;
+      const d = new Date(h.date + 'T00:00:00+09:00');
+      if (Number.isNaN(d.getTime())) return;
+      if (d < cutoff) return;
+      rows.push({
+        serviceId,
+        serviceName,
+        date: h.date,
+        item: h.item || '',
+        direction: h.direction || 'restructure',
+        // change / source もそのまま渡す。トップの一覧はこれをその場で開いて見せるため
+        // （見出しだけ出して解約ページへ飛ばすと「値上げを煽って解約させる」形になり、
+        //   読み手が知りたい「いくら上がったか」に答えられない）。
+        change: h.change || '',
+        source: h.source || '',
+      });
+    });
+  });
+
+  // 新しい順 → 同日ならサービス名の五十音順（表示順を安定させる）
+  return rows.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : a.serviceName.localeCompare(b.serviceName, 'ja')));
+}
+
+// ---------------------------------------------------------------------------
 // 拡張コンテンツ（ServicePage で長文化・FAQPage JSON-LD に出力）
 // Top10 サービス（流入見込み大）から優先的に充実させる
 // ---------------------------------------------------------------------------
@@ -2071,7 +2602,61 @@ export function formatMonthlyRange(serviceId) {
 // 誤報ゼロ（生命線）：各エントリは verifiedAt 時点で公式ページ照合済み・source は公式料金ページ・
 //   現在価格そのものは書かない（"何が・いつ変わったか"の事実のみ）。小さな変動はここに蓄積する。
 // direction: 'up'=値上げ / 'down'=値下げ / 'new'=新プラン・新ティア / 'restructure'=料金体系の変更。
+/**
+ * PRICE_HISTORY の direction を人が読む言葉にする（2026-08-04 一本化）。
+ *
+ * 以前は ServicePage / PriceWatchPage / RecentChanges の3ファイルに複製されており、
+ * 色の規則も2ファイルで別々に書かれていた結果、PriceWatchPage だけ
+ * 「値上げ＝プライマリ（緑）」＝上がるほうに良い色が付いていた。
+ *
+ * 矢印を付けているのは、色だけで方向を示すと色覚特性のある読者に伝わらないため
+ * （表示は components/DirectionBadge が担当）。
+ */
+export const DIRECTION_LABEL = {
+  up: '↑ 値上げ',
+  down: '↓ 値下げ',
+  new: '新プラン',
+  restructure: '体系変更',
+};
+
 export const PRICE_HISTORY = {
+  // ── 2026-07-25 追加：Apple 日本の一斉値上げ（価格偵察部隊が検知→公式ページで一次確認済み）
+  // ⚠️ 変更日について：2026-07-07時点では旧価格だったことを監視状態ファイルで確認済みだが、
+  //    偵察部隊が2026-07-07〜07-25の18日間停止していたため、値上げの正確な実施日は特定できない。
+  //    date は「確認日」を入れている。これは監視を止めた代償であり、以後は毎朝の自動実行で防ぐ。
+  'icloud-plus': [
+    {
+      date: '2026-07-25',
+      item: '全ストレージプラン',
+      direction: 'up',
+      change:
+        '日本の全プランが約20%値上げ。50GB 150円→180円、200GB 450円→540円、2TB 1,500円→1,800円、6TB 4,500円→5,500円、12TB 9,000円→11,000円。実施日は2026-07-07〜07-25の間（監視停止のため特定不可・確認日は2026-07-25）。',
+      source: 'https://www.apple.com/jp/icloud/',
+      verifiedAt: '2026-07-25',
+    },
+  ],
+  'apple-music': [
+    {
+      date: '2026-07-25',
+      item: '個人・学生・ファミリープラン',
+      direction: 'up',
+      change:
+        '日本の主要プランが値上げ。個人 1,080円→1,180円、学生 580円→680円、ファミリー 1,680円→1,980円。iCloud+・Apple One と同時期の一斉改定とみられる。実施日は2026-07-07〜07-25の間（監視停止のため特定不可・確認日は2026-07-25）。',
+      source: 'https://www.apple.com/jp/apple-music/',
+      verifiedAt: '2026-07-25',
+    },
+  ],
+  'apple-one': [
+    {
+      date: '2026-07-25',
+      item: '個人・ファミリープラン',
+      direction: 'up',
+      change:
+        '個人 1,200円→1,350円、ファミリー 1,980円→2,500円（ファミリーは約26%増）。ページ表示の「単品合計」と「割引額」も新旧で整合（旧: 3,030円−1,830円=1,200円 / 3,930円−1,950円=1,980円、新: 3,460円−2,110円=1,350円 / 4,620円−2,120円=2,500円）。実施日は2026-07-07〜07-25の間（監視停止のため特定不可・確認日は2026-07-25）。',
+      source: 'https://www.apple.com/jp/apple-one/',
+      verifiedAt: '2026-07-25',
+    },
+  ],
   'github-copilot': [
     {
       date: '2026-06-01',
@@ -2111,6 +2696,27 @@ export const PRICE_HISTORY = {
         'Plus の下位に月$8の「ChatGPT Go」ティアが定着（2026年1月中旬導入）。チャット中心の人向けの格安オプションとして確立。',
       source: 'https://openai.com/chatgpt/pricing/',
       verifiedAt: '2026-05-31',
+    },
+  ],
+  'niconico-premium': [
+    {
+      date: '2026-08-01',
+      item: 'プレミアム会員',
+      direction: 'up',
+      change: '月額790円→990円に値上げ（事前告知どおり2026-08-01に実施）。',
+      source: 'https://premium.nicovideo.jp/payment/premium_detail',
+      verifiedAt: '2026-08-01',
+    },
+  ],
+  pairs: [
+    {
+      date: '2026-08-13',
+      item: '男性有料会員プラン（1ヶ月）',
+      direction: 'up',
+      change:
+        '表示価格の誤りを修正（価格改定ではなく記載ミスの訂正）。従来クレカ3,700円・Apple/Google 4,300円と表示していたが、公式ページに3,700円の記載は存在せず、監視履歴上も一度も検出されていなかった。正しくはWeb購入4,100円・アプリ内購入4,800円。',
+      source: 'https://www.pairs.lv/price',
+      verifiedAt: '2026-08-13',
     },
   ],
 };
@@ -2781,7 +3387,7 @@ export const EXTENDED_CONTENT = {
   },
   netflix: {
     summary:
-      'Netflix は世界最大の動画配信サービス。会員数は2.7億人を超え、オリジナル作品『ストレンジャー・シングス』『イカゲーム』などで知られる。月額890円（広告つきベーシック）から1980円（プレミアム）の3プラン。',
+      'Netflix は世界最大の動画配信サービス。会員数は2.7億人を超え、オリジナル作品『ストレンジャー・シングス』『イカゲーム』などで知られる。月額890円（広告つきスタンダード）から2290円（プレミアム）の3プラン。',
     whyHard:
       'Netflix の解約は実は「かんたん」な部類。アカウントページから3クリックで完了する設計で、引き止めも控えめ。ただし「メンバーシップを一時停止」と「キャンセル」が並んで表示されるため、間違って一時停止を選ばないよう注意。',
     darkPatterns: [
@@ -2816,7 +3422,7 @@ export const EXTENDED_CONTENT = {
   },
   spotify: {
     summary:
-      'Spotify は世界最大の音楽ストリーミングサービス。月額980円のプレミアムで広告なし・オフライン再生・高音質。無料プラン（広告あり・シャッフル制限）も継続提供。',
+      'Spotify は世界最大の音楽ストリーミングサービス。月額1080円のプレミアムで広告なし・オフライン再生・高音質。無料プラン（広告あり・シャッフル制限）も継続提供。',
     whyHard:
       'Spotify の解約自体は3クリックで完了する。ただしスマホアプリからは解約できず、必ずブラウザでアクセスする必要がある。これを知らずに「設定→サブスクリプション」を探しても見つからないので、最初で詰まる人が多い。',
     darkPatterns: [
@@ -2852,7 +3458,7 @@ export const EXTENDED_CONTENT = {
   },
   'adobe-cc': {
     summary:
-      'Adobe Creative Cloud（CC）は Photoshop・Illustrator・Premiere Pro 等のプロ向けクリエイティブツール群。月額6480円（コンプリートプラン）。単一アプリプランは2728円から。',
+      'Adobe Creative Cloud（CC）は Photoshop・Illustrator・Premiere Pro 等のプロ向けクリエイティブツール群。月額6480円（Creative Cloud Standard・旧コンプリートプラン）。単一アプリプランは3280円から。生成AIを多く使う上位版として Creative Cloud Pro（9080円）もある。',
     whyHard:
       'Adobe の解約は「むずかしい」。年間契約が標準で、途中解約には残り月数の50%相当の違約金が発生する場合がある。さらに引き止め画面が6〜8段階あり、Adobe側から「割引オファー」を提示されることも。',
     darkPatterns: [
@@ -2923,7 +3529,7 @@ export const EXTENDED_CONTENT = {
   },
   'disney-plus': {
     summary:
-      'Disney+ はディズニー・ピクサー・マーベル・スター・ウォーズ・ナショジオの作品が見放題。月額990円のスタンダードプランから。アニメ・洋画ファンに人気。',
+      'Disney+ はディズニー・ピクサー・マーベル・スター・ウォーズ・ナショジオの作品が見放題。月額1250円のスタンダードプランから。アニメ・洋画ファンに人気。',
     whyHard:
       'Disney+ の解約は「かんたん」。アカウントページから直接「解約する」ボタンが見える素直な UI。引き止めも控えめで2〜3ステップで完了。',
     darkPatterns: [
@@ -2957,7 +3563,7 @@ export const EXTENDED_CONTENT = {
   },
   'apple-music': {
     summary:
-      'Apple Music は Apple が提供する音楽ストリーミングサービス。月額1080円（個人プラン）で1億曲以上が聴き放題。空間オーディオ・ロスレス音質に対応し、iPhone との連携が抜群。',
+      'Apple Music は Apple が提供する音楽ストリーミングサービス。月額1180円（個人プラン）で1億曲以上が聴き放題。空間オーディオ・ロスレス音質に対応し、iPhone との連携が抜群。',
     whyHard:
       'Apple Music の解約は「かんたん」。iPhoneの設定アプリから3クリックで完了する。ただし、登録経路（Apple経由 vs ドコモ・KDDI経由）で解約画面が完全に異なる点に注意。',
     darkPatterns: [
@@ -2992,7 +3598,7 @@ export const EXTENDED_CONTENT = {
   },
   'microsoft-365': {
     summary:
-      'Microsoft 365 Personal（旧 Office 365 Solo）は Word・Excel・PowerPoint・OneDrive 1TB が含まれた月額1490円（年額12984円）のサブスク。Microsoft アカウントで管理。',
+      'Microsoft 365 Personal（旧 Office 365 Solo）は Word・Excel・PowerPoint・OneDrive 1TB が含まれた月額2130円（年額21300円）のサブスク。Microsoft アカウントで管理。',
     whyHard:
       'Microsoft 365 の解約は「ふつう」レベル。「サービスとサブスクリプション」から進めば3〜5クリックで完了する。年間契約の場合は途中解約時の返金可否が混乱しやすい。',
     darkPatterns: [
@@ -3025,7 +3631,7 @@ export const EXTENDED_CONTENT = {
   },
   'abema-premium': {
     summary:
-      'ABEMA プレミアムはサイバーエージェント運営の動画配信サービスの有料プラン。月額1080円で見逃し配信・ダウンロード・広告非表示・倍速再生などが利用可能。バラエティとオリジナル番組に強い。',
+      'ABEMA プレミアムはサイバーエージェント運営の動画配信サービスの有料プラン。月額1180円で見逃し配信・ダウンロード・広告非表示・倍速再生などが利用可能。広告つきの安い版（680円）もある。バラエティとオリジナル番組に強い。',
     whyHard:
       'ABEMA プレミアムの解約は「ふつう」レベル。マイページの「ABEMAプレミアム」セクションから「自動更新を停止する」を選択。3クリック程度で完了するが、文言が分かりにくい。',
     darkPatterns: [
@@ -3042,7 +3648,7 @@ export const EXTENDED_CONTENT = {
   },
   dazn: {
     summary:
-      'DAZN は世界最大級のスポーツ動画配信サービス。月額4200円（年契約だと月額換算3700円）でプロ野球・サッカー・F1・ボクシング・テニスなどが見放題。日本ではJリーグ独占配信で知られる。',
+      'DAZN は世界最大級のスポーツ動画配信サービス。月額4200円（年契約だと月額換算3200円）でプロ野球・サッカー・F1・ボクシング・テニスなどが見放題。日本ではJリーグ独占配信で知られる。',
     whyHard:
       'DAZN の解約は「ふつう」レベルだが、引き止めオファーが複数回出る。年契約の場合は途中解約時の違約金規定が複雑で、ユーザー側で確認が必要。',
     darkPatterns: [
@@ -3052,7 +3658,7 @@ export const EXTENDED_CONTENT = {
     afterCancel:
       '支払い済み期間の末日までは引き続き視聴でき、ダウンロード再生も使える。視聴履歴・お気に入りも消えずに残る。年契約の場合は、解約前に違約金の有無と金額を確認しておこう。',
     faq: [
-      { q: 'DAZN の年契約と月契約の違いは？', a: '年契約は月額換算3700円（年44280円一括）、月契約は月額4200円。年契約は途中解約に違約金がかかる場合あり。' },
+      { q: 'DAZN の年契約と月契約の違いは？', a: '年契約は月々払いで月額3200円（年38400円）、一括払いなら年32000円。月契約は月額4200円で縛りがありません。年契約は最低利用期間が1年で、途中で解約しても残りの契約期間の請求は続き、返金はありません。' },
       { q: 'ドコモ経由の DAZN（DAZN for docomo）の解約方法は？', a: 'My docomo から解約します。DAZN 公式アプリでは解約できません。料金はドコモから請求されます。' },
       { q: '解約後にダウンロード済みのコンテンツは見られますか？', a: '視聴可能期間（48時間以内）であれば見られます。期間外はアクセス不可になります。' },
     ],
@@ -3094,7 +3700,7 @@ export const EXTENDED_CONTENT = {
   },
   notion: {
     summary:
-      'Notion はオールインワン型のドキュメント・データベース・タスク管理ツール。個人プラン（無料）でも豊富な機能、Plus プラン（月額1500円）で履歴無制限・ファイル制限解除など。ビジネス用途も拡大中。',
+      'Notion はオールインワン型のドキュメント・データベース・タスク管理ツール。個人プラン（無料）でも豊富な機能、Plus プラン（月額1650円）で履歴無制限・ファイル制限解除など。ビジネス用途も拡大中。',
     whyHard:
       'Notion の有料プラン解約は「かんたん」。設定→「Plans」から「Cancel Plan」で完結。ただし、ワークスペース自体の削除と混同しやすい点に注意。',
     darkPatterns: [

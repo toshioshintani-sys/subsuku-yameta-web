@@ -13,6 +13,7 @@ import './index.css';
 const ServicePage = lazy(() => import('./pages/ServicePage'));
 const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const ComparePage = lazy(() => import('./pages/ComparePage'));
+const PriceWatchPage = lazy(() => import('./pages/PriceWatchPage'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage'));
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
@@ -37,7 +38,7 @@ function PageLoader() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#6b7280',
+        color: 'var(--text-faint)',
         fontSize: '13px',
       }}
     >
@@ -59,6 +60,8 @@ export default function App() {
           <Route path="/service/:id" element={<ServicePage />} />
           <Route path="/category/:id" element={<CategoryPage />} />
           <Route path="/compare" element={<ComparePage />} />
+          {/* 価格・仕様の変更ログ（2026-07-28 追加）。溜めた記録の置き場所 */}
+          <Route path="/price-watch" element={<PriceWatchPage />} />
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/discover" element={<DiscoverIndexPage />} />
           <Route path="/discover/:id" element={<DiscoverGenrePage />} />

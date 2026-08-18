@@ -146,9 +146,34 @@ async function fetchHtmlHeadless(browser, url, timeoutMs, opts = {}) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// その日すでに巡回したか（JSTの日付で見る）。
+//
+// 2026-08-01 に踏んだ穴：タスクは 7:10 に登録してあり StartWhenAvailable も有効だったが、
+// PCがスリープしていた朝は**取り戻されずにその日の巡回が丸ごと飛んだ**（次回実行予定が
+// 翌日へ進んでいた）。StartWhenAvailable が効くのはシャットダウン→起動であって、
+// スリープ→復帰では働かなかった。俊雄さんはノートを閉じる運用なので、これは例外ではなく通常。
+//
+// 対処として「ログオン時にも起動する」トリガーを足した。ただしそれだけだと、
+// 普通に 7:10 に走った日でも蓋を開けるたびに走ってしまう。そこで**その日すでに巡回済みなら
+// 何もしない**ガードをここに置く。これで「開いた時に追いつく／既に走っていれば黙る」になる。
+// 手で回したい時は --force を付ける。
+function alreadyRanToday() {
+  const jst = (d) => new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Tokyo' }).format(d);
+  const cand = loadJson(CANDIDATES_FILE, null);
+  if (!cand?.generatedAt) return false;
+  const at = new Date(cand.generatedAt);
+  if (Number.isNaN(at.getTime())) return false;
+  return jst(at) === jst(new Date());
+}
+
 async function main() {
   const onlyArg = process.argv.indexOf('--only');
   const onlyIds = onlyArg >= 0 ? (process.argv[onlyArg + 1] || '').split(',').map((x) => x.trim()) : null;
+
+  if (!process.argv.includes('--force') && !onlyIds && alreadyRanToday()) {
+    console.log('本日はすでに巡回済みのためスキップしました（もう一度走らせるには --force）');
+    return;
+  }
 
   const cfg = loadJson(WATCH_LIST, { watch: [], settings: {} });
   const s = cfg.settings || {};
@@ -234,6 +259,22 @@ async function main() {
   console.log('--- 集計 ---', JSON.stringify(counts));
   console.log(`--- 検知候補(要一次確認): ${events.length} 件 → ${CANDIDATES_FILE}`);
   for (const ev of events) console.log(`  ⚑ ${ev.name}: 追加[${ev.added.join(', ')}] 消失[${ev.removed.join(', ')}]`);
+
+  // 検知結果を Slack へ送る（2026-07-26 追加）。
+  // それまでは結果が candidates.json にローカル保存されるだけで**誰にも届いていなかった**。
+  // 俊雄さんは平日日中にPCへ触れないので、スマホに届かない限り日次監視は意味を持たない。
+  // 検知ゼロの日は notify 側が黙るので、ここでは無条件に呼んでよい。
+  // ⚠️ 通知に失敗しても監視自体は成功しているので、絶対にここで異常終了させない（fail-open）。
+  try {
+    const { spawnSync } = await import('node:child_process');
+    // __dir は fileURLToPath 済みなので、Windows でもそのままパスとして使える
+    // （URL.pathname を自前で削るとドライブレターの扱いで壊れる）
+    const r = spawnSync(process.execPath, [join(__dir, 'notify.mjs')], { encoding: 'utf-8' });
+    if (r.stdout) process.stdout.write(r.stdout);
+    if (r.status !== 0 && r.stderr) console.error('通知でエラー:', r.stderr.slice(0, 300));
+  } catch (e) {
+    console.error('通知の起動に失敗（監視自体は成功）:', e.message);
+  }
 }
 
 main().catch((e) => {

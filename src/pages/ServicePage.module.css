@@ -83,10 +83,20 @@
   }
 }
 
+/* 2026-07-31：flex-wrap が無く、幅が足りないと各バッジが**内部で**折り返していた
+   （375px で「解約難度：かんたん」が3行に割れる）。ドル建て表示で価格文字列が
+   長くなって顕在化したが、元からあった崩れ。バッジの中で折り返さず、行ごと送る。 */
 .meta {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge,
+.steps,
+.price {
+  white-space: nowrap;
 }
 
 .badge {
@@ -177,7 +187,7 @@
 .planBadge {
   display: inline-block;
   width: fit-content;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--accent);
   background: var(--accent-soft);
@@ -307,6 +317,19 @@
 }
 
 /* 拡張コンテンツの概要 */
+/* 為替の注釈（ドル建てサービスのみ・2026-07-31 追加）
+   価格の直後に置く。枠も色も付けない＝注意喚起ではなく、ただの但し書きとして読ませる。
+   ここを目立たせると「為替で損する」という煽りになってしまう（CLAUDE.md §2-2）。 */
+.fxNote {
+  font-size: 11.5px;
+  line-height: 1.7;
+  /* このプロジェクトの補助テキストは --text-sub。存在しない変数を書いて固定色に
+     フォールバックさせると、ダークモードでコントラストが落ちる（2026-07-26 に
+     --hm-teal-ink で実際に踏んだ）。必ず定義済みのトークンを使う。 */
+  color: var(--text-sub);
+  margin: -4px 0 16px;
+}
+
 .summary {
   font-size: 14px;
   color: var(--text);
@@ -350,7 +373,7 @@
   padding: 10px 14px;
   background: var(--medium-bg);
   font-size: 13px;
-  color: #78350f;
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -365,7 +388,7 @@
 .dpTriggerLabel,
 .dpResponseLabel {
   display: inline-block;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.05em;
   padding: 2px 6px;
@@ -376,12 +399,12 @@
 
 .dpTriggerLabel {
   background: var(--medium);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .dpResponseLabel {
   background: var(--easy);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 /* FAQ */
@@ -456,7 +479,7 @@
 }
 
 .trackerCta:hover {
-  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.12);
+  box-shadow: 0 4px 16px rgba(44, 95, 74, 0.12);
   transform: translateY(-1px);
 }
 
@@ -485,7 +508,7 @@
   gap: 10px;
   width: 100%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   text-align: center;
   padding: 16px;
   border-radius: 12px;
@@ -538,7 +561,7 @@
   height: 26px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -555,10 +578,12 @@
   padding-top: 2px;
 }
 
-/* 注意 */
+/* 注意
+   サフラン（ナッジ）には寄せない。ここは「読ませる情報」であって次の一手ではないので、
+   暖色を持たせるとナッジの独占が崩れる（Design判断 2026-08-04）。 */
 .note {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
   display: flex;
@@ -575,14 +600,14 @@
 
 .note p {
   font-size: 14px;
-  color: #78350f;
+  color: var(--text);
   line-height: 1.6;
 }
 
 /* 免責 */
 .disclaimer {
   font-size: 12px;
-  color: #aaa;
+  color: var(--text-faint);
   line-height: 1.8;
   margin-top: 8px;
 }
@@ -712,7 +737,7 @@
 .prLabel {
   display: inline-block;
   padding: 2px 7px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--text-sub);
   background: rgba(0, 0, 0, 0.04);
@@ -780,7 +805,7 @@
 
 .altCard:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(59, 110, 240, 0.1);
+  box-shadow: 0 2px 8px rgba(23, 33, 43, 0.1);
 }
 
 .altCardTop {
@@ -853,7 +878,7 @@
 
 .relatedCard:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(59, 110, 240, 0.1);
+  box-shadow: 0 2px 8px rgba(23, 33, 43, 0.1);
 }
 
 .relatedEmoji {
@@ -901,11 +926,11 @@
 }
 
 .historyItem {
-  border: 1px solid var(--border, #e5e0d8);
+  border: 1px solid var(--border, #e2dbc8);
   border-left: 3px solid var(--accent);
   border-radius: 10px;
   padding: 12px 14px;
-  background: var(--surface, #fff);
+  background: var(--surface, #fffdf9);
 }
 
 .historyMeta {
@@ -923,19 +948,9 @@
   font-variant-numeric: tabular-nums;
 }
 
-.historyDir {
-  font-size: 12px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--text);
-}
-
-.dir_up { background: rgba(200, 60, 60, 0.12); color: #b23b3b; }
-.dir_down { background: rgba(52, 150, 92, 0.14); color: #2f8a56; }
-.dir_new { background: rgba(59, 110, 240, 0.12); color: #3b6ef0; }
-.dir_restructure { background: rgba(150, 120, 40, 0.14); color: #8c6f28; }
+/* 2026-08-04：方向バッジ（.historyDir / .dir_*）は components/DirectionBadge へ移した。
+   ここと PriceWatchPage の2箇所で色の規則が別々に定義されていて、片方だけ
+   「値上げ＝緑」になっていたため。見た目の差は variant="filled" で保持している。 */
 
 .historyItemLabel {
   font-size: 12px;

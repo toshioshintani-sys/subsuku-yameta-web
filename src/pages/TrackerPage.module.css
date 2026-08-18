@@ -4,7 +4,7 @@
 
 /* ヒーロー */
 .hero {
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3a5c 100%);
+  background: linear-gradient(135deg, var(--hm-navy-mid) 0%, var(--hm-navy-from) 100%);
   padding: 48px 24px 40px;
   text-align: center;
 }
@@ -12,7 +12,7 @@
 .heroTitle {
   font-size: 30px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   letter-spacing: -0.5px;
   margin-bottom: 12px;
 }
@@ -32,7 +32,7 @@
 }
 
 .heroDesc strong {
-  color: #fff;
+  color: #f2efe8;
 }
 
 /* サマリーバー */
@@ -123,6 +123,18 @@
   padding: 32px 24px 64px;
 }
 
+/* 合計に含まれるドル建て概算の注記（2026-08-03 追加）
+   枠も警告色も付けない。合計の但し書きであって、注意喚起ではない。
+   目立たせると「為替で損する」という煽りになる（CLAUDE.md §2-2）。
+   色は必ず定義済みの --text-sub を使う（存在しない変数を書くと固定色に落ちて
+   ダークモードでコントラストが不足する。2026-07-26 に実際に踏んだ）。 */
+.fxNote {
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--text-sub);
+  margin: -12px 0 24px;
+}
+
 /* 節約効果可視化 */
 .savings {
   background: linear-gradient(135deg, var(--medium-bg) 0%, var(--surface) 100%);
@@ -183,7 +195,7 @@
 }
 
 .savingsSub {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-sub);
   margin-top: 4px;
 }
@@ -252,7 +264,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
   font-size: 13px;
   font-weight: 700;
   display: flex;
@@ -282,7 +294,7 @@
 }
 
 .recBadge {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 12px;
@@ -337,7 +349,7 @@
 
 .recCancelBtn {
   background: var(--accent);
-  color: #fff;
+  color: var(--hm-cta-ink);
 }
 
 .recCancelBtn:hover {

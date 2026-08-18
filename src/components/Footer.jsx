@@ -24,6 +24,12 @@ export default function Footer() {
                 <div className={styles.listDesc}>{SERVICES.length}サービスの解約難易度・直リンクを1枚で</div>
               </li>
               <li>
+                {/* 価格・仕様の変更ログ（2026-07-28 追加）。ヘッダーのナビは既に5項目で
+                    これ以上増やすと窮屈なので、まずフッターから入れる */}
+                <Link to="/price-watch/">値上げ・価格変更の記録</Link>
+                <div className={styles.listDesc}>毎朝の巡回で確認できた変更を日付つきで</div>
+              </li>
+              <li>
                 <Link to="/tracker/">サブスク棚卸し</Link>
                 <div className={styles.listDesc}>契約中の月額・年額合計と見直し順を可視化</div>
               </li>

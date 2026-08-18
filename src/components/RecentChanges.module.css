@@ -1,0 +1,164 @@
+/* トップページ「最近の変更」（2026-07-25 追加／2026-07-26 開閉式に変更）
+   既存の ServiceList / CategoryBrowse と同じトーン（--hm-* トークン）で揃える。
+   煽らない：警告色・背景の塗りつぶし・強い枠線は使わない。事実の箇条書きに徹する。
+   2026-07-26：見出しタップで解約ページへ飛ばすのをやめ、その場で中身を開く形にした
+   （値上げを告げた直後に解約画面を出すのは煽りにあたるため）。 */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-family: var(--hm-font-head);
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--hm-ink);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  background: var(--hm-card);
+  border: 1px solid var(--hm-card-border);
+  border-radius: 12px;
+  transition: border-color 0.15s;
+}
+
+.item:hover {
+  border-color: var(--hm-teal-2);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  min-height: 44px; /* 親指で押せる高さ */
+  cursor: pointer;
+  list-style: none; /* Firefox の既定マーカーを消す */
+  border-radius: 12px;
+}
+
+/* Safari/Chrome の既定の三角マーカーを消す（自前の marker を使う） */
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:focus-visible {
+  outline: 2px solid var(--hm-teal-2);
+  outline-offset: 2px;
+}
+
+.date {
+  flex: 0 0 auto;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--hm-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 34px;
+}
+
+.text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--hm-ink);
+  line-height: 1.45;
+}
+
+/* 開閉を示す小さなシェブロン。矢印（→）だと「別ページへ飛ぶ」と読めてしまうので、
+   下向きの山にして「ここで開く」ことを示す。 */
+.marker {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-right: 2px;
+  border-right: 1.5px solid var(--hm-teal-ink);
+  border-bottom: 1.5px solid var(--hm-teal-ink);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.15s;
+}
+
+.item[open] .marker {
+  transform: rotate(-135deg) translate(-2px, -2px);
+}
+
+.body {
+  padding: 0 14px 12px;
+  border-top: 1px solid var(--hm-card-border);
+  margin-top: -1px;
+  padding-top: 10px;
+}
+
+.change {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--hm-ink);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin: 0;
+}
+
+.link {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  text-decoration: underline;
+}
+
+/* 2026-08-04：ここにあった --hm-teal-2 への差し替えハックを削除した。
+   --hm-teal-ink がダーク値を持たない固定色（旧 #0e7f85）だったため、暗い面で
+   3.7:1 まで落ちるのを回避していたもの。新パレットで --hm-teal-ink に
+   ダーク値（#79c9a5）が入ったので、トークンをそのまま使えば両モードで成立する。 */
+
+.note {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--hm-muted-tan);
+  margin: 0;
+}
+
+/* 変更が無い日の1行（2026-07-28 追加）。
+   セクションごと消すと記録への導線もトップから消えるので、静かに1行だけ残す。
+   見出しも枠も付けない＝第一印象の重さを変えない。 */
+.emptyLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--hm-muted-tan);
+  margin: 0;
+}
+
+/* 3日窓から落ちた記録への導線（2026-07-28 追加） */
+.more {
+  align-self: flex-start;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--hm-teal-ink);
+  text-decoration: none;
+}
+
+.more:hover {
+  text-decoration: underline;
+}
+
+/* 2026-08-04：.link と同じ理由で、ここにあった --hm-teal-2 への差し替えも削除。
+   残すと同じコンポーネント内で .link と .more が別の緑になる。 */
