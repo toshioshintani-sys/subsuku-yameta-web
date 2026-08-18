@@ -200,6 +200,33 @@ try {
         Write-Output "main に直接入れた変更: $($touched -join ', ')"
     }
 
+    # 未マージのPRが滞っていないか（2026-08-19 追加）
+    #
+    # 全件偽陽性の日を直pushにして日課のPRは消えたが、**残ったPR＝価格が動いた日だけ**に
+    # なったことで、逆に誰も見ないまま7日間放置された（#75：Pairs の表示価格が
+    # 公式と違うという訂正が 8/12→8/19 の間未反映だった）。
+    # 誰も見ないPRは、誤報を直す手が止まっているのと同じ。毎日黄色い声を出す。
+    try {
+        $prJson = & gh pr list --limit 30 --json number,title,createdAt 2>$null | Out-String
+        if ($prJson.Trim()) {
+            $prs = $prJson | ConvertFrom-Json
+            $stale = @($prs | Where-Object {
+                $_.title -match '価格|判定|為替' -and
+                ([datetime]$_.createdAt) -lt (Get-Date).AddDays(-1)
+            })
+            if ($stale.Count -gt 0) {
+                $lines = ($stale | ForEach-Object {
+                    $age = [int]((Get-Date) - [datetime]$_.createdAt).TotalDays
+                    "  #$($_.number) ($age 日放置) $($_.title)"
+                }) -join "`n"
+                Send-Slack ("サブスクやめた **未マージのPRが $($stale.Count) 件滞っています**`n`n" +
+                    $lines + "`n`n" +
+                    "価格が動いた日だけPRにしているので、ここに残っているのは" +
+                    "**サイトの表示が実際の価格と違う可能性があるもの**です。")
+            }
+        }
+    } catch {}
+
     Write-Output "判定完了（検知 $eventCount 件・未判定 $beforeUnjudged → $afterUnjudged）"
 } catch {
     Send-Slack "サブスクやめた 価格判定（無人）で例外`n$($_.Exception.Message)"
