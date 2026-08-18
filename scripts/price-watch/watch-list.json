@@ -183,11 +183,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 12368,
-        "moneyLines": 31,
-        "checkedAt": "2026-08-15",
+        "ms": 19346,
+        "moneyLines": 29,
+        "checkedAt": "2026-08-18",
         "fails": 0,
-        "lastOkAt": "2026-08-15",
+        "lastOkAt": "2026-08-18",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -443,15 +443,12 @@
       "enabled": true,
       "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 2263,
-        "moneyLines": 6,
-        "checkedAt": "2026-07-26",
+        "status": "ok",
+        "ms": 3665,
+        "moneyLines": 4,
+        "checkedAt": "2026-08-18",
         "fails": 0,
-        "lastOkAt": "2026-07-26",
-        "suspects": [
-          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
-        ]
+        "lastOkAt": "2026-08-18"
       }
     },
     {
@@ -481,11 +478,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8647,
+        "ms": 7975,
         "moneyLines": 4,
-        "checkedAt": "2026-08-13",
+        "checkedAt": "2026-08-18",
         "fails": 0,
-        "lastOkAt": "2026-08-13",
+        "lastOkAt": "2026-08-18",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -681,11 +678,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 9417,
+        "ms": 4607,
         "moneyLines": 2,
-        "checkedAt": "2026-07-26",
+        "checkedAt": "2026-08-18",
         "fails": 0,
-        "lastOkAt": "2026-07-26"
+        "lastOkAt": "2026-08-18"
       }
     },
     {
@@ -706,11 +703,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6149,
+        "ms": 4400,
         "moneyLines": 3,
-        "checkedAt": "2026-08-16",
+        "checkedAt": "2026-08-18",
         "fails": 0,
-        "lastOkAt": "2026-08-16",
+        "lastOkAt": "2026-08-18",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
