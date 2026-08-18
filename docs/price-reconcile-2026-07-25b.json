@@ -1,0 +1,1410 @@
+{
+  "generatedAt": "2026-07-25T21:43:30.489Z",
+  "results": [
+    {
+      "id": "1password",
+      "name": "1Password",
+      "url": "https://1password.com/pricing/password-manager",
+      "shown": 5,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 450
+        },
+        {
+          "label": "個人プラン(月)",
+          "value": 450
+        },
+        {
+          "label": "個人プラン(年)",
+          "value": 4500
+        },
+        {
+          "label": "ファミリー（5人）(月)",
+          "value": 750
+        },
+        {
+          "label": "ファミリー（5人）(年)",
+          "value": 7500
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        2.99,
+        3.56,
+        3.99,
+        4.49,
+        4.75,
+        4.99,
+        5.24,
+        5.99,
+        6.99,
+        7.99,
+        8.99,
+        10.99,
+        12.99,
+        24.95,
+        29.95,
+        34.95,
+        48,
+        72
+      ]
+    },
+    {
+      "id": "abema-premium",
+      "name": "ABEMAプレミアム",
+      "url": "https://abema.tv/lp/new-premiumplan",
+      "shown": 1,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1080
+        }
+      ],
+      "pageYen": [
+        580
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "shown": 5,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 6480
+        },
+        {
+          "label": "フォトプラン（Photoshop + Lightroom）(月)",
+          "value": 1180
+        },
+        {
+          "label": "単体プラン（Photoshop のみ等）(月)",
+          "value": 2728
+        },
+        {
+          "label": "コンプリートプラン（全アプリ）(月)",
+          "value": 6480
+        },
+        {
+          "label": "学生・教職員向け(月)",
+          "value": 1980
+        }
+      ],
+      "pageYen": [
+        9080
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "bookwalker",
+      "name": "BOOK☆WALKER",
+      "url": "https://bookwalker.jp/subscription/",
+      "shown": 1,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 836
+        }
+      ],
+      "pageYen": [
+        840
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "canva-pro",
+      "name": "Canva Pro",
+      "url": "https://www.canva.com/pricing/",
+      "shown": 4,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1500
+        },
+        {
+          "label": "Pro（個人）(月)",
+          "value": 1500
+        },
+        {
+          "label": "Pro（個人）(年)",
+          "value": 12000
+        },
+        {
+          "label": "Teams（チーム）(月)",
+          "value": 1800
+        }
+      ],
+      "pageYen": [
+        0,
+        11800,
+        18800
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "crunchyroll",
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/ja/premium",
+      "shown": 4,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 850
+        },
+        {
+          "label": "Fan(月)",
+          "value": 850
+        },
+        {
+          "label": "Mega Fan(月)",
+          "value": 1080
+        },
+        {
+          "label": "Ultimate Fan(月)",
+          "value": 1280
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        6,
+        7,
+        13,
+        17,
+        19
+      ]
+    },
+    {
+      "id": "dazn",
+      "name": "DAZN",
+      "url": "https://www.dazn.com/ja-JP/welcome",
+      "shown": 6,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 4200
+        },
+        {
+          "label": "月額プラン(月)",
+          "value": 4200
+        },
+        {
+          "label": "年額プラン（月払い）(月)",
+          "value": 3000
+        },
+        {
+          "label": "年額プラン（月払い）(年)",
+          "value": 36000
+        },
+        {
+          "label": "年額プラン（一括払い）(月)",
+          "value": 2500
+        },
+        {
+          "label": "年額プラン（一括払い）(年)",
+          "value": 30000
+        }
+      ],
+      "pageYen": [
+        980,
+        2300,
+        3200,
+        27600
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "deepl-pro",
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro",
+      "shown": 4,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1200
+        },
+        {
+          "label": "Starter(月)",
+          "value": 1200
+        },
+        {
+          "label": "Advanced(月)",
+          "value": 3800
+        },
+        {
+          "label": "Ultimate(月)",
+          "value": 7500
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        1,
+        27,
+        29,
+        42,
+        43,
+        45
+      ]
+    },
+    {
+      "id": "discord-nitro",
+      "name": "Discord Nitro",
+      "url": "https://discord.com/nitro",
+      "shown": 1,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1050
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        2.99,
+        9.99
+      ]
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "url": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus",
+      "shown": 3,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 990
+        },
+        {
+          "label": "スタンダード(月)",
+          "value": 1140
+        },
+        {
+          "label": "プレミアム(月)",
+          "value": 1520
+        }
+      ],
+      "pageYen": [
+        540,
+        1250,
+        12500,
+        16800
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "evernote",
+      "name": "Evernote",
+      "url": "https://evernote.com/compare-plans",
+      "shown": 3,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1100
+        },
+        {
+          "label": "Personal(月)",
+          "value": 1100
+        },
+        {
+          "label": "Professional(月)",
+          "value": 1550
+        }
+      ],
+      "pageYen": [
+        0,
+        591.58,
+        1491.58,
+        7099,
+        17899
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "figma",
+      "name": "Figma（有料プラン）",
+      "url": "https://www.figma.com/pricing/",
+      "shown": 4,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1800
+        },
+        {
+          "label": "Professional(月)",
+          "value": 1800
+        },
+        {
+          "label": "Professional(年)",
+          "value": 18000
+        },
+        {
+          "label": "Organization(月)",
+          "value": 6750
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        3,
+        5,
+        12,
+        16,
+        25,
+        35,
+        55,
+        90
+      ]
+    },
+    {
+      "id": "gemini-advanced",
+      "name": "Google AI Pro（旧 Gemini Advanced）",
+      "url": "https://one.google.com/about/google-ai-plans/",
+      "shown": 5,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 2900
+        },
+        {
+          "label": "Google AI Plus(月)",
+          "value": 725
+        },
+        {
+          "label": "Google AI Pro(月)",
+          "value": 2900
+        },
+        {
+          "label": "Google AI Ultra 5x(月)",
+          "value": 14500
+        },
+        {
+          "label": "Google AI Ultra 20x(月)",
+          "value": 32000
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        10,
+        20,
+        40,
+        100
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "url": "https://github.com/features/copilot/plans",
+      "shown": 5,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1500
+        },
+        {
+          "label": "Individual(月)",
+          "value": 1500
+        },
+        {
+          "label": "Individual(年)",
+          "value": 15000
+        },
+        {
+          "label": "Business(月)",
+          "value": 2900
+        },
+        {
+          "label": "Enterprise(月)",
+          "value": 5550
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        0,
+        0.01,
+        5,
+        10,
+        15,
+        19,
+        31,
+        39,
+        70,
+        100,
+        200
+      ]
+    },
+    {
+      "id": "lemino",
+      "name": "Lemino（旧dTV）",
+      "url": "https://lemino.docomo.ne.jp/ft/0000014/",
+      "shown": 2,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 990
+        },
+        {
+          "label": "プレミアム月額(月)",
+          "value": 990
+        }
+      ],
+      "pageYen": [
+        1540,
+        1650
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "line-music",
+      "name": "LINE MUSIC",
+      "url": "https://music.line.me/top/plan/",
+      "shown": 4,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 1080
+        },
+        {
+          "label": "一般プラン(月)",
+          "value": 1080
+        },
+        {
+          "label": "学生プラン(月)",
+          "value": 580
+        },
+        {
+          "label": "ファミリープラン(月)",
+          "value": 1480
+        }
+      ],
+      "pageYen": [
+        320,
+        480,
+        980,
+        1680,
+        4800,
+        1000000
+      ],
+      "pageUsd": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "linkedin-premium",
+      "name": "LinkedIn Premium",
+      "url": "https://premium.linkedin.com/careers/career",
+      "shown": 1,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 4400
+        }
+      ],
+      "pageYen": [],
+      "pageUsd": [
+        39.99,
+        49.99,
+        54.99,
+        59.98,
+        74.99,
+        82.48,
+        239.88,
+        299.88,
+        323.88,
+        359.88,
+        449.8,
+        485.8
+      ]
+    },
+    {
+      "id": "pairs",
+      "name": "Pairs（ペアーズ）",
+      "url": "https://www.pairs.lv/price",
+      "shown": 3,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 3700
+        },
+        {
+          "label": "男性会員（クレカ）(月)",
+          "value": 3700
+        },
+        {
+          "label": "男性会員（Apple/Google）(月)",
+          "value": 4300
+        }
+      ],
+      "pageYen": [
+        298,
+        390,
+        415,
+        526,
+        540,
+        590,
+        810,
+        893,
+        968,
+        1182,
+        1453,
+        1580,
+        1617,
+        1620,
+        1675,
+        1770,
+        1780,
+        1833,
+        2300,
+        2366,
+        2490,
+        2560,
+        3033,
+        3580,
+        3780,
+        3870,
+        4100,
+        4360,
+        6900,
+        7090,
+        9100,
+        9720,
+        10720,
+        11000,
+        12960,
+        14200,
+        18720,
+        19400,
+        20100,
+        43920
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "vimeo-pro",
+      "name": "Vimeo（有料プラン）",
+      "url": "https://vimeo.com/upgrade",
+      "shown": 1,
+      "status": "ALL_MISS",
+      "missing": [
+        {
+          "label": "代表月額(PRICING)",
+          "value": 2700
+        }
+      ],
+      "pageYen": [
+        1200,
+        2000,
+        3625,
+        6041,
+        6346,
+        10610
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "amazon-music-unlimited",
+      "name": "Amazon Music Unlimited",
+      "url": "https://www.amazon.co.jp/music/unlimited",
+      "shown": 4,
+      "status": "PARTIAL_MISS",
+      "missing": [
+        {
+          "label": "ファミリープラン(月)",
+          "value": 1680
+        },
+        {
+          "label": "学生プラン(月)",
+          "value": 580
+        }
+      ],
+      "pageYen": [
+        0,
+        1080,
+        1180
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "amazon-prime",
+      "name": "Amazon プライム",
+      "url": "https://www.amazon.co.jp/amazonprime",
+      "shown": 6,
+      "status": "PARTIAL_MISS",
+      "missing": [
+        {
+          "label": "年額プラン(月)",
+          "value": 492
+        },
+        {
+          "label": "学生プラン（Prime Student）(年)",
+          "value": 2950
+        }
+      ],
+      "pageYen": [
+        300,
+        600,
+        5900
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "google-play-pass",
+      "name": "Google Play Pass",
+      "url": "https://play.google.com/store/pass/getstarted",
+      "shown": 4,
+      "status": "PARTIAL_MISS",
+      "missing": [
+        {
+          "label": "年額プラン(月)",
+          "value": 450
+        },
+        {
+          "label": "年額プラン(年)",
+          "value": 5400
+        }
+      ],
+      "pageYen": [
+        600
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "hulu",
+      "name": "Hulu",
+      "url": "https://www.hulu.jp/",
+      "shown": 4,
+      "status": "PARTIAL_MISS",
+      "missing": [
+        {
+          "label": "年額プラン(月)",
+          "value": 854
+        },
+        {
+          "label": "年額プラン(年)",
+          "value": 10240
+        }
+      ],
+      "pageYen": [
+        1026
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "claude-pro",
+      "name": "Claude Pro",
+      "url": "https://www.anthropic.com/pricing",
+      "shown": 4,
+      "status": "CHECK_USD",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [
+        0,
+        0.08,
+        0.1,
+        0.2,
+        0.3,
+        0.5,
+        1,
+        1.25,
+        1.5,
+        2,
+        2.5,
+        3,
+        3.75,
+        5,
+        6.25,
+        10,
+        12.5,
+        15,
+        17,
+        18.75,
+        20,
+        25,
+        50,
+        75,
+        100,
+        125,
+        200
+      ],
+      "usdExpected": 22
+    },
+    {
+      "id": "kindle-unlimited",
+      "name": "Kindle Unlimited",
+      "url": "https://www.amazon.co.jp/kindle-dbs/hz/subscribe/ku",
+      "shown": 2,
+      "status": "NO_PRICE_ON_PAGE",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "nintendo-switch-online",
+      "name": "Nintendo Switch Online",
+      "url": "https://www.nintendo.com/jp/nintendo-switch-online/plan/index.html",
+      "shown": 7,
+      "status": "NO_PRICE_ON_PAGE",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "patreon",
+      "name": "Patreon（サブスク支援）",
+      "url": "https://www.patreon.com/",
+      "shown": 1,
+      "status": "NO_PRICE_ON_PAGE",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "soundcloud-go",
+      "name": "SoundCloud Go",
+      "url": "https://soundcloud.com/go",
+      "shown": 1,
+      "status": "NO_PRICE_ON_PAGE",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "fod",
+      "name": "FOD（フジテレビオンデマンド）",
+      "url": "https://fod.fujitv.co.jp/plan/",
+      "shown": 2,
+      "status": "FETCH_FAIL",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [],
+      "error": "HTTP 404"
+    },
+    {
+      "id": "match",
+      "name": "マッチドットコム（Match）",
+      "url": "https://jp.match.com/",
+      "shown": 6,
+      "status": "FETCH_FAIL",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [],
+      "error": "HTTP 403"
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com/plans",
+      "shown": 9,
+      "status": "FETCH_FAIL",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [],
+      "error": "HTTP 403"
+    },
+    {
+      "id": "perplexity-pro",
+      "name": "Perplexity Pro",
+      "url": "https://www.perplexity.ai/pro",
+      "shown": 4,
+      "status": "FETCH_FAIL",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [],
+      "error": "HTTP 403"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "shown": 4,
+      "status": "OK_USD",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [
+        1,
+        3,
+        17,
+        20,
+        21,
+        40,
+        3000
+      ],
+      "usdExpected": 20
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "shown": 7,
+      "status": "OK_USD",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [
+        0,
+        0.0025,
+        0.01,
+        0.05,
+        1,
+        11,
+        12,
+        15,
+        19,
+        28,
+        35,
+        36,
+        76,
+        84,
+        95,
+        100,
+        228
+      ],
+      "usdExpected": 15
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf（現Devin Desktop）",
+      "url": "https://windsurf.com/pricing",
+      "shown": 4,
+      "status": "OK_USD",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": [
+        0,
+        20,
+        40,
+        80,
+        200
+      ],
+      "usdExpected": 20
+    },
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "url": "https://www.apple.com/jp/apple-music/",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        180,
+        480,
+        680,
+        1180,
+        1350,
+        1980
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "apple-one",
+      "name": "Apple One",
+      "url": "https://www.apple.com/jp/apple-one/",
+      "shown": 3,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        180,
+        540,
+        900,
+        1180,
+        1200,
+        1350,
+        1980,
+        2110,
+        2120,
+        2500,
+        3460,
+        4620
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "apple-tv-plus",
+      "name": "Apple TV+",
+      "url": "https://www.apple.com/jp/apple-tv-plus/",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        680,
+        1200,
+        1350
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "audible",
+      "name": "Audible（オーディブル）",
+      "url": "https://www.audible.co.jp/",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        880,
+        1500
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        1400,
+        3000,
+        16800
+      ],
+      "pageUsd": [
+        100
+      ]
+    },
+    {
+      "id": "danime",
+      "name": "dアニメストア",
+      "url": "https://animestore.docomo.ne.jp/animestore/CF/help_qa_charge",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        100,
+        660,
+        760
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "dmagazine",
+      "name": "dマガジン",
+      "url": "https://dmagazine.docomo.ne.jp/",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        200,
+        580,
+        2100
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "dmm-premium",
+      "name": "DMMプレミアム",
+      "url": "https://support.dmm.com/premium/article/47489",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        550,
+        650
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "dropbox",
+      "name": "Dropbox",
+      "url": "https://www.dropbox.com/plans",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        1200,
+        1500,
+        2000,
+        2400
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "google-one",
+      "name": "Google One",
+      "url": "https://one.google.com/about/plans",
+      "shown": 7,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        242,
+        290,
+        580,
+        1208,
+        1450,
+        2417,
+        2900,
+        5800,
+        14500,
+        29000
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        400,
+        800,
+        1250,
+        1600,
+        2500
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "icloud-plus",
+      "name": "iCloud+",
+      "url": "https://www.apple.com/jp/icloud/",
+      "shown": 6,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        180,
+        540,
+        1800,
+        5500,
+        11000
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "url": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+      "shown": 7,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        2130,
+        2740,
+        3200,
+        4260,
+        5480,
+        6400,
+        21300,
+        27400,
+        32000,
+        41380
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "url": "https://help.netflix.com/ja/node/24926",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        890,
+        1590,
+        2290
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "niconico-premium",
+      "name": "ニコニコ動画プレミアム",
+      "url": "https://premium.nicovideo.jp/payment/premium_detail",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        790
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "nikkei",
+      "name": "日本経済新聞 電子版",
+      "url": "https://www.nikkei.com/help/subscribe/price/",
+      "shown": 1,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        1000,
+        2500,
+        2800,
+        4277,
+        4800,
+        5500,
+        5800,
+        6000,
+        6500,
+        6800,
+        7300,
+        8000
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "note-premium",
+      "name": "noteプレミアム",
+      "url": "https://premium.lp-note.com/",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        500,
+        100000
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "url": "https://www.notion.com/pricing",
+      "shown": 3,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        1650,
+        3150
+      ],
+      "pageUsd": [
+        8,
+        10
+      ]
+    },
+    {
+      "id": "playstation-plus",
+      "name": "PlayStation Plus",
+      "url": "https://www.playstation.com/ja-jp/ps-plus/",
+      "shown": 7,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        850,
+        1300,
+        1550,
+        2150,
+        3600,
+        4300,
+        6800,
+        11700,
+        13900
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "rakuten-magazine",
+      "name": "楽天マガジン",
+      "url": "https://magazine.rakuten.co.jp/service.html",
+      "shown": 5,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        449,
+        495,
+        499,
+        537,
+        550,
+        597,
+        710,
+        1485,
+        1650,
+        5382,
+        5980
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "rakuten-music",
+      "name": "楽天ミュージック",
+      "url": "https://music.rakuten.co.jp/plan/",
+      "shown": 3,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        200,
+        417,
+        480,
+        500,
+        580,
+        775,
+        780,
+        980,
+        1000,
+        1080,
+        1180,
+        2460,
+        5000,
+        9300
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "url": "https://www.spotify.com/jp/premium/",
+      "shown": 5,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        580,
+        1080,
+        1480,
+        1880
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "u-next",
+      "name": "U-NEXT",
+      "url": "https://help.unext.jp/guide/detail/types-of-service-plan",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        1,
+        1639,
+        2189,
+        2400
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "wowow-on-demand",
+      "name": "WOWOWオンデマンド",
+      "url": "https://support.wowow.co.jp/answer/61bffb829e474a001c1cd7ff/",
+      "shown": 1,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        990,
+        2530,
+        2790,
+        3960,
+        43560
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "xbox-game-pass",
+      "name": "Xbox Game Pass",
+      "url": "https://www.xbox.com/ja-JP/xbox-game-pass",
+      "shown": 5,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        150,
+        850,
+        1300,
+        1550
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "yahoo-premium",
+      "name": "Yahoo!プレミアム",
+      "url": "https://premium.yahoo.co.jp/",
+      "shown": 2,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        508,
+        1000,
+        2000,
+        5000
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "youtube-music",
+      "name": "YouTube Music Premium（単体プラン）",
+      "url": "https://www.youtube.com/musicpremium",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        580,
+        1080,
+        1680,
+        10800
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
+      "shown": 4,
+      "status": "OK",
+      "missing": [],
+      "pageYen": [
+        0,
+        780,
+        1280,
+        2280,
+        12800
+      ],
+      "pageUsd": []
+    },
+    {
+      "id": "honto",
+      "name": "honto",
+      "url": "https://honto.jp/",
+      "shown": 0,
+      "status": "SKIP_NO_DISPLAY",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "nhk-plus",
+      "name": "NHKプラス",
+      "url": "https://www.nhk.or.jp/nhkplus/",
+      "shown": 0,
+      "status": "SKIP_NO_DISPLAY",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "rakuten-kobo",
+      "name": "楽天Kobo（プレミアム）",
+      "url": "https://www.kobo.com/jp/ja/",
+      "shown": 0,
+      "status": "SKIP_NO_DISPLAY",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    },
+    {
+      "id": "rakuten-tv",
+      "name": "楽天TV",
+      "url": "https://tv.rakuten.co.jp/static/svod_guidance/",
+      "shown": 0,
+      "status": "SKIP_NO_DISPLAY",
+      "missing": [],
+      "pageYen": [],
+      "pageUsd": []
+    }
+  ]
+}

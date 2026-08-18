@@ -1,5 +1,5 @@
 .footer {
-  background: #1a1f2e;
+  background: var(--hm-navy-mid);
   color: rgba(255, 255, 255, 0.85);
   margin-top: 64px;
 }
@@ -40,7 +40,7 @@
 .colTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: #f2efe8;
   margin-bottom: 4px;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .list a:hover {
-  color: #fff;
+  color: #f2efe8;
 }
 
 /* 各ツールの1行説明（初見が最下部到達時に全機能を把握できる） */

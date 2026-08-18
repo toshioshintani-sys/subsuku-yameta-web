@@ -25,6 +25,53 @@ function renderBlock(block, i) {
   if (block.type === 'quote') {
     return <blockquote key={i} className={styles.quote}>{block.text}</blockquote>;
   }
+  // 比較表（2026-07-25 追加）。3社比較のように「並べて見る」情報を、
+  // 段落に散らさず一目で比べられるようにするための最小の表ブロック。
+  //   { type: 'table', caption?, head: ['項目','A','B'], rows: [['行見出し','値','値'], ...] }
+  // 各行の先頭セルは行見出し（th scope="row"）として扱う。
+  // 狭い画面でははみ出さずに横スクロールさせる（本文の横スクロールは絶対に起こさない）。
+  // ★スコアや順位は入れないこと（BAE §5 禁則）。事実だけを並べる。
+  if (block.type === 'table') {
+    return (
+      <div
+        key={i}
+        className={styles.tableWrap}
+        role="region"
+        aria-label={block.caption || '比較表'}
+        tabIndex={0}
+      >
+        <table className={styles.table}>
+          {block.caption && <caption className={styles.tableCaption}>{block.caption}</caption>}
+          <thead>
+            <tr>
+              {block.head.map((h, j) => (
+                <th key={j} scope="col">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {block.rows.map((row, j) => (
+              <tr key={j}>
+                {row.map((cell, k) =>
+                  k === 0 ? (
+                    <th
+                      key={k}
+                      scope="row"
+                      dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(cell) }}
+                    />
+                  ) : (
+                    <td key={k} dangerouslySetInnerHTML={{ __html: sanitizeReviewHtml(cell) }} />
+                  )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   if (block.type === 'img') {
     return (
       <figure key={i} className={styles.figure}>
@@ -111,7 +158,7 @@ export default function BlogPostPage() {
   }, [post]);
 
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/blog/" replace />;
   }
 
   return (
@@ -127,7 +174,7 @@ export default function BlogPostPage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to="/blog">ブログ</Link>
+          <Link to="/blog/">ブログ</Link>
         </nav>
 
         <article className={styles.article}>
@@ -162,13 +209,13 @@ export default function BlogPostPage() {
 
         {/* シェア */}
         <ShareButtons
-          path={`/blog/${post.slug}`}
+          path={`/blog/${post.slug}/`}
           title={post.title}
           hashtags={['サブスクやめた', ...(post.tags || [])]}
         />
 
         {/* Tracker CTA */}
-        <Link to="/tracker" className={styles.cta}>
+        <Link to="/tracker/" className={styles.cta}>
           <div className={styles.ctaIcon}>📊</div>
           <div>
             <div className={styles.ctaTitle}>サブスクの棚卸しダッシュボード</div>
@@ -206,7 +253,7 @@ export default function BlogPostPage() {
             <ul className={styles.relatedList}>
               {related.map((r) => (
                 <li key={r.slug}>
-                  <Link to={`/blog/${r.slug}`} className={styles.relatedCard}>
+                  <Link to={`/blog/${r.slug}/`} className={styles.relatedCard}>
                     <span className={styles.relatedCardTitle}>{r.title}</span>
                     <span className={styles.relatedArrow}>→</span>
                   </Link>
@@ -216,7 +263,7 @@ export default function BlogPostPage() {
           </section>
         )}
 
-        <Link to="/blog" className={styles.backLink}>← ブログ一覧に戻る</Link>
+        <Link to="/blog/" className={styles.backLink}>← ブログ一覧に戻る</Link>
       </div>
     </div>
   );

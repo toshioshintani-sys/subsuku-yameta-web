@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ChevronDown, Plus, Check, AlertTriangle, ArrowRight } from 'lucide-react';
 import ServiceIcon from './ServiceIcon';
-import { SERVICES, getPlans, getDefaultMonthly, getPopularity } from '../data/services';
+import { SERVICES, getPlans, getDefaultMonthly, getPopularity, matchesQuery } from '../data/services';
 import { trackUiEvent } from '../data/analytics';
 import styles from './CostAnchorCard.module.css';
 
@@ -43,9 +43,12 @@ export default function CostAnchorCard({
       ),
     []
   );
+  // 照合はトップの検索窓と同じ matchesQuery を使う。
+  // 以前はここだけ s.name の単純一致で、かな別名も見ていなかったため
+  // 「ねっとふりっくす」でも「ネットフリックス」でも引けなかった（2026-08-04 修正）。
   const addResults = useMemo(() => {
-    const qq = addQuery.trim().toLowerCase();
-    return allPaid.filter((s) => !on[s.id] && (!qq || s.name.toLowerCase().includes(qq))).slice(0, 6);
+    const qq = addQuery.trim();
+    return allPaid.filter((s) => !on[s.id] && (!qq || matchesQuery(s, qq))).slice(0, 6);
   }, [allPaid, on, addQuery]);
 
   const suffix = period === 'year' ? '/年' : '/月';
@@ -131,7 +134,7 @@ export default function CostAnchorCard({
             いちばん金額が大きいのは<strong>「{topCut.name}」</strong>（
             <strong>年{topCut.annualText}</strong>）。
             <Link
-              to={`/service/${topCut.id}`}
+              to={`/service/${topCut.id}/`}
               className={styles.topCutLink}
               onClick={() => trackUiEvent('home_topcut_click', { service: topCut.id })}
             >

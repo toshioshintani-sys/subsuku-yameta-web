@@ -8,6 +8,8 @@ import {
   getPlans,
   getPlanCheckHint,
   formatMonthlyRange,
+  getUsdMonthly,
+  getFxNote,
   PRICE_HISTORY,
 } from '../data/services';
 import {
@@ -33,13 +35,13 @@ import CountUpYen from '../components/CountUpYen';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import RenewalReminderCard from '../components/RenewalReminderCard';
+import DirectionBadge from '../components/DirectionBadge';
 import { SITE_URL } from '../config';
 import { trackOfficialCancelClick } from '../utils/analytics';
 import styles from './ServicePage.module.css';
 
 const DIFFICULTY_LABEL = { easy: 'かんたん', medium: 'ふつう', hard: 'むずかしい' };
 const DIFFICULTY_COLOR = { easy: 'easy', medium: 'medium', hard: 'hard' };
-const DIRECTION_LABEL = { up: '値上げ', down: '値下げ', new: '新プラン', restructure: '体系変更' };
 
 const CATEGORY_LABEL = {
   video: '動画',
@@ -151,7 +153,7 @@ export default function ServicePage() {
           if (!target) return null;
           return {
             kind: 'internal',
-            href: `/service/${target.id}`,
+            href: `/service/${target.id}/`,
             name: target.name,
             emoji: target.emoji,
             domain: target.domain,
@@ -197,7 +199,7 @@ export default function ServicePage() {
         <nav className={styles.breadcrumb}>
           <Link to="/">トップ</Link>
           <span> › </span>
-          <Link to={`/category/${service.category}`}>{CATEGORY_LABEL[service.category]}</Link>
+          <Link to={`/category/${service.category}/`}>{CATEGORY_LABEL[service.category]}</Link>
           <span> › </span>
           <span>{service.name}</span>
         </nav>
@@ -221,6 +223,14 @@ export default function ServicePage() {
               </div>
             </div>
           </div>
+
+          {/* 為替の注釈（ドル建てで請求されるサービスのみ）
+              円の金額を出す以上、それが「請求される金額」ではなく「どのレートで計算した
+              概算か」を同じ画面で必ず言う。省くと、公式が $20 と書いているものを円で
+              断言することになる。土日に読んだ日は最終営業日の値である旨も自動で入る。 */}
+          {getUsdMonthly(service.id) != null && (
+            <p className={styles.fxNote}>{getFxNote()}</p>
+          )}
 
           {/* 概要（拡張コンテンツがあれば） */}
           {extended?.summary && (
@@ -395,9 +405,7 @@ export default function ServicePage() {
                   <li key={i} className={styles.historyItem}>
                     <div className={styles.historyMeta}>
                       <time className={styles.historyDate} dateTime={h.date}>{h.date}</time>
-                      <span className={`${styles.historyDir} ${styles[`dir_${h.direction}`] || ''}`}>
-                        {DIRECTION_LABEL[h.direction] || '変更'}
-                      </span>
+                      <DirectionBadge direction={h.direction} variant="filled" />
                       {h.item && <span className={styles.historyItemLabel}>{h.item}</span>}
                     </div>
                     <p className={styles.historyChange}>{h.change}</p>
@@ -482,7 +490,7 @@ export default function ServicePage() {
 
         {/* シェア（他の困っている人へ） */}
         <ShareButtons
-          path={`/service/${service.id}`}
+          path={`/service/${service.id}/`}
           title={`${service.name}の解約方法｜サブスクやめた`}
           hashtags={['サブスクやめた', service.name.replace(/\s+/g, '')]}
         />
@@ -541,7 +549,7 @@ export default function ServicePage() {
             </div>
             <p className={styles.altDisclosure}>
               掲載順位は提携の有無や報酬で決まりません。詳細は
-              <Link to="/disclosure">収益開示</Link>をご覧ください。
+              <Link to="/disclosure/">収益開示</Link>をご覧ください。
             </p>
           </section>
         )}
@@ -561,7 +569,7 @@ export default function ServicePage() {
             </p>
             {buyoutArticle ? (
               <div className={styles.altGrid}>
-                <Link to={`/blog/${buyoutArticle.slug}`} className={styles.altCard}>
+                <Link to={`/blog/${buyoutArticle.slug}/`} className={styles.altCard}>
                   <div className={styles.altCardTop}>
                     <span className={styles.altCardExternalIcon}>📄</span>
                     <span className={styles.altCardName}>{buyout.label}</span>
@@ -625,13 +633,13 @@ export default function ServicePage() {
             )}
             <p className={styles.altDisclosure}>
               掲載順位は提携の有無や報酬で決まりません。詳細は
-              <Link to="/disclosure">収益開示</Link>をご覧ください。
+              <Link to="/disclosure/">収益開示</Link>をご覧ください。
             </p>
           </section>
         )}
 
         {/* サブスク棚卸しダッシュボードへの送客 */}
-        <Link to="/tracker" className={styles.trackerCta}>
+        <Link to="/tracker/" className={styles.trackerCta}>
           <div className={styles.trackerCtaIcon} aria-hidden="true">
             <BarChart3 size={28} strokeWidth={1.5} />
           </div>
@@ -673,7 +681,7 @@ export default function ServicePage() {
             </h2>
             <div className={styles.relatedGrid}>
               {related.map((s) => (
-                <Link to={`/service/${s.id}`} key={s.id} className={styles.relatedCard}>
+                <Link to={`/service/${s.id}/`} key={s.id} className={styles.relatedCard}>
                   <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={28} />
                   <span className={styles.relatedName}>{s.name}</span>
                   <span className={styles.relatedArrow}>→</span>

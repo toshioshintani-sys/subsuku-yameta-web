@@ -128,7 +128,7 @@ export default function BiasGame({ game }) {
           <p className={styles.lessonText}>{game.lesson}</p>
         </div>
 
-        <Link to="/tracker" className={styles.ctaCancel}>
+        <Link to="/tracker/" className={styles.ctaCancel}>
           あなたのサブスクで同じ罠にかかっていませんか？
           <br />
           <strong>棚卸しダッシュボードで「これからのコスト」を見る →</strong>
@@ -137,14 +137,14 @@ export default function BiasGame({ game }) {
         <div className={styles.gameExits}>
           <span className={styles.gameExitsLabel}>このあとの一手：</span>
           <Link
-            to="/discover"
+            to="/discover/"
             className={styles.gameExitLink}
             onClick={() => trackEvent('game_exit', { to: 'discover', game: game.id })}
           >
             合うものに乗り換える
           </Link>
           <Link
-            to="/yamete-kau"
+            to="/yamete-kau/"
             className={styles.gameExitLink}
             onClick={() => trackEvent('game_exit', { to: 'yamete-kau', game: game.id })}
           >

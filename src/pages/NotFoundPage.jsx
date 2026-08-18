@@ -18,7 +18,7 @@ export default function NotFoundPage() {
       <p className={styles.notFoundText}>お探しのページは見つかりませんでした。</p>
       <div className={styles.notFoundActions}>
         <Link to="/" className={styles.backLink}>← トップに戻る</Link>
-        <Link to="/discover" className={styles.backLink}>サブスクを探す</Link>
+        <Link to="/discover/" className={styles.backLink}>サブスクを探す</Link>
       </div>
     </div>
   );

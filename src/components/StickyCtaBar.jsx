@@ -7,7 +7,7 @@ import styles from './StickyCtaBar.module.css';
 export default function StickyCtaBar({ amountText }) {
   return (
     <div className={styles.bar}>
-      <Link to="/tracker" className={styles.cta} aria-label={`棚卸しで ${amountText} を見直す`}>
+      <Link to="/tracker/" className={styles.cta} aria-label={`棚卸しで ${amountText} を見直す`}>
         <span className={styles.label}>
           棚卸しで <span className={styles.amount}>{amountText}</span> を見直す
         </span>

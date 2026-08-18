@@ -52,7 +52,7 @@ export default function GamesPage() {
 
         <section className={styles.gameCards} aria-label="ゲーム一覧">
           {BIAS_GAMES.map((g) => (
-            <Link key={g.id} to={`/games/${g.id}`} className={styles.gameCard}>
+            <Link key={g.id} to={`/games/${g.id}/`} className={styles.gameCard}>
               <span className={styles.gameCardNo}>第{g.n}弾</span>
               <span className={styles.gameCardTitle}>{g.headline}</span>
               <span className={styles.gameCardDesc}>{g.cardDesc}</span>
@@ -63,12 +63,12 @@ export default function GamesPage() {
         </section>
 
         <ShareButtons
-          path="/games"
+          path="/games/"
           title="サブスク判断ゲーム｜「やめられない理由」を遊んで見抜く"
           hashtags={['サブスクやめた', '行動経済学']}
         />
 
-        <Link to="/tracker" className={styles.trackerCta}>
+        <Link to="/tracker/" className={styles.trackerCta}>
           <div>
             <div className={styles.trackerCtaTitle}>遊んだら、実際のサブスクで試そう</div>
             <div className={styles.trackerCtaSub}>

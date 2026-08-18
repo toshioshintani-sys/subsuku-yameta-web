@@ -1,17 +1,21 @@
 {
-  "generatedAt": "2026-07-07T00:00:25.043Z",
+  "generatedAt": "2026-08-16T22:13:46.962Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "chatgpt-plus",
-      "name": "ChatGPT Plus",
-      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥3,050",
-        "￥3,850"
+        "￥1,120",
+        "￥1,750",
+        "￥560"
       ],
-      "removed": [],
-      "detectedAt": "2026-07-06T23:59:31.879Z"
+      "removed": [
+        "￥1,250",
+        "￥400"
+      ],
+      "detectedAt": "2026-08-16T22:13:35.306Z"
     }
   ]
 }

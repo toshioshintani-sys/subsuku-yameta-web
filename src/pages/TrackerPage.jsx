@@ -1,6 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES, PRICING, CATEGORIES, getPlans } from '../data/services';
+import {
+  SERVICES,
+  PRICING,
+  CATEGORIES,
+  getPlans,
+  getUsdMonthly,
+  USD_JPY,
+  USD_JPY_AS_OF,
+} from '../data/services';
 import { trackAffiliateClick } from '../data/affiliates';
 import ServiceIcon from '../components/ServiceIcon';
 import Seo from '../components/Seo';
@@ -134,6 +142,14 @@ export default function TrackerPage() {
     [enriched, state.selected]
   );
 
+  // ドル建てで請求されるサービスを何件含んでいるか（2026-08-03 追加）
+  //
+  // 合計は円で出るが、ドル建てのサービスはこちらが決めたレートで換算した**概算**が混ざる。
+  // サービスページには「約」と根拠を書いたのに、合計だけ注記が無く確定額に見えていた。
+  // 実害が出た日：2026-08-03 に公表仲値が 160.72 → 155.79 へ動き、契約を何も変えていない人の
+  // 年間合計が約3%下がった。理由が画面のどこにも書かれていない状態だった。
+  const usdItems = selectedItems.filter((s) => getUsdMonthly(s.id) != null);
+
   const totalMonthly = selectedItems.reduce((sum, s) => sum + s.monthly, 0);
   const totalYearly = totalMonthly * 12;
   const total5Years = totalYearly * 5;
@@ -159,12 +175,21 @@ export default function TrackerPage() {
     [selectedItems]
   );
 
+  // 書き出したファイルは画面を離れて一人歩きするので、注記も一緒に持たせる。
+  // 合計だけが裸で出回ると、概算だと分からないまま参照される。
+  const fxCaveat = () =>
+    usdItems.length > 0
+      ? `※ ${usdItems.map((s) => s.name).join('・')} はドル請求のため、合計に1ドル${USD_JPY}円（${USD_JPY_AS_OF}の公表仲値）で計算した概算を含みます。実際の請求額はカード会社のレートと手数料で変わります。`
+      : null;
+
   // エクスポート
   const exportMarkdown = () => {
+    const caveat = fxCaveat();
     const lines = [
       '# 私のサブスク棚卸し',
       '',
       `合計：月 ${formatYen(totalMonthly)} / 年 ${formatYen(totalYearly)}`,
+      ...(caveat ? ['', caveat] : []),
       '',
       '## 解約しなさい順',
       '',
@@ -178,7 +203,9 @@ export default function TrackerPage() {
   };
 
   const exportCsv = () => {
-    const header = '名前,カテゴリ,月額,年額,解約難度,優先度スコア,解約URL';
+    // CSVは表計算に取り込む前提なので、末尾に注記の行を足すと構造が壊れる。
+    // 代わりに「備考」列を足し、**どの行が概算なのか**を行単位で示す。
+    const header = '名前,カテゴリ,月額,年額,解約難度,優先度スコア,解約URL,備考';
     const rows = recommendedOrder.map((s) =>
       [
         s.name,
@@ -188,6 +215,9 @@ export default function TrackerPage() {
         DIFFICULTY_LABEL[s.difficulty],
         Math.round(s.priority),
         s.cancelUrl,
+        getUsdMonthly(s.id) != null
+          ? `ドル請求のため概算（1ドル${USD_JPY}円・${USD_JPY_AS_OF}の公表仲値）`
+          : '',
       ]
         .map((v) => `"${String(v).replace(/"/g, '""')}"`)
         .join(',')
@@ -238,6 +268,25 @@ export default function TrackerPage() {
       </div>
 
       <div className={styles.content}>
+        {/* 合計にドル建ての概算が混ざっていることを言う（2026-08-03 追加）。
+            ■ なぜ要るか
+              サービスページには「$20（約3,214円）」と「約」を付け、どのレートで計算したかも
+              書いた。ところが合計だけ注記が無く、確定額のように見えていた。
+              2026-08-03 に公表仲値が 160.72 → 155.79 へ動き、**契約を何も変えていない人の
+              年間合計が約3%下がった**。理由が画面のどこにも書かれていない状態だった。
+            ■ 置き場所
+              上の合計バーは sticky なので、そこに入れるとスマホで固定領域が倍の高さになる。
+              直下に置いて、合計を見た直後に目に入るが、スクロールで流れるようにする。
+            ■ ドル建てを含まない人には出さない（関係ない注意書きで画面を重くしない） */}
+        {usdItems.length > 0 && (
+          <p className={styles.fxNote}>
+            {`このうち${usdItems.length}件（${usdItems.map((s) => s.name).join('・')}）はドルで請求されるため、`}
+            {`合計には1ドル${USD_JPY}円で計算した概算が含まれます`}
+            {`（${Number(USD_JPY_AS_OF.split('-')[1])}月${Number(USD_JPY_AS_OF.split('-')[2])}日の三菱UFJ銀行 公表仲値）。`}
+            実際の請求額はカード会社のレートと手数料によって変わります。
+          </p>
+        )}
+
         {/* 節約効果可視化（選択中があるときだけ） */}
         {selectedItems.length > 0 && (
           <section className={styles.savings} aria-label="長期累計コスト">
@@ -294,7 +343,7 @@ export default function TrackerPage() {
                     </div>
                   </div>
                   <div className={styles.recActions}>
-                    <Link to={`/service/${s.id}`} className={styles.recDetailBtn}>手順を見る</Link>
+                    <Link to={`/service/${s.id}/`} className={styles.recDetailBtn}>手順を見る</Link>
                     <a
                       href={s.cancelUrl}
                       target="_blank"
@@ -328,7 +377,7 @@ export default function TrackerPage() {
             </p>
             <div className={styles.nextMovesGrid}>
               <Link
-                to="/discover"
+                to="/discover/"
                 className={styles.nextMoveCard}
                 onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 1, layer: 'B' })}
               >
@@ -336,7 +385,7 @@ export default function TrackerPage() {
                 <div className={styles.nextMoveDesc}>近い代替を特徴と弱点つきで比較（サブスク図鑑）</div>
               </Link>
               <Link
-                to="/yamete-kau"
+                to="/yamete-kau/"
                 className={styles.nextMoveCard}
                 onClick={() => trackAffiliateClick({ asp: 'internal', service: 'tracker', placement: 'tracker_exit', position: 2, layer: 'C' })}
               >

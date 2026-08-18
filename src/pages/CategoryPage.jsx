@@ -82,7 +82,7 @@ export default function CategoryPage() {
         ) : (
           <div className={styles.grid}>
             {services.map((s) => (
-              <Link to={`/service/${s.id}`} key={s.id} className={styles.card}>
+              <Link to={`/service/${s.id}/`} key={s.id} className={styles.card}>
                 <div className={styles.cardTop}>
                   <ServiceIcon serviceId={s.id} category={s.category} domain={s.domain} emoji={s.emoji} size={44} />
                   <span className={`${styles.badge} ${styles[DIFFICULTY_COLOR[s.difficulty]]}`}>

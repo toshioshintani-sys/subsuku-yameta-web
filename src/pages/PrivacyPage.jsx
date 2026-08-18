@@ -39,7 +39,7 @@ export default function PrivacyPage() {
 
           <h2>5. お問い合わせ</h2>
           <p>
-            本ポリシーに関するお問い合わせは <Link to="/contact">お問い合わせページ</Link> よりご連絡ください。
+            本ポリシーに関するお問い合わせは <Link to="/contact/">お問い合わせページ</Link> よりご連絡ください。
           </p>
         </div>
 
