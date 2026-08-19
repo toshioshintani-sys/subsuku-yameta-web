@@ -1062,41 +1062,41 @@ export const ALTERNATIVES = {
   hulu: [
     { id: 'u-next', reason: '国内ドラマ重視ならこちらも充実' },
     { id: 'amazon-prime', reason: '値段重視ならこちらが圧倒的' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とほぼ同額。ニュース・オリジナル番組・アニメ中心ならこちら。海外ドラマの厚みはHuluが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とほぼ同額。ニュース・オリジナル番組・アニメ中心ならこちら。海外ドラマの厚みはHuluが上' },
   ],
   'u-next': [
     { id: 'hulu', reason: '月額料金を抑えたい場合' },
     { id: 'amazon-prime', reason: 'コスパ重視なら最安クラス' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とぐっと安い。ニュース・アニメ・オリジナル番組中心。見放題本数や新作レンタルはU-NEXTが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とぐっと安い。ニュース・アニメ・オリジナル番組中心。見放題本数や新作レンタルはU-NEXTが上' },
   ],
   'abema-premium': [
     { url: 'https://abema.tv/', name: 'ABEMA（無料）', reason: 'プレミアム機能不要なら無料版で十分なケースも' },
   ],
   fod: [
     { id: 'u-next', reason: 'フジ系コンテンツも見放題対象' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とやや高くなる。ニュース・バラエティ・アニメの同時配信が強み。フジ系の独占作品はFODでしか見られないものが多い' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とやや高くなる。ニュース・バラエティ・アニメの同時配信が強み。フジ系の独占作品はFODでしか見られないものが多い' },
   ],
   lemino: [
     { id: 'amazon-prime', reason: 'コスパ重視の汎用VOD' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とほぼ同額。オリジナル番組・ニュース・格闘技中心なら。ドコモ系特典との連携はLeminoが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とやや安い。オリジナル番組・ニュース・格闘技中心なら。ドコモ系特典との連携はLeminoが上' },
   ],
   'dmm-premium': [
     { id: 'amazon-prime', reason: '一般作品中心なら定番の選択' },
   ],
   'wowow-on-demand': [
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円と割安。オリジナル番組・ニュース・アニメ中心なら。映画ラインナップの厚みはWOWOWが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円と割安。オリジナル番組・ニュース・アニメ中心なら。映画ラインナップの厚みはWOWOWが上' },
     { id: 'u-next', reason: '映画ラインナップ重視ならこちらも' },
   ],
   'rakuten-tv': [
     { id: 'amazon-prime', reason: '広く浅く見たいなら定番' },
   ],
   dazn: [
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円。サッカー・格闘技・スポーツニュースを安く見たいなら。ただし試合の網羅はDAZNに及ばない' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円。サッカー・格闘技・スポーツニュースを安く見たいなら。ただし試合の網羅はDAZNに及ばない' },
     { url: 'https://www.youtube.com/', name: 'YouTube ライブ（無料）', reason: '一部のスポーツは公式チャンネルで無料配信' },
   ],
   danime: [
     { id: 'u-next', reason: '同じドコモグループ・アニメも見放題に多数含む' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とdアニメより高くなる。アニメ専門でなくニュース・バラエティも見たい人向け。アニメ本数の深さはdアニメが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とdアニメより高くなる。アニメ専門でなくニュース・バラエティも見たい人向け。アニメ本数の深さはdアニメが上' },
   ],
   'apple-tv-plus': [
     { id: 'amazon-prime', reason: '作品数の幅と価格ならこちら。Appleオリジナルの作り込みとは方向性が違う' },
@@ -1250,7 +1250,7 @@ export const ALTERNATIVES = {
   crunchyroll: [
     { id: 'danime', reason: '日本国内ならdアニメ系がコスパ◎' },
     { id: 'u-next', reason: 'アニメ含む網羅型VOD' },
-    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,080円とやや高い。アニメの同時配信＋ニュース・バラエティも見るなら。アニメ専門の網羅性はCrunchyrollやdアニメが上' },
+    { url: 'https://abema.tv/', name: 'ABEMAプレミアム', serviceId: 'abema-premium', reason: '月1,180円とやや高い。アニメの同時配信＋ニュース・バラエティも見るなら。アニメ専門の網羅性はCrunchyrollやdアニメが上' },
   ],
   'vimeo-pro': [
     { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '公開動画の置き場としては圧倒的に無料で十分' },
@@ -2623,6 +2623,18 @@ export const DIRECTION_LABEL = {
 };
 
 export const PRICE_HISTORY = {
+  'abema-premium': [
+    {
+      date: '2026-04-01',
+      item: 'ABEMAプレミアム・広告つきABEMAプレミアム',
+      direction: 'up',
+      change:
+        'ABEMAプレミアム 1,080円→1,180円、広告つきABEMAプレミアム 580円→680円。公式お知らせに改定日と新旧価格が明記されている。2026-08-19 に再確認した際、公式LP(abema.tv/lp/new-premiumplan)の料金表は**画像で**1,080円/580円のまま（画像の更新日は2025-12-01）で、テキスト抽出でも画像でも旧価格しか読めなかった。公式サイト内で新旧が混在しているため、ここを一次情報とすること。',
+      source:
+        'https://help.abema.tv/hc/ja/articles/55297041707545--%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B-ABEMA%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%81%AE%E6%96%99%E9%87%91%E6%94%B9%E5%AE%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6',
+      verifiedAt: '2026-08-19',
+    },
+  ],
   // ── 2026-07-25 追加：Apple 日本の一斉値上げ（価格偵察部隊が検知→公式ページで一次確認済み）
   // ⚠️ 変更日について：2026-07-07時点では旧価格だったことを監視状態ファイルで確認済みだが、
   //    偵察部隊が2026-07-07〜07-25の18日間停止していたため、値上げの正確な実施日は特定できない。
