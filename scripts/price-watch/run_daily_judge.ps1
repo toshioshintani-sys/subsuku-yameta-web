@@ -245,18 +245,24 @@ try {
             # 危険な言い回しは src/ が実際に動いた時だけにする。
             $srcTouched = @($violations | Where-Object { $_.StartsWith('src/') })
             $commits = (& git log --format='  %h %ad %an  %s' --date=format:'%H:%M:%S' "$shaBefore..$shaAfter" 2>$null) -join "`n"
-            $head = if ($srcTouched.Count -gt 0) {
-                "サブスクやめた 価格判定（無人）の実行中に **src/ が main で変わりました**`n" +
-                "表示価格が人の目を通らずに公開された可能性があります。差分を確認してください。"
+            # src/ が動いていない回は失敗にしない（2026-08-20 修正）。
+            #
+            # このガードが守りたいのは「表示価格が人の目を通らずに公開されること」だけ。
+            # ところが実行中に人が docs/ を1つ commit しただけで exit 1 になり、
+            # 8/19・8/20 と2日続けてタスクが失敗表示になった（どちらも私のlessons追記が原因）。
+            # **本当は緑の日を赤くすると、赤の意味が薄れる**＝肝心な日に読み飛ばされる。
+            # src/ が動いた時だけ赤にして Slack を鳴らし、それ以外はログに残すだけにする。
+            if ($srcTouched.Count -eq 0) {
+                Write-Output ("許可リスト外だが src/ は無変更のため続行: " + ($violations -join ', '))
+                Write-Output ("範囲内のコミット:`n" + $commits)
             } else {
-                "サブスクやめた 価格判定（無人）の実行中に、許可リスト外のファイルが main で変わりました`n" +
-                "src/ は動いていないので表示価格は変わっていません。"
+                Send-Slack ("サブスクやめた 価格判定（無人）の実行中に **src/ が main で変わりました**`n" +
+                    "表示価格が人の目を通らずに公開された可能性があります。差分を確認してください。`n`n" +
+                    "変わったファイル: " + ($violations -join ', ') + "`n`n" +
+                    "範囲内のコミット（人が同時に commit した場合もここに出ます）:`n" + $commits + "`n`n" +
+                    "ログ: $logFile")
+                exit 1
             }
-            Send-Slack ($head + "`n`n" +
-                "許可外: " + ($violations -join ', ') + "`n`n" +
-                "範囲内のコミット（人が同時に commit した場合もここに出ます）:`n" + $commits + "`n`n" +
-                "ログ: $logFile")
-            exit 1
         }
         Write-Output "main に直接入れた変更: $($touched -join ', ')"
     }
