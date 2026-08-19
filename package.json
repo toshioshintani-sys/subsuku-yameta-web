@@ -10,11 +10,12 @@
     "lint": "eslint .",
     "price:watch": "node scripts/price-watch/price-watch.mjs",
     "price:reconcile": "node scripts/price-watch/reconcile.mjs",
-    "price:check": "node scripts/price-watch/check-consistency.mjs",
+    "price:check": "node scripts/price-watch/check-consistency.mjs && node scripts/price-watch/audit-prose-prices.mjs",
     "preview": "vite preview",
     "threads:post": "node scripts/threads/post.mjs",
     "threads:dry": "node scripts/threads/post.mjs --dry-run",
-    "price:fetch": "node scripts/price-watch/fetch-pages.mjs"
+    "price:fetch": "node scripts/price-watch/fetch-pages.mjs",
+    "price:audit-prose": "node scripts/price-watch/audit-prose-prices.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",

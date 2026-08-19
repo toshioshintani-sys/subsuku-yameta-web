@@ -1044,7 +1044,7 @@ export const SERVICES = [
 export const ALTERNATIVES = {
   // 動画 — 同価格帯の乗り換え or 無料代替
   netflix: [
-    { id: 'disney-plus', reason: '月額990円・ディズニー/マーベル/スターウォーズ系が好きなら' },
+    { id: 'disney-plus', reason: '月額1,250円・ディズニー/マーベル/スターウォーズ系が好きなら' },
     { id: 'amazon-prime', reason: '月額600円・送料無料特典もまとめて' },
     { url: 'https://www.youtube.com/', name: 'YouTube（無料）', reason: '広告ありで多くのドラマ・映画コンテンツが視聴可能' },
   ],
@@ -3492,7 +3492,7 @@ export const EXTENDED_CONTENT = {
   },
   'chatgpt-plus': {
     summary:
-      'ChatGPT Plus は OpenAI が提供する月額約3100円（$20・1ドル155円換算）の ChatGPT 有料プラン。最新モデル（GPT-5等）への優先アクセス、画像生成、データ分析、メモリ機能などが利用可能。',
+      'ChatGPT Plus は OpenAI が提供する月額3,000円（日本向けページの円建て価格）の ChatGPT 有料プラン。最新モデル（GPT-5等）への優先アクセス、画像生成、データ分析、メモリ機能などが利用可能。',
     whyHard:
       'ChatGPT Plus の解約は「かんたん」。設定画面から3クリックで完了。引き止めも控えめ。ただし「無料版に戻る」のか「Plus を継続する」のか分かりにくい UI なので、間違って続行ボタンを押さないよう注意。',
     darkPatterns: [
@@ -3630,7 +3630,7 @@ export const EXTENDED_CONTENT = {
   },
   'claude-pro': {
     summary:
-      'Claude Pro は Anthropic が提供する月額約3100円（$20・1ドル155円換算）の AI チャットサービス有料プラン。最新モデル（Claude Opus 4.5以降）への優先アクセス・5倍以上のメッセージ上限・Projects 機能などが利用可能。',
+      'Claude Pro は Anthropic が提供する月額 $22（$20＋消費税10%・日本向け表示）の AI チャットサービス有料プラン。円換算額と使用した為替レートはこのページの価格欄に出ます。最新モデル（Claude Opus 4.5以降）への優先アクセス・5倍以上のメッセージ上限・Projects 機能などが利用可能。',
     whyHard:
       'Claude Pro の解約は「かんたん」。設定画面から3クリックで完了し、引き止めも控えめ。ただし、Claude Code（CLI）と統合プランの場合は、別の解約フローになる点に注意。',
     darkPatterns: [
