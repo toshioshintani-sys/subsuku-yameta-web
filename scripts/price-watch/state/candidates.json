@@ -1,70 +1,37 @@
 {
-  "generatedAt": "2026-08-18T22:13:53.416Z",
+  "generatedAt": "2026-08-19T22:14:02.746Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "apple-music",
+      "name": "Apple Music",
+      "url": "https://www.apple.com/jp/apple-music/",
+      "added": [],
+      "removed": [
+        "180円",
+        "480円"
+      ],
+      "detectedAt": "2026-08-19T22:10:42.161Z"
+    },
     {
       "id": "adobe-cc",
       "name": "Adobe Creative Cloud",
       "url": "https://www.adobe.com/jp/creativecloud/plans.html",
-      "added": [],
-      "removed": [
+      "added": [
         "1,580円"
       ],
-      "detectedAt": "2026-08-18T22:11:25.535Z"
+      "removed": [],
+      "detectedAt": "2026-08-19T22:11:40.607Z"
     },
     {
-      "id": "1password",
-      "name": "1Password",
-      "url": "https://1password.com/pricing/password-manager",
+      "id": "dmagazine",
+      "name": "dマガジン",
+      "url": "https://dmagazine.docomo.ne.jp/",
       "added": [],
       "removed": [
-        "$48",
-        "$72"
+        "3500円"
       ],
-      "detectedAt": "2026-08-18T22:12:43.821Z"
-    },
-    {
-      "id": "deepl-pro",
-      "name": "DeepL Pro",
-      "url": "https://www.deepl.com/pro",
-      "added": [
-        "$12",
-        "$9"
-      ],
-      "removed": [
-        "$11",
-        "$28",
-        "$29",
-        "$8"
-      ],
-      "detectedAt": "2026-08-18T22:13:05.033Z"
-    },
-    {
-      "id": "cursor",
-      "name": "Cursor",
-      "url": "https://cursor.com/pricing",
-      "added": [
-        "$21"
-      ],
-      "removed": [
-        "$29"
-      ],
-      "detectedAt": "2026-08-18T22:13:30.515Z"
-    },
-    {
-      "id": "google-workspace",
-      "name": "Google Workspace",
-      "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [
-        "￥1,250",
-        "￥400"
-      ],
-      "removed": [
-        "￥1,120",
-        "￥1,750",
-        "￥560"
-      ],
-      "detectedAt": "2026-08-18T22:13:38.741Z"
+      "detectedAt": "2026-08-19T22:12:44.284Z"
     }
   ]
 }

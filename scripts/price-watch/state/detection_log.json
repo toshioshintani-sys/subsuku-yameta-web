@@ -2383,5 +2383,88 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "現在「3か月間50%オフ」表示でStarter ¥400¥800、Standard ¥800¥1,600、Plus ¥1,250¥2,500(取り消し線が正規価格)。正規価格800/1600/2500は当方PRICING/PLANSと完全一致し不変。検知された増減はプロモーション割引率(過去は30%オフ等)の変動によるもので、追跡対象の正規価格は変わっていない。"
+  },
+  {
+    "date": "2026-08-20",
+    "serviceId": "apple-music",
+    "name": "Apple Music",
+    "added": [],
+    "removed": [
+      180,
+      480
+    ],
+    "ours": [
+      1180,
+      1980,
+      680
+    ],
+    "signals": [
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.apple.com/jp/apple-music/",
+    "evidence": "個人プラン月額1,180円・ファミリープラン月額1,980円・学生プラン月額680円のみ本文に出現。当方PRICING/PLANS(1180/1980/680)と完全一致し不変。消えた「180円」「480円」はページ本文のどこにも現れず（footnote等含め全文検索でヒットなし）",
+    "verdictReason": "取得タイミングの揺れで生じた断片トークンと判断。追跡対象の3プラン価格はすべて健在",
+    "judgedAt": "2026-08-20"
+  },
+  {
+    "date": "2026-08-20",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1580
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/photography.html",
+    "evidence": "フォトプラン専用ページで「フォトプラン（1TB）2,380円/月」を直接確認。plans.htmlでも3,280円(単体)・6,480円(Standard)・9,080円(Pro通常価格)を確認。当方PLANS(2380/3280/6480/9080)と完全一致し不変。追加された「1,580円」はAdobe Firefly Standard（別商品）の価格で、過去9回同一理由で偽陽性判定済み",
+    "verdictReason": "07-31以来繰り返してきたFirefly Standard単体プランの表示揺れと同種。CC本体4プランは全て不変",
+    "judgedAt": "2026-08-20"
+  },
+  {
+    "date": "2026-08-20",
+    "serviceId": "dmagazine",
+    "name": "dマガジン",
+    "added": [],
+    "removed": [
+      3500
+    ],
+    "ours": [
+      580
+    ],
+    "signals": [
+      {
+        "name": "同じ値（3500）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://dmagazine.docomo.ne.jp/",
+    "evidence": "本文に「31日経過後はその月から月額料金580円（税込）が発生します」と明記。当方PRICING(580)と一致し不変。消えた「3,500円」は本文のどこにも出現せず、過去08-13に「本文のどこにも出現しない=表示揺れ」と判定済みの同一トークン",
+    "verdictReason": "日替わりで入れ替わる新着コンテンツ一覧のタイトル内数字と推定される既知の揺れ。月額580円は不変",
+    "judgedAt": "2026-08-20"
   }
 ]
