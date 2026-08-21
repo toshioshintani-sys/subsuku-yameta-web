@@ -2466,5 +2466,99 @@
     "evidence": "本文に「31日経過後はその月から月額料金580円（税込）が発生します」と明記。当方PRICING(580)と一致し不変。消えた「3,500円」は本文のどこにも出現せず、過去08-13に「本文のどこにも出現しない=表示揺れ」と判定済みの同一トークン",
     "verdictReason": "日替わりで入れ替わる新着コンテンツ一覧のタイトル内数字と推定される既知の揺れ。月額580円は不変",
     "judgedAt": "2026-08-20"
+  },
+  {
+    "date": "2026-08-22",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1580
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去11回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "1,580円/月はAdobe Firefly Standard（当方は非掲載の別商品）の価格。当方が掲載しているCreative Cloud Standard(6,480円)は本文に別途出現し、当方PRICING(6480/2380/3280/9080)と一致・不変",
+    "verdictReason": "検知値1580は当方掲載プランと無関係の別商品(Firefly Standard)の価格で、当方掲載4プランの値はいずれも変化なし。過去11回と同型の偽陽性",
+    "judgedAt": "2026-08-22"
+  },
+  {
+    "date": "2026-08-22",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      12,
+      9
+    ],
+    "removed": [
+      11,
+      29,
+      8
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（12, 9, 11）で過去7回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "Individual ￥1,150 / Team ￥3,750 / Business ￥7,500 のみ本文に出現。ドル建て表示（$12/$9/$11/$29/$8のいずれも）は一切出現せず。当方PRICING/PLANS(1150/3750/7500)と完全一致・不変",
+    "verdictReason": "日本向けページはJPY固定表示で、検知されたドル値は本文のどこにも存在しない。過去7回と同型の偽陽性",
+    "judgedAt": "2026-08-22"
+  },
+  {
+    "date": "2026-08-22",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      2000,
+      640
+    ],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 2000, 640）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter ¥800 / Standard ¥1,600 / Plus ¥2,500 のみ本文に出現（すべてユーザーあたり月額と明記）。検知の1,280/2,000/640/1,250/400は本文のどこにも出現せず。当方PRICING/PLANS(800/1600/2500)と完全一致・不変",
+    "verdictReason": "検知値が本文に存在せず、現在価格が当方表示と一致。過去19回と同型の偽陽性",
+    "judgedAt": "2026-08-22"
   }
 ]
