@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 8428,
-        "moneyLines": 21,
-        "checkedAt": "2026-08-15",
+        "ms": 8707,
+        "moneyLines": 14,
+        "checkedAt": "2026-08-23",
         "fails": 0,
-        "lastOkAt": "2026-08-15"
+        "lastOkAt": "2026-08-23"
       }
     },
     {
@@ -135,15 +135,12 @@
       "enabled": true,
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 6945,
-        "moneyLines": 3,
-        "checkedAt": "2026-08-22",
-        "fails": 0,
-        "lastOkAt": "2026-08-22",
-        "suspects": [
-          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
-        ]
+        "status": "timeout",
+        "ms": 35002,
+        "moneyLines": 0,
+        "checkedAt": "2026-08-23",
+        "fails": 1,
+        "lastOkAt": "2026-08-22"
       }
     },
     {
@@ -296,9 +293,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 6944,
+        "ms": 5706,
         "moneyLines": 0,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-23",
         "fails": 0
       }
     },
@@ -404,11 +401,11 @@
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
         "status": "ok",
-        "ms": 5083,
+        "ms": 5507,
         "moneyLines": 5,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-23",
         "fails": 0,
-        "lastOkAt": "2026-08-22"
+        "lastOkAt": "2026-08-23"
       }
     },
     {
@@ -675,11 +672,11 @@
       "enabled": true,
       "note": "baselineで確認",
       "fetch": {
-        "status": "short-body",
-        "ms": 4462,
+        "status": "no-money",
+        "ms": 3082,
         "moneyLines": 0,
-        "checkedAt": "2026-08-22",
-        "fails": 1
+        "checkedAt": "2026-08-23",
+        "fails": 0
       }
     },
     {
@@ -732,9 +729,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 8274,
+        "ms": 7734,
         "moneyLines": 0,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-23",
         "fails": 0
       }
     },
@@ -787,13 +784,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3845,
+        "ms": 4939,
         "moneyLines": 3,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-23",
         "fails": 0,
-        "lastOkAt": "2026-08-22",
+        "lastOkAt": "2026-08-23",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
