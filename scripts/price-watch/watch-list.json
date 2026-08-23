@@ -293,7 +293,7 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 5706,
+        "ms": 5512,
         "moneyLines": 0,
         "checkedAt": "2026-08-23",
         "fails": 0
@@ -673,7 +673,7 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3082,
+        "ms": 4823,
         "moneyLines": 0,
         "checkedAt": "2026-08-23",
         "fails": 0
@@ -729,7 +729,7 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 7734,
+        "ms": 18084,
         "moneyLines": 0,
         "checkedAt": "2026-08-23",
         "fails": 0
