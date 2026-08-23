@@ -25,7 +25,9 @@
 
 ### 1. Google Search Console（GSC）　担当 👤+🤖　最優先
 - 現状：URLプレフィックス型で `https://sabusuku.netlify.app/` を登録・検証済（`public/googlef48b6b57fcb30d8a.html`）。
-- **✅ 2026-08-20 完了（GSC本体は元から完了していた／GA4連携だけ張り替えた）**：
+- **✅ 2026-08-23 完了（GSC本体は元から完了していた／GA4連携だけ張り替えた）**：
+  ※ 当初この節を 2026-08-20 付で書いたが誤り。実際の作業日は 2026-08-23（コミット時刻で確認）。
+    セッションが数日にまたがり、私が会話の途中の日付を引きずったまま書いた。
   - GSC ドメインプロパティ `sc-domain:sabusuku-yameta.com` は**既に存在し確認済み**だった
     （オーナー: toshio.shintani@gmail.com。Indexing API 用サービスアカウント
     `life-oracle-ga4@...` もフル権限で登録済＝チェックリスト項目3も実質完了）。
@@ -39,16 +41,16 @@
     旧リンクを削除 → `sabusuku-yameta.com`(ドメイン型) を新規リンクして張り替えた。
     2026/08/23 リンク済み・ストリーム「サブスクやめた本番」(14921773006)。
   - ✅ **GA4 のデータストリームURLも `https://sabusuku-yameta.com` に更新済み**
-    （2026-08-20。測定ID `G-S0H16V3WE2`・ストリームID 14921773006 は不変）。
+    （2026-08-23。測定ID `G-S0H16V3WE2`・ストリームID 14921773006 は不変）。
   - ✅ **アドレス変更ツールも実行済みだった**。旧 netlify プロパティの設定に
     「このサイトは現在、sabusuku-yameta.com に移行中です」と表示される＝項目1の
     1〜3はすべて完了している。
-  - ✅ **IndexNow が独自ドメインで初めて通った**（2026-08-20 実行・HTTP 200・142URL受理）。
+  - ✅ **IndexNow が独自ドメインで初めて通った**（2026-08-23 実行・HTTP 200・142URL受理）。
     旧 netlify の共有サブドメインでは Bing に弾かれていたもので、チェックリストが
     予告していた「独自ドメインの隠れた最大の効用」が実測で確認できた。
     ただし **スクリプトはどこからも呼ばれていなかった**ので、日次ルーチン
     （`run_daily_judge.ps1`）に1日1回で組み込み、`npm run seo:indexnow` も追加した。
-  - ✅ **Bing Webmaster Tools も完了**（2026-08-20）。俊雄さんが Microsoft アカウントで
+  - ✅ **Bing Webmaster Tools も完了**（2026-08-23）。俊雄さんが Microsoft アカウントで
     ログイン → GSC からインポートで `https://sabusuku-yameta.com/` を登録。
     Google 側には `webmasters.readonly`（確認済みサイトの Search Console データの表示）を
     bing.com に付与済み。取り消しは Google アカウントの設定からいつでも可能。
@@ -61,7 +63,7 @@
       自サイトが引用された回数と対象URLが見える。pull型に一本化した現状で
       **AI検索の引用を測れる唯一の窓**なので、データが溜まったら最初に見ること
       （反映まで最大48時間）。
-- **2026-08-20 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
+- **2026-08-23 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
   - 新ドメインの DNS TXT `google-site-verification=8JT-NTXoiTkXrA-XBPsBL1KJpFBpOCFaPO9CQbcxzsA` は
     **既に入っている**（`nslookup -type=TXT sabusuku-yameta.com` で確認）。TXT は GSC がドメイン
     プロパティ追加を開始した時に発行するものなので、**途中まで進めた形跡がある**。
