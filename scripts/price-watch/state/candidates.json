@@ -1,31 +1,16 @@
 {
-  "generatedAt": "2026-08-22T22:15:04.349Z",
+  "generatedAt": "2026-08-23T22:14:15.343Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [
-        "￥1,480"
-      ],
-      "removed": [],
-      "detectedAt": "2026-08-22T22:11:28.393Z"
-    },
-    {
-      "id": "google-workspace",
-      "name": "Google Workspace",
-      "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [
-        "￥1,250",
-        "￥400"
-      ],
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "added": [],
       "removed": [
-        "￥1,280",
-        "￥2,000",
-        "￥640"
+        "1,580円"
       ],
-      "detectedAt": "2026-08-22T22:14:50.875Z"
+      "detectedAt": "2026-08-23T22:11:47.247Z"
     }
   ]
 }
