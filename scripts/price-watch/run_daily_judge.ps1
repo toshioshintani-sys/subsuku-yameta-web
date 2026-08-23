@@ -139,6 +139,27 @@ try {
         Write-Output "為替が区切りより古いため起動（未判定 $beforeUnjudged 件）"
     }
 
+    # IndexNow へ1日1回通知する（2026-08-20 追加）。
+    #
+    # 検索エンジン（Bing・Yandex系＝ChatGPT search / Copilot の引用元）に更新を知らせる。
+    # スクリプト自体は前からあったが **どこからも呼ばれていなかった**。旧 netlify の
+    # 共有サブドメインでは Bing に弾かれて通らなかったため放置され、独自ドメインへ
+    # 移行したあとも自動化されないまま残っていた。2026-08-20 に手動実行したところ
+    # HTTP 200 で142URLが受理され、独自ドメインで初めて通ることを確認したので日次に載せる。
+    #
+    # 本番の sitemap.xml を読んで公開済みURLだけを送るので、未公開のものは出ない。
+    # 失敗しても判定は止めない（通知レイヤーであって、判定の前提ではない）。
+    $inMarker = Join-Path $logDir ("indexnow_" + $today + ".txt")
+    if (-not (Test-Path $inMarker)) {
+        try {
+            $inOut = & node scripts/seo/indexnow-ping.mjs 2>&1 | Out-String
+            Set-Content -Path $inMarker -Value $today -Encoding UTF8
+            Write-Output ("IndexNow: " + $inOut.Trim())
+        } catch {
+            Write-Output ("IndexNow に失敗（判定は続行）: " + $_.Exception.Message)
+        }
+    }
+
     # 実行前の main の位置を控える（2026-08-05 追加）。
     # 全件偽陽性の日は無人実行が main へ直接 push してよい運用にしたので、
     # **機械が main に何を入れたか**を実行後に機械で検算する。

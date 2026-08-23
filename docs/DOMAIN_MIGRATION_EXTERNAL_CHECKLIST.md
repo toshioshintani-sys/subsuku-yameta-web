@@ -38,9 +38,19 @@
     GA4 は**1プロパティにつき1リンクまで**（「リンク数の上限に達しました」）なので、
     旧リンクを削除 → `sabusuku-yameta.com`(ドメイン型) を新規リンクして張り替えた。
     2026/08/23 リンク済み・ストリーム「サブスクやめた本番」(14921773006)。
-  - ⚠️ **残っている小さなズレ**：GA4 のデータストリーム「サブスクやめた本番」の
-    **ストリームURLが `https://sabusuku.netlify.app` のまま**。計測は測定ID基準なので
-    数字には影響しないが、設定としては古い。次に触るとき直すこと。
+  - ✅ **GA4 のデータストリームURLも `https://sabusuku-yameta.com` に更新済み**
+    （2026-08-20。測定ID `G-S0H16V3WE2`・ストリームID 14921773006 は不変）。
+  - ✅ **アドレス変更ツールも実行済みだった**。旧 netlify プロパティの設定に
+    「このサイトは現在、sabusuku-yameta.com に移行中です」と表示される＝項目1の
+    1〜3はすべて完了している。
+  - ✅ **IndexNow が独自ドメインで初めて通った**（2026-08-20 実行・HTTP 200・142URL受理）。
+    旧 netlify の共有サブドメインでは Bing に弾かれていたもので、チェックリストが
+    予告していた「独自ドメインの隠れた最大の効用」が実測で確認できた。
+    ただし **スクリプトはどこからも呼ばれていなかった**ので、日次ルーチン
+    （`run_daily_judge.ps1`）に1日1回で組み込み、`npm run seo:indexnow` も追加した。
+  - ⚠️ **Bing Webmaster Tools だけ未着手**。ログインが必要で私は実行しない。
+    俊雄さんが Microsoft アカウントでログインし、`sabusuku-yameta.com` を追加すれば完了
+    （GSC からインポート可）。IndexNow 自体は Bing 登録が無くても通っている。
 - **2026-08-20 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
   - 新ドメインの DNS TXT `google-site-verification=8JT-NTXoiTkXrA-XBPsBL1KJpFBpOCFaPO9CQbcxzsA` は
     **既に入っている**（`nslookup -type=TXT sabusuku-yameta.com` で確認）。TXT は GSC がドメイン
