@@ -25,6 +25,22 @@
 
 ### 1. Google Search Console（GSC）　担当 👤+🤖　最優先
 - 現状：URLプレフィックス型で `https://sabusuku.netlify.app/` を登録・検証済（`public/googlef48b6b57fcb30d8a.html`）。
+- **✅ 2026-08-20 完了（GSC本体は元から完了していた／GA4連携だけ張り替えた）**：
+  - GSC ドメインプロパティ `sc-domain:sabusuku-yameta.com` は**既に存在し確認済み**だった
+    （オーナー: toshio.shintani@gmail.com。Indexing API 用サービスアカウント
+    `life-oracle-ga4@...` もフル権限で登録済＝チェックリスト項目3も実質完了）。
+  - **サイトマップも 2026/06/20 に送信済み**・最終読込 2026/08/14・成功・142ページ検出。
+  - **検索データも正常に溜まっていた**（直近28日：表示1,080回・クリック10・CTR 0.9%・
+    平均掲載順位 17.5。上位クエリ「apple tv 解約」54回、「楽天マガジン 解約」36回など）。
+    → 当初懸念した「移行後2か月ぶんの検索データが空」は**誤り**だった。
+  - **実際に欠けていたのは GA4 の Search Console 連携だけ**。旧
+    `https://sabusuku.netlify.app/`(URL-prefix) が 2026/06/13 から繋がったままだった。
+    GA4 は**1プロパティにつき1リンクまで**（「リンク数の上限に達しました」）なので、
+    旧リンクを削除 → `sabusuku-yameta.com`(ドメイン型) を新規リンクして張り替えた。
+    2026/08/23 リンク済み・ストリーム「サブスクやめた本番」(14921773006)。
+  - ⚠️ **残っている小さなズレ**：GA4 のデータストリーム「サブスクやめた本番」の
+    **ストリームURLが `https://sabusuku.netlify.app` のまま**。計測は測定ID基準なので
+    数字には影響しないが、設定としては古い。次に触るとき直すこと。
 - **2026-08-20 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
   - 新ドメインの DNS TXT `google-site-verification=8JT-NTXoiTkXrA-XBPsBL1KJpFBpOCFaPO9CQbcxzsA` は
     **既に入っている**（`nslookup -type=TXT sabusuku-yameta.com` で確認）。TXT は GSC がドメイン
