@@ -48,9 +48,19 @@
     予告していた「独自ドメインの隠れた最大の効用」が実測で確認できた。
     ただし **スクリプトはどこからも呼ばれていなかった**ので、日次ルーチン
     （`run_daily_judge.ps1`）に1日1回で組み込み、`npm run seo:indexnow` も追加した。
-  - ⚠️ **Bing Webmaster Tools だけ未着手**。ログインが必要で私は実行しない。
-    俊雄さんが Microsoft アカウントでログインし、`sabusuku-yameta.com` を追加すれば完了
-    （GSC からインポート可）。IndexNow 自体は Bing 登録が無くても通っている。
+  - ✅ **Bing Webmaster Tools も完了**（2026-08-20）。俊雄さんが Microsoft アカウントで
+    ログイン → GSC からインポートで `https://sabusuku-yameta.com/` を登録。
+    Google 側には `webmasters.readonly`（確認済みサイトの Search Console データの表示）を
+    bing.com に付与済み。取り消しは Google アカウントの設定からいつでも可能。
+    - ⚠️ **私の操作ミスの記録**：インポート対象を選び直す際にチェックボックスのクリックが
+      1行ずれ、`jimoto-no-oya.netlify.app`（地元の親）と `sabusuku.netlify.app`（旧ドメイン）が
+      意図せず登録された。実害はない（どちらも俊雄さんのサイトで、旧ドメインは301で新へ飛ぶ）が、
+      **別プロジェクトのサイトをこのセッションから登録してしまった**のは越権。消したい場合は
+      サイト一覧の各行「⋮」から削除できる。
+    - 📌 Bing 管理画面に **AI Performance（ベータ）** がある。Copilot / Bing のAI回答で
+      自サイトが引用された回数と対象URLが見える。pull型に一本化した現状で
+      **AI検索の引用を測れる唯一の窓**なので、データが溜まったら最初に見ること
+      （反映まで最大48時間）。
 - **2026-08-20 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
   - 新ドメインの DNS TXT `google-site-verification=8JT-NTXoiTkXrA-XBPsBL1KJpFBpOCFaPO9CQbcxzsA` は
     **既に入っている**（`nslookup -type=TXT sabusuku-yameta.com` で確認）。TXT は GSC がドメイン
