@@ -25,6 +25,19 @@
 
 ### 1. Google Search Console（GSC）　担当 👤+🤖　最優先
 - 現状：URLプレフィックス型で `https://sabusuku.netlify.app/` を登録・検証済（`public/googlef48b6b57fcb30d8a.html`）。
+- **2026-08-20 実測で分かったこと（俊雄さんがGA4側で発見・私がDNSで裏取り）**：
+  - 新ドメインの DNS TXT `google-site-verification=8JT-NTXoiTkXrA-XBPsBL1KJpFBpOCFaPO9CQbcxzsA` は
+    **既に入っている**（`nslookup -type=TXT sabusuku-yameta.com` で確認）。TXT は GSC がドメイン
+    プロパティ追加を開始した時に発行するものなので、**途中まで進めた形跡がある**。
+  - ただし GSC 側で「確認」まで押されたかは、この方法では分からない。下のチェックはまだ空のまま。
+  - **GA4 の Search Console 連携は旧 `https://sabusuku.netlify.app/` を指したまま**で、新ドメインは
+    未連携（俊雄さんが GA4 のプロパティ一覧で確認）。
+  - 影響：**新ドメインのプロパティが未確認なら、2026-06-21 の移行以降の検索データが GSC に
+    一切溜まっていない**ことになる。旧 netlify は301で新ドメインへ飛ぶので旧プロパティにも
+    データは入らない。pull型（SEO）に一本化した現在の方針で、**その唯一のチャネルの計測が
+    欠けている**ことになるため、Phase2 の中でも最優先。
+  - 新ドメインで `googlef48b6b57fcb30d8a.html` / `sitemap.xml` / IndexNowキーの3つが HTTP 200 で
+    配信されていることは確認済み（＝ファイル検証型でも通せる状態）。
 - やること：
   1. **ドメインプロパティ**で `sabusuku-yameta.com` を新規追加（DNS TXT検証）。TXTは**Netlify DNSに私が追加**できる（委譲済のため）。
   2. `sitemap.xml` を送信（新ドメイン）。
