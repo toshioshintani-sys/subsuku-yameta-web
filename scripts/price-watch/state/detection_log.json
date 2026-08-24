@@ -2625,5 +2625,65 @@
     "notes": "",
     "verdictReason": "通常価格は不変。検知は初回3か月割引の割引率変更（20%→50%オフ）による割引トークンの揺れで、価格改定ではない",
     "judgedAt": "2026-08-23"
+  },
+  {
+    "date": "2026-08-25",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1580
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "本文に「追加の生成AIクレジットは2,000クレジット（1,580円/月）から購入いただけます。」と明記。1,580円はCreative Cloud購読プランの価格ではなく追加生成AIクレジットのアドオン価格。当方掲載4プラン（Creative Cloud Standard 6,480円/Acrobat Standard等 2,380/3,280/9,080円）は本文中に別途出現し、当方PRICING/PLANSと完全一致・不変",
+    "notes": "",
+    "verdictReason": "1580は生成AIクレジットのアドオン価格であり購読プラン価格と無関係。08-13以降13回連続で同一原因の偽陽性",
+    "judgedAt": "2026-08-25"
+  },
+  {
+    "date": "2026-08-25",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      200
+    ],
+    "removed": [],
+    "ours": [
+      2393,
+      22968,
+      5583,
+      53592,
+      15153,
+      145464
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "本文にStandard $15（年払い$12）・Pro $35（年払い$28）・Max $95（年払い$76）・Enterprise（Contact Us）と明記。検知された「$200」はページ本文のどこにも出現せず。うちのUSD_PRICED（runway:15）・PLANS換算値（2393/22968/5583/53592/15153/145464円）は$15/$35/$95という主要3プランと一致・不変",
+    "notes": "",
+    "verdictReason": "検知値$200は本文に実在せず、主要3プランの金額（$15/$35/$95）は不変。07-29〜08-08の過去4回と同型の一時的な描画揺れ（5回目）",
+    "judgedAt": "2026-08-25"
   }
 ]

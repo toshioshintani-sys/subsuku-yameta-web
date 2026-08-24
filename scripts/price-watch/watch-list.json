@@ -99,11 +99,11 @@
       "note": "2026-07-26: トップページ（disneyplus.com/ja-jp/）は両プランの価格を出すが、headless でも35秒で開けず必ずタイムアウトするため、確実に開けるこのページに戻した。ただしこのページはスタンダード（1,250円/年12,500円）しか価格を出さない。プレミアム（1,670円/年16,700円）は監視対象外になるので、棚卸し（reconcile）では毎回「プレミアムがページに無い」と出る＝既知の偽陽性。",
       "fetch": {
         "status": "ok",
-        "ms": 12698,
+        "ms": 8353,
         "moneyLines": 4,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-24",
         "fails": 0,
-        "lastOkAt": "2026-08-22"
+        "lastOkAt": "2026-08-24"
       }
     },
     {
@@ -120,11 +120,11 @@
       "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外",
       "fetch": {
         "status": "ok",
-        "ms": 13559,
+        "ms": 9463,
         "moneyLines": 1,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-25",
         "fails": 0,
-        "lastOkAt": "2026-08-22"
+        "lastOkAt": "2026-08-25"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35002,
+        "ms": 35015,
         "moneyLines": 0,
-        "checkedAt": "2026-08-23",
-        "fails": 1,
+        "checkedAt": "2026-08-24",
+        "fails": 2,
         "lastOkAt": "2026-08-22"
       }
     },
@@ -244,11 +244,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 12516,
-        "moneyLines": 29,
-        "checkedAt": "2026-08-22",
+        "ms": 14275,
+        "moneyLines": 31,
+        "checkedAt": "2026-08-25",
         "fails": 0,
-        "lastOkAt": "2026-08-22",
+        "lastOkAt": "2026-08-25",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -273,11 +273,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 12785,
+        "ms": 15732,
         "moneyLines": 5,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-24",
         "fails": 0,
-        "lastOkAt": "2026-08-22",
+        "lastOkAt": "2026-08-24",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -293,9 +293,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 5512,
+        "ms": 4282,
         "moneyLines": 0,
-        "checkedAt": "2026-08-23",
+        "checkedAt": "2026-08-25",
         "fails": 0
       }
     },
@@ -401,11 +401,11 @@
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
         "status": "ok",
-        "ms": 5507,
+        "ms": 2871,
         "moneyLines": 5,
-        "checkedAt": "2026-08-23",
+        "checkedAt": "2026-08-24",
         "fails": 0,
-        "lastOkAt": "2026-08-23"
+        "lastOkAt": "2026-08-24"
       }
     },
     {
@@ -638,11 +638,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 11897,
+        "ms": 6354,
         "moneyLines": 1,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-24",
         "fails": 0,
-        "lastOkAt": "2026-08-22",
+        "lastOkAt": "2026-08-24",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -673,9 +673,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4823,
+        "ms": 2745,
         "moneyLines": 0,
-        "checkedAt": "2026-08-23",
+        "checkedAt": "2026-08-25",
         "fails": 0
       }
     },
@@ -729,9 +729,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 18084,
+        "ms": 3691,
         "moneyLines": 0,
-        "checkedAt": "2026-08-23",
+        "checkedAt": "2026-08-25",
         "fails": 0
       }
     },
@@ -744,9 +744,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4099,
+        "ms": 4022,
         "moneyLines": 0,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-25",
         "fails": 0
       }
     },
@@ -803,11 +803,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3260,
+        "ms": 3553,
         "moneyLines": 10,
-        "checkedAt": "2026-08-08",
+        "checkedAt": "2026-08-25",
         "fails": 0,
-        "lastOkAt": "2026-08-08"
+        "lastOkAt": "2026-08-25"
       }
     },
     {
