@@ -243,16 +243,12 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 14275,
-        "moneyLines": 31,
-        "checkedAt": "2026-08-25",
-        "fails": 0,
-        "lastOkAt": "2026-08-25",
-        "suspects": [
-          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
-          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
-        ]
+        "status": "short-body",
+        "ms": 6771,
+        "moneyLines": 0,
+        "checkedAt": "2026-08-26",
+        "fails": 1,
+        "lastOkAt": "2026-08-25"
       }
     },
     {
@@ -784,11 +780,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4939,
+        "ms": 5295,
         "moneyLines": 3,
-        "checkedAt": "2026-08-23",
+        "checkedAt": "2026-08-26",
         "fails": 0,
-        "lastOkAt": "2026-08-23",
+        "lastOkAt": "2026-08-26",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
