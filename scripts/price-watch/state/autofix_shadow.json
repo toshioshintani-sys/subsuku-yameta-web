@@ -10,5 +10,17 @@
     "evidence": "公式プラン表(music.line.me/aboutus/plan/)の現行記載は一般1,080円・学生580円のみ。ファミリーの語はページ内に4回出るが4回とも古い宣伝文の中で、同じ文が一般980円・学生480円という改定前の価格を併記している。その文にある1,680円も現行価格ではない。掲載中の1,480円は公式のどこにも存在しない。",
     "checkedUrl": "https://music.line.me/aboutus/plan/",
     "proposal": "確認できないプラン行は表示しない（誤った価格を出すより、出さないほうが安全）"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "canva-pro",
+    "item": "Pro（個人）年払い",
+    "ours": 12000,
+    "official": 11800,
+    "autoApplicable": true,
+    "reason": "自動適用の3条件を満たす。単一数値（年払い額）のみの差し替えで、プラン名・プラン数・課金体系は変わらない。この数値はPRICING/PLANSにのみ出現しEXTENDED_CONTENTの地の文には無い。公式ページを自分で開いて直接読めた。",
+    "evidence": "canva.com/pricing/ の「個人」トグルで『Canvaプロ ¥11,800 /年払い、1人あたり』と表示。当方PLANSのyearly=12,000（services.js:1820）と200円の差。月額1,500円（当方PRICING/PLANSのmonthly）はページの月単位トグルがJSで別描画のため今回は未確認・変更なしとみなす。",
+    "checkedUrl": "https://www.canva.com/pricing/",
+    "proposal": "shadowに積んで様子見。5件たまったら俊雄さんが一括確認のうえ自動適用に昇格するか判断"
   }
 ]

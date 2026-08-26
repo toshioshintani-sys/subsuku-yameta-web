@@ -2719,5 +2719,136 @@
     "evidence": "本文に Starter ¥400/¥800・Standard ¥800/¥1,600・Plus ¥1,250/¥2,500（すべて『3か月間50%オフ』併記の取り消し線付き通常価格）と明記。通常価格800/1600/2500は当方PRICING/PLANSと完全一致・不変。今回のadded(1120,1750,560)/removed(1250,400)は割引率トークン（30%/50%オフ等）がページ側で入れ替わっただけで、実際に確認できた本文は08-23時点の状態（400/1250）に戻っていた＝ページ側の表示が時点ごとに揺れているだけ",
     "verdictReason": "過去20回と同型のプロモーション割引率オシレーション。通常価格は21回連続で不変",
     "judgedAt": "2026-08-26"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      2280,
+      780
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "再取得した本文に「[月単位] ￥1,480​/月」が現在も存在（個人プラン￥1,280・ファミリー￥2,280・学生￥780とは別の表示ブロックとして併存）。消失は確認できず、非同期描画で出たり消えたりしているだけ。当方PLANS(1280/2280/780)は本文中に不変で出現・一致",
+    "notes": "",
+    "verdictReason": "1,480は消失ではなく今回の再取得でも表示を確認。過去9回と同型の非同期読み込みによる表示揺れで、当方の3プラン(1,280/2,280/780)は不変",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "本文に「Adobe Firefly Standard 1,580円/月」および「追加の生成AIクレジットは2,000クレジット（1,580円/月）から購入いただけます」と明記。1,580円はCreative Cloud購読プランではなく別製品(Firefly Standard)/アドオンの価格。当方4プラン(Creative Cloud Standard 6,480円/Acrobat Standard等 2,380/3,280/9,080円)は本文中に別途出現し、当方PRICING/PLANSと完全一致・不変",
+    "notes": "",
+    "verdictReason": "1,580は購読プラン価格ではなくFirefly Standard/生成AIクレジットのアドオン価格。08-13以降14回連続で同一原因の偽陽性",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [
+      10
+    ],
+    "removed": [],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "同じ値（10）で過去5回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://evernote.com/ja-jp/compare-plans",
+    "evidence": "本文に「Flexible　から　¥10/月/シート」とあり、チーム向け従量課金プランの開始価格。個人向けStarter(月1,100円・年払い換算591.58円/月・年額7,099円)とAdvanced(月1,799円・年払い換算1,491.58円/月・年額17,899円)は本文中で当方PRICING/PLANS(1100/7099/1799/17899)と完全一致・不変",
+    "notes": "",
+    "verdictReason": "10はチーム向けFlexibleプランの1シートあたり開始価格であり、個人向けStarter/Advancedとは無関係。過去5回と同型の偽陽性",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [
+      1120,
+      1750,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400, 1120）で過去21回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "本文に Starter ¥400/¥800・Standard ¥800/¥1,600・Plus ¥1,250/¥2,500（すべて「3か月間50%オフ」併記の通常価格）と明記。通常価格800/1600/2500は当方PRICING/PLANSと完全一致・不変。今回のadded(1250,400)/removed(1120,1750,560)は前回時点の別の割引率表示との入れ替わりで、実際の通常価格は一度も動いていない",
+    "notes": "",
+    "verdictReason": "過去21回と同型のプロモーション割引率オシレーション（22回目）。通常価格は22回連続で不変",
+    "judgedAt": "2026-08-27"
   }
 ]

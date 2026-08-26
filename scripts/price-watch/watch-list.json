@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 8707,
-        "moneyLines": 14,
-        "checkedAt": "2026-08-23",
+        "ms": 8082,
+        "moneyLines": 22,
+        "checkedAt": "2026-08-27",
         "fails": 0,
-        "lastOkAt": "2026-08-23"
+        "lastOkAt": "2026-08-27"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35015,
+        "ms": 35004,
         "moneyLines": 0,
-        "checkedAt": "2026-08-24",
-        "fails": 2,
+        "checkedAt": "2026-08-27",
+        "fails": 4,
         "lastOkAt": "2026-08-22"
       }
     },
@@ -243,12 +243,16 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "short-body",
-        "ms": 6771,
-        "moneyLines": 0,
-        "checkedAt": "2026-08-26",
-        "fails": 1,
-        "lastOkAt": "2026-08-25"
+        "status": "ok-suspect",
+        "ms": 12818,
+        "moneyLines": 31,
+        "checkedAt": "2026-08-27",
+        "fails": 0,
+        "lastOkAt": "2026-08-27",
+        "suspects": [
+          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
+        ]
       }
     },
     {
@@ -289,9 +293,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 4282,
+        "ms": 4268,
         "moneyLines": 0,
-        "checkedAt": "2026-08-25",
+        "checkedAt": "2026-08-27",
         "fails": 0
       }
     },
@@ -396,12 +400,15 @@
       "stripScriptStyle": true,
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
-        "status": "ok",
-        "ms": 2871,
-        "moneyLines": 5,
-        "checkedAt": "2026-08-24",
+        "status": "ok-suspect",
+        "ms": 3811,
+        "moneyLines": 6,
+        "checkedAt": "2026-08-27",
         "fails": 0,
-        "lastOkAt": "2026-08-24"
+        "lastOkAt": "2026-08-27",
+        "suspects": [
+          "桁が不自然な値を拾っている（10）"
+        ]
       }
     },
     {
@@ -634,11 +641,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6354,
+        "ms": 5703,
         "moneyLines": 1,
-        "checkedAt": "2026-08-24",
+        "checkedAt": "2026-08-27",
         "fails": 0,
-        "lastOkAt": "2026-08-24",
+        "lastOkAt": "2026-08-27",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -669,9 +676,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 2745,
+        "ms": 3148,
         "moneyLines": 0,
-        "checkedAt": "2026-08-25",
+        "checkedAt": "2026-08-27",
         "fails": 0
       }
     },
@@ -725,9 +732,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3691,
+        "ms": 5959,
         "moneyLines": 0,
-        "checkedAt": "2026-08-25",
+        "checkedAt": "2026-08-27",
         "fails": 0
       }
     },
@@ -740,9 +747,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4022,
+        "ms": 3412,
         "moneyLines": 0,
-        "checkedAt": "2026-08-25",
+        "checkedAt": "2026-08-27",
         "fails": 0
       }
     },
@@ -780,11 +787,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5295,
+        "ms": 3911,
         "moneyLines": 3,
-        "checkedAt": "2026-08-26",
+        "checkedAt": "2026-08-27",
         "fails": 0,
-        "lastOkAt": "2026-08-26",
+        "lastOkAt": "2026-08-27",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
