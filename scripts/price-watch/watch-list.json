@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 8082,
+        "ms": 7182,
         "moneyLines": 22,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0,
-        "lastOkAt": "2026-08-27"
+        "lastOkAt": "2026-08-28"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35004,
+        "ms": 35012,
         "moneyLines": 0,
-        "checkedAt": "2026-08-27",
-        "fails": 4,
+        "checkedAt": "2026-08-28",
+        "fails": 5,
         "lastOkAt": "2026-08-22"
       }
     },
@@ -244,11 +244,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 12818,
-        "moneyLines": 31,
-        "checkedAt": "2026-08-27",
+        "ms": 16410,
+        "moneyLines": 29,
+        "checkedAt": "2026-08-28",
         "fails": 0,
-        "lastOkAt": "2026-08-27",
+        "lastOkAt": "2026-08-28",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -293,9 +293,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 4268,
+        "ms": 5535,
         "moneyLines": 0,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0
       }
     },
@@ -554,11 +554,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8650,
+        "ms": 10294,
         "moneyLines": 4,
-        "checkedAt": "2026-08-22",
+        "checkedAt": "2026-08-28",
         "fails": 0,
-        "lastOkAt": "2026-08-22",
+        "lastOkAt": "2026-08-28",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -641,11 +641,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5703,
+        "ms": 8379,
         "moneyLines": 1,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0,
-        "lastOkAt": "2026-08-27",
+        "lastOkAt": "2026-08-28",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -676,9 +676,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3148,
+        "ms": 3686,
         "moneyLines": 0,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0
       }
     },
@@ -732,9 +732,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 5959,
+        "ms": 6836,
         "moneyLines": 0,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0
       }
     },
@@ -747,9 +747,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 3412,
+        "ms": 4838,
         "moneyLines": 0,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0
       }
     },
@@ -787,11 +787,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3911,
+        "ms": 4816,
         "moneyLines": 3,
-        "checkedAt": "2026-08-27",
+        "checkedAt": "2026-08-28",
         "fails": 0,
-        "lastOkAt": "2026-08-27",
+        "lastOkAt": "2026-08-28",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]

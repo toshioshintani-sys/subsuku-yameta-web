@@ -22,5 +22,17 @@
     "evidence": "canva.com/pricing/ の「個人」トグルで『Canvaプロ ¥11,800 /年払い、1人あたり』と表示。当方PLANSのyearly=12,000（services.js:1820）と200円の差。月額1,500円（当方PRICING/PLANSのmonthly）はページの月単位トグルがJSで別描画のため今回は未確認・変更なしとみなす。",
     "checkedUrl": "https://www.canva.com/pricing/",
     "proposal": "shadowに積んで様子見。5件たまったら俊雄さんが一括確認のうえ自動適用に昇格するか判断"
+  },
+  {
+    "date": "2026-08-28",
+    "serviceId": "canva-pro",
+    "item": "Teams（チーム）→ Canvaビジネスへ改名・年払い額",
+    "ours": 1800,
+    "official": 18800,
+    "autoApplicable": false,
+    "reason": "自動適用の3条件を満たさない。単一数値の差し替えではなく、プラン名そのものが変わっている（公式に『Canvaチームスはどうなりましたか？』というFAQ項目があり、旧名『Teams』は現行ページから消えて『Canvaビジネス』に統合されたことを示唆）。当方PLANSは monthly:1800 のみでyearly欄が無く、公式の年払い18,800円との月額換算対応も未確認。",
+    "evidence": "canva.com/pricing/ の年払いトグルに『Canvaビジネス ¥18,800 /年払い、1人あたり』と表示。旧名『Teams（チーム）』の表記はページ本文に見当たらない。当方PLANSは name:'Teams（チーム）', monthly:1800（services.js:1821・yearlyフィールドなし）のまま。月単位トグルの値はJS描画で今回未取得のため月額の異同は判断できない。",
+    "checkedUrl": "https://www.canva.com/pricing/",
+    "proposal": "プラン名（Teams→Canvaビジネス）と月額/年額の対応を公式で個別に確認したうえで人が更新（改名を伴うため自動化の対象外）"
   }
 ]
