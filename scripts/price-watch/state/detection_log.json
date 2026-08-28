@@ -3092,5 +3092,64 @@
     "notes": "YouTubeが新ティア『Premium Lite』を新設（個人¥780/月・ファミリー¥1,480/月「New」）。従来のPremiumとは別建て（音楽・ショート動画を除く代わりに39%オフ）。当方services.jsのyoutube-premium PLANSには一切未収録。価格の誤りではなく「未収録の新プラン」なので今回は書き換えないが、掲載を追加するかは人の判断が必要",
     "verdictReason": "過去10回と同型の安定表示。ただし今回追加された1480はPremium Liteという新設プランの値で、既存追跡プランへの影響はない",
     "judgedAt": "2026-08-28"
+  },
+  {
+    "date": "2026-08-29",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去11回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "本文取得: Premium Lite 月額780円、Premium 月額1,280円（年額換算不要）、家族プラン2,280円、年払い12,800円/12か月。1,480円はページのどこにも出現せず。ours(780/1280/2280)と完全一致。過去11回と同じ表示揺れによる消失のみで、新値の追加が無いため値上げではない。"
+  },
+  {
+    "date": "2026-08-29",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400）で過去22回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "本文取得: Starter ¥800、Standard ¥1,600、Plus ¥2,500（すべてユーザーあたり月額）。1,250円・400円はページ全文のどこにも出現せず。ours(800/1600/2500)と完全一致。過去22回と同じオシレーション型の偽陽性。"
   }
 ]

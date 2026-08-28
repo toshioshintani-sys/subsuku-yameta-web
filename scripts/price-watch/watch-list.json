@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 7182,
-        "moneyLines": 22,
-        "checkedAt": "2026-08-28",
+        "ms": 5766,
+        "moneyLines": 21,
+        "checkedAt": "2026-08-29",
         "fails": 0,
-        "lastOkAt": "2026-08-28"
+        "lastOkAt": "2026-08-29"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35012,
+        "ms": 35006,
         "moneyLines": 0,
-        "checkedAt": "2026-08-28",
-        "fails": 5,
+        "checkedAt": "2026-08-29",
+        "fails": 7,
         "lastOkAt": "2026-08-22"
       }
     },
@@ -641,11 +641,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8379,
+        "ms": 6625,
         "moneyLines": 1,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-08-29",
         "fails": 0,
-        "lastOkAt": "2026-08-28",
+        "lastOkAt": "2026-08-29",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -676,9 +676,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3686,
+        "ms": 6509,
         "moneyLines": 0,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-08-29",
         "fails": 0
       }
     },
@@ -732,9 +732,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 6836,
+        "ms": 5862,
         "moneyLines": 0,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-08-29",
         "fails": 0
       }
     },
@@ -747,9 +747,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4838,
+        "ms": 4159,
         "moneyLines": 0,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-08-29",
         "fails": 0
       }
     },
@@ -787,13 +787,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4816,
+        "ms": 3893,
         "moneyLines": 3,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-08-29",
         "fails": 0,
-        "lastOkAt": "2026-08-28",
+        "lastOkAt": "2026-08-29",
         "suspects": [
-          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
