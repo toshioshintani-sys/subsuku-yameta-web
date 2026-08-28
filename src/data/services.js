@@ -1375,7 +1375,7 @@ export const PRICING = {
   'adobe-cc': 6480,          // コンプリートプラン
   notion: 1650,              // 2026-07-25 公式確認（旧1500）
   dropbox: 1200,
-  'canva-pro': 1500,
+  'canva-pro': 1180,       // 2026-08-28 公式確認（旧1500）。月払い1,180・年払い11,800
   'nintendo-switch-online': 306,
   'playstation-plus': 850,
   'xbox-game-pass': 1300,    // PC Game Pass。2026-07-25 公式確認（旧1100）
@@ -1717,6 +1717,10 @@ export const PLANS = {
   'youtube-premium': {
     plans: [
       { name: '個人プラン', monthly: 1280, popular: true },
+      // 2026-08-28 公式(youtube.com/premium)で新ティア「Premium Lite」を確認（New表記・39%オフ訴求）。
+      // 広告なし視聴が中心の低価格版（ショート動画と検索・ブラウジング面では広告が出ることがある）。
+      // judge が報告した「Liteファミリー1,480円」は公式ページに存在せず、採用しない。
+      { name: 'Premium Lite', monthly: 780, note: '広告なし視聴中心の低価格版。一部の面では広告が出る' },
       { name: 'ファミリープラン（最大5人）', monthly: 2280, note: '同居家族で5人まで' },
       { name: '学生プラン', monthly: 780, note: '大学生・専門学生限定' },
     ],
@@ -1805,22 +1809,27 @@ export const PLANS = {
   dropbox: {
     plans: [
       // 2026-07-26 公式で再確認。表示は既定が「年払いの月額換算」で、月払いだと高くなる。
-      // Essentials は dropbox.com/buy/essentials に「Dropbox Essentials プランは利用できなくなり、
-      // Dropbox Professional に変えられました。」と明記があり、名称・価格とも変わっていた。
+      // 2026-08-28 「Professional（3TB・2,000円）」と「Family（2,000円・参考値）」を削除。
+      // 公式プラン表 (dropbox.com/plans) の個人向けは Plus のみで、チーム向けは
+      // Standard(1,500円/人)・Advanced(2,400円/人)。Professional は表に存在せず、
+      // Family は金額の裏が取れないまま2020年の発表値を出し続けていた。
+      // 存在・金額を確認できないプランは、価格を推測して出さない（誤報ゼロ）。
+      // Plus の月払い1,500/年払い換算1,200は 2026-08-28 に公式トグルで両方実測済み。
       { name: 'Plus（2TB）', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと1,500円' },
-      { name: 'Professional（3TB）', monthly: 2000, note: '旧 Essentials。年払いの月額換算。月払いのみだと2,400円' },
-      // ⚠️ Family の月額は購入導線がログイン必須で、公式に金額が出ていない（2026-07-26 確認）。
-      //    この 2,000 は 2020年の発表値と一致するだけで裏が取れていない。要ログイン確認。
-      { name: 'Family（2TB・最大6人）', monthly: 2000, note: '公式が金額を非公開（要ログイン）。参考値' },
     ],
-    howToCheck: 'Dropbox →「アカウント設定」→「プラン」で確認できます',
+    howToCheck: 'Canva →「設定」→「請求とチーム」で確認できます',
   },
   'canva-pro': {
     plans: [
-      { name: 'Pro（個人）', monthly: 1500, yearly: 12000, popular: true },
-      { name: 'Teams（チーム）', monthly: 1800, note: '人数分課金・最低3人〜' },
+      // 2026-08-28 公式（canva.com/pricing）の料金トグルで月払い・年払いの両方を実測。
+      // Pro: 月1,180円・年11,800円（旧 月1,500・年12,000）。
+      // 旧「Teams」は「Canvaビジネス」に改称（公式FAQ「Canvaチームスはどうなりましたか？」で確認）。
+      // 月額×12 と年額の比が公式の「16%お得」表記と両プランで一致することを検算済み
+      // （1,180×12=14,160 vs 11,800 / 1,880×12=22,560 vs 18,800）。
+      { name: 'Pro（個人）', monthly: 1180, yearly: 11800, popular: true },
+      { name: 'Canvaビジネス（旧Teams）', monthly: 1880, yearly: 18800, note: '1人あたり' },
     ],
-    howToCheck: 'Canva →「設定」→「請求とチーム」で確認できます',
+    howToCheck: 'Canva →「設定」→「支払いとプラン」で確認できます',
   },
   'nintendo-switch-online': {
     plans: [
@@ -2623,6 +2632,39 @@ export const DIRECTION_LABEL = {
 };
 
 export const PRICE_HISTORY = {
+  'canva-pro': [
+    {
+      date: '2026-08-28',
+      item: 'Canvaプロ・Canvaビジネス（旧Teams）',
+      direction: 'restructure',
+      change:
+        'Canvaプロが月払い1,500円→1,180円・年払い12,000円→11,800円に改定。チーム向け「Teams」は「Canvaビジネス」に改称され月1,880円・年18,800円/人（公式FAQ「Canvaチームスはどうなりましたか？」で改称を確認）。月×12と年額の比が公式の「16%お得」表記と一致することを両プランで検算済み。改定実施日は不明（発見日=価格監視のshadow検知 2026-08-21・確認日 2026-08-28）。',
+      source: 'https://www.canva.com/pricing/',
+      verifiedAt: '2026-08-28',
+    },
+  ],
+  dropbox: [
+    {
+      date: '2026-08-28',
+      item: 'Professional（3TB）・Family',
+      direction: 'restructure',
+      change:
+        '公式プラン表(dropbox.com/plans)の個人向けが Plus のみになり、掲載していた Professional（3TB・2,000円）と Family は表に存在しない。チーム向けは Standard 1,500円/人・Advanced 2,400円/人。存在を確認できないプランは表示から削除した（Plus の1,200円/月払い1,500円は不変・公式トグルで実測）。',
+      source: 'https://www.dropbox.com/plans',
+      verifiedAt: '2026-08-28',
+    },
+  ],
+  'youtube-premium': [
+    {
+      date: '2026-08-28',
+      item: 'Premium Lite',
+      direction: 'new',
+      change:
+        '低価格ティア「Premium Lite」780円/月が新設（公式ページにNew表記・「広告の少ないYouTubeをお得な料金で（39%オフ）」）。ショート動画と検索・ブラウジング面では広告が出ることがある。既存の個人1,280円・ファミリー2,280円・学生780円は変更なし。判定エージェントが報告した「Liteファミリー1,480円」は公式ページに存在せず不採用。',
+      source: 'https://www.youtube.com/premium',
+      verifiedAt: '2026-08-28',
+    },
+  ],
   'abema-premium': [
     {
       date: '2026-04-01',
