@@ -2247,6 +2247,31 @@
   },
   {
     "date": "2026-08-19",
+    "serviceId": "1password",
+    "name": "1Password",
+    "added": [],
+    "removed": [
+      48,
+      72
+    ],
+    "ours": [
+      477,
+      5723,
+      717,
+      8594
+    ],
+    "signals": [
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://1password.com/pricing/password-manager",
+    "evidence": "Individual $2.99/mo(通常$3.99)、Families $4.49/mo(通常$5.99)のみ表示。$48/$72という文字列は本文に無く、当方記録($2.99・$4.49の円換算=477/717/5723/8594)と一致。年間合計表記の有無が回により変動する表示揺れと判断。"
+  },
+  {
+    "date": "2026-08-19",
     "serviceId": "adobe-cc",
     "name": "Adobe Creative Cloud",
     "added": [],
@@ -2275,28 +2300,28 @@
   },
   {
     "date": "2026-08-19",
-    "serviceId": "1password",
-    "name": "1Password",
-    "added": [],
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      21
+    ],
     "removed": [
-      48,
-      72
+      29
     ],
     "ours": [
-      477,
-      5723,
-      717,
-      8594
+      3190,
+      9570,
+      31900
     ],
     "signals": [
       {
-        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "name": "同じ値（21, 29）で過去1回、公式確認のうえ偽陽性と判定済み",
         "kind": "偽陽性より"
       }
     ],
     "verdict": "偽陽性",
-    "checkedUrl": "https://1password.com/pricing/password-manager",
-    "evidence": "Individual $2.99/mo(通常$3.99)、Families $4.49/mo(通常$5.99)のみ表示。$48/$72という文字列は本文に無く、当方記録($2.99・$4.49の円換算=477/717/5723/8594)と一致。年間合計表記の有無が回により変動する表示揺れと判断。"
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "個人(Pro)$20/mo、Teams $40/user/moのみ本文に表示。$21・$29はページ本文に見当たらず、当方記録(Pro $20/Pro+ $60/Ultra $200)とも矛盾しない。Pro+/Ultra等タブ切替の価格は静的HTML抽出に出ないための表示揺れと判断。"
   },
   {
     "date": "2026-08-19",
@@ -2326,31 +2351,6 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://www.deepl.com/pro",
     "evidence": "日本円表示ページでIndividual ￥1,150、Team ￥3,750、Business ￥7,500と確認。当方のPRICING(1150/3750/7500)と完全一致し変更なし。検知された$表記($12,$9,$11,$28,$29,$8)は本文中の日本円ページには存在せず、ドル表示版の混在取得によるノイズと判断。"
-  },
-  {
-    "date": "2026-08-19",
-    "serviceId": "cursor",
-    "name": "Cursor",
-    "added": [
-      21
-    ],
-    "removed": [
-      29
-    ],
-    "ours": [
-      3190,
-      9570,
-      31900
-    ],
-    "signals": [
-      {
-        "name": "同じ値（21, 29）で過去1回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://cursor.com/pricing",
-    "evidence": "個人(Pro)$20/mo、Teams $40/user/moのみ本文に表示。$21・$29はページ本文に見当たらず、当方記録(Pro $20/Pro+ $60/Ultra $200)とも矛盾しない。Pro+/Ultra等タブ切替の価格は静的HTML抽出に出ないための表示揺れと判断。"
   },
   {
     "date": "2026-08-19",
@@ -2386,32 +2386,6 @@
   },
   {
     "date": "2026-08-20",
-    "serviceId": "apple-music",
-    "name": "Apple Music",
-    "added": [],
-    "removed": [
-      180,
-      480
-    ],
-    "ours": [
-      1180,
-      1980,
-      680
-    ],
-    "signals": [
-      {
-        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.apple.com/jp/apple-music/",
-    "evidence": "個人プラン月額1,180円・ファミリープラン月額1,980円・学生プラン月額680円のみ本文に出現。当方PRICING/PLANS(1180/1980/680)と完全一致し不変。消えた「180円」「480円」はページ本文のどこにも現れず（footnote等含め全文検索でヒットなし）",
-    "verdictReason": "取得タイミングの揺れで生じた断片トークンと判断。追跡対象の3プラン価格はすべて健在",
-    "judgedAt": "2026-08-20"
-  },
-  {
-    "date": "2026-08-20",
     "serviceId": "adobe-cc",
     "name": "Adobe Creative Cloud",
     "added": [
@@ -2442,6 +2416,32 @@
   },
   {
     "date": "2026-08-20",
+    "serviceId": "apple-music",
+    "name": "Apple Music",
+    "added": [],
+    "removed": [
+      180,
+      480
+    ],
+    "ours": [
+      1180,
+      1980,
+      680
+    ],
+    "signals": [
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.apple.com/jp/apple-music/",
+    "evidence": "個人プラン月額1,180円・ファミリープラン月額1,980円・学生プラン月額680円のみ本文に出現。当方PRICING/PLANS(1180/1980/680)と完全一致し不変。消えた「180円」「480円」はページ本文のどこにも現れず（footnote等含め全文検索でヒットなし）",
+    "verdictReason": "取得タイミングの揺れで生じた断片トークンと判断。追跡対象の3プラン価格はすべて健在",
+    "judgedAt": "2026-08-20"
+  },
+  {
+    "date": "2026-08-20",
     "serviceId": "dmagazine",
     "name": "dマガジン",
     "added": [],
@@ -2466,6 +2466,96 @@
     "evidence": "本文に「31日経過後はその月から月額料金580円（税込）が発生します」と明記。当方PRICING(580)と一致し不変。消えた「3,500円」は本文のどこにも出現せず、過去08-13に「本文のどこにも出現しない=表示揺れ」と判定済みの同一トークン",
     "verdictReason": "日替わりで入れ替わる新着コンテンツ一覧のタイトル内数字と推定される既知の揺れ。月額580円は不変",
     "judgedAt": "2026-08-20"
+  },
+  {
+    "date": "2026-08-21",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去10回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "3回中2回フルレンダリングに成功（1回はJS描画未完了で本文120字のみ）。成功分では「追加の生成AIクレジットは2,000クレジット（1,580円/月）から購入いただけます」がCreative Cloud Standardの説明文中に現存し、3,280円/6,480円/9,080円も確認。当方PRICING/PLANS(6480/2380/3280/9080)とは別枠のアドオン言及で本体価格は不変",
+    "verdictReason": "1580円はAI生成クレジット追加購入のアドオン価格であり、本体プラン価格ではない。過去10回と同型の偽陽性。headless描画のタイミング揺れで検知側の署名から一時的に消えたと推定",
+    "judgedAt": "2026-08-21"
+  },
+  {
+    "date": "2026-08-21",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      10,
+      18,
+      22
+    ],
+    "removed": [
+      17,
+      21
+    ],
+    "ours": [
+      3190,
+      9570,
+      31900
+    ],
+    "signals": [
+      {
+        "name": "同じ値（21）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20/mo・Teams $40/user/moのみ本文に出現（デフォルト表示のPro/Standardタブ分）。当方USD_PRICED(cursor:20)と一致。検知の$10/$17/$18/$21/$22は本文のどこにも出現せず、Pro+/Ultra/Premiumタブ（クリックで切替）の値が非同期に混入した表示揺れと推定。reconcile.mjsでも一致判定済み",
+    "verdictReason": "検知値が本文に存在しない・現在価格($20/$40)が当方表示と一致・過去2回と同型の偽陽性",
+    "judgedAt": "2026-08-21"
+  },
+  {
+    "date": "2026-08-21",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      11,
+      29,
+      8
+    ],
+    "removed": [
+      12,
+      9
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（11, 29, 8）で過去6回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "Individual ￥1,150 / Team ￥3,750 / Business ￥7,500 のみ本文に出現。ドル建て表示（$11/$29/$8/$12/$9のいずれも）は一切出現せず。当方PRICING/PLANS(1150/3750/7500)と完全一致・不変。reconcile.mjsでも一致判定済み",
+    "verdictReason": "日本向けページはJPY固定表示で、検知されたドル値は本文のどこにも存在しない。ページの通貨切替やハイドレーション中に一瞬別通貨のデフォルト値を拾った表示揺れと推定。過去6回と同型の偽陽性",
+    "judgedAt": "2026-08-21"
   },
   {
     "date": "2026-08-22",
@@ -2563,36 +2653,6 @@
   },
   {
     "date": "2026-08-23",
-    "serviceId": "youtube-premium",
-    "name": "YouTube Premium",
-    "added": [
-      1480
-    ],
-    "removed": [],
-    "ours": [
-      1280,
-      2280,
-      780
-    ],
-    "signals": [
-      {
-        "name": "同じ値（1480）で過去8回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "個人￥1,280/月・年払い￥12,800（15%割引）・ファミリー￥2,280/月・学生￥780/月・1か月無料トライアル￥0のみ本文に出現。検知の￥1,480は本文のどこにも出現せず。当方PRICING/PLANS(1280/2280/780)と完全一致・不変",
-    "notes": "",
-    "verdictReason": "検知値が本文に存在せず、現在価格が当方表示と一致。過去8回と同型の偽陽性",
-    "judgedAt": "2026-08-23"
-  },
-  {
-    "date": "2026-08-23",
     "serviceId": "google-workspace",
     "name": "Google Workspace",
     "added": [
@@ -2625,6 +2685,67 @@
     "notes": "",
     "verdictReason": "通常価格は不変。検知は初回3か月割引の割引率変更（20%→50%オフ）による割引トークンの揺れで、価格改定ではない",
     "judgedAt": "2026-08-23"
+  },
+  {
+    "date": "2026-08-23",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      2280,
+      780
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去8回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "個人￥1,280/月・年払い￥12,800（15%割引）・ファミリー￥2,280/月・学生￥780/月・1か月無料トライアル￥0のみ本文に出現。検知の￥1,480は本文のどこにも出現せず。当方PRICING/PLANS(1280/2280/780)と完全一致・不変",
+    "notes": "",
+    "verdictReason": "検知値が本文に存在せず、現在価格が当方表示と一致。過去8回と同型の偽陽性",
+    "judgedAt": "2026-08-23"
+  },
+  {
+    "date": "2026-08-24",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去11回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "本文に「Creative Cloud Standard 6,480円/月」の説明文中『追加の生成AIクレジットは2,000クレジット（1,580円/月）から購入いただけます。』と明記。1,580円はプラン価格ではなく追加AIクレジットのアドオン価格で、今回のfetchでも本文にそのまま存在していた（消失は非同期描画の揺れ）。当方PRICING/PLANS（2380/3280/6480/9080）に1580は元から含まれておらず無関係",
+    "notes": "",
+    "verdictReason": "1,580円は追加生成AIクレジットのアドオン価格であり、購読プラン価格（PRICING/PLANS）とは無関係。今回のfetchでも本文に存在を再確認したため表示の揺れによる誤検知",
+    "judgedAt": "2026-08-24"
   },
   {
     "date": "2026-08-25",
@@ -2719,5 +2840,257 @@
     "evidence": "本文に Starter ¥400/¥800・Standard ¥800/¥1,600・Plus ¥1,250/¥2,500（すべて『3か月間50%オフ』併記の取り消し線付き通常価格）と明記。通常価格800/1600/2500は当方PRICING/PLANSと完全一致・不変。今回のadded(1120,1750,560)/removed(1250,400)は割引率トークン（30%/50%オフ等）がページ側で入れ替わっただけで、実際に確認できた本文は08-23時点の状態（400/1250）に戻っていた＝ページ側の表示が時点ごとに揺れているだけ",
     "verdictReason": "過去20回と同型のプロモーション割引率オシレーション。通常価格は21回連続で不変",
     "judgedAt": "2026-08-26"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1580
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1580）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "本文に「Adobe Firefly Standard 1,580円/月」および「追加の生成AIクレジットは2,000クレジット（1,580円/月）から購入いただけます」と明記。1,580円はCreative Cloud購読プランではなく別製品(Firefly Standard)/アドオンの価格。当方4プラン(Creative Cloud Standard 6,480円/Acrobat Standard等 2,380/3,280/9,080円)は本文中に別途出現し、当方PRICING/PLANSと完全一致・不変",
+    "notes": "",
+    "verdictReason": "1,580は購読プラン価格ではなくFirefly Standard/生成AIクレジットのアドオン価格。08-13以降14回連続で同一原因の偽陽性",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "evernote",
+    "name": "Evernote",
+    "added": [
+      10
+    ],
+    "removed": [],
+    "ours": [
+      1100,
+      7099,
+      1799,
+      17899
+    ],
+    "signals": [
+      {
+        "name": "同じ値（10）で過去5回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "桁が不自然な値（10）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://evernote.com/ja-jp/compare-plans",
+    "evidence": "本文に「Flexible　から　¥10/月/シート」とあり、チーム向け従量課金プランの開始価格。個人向けStarter(月1,100円・年払い換算591.58円/月・年額7,099円)とAdvanced(月1,799円・年払い換算1,491.58円/月・年額17,899円)は本文中で当方PRICING/PLANS(1100/7099/1799/17899)と完全一致・不変",
+    "notes": "",
+    "verdictReason": "10はチーム向けFlexibleプランの1シートあたり開始価格であり、個人向けStarter/Advancedとは無関係。過去5回と同型の偽陽性",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [
+      1120,
+      1750,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400, 1120）で過去21回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "本文に Starter ¥400/¥800・Standard ¥800/¥1,600・Plus ¥1,250/¥2,500（すべて「3か月間50%オフ」併記の通常価格）と明記。通常価格800/1600/2500は当方PRICING/PLANSと完全一致・不変。今回のadded(1250,400)/removed(1120,1750,560)は前回時点の別の割引率表示との入れ替わりで、実際の通常価格は一度も動いていない",
+    "notes": "",
+    "verdictReason": "過去21回と同型のプロモーション割引率オシレーション（22回目）。通常価格は22回連続で不変",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-27",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      2280,
+      780
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "再取得した本文に「[月単位] ￥1,480​/月」が現在も存在（個人プラン￥1,280・ファミリー￥2,280・学生￥780とは別の表示ブロックとして併存）。消失は確認できず、非同期描画で出たり消えたりしているだけ。当方PLANS(1280/2280/780)は本文中に不変で出現・一致",
+    "notes": "",
+    "verdictReason": "1,480は消失ではなく今回の再取得でも表示を確認。過去9回と同型の非同期読み込みによる表示揺れで、当方の3プラン(1,280/2,280/780)は不変",
+    "judgedAt": "2026-08-27"
+  },
+  {
+    "date": "2026-08-28",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（9080）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "Creative Cloud Pro のカードに「通常価格：9,080 円/月」「特別価格：6,810 円/月（初回12か月25%オフ）」と両方明記。当方PRICINGの9,080は通常価格として今も存在し不変。Standard 6,480円・フォトプラン2,380円・単体プラン3,280円も本文で確認、いずれも当方PLANSと一致",
+    "notes": "",
+    "verdictReason": "過去4回と同型。今回のキャンペーン特別価格（6,810）表示のタイミングで通常価格9,080が抽出対象から一時的に外れただけで、9,080自体はページに存在し続けている",
+    "judgedAt": "2026-08-28"
+  },
+  {
+    "date": "2026-08-28",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      14,
+      30
+    ],
+    "removed": [
+      12
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（12）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "日本(JPY)ページで Individual ￥1,150・Team ￥3,750・Business ￥7,500（年払い月額換算・当方PRICING/PLANSと完全一致）と明記。ページ全文に$記号は一切出現せず、$14/$30/$12は今回の取得では確認できなかった（USD表示が出るA/Bやロケール判定の一時的な揺れとみられる）",
+    "notes": "",
+    "verdictReason": "過去3回と同型。当方が追跡するJPY建て価格は不変。USDトークンの出現/消失は既知の不安定要素",
+    "judgedAt": "2026-08-28"
+  },
+  {
+    "date": "2026-08-28",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400）で過去21回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "本文に Starter ¥400¥800**・Standard ¥800¥1,600**・Plus ¥1,250¥2,500**（**=3か月間50%オフ、取り消し線側が割引・後ろ側が通常価格）と明記。通常価格800/1,600/2,500は当方PRICING/PLANSと完全一致・不変。今回のremoved(1250,400)は割引率表示の入れ替わりで、実際の通常価格は一度も動いていない",
+    "notes": "",
+    "verdictReason": "過去21回と同型のプロモーション割引率オシレーション（22回目）。通常価格は22回連続で不変",
+    "judgedAt": "2026-08-28"
+  },
+  {
+    "date": "2026-08-28",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      2280,
+      780
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去10回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "本文に Premium 個人¥1,280/月・ファミリー¥2,280/月・学生¥780/月（当方PRICING/PLANSと完全一致・不変）。￥1,480は「広告の少ないYouTube（39%オフ）」という別ティア『Premium Lite』のファミリープラン（Newタグ付き・新設）の価格で、Premium Lite自体（個人¥780/月・ファミリー¥1,480/月）は当方services.jsに一切未収録のプラン。既存の追跡対象プランの価格は一切動いていない",
+    "notes": "YouTubeが新ティア『Premium Lite』を新設（個人¥780/月・ファミリー¥1,480/月「New」）。従来のPremiumとは別建て（音楽・ショート動画を除く代わりに39%オフ）。当方services.jsのyoutube-premium PLANSには一切未収録。価格の誤りではなく「未収録の新プラン」なので今回は書き換えないが、掲載を追加するかは人の判断が必要",
+    "verdictReason": "過去10回と同型の安定表示。ただし今回追加された1480はPremium Liteという新設プランの値で、既存追跡プランへの影響はない",
+    "judgedAt": "2026-08-28"
   }
 ]
