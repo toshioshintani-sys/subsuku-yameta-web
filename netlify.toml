@@ -10,6 +10,11 @@
   # 2026-06-03〜11 にビルド全敗が9日間無通知だった事故の再発防止（自律運用ルール原則7）。
   command = "node scripts/netlify-build.mjs"
   publish = "dist"
+  # ビルド要否の自動判定（2026-08-26）。台帳(scripts/price-watch/state)・docs・md だけの
+  # push はビルドせずデプロイもしない＝クレジットを消費しない。実測で直近30pushの16回が
+  # 表示の変わらない無駄なデプロイ（≒240クレジット）だった。判定ロジックと理由は
+  # scripts/netlify-ignore.sh に。exit 0=スキップ / exit 1=ビルド。
+  ignore = "bash scripts/netlify-ignore.sh"
 
 [build.environment]
   NODE_VERSION = "22"
