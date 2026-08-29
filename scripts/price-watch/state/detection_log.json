@@ -3151,5 +3151,27 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "本文取得: Starter ¥800、Standard ¥1,600、Plus ¥2,500（すべてユーザーあたり月額）。1,250円・400円はページ全文のどこにも出現せず。ours(800/1600/2500)と完全一致。過去22回と同じオシレーション型の偽陽性。"
+  },
+  {
+    "date": "2026-08-30",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      900
+    ],
+    "removed": [],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "個人Plus ￥1,200/月、チームStandard 1ユーザーあたり￥1,500/月、Advanced 1ユーザーあたり￥2,400/月、Basic無料、Enterpriseは問い合わせのみ。￥900はページ本文のどこにも出現せず。ours(1,200)と完全一致。",
+    "notes": ""
   }
 ]
