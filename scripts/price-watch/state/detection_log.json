@@ -3173,5 +3173,91 @@
     "checkedUrl": "https://www.dropbox.com/plans",
     "evidence": "個人Plus ￥1,200/月、チームStandard 1ユーザーあたり￥1,500/月、Advanced 1ユーザーあたり￥2,400/月、Basic無料、Enterpriseは問い合わせのみ。￥900はページ本文のどこにも出現せず。ours(1,200)と完全一致。",
     "notes": ""
+  },
+  {
+    "date": "2026-08-31",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [],
+    "removed": [
+      900
+    ],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（900）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "Plus ￥1,200/月（年払い月額換算）・Standard 1ユーザー￥1,500/月・Advanced 1ユーザー￥2,400/月。消えた￥900はどのプランにも現存せず、掲載中のPlus1,200/Standard1,500/Advanced2,400と完全一致（services.js PLANSと一致）。過去にも同じ900の消失が偽陽性判定済み。"
+  },
+  {
+    "date": "2026-08-31",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      2000,
+      640
+    ],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 2000, 640）で過去25回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter ¥400/¥800**・Standard ¥800/¥1,600**・Plus ¥1,250/¥2,500**（**=3か月50%オフの通常価格）。通常価格800/1600/2500はservices.js PRICING/PLANSと完全一致。今回のadded(1280,2000,640)は20%オフ時のプロモ価格で、removed(1250,400)は50%オフ時のプロモ価格。オシレーション22回目相当（同パターンで過去25回偽陽性判定済み）。"
+  },
+  {
+    "date": "2026-08-31",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      16
+    ],
+    "removed": [
+      10,
+      14
+    ],
+    "ours": [
+      2393,
+      22968,
+      5583,
+      53592,
+      15153,
+      145464
+    ],
+    "signals": [
+      {
+        "name": "同じ値（10, 14）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "Standard $15/月（年払い$12/月）・Pro $35/月（年払い$28/月）・Unlimited $95/月（年払い$76/月）。services.jsのPLANS（USD_PRICED経由）と完全一致。added($16)・removed($10,$14)はページ本文に現存せず、過去にも同じ10/14パターンが4回偽陽性判定済み。"
   }
 ]

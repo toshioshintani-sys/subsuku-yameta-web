@@ -276,11 +276,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5422,
+        "ms": 5583,
         "moneyLines": 5,
-        "checkedAt": "2026-08-30",
+        "checkedAt": "2026-08-31",
         "fails": 0,
-        "lastOkAt": "2026-08-30",
+        "lastOkAt": "2026-08-31",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -790,13 +790,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3893,
+        "ms": 4291,
         "moneyLines": 3,
-        "checkedAt": "2026-08-29",
+        "checkedAt": "2026-08-31",
         "fails": 0,
-        "lastOkAt": "2026-08-29",
+        "lastOkAt": "2026-08-31",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -809,11 +809,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3553,
+        "ms": 3336,
         "moneyLines": 10,
-        "checkedAt": "2026-08-25",
+        "checkedAt": "2026-08-31",
         "fails": 0,
-        "lastOkAt": "2026-08-25"
+        "lastOkAt": "2026-08-31"
       }
     },
     {
