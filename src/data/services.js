@@ -2223,13 +2223,14 @@ export const PLANS = {
 
 /** 換算に使うレート。三菱UFJ銀行 公表仲値(TTM) = (TTS + TTB) / 2
  *  2026-08-18: TTS 160.50 / TTB 158.50 → TTM 159.50
+ *  2026-08-31: TTS 161.02 / TTB 159.02 → TTM 160.02
  *  ⚠️ 同じページに「外貨現金両替相場」が並んでいる。**別物**。
  *     必ず上段の対顧客電信相場（US Dollar / 米ドル / USD の行）の TTS・TTB を使うこと。 */
-export const USD_JPY = 159.50;
+export const USD_JPY = 160.02;
 /** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
-export const USD_JPY_AS_OF = '2026-08-18';
+export const USD_JPY_AS_OF = '2026-08-31';
 /** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
-export const USD_JPY_READ_ON = '2026-08-19';
+export const USD_JPY_READ_ON = '2026-09-01';
 /** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
 export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
 /** 出典の名前（表示に出す） */
