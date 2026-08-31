@@ -3259,5 +3259,38 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "Standard $15/月（年払い$12/月）・Pro $35/月（年払い$28/月）・Unlimited $95/月（年払い$76/月）。services.jsのPLANS（USD_PRICED経由）と完全一致。added($16)・removed($10,$14)はページ本文に現存せず、過去にも同じ10/14パターンが4回偽陽性判定済み。"
+  },
+  {
+    "date": "2026-09-01",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [
+      1280,
+      2000,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400, 1280）で過去26回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter ￥560￥800**（3ヶ月30%オフ）／Standard ￥800￥1,600**（3ヶ月50%オフ）／Plus ￥1,250￥2,500**（3ヶ月50%オフ）と並記。通常価格800/1600/2500はservices.jsのPRICING/PLANSと一致。add/removedはいずれも導入割引の表示率変動（過去26回と同型）",
+    "notes": ""
   }
 ]
