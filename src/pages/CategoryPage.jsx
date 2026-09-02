@@ -46,7 +46,13 @@ export default function CategoryPage() {
   }
 
   const title = `${category.label}サブスクの解約方法まとめ`;
-  const description = `${category.label}サブスクの解約ページへの直リンクと、3ステップの解約手順を一覧にまとめています。`;
+  // 以前は「◯◯サブスクの解約ページへの直リンクと、3ステップの解約手順を一覧にまとめています。」
+  // という定型文だけで、どのカテゴリも中身が同じだった（2026-09-02 Bing Webmaster の指摘）。
+  // 収録数と難易度の内訳はすでに statsText で算出しているので、それを説明文にも使う。
+  // カテゴリごとに実際に違う数字が入り、検索結果で見分けがつくようになる。
+  const description = services.length
+    ? `${category.label}サブスク${services.length}件の解約ページへの直リンクと解約手順。解約が「かんたん」${stats.dist.easy}件・「ふつう」${stats.dist.medium}件・「むずかしい」${stats.dist.hard}件。無料代替と乗り換え先もまとめています。`
+    : `${category.label}サブスクの解約ページへの直リンクと、3ステップの解約手順を一覧にまとめています。`;
 
   const statsText = services.length
     ? `${services.length}サービス中、解約が「かんたん」${stats.dist.easy}件・「ふつう」${stats.dist.medium}件・「むずかしい」${stats.dist.hard}件${

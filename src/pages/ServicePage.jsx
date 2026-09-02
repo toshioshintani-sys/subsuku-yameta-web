@@ -182,9 +182,22 @@ export default function ServicePage() {
     );
   }
 
+  // 拡張コンテンツを持たないサービスは、以前ここが「◯◯の解約ページへの直リンクと、3ステップの
+  // 手順。」だけの30字前後になっていた（2026-09-02 Bing Webmaster が15ページを「説明が短い」と指摘）。
+  // 文字数を稼ぐための水増しはしない。**ページに実際にある事実だけ**を足して、検索結果を見た人が
+  // 「開く価値があるか」を判断できるようにする（解約難度・月額・注意点や代替案の有無）。
+  const fallbackDescription = (() => {
+    const parts = [`${service.name}の解約ページへの直リンクと、${service.steps.length}ステップの手順。`];
+    parts.push(`解約難度は${DIFFICULTY_LABEL[service.difficulty]}。`);
+    if (monthlyDisplay) parts.push(`月額${monthlyDisplay}。`);
+    if (service.note) parts.push('解約時の注意点も記載。');
+    if (alternatives.length) parts.push('解約後の選択肢もまとめています。');
+    return parts.join('');
+  })();
+
   const description = extended?.summary
     ? `${extended.summary.slice(0, 110)}…${service.name}の解約手順と引き止め対策を解説。`
-    : `${service.name}の解約ページへの直リンクと、${service.steps.length}ステップの手順${service.note ? '。注意点も。' : '。'}`;
+    : fallbackDescription;
 
   return (
     <div className={styles.page}>
