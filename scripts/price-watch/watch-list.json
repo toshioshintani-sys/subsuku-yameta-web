@@ -135,15 +135,12 @@
       "enabled": true,
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 10802,
-        "moneyLines": 3,
-        "checkedAt": "2026-09-01",
-        "fails": 0,
-        "lastOkAt": "2026-09-01",
-        "suspects": [
-          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
-        ]
+        "status": "timeout",
+        "ms": 35010,
+        "moneyLines": 0,
+        "checkedAt": "2026-09-02",
+        "fails": 2,
+        "lastOkAt": "2026-09-01"
       }
     },
     {
@@ -246,11 +243,11 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "timeout",
-        "ms": 35014,
+        "status": "short-body",
+        "ms": 4420,
         "moneyLines": 0,
-        "checkedAt": "2026-09-01",
-        "fails": 1,
+        "checkedAt": "2026-09-02",
+        "fails": 2,
         "lastOkAt": "2026-08-30"
       }
     },
@@ -400,11 +397,11 @@
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6560,
+        "ms": 4007,
         "moneyLines": 6,
-        "checkedAt": "2026-09-01",
+        "checkedAt": "2026-09-02",
         "fails": 0,
-        "lastOkAt": "2026-09-01",
+        "lastOkAt": "2026-09-02",
         "suspects": [
           "桁が不自然な値を拾っている（10）"
         ]
@@ -553,11 +550,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 10294,
+        "ms": 5096,
         "moneyLines": 4,
-        "checkedAt": "2026-08-28",
+        "checkedAt": "2026-09-02",
         "fails": 0,
-        "lastOkAt": "2026-08-28",
+        "lastOkAt": "2026-09-02",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -640,11 +637,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 13962,
+        "ms": 6390,
         "moneyLines": 1,
-        "checkedAt": "2026-09-01",
+        "checkedAt": "2026-09-02",
         "fails": 0,
-        "lastOkAt": "2026-09-01",
+        "lastOkAt": "2026-09-02",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -674,11 +671,11 @@
       "enabled": true,
       "note": "baselineで確認",
       "fetch": {
-        "status": "short-body",
-        "ms": 8029,
+        "status": "no-money",
+        "ms": 3076,
         "moneyLines": 0,
-        "checkedAt": "2026-09-01",
-        "fails": 2
+        "checkedAt": "2026-09-02",
+        "fails": 0
       }
     },
     {
@@ -731,9 +728,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 9213,
+        "ms": 4180,
         "moneyLines": 0,
-        "checkedAt": "2026-09-01",
+        "checkedAt": "2026-09-02",
         "fails": 0
       }
     },
@@ -746,9 +743,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 7222,
+        "ms": 4284,
         "moneyLines": 0,
-        "checkedAt": "2026-09-01",
+        "checkedAt": "2026-09-02",
         "fails": 0
       }
     },
@@ -786,13 +783,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4917,
+        "ms": 4171,
         "moneyLines": 3,
-        "checkedAt": "2026-09-01",
+        "checkedAt": "2026-09-02",
         "fails": 0,
-        "lastOkAt": "2026-09-01",
+        "lastOkAt": "2026-09-02",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
