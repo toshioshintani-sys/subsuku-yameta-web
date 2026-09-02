@@ -3349,5 +3349,33 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページはStarter￥400￥800**（3ヶ月50%オフ併記）・Standard￥1,280￥1,600**（3ヶ月20%オフ併記）・Plus￥2,000￥2,500**（3ヶ月20%オフ併記）。通常価格800/1600/2500はうちのPRICING/PLANSと完全一致。検知の1,280/1,750/1,250は今回のページには1,750/1,250が出現せず、過去27回と同型のキャンペーン割引価格のローテーションによる揺れ。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-03",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1120,
+      640
+    ],
+    "removed": [
+      1280,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1120, 640, 1280）で過去27回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページはStarter￥640￥800**（3ヶ月20%オフ併記）・Standard￥1,280￥1,600**（3ヶ月20%オフ併記）・Plus￥1,250￥2,500**（3ヶ月50%オフ併記）。通常価格800/1600/2500はうちのPRICING/PLANSと完全一致。検知added(1120,640)/removed(1280,400)のうち1120は今回のページに出現せず、過去27回と同型のキャンペーン割引価格のローテーションによる揺れ。",
+    "notes": ""
   }
 ]
