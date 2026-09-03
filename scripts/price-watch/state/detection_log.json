@@ -3377,5 +3377,92 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページはStarter￥640￥800**（3ヶ月20%オフ併記）・Standard￥1,280￥1,600**（3ヶ月20%オフ併記）・Plus￥1,250￥2,500**（3ヶ月50%オフ併記）。通常価格800/1600/2500はうちのPRICING/PLANSと完全一致。検知added(1120,640)/removed(1280,400)のうち1120は今回のページに出現せず、過去27回と同型のキャンペーン割引価格のローテーションによる揺れ。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-04",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      750
+    ],
+    "removed": [],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "公式ページ（今回フル再取得）はPlus ￥1,200/月（年払い月額換算・月払いのみ1,500円）、Standard 1ユーザーあたり￥1,500/月、Advanced 1ユーザーあたり￥2,400/月と明記。うちのPRICING/PLANS(1200)と完全一致。検知added(750)はページ本文のどこにも出現せず、removedもゼロ（追加のみ＝一時的な描画/バナーの揺れ）。",
+    "verdictReason": "主要プラン(1200/1500/2400)は不変。750は本文に実在せず一過性の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-04",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      560
+    ],
+    "removed": [
+      1120,
+      1750,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 560, 1120）で過去29回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（1250 と 2500）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページはStarter￥400￥800**（3ヶ月50%オフ併記）・Standard￥1,120￥1,600**（3ヶ月30%オフ併記）・Plus￥2,000￥2,500**（3ヶ月20%オフ併記）。通常価格800/1600/2500はうちのPRICING/PLANSと完全一致。検知added(1250,560)/removed(1120,1750,640)は過去29回と同型のキャンペーン割引価格ローテーションによる揺れ。",
+    "verdictReason": "過去29回と同一原因（30回目）。公式の800/1600/2500は不変",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-04",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      11
+    ],
+    "removed": [
+      16
+    ],
+    "ours": [
+      2404,
+      23082,
+      5610,
+      53857,
+      15228,
+      146184
+    ],
+    "signals": [
+      {
+        "name": "同じ値（11, 16）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "公式ページはStandard $15/月（年払い$12/月）・Pro $35/月（年払い$28/月）・Max $95/月（年払い$76/月）と明記。うちのUSD_PRICED(runway:15)・PLANS換算値と完全一致。検知added(11)/removed(16)はページ本文のどこにも出現せず、過去にも同型の小さいドル値の揺れが複数回（2回以上）偽陽性判定済み。",
+    "verdictReason": "過去複数回と同一原因。主要3プラン($15/$35/$95)は不変",
+    "notes": ""
   }
 ]

@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35009,
+        "ms": 35056,
         "moneyLines": 0,
-        "checkedAt": "2026-09-03",
-        "fails": 3,
+        "checkedAt": "2026-09-04",
+        "fails": 4,
         "lastOkAt": "2026-09-01"
       }
     },
@@ -269,11 +269,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5583,
+        "ms": 5210,
         "moneyLines": 5,
-        "checkedAt": "2026-08-31",
+        "checkedAt": "2026-09-04",
         "fails": 0,
-        "lastOkAt": "2026-08-31",
+        "lastOkAt": "2026-09-04",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -637,11 +637,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6390,
+        "ms": 6542,
         "moneyLines": 1,
-        "checkedAt": "2026-09-02",
+        "checkedAt": "2026-09-04",
         "fails": 0,
-        "lastOkAt": "2026-09-02",
+        "lastOkAt": "2026-09-04",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -783,13 +783,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5539,
+        "ms": 3873,
         "moneyLines": 3,
-        "checkedAt": "2026-09-03",
+        "checkedAt": "2026-09-04",
         "fails": 0,
-        "lastOkAt": "2026-09-03",
+        "lastOkAt": "2026-09-04",
         "suspects": [
-          "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -802,11 +802,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3336,
+        "ms": 3309,
         "moneyLines": 10,
-        "checkedAt": "2026-08-31",
+        "checkedAt": "2026-09-04",
         "fails": 0,
-        "lastOkAt": "2026-08-31"
+        "lastOkAt": "2026-09-04"
       }
     },
     {
