@@ -3464,5 +3464,66 @@
     "evidence": "公式ページはStandard $15/月（年払い$12/月）・Pro $35/月（年払い$28/月）・Max $95/月（年払い$76/月）と明記。うちのUSD_PRICED(runway:15)・PLANS換算値と完全一致。検知added(11)/removed(16)はページ本文のどこにも出現せず、過去にも同型の小さいドル値の揺れが複数回（2回以上）偽陽性判定済み。",
     "verdictReason": "過去複数回と同一原因。主要3プラン($15/$35/$95)は不変",
     "notes": ""
+  },
+  {
+    "date": "2026-09-05",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページ（今回フル再取得）は個人￥1,280/月・ファミリー￥2,280/月・学生￥780/月・Premium Lite￥780/月の4値のみ。￥1,480はページ本文のどこにも出現せず。うちのPLANS(1280/2280/780)と完全一致。過去12回と同型の一過性の揺れ。",
+    "verdictReason": "過去12回と同一原因（13回目）。本文に1480は実在せず",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-05",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      400
+    ],
+    "removed": [
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 400, 560）で過去29回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページはStarter￥640￥800**（3ヶ月20%オフ併記）・Standard￥800￥1,600**（3ヶ月50%オフ併記）・Plus￥2,000￥2,500**（3ヶ月20%オフ併記）。通常価格800/1600/2500はうちのPRICING/PLANSと完全一致。検知added(1280,400)/removed(560)は過去29回と同型のキャンペーン割引価格ローテーションによる揺れ。",
+    "verdictReason": "過去29回と同一原因（30回目）。公式の800/1600/2500は不変",
+    "notes": ""
   }
 ]
