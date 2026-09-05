@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 19553,
-        "moneyLines": 21,
-        "checkedAt": "2026-09-05",
+        "ms": 10007,
+        "moneyLines": 22,
+        "checkedAt": "2026-09-06",
         "fails": 0,
-        "lastOkAt": "2026-09-05"
+        "lastOkAt": "2026-09-06"
       }
     },
     {
@@ -269,11 +269,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5210,
+        "ms": 6275,
         "moneyLines": 5,
-        "checkedAt": "2026-09-04",
+        "checkedAt": "2026-09-06",
         "fails": 0,
-        "lastOkAt": "2026-09-04",
+        "lastOkAt": "2026-09-06",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -728,9 +728,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 11675,
+        "ms": 4211,
         "moneyLines": 0,
-        "checkedAt": "2026-09-05",
+        "checkedAt": "2026-09-06",
         "fails": 0
       }
     },
@@ -783,11 +783,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5254,
+        "ms": 3980,
         "moneyLines": 3,
-        "checkedAt": "2026-09-05",
+        "checkedAt": "2026-09-06",
         "fails": 0,
-        "lastOkAt": "2026-09-05",
+        "lastOkAt": "2026-09-06",
         "suspects": [
           "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
