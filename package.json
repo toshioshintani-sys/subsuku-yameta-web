@@ -17,7 +17,8 @@
     "price:fetch": "node scripts/price-watch/fetch-pages.mjs",
     "price:audit-prose": "node scripts/price-watch/audit-prose-prices.mjs",
     "seo:indexnow": "node scripts/seo/indexnow-ping.mjs",
-    "seo:health": "node scripts/seo/seo-health.mjs"
+    "seo:health": "node scripts/seo/seo-health.mjs",
+    "ops:triage": "node scripts/ops/triage.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.40.0",
