@@ -136,11 +136,11 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4744,
+        "ms": 15003,
         "moneyLines": 3,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0,
-        "lastOkAt": "2026-09-06",
+        "lastOkAt": "2026-09-07",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -247,11 +247,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 14873,
+        "ms": 26921,
         "moneyLines": 29,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0,
-        "lastOkAt": "2026-09-06",
+        "lastOkAt": "2026-09-07",
         "suspects": [
           "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
@@ -644,11 +644,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 9647,
+        "ms": 17185,
         "moneyLines": 1,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0,
-        "lastOkAt": "2026-09-06",
+        "lastOkAt": "2026-09-07",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -678,11 +678,11 @@
       "enabled": true,
       "note": "baselineで確認",
       "fetch": {
-        "status": "short-body",
-        "ms": 3628,
+        "status": "no-money",
+        "ms": 3065,
         "moneyLines": 0,
-        "checkedAt": "2026-09-06",
-        "fails": 1
+        "checkedAt": "2026-09-07",
+        "fails": 0
       }
     },
     {
@@ -735,9 +735,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 6824,
+        "ms": 8064,
         "moneyLines": 0,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0
       }
     },
@@ -750,9 +750,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4710,
+        "ms": 5477,
         "moneyLines": 0,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0
       }
     },
@@ -790,13 +790,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4184,
+        "ms": 5148,
         "moneyLines": 3,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-07",
         "fails": 0,
-        "lastOkAt": "2026-09-06",
+        "lastOkAt": "2026-09-07",
         "suspects": [
-          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
