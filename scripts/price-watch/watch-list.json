@@ -246,16 +246,12 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 26921,
-        "moneyLines": 29,
-        "checkedAt": "2026-09-07",
-        "fails": 0,
-        "lastOkAt": "2026-09-07",
-        "suspects": [
-          "金額の種類が多すぎる（19種）＝別商品が混ざっている疑い",
-          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
-        ]
+        "status": "short-body",
+        "ms": 5165,
+        "moneyLines": 0,
+        "checkedAt": "2026-09-08",
+        "fails": 1,
+        "lastOkAt": "2026-09-08"
       }
     },
     {
@@ -276,11 +272,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5210,
+        "ms": 5557,
         "moneyLines": 5,
-        "checkedAt": "2026-09-04",
+        "checkedAt": "2026-09-08",
         "fails": 0,
-        "lastOkAt": "2026-09-04",
+        "lastOkAt": "2026-09-08",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -679,9 +675,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3065,
+        "ms": 6918,
         "moneyLines": 0,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-08",
         "fails": 0
       }
     },
@@ -735,9 +731,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 8064,
+        "ms": 12117,
         "moneyLines": 0,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-08",
         "fails": 0
       }
     },
@@ -790,13 +786,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5148,
+        "ms": 4786,
         "moneyLines": 3,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-08",
         "fails": 0,
-        "lastOkAt": "2026-09-07",
+        "lastOkAt": "2026-09-08",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
