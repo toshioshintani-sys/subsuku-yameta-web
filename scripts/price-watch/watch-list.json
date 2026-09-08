@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 8678,
-        "moneyLines": 22,
-        "checkedAt": "2026-09-06",
+        "ms": 7739,
+        "moneyLines": 21,
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-06"
+        "lastOkAt": "2026-09-09"
       }
     },
     {
@@ -99,11 +99,11 @@
       "note": "2026-07-26: トップページ（disneyplus.com/ja-jp/）は両プランの価格を出すが、headless でも35秒で開けず必ずタイムアウトするため、確実に開けるこのページに戻した。ただしこのページはスタンダード（1,250円/年12,500円）しか価格を出さない。プレミアム（1,670円/年16,700円）は監視対象外になるので、棚卸し（reconcile）では毎回「プレミアムがページに無い」と出る＝既知の偽陽性。",
       "fetch": {
         "status": "ok",
-        "ms": 11594,
+        "ms": 6609,
         "moneyLines": 4,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-06"
+        "lastOkAt": "2026-09-09"
       }
     },
     {
@@ -136,11 +136,11 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 15003,
+        "ms": 5338,
         "moneyLines": 3,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-07",
+        "lastOkAt": "2026-09-09",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -247,10 +247,10 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "short-body",
-        "ms": 5165,
+        "ms": 6586,
         "moneyLines": 0,
-        "checkedAt": "2026-09-08",
-        "fails": 1,
+        "checkedAt": "2026-09-09",
+        "fails": 3,
         "lastOkAt": "2026-09-08"
       }
     },
@@ -272,11 +272,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5557,
+        "ms": 5376,
         "moneyLines": 5,
-        "checkedAt": "2026-09-08",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-08",
+        "lastOkAt": "2026-09-09",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -553,11 +553,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5096,
+        "ms": 7098,
         "moneyLines": 4,
-        "checkedAt": "2026-09-02",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-02",
+        "lastOkAt": "2026-09-09",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -640,11 +640,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 17185,
+        "ms": 9851,
         "moneyLines": 1,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-07",
+        "lastOkAt": "2026-09-09",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -674,11 +674,11 @@
       "enabled": true,
       "note": "baselineで確認",
       "fetch": {
-        "status": "no-money",
-        "ms": 6918,
+        "status": "short-body",
+        "ms": 4467,
         "moneyLines": 0,
-        "checkedAt": "2026-09-08",
-        "fails": 0
+        "checkedAt": "2026-09-09",
+        "fails": 1
       }
     },
     {
@@ -731,9 +731,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 12117,
+        "ms": 6043,
         "moneyLines": 0,
-        "checkedAt": "2026-09-08",
+        "checkedAt": "2026-09-09",
         "fails": 0
       }
     },
@@ -746,9 +746,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 5477,
+        "ms": 4305,
         "moneyLines": 0,
-        "checkedAt": "2026-09-07",
+        "checkedAt": "2026-09-09",
         "fails": 0
       }
     },
@@ -786,11 +786,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4786,
+        "ms": 4002,
         "moneyLines": 3,
-        "checkedAt": "2026-09-08",
+        "checkedAt": "2026-09-09",
         "fails": 0,
-        "lastOkAt": "2026-09-08",
+        "lastOkAt": "2026-09-09",
         "suspects": [
           "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
         ]
