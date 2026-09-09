@@ -3915,5 +3915,159 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "本文取得。値引き価格と通常価格が並記されているのを確認: ¥560/¥800、¥1,120/¥1,600、¥2,000/¥2,500（すべて月額単位はJPY明記）。ours[800,1600,2500]は通常価格側と完全一致。検知のadded[1120,2000,640]・removed[1250,560]は割引/通常の並記表示の揺れによるもので、過去34回と同じ既知パターン。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-10",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去15回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "個人プラン ￥1,280/月、Premium Lite ￥780/月、ファミリー ￥2,280/月、学生 ￥780/月、年払い ￥12,800。当方PLANS(1280/780/2280/780)と完全一致・不変。「￥1,480」はページ本文のどこにも出現せず。",
+    "verdictReason": "過去15回と同一原因（16回目）。当方掲載の全プラン価格は現存・不変。1480は表示揺れの残骸",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-10",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1,
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "保留",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "今日は price:fetch(headless+--full)を8回、price-watch.mjs(headless+noAdBlock)を8回、計16回すべて価格ウィジェット未描画（本文120字またはsig=0）で、1回も金額行が取れなかった。過去9回はいずれか1回は完全レンダリングに成功して9,080円の現存を確認できていたが、今日はこの環境から0/16で確認不能。",
+    "verdictReason": "過去9回と同型パターン（$1/9080の出入り）が濃厚ではあるが、今日は公式ページ本文を一度も目視確認できていないため、前例からの推定だけで偽陽性と断定しない。次回の判定で再確認を",
+    "notes": "adobe-ccのheadless取得が今日は16回連続で失敗（過去は数回に1回は成功していた）。ボット対策強化か一時的な描画不調の可能性。次回も連続で取れない場合はwatch-list側の対応（別URL・待機時間延長等）を検討する価値あり"
+  },
+  {
+    "date": "2026-09-10",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [],
+    "removed": [
+      750
+    ],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（750）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "個人Plus ￥1,200/月、チームStandard 1ユーザーあたり￥1,500/月、Advanced 1ユーザーあたり￥2,400/月、Basic無料、Enterpriseは問い合わせのみ。当方PRICING(1200)と完全一致。「￥750」は本文全文検索でも一切出現せず。",
+    "verdictReason": "過去3回と同一原因（4回目）。Plus 1,200円は不変。750は本文中に根拠なし",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-10",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [],
+    "removed": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "Free ￥0、Go ￥1,400、Plus ￥3,000、Pro ￥16,800 の4プラン全てが本文に現存。「0円が消えた」という信号は今日の再取得では再現せず、当方PLANS(0/1400/3000/16800)と完全一致。",
+    "verdictReason": "無料プラン(￥0)は消えていない。本日の検知は非同期読み込みによる一時的な取りこぼし（4値が瞬間的に全て消えた）で、無料キャンペーン終了の兆候ではない",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-10",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      1280,
+      560
+    ],
+    "removed": [
+      1120,
+      2000,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 1280, 560）で過去35回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（1250 と 2500）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "2回連続で再取得したところ、割引率がロード毎に変わるプロモバナー（Starter/Standard/Plusの「3か月〇%オフ」表示）を確認。1回目はStarter￥400/800・Standard￥800/1,600・Plus￥2,000/2,500、2回目はStarter￥400/800・Standard￥1,280/1,600・Plus￥1,750/2,500と割引額だけが変わり、打ち消し線側の通常価格（800/1,600/2,500）は両回とも同一。当方PRICING/PLANS(800)と一致。",
+    "verdictReason": "検知の added/removed はいずれもこのランダム割引バナーの割引額側（400〜2,000等）の組み合わせ違いで、通常価格800/1,600/2,500は不変。過去35回と同一原因（36回目）",
+    "notes": ""
   }
 ]

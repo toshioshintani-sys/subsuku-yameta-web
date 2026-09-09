@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 7739,
-        "moneyLines": 21,
-        "checkedAt": "2026-09-09",
+        "ms": 20606,
+        "moneyLines": 22,
+        "checkedAt": "2026-09-10",
         "fails": 0,
-        "lastOkAt": "2026-09-09"
+        "lastOkAt": "2026-09-10"
       }
     },
     {
@@ -99,11 +99,11 @@
       "note": "2026-07-26: トップページ（disneyplus.com/ja-jp/）は両プランの価格を出すが、headless でも35秒で開けず必ずタイムアウトするため、確実に開けるこのページに戻した。ただしこのページはスタンダード（1,250円/年12,500円）しか価格を出さない。プレミアム（1,670円/年16,700円）は監視対象外になるので、棚卸し（reconcile）では毎回「プレミアムがページに無い」と出る＝既知の偽陽性。",
       "fetch": {
         "status": "ok",
-        "ms": 6609,
+        "ms": 7505,
         "moneyLines": 4,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0,
-        "lastOkAt": "2026-09-09"
+        "lastOkAt": "2026-09-10"
       }
     },
     {
@@ -135,15 +135,12 @@
       "enabled": true,
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 5338,
-        "moneyLines": 3,
-        "checkedAt": "2026-09-09",
-        "fails": 0,
-        "lastOkAt": "2026-09-09",
-        "suspects": [
-          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
-        ]
+        "status": "timeout",
+        "ms": 35016,
+        "moneyLines": 0,
+        "checkedAt": "2026-09-10",
+        "fails": 1,
+        "lastOkAt": "2026-09-09"
       }
     },
     {
@@ -247,10 +244,10 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "short-body",
-        "ms": 6586,
+        "ms": 4731,
         "moneyLines": 0,
-        "checkedAt": "2026-09-09",
-        "fails": 3,
+        "checkedAt": "2026-09-10",
+        "fails": 18,
         "lastOkAt": "2026-09-08"
       }
     },
@@ -272,11 +269,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5376,
+        "ms": 5722,
         "moneyLines": 5,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0,
-        "lastOkAt": "2026-09-09",
+        "lastOkAt": "2026-09-10",
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
@@ -367,7 +364,15 @@
       "excludeTokens": [
         "$100"
       ],
-      "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい"
+      "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
+      "fetch": {
+        "status": "ok",
+        "ms": 5513,
+        "moneyLines": 4,
+        "checkedAt": "2026-09-10",
+        "fails": 0,
+        "lastOkAt": "2026-09-10"
+      }
     },
     {
       "id": "claude-pro",
@@ -640,11 +645,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 9851,
+        "ms": 6754,
         "moneyLines": 1,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0,
-        "lastOkAt": "2026-09-09",
+        "lastOkAt": "2026-09-10",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -674,11 +679,11 @@
       "enabled": true,
       "note": "baselineで確認",
       "fetch": {
-        "status": "short-body",
-        "ms": 4467,
+        "status": "no-money",
+        "ms": 3412,
         "moneyLines": 0,
-        "checkedAt": "2026-09-09",
-        "fails": 1
+        "checkedAt": "2026-09-10",
+        "fails": 0
       }
     },
     {
@@ -731,9 +736,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 6043,
+        "ms": 4131,
         "moneyLines": 0,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0
       }
     },
@@ -746,9 +751,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4305,
+        "ms": 4370,
         "moneyLines": 0,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0
       }
     },
@@ -786,13 +791,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4002,
+        "ms": 4474,
         "moneyLines": 3,
-        "checkedAt": "2026-09-09",
+        "checkedAt": "2026-09-10",
         "fails": 0,
-        "lastOkAt": "2026-09-09",
+        "lastOkAt": "2026-09-10",
         "suspects": [
-          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
