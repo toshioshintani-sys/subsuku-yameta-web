@@ -4069,5 +4069,95 @@
     "evidence": "2回連続で再取得したところ、割引率がロード毎に変わるプロモバナー（Starter/Standard/Plusの「3か月〇%オフ」表示）を確認。1回目はStarter￥400/800・Standard￥800/1,600・Plus￥2,000/2,500、2回目はStarter￥400/800・Standard￥1,280/1,600・Plus￥1,750/2,500と割引額だけが変わり、打ち消し線側の通常価格（800/1,600/2,500）は両回とも同一。当方PRICING/PLANS(800)と一致。",
     "verdictReason": "検知の added/removed はいずれもこのランダム割引バナーの割引額側（400〜2,000等）の組み合わせ違いで、通常価格800/1,600/2,500は不変。過去35回と同一原因（36回目）",
     "notes": ""
+  },
+  {
+    "date": "2026-09-11",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      200,
+      60
+    ],
+    "removed": [
+      40
+    ],
+    "ours": [
+      3206,
+      9617,
+      32058
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式ページで Hobby=Free / Pro=$20 / Pro+=$60 / Ultra=$200 と確認。当方PLANS(Pro 3000円=$20, Pro+ 9000円=$60, Ultra 30000円=$200・USD_PRICED換算)と完全一致。removed の $40 は現在ページ上のどこにも存在せず、以前の監視スナップショットが古かった可能性が高い（今回の $60/$200 の出現は実際の値上げではなく、既存の当方データに追いついただけ）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-11",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "公式ページで 無料版=￥0 / Go=￥1,400 / Plus=￥3,000 / Pro=月額￥16,800から と確認。当方PLANS(Free 0, Go 1400, Plus 3000, Pro 16800)と完全一致。removedが0件・追加のみなのは無料版の￥0トークンが今回たまたま抽出された結果で、値上げではない。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-11",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      2000,
+      400
+    ],
+    "removed": [
+      1250,
+      1280,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（2000, 400, 1250）で過去36回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで Starter ¥400/¥800**・Standard ¥1,280/¥1,600**・Plus ¥2,000/¥2,500** と併記（**=期間限定キャンペーン割引、左が割引後・右が通常）。当方PRICING/PLANSは通常価格側(800/1600/2500)を採用しており現在の公式表示と一致。today検知のadded/removedはキャンペーン割引率の変動（例: Starterの3ヶ月50%オフ・Standardの20%オフ等、期間や条件で変わる）によるもので、当方が採用している通常価格には変化がない。",
+    "notes": ""
   }
 ]

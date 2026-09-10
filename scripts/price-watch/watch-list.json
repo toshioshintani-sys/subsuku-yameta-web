@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35016,
+        "ms": 35012,
         "moneyLines": 0,
-        "checkedAt": "2026-09-10",
-        "fails": 1,
+        "checkedAt": "2026-09-11",
+        "fails": 3,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -367,11 +367,11 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "ok",
-        "ms": 5513,
+        "ms": 4566,
         "moneyLines": 4,
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "fails": 0,
-        "lastOkAt": "2026-09-10"
+        "lastOkAt": "2026-09-11"
       }
     },
     {
@@ -645,11 +645,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6754,
+        "ms": 6054,
         "moneyLines": 1,
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "fails": 0,
-        "lastOkAt": "2026-09-10",
+        "lastOkAt": "2026-09-11",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -736,9 +736,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4131,
+        "ms": 4530,
         "moneyLines": 0,
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "fails": 0
       }
     },
@@ -751,9 +751,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4370,
+        "ms": 3845,
         "moneyLines": 0,
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "fails": 0
       }
     },
@@ -766,11 +766,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 6450,
-        "moneyLines": 2,
-        "checkedAt": "2026-08-21",
+        "ms": 4026,
+        "moneyLines": 3,
+        "checkedAt": "2026-09-11",
         "fails": 0,
-        "lastOkAt": "2026-08-21"
+        "lastOkAt": "2026-09-11"
       }
     },
     {
@@ -791,11 +791,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4474,
+        "ms": 4424,
         "moneyLines": 3,
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "fails": 0,
-        "lastOkAt": "2026-09-10",
+        "lastOkAt": "2026-09-11",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
