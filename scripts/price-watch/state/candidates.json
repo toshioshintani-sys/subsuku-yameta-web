@@ -1,17 +1,47 @@
 {
-  "generatedAt": "2026-09-08T22:42:50.553Z",
+  "generatedAt": "2026-09-10T22:13:09.774Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "adobe-cc",
-      "name": "Adobe Creative Cloud",
-      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
       "added": [
-        "$1",
-        "9,080円"
+        "￥0",
+        "￥1,400",
+        "￥16,800",
+        "￥3,000"
       ],
       "removed": [],
-      "detectedAt": "2026-09-08T22:42:49.726Z"
+      "detectedAt": "2026-09-10T22:11:38.511Z"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "added": [
+        "$200",
+        "$60"
+      ],
+      "removed": [
+        "$40"
+      ],
+      "detectedAt": "2026-09-10T22:12:51.716Z"
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
+      "added": [
+        "￥2,000",
+        "￥400"
+      ],
+      "removed": [
+        "￥1,250",
+        "￥1,280",
+        "￥560"
+      ],
+      "detectedAt": "2026-09-10T22:12:59.420Z"
     }
   ]
 }

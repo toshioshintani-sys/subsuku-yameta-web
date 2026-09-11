@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-09-11",
+    "serviceId": "bookwalker",
+    "item": "読み放題プラン（代表月額・単一プラン）",
+    "ours": 836,
+    "official": 840,
+    "autoApplicable": true,
+    "reason": "自動適用の3条件を満たす。単一数値（月額）のみの差し替えで、プラン名・プラン数・課金体系は変わらない。この数値はPRICING（services.js:1416）にのみ出現しPLANS/EXTENDED_CONTENTの地の文には無い。公式ページを自分で開いて直接読めた。",
+    "evidence": "bookwalker.jp/subscription/ の本文（1041行取得）に価格トークンは1箇所のみ：『※Google Play決済/Apple ID決済は月額840円(税込)』。当方が掲載している836円はページ全文のどこにも出現しない。reconcile.mjsのALL_MISS報告（2026-09-11）でも同じ840円が抽出されており、836円という値の出所（更新日・根拠URL不明・services.js上にコメント無し）を確認できなかった。",
+    "checkedUrl": "https://bookwalker.jp/subscription/",
+    "proposal": "shadowに積んで様子見。5件たまったら俊雄さんが一括確認のうえ自動適用に昇格するか判断。なお840円はGoogle Play/Apple ID決済時の表記であり、直接決済(Web)の価格がこれと別に存在する可能性もゼロではないため、人が確認のうえ836→840に直すか判断してほしい。"
+  },
+  {
     "date": "2026-08-19",
     "serviceId": "line-music",
     "item": "ファミリープラン",
