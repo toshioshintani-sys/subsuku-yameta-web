@@ -1,17 +1,52 @@
 {
-  "generatedAt": "2026-09-08T22:42:50.553Z",
+  "generatedAt": "2026-09-11T22:13:19.671Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "adobe-cc",
-      "name": "Adobe Creative Cloud",
-      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "id": "amazon-music-unlimited",
+      "name": "Amazon Music Unlimited",
+      "url": "https://www.amazon.co.jp/music/unlimited",
       "added": [
-        "$1",
-        "9,080円"
+        "0円"
       ],
       "removed": [],
-      "detectedAt": "2026-09-08T22:42:49.726Z"
+      "detectedAt": "2026-09-11T22:11:01.701Z"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "added": [
+        "$40"
+      ],
+      "removed": [
+        "$200",
+        "$60"
+      ],
+      "detectedAt": "2026-09-11T22:13:00.555Z"
+    },
+    {
+      "id": "google-workspace",
+      "name": "Google Workspace",
+      "url": "https://workspace.google.com/intl/ja/pricing.html",
+      "added": [
+        "￥640"
+      ],
+      "removed": [
+        "￥400"
+      ],
+      "detectedAt": "2026-09-11T22:13:08.379Z"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "added": [],
+      "removed": [
+        "$100",
+        "$200"
+      ],
+      "detectedAt": "2026-09-11T22:13:10.443Z"
     }
   ]
 }
