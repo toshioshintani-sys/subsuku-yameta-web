@@ -4028,5 +4028,117 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "公式ページで Free $0・Standard $15（年払い$12）・Pro $35（年払い$28）・Max（旧Unlimited相当） $95（年払い$76）とのみ表示。当方PLANS(Standard $15/Pro $35/Max $95)と完全一致。$100/$200はページ本文のどこにも出現せず、当方の記録にも存在しないプラン額。前回スナップショットの表示揺れが解消されただけと判断。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-13",
+    "serviceId": "amazon-music-unlimited",
+    "name": "Amazon Music Unlimited",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1180,
+      1680,
+      580
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.amazon.co.jp/music/unlimited",
+    "evidence": "本文取得。『無料体験終了後は月額1,180円（Amazonプライム会員は月額1,080円）。※個人プラン（月額）の場合』のみ表示され「0円」の文言は本文に出現しない。当方PRICING(1180)と一致し変化なし。前日(9/12)は期間限定キャンペーン(10/20まで)の「最初の4か月0円」表記があり今日それが消えたと見えるが、通常価格そのものは不変なので値上げ・値下げではない。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-13",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      750
+    ],
+    "removed": [],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（750）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "本文取得。Plus ￥1,200/月・Standard 1ユーザーあたり￥1,500/月・Advanced 1ユーザーあたり￥2,400/月の3件のみ表示され、￥750はページ本文のどこにも出現しない。当方PRICING(1200)と一致し変化なし。過去3回と同型の表示揺れ（プラン比較表の非同期読み込みタイミング起因と推測）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-13",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      200,
+      60
+    ],
+    "removed": [
+      40
+    ],
+    "ours": [
+      3206,
+      9617,
+      32058
+    ],
+    "signals": [
+      {
+        "name": "同じ値（200, 60, 40）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式ページで Pro $20・Pro+ $60・Ultra $200 と明記（Teams向けの$40は今回の本文に出現せず）。当方PLANS(USD_PRICED換算 3206≈$20/9617≈$60/32058≈$200)と一致し変化なし。$40の出没はTeamsタブ切替時の混入で、前回と同型の表示揺れ。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-13",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      1750
+    ],
+    "removed": [
+      2000
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 1750, 2000）で過去21回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで Starter ¥560¥800**・Standard ¥1,120¥1,600**・Plus ¥1,750¥2,500**と併記（**=3か月間30%オフの期間限定キャンペーン、左が割引後・右が通常）。当方PRICING/PLANSは通常価格側(800/1600/2500)を採用しており一致し変化なし。今回のadded[1280,1750]/removed[2000]はキャンペーン割引率が日によって20%/30%/50%と変動することによる表示の揺れ（1,280=Standard1,600の20%オフ、1,750=Plus2,500の30%オフ）で、通常価格には変化がない。過去21回と同型のキャンペーン率フラップ。",
+    "notes": ""
   }
 ]
