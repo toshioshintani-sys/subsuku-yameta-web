@@ -4140,5 +4140,89 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページで Starter ¥560¥800**・Standard ¥1,120¥1,600**・Plus ¥1,750¥2,500**と併記（**=3か月間30%オフの期間限定キャンペーン、左が割引後・右が通常）。当方PRICING/PLANSは通常価格側(800/1600/2500)を採用しており一致し変化なし。今回のadded[1280,1750]/removed[2000]はキャンペーン割引率が日によって20%/30%/50%と変動することによる表示の揺れ（1,280=Standard1,600の20%オフ、1,750=Plus2,500の30%オフ）で、通常価格には変化がない。過去21回と同型のキャンペーン率フラップ。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-14",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去15回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで個人プラン ￥1,280/月・ファミリー ￥2,280/月・学生 ￥780/月・Premium Lite(新設) ￥780/月を確認。￥1,480は本文中に一切出現せず。当方PRICING(1280/780/2280)と完全一致し変化なし。過去15回と同型の一時的フラップ。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-14",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [],
+    "removed": [
+      750
+    ],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（750）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "公式ページで Dropbox 500GB ￥750/月・Plus ￥1,200/月・Standard ￥1,500/月(1ユーザー)・Advanced ￥2,400/月(1ユーザー)を確認。￥750は消失しておらず現存。当方PRICING(1200=Plus)と一致し変化なし。過去4回と同型の一時的フラップ。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-14",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      400
+    ],
+    "removed": [
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（400, 640）で過去34回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで Starter ¥400¥800**・Standard ¥1,280¥1,600**・Plus ¥1,750¥2,500**と併記（**=3か月間50%/20%/30%オフの期間限定キャンペーン、左が割引後・右が通常）。当方PRICING/PLANSは通常価格側(800/1600/2500)を採用しており一致し変化なし。今回のadded[400]/removed[640]はキャンペーン割引率が日によって変動することによる表示の揺れ。過去34回と同型のキャンペーン率フラップ。",
+    "notes": ""
   }
 ]
