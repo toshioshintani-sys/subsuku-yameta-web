@@ -1,38 +1,32 @@
 {
-  "generatedAt": "2026-09-13T22:13:45.432Z",
+  "generatedAt": "2026-09-14T22:13:29.278Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "youtube-premium",
       "name": "YouTube Premium",
       "url": "https://www.youtube.com/premium",
-      "added": [
-        "￥1,480"
-      ],
-      "removed": [],
-      "detectedAt": "2026-09-13T22:10:45.236Z"
-    },
-    {
-      "id": "dropbox",
-      "name": "Dropbox",
-      "url": "https://www.dropbox.com/plans",
       "added": [],
       "removed": [
-        "￥750"
+        "￥1,480"
       ],
-      "detectedAt": "2026-09-13T22:11:31.823Z"
+      "detectedAt": "2026-09-14T22:10:37.482Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥400"
+        "￥1,120",
+        "￥2,000",
+        "￥560"
       ],
       "removed": [
-        "￥640"
+        "￥1,280",
+        "￥1,750",
+        "￥400"
       ],
-      "detectedAt": "2026-09-13T22:13:20.896Z"
+      "detectedAt": "2026-09-14T22:13:18.531Z"
     }
   ]
 }
