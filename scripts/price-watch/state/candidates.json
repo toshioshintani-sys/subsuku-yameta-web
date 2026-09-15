@@ -1,32 +1,58 @@
 {
-  "generatedAt": "2026-09-14T22:13:29.278Z",
+  "generatedAt": "2026-09-15T22:13:25.858Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "youtube-premium",
       "name": "YouTube Premium",
       "url": "https://www.youtube.com/premium",
-      "added": [],
-      "removed": [
+      "added": [
         "￥1,480"
       ],
-      "detectedAt": "2026-09-14T22:10:37.482Z"
+      "removed": [],
+      "detectedAt": "2026-09-15T22:10:35.629Z"
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "added": [
+        "$80"
+      ],
+      "removed": [
+        "￥0",
+        "￥1,400",
+        "￥16,800",
+        "￥3,000"
+      ],
+      "detectedAt": "2026-09-15T22:11:45.285Z"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "added": [
+        "$40"
+      ],
+      "removed": [
+        "$200",
+        "$60"
+      ],
+      "detectedAt": "2026-09-15T22:13:03.334Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥1,120",
-        "￥2,000",
-        "￥560"
+        "￥1,280",
+        "￥640"
       ],
       "removed": [
-        "￥1,280",
-        "￥1,750",
-        "￥400"
+        "￥1,120",
+        "￥560"
       ],
-      "detectedAt": "2026-09-14T22:13:18.531Z"
+      "detectedAt": "2026-09-15T22:13:11.651Z"
     }
   ]
 }

@@ -4286,5 +4286,125 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページでStarter 400円/800円、Standard 1,120円/1,600円、Plus 1,250円/2,500円を確認（期間限定割引額/通常価格の並記、割引率は50%・30%・50%で日により変動）。通常価格800/1600/2500は掲載値と一致、変更なし。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      80
+    ],
+    "removed": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "うちの表示価格がページから消えた",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "個人向けタブで無料版￥0・Go￥1,400・Plus￥3,000・Pro￥16,800を実際に確認（services.jsと一致）。「$80」はページ内script中のA/Bテスト設定JSON \"group_name\":\"$80 starting amount\"（APIクレジット購入実験の内部名）で、サブスク価格ではない。removedの4値は既知の非同期読み込み不安定性（3回中1回は金額行ゼロで取得失敗、他2回は正しく4件取得）が原因で、実際の価格変更ではない。",
+    "notes": null
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去17回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで個人プラン￥1,280・ファミリー￥2,280・Premium Lite/学生プラン￥780を確認（services.jsと一致）。￥1,480はページ内のどこにも存在しない。同じ誤検知は過去17回確認済みで再現性のある偽陽性。",
+    "notes": "気づき：公式ページに年額個人プラン「12か月間￥12,800」（月換算約1,067円）が新たに表示されていた。services.jsには未掲載（月額表示のみ）。価格の誤りではなく、単に年額プランの掲載有無の話なので今回は追加せず気づきとして記録のみ。"
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3094,
+      9281,
+      30938
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式ページで個人プラン$20/mo・Teams $40/user/moを確認（services.jsのUSD_PRICED cursor:20と一致）。$200・$60は今回のページには出現せず。プラン切替タブ（Pro/Pro+/Ultra、月額/年額)の描画タイミングで表示される金額トークンが毎回変わる既知の揺れで、過去2回も同じ組み合わせで偽陽性と判定済み。",
+    "notes": null
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      640
+    ],
+    "removed": [
+      1120,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 640, 1120）で過去24回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページでStarter ¥800（3ヶ月間30%オフで¥560）・Standard ¥1,600（同¥1,120）・Plus ¥2,500（20%オフで¥2,000）を確認。services.jsのPRICING/PLANS(800/1600/2500)は正規料金と一致。¥1,280・¥640は今回は出現せず（3ヶ月間の初回割引率が20%/30%の間で変動しており、その割引後価格が検知のたびに違う値になっているだけ）。過去24回も同型の偽陽性と判定済み。",
+    "notes": null
   }
 ]
