@@ -4286,5 +4286,65 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページでStarter 400円/800円、Standard 1,120円/1,600円、Plus 1,250円/2,500円を確認（期間限定割引額/通常価格の並記、割引率は50%・30%・50%で日により変動）。通常価格800/1600/2500は掲載値と一致、変更なし。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      80
+    ],
+    "removed": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "うちの表示価格がページから消えた",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "直後に3回連続で再取得したところ ￥0/￥1,400/￥3,000/￥16,800（現行PRICING/PLANSと一致）が2回、価格自体が描画されない状態が1回発生。$80はいずれの再現でも一度も出現せず。README記載の既知の非同期描画不安定（chatgpt-plusはBusiness価格が4回中2回しか出ない等）と同種の一過性ノイズと判断。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1750
+    ],
+    "removed": [
+      1120,
+      2000
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1750, 1120, 2000）で過去22回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで現在のキャンペーン表示を確認：Starter ￥400→￥800（3ヶ月50%オフ）／Standard ￥800→￥1,600（3ヶ月50%オフ）／Plus ￥2,000→￥2,500（3ヶ月20%オフ）。矢印右側の通常価格800/1600/2500はservices.jsのPRICING(800)・PLANS(800/1600/2500)と完全一致。検知が拾った1750/1120/2000はキャンペーン割引率が変動した際の一時的な表示で、signals記載の通り同種の値で過去22回すでに偽陽性判定済み。",
+    "notes": ""
   }
 ]
