@@ -558,11 +558,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 7068,
+        "ms": 6640,
         "moneyLines": 4,
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "fails": 0,
-        "lastOkAt": "2026-09-16",
+        "lastOkAt": "2026-09-17",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -680,9 +680,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 2018,
+        "ms": 2424,
         "moneyLines": 0,
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "fails": 0
       }
     },
@@ -736,9 +736,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4893,
+        "ms": 3795,
         "moneyLines": 0,
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "fails": 0
       }
     },
@@ -751,9 +751,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 3968,
+        "ms": 3588,
         "moneyLines": 0,
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "fails": 0
       }
     },
@@ -791,13 +791,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4190,
+        "ms": 4182,
         "moneyLines": 3,
-        "checkedAt": "2026-09-16",
+        "checkedAt": "2026-09-17",
         "fails": 0,
-        "lastOkAt": "2026-09-16",
+        "lastOkAt": "2026-09-17",
         "suspects": [
-          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -823,7 +823,15 @@
       "url": "https://windsurf.com/pricing",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示"
+      "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示",
+      "fetch": {
+        "status": "ok",
+        "ms": 3043,
+        "moneyLines": 10,
+        "checkedAt": "2026-09-17",
+        "fails": 0,
+        "lastOkAt": "2026-09-17"
+      }
     },
     {
       "id": "midjourney",

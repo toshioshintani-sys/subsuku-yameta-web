@@ -4346,5 +4346,103 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページで現在のキャンペーン表示を確認：Starter ￥400→￥800（3ヶ月50%オフ）／Standard ￥800→￥1,600（3ヶ月50%オフ）／Plus ￥2,000→￥2,500（3ヶ月20%オフ）。矢印右側の通常価格800/1600/2500はservices.jsのPRICING(800)・PLANS(800/1600/2500)と完全一致。検知が拾った1750/1120/2000はキャンペーン割引率が変動した際の一時的な表示で、signals記載の通り同種の値で過去22回すでに偽陽性判定済み。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-17",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      31
+    ],
+    "removed": [
+      30
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（31, 30）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "公式ページ本文（年払い月額換算表示）：Individual ￥1,150／Team ￥3,750／Business ￥7,500。services.jsのPRICING(1150)・PLANS(3750/7500)と完全一致・変更なし。ページ本文中に$30/$31やUSDの記載は一切見当たらず、検知が拾った31/30の由来は不明（過去3回と同じ既知の揺れ）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-17",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      400
+    ],
+    "removed": [
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（400, 560）で過去35回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで現在のキャンペーン表示を確認：Starter ￥560→￥800（3ヶ月30%オフ）／Standard ￥1,280→￥1,600（3ヶ月20%オフ）／Plus ￥1,250→￥2,500（3ヶ月50%オフ）。矢印右側の通常価格800/1600/2500はservices.jsのPRICING(800)・PLANS(800/1600/2500)と完全一致。検知が拾った400/560は割引率が別のタイミングで表示された値（過去35回と同型の揺れ）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-17",
+    "serviceId": "windsurf",
+    "name": "Windsurf（現Devin Desktop）",
+    "added": [
+      1,
+      10,
+      11,
+      12,
+      15,
+      31,
+      5,
+      59,
+      85,
+      86,
+      87
+    ],
+    "removed": [],
+    "ours": [
+      3206,
+      32058,
+      12823
+    ],
+    "signals": [
+      {
+        "name": "ちょうど半額の組がある（5 と 10）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（11件）＝別商品の混在",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://windsurf.com/pricing",
+    "evidence": "公式ページ本文（USD建て）：Free $0／Pro $20／Max $200／Teams $80+$40（席）のみ。検知が拾った$1/$10/$11/$12/$15/$31/$5/$59/$85/$86/$87はいずれもページ本文に存在せず、再現しなかった（一時的な描画の揺れ）。ours(3206/32058/12823)はUSD_JPY自動補正後の値で、20/200/80ドルとレート160.29円で整合。",
+    "notes": ""
   }
 ]
