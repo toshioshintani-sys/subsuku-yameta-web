@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5709,
-        "moneyLines": 21,
-        "checkedAt": "2026-09-15",
+        "ms": 19152,
+        "moneyLines": 22,
+        "checkedAt": "2026-09-19",
         "fails": 0,
-        "lastOkAt": "2026-09-15"
+        "lastOkAt": "2026-09-19"
       }
     },
     {
