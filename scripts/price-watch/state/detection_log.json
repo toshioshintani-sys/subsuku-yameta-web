@@ -4556,5 +4556,203 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "公式ページ本文（USD建て）：Free $0／Standard $15（年払い$12）／Pro $35（年払い$28）／Max $95（年払い$76）のみ。$16・$11はページ本文のどこにも出現せず（本文全文をgrep確認）。当方PRICING/PLANS（runway=$15基準）と一致し変更なし。過去3回と同型の一時的な誤検出。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去18回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "￥1,480/月のプランは今回も表示されている（[月単位]￥1,480/月）。￥1,280・￥780・￥2,280も変わらず併存。過去18回と同じ表示の揺れ",
+    "notes": "本件とは別に気づいたこと：手順2.5(reconcile)でDisney+ Premiumの掲載ズレを発見。services.jsは月額1,670円/年額16,700円（Apple経由のみ16,800円）としているが、公式(disneyplus.com/ja-jp)のプラン比較表を直接読むと、プレミアムの直販価格は年額12,500円（Apple App Store経由が16,800円）だった。ページ上にプレミアムの月額表示は見当たらず、課金体系（年額のみか）自体が変わった可能性がある。単一数値の差し替えでは済まないためautofix_shadowにautoApplicable:falseで記録し、人の確認を仰ぐ（本PRで報告）。"
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "￥0(Free)・￥1,400(Go)・￥3,000(Plus)・￥16,800(Pro)が確認でき、うちの表示(3000/1400/16800)と一致。￥0は無料プランの表示であり新規キャンペーンではない。過去1回と同じ組み合わせで偽陽性判定済み",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [
+      99,
+      1500
+    ],
+    "removed": [],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "99円は「Amazonプライム会員限定・今なら4か月月額99円」の期間限定キャンペーン価格。通常の会員価格は「30日間の無料体験後は月額￥1,500で自動更新」と明記されており、うちの表示(1500)と一致。値上げ・値下げではない",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      28,
+      47,
+      51
+    ],
+    "removed": [
+      14,
+      9
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（28, 47, 14）で過去13回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "現在は日本(JPY ¥)表示で、Individual ￥1,150・Team ￥3,750・Business ￥7,500（いずれも年払い月額換算・税込）。うちの表示(1150/3750/7500)と一致。ドル建て(8/7/1等)は今回のフル本文取得(4840字)には一切出現せず、過去13回と同じ表示地域の切り替わりによる揺れと判断",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3206,
+      9617,
+      32058
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20・Pro+ $60・Ultra $200の3プランが揃って表示され、うちの表示(3206/9617/32058円)と一致。1回目の簡易取得で$60と$200が抜け落ちたのは非同期描画のタイミングの揺れ（過去2回と同じ現象）",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      2000,
+      560
+    ],
+    "removed": [
+      1750,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 2000, 560）で過去28回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter/Standard/Plusとも取り消し線後の通常価格は￥800/￥1,600/￥2,500でうちの表示と一致。取り消し線前のキャンペーン割引額(￥400/￥800/￥1,280/￥2,000/￥560等)はページを開くたびに変動しており、今回はStandardの割引額が￥1,280（前回取得時は￥800）に変わっていた。通常価格は不変で過去28回と同じ表示の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      30
+    ],
+    "removed": [],
+    "ours": [
+      2404,
+      23082,
+      5610,
+      53857,
+      15228,
+      146184
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "Standard/Pro/Maxの月額(非割引)$15/$35/$95、および年払い割引後($12/$28/$76)を確認。うちの表示(2404円等・5/5/5の円換算+年払い総額)と一致。検知の$30はフル本文取得(4695字)に一切出現せず、単発の描画ノイズと判断",
+    "notes": ""
   }
 ]

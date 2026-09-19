@@ -74,5 +74,23 @@
     "proposal": "プラン名（Teams→Canvaビジネス）と月額/年額の対応を公式で個別に確認したうえで人が更新（改名を伴うため自動化の対象外）",
     "resolvedAt": "2026-08-28",
     "resolution": "本コミットで修正：Pro 月1,180/年11,800・ビジネス(旧Teams) 月1,880/年18,800 に更新"
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "disney-plus",
+    "item": "プレミアム（年額・直販）",
+    "ours": {
+      "premiumMonthly": 1670,
+      "premiumYearly": 16700
+    },
+    "official": {
+      "premiumYearlyDirect": 12500,
+      "premiumYearlyAppleAppStore": 16800
+    },
+    "autoApplicable": false,
+    "reason": "自動適用の3条件を満たさない。単一数値の差し替えでは済まない疑いがある。公式のプラン比較表(disneyplus.com/ja-jp)にはプレミアムの月額表示が見当たらず、スタンダードは月額、プレミアムは年額のみという課金体系そのものが変わっている可能性がある。年額の差(16,700→12,500)も4,200円と大きく、読み違いの可能性を排除できない。",
+    "evidence": "disneyplus.com/ja-jp/explore/what-is-disneyplus のプラン比較表(<table>)をPuppeteerでinnerText抽出して直接確認。表の行は「サブスクリプション（税込）｜月額：1,250円（税込）｜年額：12,500円（税込）」で、中央列がスタンダード、右列がプレミアムに対応（見出し行「ディズニープラス スタンダード｜ディズニープラス プレミアム」より）。注記2に「Apple App Store経由でご加入の場合はプレミアムプランは年額16,800円（税込）となります」とあり、直販16,800円ではなく12,500円が基本の年額であることを示唆。ページ上にプレミアムの月額料金の記載はなかった。",
+    "checkedUrl": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus",
+    "proposal": "公式の別ページ（登録画面・料金詳細ページ等）でプレミアムに月額オプションが現存するか、年額12,500円が正しい現行価格かを人が確認したうえで、services.jsのdisney-plus PRICING/PLANS（1058行目付近, 1729-1736行目）を修正する。PR起票して人間レビューへ。"
   }
 ]
