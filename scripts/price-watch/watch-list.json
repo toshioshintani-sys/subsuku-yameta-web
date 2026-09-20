@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 9964,
-        "moneyLines": 22,
-        "checkedAt": "2026-09-19",
+        "ms": 8259,
+        "moneyLines": 21,
+        "checkedAt": "2026-09-21",
         "fails": 0,
-        "lastOkAt": "2026-09-19"
+        "lastOkAt": "2026-09-21"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35012,
+        "ms": 35007,
         "moneyLines": 0,
-        "checkedAt": "2026-09-19",
-        "fails": 10,
+        "checkedAt": "2026-09-21",
+        "fails": 11,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -424,11 +424,11 @@
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
         "status": "ok",
-        "ms": 5752,
+        "ms": 6080,
         "moneyLines": 5,
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-21",
         "fails": 0,
-        "lastOkAt": "2026-09-19"
+        "lastOkAt": "2026-09-21"
       }
     },
     {
@@ -688,9 +688,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 5097,
+        "ms": 4598,
         "moneyLines": 0,
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-21",
         "fails": 0
       }
     },
@@ -744,9 +744,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 7030,
+        "ms": 7050,
         "moneyLines": 0,
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-21",
         "fails": 0
       }
     },
@@ -774,11 +774,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 20110,
+        "ms": 6128,
         "moneyLines": 3,
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-21",
         "fails": 0,
-        "lastOkAt": "2026-09-20"
+        "lastOkAt": "2026-09-21"
       }
     },
     {
@@ -799,13 +799,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6646,
+        "ms": 8809,
         "moneyLines": 3,
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-21",
         "fails": 0,
-        "lastOkAt": "2026-09-20",
+        "lastOkAt": "2026-09-21",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },

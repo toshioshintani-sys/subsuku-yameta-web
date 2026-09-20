@@ -4813,5 +4813,118 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "Starter ¥640¥800／Standard ¥800¥1,600／Plus ¥2,000¥2,500（取り消し線の割引額＋通常額の並記）。取り消し線後の通常価格はうちの表示(800/1600/2500)と一致。割引額(640/800/2000等)はページを開くたびに変動しており、過去42回と同じ表示の揺れ",
     "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "Premium Lite 月額780円・Premium 月額1,280円・Family 月額2,280円が表示され、うちの表示(1280/780/2280)と完全一致。￥1,480は本文(2441字)のどこにも出現せず、過去19回と同じ非同期描画の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "「プレミアムプランを¥0で試す　30日間の無料体験後は月額￥1,500で自動更新します」と表示され、¥0(トライアル表記)と¥1,500(うちの表示と一致)が両方とも本文に存在。前回スキャンで¥0が消えたように見えたのは無料体験の表記自体は変わらず、読み込みタイミングの揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3126,
+      9379,
+      31264
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20・Pro+ $60・Ultra $200が揃って表示され、うちの表示(3126/9379/31264円・USD_PRICEDによるFX自動換算)と一致。$40はTeams向けStandardプランの価格(個人向けとは別立て)で、うちが監視している個人プランとは無関係。過去4回と同じ非同期描画の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      560
+    ],
+    "removed": [
+      1120,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 560, 1120）で過去43回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "「最初の3か月間が30%オフ」の期間限定割引がStarter/Standard/Plusの通常価格(¥800/¥1,600/¥2,500)と並記され、うちの表示は通常価格と一致。割引額(560/1120/1280等)は開くたびに変動しており、過去43回と同じ表示の揺れ",
+    "notes": ""
   }
 ]
