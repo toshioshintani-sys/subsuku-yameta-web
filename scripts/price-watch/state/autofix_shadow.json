@@ -79,13 +79,41 @@
     "date": "2026-09-18",
     "serviceId": "hulu",
     "item": "年額プラン（月換算854円/年10,240円）の存否 ＋ 月額プランの将来改定（1,026→1,320円・2026-10-01）",
-    "ours": { "monthly": 1026, "yearlyPlanMonthly": 854, "yearlyPlanYearly": 10240 },
-    "official": { "currentMonthly": 1026, "futureMonthly": 1320, "futureEffective": "2026-10-01" },
+    "ours": {
+      "monthly": 1026,
+      "yearlyPlanMonthly": 854,
+      "yearlyPlanYearly": 10240
+    },
+    "official": {
+      "currentMonthly": 1026,
+      "futureMonthly": 1320,
+      "futureEffective": "2026-10-01"
+    },
     "autoApplicable": false,
     "reason": "2つの問題が混在し、単一数値の差し替えでは済まない。①公式トップ(hulu.jp)には月額1,026円のみが表示され、年額プランへの言及が本文のどこにも無い。公式ニュース(news.hulu.jp/hulu_svod_rev_2026/)の改定告知にも月額料金のみが記載され年額プランへの言及が無い。第三者サイト複数（pixela.co.jp, animeanime.jp 等）も『Huluは月額のみで年額プランは無い』と明記しており、当方PLANSにある『年額プラン（月854円換算・年10,240円）』は公式に現存しない疑いが濃い。②それとは別に、公式ニュースで2026年10月1日(木)00:00より月額利用料金が1,026円→1,320円（iTunes/Google Play/Amazon決済は1,450円）に改定されると正式発表済み。ただし本日(2026-09-18)時点ではまだ改定前で、hulu.jp実ページも現在も1,026円と表示中のため、今このタイミングでservices.jsを1,320円に書き換えると『まだ現実には請求されていない未来価格』を今の価格として誤報することになり、誤報ゼロ原則に反する。",
     "evidence": "① hulu.jp トップページ本文（今回取得）：『月額1,026円(税込)』の記載のみ。年額・年間・854・10240等の文字列は本文中に一切出現しない。②公式ニュース(https://news.hulu.jp/hulu_svod_rev_2026/、2026.07.01付)：『【サービス改定前の月額利用料金】1,026円（税込）／iTunes Store決済の場合は1,050円（税込）』『【サービス改定後の月額利用料金】1,320円（税込）／iTunes Store・Google Play・Amazonアプリ内決済の場合1,450円（税込）』『【サービス改定日】2026年10月1日（木）00:00』と明記。年額プランへの言及は同ページにも無い。当方PLANS(services.js:1704-1710)は『月額プラン 1,026円』『年額プラン 月換算854円・年10,240円』の2行構成。",
     "checkedUrl": "https://www.hulu.jp/ , https://news.hulu.jp/hulu_svod_rev_2026/",
     "proposal": "(a) 年額プランが公式のどこにも見当たらない件は、人がログイン後の契約画面や別URLも確認のうえ、現存しないなら年額プラン行を削除する。(b) 月額改定(1,026→1,320円)は2026-10-01の請求分から適用のため、今は据え置き、10月上旬に改めて公式で確認できたらPRICING/PLANSを更新しPRICE_HISTORYに追記する（決済手段により1,450円等の分岐もある点に注意）。両方ともPR起票して人間レビューへ。",
     "reportedAt": "2026-09-18"
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "disney-plus",
+    "item": "プレミアム（年額・直販）",
+    "ours": {
+      "premiumMonthly": 1670,
+      "premiumYearly": 16700
+    },
+    "official": {
+      "premiumYearlyDirect": 12500,
+      "premiumYearlyAppleAppStore": 16800
+    },
+    "autoApplicable": false,
+    "reason": "自動適用の3条件を満たさない。単一数値の差し替えでは済まない疑いがある。公式のプラン比較表(disneyplus.com/ja-jp)にはプレミアムの月額表示が見当たらず、スタンダードは月額、プレミアムは年額のみという課金体系そのものが変わっている可能性がある。年額の差(16,700→12,500)も4,200円と大きく、読み違いの可能性を排除できない。",
+    "evidence": "disneyplus.com/ja-jp/explore/what-is-disneyplus のプラン比較表(<table>)をPuppeteerでinnerText抽出して直接確認。表の行は「サブスクリプション（税込）｜月額：1,250円（税込）｜年額：12,500円（税込）」で、中央列がスタンダード、右列がプレミアムに対応（見出し行「ディズニープラス スタンダード｜ディズニープラス プレミアム」より）。注記2に「Apple App Store経由でご加入の場合はプレミアムプランは年額16,800円（税込）となります」とあり、直販16,800円ではなく12,500円が基本の年額であることを示唆。ページ上にプレミアムの月額料金の記載はなかった。",
+    "checkedUrl": "https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus",
+    "proposal": "公式の別ページ（登録画面・料金詳細ページ等）でプレミアムに月額オプションが現存するか、年額12,500円が正しい現行価格かを人が確認したうえで、services.jsのdisney-plus PRICING/PLANS（1058行目付近, 1729-1736行目）を修正する。PR起票して人間レビューへ。",
+    "resolvedAt": "2026-09-22",
+    "resolution": "誤検知と確認して解決。disneyplus.com/ja-jp/explore/how-to-join （完全な料金表）で「スタンダード月額1,250/年額12,500・プレミアム月額1,670/年額16,700（Apple経由のみ年額16,800）」を確認し、services.jsの現行値と完全一致。前任が引っかかった what-is-disneyplus の簡易比較表は、プランごとに片方の期間（Standardは月額のみ・Premiumは年額のみ）しか見せないマーケティング表現で、課金体系が変わったわけではなかった。services.js変更なし。"
   }
 ]

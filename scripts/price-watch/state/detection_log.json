@@ -3467,35 +3467,6 @@
   },
   {
     "date": "2026-09-05",
-    "serviceId": "youtube-premium",
-    "name": "YouTube Premium",
-    "added": [
-      1480
-    ],
-    "removed": [],
-    "ours": [
-      1280,
-      780,
-      2280
-    ],
-    "signals": [
-      {
-        "name": "同じ値（1480）で過去12回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "公式ページ（今回フル再取得）は個人￥1,280/月・ファミリー￥2,280/月・学生￥780/月・Premium Lite￥780/月の4値のみ。￥1,480はページ本文のどこにも出現せず。うちのPLANS(1280/2280/780)と完全一致。過去12回と同型の一過性の揺れ。",
-    "verdictReason": "過去12回と同一原因（13回目）。本文に1480は実在せず",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-05",
     "serviceId": "google-workspace",
     "name": "Google Workspace",
     "added": [
@@ -3527,13 +3498,13 @@
     "notes": ""
   },
   {
-    "date": "2026-09-06",
+    "date": "2026-09-05",
     "serviceId": "youtube-premium",
     "name": "YouTube Premium",
-    "added": [],
-    "removed": [
+    "added": [
       1480
     ],
+    "removed": [],
     "ours": [
       1280,
       780,
@@ -3541,18 +3512,18 @@
     ],
     "signals": [
       {
-        "name": "同じ値（1480）で過去13回、公式確認のうえ偽陽性と判定済み",
+        "name": "同じ値（1480）で過去12回、公式確認のうえ偽陽性と判定済み",
         "kind": "偽陽性より"
       },
       {
-        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
         "kind": "偽陽性より"
       }
     ],
     "verdict": "偽陽性",
     "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "公式ページ（今回フル再取得・本文120字ではなく金額行22の完全レンダリング）に個人￥1,280/月・ファミリー￥2,280/月・学生￥780/月・Premium Lite（個人）￥780/月・Premium Lite ファミリー（New）￥1,480/月の5値が確認できた。￥1,480はPremium Liteファミリー（当方services.jsのPLANSには未収録の別ティア）の価格として実在しており消えていない。当方が追跡する既存PLANS(1280/780/2280)は本文中に不変で出現・一致。",
-    "verdictReason": "過去13回と同一原因（14回目）。1480はPremium Liteファミリーという既存PLANSに含まれない別ティアの価格で、非同期読み込みにより出たり消えたりしているだけ。当方追跡対象3プランに変更なし",
+    "evidence": "公式ページ（今回フル再取得）は個人￥1,280/月・ファミリー￥2,280/月・学生￥780/月・Premium Lite￥780/月の4値のみ。￥1,480はページ本文のどこにも出現せず。うちのPLANS(1280/2280/780)と完全一致。過去12回と同型の一過性の揺れ。",
+    "verdictReason": "過去12回と同一原因（13回目）。本文に1480は実在せず",
     "notes": ""
   },
   {
@@ -3614,6 +3585,35 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "2回再取得。1回目：Starter￥560￥800**（3ヶ月30%オフ）・Standard￥800￥1,600**（3ヶ月50%オフ）・Plus￥1,250￥2,500**（3ヶ月50%オフ）。2回目：Starter￥400￥800**（50%オフ）・Standard￥1,120￥1,600**（30%オフ）・Plus￥2,000￥2,500**（20%オフ）。いずれも通常価格800/1600/2500は当方PRICING/PLANSと完全一致・不変。1750は2回とも本文に出現せず、過去同様に別の割引率タイミングでのみ現れるローテーション値と判断",
     "verdictReason": "過去31回と同一原因（32回目）。通常価格は32回連続で不変。1750含め検知値は3か月間割引率（20/30/50%オフ）が入れ替わるキャンペーン表示のノイズ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-06",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去13回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページ（今回フル再取得・本文120字ではなく金額行22の完全レンダリング）に個人￥1,280/月・ファミリー￥2,280/月・学生￥780/月・Premium Lite（個人）￥780/月・Premium Lite ファミリー（New）￥1,480/月の5値が確認できた。￥1,480はPremium Liteファミリー（当方services.jsのPLANSには未収録の別ティア）の価格として実在しており消えていない。当方が追跡する既存PLANS(1280/780/2280)は本文中に不変で出現・一致。",
+    "verdictReason": "過去13回と同一原因（14回目）。1480はPremium Liteファミリーという既存PLANSに含まれない別ティアの価格で、非同期読み込みにより出たり消えたりしているだけ。当方追跡対象3プランに変更なし",
     "notes": ""
   },
   {
@@ -3775,34 +3775,6 @@
   },
   {
     "date": "2026-09-09",
-    "serviceId": "youtube-premium",
-    "name": "YouTube Premium",
-    "added": [
-      1480
-    ],
-    "removed": [],
-    "ours": [
-      1280,
-      780,
-      2280
-    ],
-    "signals": [
-      {
-        "name": "同じ値（1480）で過去14回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "本文取得（金額行21）。Premium Lite ￥780/月・Premium ￥1,280/月・Premium家族プラン ￥2,280/月（年額プランは12ヶ月￥12,800）。「￥1,480」はページ本文のどこにも出現しない（全文検索でヒットゼロ）。ours[1280,780,2280]と完全一致。",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-09",
     "serviceId": "adobe-cc",
     "name": "Adobe Creative Cloud",
     "added": [],
@@ -3829,32 +3801,6 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
     "evidence": "1回目のheadless取得は価格ウィジェットが未描画（メニューのみ120字）で判定不能だったため、価格偵察部隊の抽出（headless+noAdBlock）で再取得したところ「9,080円」が再び出現（今回は追加として検知）。1回目で消えて2回目で戻る揺れは、Adobeページの非同期描画タイミングによる既知の不安定性（過去8回すべて偽陽性）と一致。9,080円はours（Creative Cloud Pro）と一致し、値の変更を示す証拠はない。",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-09",
-    "serviceId": "dropbox",
-    "name": "Dropbox",
-    "added": [
-      750
-    ],
-    "removed": [],
-    "ours": [
-      1200
-    ],
-    "signals": [
-      {
-        "name": "同じ値（750）で過去2回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.dropbox.com/plans",
-    "evidence": "本文取得。Plus ￥1,200/月、（1ユーザーあたり）￥2,400/月の並記のみ。「￥750」はページ本文のどこにも出現しない（全文検索でヒットゼロ）。ours[1200]と一致。",
     "notes": ""
   },
   {
@@ -3889,6 +3835,32 @@
   },
   {
     "date": "2026-09-09",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      750
+    ],
+    "removed": [],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（750）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "本文取得。Plus ￥1,200/月、（1ユーザーあたり）￥2,400/月の並記のみ。「￥750」はページ本文のどこにも出現しない（全文検索でヒットゼロ）。ours[1200]と一致。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-09",
     "serviceId": "google-workspace",
     "name": "Google Workspace",
     "added": [
@@ -3914,6 +3886,34 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "本文取得。値引き価格と通常価格が並記されているのを確認: ¥560/¥800、¥1,120/¥1,600、¥2,000/¥2,500（すべて月額単位はJPY明記）。ours[800,1600,2500]は通常価格側と完全一致。検知のadded[1120,2000,640]・removed[1250,560]は割引/通常の並記表示の揺れによるもので、過去34回と同じ既知パターン。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-09",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去14回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "本文取得（金額行21）。Premium Lite ￥780/月・Premium ￥1,280/月・Premium家族プラン ￥2,280/月（年額プランは12ヶ月￥12,800）。「￥1,480」はページ本文のどこにも出現しない（全文検索でヒットゼロ）。ours[1280,780,2280]と完全一致。",
     "notes": ""
   },
   {
@@ -4063,32 +4063,6 @@
   },
   {
     "date": "2026-09-13",
-    "serviceId": "dropbox",
-    "name": "Dropbox",
-    "added": [
-      750
-    ],
-    "removed": [],
-    "ours": [
-      1200
-    ],
-    "signals": [
-      {
-        "name": "同じ値（750）で過去3回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.dropbox.com/plans",
-    "evidence": "本文取得。Plus ￥1,200/月・Standard 1ユーザーあたり￥1,500/月・Advanced 1ユーザーあたり￥2,400/月の3件のみ表示され、￥750はページ本文のどこにも出現しない。当方PRICING(1200)と一致し変化なし。過去3回と同型の表示揺れ（プラン比較表の非同期読み込みタイミング起因と推測）。",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-13",
     "serviceId": "cursor",
     "name": "Cursor",
     "added": [
@@ -4116,6 +4090,32 @@
   },
   {
     "date": "2026-09-13",
+    "serviceId": "dropbox",
+    "name": "Dropbox",
+    "added": [
+      750
+    ],
+    "removed": [],
+    "ours": [
+      1200
+    ],
+    "signals": [
+      {
+        "name": "同じ値（750）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.dropbox.com/plans",
+    "evidence": "本文取得。Plus ￥1,200/月・Standard 1ユーザーあたり￥1,500/月・Advanced 1ユーザーあたり￥2,400/月の3件のみ表示され、￥750はページ本文のどこにも出現しない。当方PRICING(1200)と一致し変化なし。過去3回と同型の表示揺れ（プラン比較表の非同期読み込みタイミング起因と推測）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-13",
     "serviceId": "google-workspace",
     "name": "Google Workspace",
     "added": [
@@ -4139,34 +4139,6 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページで Starter ¥560¥800**・Standard ¥1,120¥1,600**・Plus ¥1,750¥2,500**と併記（**=3か月間30%オフの期間限定キャンペーン、左が割引後・右が通常）。当方PRICING/PLANSは通常価格側(800/1600/2500)を採用しており一致し変化なし。今回のadded[1280,1750]/removed[2000]はキャンペーン割引率が日によって20%/30%/50%と変動することによる表示の揺れ（1,280=Standard1,600の20%オフ、1,750=Plus2,500の30%オフ）で、通常価格には変化がない。過去21回と同型のキャンペーン率フラップ。",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-14",
-    "serviceId": "youtube-premium",
-    "name": "YouTube Premium",
-    "added": [
-      1480
-    ],
-    "removed": [],
-    "ours": [
-      1280,
-      780,
-      2280
-    ],
-    "signals": [
-      {
-        "name": "同じ値（1480）で過去15回、公式確認のうえ偽陽性と判定済み",
-        "kind": "偽陽性より"
-      },
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "公式ページで個人プラン ￥1,280/月・ファミリー ￥2,280/月・学生 ￥780/月・Premium Lite(新設) ￥780/月を確認。￥1,480は本文中に一切出現せず。当方PRICING(1280/780/2280)と完全一致し変化なし。過去15回と同型の一時的フラップ。",
     "notes": ""
   },
   {
@@ -4226,13 +4198,13 @@
     "notes": ""
   },
   {
-    "date": "2026-09-15",
+    "date": "2026-09-14",
     "serviceId": "youtube-premium",
     "name": "YouTube Premium",
-    "added": [],
-    "removed": [
+    "added": [
       1480
     ],
+    "removed": [],
     "ours": [
       1280,
       780,
@@ -4240,17 +4212,17 @@
     ],
     "signals": [
       {
-        "name": "同じ値（1480）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "name": "同じ値（1480）で過去15回、公式確認のうえ偽陽性と判定済み",
         "kind": "偽陽性より"
       },
       {
-        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
         "kind": "偽陽性より"
       }
     ],
     "verdict": "偽陽性",
     "checkedUrl": "https://www.youtube.com/premium",
-    "evidence": "公式ページで月額780円(Premium Lite)/1,280円(個人)/2,280円(ファミリー)/780円(学生)を確認。掲載値(780/1280/2280)と一致。1,480円は本文に存在せず、追加ゼロで消失のみの表示揺れ。",
+    "evidence": "公式ページで個人プラン ￥1,280/月・ファミリー ￥2,280/月・学生 ￥780/月・Premium Lite(新設) ￥780/月を確認。￥1,480は本文中に一切出現せず。当方PRICING(1280/780/2280)と完全一致し変化なし。過去15回と同型の一時的フラップ。",
     "notes": ""
   },
   {
@@ -4288,6 +4260,34 @@
     "notes": ""
   },
   {
+    "date": "2026-09-15",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで月額780円(Premium Lite)/1,280円(個人)/2,280円(ファミリー)/780円(学生)を確認。掲載値(780/1280/2280)と一致。1,480円は本文に存在せず、追加ゼロで消失のみの表示揺れ。",
+    "notes": ""
+  },
+  {
     "date": "2026-09-16",
     "serviceId": "chatgpt-plus",
     "name": "ChatGPT Plus",
@@ -4322,6 +4322,33 @@
   },
   {
     "date": "2026-09-16",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3094,
+      9281,
+      30938
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式ページで個人プラン$20/mo・Teams $40/user/moを確認（services.jsのUSD_PRICED cursor:20と一致）。$200・$60は今回のページには出現せず。プラン切替タブ（Pro/Pro+/Ultra、月額/年額)の描画タイミングで表示される金額トークンが毎回変わる既知の揺れで、過去2回も同じ組み合わせで偽陽性と判定済み。",
+    "notes": null
+  },
+  {
+    "date": "2026-09-16",
     "serviceId": "google-workspace",
     "name": "Google Workspace",
     "added": [
@@ -4346,6 +4373,34 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページで現在のキャンペーン表示を確認：Starter ￥400→￥800（3ヶ月50%オフ）／Standard ￥800→￥1,600（3ヶ月50%オフ）／Plus ￥2,000→￥2,500（3ヶ月20%オフ）。矢印右側の通常価格800/1600/2500はservices.jsのPRICING(800)・PLANS(800/1600/2500)と完全一致。検知が拾った1750/1120/2000はキャンペーン割引率が変動した際の一時的な表示で、signals記載の通り同種の値で過去22回すでに偽陽性判定済み。",
     "notes": ""
+  },
+  {
+    "date": "2026-09-16",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去17回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで個人プラン￥1,280・ファミリー￥2,280・Premium Lite/学生プラン￥780を確認（services.jsと一致）。￥1,480はページ内のどこにも存在しない。同じ誤検知は過去17回確認済みで再現性のある偽陽性。",
+    "notes": "気づき：公式ページに年額個人プラン「12か月間￥12,800」（月換算約1,067円）が新たに表示されていた。services.jsには未掲載（月額表示のみ）。価格の誤りではなく、単に年額プランの掲載有無の話なので今回は追加せず気づきとして記録のみ。"
   },
   {
     "date": "2026-09-17",
@@ -4447,35 +4502,6 @@
   },
   {
     "date": "2026-09-18",
-    "serviceId": "playstation-plus",
-    "name": "PlayStation Plus",
-    "added": [
-      10425,
-      5780,
-      9360
-    ],
-    "removed": [],
-    "ours": [
-      850,
-      6800,
-      1300,
-      11700,
-      1550,
-      13900
-    ],
-    "signals": [
-      {
-        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
-        "kind": "偽陽性より"
-      }
-    ],
-    "verdict": "偽陽性",
-    "checkedUrl": "https://www.playstation.com/ja-jp/ps-plus/",
-    "evidence": "公式ページで12ヶ月プランに期間限定キャンペーンを確認：Premium ￥10,425（通常￥13,900より25%オフ）／Extra ￥9,360（通常￥11,700より20%オフ）／Essential ￥5,780（通常￥6,800より15%オフ）。キャンペーンは2026/9/30終了と明記。1ヶ月プラン（￥850/￥1,300/￥1,550）と通常の12ヶ月価格（￥6,800/￥11,700/￥13,900）は当方PLANSのmonthly/yearlyと完全一致し変更なし。今回のaddedはこの期間限定割引額そのもの。",
-    "notes": ""
-  },
-  {
-    "date": "2026-09-18",
     "serviceId": "chatgpt-plus",
     "name": "ChatGPT Plus",
     "added": [
@@ -4534,6 +4560,462 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "公式ページで現在のキャンペーン表示を確認：Starter ￥400→￥800（3ヶ月50%オフ）／Standard ￥1,280→￥1,600（3ヶ月20%オフ）／Plus ￥2,000→￥2,500（3ヶ月20%オフ）。矢印右側の通常価格800/1600/2500はservices.jsのPRICING(800)・PLANS(800/1600/2500)と完全一致し変化なし。今回のadded[1120,640]/removed[400]は割引率が日によって変動する既知のフラップ（過去38回と同型）。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-18",
+    "serviceId": "playstation-plus",
+    "name": "PlayStation Plus",
+    "added": [
+      10425,
+      5780,
+      9360
+    ],
+    "removed": [],
+    "ours": [
+      850,
+      6800,
+      1300,
+      11700,
+      1550,
+      13900
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.playstation.com/ja-jp/ps-plus/",
+    "evidence": "公式ページで12ヶ月プランに期間限定キャンペーンを確認：Premium ￥10,425（通常￥13,900より25%オフ）／Extra ￥9,360（通常￥11,700より20%オフ）／Essential ￥5,780（通常￥6,800より15%オフ）。キャンペーンは2026/9/30終了と明記。1ヶ月プラン（￥850/￥1,300/￥1,550）と通常の12ヶ月価格（￥6,800/￥11,700/￥13,900）は当方PLANSのmonthly/yearlyと完全一致し変更なし。今回のaddedはこの期間限定割引額そのもの。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-18",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      16
+    ],
+    "removed": [
+      11
+    ],
+    "ours": [
+      2404,
+      23082,
+      5610,
+      53857,
+      15228,
+      146184
+    ],
+    "signals": [
+      {
+        "name": "同じ値（16, 11）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "公式ページ本文（USD建て）：Free $0／Standard $15（年払い$12）／Pro $35（年払い$28）／Max $95（年払い$76）のみ。$16・$11はページ本文のどこにも出現せず（本文全文をgrep確認）。当方PRICING/PLANS（runway=$15基準）と一致し変更なし。過去3回と同型の一時的な誤検出。",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-18",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去17回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページを4回連続取得。個人￥1,280/月・ファミリー￥2,280/月・学生（Premium Lite）￥780/月は毎回安定して出現し、当方PRICING/PLANSと完全一致。￥1,480は4回中2回のみ出現（1回目あり→2回目なし→3回目なし→4回目あり）で非同期読み込みによる不安定な表示と確認。ただし出現時は「Premium Lite ファミリー（New）」という新設プラン名が本文中に明記されており、単なる誤検出ではなく将来的な新プラン展開のA/Bテストの可能性がある（過去17回の判定記録にはこのプラン名の言及が無く、今回初めて文脈を確認できた）。",
+    "notes": "YouTube Premiumの公式ページに「Premium Lite ファミリー（New）￥1,480/月」という新プランの記述が断続的に出現している（4回中2回）。現時点では価格として採用しないが、今後安定して出現するようになったら本物の新プラン追加として扱ってよい。"
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [
+      99,
+      1500
+    ],
+    "removed": [],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "99円は「Amazonプライム会員限定・今なら4か月月額99円」の期間限定キャンペーン価格。通常の会員価格は「30日間の無料体験後は月額￥1,500で自動更新」と明記されており、うちの表示(1500)と一致。値上げ・値下げではない",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "￥0(Free)・￥1,400(Go)・￥3,000(Plus)・￥16,800(Pro)が確認でき、うちの表示(3000/1400/16800)と一致。￥0は無料プランの表示であり新規キャンペーンではない。過去1回と同じ組み合わせで偽陽性判定済み",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3206,
+      9617,
+      32058
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20・Pro+ $60・Ultra $200の3プランが揃って表示され、うちの表示(3206/9617/32058円)と一致。1回目の簡易取得で$60と$200が抜け落ちたのは非同期描画のタイミングの揺れ（過去2回と同じ現象）",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      28,
+      47,
+      51
+    ],
+    "removed": [
+      14,
+      9
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（28, 47, 14）で過去13回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "現在は日本(JPY ¥)表示で、Individual ￥1,150・Team ￥3,750・Business ￥7,500（いずれも年払い月額換算・税込）。うちの表示(1150/3750/7500)と一致。ドル建て(8/7/1等)は今回のフル本文取得(4840字)には一切出現せず、過去13回と同じ表示地域の切り替わりによる揺れと判断",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      2000,
+      560
+    ],
+    "removed": [
+      1750,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 2000, 560）で過去28回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter/Standard/Plusとも取り消し線後の通常価格は￥800/￥1,600/￥2,500でうちの表示と一致。取り消し線前のキャンペーン割引額(￥400/￥800/￥1,280/￥2,000/￥560等)はページを開くたびに変動しており、今回はStandardの割引額が￥1,280（前回取得時は￥800）に変わっていた。通常価格は不変で過去28回と同じ表示の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      30
+    ],
+    "removed": [],
+    "ours": [
+      2404,
+      23082,
+      5610,
+      53857,
+      15228,
+      146184
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "Standard/Pro/Maxの月額(非割引)$15/$35/$95、および年払い割引後($12/$28/$76)を確認。うちの表示(2404円等・5/5/5の円換算+年払い総額)と一致。検知の$30はフル本文取得(4695字)に一切出現せず、単発の描画ノイズと判断",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-19",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去18回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "￥1,480/月のプランは今回も表示されている（[月単位]￥1,480/月）。￥1,280・￥780・￥2,280も変わらず併存。過去18回と同じ表示の揺れ",
+    "notes": "本件とは別に気づいたこと：手順2.5(reconcile)でDisney+ Premiumの掲載ズレを発見。services.jsは月額1,670円/年額16,700円（Apple経由のみ16,800円）としているが、公式(disneyplus.com/ja-jp)のプラン比較表を直接読むと、プレミアムの直販価格は年額12,500円（Apple App Store経由が16,800円）だった。ページ上にプレミアムの月額表示は見当たらず、課金体系（年額のみか）自体が変わった可能性がある。単一数値の差し替えでは済まないためautofix_shadowにautoApplicable:falseで記録し、人の確認を仰ぐ（本PRで報告）。"
+  },
+  {
+    "date": "2026-09-20",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      200,
+      60
+    ],
+    "removed": [
+      40
+    ],
+    "ours": [
+      3126,
+      9379,
+      31264
+    ],
+    "signals": [
+      {
+        "name": "同じ値（200, 60, 40）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20・Pro+ $60・Ultra $200の3プランが揃って表示され、うちの表示(3126/9379/31264円・USD_PRICEDによるFX自動換算)と一致。$40はページ本文(1312字)に出現せず、過去3回と同じ非同期描画のタイミングの揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-20",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1120,
+      400
+    ],
+    "removed": [
+      1280,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1120, 400, 1280）で過去42回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "Starter ¥640¥800／Standard ¥800¥1,600／Plus ¥2,000¥2,500（取り消し線の割引額＋通常額の並記）。取り消し線後の通常価格はうちの表示(800/1600/2500)と一致。割引額(640/800/2000等)はページを開くたびに変動しており、過去42回と同じ表示の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "「プレミアムプランを¥0で試す　30日間の無料体験後は月額￥1,500で自動更新します」と表示され、¥0(トライアル表記)と¥1,500(うちの表示と一致)が両方とも本文に存在。前回スキャンで¥0が消えたように見えたのは無料体験の表記自体は変わらず、読み込みタイミングの揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      40
+    ],
+    "removed": [
+      200,
+      60
+    ],
+    "ours": [
+      3126,
+      9379,
+      31264
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 200, 60）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "Pro $20・Pro+ $60・Ultra $200が揃って表示され、うちの表示(3126/9379/31264円・USD_PRICEDによるFX自動換算)と一致。$40はTeams向けStandardプランの価格(個人向けとは別立て)で、うちが監視している個人プランとは無関係。過去4回と同じ非同期描画の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      560
+    ],
+    "removed": [
+      1120,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 560, 1120）で過去43回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "「最初の3か月間が30%オフ」の期間限定割引がStarter/Standard/Plusの通常価格(¥800/¥1,600/¥2,500)と並記され、うちの表示は通常価格と一致。割引額(560/1120/1280等)は開くたびに変動しており、過去43回と同じ表示の揺れ",
+    "notes": ""
+  },
+  {
+    "date": "2026-09-21",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "Premium Lite 月額780円・Premium 月額1,280円・Family 月額2,280円が表示され、うちの表示(1280/780/2280)と完全一致。￥1,480は本文(2441字)のどこにも出現せず、過去19回と同じ非同期描画の揺れ",
     "notes": ""
   },
   {
