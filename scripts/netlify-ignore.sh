@@ -28,6 +28,21 @@ if [ -z "${CACHED_COMMIT_REF:-}" ] || [ -z "${COMMIT_REF:-}" ]; then
   exit 1
 fi
 
+# 🛑 致命的だった罠（2026-09-22 発覚・17日間本番が凍結）：
+#   Netlify公式ドキュメント「ビルドキャッシュが無い状態で走ると、
+#   CACHED_COMMIT_REF は COMMIT_REF と同じ値になる」。
+#   このスクリプトがexit 0(スキップ)を返す設計のせいで、スキップした回は
+#   ビルドキャッシュが更新されない。一度キャッシュが失効すると、次の実行が
+#   「CACHED_COMMIT_REF=COMMIT_REF(自分自身)」を受け取り→diffが常に空→
+#   必ずスキップ→キャッシュは永久に更新されない、という自己成就する無限ループに陥る。
+#   実際 2026-09-05 01:02 のスキップを境に、9/22まで17日間・全コミットが
+#   本番に反映されなかった（services.js の変更を含む致命的な回も含む）。
+#   このガード1つで、上のような「同じ値なら診断不能→ビルドする」に倒す。
+if [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ]; then
+  echo "[ignore] CACHED_COMMIT_REF=COMMIT_REF（ビルドキャッシュ無し・診断不能）→ ビルドする"
+  exit 1
+fi
+
 changed=$(git diff --name-only "$CACHED_COMMIT_REF" "$COMMIT_REF" 2>/dev/null) || {
   echo "[ignore] git diff 失敗（shallow clone 等） → ビルドする"
   exit 1
