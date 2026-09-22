@@ -54,34 +54,57 @@ USD_JPY_SOURCE のURLを取得します。
     npm run price:check
     npm run build
 
-### 5. PR を作る
+### 5. main へ直接コミットしてpushする（2026-09-23 俊雄さん承認・自動デプロイ）
 
-ブランチ名は fx/ に相場日をつけたもの（例: fx/2026-09-15）。
+**為替はPRを作るだけでは意味がない。** マージされない限り古いレートを表示し続け、
+実際に2026-09-02〜09-22の20日間据え置かれた実績がある（docs/lessons.md参照）。
+一方で為替は価格判定と違いリスクの向きが非対称——**古いレートは確実にずれているが、
+このステップまで来た新しいレートは手順3の4つの妥当性チェックを通過済みで検証済み**。
+そのためここから先は人のゲートを置かず直接デプロイする。
+
 git add してよいのは **src/data/services.js だけ**です。それ以外は絶対に add しないでください。
 
-**main への直接 push は禁止です。PR のマージもしないでください。** 人が見て押します。
+コミットメッセージは「為替レート更新: USD_JPY 旧値 → 新値（相場日）」の形にし、
+本文に読み取った TTS / TTB・相場日・計算したTTMを書いてください。あとから第三者が
+同じページを見て検算できるようにするためです。
+
+    git add src/data/services.js
+    git commit -m "為替レート更新: USD_JPY <旧値> → <新値>（<相場日>相場日）" -m "TTS <値> / TTB <値> → TTM=(TTS+TTB)/2=<値>" -m "Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>"
+    git push origin main
+
 push が non-fast-forward で弾かれたら git pull --rebase してから再push。
-それでも駄目なら報告して終了。**force push は禁止**です。
+それでも駄目なら**pushせずに報告して終了**。**force push は禁止**です。
 
-PR の本文には、読み取った TTS / TTB / 相場日と、計算した TTM を必ず書いてください。
-あとから第三者が同じページを見て検算できるようにするためです。
+### 6. 本番デプロイを確認する
 
-### 6. Slack に報告する
+pushしただけでは終わりません。Netlifyが実際にビルド・デプロイしたかを確認します
+（ローカルビルド成功と本番反映は別物。2026-09-22に17日間デプロイが止まっていた
+インシデントがあった。docs/lessons.md参照）。
+
+    netlify api listSiteDeploys --data '{"site_id":"b4ac149a-76c4-4156-9903-c2605ac17cf9"}'
+
+直近のデプロイが今回のコミットのSHAで `state: "ready"` になるまで、30秒おきに
+最大5回まで確認してください。`state: "error"` なら理由を確認し、本物のビルド失敗なら
+報告して終了（為替の再更新はしない・次回1日/15日を待つ）。
+
+### 7. Slack に報告する
 
 次のコマンドを Bash で実行します。第2引数が本文です。
 
     python -X utf8 C:\Users\user\Desktop\Claude_work\world-oracle-staging\notifications\_shared\slack_sender.py SUBSUKU_DAILY 本文
 
-本文には、旧レート → 新レート、相場日、PRのURL を入れてください。
-更新しなかった場合は、その理由を1行で書いてください。煽らず事実だけを書きます。
+本文には、旧レート → 新レート、相場日、コミットURL、デプロイ確認結果（state）を
+入れてください。更新しなかった場合は、その理由を1行で書いてください。煽らず事実だけを書きます。
 
 ## やってはいけないこと
 
 - レートを記憶や推測で書く
 - 外貨現金両替相場の数字を使う
-- src/data/services.js 以外のファイルを触る
-- main へ直接 push する / PR をマージする
+- src/data/services.js 以外のファイルを touch/add/commit する
+- force push する
+- デプロイのstate確認をせずに「完了」と報告する
 
 ## 最後に必ず出力すること
 
-更新したか・しなかったか、した場合は 旧値 → 新値 と相場日、PRのURL、Slack送信の成否。
+更新したか・しなかったか、した場合は 旧値 → 新値 と相場日、コミットSHA、
+Netlifyデプロイのstate、Slack送信の成否。
