@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35002,
+        "ms": 35010,
         "moneyLines": 0,
-        "checkedAt": "2026-09-22",
-        "fails": 13,
+        "checkedAt": "2026-09-23",
+        "fails": 14,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -549,11 +549,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。シート課金（フルシート/Devシート/コラボシート）で、同じプラン内でも金額が3種ある。うちはフルシートを代表にしている。",
       "fetch": {
         "status": "ok",
-        "ms": 5819,
+        "ms": 5762,
         "moneyLines": 9,
-        "checkedAt": "2026-07-26",
+        "checkedAt": "2026-09-23",
         "fails": 0,
-        "lastOkAt": "2026-07-26"
+        "lastOkAt": "2026-09-23"
       },
       "renderMode": "headless"
     },
@@ -566,11 +566,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5947,
+        "ms": 5400,
         "moneyLines": 4,
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-09-23",
         "fails": 0,
-        "lastOkAt": "2026-09-19",
+        "lastOkAt": "2026-09-23",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -774,11 +774,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 6128,
+        "ms": 4181,
         "moneyLines": 3,
-        "checkedAt": "2026-09-21",
+        "checkedAt": "2026-09-23",
         "fails": 0,
-        "lastOkAt": "2026-09-21"
+        "lastOkAt": "2026-09-23"
       }
     },
     {
@@ -799,11 +799,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6160,
+        "ms": 4308,
         "moneyLines": 3,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-23",
         "fails": 0,
-        "lastOkAt": "2026-09-22",
+        "lastOkAt": "2026-09-23",
         "suspects": [
           "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
