@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 8259,
-        "moneyLines": 21,
-        "checkedAt": "2026-09-21",
+        "ms": 9564,
+        "moneyLines": 22,
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-21"
+        "lastOkAt": "2026-09-24"
       }
     },
     {
@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35010,
+        "ms": 35014,
         "moneyLines": 0,
-        "checkedAt": "2026-09-23",
-        "fails": 14,
+        "checkedAt": "2026-09-24",
+        "fails": 16,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -269,13 +269,13 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4619,
+        "ms": 5301,
         "moneyLines": 6,
-        "checkedAt": "2026-09-14",
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-14",
+        "lastOkAt": "2026-09-24",
         "suspects": [
-          "ちょうど半額の組がある（750 と 1500）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -367,9 +367,9 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "no-money",
-        "ms": 8275,
+        "ms": 6643,
         "moneyLines": 0,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-24",
         "fails": 0,
         "lastOkAt": "2026-09-19"
       }
@@ -549,11 +549,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。シート課金（フルシート/Devシート/コラボシート）で、同じプラン内でも金額が3種ある。うちはフルシートを代表にしている。",
       "fetch": {
         "status": "ok",
-        "ms": 5762,
+        "ms": 6994,
         "moneyLines": 9,
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-23"
+        "lastOkAt": "2026-09-24"
       },
       "renderMode": "headless"
     },
@@ -566,11 +566,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5400,
+        "ms": 8831,
         "moneyLines": 4,
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-23",
+        "lastOkAt": "2026-09-24",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -653,11 +653,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 9722,
+        "ms": 12664,
         "moneyLines": 1,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-22",
+        "lastOkAt": "2026-09-24",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -688,9 +688,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3316,
+        "ms": 2930,
         "moneyLines": 0,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-24",
         "fails": 0
       }
     },
@@ -744,9 +744,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 5733,
+        "ms": 5064,
         "moneyLines": 0,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-24",
         "fails": 0
       }
     },
@@ -759,9 +759,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 3998,
+        "ms": 3527,
         "moneyLines": 0,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-24",
         "fails": 0
       }
     },
@@ -774,11 +774,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 4181,
-        "moneyLines": 3,
-        "checkedAt": "2026-09-23",
+        "ms": 4294,
+        "moneyLines": 2,
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-23"
+        "lastOkAt": "2026-09-24"
       }
     },
     {
@@ -799,13 +799,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4308,
+        "ms": 5770,
         "moneyLines": 3,
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-09-24",
         "fails": 0,
-        "lastOkAt": "2026-09-23",
+        "lastOkAt": "2026-09-24",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
