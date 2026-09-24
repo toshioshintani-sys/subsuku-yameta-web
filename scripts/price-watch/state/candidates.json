@@ -1,108 +1,54 @@
 {
-  "generatedAt": "2026-09-23T22:18:35.501Z",
+  "generatedAt": "2026-09-24T22:15:35.267Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "youtube-premium",
       "name": "YouTube Premium",
       "url": "https://www.youtube.com/premium",
-      "added": [],
-      "removed": [
+      "added": [
         "￥1,480"
       ],
-      "detectedAt": "2026-09-23T22:10:39.640Z"
-    },
-    {
-      "id": "dropbox",
-      "name": "Dropbox",
-      "url": "https://www.dropbox.com/plans",
-      "added": [
-        "￥2,000"
-      ],
       "removed": [],
-      "detectedAt": "2026-09-23T22:12:01.281Z"
-    },
-    {
-      "id": "chatgpt-plus",
-      "name": "ChatGPT Plus",
-      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
-      "added": [],
-      "removed": [
-        "￥0",
-        "￥1,400",
-        "￥16,800",
-        "￥3,000"
-      ],
-      "detectedAt": "2026-09-23T22:12:49.637Z"
-    },
-    {
-      "id": "figma",
-      "name": "Figma",
-      "url": "https://www.figma.com/pricing/",
-      "added": [
-        "￥1,800",
-        "￥13,600",
-        "￥2,400",
-        "￥3,750",
-        "￥450",
-        "￥5,250",
-        "￥750",
-        "￥8,300"
-      ],
-      "removed": [
-        "¥1,800",
-        "¥13,600",
-        "¥2,400",
-        "¥3,750",
-        "¥450",
-        "¥5,250",
-        "¥750",
-        "¥8,300"
-      ],
-      "detectedAt": "2026-09-23T22:14:14.559Z"
-    },
-    {
-      "id": "deepl-pro",
-      "name": "DeepL Pro",
-      "url": "https://www.deepl.com/pro",
-      "added": [
-        "$31",
-        "$34",
-        "$54"
-      ],
-      "removed": [
-        "$30",
-        "$33",
-        "$49",
-        "$53"
-      ],
-      "detectedAt": "2026-09-23T22:14:37.651Z"
-    },
-    {
-      "id": "cursor",
-      "name": "Cursor",
-      "url": "https://cursor.com/pricing",
-      "added": [
-        "$40"
-      ],
-      "removed": [
-        "$200",
-        "$60"
-      ],
-      "detectedAt": "2026-09-23T22:15:04.079Z"
+      "detectedAt": "2026-09-24T22:10:46.907Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
+        "￥1,120",
+        "￥1,750"
+      ],
+      "removed": [
         "￥1,250",
         "￥1,280"
       ],
-      "removed": [
-        "￥2,000"
+      "detectedAt": "2026-09-24T22:15:18.441Z"
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf（現Devin Desktop）",
+      "url": "https://windsurf.com/pricing",
+      "added": [
+        "$14",
+        "$16",
+        "$17",
+        "$19",
+        "$61",
+        "$63",
+        "$72",
+        "$74",
+        "$99"
       ],
-      "detectedAt": "2026-09-23T22:15:54.818Z"
+      "removed": [
+        "$31",
+        "$59",
+        "$85",
+        "$86",
+        "$87"
+      ],
+      "detectedAt": "2026-09-24T22:15:22.978Z"
     }
   ]
 }

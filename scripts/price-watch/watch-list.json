@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 9564,
-        "moneyLines": 22,
-        "checkedAt": "2026-09-24",
+        "ms": 8706,
+        "moneyLines": 21,
+        "checkedAt": "2026-09-25",
         "fails": 0,
-        "lastOkAt": "2026-09-24"
+        "lastOkAt": "2026-09-25"
       }
     },
     {
@@ -799,13 +799,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5770,
+        "ms": 4645,
         "moneyLines": 3,
-        "checkedAt": "2026-09-24",
+        "checkedAt": "2026-09-25",
         "fails": 0,
-        "lastOkAt": "2026-09-24",
+        "lastOkAt": "2026-09-25",
         "suspects": [
-          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
@@ -834,11 +834,11 @@
       "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3043,
+        "ms": 3499,
         "moneyLines": 10,
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-25",
         "fails": 0,
-        "lastOkAt": "2026-09-17"
+        "lastOkAt": "2026-09-25"
       }
     },
     {
