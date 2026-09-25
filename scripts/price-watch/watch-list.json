@@ -33,11 +33,11 @@
       "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6012,
+        "ms": 4850,
         "moneyLines": 5,
-        "checkedAt": "2026-09-15",
+        "checkedAt": "2026-09-26",
         "fails": 0,
-        "lastOkAt": "2026-09-15",
+        "lastOkAt": "2026-09-26",
         "suspects": [
           "ちょうど半額の組がある（300 と 600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -210,11 +210,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 5617,
+        "ms": 4573,
         "moneyLines": 4,
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-09-26",
         "fails": 0,
-        "lastOkAt": "2026-09-22"
+        "lastOkAt": "2026-09-26"
       }
     },
     {
@@ -244,10 +244,10 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "short-body",
-        "ms": 4731,
+        "ms": 4438,
         "moneyLines": 0,
-        "checkedAt": "2026-09-10",
-        "fails": 18,
+        "checkedAt": "2026-09-26",
+        "fails": 19,
         "lastOkAt": "2026-09-08"
       }
     },
@@ -405,11 +405,11 @@
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6056,
+        "ms": 4069,
         "moneyLines": 6,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-09-26",
         "fails": 0,
-        "lastOkAt": "2026-09-06",
+        "lastOkAt": "2026-09-26",
         "suspects": [
           "桁が不自然な値を拾っている（10）"
         ]
@@ -566,11 +566,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8831,
+        "ms": 5061,
         "moneyLines": 4,
-        "checkedAt": "2026-09-24",
+        "checkedAt": "2026-09-26",
         "fails": 0,
-        "lastOkAt": "2026-09-24",
+        "lastOkAt": "2026-09-26",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -744,9 +744,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 5064,
+        "ms": 5537,
         "moneyLines": 0,
-        "checkedAt": "2026-09-24",
+        "checkedAt": "2026-09-26",
         "fails": 0
       }
     },
@@ -799,13 +799,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4645,
+        "ms": 4004,
         "moneyLines": 3,
-        "checkedAt": "2026-09-25",
+        "checkedAt": "2026-09-26",
         "fails": 0,
-        "lastOkAt": "2026-09-25",
+        "lastOkAt": "2026-09-26",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
