@@ -1824,6 +1824,9 @@ export const PLANS = {
       // 存在・金額を確認できないプランは、価格を推測して出さない（誤報ゼロ）。
       // Plus の月払い1,500/年払い換算1,200は 2026-08-28 に公式トグルで両方実測済み。
       { name: 'Plus（2TB）', monthly: 1200, popular: true, note: '年払いの月額換算。月払いのみだと1,500円' },
+      // 2026-09-24 公式(dropbox.com/plans)で再確認：Professional（3TB）が復活していた。
+      // 2026-08-28に「表に存在せず」として削除した同一プラン・同一価格。Family は引き続き非掲載。
+      { name: 'Professional（3TB）', monthly: 2000, note: '個人向け上位プラン。180日以内のファイル復元に対応' },
     ],
     howToCheck: 'Canva →「設定」→「請求とチーム」で確認できます',
   },
@@ -2660,6 +2663,15 @@ export const PRICE_HISTORY = {
         '公式プラン表(dropbox.com/plans)の個人向けが Plus のみになり、掲載していた Professional（3TB・2,000円）と Family は表に存在しない。チーム向けは Standard 1,500円/人・Advanced 2,400円/人。存在を確認できないプランは表示から削除した（Plus の1,200円/月払い1,500円は不変・公式トグルで実測）。',
       source: 'https://www.dropbox.com/plans',
       verifiedAt: '2026-08-28',
+    },
+    {
+      date: '2026-09-24',
+      item: 'Professional（3TB）',
+      direction: 'restructure',
+      change:
+        '公式プラン表(dropbox.com/plans)に Professional（3TB・2,000円/月）が再掲載されているのを確認。2026-08-28削除時と同一プラン名・同一価格での復活。Family は引き続き表に無い。Plus 1,200円（年払い換算）・Standard 1,500円/人・Advanced 2,400円/人は変わらず。',
+      source: 'https://www.dropbox.com/plans',
+      verifiedAt: '2026-09-24',
     },
   ],
   'youtube-premium': [
