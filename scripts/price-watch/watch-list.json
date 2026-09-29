@@ -136,10 +136,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35013,
+        "ms": 35008,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
-        "fails": 18,
+        "checkedAt": "2026-09-30",
+        "fails": 19,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -432,11 +432,11 @@
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
         "status": "ok",
-        "ms": 8977,
+        "ms": 6266,
         "moneyLines": 7,
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "fails": 0,
-        "lastOkAt": "2026-09-29"
+        "lastOkAt": "2026-09-30"
       }
     },
     {
@@ -585,11 +585,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5061,
+        "ms": 8619,
         "moneyLines": 4,
-        "checkedAt": "2026-09-26",
+        "checkedAt": "2026-09-30",
         "fails": 0,
-        "lastOkAt": "2026-09-26",
+        "lastOkAt": "2026-09-30",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -707,9 +707,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4126,
+        "ms": 6971,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-09-30",
         "fails": 0
       }
     },
@@ -763,9 +763,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 7973,
+        "ms": 10152,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-09-30",
         "fails": 0
       }
     },
@@ -818,13 +818,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3944,
+        "ms": 5010,
         "moneyLines": 3,
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-09-30",
         "fails": 0,
-        "lastOkAt": "2026-09-29",
+        "lastOkAt": "2026-09-30",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
