@@ -1362,7 +1362,7 @@ export const PRICING = {
   'apple-music': 1180,       // 2026-07-25 公式確認（旧1080）
   'youtube-premium': 1280,
   'disney-plus': 1250,       // 2026-07-26 公式確認（旧990＝2世代前）
-  hulu: 1026,
+  hulu: 1320,          // 2026-10-01 改定（旧1026）。アプリ内課金(iTunes/Google Play/Amazon)は1,450円
   'abema-premium': 1180,     // 2026-04-01 値上げ。2026-07-26 公式確認（旧1080）
   'u-next': 2189,
   dazn: 4200,
@@ -1708,11 +1708,9 @@ export const PLANS = {
       // 視聴サービスです」と明記され、料金体系を網羅的に開示しているが年額への言及は
       // 一切なし。トップページ・公式ニュースにも年額の記載は無く、存在しないプランを
       // 出していたと確定（誤報ゼロ原則）。
-      // ⚠️ 月額は2026-10-01に1,026→1,320円へ改定予定（決済手段により1,450円）だが、
-      // 本日時点ではまだ改定前（現在も1,026円）のため据え置き。未来価格を今の価格として
-      // 書かない。10/1以降、公式で再確認してから更新すること
-      // （scripts/price-watch/state/autofix_shadow.json の hulu 記録・2026-09-18発見）。
-      { name: '月額プラン', monthly: 1026, popular: true, note: '広告なし・全コンテンツ見放題' },
+      // 2026-10-01 月額改定 1,026円→1,320円 を公式ページ(hulu.jp)で確認して反映
+      // （予告は scripts/price-watch/state/autofix_shadow.json の hulu 記録・2026-09-18発見）。
+      { name: '月額プラン', monthly: 1320, popular: true, note: '広告なし・全コンテンツ見放題。iTunes/Google Play/Amazon決済は1,450円' },
     ],
     howToCheck: 'Hulu にログイン →「アカウント」→「契約情報」で確認できます',
   },
@@ -2685,6 +2683,17 @@ export const PRICE_HISTORY = {
       verifiedAt: '2026-08-28',
     },
   ],
+  hulu: [
+    {
+      date: '2026-10-01',
+      item: '月額プラン',
+      direction: 'up',
+      change:
+        '月額1,026円→1,320円に改定（公式ニュースnews.hulu.jp/hulu_svod_rev_2026/で2026-07-01に予告済み、本日2026-10-01の改定日到来を公式トップページで確認）。iTunes/Google Play/Amazonアプリ内決済の場合は1,450円。年額プランは2026-09-22に廃止確認済みで対象外。',
+      source: 'https://www.hulu.jp/',
+      verifiedAt: '2026-10-01',
+    },
+  ],
   'abema-premium': [
     {
       date: '2026-04-01',
@@ -3589,7 +3598,7 @@ export const EXTENDED_CONTENT = {
   },
   hulu: {
     summary:
-      'Hulu（日本版）は日本テレビが運営する動画配信サービス。月額1026円で見放題。国内ドラマ・バラエティに強く、日テレ系最新話の見逃し配信も。',
+      'Hulu（日本版）は日本テレビが運営する動画配信サービス。月額1320円で見放題。国内ドラマ・バラエティに強く、日テレ系最新話の見逃し配信も。',
     whyHard:
       'Hulu の解約は「ふつう」レベル。マイページから「登録情報」→「解約手続きはこちら」と進む直線的なフロー。引き止めも数回程度で済む。',
     darkPatterns: [
