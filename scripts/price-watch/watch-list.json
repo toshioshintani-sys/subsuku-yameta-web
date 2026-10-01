@@ -33,11 +33,11 @@
       "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5791,
+        "ms": 6448,
         "moneyLines": 5,
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-10-01",
+        "lastOkAt": "2026-10-02",
         "suspects": [
           "ちょうど半額の組がある（300 と 600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 6932,
+        "ms": 6083,
         "moneyLines": 21,
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-10-01"
+        "lastOkAt": "2026-10-02"
       }
     },
     {
@@ -221,11 +221,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 4739,
+        "ms": 4057,
         "moneyLines": 4,
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-10-01"
+        "lastOkAt": "2026-10-02"
       }
     },
     {
@@ -377,12 +377,12 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "no-money",
-        "ms": 5525,
-        "moneyLines": 0,
-        "checkedAt": "2026-10-01",
+        "status": "ok",
+        "ms": 4943,
+        "moneyLines": 4,
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-09-28"
+        "lastOkAt": "2026-10-02"
       }
     },
     {
@@ -491,7 +491,15 @@
       "url": "https://lemino.docomo.ne.jp/ft/0000014/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み"
+      "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み",
+      "fetch": {
+        "status": "ok",
+        "ms": 4941,
+        "moneyLines": 2,
+        "checkedAt": "2026-10-02",
+        "fails": 0,
+        "lastOkAt": "2026-10-02"
+      }
     },
     {
       "id": "yahoo-premium",
@@ -596,11 +604,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6121,
+        "ms": 7739,
         "moneyLines": 4,
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-10-01",
+        "lastOkAt": "2026-10-02",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -829,13 +837,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4359,
+        "ms": 3749,
         "moneyLines": 3,
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-10-01",
+        "lastOkAt": "2026-10-02",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },

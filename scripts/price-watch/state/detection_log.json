@@ -6368,5 +6368,149 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://windsurf.com/pricing",
     "evidence": "公式ページでPro $20/月・Max $200/月・Teams $80/月+$40/月/席を確認。USD_PRICED(windsurf:20)・PLANS(3000=$20×150)と一致。added/removedの9件はいずれもページ本文に見当たらない数字で、既存シグナル通り『変化した金額が多すぎる＝別商品/別トグルの混在』と判断。過去1回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-10-02",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去25回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで個人￥1,280/月・ファミリー￥2,280/月・学生/Lite ￥780/月・年額￥12,800を確認。ours(1280,780,2280)と完全一致。￥1,480は本文のどこにも出現しない。過去25回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-10-02",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      20,
+      40
+    ],
+    "removed": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去7回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "ちょうど半額の組がある（20 と 40）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "公式ページで￥0(Free)・￥1,400(Go)・￥3,000(Plus)・￥16,800(Business月額)を確認。ours(3000,1400,16800)と完全一致。removedに出た0/1400/16800/3000は今回も全て本文に存在し消えていない＝非同期読み込みの表示揺れ（既知のBusiness枠と同型の不安定性）。addedの20/40はドル表示トグルの値で円建て価格とは無関係。過去7回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-10-02",
+    "serviceId": "lemino",
+    "name": "Lemino",
+    "added": [
+      0
+    ],
+    "removed": [],
+    "ours": [
+      1540,
+      1650
+    ],
+    "signals": [
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://lemino.docomo.ne.jp/ft/0000014/",
+    "evidence": "公式ページで「Leminoプレミアム（App Storeでの購入）/（Google Playでの購入）の月額使用料は1,650円（税込）」を確認（ours 1650と一致）。addedの「0円」は「選べる特典」でLeminoを選んだドコモの特定プラン利用者向けの追加料金0円という別建ての特典文言で、通常価格の変更ではない。Web申込の1,540円はこのページの抽出対象外だが他ページで既存確認済みの値で変更の形跡なし。"
+  },
+  {
+    "date": "2026-10-02",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      53,
+      58
+    ],
+    "removed": [
+      51,
+      57
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（53, 51, 57）で過去5回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "公式ページ（日本 JPY表示）でIndividual ￥1,150・Team ￥3,750（いずれも月額換算・年払い）を確認。ours(1150,3750,7500)と一致（Businessの7,500円は従来確認済みで今回も変更の形跡なし）。added(53,58)/removed(51,57)はドル表示トグルの値で、円建て価格とは無関係。過去5回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-10-02",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1120
+    ],
+    "removed": [],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1120）で過去17回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページでStarter ¥400(3か月50%オフ)/¥800(通常)、Standard ¥1,280(3か月20%オフ)/¥1,600(通常)、Plus ¥1,250(3か月50%オフ)/¥2,500(通常)を確認。ours(800,1600,2500)は通常価格3点と完全一致。addedの1,120円は本文に出現せず、期間限定割引の掲載率が日によって変わる既知の表示揺れ（通常価格は不変）。過去17回と同型の偽陽性。"
   }
 ]
