@@ -1,66 +1,70 @@
 {
-  "generatedAt": "2026-10-01T22:13:32.104Z",
+  "generatedAt": "2026-10-02T22:13:18.614Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
-    {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [],
-      "removed": [
-        "￥1,480"
-      ],
-      "detectedAt": "2026-10-01T22:10:38.170Z"
-    },
     {
       "id": "chatgpt-plus",
       "name": "ChatGPT Plus",
       "url": "https://openai.com/ja-JP/chatgpt/pricing/",
       "added": [
-        "$20",
-        "$40"
-      ],
-      "removed": [
         "￥0",
         "￥1,400",
         "￥16,800",
         "￥3,000"
       ],
-      "detectedAt": "2026-10-01T22:11:51.965Z"
-    },
-    {
-      "id": "lemino",
-      "name": "Lemino",
-      "url": "https://lemino.docomo.ne.jp/ft/0000014/",
-      "added": [
-        "0円"
-      ],
       "removed": [],
-      "detectedAt": "2026-10-01T22:12:12.065Z"
+      "detectedAt": "2026-10-02T22:11:44.915Z"
     },
     {
       "id": "deepl-pro",
       "name": "DeepL Pro",
       "url": "https://www.deepl.com/pro",
       "added": [
-        "$53",
-        "$58"
+        "$35",
+        "$38",
+        "$54",
+        "$59"
       ],
       "removed": [
-        "$51",
-        "$57"
+        "$34",
+        "$37",
+        "$52",
+        "$58"
       ],
-      "detectedAt": "2026-10-01T22:12:40.405Z"
+      "detectedAt": "2026-10-02T22:12:35.029Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥1,120"
+        "￥400"
       ],
-      "removed": [],
-      "detectedAt": "2026-10-01T22:13:17.987Z"
+      "removed": [
+        "￥560"
+      ],
+      "detectedAt": "2026-10-02T22:13:07.763Z"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "added": [
+        "$16",
+        "$19",
+        "$21",
+        "$27",
+        "$4",
+        "$40",
+        "$5"
+      ],
+      "removed": [
+        "$17",
+        "$31",
+        "$7",
+        "$9"
+      ],
+      "detectedAt": "2026-10-02T22:13:09.750Z"
     }
   ]
 }
