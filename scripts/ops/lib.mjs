@@ -138,6 +138,23 @@ export function ensureMain() {
 export function runClaude(prompt, { timeoutMs = 40 * 60 * 1000 } = {}) {
   const env = baseEnv();
   delete env.ANTHROPIC_API_KEY;
+
+  // 事前確認（2026-10-03）：OAuth が失効していると claude -p は 401 を11回リトライして**何分も固まる**
+  // （exit もエラー出力も無いまま。判定・為替が「ただ止まった」ように見える）。軽い1往復で先に確かめ、
+  // 応答が無ければ「認証失効の疑い」として短時間で失敗させ、通知が出せるようにする。
+  const probe = spawnSync(process.execPath,
+    [CLAUDE_CLI, '-p', '--model', 'claude-sonnet-5', '--output-format', 'json'],
+    { cwd: ROOT, input: '1+1の答えを数字だけで', encoding: 'utf-8', env, timeout: 120 * 1000, maxBuffer: 16 * 1024 * 1024 });
+  const probeRaw = (probe.stdout || '') + (probe.stderr || '');
+  if (probe.status !== 0) {
+    const hung = probe.error && probe.error.code === 'ETIMEDOUT';
+    return {
+      code: probe.status === null ? -2 : probe.status,
+      raw: (hung ? 'authentication_error: claude -p が120秒応答なし（OAuth失効で401を再試行し続けている可能性が高い）\n' : '') + probeRaw,
+      timedOut: !!hung,
+    };
+  }
+
   const r = spawnSync(process.execPath,
     [CLAUDE_CLI, '-p', '--permission-mode', 'bypassPermissions', '--model', 'claude-sonnet-5', '--output-format', 'json'],
     { cwd: ROOT, input: prompt, encoding: 'utf-8', env, timeout: timeoutMs, maxBuffer: 256 * 1024 * 1024 });
