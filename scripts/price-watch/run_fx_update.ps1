@@ -39,6 +39,26 @@ function Send-Slack($message) {
 }
 
 try {
+    # 2026-10-03 追加：PRブランチの上に居残らない。
+    # 価格判定は本物の価格変更がある日だけ price/auto-* ブランチを切ってPRにする（人がマージ）。
+    # 作業ツリーがそのブランチ上に残ると、翌日以降の「main へ直接 push」がPRブランチに積まれ、
+    # 2026-10-01〜10-03 の3日間 main が止まって Hulu 改定と為替が本番に出なかった。
+    # 実行前に必ず main に戻し、最新へ早送りする。戻せないなら黙って続けず止めて知らせる。
+    $curBranch = (& git branch --show-current 2>$null)
+    if ($curBranch -ne 'main') {
+        & git switch main 2>$null | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            Send-Slack ("サブスクやめた：作業ツリーが $curBranch 上にあり main へ戻せないため停止しました`n" +
+                "このまま続けると直pushがPRブランチに積まれて本番に出ません。手で git switch main してください。")
+            exit 1
+        }
+    }
+    & git pull --ff-only origin main 2>$null | Out-Null
+    if ($LASTEXITCODE -ne 0) {
+        Send-Slack "サブスクやめた：main を最新へ早送りできず停止しました（ローカルmainに未pushの差分か未コミット変更の衝突）。手で確認してください。"
+        exit 1
+    }
+
     # 公表仲値の発表は午前10時頃。11:00起動なので通常は問題ないが、遅延起動
     # （スリープ復帰など）に備えて10:30より前なら何もしない。
     # 未公表の時刻に取ると前営業日の値を掴み、同じ相場日に別の値が入る原因になる。
