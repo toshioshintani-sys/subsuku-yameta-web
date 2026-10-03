@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 6083,
-        "moneyLines": 21,
-        "checkedAt": "2026-10-02",
+        "ms": 5865,
+        "moneyLines": 22,
+        "checkedAt": "2026-10-04",
         "fails": 0,
-        "lastOkAt": "2026-10-02"
+        "lastOkAt": "2026-10-04"
       }
     },
     {
@@ -435,11 +435,11 @@
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
         "status": "ok",
-        "ms": 6184,
-        "moneyLines": 7,
-        "checkedAt": "2026-10-01",
+        "ms": 6634,
+        "moneyLines": 6,
+        "checkedAt": "2026-10-04",
         "fails": 0,
-        "lastOkAt": "2026-10-01"
+        "lastOkAt": "2026-10-04"
       }
     },
     {
@@ -837,11 +837,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3654,
+        "ms": 3845,
         "moneyLines": 3,
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-04",
         "fails": 0,
-        "lastOkAt": "2026-10-03",
+        "lastOkAt": "2026-10-04",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
