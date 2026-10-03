@@ -33,11 +33,11 @@
       "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6898,
+        "ms": 6448,
         "moneyLines": 5,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-09-28",
+        "lastOkAt": "2026-10-02",
         "suspects": [
           "ちょうど半額の組がある（300 と 600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 9927,
+        "ms": 6083,
         "moneyLines": 21,
-        "checkedAt": "2026-09-29",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-09-29"
+        "lastOkAt": "2026-10-02"
       }
     },
     {
@@ -119,12 +119,15 @@
       ],
       "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外",
       "fetch": {
-        "status": "ok",
-        "ms": 16080,
+        "status": "ok-suspect",
+        "ms": 20216,
         "moneyLines": 1,
-        "checkedAt": "2026-09-06",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-06"
+        "lastOkAt": "2026-10-01",
+        "suspects": [
+          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
+        ]
       }
     },
     {
@@ -138,8 +141,8 @@
         "status": "timeout",
         "ms": 35008,
         "moneyLines": 0,
-        "checkedAt": "2026-09-30",
-        "fails": 19,
+        "checkedAt": "2026-10-03",
+        "fails": 22,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -161,11 +164,11 @@
       "note": "2026-07-26 修正: /ja-JP/welcome は限定プラン（GLOBAL 980円・BASEBALL 2,300円等）しか出さず、STANDARDの月額4,200円が取れなかった。全プランの料金を一覧している公式ヘルプ記事へ変更。",
       "fetch": {
         "status": "ok",
-        "ms": 7882,
+        "ms": 4434,
         "moneyLines": 20,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-28"
+        "lastOkAt": "2026-10-01"
       }
     },
     {
@@ -218,11 +221,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 4453,
+        "ms": 4057,
         "moneyLines": 4,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-02",
         "fails": 0,
-        "lastOkAt": "2026-09-28"
+        "lastOkAt": "2026-10-02"
       }
     },
     {
@@ -297,9 +300,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 5976,
+        "ms": 4367,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-01",
         "fails": 0
       }
     },
@@ -375,11 +378,11 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "no-money",
-        "ms": 11367,
+        "ms": 5084,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-03",
         "fails": 0,
-        "lastOkAt": "2026-09-28"
+        "lastOkAt": "2026-10-03"
       }
     },
     {
@@ -413,11 +416,11 @@
       "note": "2026-07-26 修正: 英語版 /compare-plans は既定が年払い表示で、月額（1,100円・1,799円）が取れなかった。日本語版へ変更。なお月/年のタブ切替で表示が変わるページなので、月額が取れない回がありうる。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5972,
+        "ms": 3790,
         "moneyLines": 6,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-28",
+        "lastOkAt": "2026-10-01",
         "suspects": [
           "桁が不自然な値を拾っている（10）"
         ]
@@ -432,11 +435,11 @@
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
         "status": "ok",
-        "ms": 6266,
+        "ms": 6184,
         "moneyLines": 7,
-        "checkedAt": "2026-09-30",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-30"
+        "lastOkAt": "2026-10-01"
       }
     },
     {
@@ -488,7 +491,15 @@
       "url": "https://lemino.docomo.ne.jp/ft/0000014/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み"
+      "note": "2026-07-06調査: エージェントのWebFetchで「Leminoプレミアム月額1540円」等をテキスト確認済み",
+      "fetch": {
+        "status": "ok",
+        "ms": 4941,
+        "moneyLines": 2,
+        "checkedAt": "2026-10-02",
+        "fails": 0,
+        "lastOkAt": "2026-10-02"
+      }
     },
     {
       "id": "yahoo-premium",
@@ -496,7 +507,15 @@
       "url": "https://premium.yahoo.co.jp/",
       "mode": "prices",
       "enabled": true,
-      "note": "2026-07-06調査: エージェントのWebFetchで「月額508円」をテキスト確認済み・現行LYPプレミアム"
+      "note": "2026-07-06調査: エージェントのWebFetchで「月額508円」をテキスト確認済み・現行LYPプレミアム",
+      "fetch": {
+        "status": "ok",
+        "ms": 4101,
+        "moneyLines": 2,
+        "checkedAt": "2026-10-01",
+        "fails": 0,
+        "lastOkAt": "2026-10-01"
+      }
     },
     {
       "id": "dmm-premium",
@@ -585,11 +604,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 8619,
+        "ms": 7722,
         "moneyLines": 4,
-        "checkedAt": "2026-09-30",
+        "checkedAt": "2026-10-03",
         "fails": 0,
-        "lastOkAt": "2026-09-30",
+        "lastOkAt": "2026-10-03",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -672,11 +691,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 10187,
+        "ms": 9935,
         "moneyLines": 1,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-28",
+        "lastOkAt": "2026-10-01",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -707,9 +726,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 6971,
+        "ms": 3150,
         "moneyLines": 0,
-        "checkedAt": "2026-09-30",
+        "checkedAt": "2026-10-01",
         "fails": 0
       }
     },
@@ -763,9 +782,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 10152,
+        "ms": 5318,
         "moneyLines": 0,
-        "checkedAt": "2026-09-30",
+        "checkedAt": "2026-10-01",
         "fails": 0
       }
     },
@@ -778,9 +797,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 6379,
+        "ms": 5433,
         "moneyLines": 0,
-        "checkedAt": "2026-09-28",
+        "checkedAt": "2026-10-01",
         "fails": 0
       }
     },
@@ -818,11 +837,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5010,
+        "ms": 3654,
         "moneyLines": 3,
-        "checkedAt": "2026-09-30",
+        "checkedAt": "2026-10-03",
         "fails": 0,
-        "lastOkAt": "2026-09-30",
+        "lastOkAt": "2026-10-03",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
@@ -837,11 +856,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 4078,
+        "ms": 3349,
         "moneyLines": 10,
-        "checkedAt": "2026-09-19",
+        "checkedAt": "2026-10-03",
         "fails": 0,
-        "lastOkAt": "2026-09-19"
+        "lastOkAt": "2026-10-03"
       }
     },
     {
@@ -853,11 +872,11 @@
       "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3499,
+        "ms": 3392,
         "moneyLines": 10,
-        "checkedAt": "2026-09-25",
+        "checkedAt": "2026-10-01",
         "fails": 0,
-        "lastOkAt": "2026-09-25"
+        "lastOkAt": "2026-10-01"
       }
     },
     {

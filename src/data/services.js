@@ -1362,7 +1362,7 @@ export const PRICING = {
   'apple-music': 1180,       // 2026-07-25 公式確認（旧1080）
   'youtube-premium': 1280,
   'disney-plus': 1250,       // 2026-07-26 公式確認（旧990＝2世代前）
-  hulu: 1026,
+  hulu: 1320,       // 2026-10-01 公式確認（旧1026・2026-07-01告知の改定が施行日に反映）
   'abema-premium': 1180,     // 2026-04-01 値上げ。2026-07-26 公式確認（旧1080）
   'u-next': 2189,
   dazn: 4200,
@@ -1708,11 +1708,10 @@ export const PLANS = {
       // 視聴サービスです」と明記され、料金体系を網羅的に開示しているが年額への言及は
       // 一切なし。トップページ・公式ニュースにも年額の記載は無く、存在しないプランを
       // 出していたと確定（誤報ゼロ原則）。
-      // ⚠️ 月額は2026-10-01に1,026→1,320円へ改定予定（決済手段により1,450円）だが、
-      // 本日時点ではまだ改定前（現在も1,026円）のため据え置き。未来価格を今の価格として
-      // 書かない。10/1以降、公式で再確認してから更新すること
-      // （scripts/price-watch/state/autofix_shadow.json の hulu 記録・2026-09-18発見）。
-      { name: '月額プラン', monthly: 1026, popular: true, note: '広告なし・全コンテンツ見放題' },
+      // 2026-10-01 月額を1,026→1,320円へ改定（2026-07-01告知済み・本日公式ページで
+      // 1,320円を確認。決済手段により1,450円になる場合あり＝未反映。
+      // scripts/price-watch/state/autofix_shadow.json の hulu 記録・2026-09-18発見）。
+      { name: '月額プラン', monthly: 1320, popular: true, note: '広告なし・全コンテンツ見放題' },
     ],
     howToCheck: 'Hulu にログイン →「アカウント」→「契約情報」で確認できます',
   },
@@ -2234,13 +2233,14 @@ export const PLANS = {
 
 /** 換算に使うレート。三菱UFJ銀行 公表仲値(TTM) = (TTS + TTB) / 2
  *  2026-09-18: TTS 157.32 / TTB 155.32 → TTM 156.32
+ *  2026-10-01: TTS 158.96 / TTB 156.96 → TTM 157.96
  *  ⚠️ 同じページに「外貨現金両替相場」が並んでいる。**別物**。
  *     必ず上段の対顧客電信相場（US Dollar / 米ドル / USD の行）の TTS・TTB を使うこと。 */
-export const USD_JPY = 156.32;
+export const USD_JPY = 157.96;
 /** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
-export const USD_JPY_AS_OF = '2026-09-18';
+export const USD_JPY_AS_OF = '2026-10-01';
 /** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
-export const USD_JPY_READ_ON = '2026-09-22';
+export const USD_JPY_READ_ON = '2026-10-01';
 /** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
 export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
 /** 出典の名前（表示に出す） */
@@ -2643,6 +2643,17 @@ export const DIRECTION_LABEL = {
 };
 
 export const PRICE_HISTORY = {
+  hulu: [
+    {
+      date: '2026-10-01',
+      item: '月額プラン',
+      direction: 'up',
+      change:
+        '月額1,026円→1,320円に改定（2026-07-01付の公式告知通り、2026年10月1日(木)00:00施行）。iTunes/Google Play/Amazonアプリ内決済の場合は1,450円。本日公式ページ(hulu.jp)で1,320円表示を確認し反映。',
+      source: 'https://www.hulu.jp/',
+      verifiedAt: '2026-10-01',
+    },
+  ],
   'canva-pro': [
     {
       date: '2026-08-28',
@@ -3589,7 +3600,7 @@ export const EXTENDED_CONTENT = {
   },
   hulu: {
     summary:
-      'Hulu（日本版）は日本テレビが運営する動画配信サービス。月額1026円で見放題。国内ドラマ・バラエティに強く、日テレ系最新話の見逃し配信も。',
+      'Hulu（日本版）は日本テレビが運営する動画配信サービス。月額1320円で見放題。国内ドラマ・バラエティに強く、日テレ系最新話の見逃し配信も。',
     whyHard:
       'Hulu の解約は「ふつう」レベル。マイページから「登録情報」→「解約手続きはこちら」と進む直線的なフロー。引き止めも数回程度で済む。',
     darkPatterns: [
