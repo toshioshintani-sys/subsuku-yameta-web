@@ -2602,6 +2602,24 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 
 ---
 
+## 2026-10-03 ★★★★ 無人タスクを PowerShell から Node 直接起動へ全面移行（powershell.exe が固まる）
+
+### 発見
+- この日 `powershell.exe` / `pwsh` が `'hi'` を出すだけで60秒以上固まる状態になった（CPU 0%・OS 26200→26300更新後）。`node`・git・curl は正常。Task Scheduler が powershell.exe 経由で起動していた判定・為替・棚卸し・週次の4タスクは全て巻き込まれる。10/1 11:00 の為替タスクの強制終了(0xC000013A)、10/3 11:34 の判定「例外」も同根の可能性が高い（未確定）。
+- 移行：Task Scheduler → `node.exe scripts/.../run_*.mjs` を直接起動（共通部は `scripts/ops/lib.mjs`）。claude は `node cli.js -p` を直接起動しプロンプトは stdin で渡す。PowerShell 版固有の罠（BOM必須・CP932で日本語化け・claude.ps1 経由の引数切り詰め・stdin不安定）が構造的に消えた。
+
+### なぜ重要か
+- 「無人で動く仕組み」の起動層（シェル）が1つ壊れると、その上の全タスクが静かに止まる。しかも起動前に死ぬのでランナー内の Slack 通知は鳴らない。**起動層は一番薄く・壊れにくいもの（node 直接）にする**。PriceWatch は最初から node 直接で、今回も無傷だった＝実証済みの型。
+- 検証手段：構文は `node --check`、実機は `schtasks /Run` で本物のタスクとして起動（対話シェルの動作確認は別経路で当てにならない）。MSYS の bash から schtasks を叩く時は `MSYS_NO_PATHCONV=1` が必要（`/Run` が `C:/Program Files/Git/Run` に化ける）。
+
+### 永続化
+- 新規：`scripts/ops/lib.mjs` `scripts/price-watch/run_daily_judge.mjs` `run_fx_update.mjs` `scripts/ops/run_triage.mjs` `run_weekly_review.mjs`。旧 `.ps1` 4本は削除（履歴に残る）。
+- 4タスクの Action を node.exe 直接起動に再登録（スケジュールは不変）。
+- 毎日の状況報告（未マージPR・本番デプロイ状態・main先頭）を判定ランナーに追加（`lib.dailyStatusReport`・1日1回）。
+- `~/.claude/scheduled-tasks/subsuku-slack-watch`（毎日12:14・アプリ上で動く）：Slack を読んで異常を自発的に直す。ローカルの claude -p は Slack を読めないが、アプリのセッションは Slack コネクタを持つ。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：

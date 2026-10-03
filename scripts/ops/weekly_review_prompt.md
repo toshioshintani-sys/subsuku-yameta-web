@@ -23,9 +23,9 @@
     npm run ops:triage -- --json
 
 これは `TRIAGE_DAYS` 環境変数で日数を変えられます（デフォルト3日）。週次では7日分見るため、
-次のように実行してください（PowerShellの例）：
+次のように実行してください（bash。このマシンでは PowerShell が固まるため使わない）：
 
-    $env:TRIAGE_DAYS = "7"; node scripts/ops/triage.mjs
+    TRIAGE_DAYS=7 node scripts/ops/triage.mjs
 
 あわせて SEO の健全性も見ます。
 
