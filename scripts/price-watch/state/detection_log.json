@@ -6647,5 +6647,96 @@
     "verdict": "偽陽性",
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "公式ページでFree $0、Standard $15(月払い)/$12(年払い月額換算)、Pro $35(月払い)/$28(年払い月額換算)、Max $95(月払い)/$76(年払い月額換算)を確認。USD_PRICED補正後のours(2369,22746,5529,53075,15006,144060)は、Standard/Pro/Maxの月額・年額をUSD_JPY=157.96で換算した値と完全一致（例: $15→2369円、$12×12→22746円）。added/removedの小さい数値（16,19,21,27,4,40,5/17,31,7,9）はクレジット秒数・GB容量等の説明文中の数字で価格ではない。過去8回と同型の偽陽性。"
+  },
+  {
+    "date": "2026-10-04",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去26回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式ページで個人￥1,280/月・ファミリー￥2,280/月・学生/Lite ￥780/月・年額￥12,800を確認。ours(1280,780,2280)と完全一致。￥1,480は「Premium Lite ファミリー（New）」という当方未収録の別ティアの価格として本文に実在（過去27回と同型）。既存追跡プランへの変更なし。",
+    "verdictReason": "過去26回と同一原因（27回目）。1480は未収録プランPremium Liteファミリーの価格",
+    "notes": ""
+  },
+  {
+    "date": "2026-10-04",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0）で過去7回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "公式ページで「会員登録後5か月目からは月額¥1,500で自動更新します」「Amazonプライム会員限定 4か月 月額99円キャンペーン開催中」を確認。通常価格¥1,500はours(1500)と完全一致。¥0は無料体験/キャンペーン訴求の表示揺れで、過去7回と同型の偽陽性。",
+    "verdictReason": "過去7回と同一原因（8回目）。通常価格1500円は不変",
+    "notes": ""
+  },
+  {
+    "date": "2026-10-04",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      1750,
+      560
+    ],
+    "removed": [
+      1120,
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 1750, 560）で過去57回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページでStarter ¥400(3か月50%オフ)/¥800(通常)、Standard ¥800(3か月50%オフ)/¥1,600(通常)、Plus ¥1,750(3か月30%オフ)/¥2,500(通常)を確認。ours(800,1600,2500)は通常価格3点と完全一致。added/removedの値は期間限定割引率が日によって変わる既知の表示揺れで、通常価格は不変。過去57回と同型の偽陽性。",
+    "verdictReason": "過去57回と同一原因（58回目）。通常価格3点は不変",
+    "notes": "手順2.5(reconcile)でALL_MISS/PARTIAL_MISS計11件の報告があったが、Discord Nitroを個別確認したところJS描画で本文に金額が出現しない構造的な取りこぼしで、他のALL_MISS/PARTIAL_MISS（ABEMA/BOOK☆WALKER/ChatGPT Plus/Crunchyroll/LinkedIn Premium/Amazon Music Unlimited/Amazon プライム/Canva Pro/DAZN/Disney+/Evernote）もdocs/lessons.mdに既出の同種の構造的取りこぼし（JS描画・クッキー同意バナー・年額のみ表示等）と一致。新規の掲載ズレは無し。"
   }
 ]
