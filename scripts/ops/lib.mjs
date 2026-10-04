@@ -130,6 +130,133 @@ export function ensureMain() {
 }
 
 /**
+ * 今日の判定PR（price/auto-<day>）が未マージで開いていれば {number, url, branch} を返す。無ければ null。
+ *
+ * なぜ要るか（2026-10-04）：巡回は2時間おき・判定は4時間おきに走る。朝の判定がPRを開いたあと、
+ * 昼の判定は main に戻ってから動くので、偽陽性だけなら main へ直pushする。すると同じ日の記録が
+ * PRと main の2系統に分かれ、PRは同じ台帳を古い時点から書き換えたまま取り残される（PR#107）。
+ * 「その日に人のゲートが開いたら、その日の残りの記録は全部そのPRに積む」ために使う。
+ */
+export function findTodayPr(day) {
+  const branch = `price/auto-${day}`;
+  const r = gh(['pr', 'list', '--head', branch, '--state', 'open', '--json', 'number,url']);
+  if (r.code !== 0) return { error: r.err.slice(0, 300) };
+  const list = JSON.parse(r.out || '[]');
+  return list.length ? { number: list[0].number, url: list[0].url, branch } : null;
+}
+
+const WATCH_FILES = [
+  'scripts/price-watch/state/detection_log.json',
+  'scripts/price-watch/state/candidates.json',
+  'scripts/price-watch/state/price_watch_state.json',
+  'scripts/price-watch/state/autofix_shadow.json',
+  'scripts/price-watch/watch-list.json',
+];
+
+function gitShow(ref, file) {
+  const r = spawnSync('git', ['show', `${ref}:${file}`], { cwd: ROOT, encoding: 'utf-8', env: baseEnv(), maxBuffer: 64 * 1024 * 1024 });
+  return r.status === 0 ? r.stdout.replace(/^﻿/, '') : null;
+}
+
+/**
+ * main 上の作業ツリー（巡回が書いた未コミットの台帳つき）を、今日のPRブランチへ移す。
+ *  - detection_log.json：ブランチの記録（朝の判定つき）を土台に、巡回が main 側で新しく足した検知だけを後ろへ足す。
+ *  - その他の巡回状態：JSONの項目ごとに3者マージ。巡回が変えた項目は巡回側（新しい方）、触っていない項目はブランチ側を採る。
+ *    （行単位のマージだと、判定がブランチで足した注記が、隣の行の巡回の更新とぶつかって消える＝2026-10-04 の試験で確認）
+ * 途中で失敗したら main へ戻し、退避した変更も戻して { ok:false } を返す（中途半端な状態で claude を走らせない）。
+ */
+export function moveOntoTodayPr(branch) {
+  const working = {};
+  const base = {};
+  for (const f of WATCH_FILES) {
+    const p = path.join(ROOT, f);
+    working[f] = fs.existsSync(p) ? readText(p) : null;
+    base[f] = gitShow('HEAD', f);
+  }
+  const changed = git(['diff', '--name-only', 'HEAD']).out.split('\n').filter(Boolean);
+  const dirty = changed.some((f) => WATCH_FILES.includes(f));
+  if (changed.some((f) => !WATCH_FILES.includes(f))) {
+    return { ok: false, reason: '巡回の台帳以外に未コミットの変更があるため、PRブランチへ移れません' };
+  }
+  if (dirty) {
+    const st = git(['stash', 'push', '-m', `judge-move-${branch}`, '--', ...WATCH_FILES]);
+    if (st.code !== 0) return { ok: false, reason: `巡回の台帳を退避できません: ${st.err.slice(0, 300)}` };
+  }
+  const restore = (reason) => {
+    git(['switch', 'main']);
+    if (dirty) git(['stash', 'pop']);
+    return { ok: false, reason };
+  };
+
+  const fe = git(['fetch', 'origin', branch], { timeout: 180000 });
+  if (fe.code !== 0) return restore(`${branch} を取得できません: ${fe.err.slice(0, 300)}`);
+  const hasLocal = git(['rev-parse', '--verify', '--quiet', `refs/heads/${branch}`]).code === 0;
+  const sw = hasLocal ? git(['switch', branch]) : git(['switch', '-c', branch, '--track', `origin/${branch}`]);
+  if (sw.code !== 0) return restore(`${branch} へ切り替えられません: ${sw.err.slice(0, 300)}`);
+  const ff = git(['merge', '--ff-only', `origin/${branch}`]);
+  if (ff.code !== 0) return restore(`${branch} を origin に早送りできません: ${ff.err.slice(0, 300)}`);
+
+  try {
+    for (const f of WATCH_FILES) {
+      if (working[f] === null || working[f] === base[f]) continue; // 巡回が触っていない＝ブランチのまま
+      const p = path.join(ROOT, f);
+      const ours = fs.existsSync(p) ? readText(p) : null;
+      const eol = /\r\n/.test(working[f]) ? '\r\n' : '\n';
+      if (ours === null || base[f] === null) { writeText(p, working[f]); continue; }
+      const [b, o, t] = [base[f], ours, working[f]].map((x) => JSON.parse(x));
+      let merged;
+      if (f.endsWith('detection_log.json')) {
+        // 記録は追記型：ブランチの記録を土台に、巡回が新しく足した検知だけを後ろへ足す
+        const key = (e) => JSON.stringify(e);
+        const baseKeys = new Set(b.map(key));
+        const have = new Set(o.map(key));
+        merged = [...o];
+        for (const e of t) {
+          if (!baseKeys.has(key(e)) && !have.has(key(e))) { merged.push(e); have.add(key(e)); }
+        }
+      } else {
+        merged = merge3(b, o, t);
+      }
+      writeText(p, JSON.stringify(merged, null, 2).replace(/\n/g, eol) + eol);
+    }
+  } catch (e) {
+    for (const f of WATCH_FILES) git(['checkout', '--', f]);
+    return restore(`台帳の合流に失敗: ${e.message}`);
+  }
+  if (dirty) git(['stash', 'drop']);
+  return { ok: true };
+}
+
+/** JSON の3者マージ。巡回(theirs)が変えた所は巡回側、変えていない所はブランチ(ours)側。同じ長さの配列は要素ごと。 */
+function merge3(base, ours, theirs) {
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  if (same(theirs, base)) return ours;
+  if (same(ours, base)) return theirs;
+  const isObj = (x) => x && typeof x === 'object' && !Array.isArray(x);
+  if (isObj(base) && isObj(ours) && isObj(theirs)) {
+    const out = {};
+    for (const k of new Set([...Object.keys(ours), ...Object.keys(theirs)])) {
+      if (!(k in theirs) && k in base) continue; // 巡回が消した
+      if (!(k in ours) && k in base && same(theirs[k], base[k])) continue; // ブランチが消した
+      out[k] = !(k in ours) ? theirs[k] : !(k in theirs) ? ours[k] : merge3(base[k], ours[k], theirs[k]);
+    }
+    return out;
+  }
+  if (Array.isArray(base) && Array.isArray(ours) && Array.isArray(theirs)
+    && base.length === ours.length && base.length === theirs.length) {
+    return base.map((x, i) => merge3(x, ours[i], theirs[i]));
+  }
+  return theirs;
+}
+
+/** 判定のあと main へ戻す（PRブランチ上に居残らない）。戻せなければ理由を返す。 */
+export function returnToMain() {
+  if (git(['branch', '--show-current']).out === 'main') return { ok: true };
+  const sw = git(['switch', 'main']);
+  return sw.code === 0 ? { ok: true } : { ok: false, reason: sw.err.slice(0, 300) };
+}
+
+/**
  * claude -p を無人で起動する。
  *  - ANTHROPIC_API_KEY を除去（残っているとサブスクでなく API 課金になる）
  *  - プロンプトは stdin（長さ・引用符の制限なし）

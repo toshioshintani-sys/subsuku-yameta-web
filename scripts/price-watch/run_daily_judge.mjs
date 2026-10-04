@@ -9,6 +9,7 @@ import path from 'node:path';
 import {
   ROOT, LOG_DIR, ensureDirs, today, stamp, minutesOfDay, exists, readText, readJson, writeText,
   log, sendSlack, git, gh, runNode, ensureMain, runClaude, isAuthError, dailyStatusReport,
+  findTodayPr, moveOntoTodayPr, returnToMain,
 } from '../ops/lib.mjs';
 
 process.chdir(ROOT);
@@ -126,11 +127,43 @@ function main() {
   }
 
   // 実行前の main の位置を控える（2026-08-05）。機械が main に何を入れたかを実行後に検算する。
-  const shaBefore = git(['rev-parse', 'HEAD']).out;
+  // HEAD ではなく main を見る（2026-10-04）：PRブランチ上でのコミットは main の変更ではない。
+  const shaBefore = git(['rev-parse', 'refs/heads/main']).out;
 
-  const prompt = readText(promptFile);
+  // 今日のPRがすでに開いていれば、今回の判定はそのPRに積む（2026-10-04・lib.findTodayPr の注釈参照）。
+  let prompt = readText(promptFile);
+  const todayPr = findTodayPr(day);
+  if (todayPr && todayPr.error) {
+    sendSlack(`サブスクやめた 価格判定（無人）を停止\n今日のPRの有無を確かめられません（${todayPr.error}）。main へ直pushしてPRと記録が分かれるのを避けるため続行しません。`);
+    return finish(1);
+  }
+  if (todayPr) {
+    const mv = moveOntoTodayPr(todayPr.branch);
+    if (!mv.ok) {
+      sendSlack(`サブスクやめた 価格判定（無人）を停止\n今日のPR #${todayPr.number} のブランチへ移れません：${mv.reason}\n未判定 ${beforeUnjudged} 件は残っています。次の判定で再試行します。`);
+      return finish(1);
+    }
+    log(`今日のPR #${todayPr.number}（${todayPr.branch}）に積むモードで判定します`);
+    prompt = `## ⚠️ 今日はすでにPRが開いています（この指示は手順5より優先）
+
+今日の判定PR #${todayPr.number}（${todayPr.url}・ブランチ ${todayPr.branch}）が未マージのまま開いています。
+作業ツリーはすでにそのブランチ上です。朝以降の巡回が足した検知も detection_log.json に合流済みです。
+
+- 手順5は、偽陽性だけの日でも **A（main へ直接 push）を使わず**、このブランチに追加コミットして \`git push origin ${todayPr.branch}\` してください。
+- 新しいブランチ・新しいPRは作らない。main へ切り替えない。main へ push しない。PRのマージもしない。
+- コミットメッセージは「〇月〇日 追加の検知N件を判定（…）」の形に。
+- Slack 報告には、このPRのURLと「今日のPRに追記した」ことを書いてください。
+
+---
+
+` + prompt;
+  }
+
   const res = runClaude(prompt);
   writeText(logFile, res.raw);
+  // PRを作った回・PRに追記した回とも、判定のあとは main へ戻す（次の巡回・為替が main 上で動くように）。
+  const back = returnToMain();
+  if (!back.ok) sendSlack(`サブスクやめた 価格判定（無人）：判定のあと main へ戻れません\n${back.reason}\n次の判定・為替が止まる可能性があります。作業ツリーを確認してください。`);
 
   if (res.code !== 0) {
     // 失敗の中身を見て、何をすればいいかまで書く（2026-07-14 の認証失効が2週間気づかれなかった教訓）。
@@ -168,7 +201,7 @@ function main() {
   // main に何を入れたかを検算する（2026-08-05）。許すのは台帳と巡回状態だけ。
   // src/ に手が入っていたら表示価格が人の目を通らずに公開された可能性がある＝すぐ知らせる。
   // ただし src/ が動いていない回は失敗にしない（2026-08-20）。本当は緑の日を赤くすると赤の意味が薄れる。
-  const shaAfter = git(['rev-parse', 'HEAD']).out;
+  const shaAfter = git(['rev-parse', 'refs/heads/main']).out;
   if (shaBefore && shaAfter && shaBefore !== shaAfter) {
     const touched = git(['diff', '--name-only', shaBefore, shaAfter]).out.split('\n').filter(Boolean);
     const allowed = ['scripts/price-watch/state/', 'scripts/price-watch/watch-list.json'];
