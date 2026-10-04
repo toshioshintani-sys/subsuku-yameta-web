@@ -33,11 +33,11 @@
       "note": "2026-07-07: 素のfetchは503(bot対策)だったためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 6448,
+        "ms": 6138,
         "moneyLines": 5,
-        "checkedAt": "2026-10-02",
+        "checkedAt": "2026-10-05",
         "fails": 0,
-        "lastOkAt": "2026-10-02",
+        "lastOkAt": "2026-10-05",
         "suspects": [
           "ちょうど半額の組がある（300 と 600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 5773,
-        "moneyLines": 21,
-        "checkedAt": "2026-10-04",
+        "ms": 5618,
+        "moneyLines": 22,
+        "checkedAt": "2026-10-05",
         "fails": 0,
-        "lastOkAt": "2026-10-04"
+        "lastOkAt": "2026-10-05"
       }
     },
     {
@@ -221,11 +221,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 4297,
+        "ms": 4390,
         "moneyLines": 4,
-        "checkedAt": "2026-10-04",
+        "checkedAt": "2026-10-05",
         "fails": 0,
-        "lastOkAt": "2026-10-04"
+        "lastOkAt": "2026-10-05"
       }
     },
     {
@@ -300,9 +300,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 3983,
+        "ms": 4530,
         "moneyLines": 0,
-        "checkedAt": "2026-10-04",
+        "checkedAt": "2026-10-05",
         "fails": 0
       }
     },
@@ -726,9 +726,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 2281,
+        "ms": 2823,
         "moneyLines": 0,
-        "checkedAt": "2026-10-04",
+        "checkedAt": "2026-10-05",
         "fails": 0
       }
     },
@@ -782,9 +782,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3895,
+        "ms": 3945,
         "moneyLines": 0,
-        "checkedAt": "2026-10-04",
+        "checkedAt": "2026-10-05",
         "fails": 0
       }
     },
@@ -837,13 +837,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3664,
+        "ms": 3953,
         "moneyLines": 3,
-        "checkedAt": "2026-10-04",
+        "checkedAt": "2026-10-05",
         "fails": 0,
-        "lastOkAt": "2026-10-04",
+        "lastOkAt": "2026-10-05",
         "suspects": [
-          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
