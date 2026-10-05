@@ -195,7 +195,7 @@ Register-ScheduledTask -TaskName "Subsuku_PriceWatch_0710" -Action $action -Trig
 | | |
 |---|---|
 | タスク名 | `Subsuku_PriceJudge_0730`（毎日7:30 JST・7:10の巡回の20分後） |
-| 実体 | `run_daily_judge.ps1` → `claude -p` に `daily_judge_prompt.md` を渡す |
+| 実体 | `run_daily_judge.mjs(node.exe 直接起動)` → `claude -p` に `daily_judge_prompt.md` を渡す |
 | 課金 | Maxサブスク枠（ランナー冒頭で `ANTHROPIC_API_KEY` を除去。残すとAPI課金に化ける） |
 | やること | 検知を公式ページで確認 → `detection_log.json` に verdict/evidence を記入 → 本物なら `services.js` と `PRICE_HISTORY` を修正 → **PR作成まで** |
 | やらないこと | **main への直接push・PRのマージ**。誤報ゼロは最上位原則なので、公開に出る一歩手前で必ず人が止める |
