@@ -2646,6 +2646,26 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 
 ---
 
+## 2026-10-08 ★★★★ 毎日の巡回を「Slackを読むアプリ定期タスク」から「発信元を直接読む Task Scheduler タスク」へ移行
+
+### 発見
+- アプリ上の定期タスク `subsuku-slack-watch` は、毎回新規セッションが `permissionMode: default` ＋ タスクごとに保存された個別許可ルール(`approvedPermissions`)だけで起動する。リストにない新しい操作が出るたびに承認待ちで止まり、10/7 は 12:14 起動→翌朝 5:21 に承認されるまで**17時間止まった**。`Claude_work/.claude/settings.local.json` の `defaultMode: bypassPermissions` は定期タスクのセッションには効かない。権限モードを変える口はアプリの画面だけで、API/設定ファイルからは変えられない（セキュリティ設定は利用者のもの）。
+- 俊雄さんの指摘「Slackに情報を送っているのは私たち自身。発信元から直接取ればよい」が正しい。Slack の通知は判定・為替・棚卸しランナー等が書いた内容の写しで、元データ（ログ・台帳・git・GitHub・Netlify・schtasks）は全部ローカルで取れる。GA4日次通知だけは別系統だが、巡回の目的（サイトの異常を直す）には不要。
+- ローカルの `claude -p`（長期トークン `CLAUDE_CODE_OAUTH_TOKEN` で認証）は Slack コネクタを読み込まない（実機で確認）。つまり Slack を読む方式はアプリ内セッションに縛られる。発信元を読む方式なら不要。
+
+### なぜ重要か
+- 「承認待ちで止まる」は無人化の最大の敵で、気づきにくい（17時間静かに止まっていた）。無人タスクは `--permission-mode bypassPermissions` で動かせる Task Scheduler + node の型に寄せるのが確実（判定・為替・棚卸し・週次と同じ実績ある方式）。
+- 転記先（Slack）を読むより、一次データを読むほうが速く・正確で・転記の失敗にも気づける。
+- 指摘ゼロの日は claude を起こさない設計（毎日LLMを回さない）にして、機械点検だけで足りる日はコストゼロにした。
+
+### 永続化
+- `scripts/ops/run_watch.mjs`（機械点検→指摘があれば claude -p）、`scripts/ops/watch_prompt.md`、タスク `Subsuku_Watch_1214`（毎日12:14・StartWhenAvailable）。
+- 点検項目：本番が古い(最後のreadyとmainの差分にサイト出力に影響する変更が残っていないか)・未マージPR・為替の鮮度・未判定の検知・今日の判定ログ・タスクの前回結果(直近30時間以内のみ)・triage.mjs。
+- 動作確認：`--dry`（点検のみ）、`WATCH_FORCE=1`（claude 経路・10ターン・権限拒否0・Slack報告成功）、`schtasks /Run`（指摘ゼロ経路・結果0）。
+- アプリ側 `subsuku-slack-watch` は一時停止（削除せず。`update_scheduled_task enabled:true` で戻せる）。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
