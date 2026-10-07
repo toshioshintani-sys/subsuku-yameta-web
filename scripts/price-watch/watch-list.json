@@ -221,11 +221,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 4019,
+        "ms": 4613,
         "moneyLines": 4,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-08",
         "fails": 0,
-        "lastOkAt": "2026-10-07"
+        "lastOkAt": "2026-10-08"
       }
     },
     {
@@ -867,11 +867,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3349,
+        "ms": 6320,
         "moneyLines": 10,
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-08",
         "fails": 0,
-        "lastOkAt": "2026-10-03"
+        "lastOkAt": "2026-10-08"
       }
     },
     {

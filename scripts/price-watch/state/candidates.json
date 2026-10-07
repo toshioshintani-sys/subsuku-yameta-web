@@ -1,74 +1,25 @@
 {
-  "generatedAt": "2026-10-06T22:13:26.138Z",
+  "generatedAt": "2026-10-07T22:13:27.446Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [],
-      "removed": [
-        "￥1,480"
-      ],
-      "detectedAt": "2026-10-06T22:10:36.119Z"
-    },
-    {
-      "id": "playstation-plus",
-      "name": "PlayStation Plus",
-      "url": "https://www.playstation.com/ja-jp/ps-plus/",
-      "added": [],
-      "removed": [
-        "¥10,425",
-        "¥5,780",
-        "¥9,360"
-      ],
-      "detectedAt": "2026-10-06T22:11:30.407Z"
-    },
-    {
-      "id": "audible",
-      "name": "Audible",
-      "url": "https://www.audible.co.jp/",
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
       "added": [
-        "¥0"
-      ],
-      "removed": [],
-      "detectedAt": "2026-10-06T22:12:01.275Z"
-    },
-    {
-      "id": "dmagazine",
-      "name": "dマガジン",
-      "url": "https://dmagazine.docomo.ne.jp/",
-      "added": [
-        "8000円"
-      ],
-      "removed": [],
-      "detectedAt": "2026-10-06T22:12:05.514Z"
-    },
-    {
-      "id": "google-workspace",
-      "name": "Google Workspace",
-      "url": "https://workspace.google.com/intl/ja/pricing.html",
-      "added": [
-        "￥1,120"
-      ],
-      "removed": [],
-      "detectedAt": "2026-10-06T22:13:13.753Z"
-    },
-    {
-      "id": "windsurf",
-      "name": "Windsurf（現Devin Desktop）",
-      "url": "https://windsurf.com/pricing",
-      "added": [
-        "$61",
-        "$63"
+        "$14",
+        "$17",
+        "$22",
+        "$41"
       ],
       "removed": [
-        "$60",
-        "$62",
-        "$98",
-        "$99"
+        "$13",
+        "$19",
+        "$21",
+        "$27",
+        "$40"
       ],
-      "detectedAt": "2026-10-06T22:13:18.454Z"
+      "detectedAt": "2026-10-07T22:13:18.581Z"
     }
   ]
 }
