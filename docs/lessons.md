@@ -2612,7 +2612,8 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 - 「無人で動く仕組み」の起動層（シェル）が1つ壊れると、その上の全タスクが静かに止まる。しかも起動前に死ぬのでランナー内の Slack 通知は鳴らない。**起動層は一番薄く・壊れにくいもの（node 直接）にする**。PriceWatch は最初から node 直接で、今回も無傷だった＝実証済みの型。
 - 検証手段：構文は `node --check`、実機は `schtasks /Run` で本物のタスクとして起動（対話シェルの動作確認は別経路で当てにならない）。MSYS の bash から schtasks を叩く時は `MSYS_NO_PATHCONV=1` が必要（`/Run` が `C:/Program Files/Git/Run` に化ける）。
 
-- **同日の追加発見（認証失効）**：Node化後に `claude -p` が固まった。debug ログ(~/.claude/debug)で原因特定＝OAuth トークン失効（`/v1/oauth/token` が 400、API は 401 を11回リトライ）。`~/.claude/.credentials.json` は 8/3 のまま。**失効時の claude -p は exit もエラー出力も出さず何分も固まる**ので「ただ止まった」ように見える。対策：`lib.runClaude` に120秒の事前確認(1往復)を入れ、無応答なら authentication_error 扱いで短時間に失敗→Slack に `claude auth login` の手順を出す。**復旧は俊雄さんの操作が必要**（認証情報は私が扱えない）。アプリ上の定期タスク（subsuku-slack-watch）はアプリの認証で動くため影響を受けない。
+- **【訂正 2026-10-08】下の「認証失効」の診断は誤りだった。** 無人ランナーの claude -p は ユーザー環境変数 `CLAUDE_CODE_OAUTH_TOKEN`（長期トークン）で認証しており、Task Scheduler 起動のプロセスはこれを受け取る（判定は10/4〜10/7に毎朝正常完走）。`~/.claude/.credentials.json`（8/3のまま）は使われない。アプリのシェルにはこの変数が無いので、そこから `claude -p` を試すと『OAuth失効→401を延々リトライして固まる』ように見えるだけ。**検証は必ず Task Scheduler と同じ環境（レジストリのユーザー環境変数）で行う。** 俊雄さんに `claude auth login` を求めたのは不要だった。
+- ~~同日の追加発見（認証失効）~~（誤診断・上記参照）：Node化後に `claude -p` が固まった。debug ログ(~/.claude/debug)で原因特定＝OAuth トークン失効（`/v1/oauth/token` が 400、API は 401 を11回リトライ）。`~/.claude/.credentials.json` は 8/3 のまま。**失効時の claude -p は exit もエラー出力も出さず何分も固まる**ので「ただ止まった」ように見える。対策：`lib.runClaude` に120秒の事前確認(1往復)を入れ、無応答なら authentication_error 扱いで短時間に失敗→Slack に `claude auth login` の手順を出す。**復旧は俊雄さんの操作が必要**（認証情報は私が扱えない）。アプリ上の定期タスク（subsuku-slack-watch）はアプリの認証で動くため影響を受けない。
 
 ### 永続化
 - 新規：`scripts/ops/lib.mjs` `scripts/price-watch/run_daily_judge.mjs` `run_fx_update.mjs` `scripts/ops/run_triage.mjs` `run_weekly_review.mjs`。旧 `.ps1` 4本は削除（履歴に残る）。

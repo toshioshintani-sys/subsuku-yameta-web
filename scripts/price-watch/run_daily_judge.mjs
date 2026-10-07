@@ -177,8 +177,7 @@ function main() {
       writeText(marker, day);
       sendSlack('サブスクやめた 価格判定（無人）が停止：**CLIの認証が失効しています**\n' +
         `検知 ${eventCount} 件は未判定のまま残っています。\n\n` +
-        '対処（俊雄さんの操作が必要です）：ターミナルで claude auth login を実行し、ブラウザで承認してください。\n' +
-        '毎回切れるのを止めたい場合は claude setup-token で長期トークンに切り替えられます（無人実行用・Claudeサブスクが必要）。\n\n' +
+        '対処（俊雄さんの操作が必要です）：長期トークン（ユーザー環境変数 CLAUDE_CODE_OAUTH_TOKEN）の期限切れの可能性があります。ターミナルで claude setup-token を実行して再発行し、その値でユーザー環境変数を更新してください。\n' +
         '※ claude auth status は「ログイン済み」と出ますが、保存済みトークンが失効しているとリクエスト時に401になります。\n' +
         `ログ: ${logFile}`);
       return finish(1);

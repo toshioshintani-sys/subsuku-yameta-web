@@ -31,7 +31,7 @@ try {
   writeText(marker, today());
   if (res.code !== 0) {
     sendSlack(isAuthError(res.raw)
-      ? `サブスクやめた 週次レビューが停止：**CLIの認証が失効しています**\nターミナルで claude auth login を実行してください。\nログ: ${logFile}`
+      ? `サブスクやめた 週次レビューが停止：**CLIの認証が失効しています**\n長期トークン（ユーザー環境変数 CLAUDE_CODE_OAUTH_TOKEN）の期限切れの可能性があります。claude setup-token で再発行し、環境変数を更新してください。\nログ: ${logFile}`
       : `サブスクやめた 週次レビューが失敗\nclaude -p が exit code ${res.code} で終了。週次の確認・報告ができていません。\nログ: ${logFile}`);
     finish(1);
   } else {

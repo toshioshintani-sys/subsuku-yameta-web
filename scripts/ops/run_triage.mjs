@@ -39,7 +39,7 @@ try {
     if (res.code !== 0) {
       if (isAuthError(res.raw)) {
         sendSlack('サブスクやめた 3日棚卸しが停止：**CLIの認証が失効しています**\n点検自体は動いており、指摘が出ています（下記）。直す側だけが止まりました。\n\n' +
-          head + '\n対処（俊雄さんの操作が必要です）：ターミナルで claude auth login を実行し、ブラウザで承認してください。\n' + `ログ: ${checkLog}`);
+          head + '\n対処（俊雄さんの操作が必要です）：長期トークン（ユーザー環境変数 CLAUDE_CODE_OAUTH_TOKEN）の期限切れの可能性があります。ターミナルで claude setup-token を実行して再発行し、その値でユーザー環境変数を更新してください。\n' + `ログ: ${checkLog}`);
       } else {
         sendSlack(`サブスクやめた 3日棚卸し：**直す側が失敗しました**（exit ${res.code}）\n点検の指摘は出ています。手で対応してください。\n\n${head}\nログ: ${checkLog} / ${agentLog}`);
       }

@@ -58,8 +58,7 @@ function main() {
   if (res.code !== 0) {
     if (isAuthError(res.raw)) {
       sendSlack('サブスクやめた 為替更新（無人）が停止：**CLIの認証が失効しています**\n' +
-        '対処（俊雄さんの操作が必要です）：ターミナルで claude auth login を実行し、ブラウザで承認してください。\n' +
-        '毎回切れるのを止めたい場合は claude setup-token で長期トークンに切り替えられます。\n' +
+        '対処（俊雄さんの操作が必要です）：長期トークン（ユーザー環境変数 CLAUDE_CODE_OAUTH_TOKEN）の期限切れの可能性があります。ターミナルで claude setup-token を実行して再発行し、その値でユーザー環境変数を更新してください。\n' +
         `ログ: ${logFile}`);
       return finish(1);
     }
