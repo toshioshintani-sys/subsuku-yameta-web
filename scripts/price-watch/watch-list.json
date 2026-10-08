@@ -221,11 +221,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 4613,
+        "ms": 23280,
         "moneyLines": 4,
-        "checkedAt": "2026-10-08",
+        "checkedAt": "2026-10-09",
         "fails": 0,
-        "lastOkAt": "2026-10-08"
+        "lastOkAt": "2026-10-09"
       }
     },
     {
@@ -737,9 +737,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 3896,
+        "ms": 3851,
         "moneyLines": 0,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-09",
         "fails": 0
       }
     },
@@ -793,9 +793,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4683,
+        "ms": 10195,
         "moneyLines": 0,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-09",
         "fails": 0
       }
     },
@@ -808,9 +808,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 3332,
+        "ms": 5563,
         "moneyLines": 0,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-09",
         "fails": 0
       }
     },
