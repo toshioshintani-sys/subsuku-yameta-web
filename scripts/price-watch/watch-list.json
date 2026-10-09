@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 6954,
+        "ms": 6596,
         "moneyLines": 22,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-09",
         "fails": 0,
-        "lastOkAt": "2026-10-07"
+        "lastOkAt": "2026-10-09"
       }
     },
     {
@@ -615,11 +615,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 26462,
+        "ms": 5759,
         "moneyLines": 4,
-        "checkedAt": "2026-10-06",
+        "checkedAt": "2026-10-09",
         "fails": 0,
-        "lastOkAt": "2026-10-06",
+        "lastOkAt": "2026-10-09",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -793,7 +793,7 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 10195,
+        "ms": 4874,
         "moneyLines": 0,
         "checkedAt": "2026-10-09",
         "fails": 0
@@ -848,11 +848,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5234,
+        "ms": 4056,
         "moneyLines": 3,
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-09",
         "fails": 0,
-        "lastOkAt": "2026-10-07",
+        "lastOkAt": "2026-10-09",
         "suspects": [
           "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記の疑い"
         ]
