@@ -1,41 +1,68 @@
 {
-  "generatedAt": "2026-10-09T00:13:27.413Z",
+  "generatedAt": "2026-10-10T08:40:17.160Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [
-        "￥1,480"
-      ],
-      "removed": [],
-      "detectedAt": "2026-10-09T00:10:35.974Z"
-    },
-    {
-      "id": "deepl-pro",
-      "name": "DeepL Pro",
-      "url": "https://www.deepl.com/pro",
-      "added": [
-        "$59"
-      ],
+      "id": "audible",
+      "name": "Audible",
+      "url": "https://www.audible.co.jp/",
+      "added": [],
       "removed": [
-        "$58"
+        "¥0"
       ],
-      "detectedAt": "2026-10-09T00:12:40.060Z"
+      "detectedAt": "2026-10-10T08:16:43.721Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥1,250"
+        "￥1,280",
+        "￥2,000",
+        "￥640"
       ],
       "removed": [
-        "￥1,120",
-        "￥2,000"
+        "￥1,250",
+        "￥400"
       ],
-      "detectedAt": "2026-10-09T00:13:14.519Z"
+      "detectedAt": "2026-10-10T08:18:27.945Z"
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf（現Devin Desktop）",
+      "url": "https://windsurf.com/pricing",
+      "added": [
+        "$13",
+        "$18",
+        "$2",
+        "$21",
+        "$22",
+        "$23",
+        "$24",
+        "$25",
+        "$26",
+        "$27",
+        "$28",
+        "$3",
+        "$6",
+        "$7",
+        "$77",
+        "$78",
+        "$79",
+        "$8",
+        "$9"
+      ],
+      "removed": [
+        "$10",
+        "$11",
+        "$12",
+        "$16",
+        "$61",
+        "$63",
+        "$71",
+        "$73"
+      ],
+      "detectedAt": "2026-10-10T08:18:33.059Z"
     }
   ]
 }
