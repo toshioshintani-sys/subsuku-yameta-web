@@ -139,10 +139,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35011,
+        "ms": 35010,
         "moneyLines": 0,
-        "checkedAt": "2026-10-07",
-        "fails": 25,
+        "checkedAt": "2026-10-11",
+        "fails": 26,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -388,11 +388,11 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "ok",
-        "ms": 20499,
-        "moneyLines": 4,
-        "checkedAt": "2026-10-06",
-        "fails": 0,
+        "status": "timeout",
+        "ms": 35152,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-11",
+        "fails": 1,
         "lastOkAt": "2026-10-06"
       }
     },
@@ -701,15 +701,12 @@
       "stripScriptStyle": true,
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 7355,
-        "moneyLines": 1,
-        "checkedAt": "2026-10-07",
-        "fails": 0,
-        "lastOkAt": "2026-10-07",
-        "suspects": [
-          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
-        ]
+        "status": "timeout",
+        "ms": 35020,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-11",
+        "fails": 2,
+        "lastOkAt": "2026-10-07"
       }
     },
     {
@@ -848,13 +845,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 15724,
-        "moneyLines": 6,
-        "checkedAt": "2026-10-10",
+        "ms": 14900,
+        "moneyLines": 3,
+        "checkedAt": "2026-10-11",
         "fails": 0,
-        "lastOkAt": "2026-10-10",
+        "lastOkAt": "2026-10-11",
         "suspects": [
-          "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
