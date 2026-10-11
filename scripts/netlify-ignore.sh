@@ -57,9 +57,10 @@ fi
 #   docs/                          … ドキュメント
 #   scripts/price-watch/state|logs … 価格監視の台帳・ログ（毎朝の判定が push する）
 #   scripts/price-watch/watch-list.json … 巡回の取得プロファイル
+#   scripts/ops/                   … 無人タスクのランナー・プロンプト。src/からの参照なし確認済み（2026-10-11）
 #   *.md                           … src からの参照はコメントのみと確認済み（2026-08-26）
 #   .gitignore
-SAFE='^(docs/|scripts/price-watch/(state|logs)/|scripts/price-watch/watch-list\.json$|.*\.md$|\.gitignore$)'
+SAFE='^(docs/|scripts/price-watch/(state|logs)/|scripts/price-watch/watch-list\.json$|scripts/ops/|.*\.md$|\.gitignore$)'
 
 if echo "$changed" | grep -qvE "$SAFE"; then
   echo "[ignore] ビルドに影響しうる変更あり → ビルドする"

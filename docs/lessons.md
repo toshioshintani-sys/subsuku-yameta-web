@@ -2680,6 +2680,7 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 - `scripts/ops/lib.mjs`の`runClaude`：probeが「ETIMEDOUTでもなく、出力も空」の場合だけ1回だけ再試行するよう変更。認証失効（ETIMEDOUT）の即時失敗ロジックは変更なし。全ランナー（judge/fx/triage/watch/weekly_review）が共通で使うため一箇所の修正で全体に効く。
 - 本番デプロイのerror（`6bccb66`含む直近6件すべて）は`Canceled build due to no content change`＝既知の無害パターン（state系JSONのみの変更）。対応不要。
 - 未マージPR0件・為替2026-10-01（次回更新は10/15・前回の強制終了0xC000013Aは10/3のnode移行後は再発せず）・Subsuku_Watch_1214の「結果267009」は「実行中」を示す正常値（本チェック自体を実行しているタスクなので当然自分自身は実行中と出る）。いずれも異常ではない。
+- **副作用として発覚**：上記`lib.mjs`の修正をpushした直後、Netlifyが実際にビルドを開始した（`building`状態を確認）。`scripts/netlify-ignore.sh`と`run_watch.mjs`のSAFE許可リストに`scripts/ops/`が無かったため。`scripts/ops/`配下はsrc/からの参照が無く（grep確認済み）サイト出力に影響しないツール群なのに、2026-08-26のホワイトリスト整備時に含まれていなかった。両ファイルのSAFE正規表現に`scripts/ops/`を追加し、以後`scripts/ops/`だけの変更は無駄なビルド（≒15クレジット）を消費しないようにした。
 
 ---
 

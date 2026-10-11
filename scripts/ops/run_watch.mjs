@@ -27,7 +27,7 @@ const finish = (c) => { process.exitCode = c; };
 const DRY = process.argv.includes('--dry'); // 点検結果だけ表示（Slack・claude・マーカーに触れない）
 
 // netlify-ignore.sh と同じ「サイトの出力に影響しないパス」。これ以外が変わっていれば本番に出るべき変更。
-const SAFE = /^(docs\/|scripts\/price-watch\/(state|logs)\/|scripts\/price-watch\/watch-list\.json$|.*\.md$|\.gitignore$)/;
+const SAFE = /^(docs\/|scripts\/price-watch\/(state|logs)\/|scripts\/price-watch\/watch-list\.json$|scripts\/ops\/|.*\.md$|\.gitignore$)/;
 
 function decodeJa(buf) {
   try { return new TextDecoder('shift_jis').decode(buf); } catch { return buf.toString('utf8'); }
