@@ -269,10 +269,20 @@ export function runClaude(prompt, { timeoutMs = 40 * 60 * 1000 } = {}) {
   // 事前確認（2026-10-03）：OAuth が失効していると claude -p は 401 を11回リトライして**何分も固まる**
   // （exit もエラー出力も無いまま。判定・為替が「ただ止まった」ように見える）。軽い1往復で先に確かめ、
   // 応答が無ければ「認証失効の疑い」として短時間で失敗させ、通知が出せるようにする。
-  const probe = spawnSync(process.execPath,
+  //
+  // 2026-10-11 追記：3日棚卸し(Subsuku_Triage_1000 10:00)でこのprobeがstdout/stderrとも空で
+  // status!=0（タイムアウトでもない＝原因不明の一瞬の不調）になり、直す側が丸ごと失敗した実績あり。
+  // 同日の7:30/11:30の判定probeは正常だったため恒常的な障害ではなく一回性のグリッチと判断。
+  // 認証失効（hung）はこれまで通り即失敗にする一方、原因不明・無出力の失敗だけ1回だけ再試行する。
+  const runProbe = () => spawnSync(process.execPath,
     [CLAUDE_CLI, '-p', '--model', 'claude-sonnet-5', '--output-format', 'json'],
     { cwd: ROOT, input: '1+1の答えを数字だけで', encoding: 'utf-8', env, timeout: 120 * 1000, maxBuffer: 16 * 1024 * 1024 });
-  const probeRaw = (probe.stdout || '') + (probe.stderr || '');
+  let probe = runProbe();
+  let probeRaw = (probe.stdout || '') + (probe.stderr || '');
+  if (probe.status !== 0 && !(probe.error && probe.error.code === 'ETIMEDOUT') && !probeRaw) {
+    probe = runProbe();
+    probeRaw = (probe.stdout || '') + (probe.stderr || '');
+  }
   if (probe.status !== 0) {
     const hung = probe.error && probe.error.code === 'ETIMEDOUT';
     return {
