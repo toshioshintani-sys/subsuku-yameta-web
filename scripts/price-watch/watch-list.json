@@ -389,10 +389,10 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "timeout",
-        "ms": 35152,
+        "ms": 35006,
         "moneyLines": 0,
-        "checkedAt": "2026-10-11",
-        "fails": 1,
+        "checkedAt": "2026-10-13",
+        "fails": 3,
         "lastOkAt": "2026-10-06"
       }
     },
@@ -445,12 +445,12 @@
       "enabled": true,
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
-        "status": "ok",
-        "ms": 16307,
-        "moneyLines": 7,
-        "checkedAt": "2026-10-10",
-        "fails": 0,
-        "lastOkAt": "2026-10-10"
+        "status": "timeout",
+        "ms": 35023,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-13",
+        "fails": 1,
+        "lastOkAt": "2026-10-13"
       }
     },
     {
@@ -615,11 +615,11 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5759,
+        "ms": 26361,
         "moneyLines": 4,
-        "checkedAt": "2026-10-09",
+        "checkedAt": "2026-10-13",
         "fails": 0,
-        "lastOkAt": "2026-10-09",
+        "lastOkAt": "2026-10-13",
         "suspects": [
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
@@ -822,12 +822,15 @@
       "enabled": true,
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
-        "status": "ok",
-        "ms": 5289,
-        "moneyLines": 2,
-        "checkedAt": "2026-09-27",
+        "status": "ok-suspect",
+        "ms": 19313,
+        "moneyLines": 10,
+        "checkedAt": "2026-10-13",
         "fails": 0,
-        "lastOkAt": "2026-09-27"
+        "lastOkAt": "2026-10-13",
+        "suspects": [
+          "期待するドル額（$20）がページに無い（$8, $30, $100, $200）"
+        ]
       }
     },
     {
@@ -848,13 +851,13 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 4081,
+        "ms": 10889,
         "moneyLines": 3,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0,
-        "lastOkAt": "2026-10-12",
+        "lastOkAt": "2026-10-13",
         "suspects": [
-          "ちょうど半額の組がある（560 と 1120）＝割引価格と通常価格の並記の疑い"
+          "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
       }
     },
