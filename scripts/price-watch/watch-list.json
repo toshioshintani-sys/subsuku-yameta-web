@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 6596,
+        "ms": 10521,
         "moneyLines": 22,
-        "checkedAt": "2026-10-09",
+        "checkedAt": "2026-10-13",
         "fails": 0,
-        "lastOkAt": "2026-10-09"
+        "lastOkAt": "2026-10-13"
       }
     },
     {
@@ -139,10 +139,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35010,
+        "ms": 35013,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
-        "fails": 27,
+        "checkedAt": "2026-10-13",
+        "fails": 28,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -300,9 +300,9 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "no-money",
-        "ms": 5187,
+        "ms": 5499,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0
       }
     },
@@ -388,12 +388,12 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "timeout",
-        "ms": 35006,
-        "moneyLines": 0,
+        "status": "ok",
+        "ms": 6309,
+        "moneyLines": 4,
         "checkedAt": "2026-10-13",
-        "fails": 3,
-        "lastOkAt": "2026-10-06"
+        "fails": 0,
+        "lastOkAt": "2026-10-13"
       }
     },
     {
@@ -615,7 +615,7 @@
       "note": "2026-07-26: 素のfetchだと価格が出ないため headless 化。公式は「年払いの月額換算」のみ表示（￥1,150/￥3,750/￥7,500）で、月払い単体の金額は出さない。",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 26361,
+        "ms": 6728,
         "moneyLines": 4,
         "checkedAt": "2026-10-13",
         "fails": 0,
@@ -702,11 +702,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 10567,
+        "ms": 10112,
         "moneyLines": 1,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0,
-        "lastOkAt": "2026-10-12",
+        "lastOkAt": "2026-10-13",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
@@ -737,9 +737,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 4443,
+        "ms": 2582,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0
       }
     },
@@ -793,9 +793,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 6532,
+        "ms": 5185,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0
       }
     },
@@ -808,9 +808,9 @@
       "note": "2026-07-06調査: compare-plansページは価格記載なしだったが、このURLでエージェントのWebFetchが「US$39.99/month」等をテキスト確認済み（USD建て）",
       "fetch": {
         "status": "no-money",
-        "ms": 4894,
+        "ms": 4326,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-13",
         "fails": 0
       }
     },
@@ -823,7 +823,7 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 19313,
+        "ms": 6633,
         "moneyLines": 10,
         "checkedAt": "2026-10-13",
         "fails": 0,
@@ -851,7 +851,7 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 10889,
+        "ms": 3710,
         "moneyLines": 3,
         "checkedAt": "2026-10-13",
         "fails": 0,
