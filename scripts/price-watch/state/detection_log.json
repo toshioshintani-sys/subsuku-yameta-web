@@ -7828,5 +7828,154 @@
     "verdictReason": "過去51回と同型の偽陽性（52回目）。期間限定割引の割引率が変動しただけで通常価格は不変。",
     "notes": "",
     "judgedAt": "2026-10-13"
+  },
+  {
+    "date": "2026-10-14",
+    "serviceId": "crunchyroll",
+    "name": "Crunchyroll",
+    "added": [
+      1,
+      10,
+      18
+    ],
+    "removed": [
+      13,
+      17,
+      19,
+      6,
+      7
+    ],
+    "ours": [
+      850,
+      1080,
+      1280
+    ],
+    "signals": [],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.crunchyroll.com/ja/premium",
+    "evidence": "カスタムUAで生HTMLを直接取得して調査。検出された$1/$6/$7/$10/$13/$17/$18/$19はNext.jsのRSCストリーミング参照ID（self.__next_f.push内の\"$1\"\"$L6\"\"$10\"\"$18\"等）であり、価格ではない（README記載のバグB=Next.js RSCストリーミング誤検知と同型）。公式ページ本文はクッキー同意バナーのみでPuppeteer描画が止まり実際のプラン価格（Fan 850円/Mega Fan 1080円/Ultimate Fan 1280円）はテキストとして出てこないが、既存データと矛盾する情報は一切出ていない。",
+    "notes": "crunchyrollのwatch-list.jsonにはstripScriptStyle:trueが未設定。README記載のバグB対策（stripScriptStyle）を適用すれば今回のような誤検知を今後防げる可能性がある。設定変更は本タスクの範囲外（価格判定のみ）のため、人の判断で変更を検討してほしい。"
+  },
+  {
+    "date": "2026-10-14",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去31回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "同一URLを連続2回Puppeteer取得。1回目は「Premium Lite ファミリー新プラン 1,480円」が出現したが、直後の2回目取得では完全に消失（再現性なし）。既存データ（個人1,280円/Premium Lite 780円/ファミリー2,280円/学生780円）と一致。過去31回と同型のA/Bテスト・非同期描画による一時的表示（32回目の確認）。"
+  },
+  {
+    "date": "2026-10-14",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "公式ページで Free 0円・Go 1,400円・Plus 3,000円・Pro 16,800円を確認。既存データと完全一致。Proの16,800円は非同期ロードのため検知時に消失/出現しやすい既知の揺れ（過去12回と同型）。"
+  },
+  {
+    "date": "2026-10-14",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      2000,
+      400
+    ],
+    "removed": [
+      1120,
+      1750,
+      560
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（2000, 400, 1120）で過去67回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "公式ページで Business Starter 800円・Standard 1,600円・Plus 2,500円（通常価格）を確認、既存データと完全一致。検知された400円/2,000円等は新規契約者向け期間限定割引（通常価格のちょうど半額〜一部割引）の並記で、過去67回と同型の偽陽性パターン（68回目の確認）。"
+  },
+  {
+    "date": "2026-10-14",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      30,
+      42
+    ],
+    "removed": [
+      41
+    ],
+    "ours": [
+      2369,
+      22746,
+      5529,
+      53075,
+      15006,
+      144060
+    ],
+    "signals": [
+      {
+        "name": "同じ値（30, 41）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "公式ページで Free $0・Standard $15（年払い$12）・Pro $35（年払い$28）・Max $95（年払い$76）を確認。USD_PRICEDのベース値（Standard 15, Pro 35, Max 95）と完全一致し、異常なし。検知された$30/$42/$41は過去3回と同型の一時的な値（本物の変更は確認できず）。"
   }
 ]

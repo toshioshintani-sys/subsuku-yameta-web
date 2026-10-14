@@ -83,11 +83,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 10521,
+        "ms": 18263,
         "moneyLines": 22,
-        "checkedAt": "2026-10-13",
+        "checkedAt": "2026-10-14",
         "fails": 0,
-        "lastOkAt": "2026-10-13"
+        "lastOkAt": "2026-10-14"
       }
     },
     {
@@ -139,10 +139,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35013,
+        "ms": 35002,
         "moneyLines": 0,
-        "checkedAt": "2026-10-13",
-        "fails": 28,
+        "checkedAt": "2026-10-14",
+        "fails": 29,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -388,10 +388,10 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "ok",
-        "ms": 6309,
-        "moneyLines": 4,
-        "checkedAt": "2026-10-13",
+        "status": "no-money",
+        "ms": 7123,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-14",
         "fails": 0,
         "lastOkAt": "2026-10-13"
       }
@@ -737,9 +737,9 @@
       "note": "baselineで確認",
       "fetch": {
         "status": "no-money",
-        "ms": 2582,
+        "ms": 4339,
         "moneyLines": 0,
-        "checkedAt": "2026-10-13",
+        "checkedAt": "2026-10-14",
         "fails": 0
       }
     },
@@ -851,11 +851,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 3710,
+        "ms": 3943,
         "moneyLines": 3,
-        "checkedAt": "2026-10-13",
+        "checkedAt": "2026-10-14",
         "fails": 0,
-        "lastOkAt": "2026-10-13",
+        "lastOkAt": "2026-10-14",
         "suspects": [
           "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -870,11 +870,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 6320,
+        "ms": 4689,
         "moneyLines": 10,
-        "checkedAt": "2026-10-08",
+        "checkedAt": "2026-10-14",
         "fails": 0,
-        "lastOkAt": "2026-10-08"
+        "lastOkAt": "2026-10-14"
       }
     },
     {
