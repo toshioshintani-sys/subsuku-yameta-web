@@ -195,14 +195,17 @@ export default function ServicePage() {
     return parts.join('');
   })();
 
-  const description = extended?.summary
-    ? `${extended.summary.slice(0, 110)}…${service.name}の解約手順と引き止め対策を解説。`
-    : fallbackDescription;
+  // seoTitle / seoDescription：検索語と正式名がずれるサービスだけ、検索結果での見え方を個別に上書きする
+  // （2026-10-15・日経電子版から。全サービスのテンプレートは変えない）。
+  const description = service.seoDescription
+    || (extended?.summary
+      ? `${extended.summary.slice(0, 110)}…${service.name}の解約手順と引き止め対策を解説。`
+      : fallbackDescription);
 
   return (
     <div className={styles.page}>
       <Seo
-        title={`${service.name}の解約方法`}
+        title={service.seoTitle || `${service.name}の解約方法`}
         description={description}
         canonical={`/service/${service.id}`}
         jsonLd={jsonLd}
