@@ -1,75 +1,121 @@
 {
-  "generatedAt": "2026-10-14T00:15:07.123Z",
+  "generatedAt": "2026-10-14T22:22:38.055Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
-    {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
-      "url": "https://www.youtube.com/premium",
-      "added": [
-        "￥1,480"
-      ],
-      "removed": [],
-      "detectedAt": "2026-10-14T00:12:14.155Z"
-    },
     {
       "id": "chatgpt-plus",
       "name": "ChatGPT Plus",
       "url": "https://openai.com/ja-JP/chatgpt/pricing/",
-      "added": [
+      "added": [],
+      "removed": [
         "￥0",
         "￥1,400",
         "￥16,800",
         "￥3,000"
       ],
-      "removed": [],
-      "detectedAt": "2026-10-14T00:13:26.608Z"
+      "detectedAt": "2026-10-14T22:17:54.685Z"
     },
     {
-      "id": "crunchyroll",
-      "name": "Crunchyroll",
-      "url": "https://www.crunchyroll.com/ja/premium",
+      "id": "audible",
+      "name": "Audible",
+      "url": "https://www.audible.co.jp/",
+      "added": [],
+      "removed": [
+        "¥0"
+      ],
+      "detectedAt": "2026-10-14T22:18:15.490Z"
+    },
+    {
+      "id": "deepl-pro",
+      "name": "DeepL Pro",
+      "url": "https://www.deepl.com/pro",
       "added": [
-        "$1",
-        "$10",
-        "$18"
+        "$39",
+        "$40",
+        "$41",
+        "$44",
+        "$45",
+        "$46",
+        "$49",
+        "$50",
+        "$52",
+        "$53",
+        "$54",
+        "$57",
+        "$58",
+        "$59",
+        "$6",
+        "$60",
+        "$61",
+        "$64",
+        "$66",
+        "$68",
+        "$71",
+        "$75",
+        "$76",
+        "$77",
+        "$78",
+        "$79",
+        "$80",
+        "$81",
+        "$82",
+        "$83",
+        "$84",
+        "$85",
+        "$86",
+        "$87",
+        "$88",
+        "$89",
+        "$9",
+        "$90",
+        "$91",
+        "$92",
+        "$93",
+        "$95",
+        "$96",
+        "$97",
+        "$98",
+        "$99"
       ],
       "removed": [
-        "$13",
-        "$17",
-        "$19",
-        "$6",
-        "$7"
+        "$31",
+        "$37"
       ],
-      "detectedAt": "2026-10-14T00:14:32.564Z"
+      "detectedAt": "2026-10-14T22:20:02.853Z"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "url": "https://cursor.com/pricing",
+      "added": [
+        "$11",
+        "$14",
+        "$26",
+        "$28",
+        "$31"
+      ],
+      "removed": [
+        "$10",
+        "$13",
+        "$25",
+        "$27"
+      ],
+      "detectedAt": "2026-10-14T22:21:10.387Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
+        "￥1,250",
+        "￥1,280",
+        "￥640"
+      ],
+      "removed": [
         "￥2,000",
         "￥400"
       ],
-      "removed": [
-        "￥1,120",
-        "￥1,750",
-        "￥560"
-      ],
-      "detectedAt": "2026-10-14T00:14:52.885Z"
-    },
-    {
-      "id": "runway",
-      "name": "Runway",
-      "url": "https://runwayml.com/pricing",
-      "added": [
-        "$30",
-        "$42"
-      ],
-      "removed": [
-        "$41"
-      ],
-      "detectedAt": "2026-10-14T00:14:54.817Z"
+      "detectedAt": "2026-10-14T22:21:38.688Z"
     }
   ]
 }
