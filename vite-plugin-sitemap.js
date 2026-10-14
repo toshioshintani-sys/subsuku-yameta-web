@@ -1,6 +1,6 @@
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { SERVICES, CATEGORIES } from './src/data/services.js';
+import { SERVICES, CATEGORIES, PRICE_HISTORY } from './src/data/services.js';
 import { POSTS } from './src/data/posts.js';
 import { DISCOVER_GENRES } from './src/data/discover.js';
 import { BIAS_GAMES } from './src/data/biasGames.js';
@@ -36,9 +36,30 @@ function escapeXml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// lastmod は「実際にそのページの中身が変わった日」が分かるものだけに付ける（2026-10-15）。
+//   - /service/:id … 価格変更履歴(PRICE_HISTORY)の最新日。ServicePage の JSON-LD dateModified と同じ値
+//   - /compare, /price-watch … 全サービスの価格変更履歴の最新日（両ページは価格を載せている）
+//   - /blog/:slug … 公開日(published)。更新日は持っていないので、嘘にならない下限として公開日を使う
+// 根拠のないページ（固定ページ・カテゴリ・図鑑・ゲーム）には付けない。偽の更新日は Google の信頼を損ねる。
+function latestPriceDate(serviceId) {
+  const ph = serviceId ? PRICE_HISTORY[serviceId] : Object.values(PRICE_HISTORY).flat();
+  return ph?.length ? ph.map((h) => h.date).filter(Boolean).sort().slice(-1)[0] || null : null;
+}
+
+function lastmodFor(path) {
+  let m;
+  if ((m = path.match(/^\/service\/([^/]+)$/))) return latestPriceDate(m[1]);
+  if (path === '/compare' || path === '/price-watch') return latestPriceDate(null);
+  if ((m = path.match(/^\/blog\/([^/]+)$/))) return POSTS.find((p) => p.slug === m[1])?.published || null;
+  return null;
+}
+
 function renderSitemap(siteUrl, routes) {
   const urls = routes
-    .map((path) => `  <url><loc>${escapeXml(siteUrl + withSlash(path))}</loc></url>`)
+    .map((path) => {
+      const lm = lastmodFor(path);
+      return `  <url><loc>${escapeXml(siteUrl + withSlash(path))}</loc>${lm ? `<lastmod>${lm}</lastmod>` : ''}</url>`;
+    })
     .join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
