@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-10-14T22:22:38.055Z",
+  "generatedAt": "2026-10-15T00:15:14.261Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "url": "https://www.youtube.com/premium",
+      "added": [],
+      "removed": [
+        "￥1,480"
+      ],
+      "detectedAt": "2026-10-15T00:11:17.809Z"
+    },
     {
       "id": "chatgpt-plus",
       "name": "ChatGPT Plus",
@@ -13,17 +23,7 @@
         "￥16,800",
         "￥3,000"
       ],
-      "detectedAt": "2026-10-14T22:17:54.685Z"
-    },
-    {
-      "id": "audible",
-      "name": "Audible",
-      "url": "https://www.audible.co.jp/",
-      "added": [],
-      "removed": [
-        "¥0"
-      ],
-      "detectedAt": "2026-10-14T22:18:15.490Z"
+      "detectedAt": "2026-10-15T00:13:03.758Z"
     },
     {
       "id": "deepl-pro",
@@ -81,7 +81,7 @@
         "$31",
         "$37"
       ],
-      "detectedAt": "2026-10-14T22:20:02.853Z"
+      "detectedAt": "2026-10-15T00:14:07.135Z"
     },
     {
       "id": "cursor",
@@ -100,22 +100,20 @@
         "$25",
         "$27"
       ],
-      "detectedAt": "2026-10-14T22:21:10.387Z"
+      "detectedAt": "2026-10-15T00:14:36.178Z"
     },
     {
       "id": "google-workspace",
       "name": "Google Workspace",
       "url": "https://workspace.google.com/intl/ja/pricing.html",
       "added": [
-        "￥1,250",
         "￥1,280",
-        "￥640"
+        "￥560"
       ],
       "removed": [
-        "￥2,000",
         "￥400"
       ],
-      "detectedAt": "2026-10-14T22:21:38.688Z"
+      "detectedAt": "2026-10-15T00:14:44.595Z"
     }
   ]
 }
