@@ -42,6 +42,12 @@ PC 時代の4つの仕事（為替・巡回・3日棚卸し・週次）は、そ
 
 - ねとらぼ（nlab.itmedia.co.jp）の「Threads」タグを読み、台帳 `scripts/ops/threads-buzz/nlab_ledger.json` に無い記事だけを足す。1件4秒の間隔で、数分で終わる。
   米国のクラウドから読めることは 2026-10-17 に確認済み（中継所は不要）。
+- 続けて、同じ日に Hint-Pot の SNS タグ記事も読む（2026-10-17 追加。Threads 専用のタグが無いので、記事の本文に「スレッズ」がある記事だけを台帳に残す）：
+
+      SUBSUKU_CLOUD=1 node scripts/ops/threads-buzz/collect-hintpot.mjs --pages=3
+
+  台帳は `scripts/ops/threads-buzz/hintpot_ledger.json`。ねとらぼの台帳と一緒に、変わった台帳だけを add してコミットする。
+  `GOAL_REACHED`（ねとらぼ＋Hint-Pot の重複なしの合計が500）の扱いは下と同じ。robots.txt が許可している一覧ページと記事だけを読み、サイト内検索（?s=）は使わない。
 - **threads.com・threads.net は開かない**（Meta 規約 3.2 が自動の読み取りを禁じている）。業者のデータも使わない。
 - 台帳が変わったら、その1ファイルだけを add してコミットする（例：`ledger: ねとらぼ Threads 記事 +3件（重複なし 381件）`）。scripts/ops/ なので Netlify はビルドしない。
 - Slack は送らない（台帳だけのコミット）。例外は2つ：
