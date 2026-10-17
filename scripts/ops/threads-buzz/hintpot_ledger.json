@@ -21740,16 +21740,1316 @@
       "likes": null,
       "stock_image": false,
       "checked_at": "2026-10-17T23:02:11.909Z"
+    },
+    {
+      "article_id": "296293",
+      "published": "2026-01-11T08:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:16.701Z"
+    },
+    {
+      "article_id": "296339",
+      "published": "2026-01-11T06:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:18.842Z"
+    },
+    {
+      "article_id": "296404",
+      "published": "2026-01-10T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:21.562Z"
+    },
+    {
+      "article_id": "296521",
+      "published": "2026-01-10T16:12:18+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:23.899Z"
+    },
+    {
+      "article_id": "296385",
+      "published": "2026-01-10T12:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:26.632Z"
+    },
+    {
+      "article_id": "296423",
+      "published": "2026-01-10T09:10:35+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:28.787Z"
+    },
+    {
+      "article_id": "296043",
+      "published": "2026-01-10T07:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:30.929Z"
+    },
+    {
+      "article_id": "296270",
+      "published": "2026-01-10T06:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:33.662Z"
+    },
+    {
+      "article_id": "296244",
+      "published": "2026-01-09T15:50:24+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:36.186Z"
+    },
+    {
+      "article_id": "296252",
+      "published": "2026-01-09T10:12:40+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:38.330Z"
+    },
+    {
+      "article_id": "296075",
+      "published": "2026-01-09T09:16:13+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:43.369Z"
+    },
+    {
+      "article_id": "296138",
+      "published": "2026-01-09T08:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:45.507Z"
+    },
+    {
+      "article_id": "296210",
+      "published": "2026-01-09T07:50:00+0900",
+      "mentions_threads": true,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:47.694Z"
+    },
+    {
+      "article_id": "296174",
+      "published": "2026-01-09T06:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:02:49.932Z"
+    },
+    {
+      "article_id": "295998",
+      "published": "2026-01-08T14:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:52.074Z"
+    },
+    {
+      "article_id": "296072",
+      "published": "2026-01-08T11:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:54.219Z"
+    },
+    {
+      "article_id": "295728",
+      "published": "2026-01-08T07:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:56.957Z"
+    },
+    {
+      "article_id": "295949",
+      "published": "2026-01-07T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:02:59.097Z"
+    },
+    {
+      "article_id": "295792",
+      "published": "2026-01-07T16:05:41+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:01.240Z"
+    },
+    {
+      "article_id": "295858",
+      "published": "2026-01-07T14:39:57+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:03.976Z"
+    },
+    {
+      "article_id": "295710",
+      "published": "2026-01-07T11:12:08+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:09.368Z"
+    },
+    {
+      "article_id": "295752",
+      "published": "2026-01-07T06:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:11.512Z"
+    },
+    {
+      "article_id": "295756",
+      "published": "2026-01-06T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:13.656Z"
+    },
+    {
+      "article_id": "295686",
+      "published": "2026-01-06T17:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:15.799Z"
+    },
+    {
+      "article_id": "295623",
+      "published": "2026-01-06T10:49:16+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:17.944Z"
+    },
+    {
+      "article_id": "295497",
+      "published": "2026-01-06T05:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:20.188Z"
+    },
+    {
+      "article_id": "295142",
+      "published": "2026-01-05T14:57:37+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:22.331Z"
+    },
+    {
+      "article_id": "295557",
+      "published": "2026-01-05T12:08:36+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:24.520Z"
+    },
+    {
+      "article_id": "295035",
+      "published": "2026-01-05T11:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:26.710Z"
+    },
+    {
+      "article_id": "295031",
+      "published": "2026-01-05T07:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:28.851Z"
+    },
+    {
+      "article_id": "295481",
+      "published": "2026-01-04T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:33.954Z"
+    },
+    {
+      "article_id": "288281",
+      "published": "2026-01-04T06:40:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:35.994Z"
+    },
+    {
+      "article_id": "295011",
+      "published": "2026-01-03T19:10:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:38.570Z"
+    },
+    {
+      "article_id": "294693",
+      "published": "2026-01-03T10:49:08+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:40.709Z"
+    },
+    {
+      "article_id": "288277",
+      "published": "2026-01-03T08:10:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:42.858Z"
+    },
+    {
+      "article_id": "295000",
+      "published": "2026-01-03T06:40:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:44.999Z"
+    },
+    {
+      "article_id": "294919",
+      "published": "2026-01-02T19:10:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:47.138Z"
+    },
+    {
+      "article_id": "294656",
+      "published": "2026-01-02T06:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:03:49.849Z"
+    },
+    {
+      "article_id": "288280",
+      "published": "2026-01-01T19:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:52.582Z"
+    },
+    {
+      "article_id": "294874",
+      "published": "2026-01-01T13:16:17+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:03:55.333Z"
+    },
+    {
+      "article_id": "295176",
+      "published": "2026-01-01T12:10:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:00.068Z"
+    },
+    {
+      "article_id": "295207",
+      "published": "2025-12-31T12:40:24+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:02.109Z"
+    },
+    {
+      "article_id": "294797",
+      "published": "2025-12-31T07:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:04.251Z"
+    },
+    {
+      "article_id": "295166",
+      "published": "2025-12-30T20:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:06.969Z"
+    },
+    {
+      "article_id": "294791",
+      "published": "2025-12-30T10:07:40+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:09.111Z"
+    },
+    {
+      "article_id": "294651",
+      "published": "2025-12-30T08:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:11.251Z"
+    },
+    {
+      "article_id": "294935",
+      "published": "2025-12-29T13:13:08+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:13.394Z"
+    },
+    {
+      "article_id": "288279",
+      "published": "2025-12-29T08:10:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:15.965Z"
+    },
+    {
+      "article_id": "294859",
+      "published": "2025-12-28T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:18.106Z"
+    },
+    {
+      "article_id": "294580",
+      "published": "2025-12-28T17:07:54+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:20.249Z"
+    },
+    {
+      "article_id": "294383",
+      "published": "2025-12-28T07:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:24.943Z"
+    },
+    {
+      "article_id": "294521",
+      "published": "2025-12-28T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:27.084Z"
+    },
+    {
+      "article_id": "294504",
+      "published": "2025-12-27T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:29.828Z"
+    },
+    {
+      "article_id": "294516",
+      "published": "2025-12-27T12:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:32.471Z"
+    },
+    {
+      "article_id": "294436",
+      "published": "2025-12-27T08:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:35.188Z"
+    },
+    {
+      "article_id": "294387",
+      "published": "2025-12-27T06:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:37.738Z"
+    },
+    {
+      "article_id": "294282",
+      "published": "2025-12-26T15:42:35+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:40.505Z"
+    },
+    {
+      "article_id": "294366",
+      "published": "2025-12-26T14:37:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:43.027Z"
+    },
+    {
+      "article_id": "294254",
+      "published": "2025-12-26T10:40:04+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:45.598Z"
+    },
+    {
+      "article_id": "294106",
+      "published": "2025-12-26T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:04:48.303Z"
+    },
+    {
+      "article_id": "294121",
+      "published": "2025-12-26T05:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:53.122Z"
+    },
+    {
+      "article_id": "294088",
+      "published": "2025-12-25T20:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:55.694Z"
+    },
+    {
+      "article_id": "294069",
+      "published": "2025-12-25T16:22:59+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:57.735Z"
+    },
+    {
+      "article_id": "294036",
+      "published": "2025-12-25T14:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:04:59.876Z"
+    },
+    {
+      "article_id": "293964",
+      "published": "2025-12-25T12:08:54+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:02.018Z"
+    },
+    {
+      "article_id": "293903",
+      "published": "2025-12-25T06:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:04.162Z"
+    },
+    {
+      "article_id": "293893",
+      "published": "2025-12-24T17:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:06.311Z"
+    },
+    {
+      "article_id": "293458",
+      "published": "2025-12-24T15:56:49+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:09.040Z"
+    },
+    {
+      "article_id": "293653",
+      "published": "2025-12-24T12:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:11.755Z"
+    },
+    {
+      "article_id": "293563",
+      "published": "2025-12-24T10:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:13.895Z"
+    },
+    {
+      "article_id": "292567",
+      "published": "2025-12-24T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:18.699Z"
+    },
+    {
+      "article_id": "293628",
+      "published": "2025-12-24T05:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:20.846Z"
+    },
+    {
+      "article_id": "293621",
+      "published": "2025-12-23T16:07:56+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:23.030Z"
+    },
+    {
+      "article_id": "293610",
+      "published": "2025-12-23T15:06:22+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:25.755Z"
+    },
+    {
+      "article_id": "293543",
+      "published": "2025-12-23T11:19:44+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:28.487Z"
+    },
+    {
+      "article_id": "293444",
+      "published": "2025-12-23T10:08:39+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:31.189Z"
+    },
+    {
+      "article_id": "293453",
+      "published": "2025-12-23T08:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:33.774Z"
+    },
+    {
+      "article_id": "293239",
+      "published": "2025-12-23T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:35.917Z"
+    },
+    {
+      "article_id": "293386",
+      "published": "2025-12-22T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:38.643Z"
+    },
+    {
+      "article_id": "293367",
+      "published": "2025-12-22T16:09:29+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:40.687Z"
+    },
+    {
+      "article_id": "293176",
+      "published": "2025-12-22T09:33:05+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:45.753Z"
+    },
+    {
+      "article_id": "293072",
+      "published": "2025-12-22T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:47.894Z"
+    },
+    {
+      "article_id": "293123",
+      "published": "2025-12-21T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:50.036Z"
+    },
+    {
+      "article_id": "293136",
+      "published": "2025-12-21T15:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:52.180Z"
+    },
+    {
+      "article_id": "292886",
+      "published": "2025-12-21T06:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:54.267Z"
+    },
+    {
+      "article_id": "292943",
+      "published": "2025-12-20T16:26:06+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:05:56.963Z"
+    },
+    {
+      "article_id": "292425",
+      "published": "2025-12-20T12:21:41+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:05:59.681Z"
+    },
+    {
+      "article_id": "288525",
+      "published": "2025-12-20T10:06:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:01.722Z"
+    },
+    {
+      "article_id": "292860",
+      "published": "2025-12-20T07:50:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:03.866Z"
+    },
+    {
+      "article_id": "292798",
+      "published": "2025-12-19T17:12:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:05.910Z"
+    },
+    {
+      "article_id": "292853",
+      "published": "2025-12-19T14:54:37+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:10.674Z"
+    },
+    {
+      "article_id": "292596",
+      "published": "2025-12-19T12:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:12.816Z"
+    },
+    {
+      "article_id": "292657",
+      "published": "2025-12-19T07:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:14.960Z"
+    },
+    {
+      "article_id": "292695",
+      "published": "2025-12-19T05:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:17.105Z"
+    },
+    {
+      "article_id": "292678",
+      "published": "2025-12-18T18:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:19.247Z"
+    },
+    {
+      "article_id": "292634",
+      "published": "2025-12-18T15:27:37+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:21.948Z"
+    },
+    {
+      "article_id": "292349",
+      "published": "2025-12-18T11:39:24+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:24.525Z"
+    },
+    {
+      "article_id": "292477",
+      "published": "2025-12-18T11:06:26+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:27.243Z"
+    },
+    {
+      "article_id": "292468",
+      "published": "2025-12-18T05:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:29.386Z"
+    },
+    {
+      "article_id": "292401",
+      "published": "2025-12-17T21:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:31.529Z"
+    },
+    {
+      "article_id": "292459",
+      "published": "2025-12-17T17:07:12+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:36.849Z"
+    },
+    {
+      "article_id": "292284",
+      "published": "2025-12-17T11:34:23+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:38.991Z"
+    },
+    {
+      "article_id": "292233",
+      "published": "2025-12-17T08:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:41.180Z"
+    },
+    {
+      "article_id": "292194",
+      "published": "2025-12-17T07:30:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:43.321Z"
+    },
+    {
+      "article_id": "292188",
+      "published": "2025-12-16T19:20:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:45.340Z"
+    },
+    {
+      "article_id": "292228",
+      "published": "2025-12-16T17:06:44+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:47.863Z"
+    },
+    {
+      "article_id": "292076",
+      "published": "2025-12-16T12:14:19+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:50.007Z"
+    },
+    {
+      "article_id": "292018",
+      "published": "2025-12-16T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:06:52.147Z"
+    },
+    {
+      "article_id": "292009",
+      "published": "2025-12-16T05:40:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:54.293Z"
+    },
+    {
+      "article_id": "291956",
+      "published": "2025-12-15T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:06:56.970Z"
+    },
+    {
+      "article_id": "291997",
+      "published": "2025-12-15T16:10:41+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:02.243Z"
+    },
+    {
+      "article_id": "291972",
+      "published": "2025-12-15T15:11:07+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:04.386Z"
+    },
+    {
+      "article_id": "291918",
+      "published": "2025-12-15T13:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:06.528Z"
+    },
+    {
+      "article_id": "291896",
+      "published": "2025-12-15T11:35:07+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:08.670Z"
+    },
+    {
+      "article_id": "291858",
+      "published": "2025-12-15T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:11.370Z"
+    },
+    {
+      "article_id": "291827",
+      "published": "2025-12-14T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:13.511Z"
+    },
+    {
+      "article_id": "291792",
+      "published": "2025-12-14T12:33:49+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:16.207Z"
+    },
+    {
+      "article_id": "291723",
+      "published": "2025-12-14T09:42:15+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:18.350Z"
+    },
+    {
+      "article_id": "291699",
+      "published": "2025-12-14T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:21.023Z"
+    },
+    {
+      "article_id": "291657",
+      "published": "2025-12-13T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:23.172Z"
+    },
+    {
+      "article_id": "291638",
+      "published": "2025-12-13T11:35:19+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:28.336Z"
+    },
+    {
+      "article_id": "291591",
+      "published": "2025-12-13T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": true,
+      "checked_at": "2026-10-17T23:07:30.852Z"
+    },
+    {
+      "article_id": "291413",
+      "published": "2025-12-13T05:40:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:33.608Z"
+    },
+    {
+      "article_id": "291557",
+      "published": "2025-12-12T16:26:14+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:35.752Z"
+    },
+    {
+      "article_id": "291543",
+      "published": "2025-12-12T14:30:55+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:37.794Z"
+    },
+    {
+      "article_id": "291505",
+      "published": "2025-12-12T10:08:54+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:39.935Z"
+    },
+    {
+      "article_id": "291365",
+      "published": "2025-12-12T07:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:42.471Z"
+    },
+    {
+      "article_id": "291390",
+      "published": "2025-12-11T19:00:00+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:44.616Z"
+    },
+    {
+      "article_id": "291387",
+      "published": "2025-12-11T15:17:45+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:46.763Z"
+    },
+    {
+      "article_id": "291312",
+      "published": "2025-12-11T11:49:05+0900",
+      "mentions_threads": false,
+      "handle_fp": null,
+      "views": null,
+      "likes": null,
+      "stock_image": false,
+      "checked_at": "2026-10-17T23:07:49.293Z"
     }
   ],
   "summary": {
-    "articles_seen": 2174,
-    "threads_articles": 130,
-    "unique_posts": 129,
+    "articles_seen": 2304,
+    "threads_articles": 131,
+    "unique_posts": 130,
     "with_numbers": 108,
     "stock_image_posts": 54,
-    "oldest": "2026-01-17T08:30:00+0900",
+    "oldest": "2026-01-09T07:50:00+0900",
     "newest": "2026-10-15T05:20:00+0900",
-    "updated_at": "2026-10-17T23:02:11.909Z"
+    "updated_at": "2026-10-17T23:07:49.303Z"
   }
 }
