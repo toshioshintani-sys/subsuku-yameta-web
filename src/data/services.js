@@ -743,7 +743,7 @@ export const SERVICES = [
     steps: [
       'ログイン後 cursor.com/dashboard/billing の「Billing」ページを開く',
       '「Manage Subscription」をクリックしてStripeの請求ポータルへ',
-      '「Cancel Subscription」をクリックして確認（期間終了後、自動でHobby無料プランへ移行）',
+      '「Cancel Subscription」をクリックして確認（期間終了後、自動でFree（無料）プランへ移行）',
     ],
     note: 'iOSアプリ経由で購読した場合はApple側の設定から解約が必要（上記のWeb手順は使えない）',
   },
