@@ -2817,6 +2817,7 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 - `SUBSUKU_CLOUD=1` の時だけ効く（price-watch・reconcile・fetch-pages）。PC の動きは不変。
 - クラウドで初めて読むサービスは基準を取り直すだけ（`via: 'cloud'` を台帳に付ける）＝取り方の変更による偽陽性を出さない。見逃しは毎日の棚卸しで補う。
 - `scripts/ops/cloud/price.md`：毎朝 7:47 の価格の巡回と判定（運用当番セッション）。台帳は毎回 main へコミット（クラウドは毎回新しく取り直すため）。
+  定期タスク `trig_014XFccXwhyRsnRDZQ3Epyzy`「朝の価格の巡回と判定（7:47）」→ 運用当番セッション `session_018ipWbS6ir3FEtkksC7Lp7X`。初回は 10/18 7:47（全件の基準の取り直しで、検知 0 件が正常）。
 - `cloud_jobs.json` の `"price": true`：PC の price-watch.mjs・run_daily_judge.mjs・判定の指示書が止まる。PC に残った台帳の書きかけは ensureMain が捨てる（正本は main）。
 - 切り替え初日（10/18）だけ、PC の古い判定ランナーが「空振り」の Slack を1本出す可能性がある（指示書の停止で claude が何もしないため）。無害。
 
