@@ -7,7 +7,7 @@
 
 import path from 'node:path';
 import {
-  ROOT, LOG_DIR, ensureDirs, today, stamp, exists, readText, writeText, log, sendSlack, ensureMain, runClaude, isAuthError,
+  ROOT, LOG_DIR, ensureDirs, today, stamp, exists, readText, writeText, log, sendSlack, ensureMain, runClaude, isAuthError, movedToCloud,
 } from './lib.mjs';
 
 process.chdir(ROOT);
@@ -25,6 +25,10 @@ try {
   if (!em.ok) {
     sendSlack(`サブスクやめた 週次レビューを停止：${em.reason}`);
     process.exit(1);
+  }
+  if (movedToCloud('weekly')) {
+    log('週次レビューはクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
+    process.exit(0);
   }
   const res = runClaude(readText(path.join(ROOT, 'scripts/ops/weekly_review_prompt.md')), { timeoutMs: 100 * 60 * 1000 });
   writeText(logFile, res.raw);

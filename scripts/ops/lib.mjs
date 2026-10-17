@@ -249,6 +249,15 @@ function merge3(base, ours, theirs) {
   return theirs;
 }
 
+/**
+ * その仕事がクラウドの定期タスクへ移ったか（scripts/ops/cloud_jobs.json・2026-10-17）。
+ * ensureMain() の後に呼ぶ（main の最新のスイッチを読むため）。true なら PC では何もしない。
+ */
+export function movedToCloud(job) {
+  const j = readJson(path.join(ROOT, 'scripts/ops/cloud_jobs.json'), {});
+  return !!(j && j[job] === true);
+}
+
 /** 判定のあと main へ戻す（PRブランチ上に居残らない）。戻せなければ理由を返す。 */
 export function returnToMain() {
   if (git(['branch', '--show-current']).out === 'main') return { ok: true };

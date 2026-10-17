@@ -15,7 +15,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import {
   ROOT, LOG_DIR, ensureDirs, today, stamp, minutesOfDay, exists, readText, readJson, writeText,
-  log, sendSlack, git, gh, runNode, ensureMain, runClaude, isAuthError, listDeploys,
+  log, sendSlack, git, gh, runNode, ensureMain, runClaude, isAuthError, listDeploys, movedToCloud,
 } from './lib.mjs';
 
 process.chdir(ROOT);
@@ -160,6 +160,10 @@ function main() {
   if (!em.ok) {
     sendSlack(`サブスクやめた 巡回を停止：${em.reason}\n作業ツリーが main に戻せません。手で確認してください。`);
     return finish(1);
+  }
+  if (!DRY && movedToCloud('watch')) {
+    log('巡回はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
+    return finish(0);
   }
 
   const { findings, facts, triageOut } = collect();

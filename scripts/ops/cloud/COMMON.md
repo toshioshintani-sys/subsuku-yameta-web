@@ -1,0 +1,55 @@
+# クラウドで動く無人タスクの共通ルール（2026-10-17 制定）
+
+この文書は scripts/ops/cloud/ の各指示書（fx.md・watch.md・triage.md・weekly.md）から読まれる。
+PC（Windows・Task Scheduler）で動いていた為替・巡回・3日棚卸し・週次を、claude.ai のクラウドの
+定期タスクへ移したもの。PC 用の指示書（scripts/price-watch/fx_update_prompt.md・scripts/ops/*_prompt.md）
+とは**別物**。PC 用の指示書にある Windows のパス・python の Slack 送信・netlify CLI・schtasks は使わない。
+
+## このクラウドの前提（2026-10-17 実測）
+
+- 起動のたびにリポジトリを新しくクローンする。前回のログ・作業ファイルは残っていない。
+  記録を残したいものは git（main）か Slack に残す。
+- **米国から接続している。** 国で表示が変わるサイト（Netflix・YouTube・Google One・Dropbox・Notion 等）は
+  ドル表示になることがある。**ドルが見えても「日本の価格が変わった」と判断しない。**
+  日本の価格を確かめる時は、scripts/price-watch/watch-list.json に `"cloud"` 設定があるサービスだけ
+  `SUBSUKU_CLOUD=1 node scripts/price-watch/reconcile.mjs --only <id>` を使ってよい。
+  それ以外のサービスは、クラウドからは日本の価格を確かめられないものとして扱い、
+  「PC で確認が必要」と報告する（推測で判断しない）。
+- 時刻は UTC で動いている。日付・時刻は必ず日本時間で考える（`TZ=Asia/Tokyo date`）。
+- PowerShell・Windows のパス（C:\...）・`python ... slack_sender.py`・`netlify` CLI は無い。使わない。
+- GitHub：`git push origin main` はできる。ブランチの**削除はできない**（`git push --delete` は切断される）。
+  PR の一覧・中身・マージは GitHub のツール（mcp__github__*）か `gh api repos/toshioshintani-sys/subsuku-yameta-web/...`（REST）で行う。
+  `gh pr list` / `gh pr merge` は GraphQL を使うので失敗する。
+- 秘密情報の環境変数は無い（Slack の webhook・Netlify のトークン等）。要らない作りにしてある。
+
+## Slack への報告
+
+- 送り先は `#6-subsuku-daily`（チャンネルID `C0B6UG621R6`）。Slack のツール（mcp__Slack__slack_send_message）で送る。
+- **1回の起動で1本だけ**。煽らず事実だけ。直せなかったことを隠さない。
+- 先頭に「【クラウド】」を付ける（PC から来た通知と見分けるため）。
+
+## 本番に出たかの確かめ方（push したら必ず）
+
+「push できた」「ローカルでビルドが通った」は本番反映ではない（2026-09-22 に17日間止まっていた教訓）。
+
+1. `https://sabusuku-yameta.com/build.json` を読む（Netlify のビルドが書く。`commit` が本番のコミット）。
+   30秒おきに最大8回、`commit` が push したコミットになるまで待つ。
+2. build.json が読めない時は、Netlify のツールで確かめる：
+   `netlify-project-services-reader` の get-project（siteId `b4ac149a-76c4-4156-9903-c2605ac17cf9`）で
+   currentDeploy の id を取り、`netlify-deploy-services-reader` の get-deploy-for-site で
+   `commit_ref` と `state`（ready / error）を見る。
+3. docs・scripts/ops・scripts/price-watch/state・*.md だけの push は Netlify がビルドを飛ばす（scripts/netlify-ignore.sh）。
+   その場合は本番のコミットが変わらないのが正常。
+4. 実ページを取得して、直した内容が本番に出ていることを確かめる。
+
+## 守ること（全タスク共通）
+
+- **誤った価格を出さないことが最優先。** 記憶や推測で価格・為替を書かない。自信が持てなければ直さず報告。
+- force push 禁止。push が non-fast-forward なら `git pull --rebase origin main` してから再 push。駄目なら止めて報告。
+- git add してよいのは、直した内容に対応する最小限のファイルだけ。
+- コミットメッセージの末尾に `Co-Authored-By: Claude <noreply@anthropic.com>` を付ける。
+- 定期タスク・運用ルールの追加／変更／停止はしない（報告だけ）。
+- docs/NOT_DOING.md・docs/WEEKLY_SPRINT.md が「やらない」としていることはしない。
+- 認証情報・トークンの値を読む・表示する・書き換えることはしない。
+- 迷ったら直さない。次の起動が必ず来る。
+- サブエージェントを使う場合は model を claude-sonnet-5-5 に固定する。

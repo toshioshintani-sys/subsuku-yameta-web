@@ -10,7 +10,7 @@
 import path from 'node:path';
 import {
   ROOT, LOG_DIR, ensureDirs, today, stamp, minutesOfDay, exists, readText, writeText,
-  log, sendSlack, git, ensureMain, runClaude, isAuthError, waitProductionReady,
+  log, sendSlack, git, ensureMain, runClaude, isAuthError, waitProductionReady, movedToCloud,
 } from '../ops/lib.mjs';
 
 process.chdir(ROOT);
@@ -48,6 +48,10 @@ function main() {
   if (!em.ok) {
     sendSlack(`サブスクやめた 為替更新（無人）を停止：${em.reason}\n直pushがPRブランチに積まれて本番に出ない危険があるため続行しません。`);
     return finish(1);
+  }
+  if (movedToCloud('fx')) {
+    log('為替更新はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
+    return finish(0);
   }
 
   const shaBefore = git(['rev-parse', 'HEAD']).out;

@@ -99,6 +99,13 @@ function sigPrices(rawHtml, opts = {}) {
   return [...toks].sort();
 }
 
+// クラウド（米国から接続）用の取り方（2026-10-17）。SUBSUKU_CLOUD=1 の時だけ、エントリの "cloud" で
+// url / userAgent / renderMode を上書きする。PC（日本）の動きは変えない。
+// 例：Netflix は日本のページでも、米国からブラウザ風に取るとドル表示になるが、curl と名乗ると円が入った
+// HTML を返す（geo-probe の実測。docs/lessons.md 2026-10-17）。
+const CLOUD = process.env.SUBSUKU_CLOUD === '1';
+const forGeo = (w) => (CLOUD && w.cloud ? { ...w, ...w.cloud } : w);
+
 async function fetchHtml(url, ua, timeoutMs) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
@@ -185,7 +192,7 @@ async function main() {
   const events = [];
   const report = [];
 
-  const targets = cfg.watch.filter((w) => !onlyIds || onlyIds.includes(w.id));
+  const targets = cfg.watch.filter((w) => !onlyIds || onlyIds.includes(w.id)).map(forGeo);
   const needsHeadless = targets.some((w) => w.enabled !== false && w.renderMode === 'headless');
   let browser = null;
   if (needsHeadless) {
@@ -204,7 +211,7 @@ async function main() {
       try {
         raw = w.renderMode === 'headless'
           ? await fetchHtmlHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
-          : await fetchHtml(w.url, ua, timeoutMs);
+          : await fetchHtml(w.url, w.userAgent || ua, timeoutMs);
       } catch (e) {
         report.push({ id: w.id, status: 'error', error: String((e && e.message) || e) });
         await sleep(delay);

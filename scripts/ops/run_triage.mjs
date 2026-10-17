@@ -7,7 +7,7 @@
 
 import path from 'node:path';
 import {
-  ROOT, LOG_DIR, ensureDirs, stamp, readText, writeText, log, sendSlack, runNode, ensureMain, runClaude, isAuthError,
+  ROOT, LOG_DIR, ensureDirs, stamp, readText, writeText, log, sendSlack, runNode, ensureMain, runClaude, isAuthError, movedToCloud,
 } from './lib.mjs';
 
 process.chdir(ROOT);
@@ -22,6 +22,10 @@ try {
   if (!em.ok) {
     sendSlack(`サブスクやめた 3日棚卸しを停止：${em.reason}`);
     process.exit(1);
+  }
+  if (movedToCloud('triage')) {
+    log('3日棚卸しはクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
+    process.exit(0);
   }
 
   const tri = runNode(['scripts/ops/triage.mjs']);

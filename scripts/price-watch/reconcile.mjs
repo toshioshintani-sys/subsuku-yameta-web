@@ -126,6 +126,10 @@ function displayedPrices(id, { PRICING, PLANS }) {
   return out;
 }
 
+// クラウド（米国から接続）用の取り方。price-watch.mjs と同じ（SUBSUKU_CLOUD=1 の時だけ "cloud" で上書き）。
+const CLOUD = process.env.SUBSUKU_CLOUD === '1';
+const forGeo = (w) => (CLOUD && w.cloud ? { ...w, ...w.cloud } : w);
+
 async function main() {
   const args = process.argv.slice(2);
   const only = (() => {
@@ -149,6 +153,7 @@ async function main() {
 
   let targets = (wl.watch || wl.targets || []).filter((w) => (includeDisabled ? true : w.enabled !== false));
   if (only) targets = targets.filter((w) => only.has(w.id));
+  targets = targets.map(forGeo);
 
   const needsHeadless = targets.some((w) => w.renderMode === 'headless');
   let browser = null;
@@ -176,7 +181,7 @@ async function main() {
       html =
         w.renderMode === 'headless'
           ? await fetchHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
-          : await fetchPlain(w.url, ua, timeoutMs);
+          : await fetchPlain(w.url, w.userAgent || ua, timeoutMs);
     } catch (e) {
       row.status = 'FETCH_FAIL';
       row.error = String(e.message || e).slice(0, 100);

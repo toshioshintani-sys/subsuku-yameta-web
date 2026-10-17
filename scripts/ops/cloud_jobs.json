@@ -1,0 +1,7 @@
+{
+  "_note": "2026-10-17 クラウド移行のスイッチ。true の仕事は claude.ai のクラウド定期タスク（scripts/ops/cloud/*.md）が担当し、PC（Task Scheduler）のランナーは main を最新にした直後にこれを読んで何もせず終わる。PC へ戻すときは false にして push するだけ。価格の巡回・判定（PriceWatch_0710 / PriceJudge_0730）は国で価格が変わるため当面 PC に残す（docs/lessons.md 2026-10-17）。",
+  "fx": true,
+  "watch": true,
+  "triage": true,
+  "weekly": true
+}

@@ -21,6 +21,11 @@
         "checkedAt": "2026-07-26",
         "fails": 0,
         "lastOkAt": "2026-07-26"
+      },
+      "cloud": {
+        "url": "https://www.netflix.com/jp/",
+        "userAgent": "curl/8.5.0",
+        "_note": "2026-10-17 クラウド（米国接続）用。help.netflix.com は米国からだとドル表示。/jp/ を curl と名乗って取ると生HTMLに ￥890/￥1,590/￥2,290 が入る（geo-probe S5 実測・3/3一致）。"
       }
     },
     {
@@ -104,6 +109,10 @@
         "checkedAt": "2026-10-17",
         "fails": 0,
         "lastOkAt": "2026-10-17"
+      },
+      "cloud": {
+        "url": "https://www.disneyplus.com/ja-jp",
+        "_note": "2026-10-17 クラウド（米国接続）用。トップを素の取得で読むと、米国からでも両プランの円価格が出る（geo-probe S1/S5 実測・4/4一致）。PCでheadlessだと開けなかったページだが、素の取得なら開ける。"
       }
     },
     {

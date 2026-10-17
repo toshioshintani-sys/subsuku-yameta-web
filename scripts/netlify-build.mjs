@@ -11,6 +11,7 @@
 // env: BUILD_FAILURE_WEBHOOK（Netlify env var・未設定なら通知スキップで挙動不変）
 
 import { spawn, spawnSync } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
 
 const CHUNK_LIMIT = 64 * 1024; // 末尾64KBだけ保持（メモリ節約）
 let tail = '';
@@ -78,7 +79,27 @@ child.stderr.on('data', (d) => {
   keep(d.toString());
 });
 
+// 本番に出ているコミットを外から確かめられるよう、dist/build.json に残す（2026-10-17）。
+// クラウドの無人タスクは Netlify CLI もトークンも持たないので、push 後に
+// https://sabusuku-yameta.com/build.json を読んで「そのコミットが本番に出たか」を判定する。
+function writeBuildInfo() {
+  if (!process.env.COMMIT_REF) return;
+  const info = {
+    commit: process.env.COMMIT_REF,
+    branch: process.env.BRANCH || null,
+    context: process.env.CONTEXT || null,
+    deployId: process.env.DEPLOY_ID || null,
+    builtAt: new Date().toISOString(),
+  };
+  try {
+    writeFileSync('dist/build.json', JSON.stringify(info) + '\n');
+  } catch (e) {
+    console.log(`[netlify-build] build.json を書けませんでした: ${e.message}`);
+  }
+}
+
 child.on('close', async (code) => {
   if (code !== 0) await notifyFailure(code);
+  else writeBuildInfo();
   process.exit(code ?? 1);
 });

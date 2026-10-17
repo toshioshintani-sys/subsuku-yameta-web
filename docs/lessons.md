@@ -2741,6 +2741,39 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 
 ---
 
+## 2026-10-17 ★★★★★ クラウド引っ越し第1弾：為替・巡回・3日棚卸し・週次をクラウドの定期タスクへ（価格の巡回・判定は PC に残す）
+
+### 発見
+- **候補URLの総当たり（geo-probe --variants・米国から）**：日本からしか円が取れなかった15サービスのうち、
+  米国からでも円が取れたのは Netflix（`www.netflix.com/jp/` を curl と名乗って取る・3/3）と Disney+（`www.disneyplus.com/ja-jp` を素の取得・4/4）。
+  Gemini（`?hl=ja&gl=JP` を描画後・4/4）は同じページにドルも4つ出るので要確認、DAZN（ヘルプ記事を curl 名乗り・4/5）は一部。
+  残り11（YouTube Premium/Music・Google One・Workspace・Dropbox・Notion・Figma・Evernote・Vimeo・DeepL・ChatGPT）は国・通貨指定のクエリや国別パスでも取れなかった
+  （Vimeo は候補URLが404、ChatGPT は403）。結果は `cloud-probe/variants-2026-10-17` ブランチの logs/geo-variants-us.json。
+- 同じページでも取り方で円の書き方が変わる（help.netflix.com＝「890円」、/jp/＝「￥890」）。価格監視の台帳（署名）は文字列の集合なので、
+  **取り方を変えた日に必ず「変化あり」が出る**。価格監視をクラウドへ移す日は、その日の検知を「取り方の変更による偽陽性」として台帳を取り直す必要がある。
+- **クラウドの定期タスクで使えるもの（実測）**：`git push origin main`（main は保護なし）・`gh api`（REST。GraphQL は「Claude Code sessions では使えない」と403）・
+  GitHub のツール・Slack のツール（送信も読み取りも）・Netlify のツール（get-project で currentDeploy の id → get-deploy-for-site で commit_ref と state）。
+  Netlify のデプロイ一覧は取れないので、本番のコミットを誰でも読めるよう、ビルド時に `dist/build.json`（commit・deployId・builtAt）を書くようにした。
+- PC 側の判定ログ（scripts/price-watch/logs/）は git 管理外なので、クラウドからは「判定が走ったか」を見られない。代わりに
+  main の台帳 `price_watch_state.json` の最新 `checkedAt`（判定がほぼ毎日コミットする）で、72時間以上止まっていたら指摘にする。
+
+### なぜ重要か
+- 「完全引っ越し」の最大の壁は国（米国接続）。国に関係ない仕事から先に移し、価格の巡回・判定はサービスごとに取り方が見つかったものから移す、という段階導入が正しい。
+- PC とクラウドが同じ仕事を同時にやると、二重報告・同じファイルの奪い合いになる。PC の Task Scheduler はクラウドから触れないので、
+  **git のスイッチで PC 側を止める**作りにした（PC のランナーは main を pull してから動くので、push だけで切り替わる）。
+
+### 永続化
+- `scripts/ops/cloud_jobs.json`：移行スイッチ（fx・watch・triage・weekly＝true）。PC のランナー（run_fx_update / run_watch / run_triage / run_weekly_review）は
+  main を最新にした直後にこれを読み、true なら何もせず終わる。PC 用の指示書の先頭にも同じ確認を入れた（ランナー自体の更新は pull の次の回から効くため、初回はこちらが止める）。
+  PC へ戻すときは false にして push するだけ。
+- `scripts/ops/cloud/`：クラウド用の指示書（COMMON.md＝共通ルール、fx.md・watch.md・triage.md・weekly.md）。Windows のパス・python の Slack 送信・netlify CLI は使わない。
+- `scripts/ops/cloud_check.mjs`：クラウド版の機械点検（本番 build.json と main の差・未マージPR・為替PRの矛盾・為替の鮮度・価格監視の記録・未判定・SEO）。日付は日本時間で数える。
+- `watch-list.json` の `"cloud"`：`SUBSUKU_CLOUD=1` の時だけ url / userAgent を上書き（Netflix・Disney+）。PC の動きは変えない。
+  米国からの棚卸しで、設定なし＝2件とも不一致 → 設定あり＝2件とも一致 を確認。
+- 週次レビュー（クラウド）は Slack を読んで「【クラウド】巡回」の報告が7日分そろっているかを数える＝クラウドの定期タスクが静かに止まっていないかの検算。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：
