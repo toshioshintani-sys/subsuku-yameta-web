@@ -2789,6 +2789,39 @@ PVや滞在時間だけでは「解約を助けられたか」を判断できな
 
 ---
 
+## 2026-10-17 ★★★★★ 米国のクラウドから日本の価格を読む技（東京の中継所＋国判定の差し替え）で、価格の巡回・判定もクラウドへ＝引っ越し完了
+
+### 発見
+- 「国で価格が変わるサイト」の国の決め方は3通りあり、それぞれに効く技が違った（全部クラウドで実測し、日本円が掲載価格と一致）：
+  1. **サーバーが接続元の国を見て日本円を埋め込む**（YouTube Premium/Music・Google One/Workspace・Dropbox・Notion）
+     → **東京の中継所**：Netlify の関数は Pro なら地域を選べる。`netlify/functions/jp-relay.mjs` を東京（nrt）で動かし、
+       決めた公式料金ページだけを東京から読ませる（自己診断で region=ap-northeast-1・接続元 JP を確認）。
+  2. **ページが全通貨の価格表を JSON で埋め込んでいる**（Evernote）→ `"JPY":{..."price":N}` を拾うだけ（中継不要）。
+  3. **ページの JavaScript が自分で国を判定して通貨を切り替える** → クラウドのブラウザで、その判定だけを日本にする：
+     Figma `/api/geoip`→JP、Claude `/api/country`→JP（$22 表示）、ChatGPT `configs/US`→`configs/JP`、
+     Vimeo 料金API に `currency=JPY`（country= は効かない）、DeepL はページ本体の `userCountry`（既定 DE）を JP に、
+     Google AI プランはページ本体だけ中継所から取って手元で描く。
+- 結果：クラウドの棚卸しは **55件中44件一致**（PC＝日本 は40件）。不一致の11件は日本から読んでも取れない既知のもの。
+  巡回を2回続けて回すと55件中52件が同じ値。残り3件のうち2件は PC でも毎日出る既知の偽陽性（Workspace の期間限定割引・Audible の ¥0）、
+  1件（ChatGPT）は描画途中で取れた揺れ → 「円が画面に出るまで待つ・出なければ1回読み込み直す」で安定。
+- 最初の中継所の案（呼び出し側が URL・ヘッダー・本文を渡せる形）は安全チェックで止まった。**呼び出し側はサービスの id しか渡せず、
+  読み先はビルド時に同梱した一覧（scripts/price-watch/relay-targets.json）だけ・GET のみ**、に絞って作り直した＝誰でも使える中継にしない。
+- PC の 7:10 巡回は Task Scheduler が price-watch.mjs を直接起動していて git pull を通らない → スクリプト自身がスイッチを読んで止まるようにした。
+
+### なぜ重要か
+- 「国の壁」は技術で越えられる。外部の VPN・有料プロキシを使わず（支払いゼロ・信頼できない中継を挟まない）、サイトが公開している日本向けの料金表を読むだけ。
+- これで PC に残る定期の仕事が無くなった（Threads 投稿は別：docs/PC_ONLY_INVENTORY_2026-10-17.md）。
+
+### 永続化
+- `scripts/price-watch/jp-browser.mjs`（取り方の部品）／watch-list.json の `"cloud"`（サービスごとの取り方）／`netlify/functions/jp-relay.mjs`＋`relay-targets.json`。
+- `SUBSUKU_CLOUD=1` の時だけ効く（price-watch・reconcile・fetch-pages）。PC の動きは不変。
+- クラウドで初めて読むサービスは基準を取り直すだけ（`via: 'cloud'` を台帳に付ける）＝取り方の変更による偽陽性を出さない。見逃しは毎日の棚卸しで補う。
+- `scripts/ops/cloud/price.md`：毎朝 7:47 の価格の巡回と判定（運用当番セッション）。台帳は毎回 main へコミット（クラウドは毎回新しく取り直すため）。
+- `cloud_jobs.json` の `"price": true`：PC の price-watch.mjs・run_daily_judge.mjs・判定の指示書が止まる。PC に残った台帳の書きかけは ensureMain が捨てる（正本は main）。
+- 切り替え初日（10/18）だけ、PC の古い判定ランナーが「空振り」の Slack を1本出す可能性がある（指示書の停止で claude が何もしないため）。無害。
+
+---
+
 ## 知見の追加方法（運用）
 
 新しい lesson を追加する時：

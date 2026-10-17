@@ -1,7 +1,8 @@
 {
-  "_note": "2026-10-17 クラウド移行のスイッチ。true の仕事は claude.ai のクラウド定期タスク（scripts/ops/cloud/*.md）が担当し、PC（Task Scheduler）のランナーは main を最新にした直後にこれを読んで何もせず終わる。PC へ戻すときは false にして push するだけ。価格の巡回・判定（PriceWatch_0710 / PriceJudge_0730）は国で価格が変わるため当面 PC に残す（docs/lessons.md 2026-10-17）。",
+  "_note": "2026-10-17 クラウド移行のスイッチ。true の仕事は claude.ai のクラウド定期タスク（scripts/ops/cloud/*.md・運用当番セッション）が担当し、PC（Task Scheduler）のランナーは何もせず終わる（price-watch.mjs は自分でこのファイルを読んで止まる。ほかは main を最新にした直後に読む）。PC へ戻すときは false にして push するだけ。price は 2026-10-17 に移行（米国のクラウドから日本の価格を読む取り方＝scripts/price-watch/jp-browser.mjs・東京の中継所 netlify/functions/jp-relay.mjs）。",
   "fx": true,
   "watch": true,
   "triage": true,
-  "weekly": true
+  "weekly": true,
+  "price": true
 }

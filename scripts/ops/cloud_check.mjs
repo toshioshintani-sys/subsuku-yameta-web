@@ -151,13 +151,14 @@ try {
   }
 } catch { /* services.js が読めない事態はビルド・本番の指摘で出る */ }
 
-// 5) 価格監視（当面PCに残る）が main に記録を出しているか・未判定が main に残っていないか
+// 5) 価格監視が main に記録を出しているか・未判定が main に残っていないか
 const st = readRepo('scripts/price-watch/state/price_watch_state.json', {});
 const lastChecked = Object.values(st || {}).map((v) => v && v.checkedAt).filter(Boolean).sort().pop();
 if (lastChecked) {
   const ageH = (Date.now() - new Date(lastChecked)) / 3600000;
   facts.push(`価格監視の最終記録（main）: ${lastChecked}（${Math.round(ageH)}時間前）`);
-  if (ageH > 72) add('中', '価格監視の記録が止まっている', `main の台帳の最終巡回が ${Math.round(ageH)}時間前。PC の巡回・判定（Subsuku_PriceWatch_0710 / PriceJudge_0730）が動いていない可能性`);
+  // 価格の巡回はクラウドの朝 7:47 の当番が毎日 main にコミットする（scripts/ops/cloud/price.md）。30時間空いたら止まっている。
+  if (ageH > 30) add('中', '価格監視の記録が止まっている', `main の台帳の最終巡回が ${Math.round(ageH)}時間前。朝 7:47 の価格の巡回・判定（price.md）が動いていない可能性`);
 }
 const dl = readRepo('scripts/price-watch/state/detection_log.json', []);
 const unjudged = Array.isArray(dl) ? dl.filter((x) => x.verdict == null) : [];

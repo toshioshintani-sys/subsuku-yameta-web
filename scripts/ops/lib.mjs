@@ -119,6 +119,9 @@ export function runNode(args, opts = {}) {
  * --autostash：7:10の巡回が書いた未コミットの台帳(state/)があっても早送りできるようにする。
  */
 export function ensureMain() {
+  // 価格の巡回・判定がクラウドへ移ったあとは、PC に残った台帳（state/）の未コミット変更は捨てる（2026-10-17）。
+  // 正本は main（クラウドが毎日コミットする）。残したまま pull --autostash すると台帳が衝突して止まる。
+  if (movedToCloud('price')) git(['checkout', '--', 'scripts/price-watch/state/']);
   const cur = git(['branch', '--show-current']).out;
   if (cur !== 'main') {
     const sw = git(['switch', 'main']);

@@ -42,7 +42,7 @@ export function extractJsonCurrency(raw, currency) {
     for (const p of m[1].matchAll(/\\?"price\\?"\s*:\s*(\d+(?:\.\d+)?)/g)) nums.add(Number(p[1]));
   }
   const sym = currency === 'JPY' ? '¥' : `${currency} `;
-  return [...nums].sort((a, b) => a - b).map((n) => `<span>${sym}${n.toLocaleString('en-US')}</span>`).join('\n');
+  return [...nums].sort((a, b) => a - b).map((n) => `<div>${sym}${n.toLocaleString('en-US')}</div>`).join('\n');
 }
 
 /** "cloud.geo" の取り方で、クラウドのブラウザに日本向けの料金表を描かせて HTML を返す。 */
@@ -85,11 +85,17 @@ export async function fetchHeadlessGeo(browser, w, timeoutMs) {
       try { await req.continue(); } catch { /* 既に処理済みの要求 */ }
     }
   });
+  // 日本円が画面に出るまで待つ。出なければ1回だけ読み込み直す（2026-10-17：ChatGPT が描画途中で取れて
+  // 価格が全部「消えた」誤検知になった）。それでも出なければ、出ていないまま返す（検知側が判断する）。
+  const yenShown = () => page
+    .waitForFunction(() => document.body && /[¥￥]\s?\d/.test(document.body.innerText), { timeout: 15000 })
+    .then(() => true, () => false);
   try {
-    await page.goto(w.url, { waitUntil: 'networkidle2', timeout: Math.max(timeoutMs, 45000) });
-    await page
-      .waitForFunction(() => document.body && document.body.innerText.replace(/\s/g, '').length > 100, { timeout: 8000 })
-      .catch(() => {});
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      documentDone = false;
+      await page.goto(w.url, { waitUntil: 'networkidle2', timeout: Math.max(timeoutMs, 45000) }).catch(() => {});
+      if (await yenShown()) break;
+    }
     // 国の判定 → 通貨の切り替えは描画のあとに走るので、少し待つ
     await new Promise((r) => setTimeout(r, 2500));
     return await page.evaluate(() => document.documentElement.outerHTML);

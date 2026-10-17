@@ -46,6 +46,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fetchRelay, fetchHeadlessGeo, extractJsonCurrency } from './jp-browser.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '../..');
@@ -155,6 +156,9 @@ function sharedChecks(yen, usd) {
   return reasons;
 }
 
+// クラウド（米国接続）の時だけ、watch-list の "cloud" の取り方を使う（price-watch.mjs・reconcile.mjs と同じ）
+const CLOUD = process.env.SUBSUKU_CLOUD === '1';
+
 async function main() {
   const { ids, urls, out, full, all, record, skipKnownBad } = parseArgs(process.argv.slice(2));
 
@@ -176,7 +180,7 @@ async function main() {
     targets = list
       .filter((w) => w.enabled !== false)
       .filter((w) => !(skipKnownBad && isKnownBad(w)))
-      .map((w) => ({ id: w.id, url: w.url }));
+      .map((w) => ({ id: w.id, url: w.url, w }));
     const skipped = list.filter((w) => w.enabled !== false && skipKnownBad && isKnownBad(w));
     if (skipped.length) {
       console.error(`（既知の取得不可を ${skipped.length} 件スキップ: ${skipped.map((s) => s.id).join(', ')}）`);
@@ -188,7 +192,7 @@ async function main() {
         console.error(`  ⚠ watch-list に "${id}" が無い。--url で直接指定してください`);
         continue;
       }
-      targets.push({ id: hit.id, url: hit.url });
+      targets.push({ id: hit.id, url: hit.url, w: hit });
     }
   }
   urls.forEach((u, i) => targets.push({ id: `url${i + 1}`, url: u }));
@@ -219,12 +223,39 @@ async function main() {
       );
       const t0 = Date.now();
       try {
-        await page.goto(t.url, { waitUntil: 'networkidle2', timeout: timeoutMs });
-        await page.waitForFunction(
-          () => document.body && document.body.innerText.replace(/\s/g, '').length > 80,
-          { timeout: 8000 }
-        ).catch(() => {});
-        const text = await page.evaluate(() => (document.body ? document.body.innerText : ''));
+        // クラウド（米国接続）では watch-list の "cloud" の取り方で日本向けのページを得る（jp-browser.mjs）
+        const cw = CLOUD && t.w && t.w.cloud ? { ...t.w, ...t.w.cloud } : null;
+        let text;
+        if (cw && (cw.via === 'relay' || cw.geo || cw.jsonCurrency || cw.renderMode === 'plain')) {
+          let html = cw.via === 'relay'
+            ? await fetchRelay(cw.id, timeoutMs)
+            : cw.geo
+              ? await fetchHeadlessGeo(browser, cw, timeoutMs)
+              : await (await fetch(cw.url, { headers: { 'User-Agent': cw.userAgent || 'Mozilla/5.0', 'Accept-Language': 'ja-JP,ja;q=0.9' }, signal: AbortSignal.timeout(timeoutMs) })).text();
+          if (cw.jsonCurrency) html = extractJsonCurrency(html, cw.jsonCurrency);
+          if (cw.geo) {
+            // ブラウザで描いた結果：画面に出る文字だけを取る（スクリプトは動かさずに流し込む）
+            await page.setJavaScriptEnabled(false);
+            await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: timeoutMs });
+            text = await page.evaluate(() => (document.body ? document.body.innerText : ''));
+          } else {
+            // 生の HTML：価格が埋め込みデータ（JSON）の中にあることが多いので、タグと JSON の区切りで細かく切って行にする
+            text = html
+              .replace(/<[^>]+>/g, '\n')
+              .replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+              .split(/\n|","|\\n|\},\{/)
+              .map((l) => l.replace(/\s+/g, ' ').trim())
+              .filter(Boolean)
+              .join('\n');
+          }
+        } else {
+          await page.goto(cw ? cw.url : t.url, { waitUntil: 'networkidle2', timeout: timeoutMs });
+          await page.waitForFunction(
+            () => document.body && document.body.innerText.replace(/\s/g, '').length > 80,
+            { timeout: 8000 }
+          ).catch(() => {});
+          text = await page.evaluate(() => (document.body ? document.body.innerText : ''));
+        }
         results.push({ ...t, ok: true, ms: Date.now() - t0, text });
       } catch (e) {
         results.push({ ...t, ok: false, ms: Date.now() - t0, error: String(e.message || e).slice(0, 120) });

@@ -175,7 +175,18 @@ function alreadyRanToday() {
   return jst(at) === jst(new Date());
 }
 
+// 価格の巡回がクラウドへ移ったか（scripts/ops/cloud_jobs.json の "price"・2026-10-17）。
+// PC の Task Scheduler はこのスクリプトを直接起動する（git pull を通らない）ので、ここで自分で止まる。
+function priceMovedToCloud() {
+  const j = loadJson(join(__dir, '../ops/cloud_jobs.json'), {});
+  return !!(j && j.price === true);
+}
+
 async function main() {
+  if (!CLOUD && priceMovedToCloud() && !process.argv.includes('--pc')) {
+    console.log('価格の巡回はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない（台帳も書かない）');
+    return;
+  }
   const onlyArg = process.argv.indexOf('--only');
   const onlyIds = onlyArg >= 0 ? (process.argv[onlyArg + 1] || '').split(',').map((x) => x.trim()) : null;
 
@@ -230,9 +241,14 @@ async function main() {
       const now = new Date().toISOString();
       const prev = state[w.id]?.sig;
 
-      if (!prev) {
-        state[w.id] = { sig, checkedAt: now };
-        report.push({ id: w.id, status: sig.length ? 'baseline' : 'baseline_empty', sigSize: sig.length });
+      // クラウドで初めて読むサービスは、基準を取り直すだけで検知にしない（2026-10-17）。
+      // 取り方（米国接続・中継所・国判定の差し替え）が PC と違うので、同じページでも価格の書き方
+      // （「890円」と「￥890」等）が変わり、そのまま比べると必ず「変化あり」の偽陽性になる。
+      // 取り直した日の見逃しは、毎日の掲載価格の棚卸し（reconcile）が公式と掲載を直接突き合わせて補う。
+      const rebase = CLOUD && prev && state[w.id]?.via !== 'cloud';
+      if (!prev || rebase) {
+        state[w.id] = { sig, checkedAt: now, ...(CLOUD ? { via: 'cloud' } : {}) };
+        report.push({ id: w.id, status: rebase ? 'rebaseline' : sig.length ? 'baseline' : 'baseline_empty', sigSize: sig.length });
         continue;
       }
 
@@ -240,7 +256,7 @@ async function main() {
       const curSet = new Set(sig);
       const added = sig.filter((x) => !prevSet.has(x));
       const removed = prev.filter((x) => !curSet.has(x));
-      state[w.id] = { sig, checkedAt: now };
+      state[w.id] = { sig, checkedAt: now, ...(CLOUD ? { via: 'cloud' } : {}) };
 
       if (!added.length && !removed.length) {
         report.push({ id: w.id, status: 'nochange', sigSize: sig.length });
@@ -266,7 +282,7 @@ async function main() {
   for (const r of report) {
     let line = `  [${String(r.status).padStart(14)}] ${String(r.id).padEnd(24)}`;
     if (r.status === 'CHANGED') line += ` +${r.added} / -${r.removed}`;
-    else if (String(r.status).startsWith('baseline') || r.status === 'nochange') line += ` sig=${r.sigSize}`;
+    else if (String(r.status).startsWith('baseline') || r.status === 'rebaseline' || r.status === 'nochange') line += ` sig=${r.sigSize}`;
     else if (r.status === 'error') line += ` ${r.error}`;
     console.log(line);
   }

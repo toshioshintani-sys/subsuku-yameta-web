@@ -1,7 +1,7 @@
 # クラウドで動く無人タスクの共通ルール（2026-10-17 制定）
 
-この文書は scripts/ops/cloud/ の各指示書（daily.md・fx.md・watch.md・triage.md・weekly.md）から読まれる。
-定期タスクは「毎日の当番」1本（daily.md）で、日付によって fx・watch・triage・weekly を振り分ける。
+この文書は scripts/ops/cloud/ の各指示書（daily.md・price.md・fx.md・watch.md・triage.md・weekly.md）から読まれる。
+定期タスクは運用当番セッションへ毎朝 7:47（price.md＝価格の巡回と判定）と毎日 12:14（daily.md＝日付で fx・watch・triage・weekly を振り分ける）に届く。
 PC（Windows・Task Scheduler）で動いていた為替・巡回・3日棚卸し・週次を、claude.ai のクラウドの
 定期タスクへ移したもの。PC 用の指示書（scripts/price-watch/fx_update_prompt.md・scripts/ops/*_prompt.md）
 とは**別物**。PC 用の指示書にある Windows のパス・python の Slack 送信・netlify CLI・schtasks は使わない。
@@ -12,10 +12,10 @@ PC（Windows・Task Scheduler）で動いていた為替・巡回・3日棚卸�
   記録を残したいものは git（main）か Slack に残す。
 - **米国から接続している。** 国で表示が変わるサイト（Netflix・YouTube・Google One・Dropbox・Notion 等）は
   ドル表示になることがある。**ドルが見えても「日本の価格が変わった」と判断しない。**
-  日本の価格を確かめる時は、scripts/price-watch/watch-list.json に `"cloud"` 設定があるサービスだけ
-  `SUBSUKU_CLOUD=1 node scripts/price-watch/reconcile.mjs --only <id>` を使ってよい。
-  それ以外のサービスは、クラウドからは日本の価格を確かめられないものとして扱い、
-  「PC で確認が必要」と報告する（推測で判断しない）。
+  日本の価格を確かめる時は、必ず `SUBSUKU_CLOUD=1` を付けて scripts/price-watch の道具を使う
+  （`SUBSUKU_CLOUD=1 node scripts/price-watch/reconcile.mjs --only <id>`・`SUBSUKU_CLOUD=1 npm run price:fetch -- <id>`）。
+  watch-list.json の `"cloud"` の取り方（東京の中継所・国判定の差し替え。jp-browser.mjs）で日本向けのページを読む。
+  それでも日本円が読めないサービスは「クラウドから日本の価格を確認できず」と報告する（推測で判断しない）。
 - 時刻は UTC で動いている。日付・時刻は必ず日本時間で考える（`TZ=Asia/Tokyo date`）。
 - PowerShell・Windows のパス（C:\...）・`python ... slack_sender.py`・`netlify` CLI は無い。使わない。
 - GitHub：`git push origin main` はできる。ブランチの**削除はできない**（`git push --delete` は切断される）。

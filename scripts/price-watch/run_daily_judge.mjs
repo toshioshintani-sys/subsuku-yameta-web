@@ -9,7 +9,7 @@ import path from 'node:path';
 import {
   ROOT, LOG_DIR, ensureDirs, today, stamp, minutesOfDay, exists, readText, readJson, writeText,
   log, sendSlack, git, gh, runNode, ensureMain, runClaude, isAuthError, dailyStatusReport,
-  findTodayPr, moveOntoTodayPr, returnToMain,
+  findTodayPr, moveOntoTodayPr, returnToMain, movedToCloud,
 } from '../ops/lib.mjs';
 
 process.chdir(ROOT);
@@ -39,6 +39,10 @@ function main() {
   if (!em.ok) {
     sendSlack(`サブスクやめた 価格判定（無人）を停止：${em.reason}\n直pushがPRブランチに積まれて本番に出ない危険があるため続行しません。`);
     return finish(1);
+  }
+  if (movedToCloud('price')) {
+    log('価格の判定はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
+    return finish(0);
   }
 
   // 毎日の状況報告（1日1回・判定の有無にかかわらず）
