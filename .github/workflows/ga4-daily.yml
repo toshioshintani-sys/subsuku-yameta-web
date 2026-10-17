@@ -1,0 +1,53 @@
+name: ga4-daily
+
+# サブスクやめた GA4 の毎朝の数値を #6-subsuku-daily へ送る（2026-10-17 PC の 6:35 のタスクから移した）
+#
+# - 中身は PC 版（world-oracle-staging/notifications/subsuku_yameta/daily/send_subsuku_daily.py）と同じ：
+#   前日のアクティブユーザー・セッション・平均エンゲージ・流入元 TOP5。
+# - 鍵は GitHub の秘密：GA4_CREDENTIALS_JSON・SLACK_WEBHOOK_SUBSUKU_DAILY（登録手順は docs/GA4_DAILY_ACTIONS.md）。
+# - 🛑 このリポジトリは公開。ログは誰でも読めるので、数字はログに出さない（Slack にだけ送る）。
+# - 秘密が未登録のあいだは何もせず成功で終わる（PC の通知がまだ動いているため）。
+# - 取得や送信に失敗したらこのワークフローが失敗し、GitHub から持ち主にメールが届く。
+
+on:
+  schedule:
+    - cron: '35 21 * * *' # 毎日 6:35 JST（GitHub の混雑で数分〜数十分遅れることがある）
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 秘密が登録されているか
+        id: check
+        env:
+          GA4_CREDENTIALS_JSON: ${{ secrets.GA4_CREDENTIALS_JSON }}
+          SLACK_WEBHOOK_SUBSUKU_DAILY: ${{ secrets.SLACK_WEBHOOK_SUBSUKU_DAILY }}
+        run: |
+          if [ -z "$GA4_CREDENTIALS_JSON" ] || [ -z "$SLACK_WEBHOOK_SUBSUKU_DAILY" ]; then
+            echo "秘密が未登録（GA4_CREDENTIALS_JSON / SLACK_WEBHOOK_SUBSUKU_DAILY）。docs/GA4_DAILY_ACTIONS.md の手順で登録すると動く。"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: GA4 の取得ライブラリ
+        if: steps.check.outputs.ready == 'true'
+        run: pip install google-analytics-data -q
+
+      - name: 前日の数値を Slack へ
+        if: steps.check.outputs.ready == 'true'
+        env:
+          GA4_CREDENTIALS_JSON: ${{ secrets.GA4_CREDENTIALS_JSON }}
+          SLACK_WEBHOOK_SUBSUKU_DAILY: ${{ secrets.SLACK_WEBHOOK_SUBSUKU_DAILY }}
+        run: python monitoring/scripts/send_ga4_daily_slack.py

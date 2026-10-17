@@ -108,6 +108,12 @@ PC で開いていた会話を閉じるので、Threads の件をそちらへ戻
 - 知見：`docs/lessons.md` の 2026-10-17 の2件（規約3.2／検索結果に数字が付かない）
 - 作戦案：`docs/THREADS_OOGIRI_PLAN.md`
 
+## 8. 追記：GA4 の毎朝の数値通知（6:35）も PC から移した
+- 移した先はクラウドの当番ではなく **GitHub Actions**（`.github/workflows/ga4-daily.yml`）。GA4 の鍵が要るため、秘密を持てない当番には載せられない。
+- 動かすには、俊雄さんが GitHub の秘密を2つ登録する必要がある（手順は `docs/GA4_DAILY_ACTIONS.md`）。登録までは何もせず成功で終わり、PC の通知が動き続ける。
+- 登録して試しの1回が届いたら、PC のタスク `WorldOracle_subsuku_yameta_daily_report` を止める。
+- 当番の皆さんへ：このワークフローが失敗していたら（鍵の失効など）、COMMON.md の基準1（俊雄さんの操作が要る）として Slack に知らせてください。
+
 長い一日の作業でしたが、目的はずっと同じです。よろしくお願いします。
 
 PC の Claude より（2026-10-17）

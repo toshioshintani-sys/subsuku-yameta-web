@@ -61,6 +61,14 @@ def fetch_ga4(property_id, target_date=None):
            "error": None}
     _setup_credentials()
     adc_error = _validate_adc()
+    # サービスアカウントの鍵を GOOGLE_APPLICATION_CREDENTIALS で渡された場合は adc.json の検証を飛ばす（GitHub Actions 用・2026-10-17）
+    _cred = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+    if adc_error and _cred and Path(_cred).exists():
+        try:
+            if json.loads(Path(_cred).read_text(encoding="utf-8")).get("type") == "service_account":
+                adc_error = None
+        except Exception:
+            pass
     if adc_error:
         out["error"] = adc_error
         return out
