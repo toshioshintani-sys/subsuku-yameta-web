@@ -93,6 +93,10 @@
         "checkedAt": "2026-10-14",
         "fails": 0,
         "lastOkAt": "2026-10-14"
+      },
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
       }
     },
     {
@@ -277,7 +281,11 @@
       "url": "https://www.notion.com/pricing",
       "mode": "prices",
       "enabled": true,
-      "note": "PRICE_HISTORY移植元と同じ（$表記のことあり）"
+      "note": "PRICE_HISTORY移植元と同じ（$表記のことあり）",
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
+      }
     },
     {
       "id": "dropbox",
@@ -297,6 +305,10 @@
         "suspects": [
           "ちょうど半額の組がある（1200 と 2400）＝割引価格と通常価格の並記の疑い"
         ]
+      },
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
       }
     },
     {
@@ -403,6 +415,18 @@
         "checkedAt": "2026-10-14",
         "fails": 0,
         "lastOkAt": "2026-10-13"
+      },
+      "cloud": {
+        "geo": {
+          "rewrite": [
+            {
+              "match": "checkout_pricing_config/configs/[A-Z]{2}",
+              "from": "configs/[A-Z]{2}",
+              "to": "configs/JP"
+            }
+          ]
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。料金設定を configs/<国> から読む。JP に書き換えると ￥1,400/￥3,000/￥16,800 を表示（実測）。openai.com は米国の素の取得だと403だがブラウザなら開ける。"
       }
     },
     {
@@ -423,6 +447,18 @@
         "checkedAt": "2026-07-26",
         "fails": 0,
         "lastOkAt": "2026-07-26"
+      },
+      "cloud": {
+        "geo": {
+          "respond": [
+            {
+              "match": "claude\\.com/api/country",
+              "contentType": "application/json",
+              "body": "{\"country\":\"JP\"}"
+            }
+          ]
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。claude.com は /api/country の答え（米国は US）で表示を選び、米国では $20 を出す。答えを JP にすると日本向けの $22（税込）を表示（実測）。"
       }
     },
     {
@@ -444,6 +480,11 @@
         "suspects": [
           "桁が不自然な値を拾っている（10）"
         ]
+      },
+      "cloud": {
+        "renderMode": "plain",
+        "jsonCurrency": "JPY",
+        "_note": "2026-10-17 クラウド（米国接続）用。ページに全通貨の価格表が JSON で埋め込まれている。\"JPY\" の price だけを拾う（米国からの素の取得で 1100/7099/1799/17899 を確認）。"
       }
     },
     {
@@ -560,7 +601,11 @@
       "mode": "prices",
       "enabled": true,
       "renderMode": "headless",
-      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化"
+      "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
+      }
     },
     {
       "id": "icloud-plus",
@@ -613,7 +658,19 @@
         "fails": 0,
         "lastOkAt": "2026-09-24"
       },
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "cloud": {
+        "geo": {
+          "respond": [
+            {
+              "match": "figma\\.com/api/geoip",
+              "contentType": "application/json",
+              "body": "{\"iso_country\":\"JP\",\"iso_region\":null}"
+            }
+          ]
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。Figma は /api/geoip の答えで通貨を選ぶ。その答えを JP にすると ¥2,400/¥8,300/¥13,600 を表示（実測）。"
+      }
     },
     {
       "id": "deepl-pro",
@@ -633,7 +690,19 @@
           "ちょうど半額の組がある（3750 と 7500）＝割引価格と通常価格の並記の疑い"
         ]
       },
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "cloud": {
+        "url": "https://www.deepl.com/ja/pro",
+        "geo": {
+          "documentReplace": [
+            {
+              "from": "userCountry\\\\\":\\\\\"[A-Z]{2}",
+              "to": "userCountry\\\":\\\"JP"
+            }
+          ]
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。ページ本体の初期値 userCountry（既定は DE）で通貨を選ぶ。JP にすると ￥1,150/￥3,750/￥7,500 を表示（実測）。"
+      }
     },
     {
       "id": "pairs",
@@ -654,6 +723,10 @@
           "金額の種類が多すぎる（73種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（810 と 1620）＝割引価格と通常価格の並記の疑い"
         ]
+      },
+      "cloud": {
+        "renderMode": "headless",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からの素の取得は403。ブラウザで描けば読める（geo-probe S2〜S4）。"
       }
     },
     {
@@ -767,6 +840,18 @@
         "checkedAt": "2026-09-29",
         "fails": 0,
         "lastOkAt": "2026-09-29"
+      },
+      "cloud": {
+        "geo": {
+          "rewrite": [
+            {
+              "match": "api\\.vimeo\\.com/subscription_plans",
+              "from": "$",
+              "to": "&currency=JPY"
+            }
+          ]
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。料金は api.vimeo.com/subscription_plans から読む（通貨は接続元の国）。currency=JPY を付けると ￥1,200/￥3,625/￥6,346 を表示（実測。country= 等は効かない）。"
       }
     },
     {
@@ -849,7 +934,13 @@
       "mode": "prices",
       "enabled": true,
       "note": "2026-07-25 修正: 素のfetchだと価格が取れない回があるため headless 化。日本向けは one.google.com/about/google-ai-plans/ が ￥725/￥2,900/￥14,500/￥32,000 を表示する。",
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "cloud": {
+        "geo": {
+          "documentFromRelay": true
+        },
+        "_note": "2026-10-17 クラウド（米国接続）用。ページ本体だけ東京の中継所から取り、手元のブラウザで描くと ￥725/￥2,900/￥14,500/￥32,000 を表示（実測。同じページに $ の別表記も出る）。"
+      }
     },
     {
       "id": "google-workspace",
@@ -868,6 +959,10 @@
         "suspects": [
           "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
+      },
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
       }
     },
     {
@@ -933,7 +1028,11 @@
       "mode": "prices",
       "enabled": true,
       "note": "2026-07-25 headless化で解決。素のfetchは価格0件だったがPuppeteerで￥580(学生)/￥1,080(個人)/￥1,680(ファミリー)/￥10,800(年額)/￥0(無料体験)を取得＝JS描画が原因だった。music.youtube.com/music_premium はブラウザ非対応メッセージのみ・youtube.com/premium はYouTube Premium(￥1,280)で別サービスなので使わない",
-      "renderMode": "headless"
+      "renderMode": "headless",
+      "cloud": {
+        "via": "relay",
+        "_note": "2026-10-17 クラウド（米国接続）用。米国からは日本円が出ない。東京の中継所（jp-relay・Netlify 東京リージョン）経由で読むと円が全件一致（実測）。"
+      }
     }
   ]
 }

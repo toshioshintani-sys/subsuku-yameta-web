@@ -29,6 +29,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fetchRelay, fetchHeadlessGeo, extractJsonCurrency } from './jp-browser.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, '../..');
@@ -130,6 +131,7 @@ function displayedPrices(id, { PRICING, PLANS }) {
 const CLOUD = process.env.SUBSUKU_CLOUD === '1';
 const forGeo = (w) => (CLOUD && w.cloud ? { ...w, ...w.cloud } : w);
 
+
 async function main() {
   const args = process.argv.slice(2);
   const only = (() => {
@@ -137,6 +139,7 @@ async function main() {
     return i >= 0 && args[i + 1] ? new Set(args[i + 1].split(',').map((s) => s.trim())) : null;
   })();
   const includeDisabled = args.includes('--all');
+  const forceRelay = args.includes('--relay'); // 診断用：対象を全部、東京の中継所経由で読む
   const jsonOut = (() => {
     const i = args.indexOf('--json');
     return i >= 0 && args[i + 1] ? args[i + 1] : null;
@@ -153,9 +156,9 @@ async function main() {
 
   let targets = (wl.watch || wl.targets || []).filter((w) => (includeDisabled ? true : w.enabled !== false));
   if (only) targets = targets.filter((w) => only.has(w.id));
-  targets = targets.map(forGeo);
+  targets = targets.map(forGeo).map((w) => (forceRelay ? { ...w, via: 'relay' } : w));
 
-  const needsHeadless = targets.some((w) => w.renderMode === 'headless');
+  const needsHeadless = targets.some((w) => (w.renderMode === 'headless' && w.via !== 'relay') || w.geo);
   let browser = null;
   if (needsHeadless) {
     const puppeteer = (await import('puppeteer')).default;
@@ -179,9 +182,14 @@ async function main() {
     let html = '';
     try {
       html =
-        w.renderMode === 'headless'
-          ? await fetchHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
-          : await fetchPlain(w.url, w.userAgent || ua, timeoutMs);
+        w.via === 'relay'
+          ? await fetchRelay(w.id, timeoutMs)
+          : w.geo
+            ? await fetchHeadlessGeo(browser, w, timeoutMs)
+            : w.renderMode === 'headless'
+              ? await fetchHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
+              : await fetchPlain(w.url, w.userAgent || ua, timeoutMs);
+      if (w.jsonCurrency) html = extractJsonCurrency(html, w.jsonCurrency);
     } catch (e) {
       row.status = 'FETCH_FAIL';
       row.error = String(e.message || e).slice(0, 100);

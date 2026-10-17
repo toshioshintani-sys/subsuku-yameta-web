@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { fetchRelay, fetchHeadlessGeo, extractJsonCurrency } from './jp-browser.mjs';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const WATCH_LIST = join(__dir, 'watch-list.json');
@@ -105,6 +106,7 @@ function sigPrices(rawHtml, opts = {}) {
 // HTML を返す（geo-probe の実測。docs/lessons.md 2026-10-17）。
 const CLOUD = process.env.SUBSUKU_CLOUD === '1';
 const forGeo = (w) => (CLOUD && w.cloud ? { ...w, ...w.cloud } : w);
+
 
 async function fetchHtml(url, ua, timeoutMs) {
   const ctrl = new AbortController();
@@ -193,7 +195,7 @@ async function main() {
   const report = [];
 
   const targets = cfg.watch.filter((w) => !onlyIds || onlyIds.includes(w.id)).map(forGeo);
-  const needsHeadless = targets.some((w) => w.enabled !== false && w.renderMode === 'headless');
+  const needsHeadless = targets.some((w) => w.enabled !== false && ((w.renderMode === 'headless' && w.via !== 'relay') || w.geo));
   let browser = null;
   if (needsHeadless) {
     const puppeteer = (await import('puppeteer')).default;
@@ -209,9 +211,14 @@ async function main() {
 
       let raw;
       try {
-        raw = w.renderMode === 'headless'
-          ? await fetchHtmlHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
-          : await fetchHtml(w.url, w.userAgent || ua, timeoutMs);
+        raw = w.via === 'relay'
+          ? await fetchRelay(w.id, timeoutMs)
+          : w.geo
+            ? await fetchHeadlessGeo(browser, w, timeoutMs)
+            : w.renderMode === 'headless'
+              ? await fetchHtmlHeadless(browser, w.url, timeoutMs, { noAdBlock: w.noAdBlock })
+              : await fetchHtml(w.url, w.userAgent || ua, timeoutMs);
+        if (w.jsonCurrency) raw = extractJsonCurrency(raw, w.jsonCurrency);
       } catch (e) {
         report.push({ id: w.id, status: 'error', error: String((e && e.message) || e) });
         await sleep(delay);
