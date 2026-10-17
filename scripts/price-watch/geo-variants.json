@@ -1,0 +1,20 @@
+{
+  "_note": "geo-probe.mjs --variants 用。日本からしか日本価格が取れなかった15サービス（2026-10-17 総当たり）について、米国からでも日本価格が出る候補URLを並べる。国・通貨を指定するクエリや、国別パス、別の公式ページを試す。結果で効いたものを watch-list.json に反映する。",
+  "candidates": [
+    { "id": "netflix", "urls": ["https://help.netflix.com/ja/node/24926", "https://www.netflix.com/jp/", "https://www.netflix.com/jp/?locale=ja-JP"] },
+    { "id": "youtube-premium", "urls": ["https://www.youtube.com/premium", "https://www.youtube.com/premium?gl=JP&hl=ja", "https://www.youtube.com/premium?persist_gl=1&gl=JP&hl=ja"] },
+    { "id": "youtube-music", "urls": ["https://www.youtube.com/musicpremium", "https://www.youtube.com/musicpremium?gl=JP&hl=ja", "https://www.youtube.com/musicpremium?persist_gl=1&gl=JP&hl=ja"] },
+    { "id": "google-one", "urls": ["https://one.google.com/about/plans", "https://one.google.com/about/plans?hl=ja&gl=JP", "https://one.google.com/about/plans?hl=ja&gl=jp&g1_landing_page=0"] },
+    { "id": "gemini-advanced", "urls": ["https://one.google.com/about/google-ai-plans/", "https://one.google.com/about/google-ai-plans/?hl=ja&gl=JP"] },
+    { "id": "google-workspace", "urls": ["https://workspace.google.com/intl/ja/pricing.html", "https://workspace.google.com/intl/ja/pricing.html?gl=JP&hl=ja", "https://workspace.google.com/intl/ja/pricing?hl=ja&gl=jp"] },
+    { "id": "disney-plus", "urls": ["https://www.disneyplus.com/ja-jp/explore/what-is-disneyplus", "https://www.disneyplus.com/ja-jp/explore/how-to-join", "https://www.disneyplus.com/ja-jp"] },
+    { "id": "dropbox", "urls": ["https://www.dropbox.com/plans", "https://www.dropbox.com/ja/plans", "https://www.dropbox.com/plans?currency=JPY", "https://www.dropbox.com/ja/plans?billing=monthly&currency_code=JPY"] },
+    { "id": "notion", "urls": ["https://www.notion.com/pricing", "https://www.notion.com/ja/pricing", "https://www.notion.com/ja/pricing?currency=jpy"] },
+    { "id": "figma", "urls": ["https://www.figma.com/pricing/", "https://www.figma.com/ja-jp/pricing/", "https://www.figma.com/pricing/?currency=jpy"] },
+    { "id": "evernote", "urls": ["https://evernote.com/ja-jp/compare-plans", "https://evernote.com/ja-jp/compare-plans?currency=JPY", "https://evernote.com/compare-plans?country=JP"] },
+    { "id": "vimeo-pro", "urls": ["https://vimeo.com/upgrade", "https://vimeo.com/ja/upgrade", "https://vimeo.com/upgrade?currency=JPY"] },
+    { "id": "deepl-pro", "urls": ["https://www.deepl.com/pro", "https://www.deepl.com/ja/pro", "https://www.deepl.com/ja/pro?currency=JPY"] },
+    { "id": "dazn", "urls": ["https://www.dazn.com/ja-JP/help/articles/16308524311581", "https://www.dazn.com/ja-JP/home"] },
+    { "id": "chatgpt-plus", "urls": ["https://openai.com/ja-JP/chatgpt/pricing/", "https://chatgpt.com/ja-JP/pricing", "https://help.openai.com/ja-jp/articles/6950777"] }
+  ]
+}

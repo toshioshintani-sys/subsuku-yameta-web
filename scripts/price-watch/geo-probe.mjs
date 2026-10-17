@@ -98,6 +98,24 @@ async function s1Plain(url, timeoutMs) {
   }
 }
 
+// S5：素朴な名乗り（curl と同じ）での素の取得。Netflix は Chrome と名乗る相手には日本円を埋め込まず、
+// curl には埋め込んで返した（2026-10-17 クラウド実測）。偽装ではなく、正直に curl と名乗る。
+async function s5Curl(url, timeoutMs) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'curl/8.5.0', 'Accept-Language': 'ja-JP,ja;q=0.9', Accept: '*/*' },
+      signal: ctrl.signal,
+      redirect: 'follow',
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return await res.text();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function withPage(browser, fn, { jp } = {}) {
   const page = await browser.newPage();
   try {
@@ -153,8 +171,20 @@ async function main() {
   const { PRICING, PLANS, USD_PRICED = {} } = svc;
 
   let targets = (wl.watch || wl.targets || []).filter((w) => w.enabled !== false);
+  // --variants geo-variants.json：サービスごとの候補URLを1行ずつ試す（watch-list の URL の代わり）
+  const iVar = args.indexOf('--variants');
+  if (iVar >= 0 && args[iVar + 1]) {
+    const byId = new Map(targets.map((w) => [w.id, w]));
+    const spec = JSON.parse(readFileSync(resolve(ROOT, args[iVar + 1]), 'utf-8'));
+    targets = spec.candidates.flatMap((c) =>
+      c.urls.map((url) => ({ ...(byId.get(c.id) || {}), id: c.id, url }))
+    );
+  }
   if (only) targets = targets.filter((w) => only.has(w.id));
   targets = targets.filter((w) => !Object.prototype.hasOwnProperty.call(USD_PRICED, w.id));
+  // --strategies S1,S5,S4 で取り方を絞る（候補URLの総当たりは数が多いので軽い取り方だけにする）
+  const iStr = args.indexOf('--strategies');
+  const pick = iStr >= 0 && args[iStr + 1] ? new Set(args[iStr + 1].split(',').map((s) => s.trim())) : null;
 
   const puppeteer = (await import('puppeteer')).default;
   const browser = await puppeteer.launch({
@@ -167,7 +197,8 @@ async function main() {
     ['S2_first', (w) => s2First(browser, w.url, timeoutMs)],
     ['S3_jpbrowser', (w) => sRendered(browser, w.url, timeoutMs, true)],
     ['S4_rendered', (w) => sRendered(browser, w.url, timeoutMs, false)],
-  ];
+    ['S5_curl', (w) => s5Curl(w.url, timeoutMs)],
+  ].filter(([n]) => !pick || pick.has(n.split('_')[0]));
 
   const rows = [];
   for (const w of targets) {
@@ -191,7 +222,7 @@ async function main() {
     }
     rows.push(row);
     const cell = (r) => (r.error ? `ERR(${r.error.slice(0, 20)})` : `${r.hit}/${r.of}${r.usdCount ? ` $${r.usdCount}` : ''}`);
-    console.log([w.id.padEnd(24), ...strategies.map(([n]) => `${n}=${cell(row.results[n])}`)].join('  '));
+    console.log([w.id.padEnd(24), ...strategies.map(([n]) => `${n}=${cell(row.results[n])}`), w.url].join('  '));
   }
   await browser.close();
 
