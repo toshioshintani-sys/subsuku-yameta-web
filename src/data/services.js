@@ -743,7 +743,7 @@ export const SERVICES = [
     steps: [
       'ログイン後 cursor.com/dashboard/billing の「Billing」ページを開く',
       '「Manage Subscription」をクリックしてStripeの請求ポータルへ',
-      '「Cancel Subscription」をクリックして確認（期間終了後、自動でHobby無料プランへ移行）',
+      '「Cancel Subscription」をクリックして確認（期間終了後、自動でFree（無料）プランへ移行）',
     ],
     note: 'iOSアプリ経由で購読した場合はApple側の設定から解約が必要（上記のWeb手順は使えない）',
   },
@@ -1391,7 +1391,7 @@ export const PRICING = {
   'rakuten-tv': 0,           // 都度課金がメイン
   'chatgpt-plus': 3000,      // 円建て実額（2026-07-25 公式JPページで実測・USD換算しない）
   'claude-pro': 3300,        // $22（$20＋JCT10%）を150円換算。USD_PRICEDが155円へ補正する
-  cursor: 3000,              // Pro $20/mo（1ドル=150円換算）
+  cursor: 4500,              // 2026-10-17公式確認でPro($20)→Premium($30・一番人気)に改称。$30/mo（1ドル=150円換算）
   'gemini-advanced': 2900,   // Google AI Pro（5TB・Gemini使用量4倍）
   'google-workspace': 800,   // Business Starter
   'google-play-pass': 600,
@@ -2125,11 +2125,16 @@ export const PLANS = {
     howToCheck: 'Lemino →「マイページ」→「契約情報」で確認できます',
   },
   cursor: {
+    // 2026-10-17 公式（cursor.com/pricing）で再確認。プラン名が Hobby/Pro/Pro+/Ultra から
+    // Free/Plus/Premium/Super/Ultra へ全面改称・再編されていた（Ultraの$200のみ不変）。
+    // ここの円値は150円換算で書く（USD_PRICED が自動補正する）。Teams/Enterpriseは
+    // 法人向けのため他サービス同様、個人向け解約導線のPLANSには含めない。
     plans: [
-      { name: 'Hobby', monthly: 0, note: '無料・クレジットカード登録不要・利用制限あり' },
-      { name: 'Pro', monthly: 3000, popular: true, note: '$20/mo。個人向け主力プラン' },
-      { name: 'Pro+', monthly: 9000, note: '$60/mo' },
-      { name: 'Ultra', monthly: 30000, note: '$200/mo' },
+      { name: 'Free', monthly: 0, note: '無料・クレジットカード登録不要・利用制限あり（旧Hobby）' },
+      { name: 'Plus', monthly: 1200, note: '$8/mo' },
+      { name: 'Premium', monthly: 4500, popular: true, note: '$30/mo。個人向け主力プラン（旧Pro相当）' },
+      { name: 'Super', monthly: 15000, note: '$100/mo' },
+      { name: 'Ultra', monthly: 30000, note: '$200/mo（不変）' },
     ],
     howToCheck: 'cursor.com にログイン →「Settings」→「Billing」で確認できます',
   },
@@ -2264,7 +2269,7 @@ export const USD_PRICED = {
   'claude-pro': 22, // $20 + 10% JCT（日本向け表示は $22/月・claude.com/pricing で確認）
   'github-copilot': 10, // Pro $10/月（2026-07-26 公式確認・ドル建て表示のみ）
   '1password': 2.99, // Individual $2.99/月（年払い）
-  cursor: 20,
+  cursor: 30, // 2026-10-17公式確認でPremium（一番人気）が$30に（旧Pro $20から改称・改定）
   'perplexity-pro': 20,
   midjourney: 30,
   windsurf: 20,
@@ -2812,6 +2817,17 @@ export const PRICE_HISTORY = {
         '表示価格の誤りを修正（価格改定ではなく記載ミスの訂正）。従来クレカ3,700円・Apple/Google 4,300円と表示していたが、公式ページに3,700円の記載は存在せず、監視履歴上も一度も検出されていなかった。正しくはWeb購入4,100円・アプリ内購入4,800円。',
       source: 'https://www.pairs.lv/price',
       verifiedAt: '2026-08-13',
+    },
+  ],
+  cursor: [
+    {
+      date: '2026-10-17',
+      item: 'プラン全体',
+      direction: 'restructure',
+      change:
+        '個人向けプラン名が Hobby/Pro($20)/Pro+($60)/Ultra($200) から Free($0)/Plus($8)/Premium($30・一番人気)/Super($100)/Ultra($200・不変) へ全面改称・再編。Grok（xAI）関連機能の利用枠が主要な差別化軸に追加された。法人向けのTeams($30+/ユーザー/月)・Enterpriseも新設されたが、他サービス同様PLANSには含めていない。改定実施日は不明（発見日=価格監視の検知・確認日=本日）。',
+      source: 'https://cursor.com/pricing',
+      verifiedAt: '2026-10-17',
     },
   ],
 };
