@@ -14,10 +14,7 @@
 
 ### 2. 対応が要る指摘が無い（exit 0）なら
 
-Slack に1本だけ送って終了する。LLM で深追いしない。
-
-    【クラウド】巡回（<日付>）：異常なし
-    <「事実」の行をそのまま並べる>
+**Slack には送らない。** 代わりに、決めた範囲の改修を1件だけやる（下の「異常が無い日の改修」）。
 
 ### 3. 対応が要る指摘がある（exit 1）なら
 
@@ -38,7 +35,7 @@ CLAUDE.md と docs/lessons.md の末尾3エントリ、scripts/ops/triage_prompt
 **直してはいけないもの（報告だけ）**
 
 - 公式で裏が取れない価格変更、料金体系（プラン名・数）の変更
-- 「価格監視の記録が止まっている」：価格の巡回・判定はクラウドの朝 7:47 の当番（price.md）が担当。
+- 「価格監視の記録が止まっている」：価格の巡回・判定はクラウドの朝 7:47 の当番（price.md）が担当（これは直してよい側。下の通り）。
   その日の朝の分が動いていなければ、scripts/ops/cloud/price.md の手順で1回分をやってよい（その日まだ巡回していない時だけ）。
 - 定期タスク・運用ルールの追加／変更／停止
 
@@ -47,7 +44,20 @@ CLAUDE.md と docs/lessons.md の末尾3エントリ、scripts/ops/triage_prompt
 1. src/ に触れた時は `npm ci`（未実行なら）→ `npm run price:check` → `npm run build` が通ること。
 2. main へ push（COMMON.md のルール）。
 3. COMMON.md の「本番に出たかの確かめ方」で本番反映を確認する。
-4. Slack に1本：何を見て／何を直して（commit・本番の確認結果）／直さず回したもの（俊雄さんにしてほしいこと）。
+4. Slack は COMMON.md の基準に当てはまる時だけ1本（本番の表示を変えた／俊雄さんに頼みたいことがある／直せなかった）。
+   1行目で「何を直したか」または「何をしてほしいか」を言い切る。表示に効かない修正（scripts・watch-list・docs）だけなら送らない（週次のまとめに入る）。
+
+## 異常が無い日の改修（1日1件まで・クラウドならではの「見つけたらすぐ直す」）
+
+点検で対応の要る指摘が無かった日は、次の範囲から**1件だけ**選んで直す（無ければ何もしない）。
+いずれも表示価格そのものは変えない。直したら `node --check`・関係する点検を通してから main へ。Slack には送らない。
+
+1. **価格が取れなくなったサービスの取り方を直す**：`SUBSUKU_CLOUD=1 node scripts/price-watch/reconcile.mjs` で、
+   既知の11件（price.md）以外の ALL_MISS / NO_PRICE_ON_PAGE / FETCH_FAIL があれば、公式の別URLや watch-list.json の
+   `"cloud"` の取り方を探し直して一致させる（scripts/price-watch/jp-browser.mjs の取り方を使う）。
+2. **無人の仕組みの小さな不具合**：scripts/ops・scripts/price-watch のスクリプトのエラーや警告を直す。
+3. **SEO 健全性の機械的な指摘**（`node scripts/seo/seo-health.mjs`）：canonical・sitemap の不整合など、文言を変えずに直せるもの。
+   タイトルや説明文の文言の変更はしない（報告だけ）。
 
 ## 最後に必ず出力すること
 

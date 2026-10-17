@@ -56,7 +56,7 @@ detection_log.json に verdict の無い検知がある、または reconcile_to
 - 手順5の B（PR）は `gh pr create` が使えない（GraphQL 不可）。GitHub のツール（mcp__github__create_pull_request）か
   `gh api repos/toshioshintani-sys/subsuku-yameta-web/pulls -f title=... -f head=price/auto-<日付> -f base=main -f body=...` で作る。
   その日の `price/auto-<日付>` の PR がすでに開いていれば、新しく作らずそのブランチに積む。**PR のマージはしない。**
-- 手順6の Slack は Slack のツールで送る（手順5でまとめて1本）。
+- 手順6の Slack は送らない。代わりに下の手順5の基準に当てはまる時だけ、Slack のツールで1本送る。
 
 ### 5. 記録を残す（必ず）
 
@@ -69,9 +69,11 @@ detection_log.json に verdict の無い検知がある、または reconcile_to
 - 検知ゼロの日も、巡回の状態を main へコミットする（メッセージ「〇月〇日の巡回（検知なし）」）。
 - push の前に `git pull --rebase origin main`。force push 禁止。docs/state だけの push は Netlify がビルドしない（正常）。
 
-Slack には1本だけ送る：
-「【クラウド】価格の巡回・判定（<日付>）：巡回 N件（変化 X・基準の取り直し Y・取得失敗 Z）／検知 X件の判定 本物 a・偽陽性 b・保留 c／棚卸し 一致 n/55（既知以外の不一致があれば列挙）／PR <URL または なし>」
-検知ゼロ・不一致が既知だけの日は1〜2行で十分。
+Slack は COMMON.md の基準に当てはまる日だけ1本送る。この仕事で送るのは次の時だけ：
+- 本物の価格改定があった（PR を作った）／保留がある／掲載ズレ（既知の11件以外の不一致）が見つかった／notes に書いた気づきがある → 俊雄さんに見てほしいこと
+- 巡回の取得失敗が多い（5件以上）など、仕組みが壊れていて自力で直せなかった
+例：「【クラウド】価格（<日付>）：〇〇が値上げの可能性（公式で確認済み・PR <URL>）。マージ判断をお願いします」
+**検知ゼロ・偽陽性だけ・基準の取り直しだけの日は送らない。** 台帳のコミットだけで終える。
 
 ## やってはいけないこと
 

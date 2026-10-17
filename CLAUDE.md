@@ -261,6 +261,10 @@ Slack で受け取れるようにする運用ルール。
 `git push origin main` または PR merge による main 更新が **成功した直後**。
 （push 失敗時は通知不要・次の応答で報告）
 
+**例外（2026-10-17 俊雄さん決定・意味のない毎日の報告は送らない）**：クラウドの無人の当番（scripts/ops/cloud/）が
+台帳・docs・watch-list だけをコミットした push は通知しない（中身は月曜の週次のまとめに入る）。
+表示に効く push・人と一緒に作業した push は従来どおり通知する。無人の当番の Slack 報告の基準は `scripts/ops/cloud/COMMON.md`。
+
 ### 通知方法（2026-06-12 改訂：ハイブリッド＝Chrome優先・Webhookフォールバック）
 
 **Chromeが使える時は Chrome MCP で投稿し、Chrome未起動/未ログイン/投稿失敗の時のみ Webhook 直送にフォールバック**する（俊雄さん決定 2026-06-12・proposal-stress-test 経由）。判断軸＝「Chromeか否か」ではなく「Chrome操作はAPI非消費・サブスク範囲なので上手に使う／確実性が要る所はWebhookで担保」。

@@ -1,0 +1,47 @@
+name: heartbeat
+
+# 無人の当番が黙って止まっていないかの見張り（2026-10-17）
+#
+# 毎日の「異常なし」報告は送らない決まりにした（意味のない報告で肝心な1本が埋もれるため）。
+# その代わり、当番とは別の場所（GitHub）から毎日1回だけ確かめる。
+# - 価格の台帳（scripts/price-watch/state/price_watch_state.json）の最新の巡回時刻が30時間以内か
+#   （朝 7:47 のクラウドの当番が毎日 main にコミットする）
+# - 本番サイトが 200 を返すか
+# どちらかが駄目ならこのワークフローが失敗し、GitHub から持ち主にメールが届く。秘密情報は使わない。
+
+on:
+  schedule:
+    - cron: '30 1 * * *' # 毎日 10:30 JST（朝 7:47 の価格の当番のあと）
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 価格の台帳が30時間以内に更新されているか
+        run: |
+          node -e '
+            const s = require("./scripts/price-watch/state/price_watch_state.json");
+            const last = Object.values(s).map((v) => v && v.checkedAt).filter(Boolean).sort().pop();
+            const ageH = last ? (Date.now() - new Date(last)) / 3600000 : Infinity;
+            console.log(`最新の巡回: ${last}（${ageH.toFixed(1)}時間前）`);
+            if (!(ageH <= 30)) {
+              console.error("::error::価格の巡回が30時間以上止まっています。クラウドの朝の当番（7:47）を確認してください。");
+              process.exit(1);
+            }
+          '
+
+      - name: 本番サイトが応答するか
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' https://sabusuku-yameta.com/)
+          echo "本番サイト: HTTP $code"
+          if [ "$code" != "200" ]; then
+            echo "::error::本番サイトが HTTP $code を返しています。"
+            exit 1
+          fi
