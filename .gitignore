@@ -10,6 +10,8 @@ scripts/threads/.state.json
 # Threads reply-handler（他者コメント本文・ユーザー名を含む＝privacyのため非コミット）
 scripts/threads/reply-queue.json
 scripts/threads/.reply-state.json
+# ねとらぼ等から集めた他人のThreads投稿URL・数字（公開リポジトリに置かない・2026-10-17）
+scripts/ops/threads-buzz/data/
 # 4コマ画像投稿の進捗state（ローカル）
 scripts/threads/.4koma-state.json
 
