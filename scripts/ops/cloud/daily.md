@@ -41,6 +41,7 @@ PC 時代の4つの仕事（為替・巡回・3日棚卸し・週次）は、そ
     SUBSUKU_CLOUD=1 node scripts/ops/threads-buzz/collect-nlab.mjs --pages=2
 
 - ねとらぼ（nlab.itmedia.co.jp）の「Threads」タグを読み、台帳 `scripts/ops/threads-buzz/nlab_ledger.json` に無い記事だけを足す。1件4秒の間隔で、数分で終わる。
+  米国のクラウドから読めることは 2026-10-17 に確認済み（中継所は不要）。
 - **threads.com・threads.net は開かない**（Meta 規約 3.2 が自動の読み取りを禁じている）。業者のデータも使わない。
 - 台帳が変わったら、その1ファイルだけを add してコミットする（例：`ledger: ねとらぼ Threads 記事 +3件（重複なし 381件）`）。scripts/ops/ なので Netlify はビルドしない。
 - Slack は送らない（台帳だけのコミット）。例外は2つ：
