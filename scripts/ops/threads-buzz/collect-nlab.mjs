@@ -10,18 +10,32 @@
 //   - 数字が読み取れなかった記事も行として残す（has_numbers=false）。抜き出して報告しない。
 //   - 1リクエストごとに間隔を空ける（既定 4 秒）。
 //
+// 2つの表：
+//   - 公開の台帳 nlab_ledger.json（git に入れる）：ねとらぼの記事番号・日付・表示数・いいね数・投稿リンクの有無だけ。
+//     Threads の投稿URL・投稿者ID・見出しは入れない（ニュースサイトに出ている事実だけ）。重複の判定はこの台帳で行う。
+//   - 手元の詳しい表 data/nlab_threads_posts.json（.gitignore）：投稿URL・投稿者ID・見出しも持つ。分析のときに使う。
+//     クラウドでは毎回消えるので、分析のときは台帳の記事番号から記事を読み直して作り直せる（--rebuild-detail）。
+//
+// 担当の切り替え：scripts/ops/cloud_jobs.json の "threads_buzz" が true ならクラウドの当番が担当。
+//   PC（SUBSUKU_CLOUD が無い環境）から呼ばれたら何もせずに終わる（--force で強制）。
+//
 // 使い方：
-//   node scripts/ops/threads-buzz/collect-nlab.mjs            # タグ全ページを読み、未取得の記事だけ追加
-//   node scripts/ops/threads-buzz/collect-nlab.mjs --pages=1  # 先頭ページだけ（新着の追加用）
-//   node scripts/ops/threads-buzz/collect-nlab.mjs --report   # 件数だけ表示（取得しない）
+//   node scripts/ops/threads-buzz/collect-nlab.mjs --pages=2   # タグの先頭2ページを見て、台帳に無い記事だけ足す
+//   node scripts/ops/threads-buzz/collect-nlab.mjs             # タグの全ページを見る
+//   node scripts/ops/threads-buzz/collect-nlab.mjs --report    # 件数だけ表示（取得しない）
+//   node scripts/ops/threads-buzz/collect-nlab.mjs --rebuild-detail  # 台帳の全記事を読み直して手元の詳しい表を作る（分析の前）
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(HERE, 'data');
 const OUT = join(DATA_DIR, 'nlab_threads_posts.json');
+const LEDGER = join(HERE, 'nlab_ledger.json');
+const JOBS = join(HERE, '..', 'cloud_jobs.json');
+const GOAL = 500;
 const TAG = 'https://nlab.itmedia.co.jp/relatedtags/threads/';
 const UA = 'Mozilla/5.0 (research; subsuku-yameta internal analysis)';
 const WAIT_MS = Number(process.env.WAIT_MS || 4000);
@@ -119,37 +133,61 @@ function listIds(html) {
   return ids;
 }
 
-function load() {
-  if (!existsSync(OUT)) return { meta: {}, rows: [] };
-  return JSON.parse(readFileSync(OUT, 'utf8'));
+function readJson(path, fallback) {
+  if (!existsSync(path)) return fallback;
+  return JSON.parse(readFileSync(path, 'utf8'));
 }
 
-function save(db) {
-  mkdirSync(DATA_DIR, { recursive: true });
-  writeFileSync(OUT, JSON.stringify(db, null, 2));
+function writeJson(path, obj) {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, JSON.stringify(obj, null, 2) + '\n');
 }
 
-function summarize(db) {
-  const rows = db.rows;
-  const ok = rows.filter((r) => r.mentions_threads && r.threads_post_urls.length > 0);
-  const uniquePosts = new Set(ok.flatMap((r) => r.threads_post_urls.slice(0, 1)));
+// 投稿URLは台帳に入れない。重複の判定にだけ使う短い指紋（元に戻せない）を持つ
+function fingerprint(url) {
+  return url ? createHash('sha256').update(url).digest('hex').slice(0, 16) : null;
+}
+
+function toLedgerRow(r) {
+  return {
+    article_id: r.article_id,
+    published: r.published,
+    mentions_threads: r.mentions_threads,
+    has_post_link: r.threads_post_urls.length > 0,
+    post_fp: fingerprint(r.threads_post_urls[0]),
+    views: r.views,
+    likes: r.likes,
+    checked_at: r.fetched_at,
+  };
+}
+
+function summarize(rows) {
+  const ok = rows.filter((r) => r.mentions_threads && r.has_post_link);
   return {
     articles: rows.length,
-    threads_articles_with_post_link: ok.length,
-    unique_posts: uniquePosts.size,
-    with_numbers: ok.filter((r) => r.has_numbers).length,
+    with_post_link: ok.length,
+    unique_posts: new Set(ok.map((r) => r.post_fp)).size,
+    with_numbers: ok.filter((r) => r.views || r.likes).length,
     with_views: ok.filter((r) => r.views).length,
     with_likes: ok.filter((r) => r.likes).length,
-    no_threads_mention: rows.filter((r) => !r.mentions_threads).length,
-    no_post_link: rows.filter((r) => r.mentions_threads && r.threads_post_urls.length === 0).length,
+    no_post_link: rows.filter((r) => !r.has_post_link).length,
     oldest: rows.map((r) => r.published).filter(Boolean).sort()[0] || null,
     newest: rows.map((r) => r.published).filter(Boolean).sort().at(-1) || null,
+    goal: GOAL,
   };
 }
 
 async function main() {
-  const db = load();
-  if (args.report) { console.log(JSON.stringify(summarize(db), null, 2)); return; }
+  // 手元の詳しい表から台帳を初めて作る（移行用・一度きり）
+  const detail = readJson(OUT, { meta: {}, rows: [] });
+  let ledger = readJson(LEDGER, null);
+  if (!ledger) {
+    ledger = { _note: '', rows: detail.rows.map(toLedgerRow) };
+  }
+  ledger._note = 'ねとらぼの「Threads」タグ（https://nlab.itmedia.co.jp/relatedtags/threads/）の記事の台帳。記事番号・日付・表示数・いいね数・投稿リンクの有無だけを持つ。Threads の投稿URL・投稿者IDは入れない（post_fp は重複判定用の指紋）。道具は collect-nlab.mjs、方針は docs/THREADS_BUZZ_SOURCES_2026-10.md。unique_posts が goal（500）に届くまで分析しない。';
+
+  if (args.report) { console.log(JSON.stringify(summarize(ledger.rows), null, 2)); return; }
+
   if (args.ids) {
     // 読み取りの確認用：保存せずに指定記事の解析結果だけを出す
     for (const id of String(args.ids).split(',')) {
@@ -161,8 +199,29 @@ async function main() {
     return;
   }
 
+  if (args['rebuild-detail']) {
+    // 分析の前に：台帳の全記事を読み直して、手元の詳しい表（.gitignore）を作り直す
+    const rows = [];
+    for (const r of ledger.rows) {
+      try {
+        const { status, text } = await get(`https://nlab.itmedia.co.jp/cont/articles/${r.article_id}/`);
+        if (status !== 404) rows.push(parseArticle(r.article_id, text));
+      } catch (e) { console.error(`article ${r.article_id}: ${e.message}`); }
+      await sleep(WAIT_MS);
+    }
+    writeJson(OUT, { meta: { rebuilt_at: new Date().toISOString() }, rows });
+    console.log(`detail rebuilt: ${rows.length} rows -> ${OUT}`);
+    return;
+  }
+
+  const jobs = readJson(JOBS, {});
+  if (jobs.threads_buzz === true && !process.env.SUBSUKU_CLOUD && !args.force) {
+    console.log('cloud_jobs.json の threads_buzz が true（クラウドの当番が担当）なので、PC では何もしない。');
+    return;
+  }
+
   const maxPages = args.pages ? Number(args.pages) : 50;
-  const have = new Set(db.rows.map((r) => r.article_id));
+  const have = new Set(ledger.rows.map((r) => r.article_id));
   const ids = [];
   for (let p = 1; p <= maxPages; p++) {
     const url = p === 1 ? TAG : `${TAG}page/${p}/`;
@@ -177,22 +236,27 @@ async function main() {
   const todo = [...new Set(ids)].filter((id) => !have.has(id));
   console.log(`listed ${new Set(ids).size}, new ${todo.length}`);
 
-  let n = 0;
+  const before = summarize(ledger.rows).unique_posts;
   for (const id of todo) {
     try {
       const { status, text } = await get(`https://nlab.itmedia.co.jp/cont/articles/${id}/`);
       if (status === 404) continue;
-      db.rows.push(parseArticle(id, text));
+      const r = parseArticle(id, text);
+      ledger.rows.push(toLedgerRow(r));
+      detail.rows.push(r);
     } catch (e) {
       console.error(`article ${id}: ${e.message}`);
     }
-    n++;
-    if (n % 25 === 0) { save(db); console.log(`  ${n}/${todo.length}`); }
     await sleep(WAIT_MS);
   }
-  db.meta = { updated_at: new Date().toISOString(), tag: TAG, summary: summarize(db) };
-  save(db);
-  console.log(JSON.stringify(db.meta.summary, null, 2));
+  const summary = summarize(ledger.rows);
+  ledger.summary = { ...summary, updated_at: new Date().toISOString() };
+  writeJson(LEDGER, ledger);
+  writeJson(OUT, { meta: { updated_at: new Date().toISOString() }, rows: detail.rows });
+  console.log(JSON.stringify(summary, null, 2));
+  if (before < GOAL && summary.unique_posts >= GOAL) {
+    console.log(`GOAL_REACHED: 重複なしの投稿が ${summary.unique_posts} 件になり、${GOAL} 件に届いた。分析に入れる。`);
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

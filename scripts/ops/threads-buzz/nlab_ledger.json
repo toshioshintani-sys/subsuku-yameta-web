@@ -1,0 +1,3888 @@
+{
+  "_note": "ねとらぼの「Threads」タグ（https://nlab.itmedia.co.jp/relatedtags/threads/）の記事の台帳。記事番号・日付・表示数・いいね数・投稿リンクの有無だけを持つ。Threads の投稿URL・投稿者IDは入れない（post_fp は重複判定用の指紋）。道具は collect-nlab.mjs、方針は docs/THREADS_BUZZ_SOURCES_2026-10.md。unique_posts が goal（500）に届くまで分析しない。",
+  "rows": [
+    {
+      "article_id": "4037510",
+      "published": "2026-10-17T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ec26ec10d947a84d",
+      "views": null,
+      "likes": 1800,
+      "checked_at": "2026-10-17T12:46:20.577Z"
+    },
+    {
+      "article_id": "4050169",
+      "published": "2026-10-17T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ca61fe1922665a7d",
+      "views": 190000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:46:24.723Z"
+    },
+    {
+      "article_id": "4051081",
+      "published": "2026-10-17T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": 100000,
+      "likes": 1300,
+      "checked_at": "2026-10-17T12:46:28.870Z"
+    },
+    {
+      "article_id": "4047848",
+      "published": "2026-10-17T07:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8e0effb908cb616d",
+      "views": 1270000,
+      "likes": 2100,
+      "checked_at": "2026-10-17T12:46:33.018Z"
+    },
+    {
+      "article_id": "4039128",
+      "published": "2026-10-16T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fa633cdfc1f35f50",
+      "views": 190000,
+      "likes": 6400,
+      "checked_at": "2026-10-17T12:46:37.162Z"
+    },
+    {
+      "article_id": "4050981",
+      "published": "2026-10-16T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4850ff8d70d2cbb5",
+      "views": 1100000,
+      "likes": 19000,
+      "checked_at": "2026-10-17T12:46:41.327Z"
+    },
+    {
+      "article_id": "4053033",
+      "published": "2026-10-16T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f49c0be4d937768c",
+      "views": 230000,
+      "likes": 1300,
+      "checked_at": "2026-10-17T12:46:45.483Z"
+    },
+    {
+      "article_id": "4048759",
+      "published": "2026-10-16T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "68f649d3076d1cf4",
+      "views": 120000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:46:49.629Z"
+    },
+    {
+      "article_id": "4036425",
+      "published": "2026-10-16T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cdc38702fb791093",
+      "views": 14000,
+      "likes": 3200,
+      "checked_at": "2026-10-17T12:46:54.090Z"
+    },
+    {
+      "article_id": "4049745",
+      "published": "2026-10-15T20:30:36+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "65f2a24fa8d4e792",
+      "views": 750000,
+      "likes": 16000,
+      "checked_at": "2026-10-17T12:46:58.251Z"
+    },
+    {
+      "article_id": "4045652",
+      "published": "2026-10-15T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "eacc26b1a3a6e632",
+      "views": 210000,
+      "likes": 8000,
+      "checked_at": "2026-10-17T12:47:02.394Z"
+    },
+    {
+      "article_id": "4031046",
+      "published": "2026-10-15T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d6c15c07c7a6d672",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:47:06.552Z"
+    },
+    {
+      "article_id": "4046192",
+      "published": "2026-10-15T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1e122ce9a9a53cfd",
+      "views": 280000,
+      "likes": 46000,
+      "checked_at": "2026-10-17T12:47:11.097Z"
+    },
+    {
+      "article_id": "4054707",
+      "published": "2026-10-15T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": 20000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T12:47:15.258Z"
+    },
+    {
+      "article_id": "4038115",
+      "published": "2026-10-15T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b8773a0b10f473de",
+      "views": 770000,
+      "likes": 9600,
+      "checked_at": "2026-10-17T12:47:19.418Z"
+    },
+    {
+      "article_id": "4050208",
+      "published": "2026-10-15T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5cf6ce924eeb9ee3",
+      "views": 4453000,
+      "likes": 120000,
+      "checked_at": "2026-10-17T12:47:23.665Z"
+    },
+    {
+      "article_id": "4045716",
+      "published": "2026-10-14T19:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8df54b0ae371ad75",
+      "views": 350000,
+      "likes": 4200,
+      "checked_at": "2026-10-17T12:47:27.960Z"
+    },
+    {
+      "article_id": "4026923",
+      "published": "2026-10-14T09:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "89f41fc2bb0f14d4",
+      "views": 120000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:47:32.196Z"
+    },
+    {
+      "article_id": "4014163",
+      "published": "2026-10-14T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": 20000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T12:47:36.861Z"
+    },
+    {
+      "article_id": "4032966",
+      "published": "2026-10-13T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6bfd449047b57412",
+      "views": null,
+      "likes": 800,
+      "checked_at": "2026-10-17T12:47:41.069Z"
+    },
+    {
+      "article_id": "4035172",
+      "published": "2026-10-13T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "343911bb608ddf0f",
+      "views": null,
+      "likes": 9000,
+      "checked_at": "2026-10-17T12:47:45.285Z"
+    },
+    {
+      "article_id": "4031039",
+      "published": "2026-10-13T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b2086131732de983",
+      "views": 190000,
+      "likes": 24000,
+      "checked_at": "2026-10-17T12:47:49.497Z"
+    },
+    {
+      "article_id": "4028409",
+      "published": "2026-10-13T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "00928cbfb0af36cd",
+      "views": 960000,
+      "likes": 2500,
+      "checked_at": "2026-10-17T12:47:53.676Z"
+    },
+    {
+      "article_id": "4031236",
+      "published": "2026-10-13T07:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3ebd41baf1180533",
+      "views": 89000,
+      "likes": 12000,
+      "checked_at": "2026-10-17T12:47:58.177Z"
+    },
+    {
+      "article_id": "4034876",
+      "published": "2026-10-12T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "10269baf35c31f7e",
+      "views": null,
+      "likes": 1800,
+      "checked_at": "2026-10-17T12:48:03.068Z"
+    },
+    {
+      "article_id": "4044439",
+      "published": "2026-10-11T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2eecdec562f3d55b",
+      "views": 93000,
+      "likes": 1400,
+      "checked_at": "2026-10-17T12:48:07.233Z"
+    },
+    {
+      "article_id": "4033004",
+      "published": "2026-10-11T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e8916d5c84381fd4",
+      "views": 360000,
+      "likes": 11000,
+      "checked_at": "2026-10-17T12:48:11.448Z"
+    },
+    {
+      "article_id": "4029950",
+      "published": "2026-10-11T11:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0459bf904a89dd21",
+      "views": 260000,
+      "likes": 6000,
+      "checked_at": "2026-10-17T12:48:15.983Z"
+    },
+    {
+      "article_id": "4035128",
+      "published": "2026-10-10T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f8b7ae3dc359d169",
+      "views": 98000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:48:20.568Z"
+    },
+    {
+      "article_id": "4031041",
+      "published": "2026-10-10T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "62a16acc6aa4523a",
+      "views": 180000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:48:25.134Z"
+    },
+    {
+      "article_id": "4039683",
+      "published": "2026-10-10T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8fb22fa3e898e0c0",
+      "views": 80000,
+      "likes": 2000,
+      "checked_at": "2026-10-17T12:48:29.649Z"
+    },
+    {
+      "article_id": "4042381",
+      "published": "2026-10-09T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "999967d3f0038d2e",
+      "views": 150000,
+      "likes": 15000,
+      "checked_at": "2026-10-17T12:48:33.823Z"
+    },
+    {
+      "article_id": "4042814",
+      "published": "2026-10-09T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f65faffdcbbf27da",
+      "views": 58000,
+      "likes": 2500,
+      "checked_at": "2026-10-17T12:48:38.256Z"
+    },
+    {
+      "article_id": "4040131",
+      "published": "2026-10-09T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "25ddc167806234b3",
+      "views": 180000,
+      "likes": 1300,
+      "checked_at": "2026-10-17T12:48:42.474Z"
+    },
+    {
+      "article_id": "4033084",
+      "published": "2026-10-09T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "52b6ad1b31a5fa22",
+      "views": 110000,
+      "likes": 7500,
+      "checked_at": "2026-10-17T12:48:47.003Z"
+    },
+    {
+      "article_id": "4038000",
+      "published": "2026-10-08T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "12a52534562328dd",
+      "views": 3380000,
+      "likes": 45000,
+      "checked_at": "2026-10-17T12:48:51.435Z"
+    },
+    {
+      "article_id": "4038093",
+      "published": "2026-10-08T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3834ae3307cad99e",
+      "views": 200000,
+      "likes": 2900,
+      "checked_at": "2026-10-17T12:48:55.990Z"
+    },
+    {
+      "article_id": "4032957",
+      "published": "2026-10-08T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "559a33e9d64c4159",
+      "views": 240000,
+      "likes": 9000,
+      "checked_at": "2026-10-17T12:49:00.495Z"
+    },
+    {
+      "article_id": "4042312",
+      "published": "2026-10-07T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4479665458e35110",
+      "views": 380000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T12:49:04.661Z"
+    },
+    {
+      "article_id": "4035351",
+      "published": "2026-10-06T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2d202b47d1cfb322",
+      "views": 94000,
+      "likes": 2900,
+      "checked_at": "2026-10-17T12:49:09.072Z"
+    },
+    {
+      "article_id": "4038119",
+      "published": "2026-10-06T20:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4514eb4a98137df1",
+      "views": 96000,
+      "likes": 190,
+      "checked_at": "2026-10-17T12:49:13.482Z"
+    },
+    {
+      "article_id": "4038340",
+      "published": "2026-10-06T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d2743ad4d97c18d4",
+      "views": 330000,
+      "likes": 3400,
+      "checked_at": "2026-10-17T12:49:17.640Z"
+    },
+    {
+      "article_id": "4030825",
+      "published": "2026-10-06T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "613c4080175fcbdc",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:49:22.006Z"
+    },
+    {
+      "article_id": "4030732",
+      "published": "2026-10-05T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5228a41af9006340",
+      "views": 94000,
+      "likes": 4100,
+      "checked_at": "2026-10-17T12:49:26.542Z"
+    },
+    {
+      "article_id": "4023955",
+      "published": "2026-10-04T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e1dcb4ca72fcd0c2",
+      "views": null,
+      "likes": 1400,
+      "checked_at": "2026-10-17T12:49:30.963Z"
+    },
+    {
+      "article_id": "4032312",
+      "published": "2026-10-04T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d6066171ef986795",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:49:35.141Z"
+    },
+    {
+      "article_id": "4031755",
+      "published": "2026-10-04T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e720a085133da70f",
+      "views": 1280000,
+      "likes": 60000,
+      "checked_at": "2026-10-17T12:49:39.720Z"
+    },
+    {
+      "article_id": "4014618",
+      "published": "2026-10-04T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9411944b7bb263e3",
+      "views": 490000,
+      "likes": 30000,
+      "checked_at": "2026-10-17T12:49:43.891Z"
+    },
+    {
+      "article_id": "4019657",
+      "published": "2026-10-03T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0e952c603c48610c",
+      "views": 100000,
+      "likes": 3000,
+      "checked_at": "2026-10-17T12:49:48.276Z"
+    },
+    {
+      "article_id": "4031482",
+      "published": "2026-10-02T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0e8ef0859400e85f",
+      "views": 340000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:49:52.442Z"
+    },
+    {
+      "article_id": "4030709",
+      "published": "2026-10-02T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8e15e105f29eb72b",
+      "views": 100000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:49:56.900Z"
+    },
+    {
+      "article_id": "4033104",
+      "published": "2026-10-02T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "89a9677763c1375a",
+      "views": 30000,
+      "likes": 2000,
+      "checked_at": "2026-10-17T12:50:01.536Z"
+    },
+    {
+      "article_id": "4031125",
+      "published": "2026-10-02T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7fd09417aa7d30c3",
+      "views": 100000,
+      "likes": 27000,
+      "checked_at": "2026-10-17T12:50:14.161Z"
+    },
+    {
+      "article_id": "4028324",
+      "published": "2026-10-01T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c4dfa8436f3bce08",
+      "views": null,
+      "likes": 300,
+      "checked_at": "2026-10-17T12:50:18.548Z"
+    },
+    {
+      "article_id": "4030793",
+      "published": "2026-10-01T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "462ca8ff695c3ff0",
+      "views": 260000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:50:22.741Z"
+    },
+    {
+      "article_id": "4025445",
+      "published": "2026-10-01T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7850867d1078372c",
+      "views": 1130000,
+      "likes": 17000,
+      "checked_at": "2026-10-17T12:50:27.175Z"
+    },
+    {
+      "article_id": "4027725",
+      "published": "2026-09-30T12:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0008eaffb8583af0",
+      "views": 40000,
+      "likes": 5900,
+      "checked_at": "2026-10-17T12:50:31.388Z"
+    },
+    {
+      "article_id": "4028822",
+      "published": "2026-09-30T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "df4d3dee66a284c1",
+      "views": 250000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:50:35.785Z"
+    },
+    {
+      "article_id": "4030422",
+      "published": "2026-09-30T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "45d85945dac5f207",
+      "views": 690000,
+      "likes": 5800,
+      "checked_at": "2026-10-17T12:50:40.304Z"
+    },
+    {
+      "article_id": "4014355",
+      "published": "2026-09-29T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "43b5c35787f3868c",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:50:44.474Z"
+    },
+    {
+      "article_id": "4027477",
+      "published": "2026-09-29T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "606589d0a0722e35",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:50:48.964Z"
+    },
+    {
+      "article_id": "4018619",
+      "published": "2026-09-29T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f05335a83db1211d",
+      "views": 22000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:50:53.148Z"
+    },
+    {
+      "article_id": "4023573",
+      "published": "2026-09-29T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "17d9c6a47a436d19",
+      "views": 50000,
+      "likes": 1300,
+      "checked_at": "2026-10-17T12:50:57.540Z"
+    },
+    {
+      "article_id": "4020359",
+      "published": "2026-09-29T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2b069336e4dd2eca",
+      "views": 110000,
+      "likes": 21000,
+      "checked_at": "2026-10-17T12:51:01.706Z"
+    },
+    {
+      "article_id": "4021757",
+      "published": "2026-09-29T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "549c090afd31ebdd",
+      "views": 400000,
+      "likes": 6100,
+      "checked_at": "2026-10-17T12:51:06.098Z"
+    },
+    {
+      "article_id": "4023355",
+      "published": "2026-09-29T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "edd86262f778b9af",
+      "views": 880000,
+      "likes": 22000,
+      "checked_at": "2026-10-17T12:51:10.284Z"
+    },
+    {
+      "article_id": "4026318",
+      "published": "2026-09-28T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8263f4e20c76bba9",
+      "views": 380000,
+      "likes": 7000,
+      "checked_at": "2026-10-17T12:51:14.463Z"
+    },
+    {
+      "article_id": "4026073",
+      "published": "2026-09-27T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e75355883aba6837",
+      "views": 60000,
+      "likes": 820,
+      "checked_at": "2026-10-17T12:51:18.979Z"
+    },
+    {
+      "article_id": "4026177",
+      "published": "2026-09-27T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b8c2b9d0a7151f59",
+      "views": 980000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:51:23.356Z"
+    },
+    {
+      "article_id": "4026012",
+      "published": "2026-09-26T19:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "553508ad6bf77a35",
+      "views": 110000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:51:27.509Z"
+    },
+    {
+      "article_id": "4009550",
+      "published": "2026-09-26T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3955dda0a9f1886c",
+      "views": 1080000,
+      "likes": 7500,
+      "checked_at": "2026-10-17T12:51:32.170Z"
+    },
+    {
+      "article_id": "4025342",
+      "published": "2026-09-25T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0f801672c25c4553",
+      "views": 300000,
+      "likes": 3100,
+      "checked_at": "2026-10-17T12:51:36.343Z"
+    },
+    {
+      "article_id": "4025539",
+      "published": "2026-09-24T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ef18e0f83018817d",
+      "views": 460000,
+      "likes": 440,
+      "checked_at": "2026-10-17T12:51:40.747Z"
+    },
+    {
+      "article_id": "4003592",
+      "published": "2026-09-24T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5cfc329ecf6d14c1",
+      "views": 4800,
+      "likes": null,
+      "checked_at": "2026-10-17T12:51:45.196Z"
+    },
+    {
+      "article_id": "4011982",
+      "published": "2026-09-21T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f6d13baa29efe645",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:51:49.577Z"
+    },
+    {
+      "article_id": "4010582",
+      "published": "2026-09-21T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e98ccf52e6139812",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:51:54.107Z"
+    },
+    {
+      "article_id": "4009880",
+      "published": "2026-09-20T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "62fd13c01f3c2b86",
+      "views": 130000,
+      "likes": 3100,
+      "checked_at": "2026-10-17T12:51:58.643Z"
+    },
+    {
+      "article_id": "4013472",
+      "published": "2026-09-20T11:35:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c587b4e557fc4158",
+      "views": 34000,
+      "likes": 1700,
+      "checked_at": "2026-10-17T12:52:03.166Z"
+    },
+    {
+      "article_id": "4016143",
+      "published": "2026-09-20T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b2f7198f17b8137d",
+      "views": 30000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:52:07.566Z"
+    },
+    {
+      "article_id": "4016090",
+      "published": "2026-09-20T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "edc6a0b430c1aa3d",
+      "views": 1700000,
+      "likes": 30000,
+      "checked_at": "2026-10-17T12:52:11.972Z"
+    },
+    {
+      "article_id": "4011378",
+      "published": "2026-09-19T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "55f0a617882f4f52",
+      "views": 190000,
+      "likes": 2100,
+      "checked_at": "2026-10-17T12:52:16.448Z"
+    },
+    {
+      "article_id": "4008565",
+      "published": "2026-09-19T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1de1b49fb09c081e",
+      "views": 30000,
+      "likes": 1500,
+      "checked_at": "2026-10-17T12:52:21.032Z"
+    },
+    {
+      "article_id": "4013878",
+      "published": "2026-09-19T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "28de3094cb2b11c2",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:52:25.465Z"
+    },
+    {
+      "article_id": "4012305",
+      "published": "2026-09-18T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "15511326212fb26d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:52:29.619Z"
+    },
+    {
+      "article_id": "4005813",
+      "published": "2026-09-18T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2dc5e37fe28612a3",
+      "views": 30000,
+      "likes": 2000,
+      "checked_at": "2026-10-17T12:52:33.829Z"
+    },
+    {
+      "article_id": "4013471",
+      "published": "2026-09-18T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7ffd31f018940aef",
+      "views": 1323000,
+      "likes": 31000,
+      "checked_at": "2026-10-17T12:52:38.360Z"
+    },
+    {
+      "article_id": "4013882",
+      "published": "2026-09-18T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c4213e5312503f07",
+      "views": 870000,
+      "likes": 14000,
+      "checked_at": "2026-10-17T12:52:42.960Z"
+    },
+    {
+      "article_id": "4010663",
+      "published": "2026-09-18T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a750e37829953f4e",
+      "views": 290000,
+      "likes": 7700,
+      "checked_at": "2026-10-17T12:52:47.404Z"
+    },
+    {
+      "article_id": "4003916",
+      "published": "2026-09-17T12:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9f0d5028e18370dc",
+      "views": 320000,
+      "likes": 2000,
+      "checked_at": "2026-10-17T12:52:51.548Z"
+    },
+    {
+      "article_id": "4007649",
+      "published": "2026-09-17T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "536fa110cfacbaf9",
+      "views": 95000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:52:56.052Z"
+    },
+    {
+      "article_id": "4003858",
+      "published": "2026-09-17T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:53:00.605Z"
+    },
+    {
+      "article_id": "4011753",
+      "published": "2026-09-17T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "20d5580ad9e31355",
+      "views": 180000,
+      "likes": 4300,
+      "checked_at": "2026-10-17T12:53:05.290Z"
+    },
+    {
+      "article_id": "3998415",
+      "published": "2026-09-15T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cd42b5294465948c",
+      "views": 180000,
+      "likes": 3000,
+      "checked_at": "2026-10-17T12:53:09.477Z"
+    },
+    {
+      "article_id": "4010423",
+      "published": "2026-09-14T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8dcfe6eea66c1a9b",
+      "views": 1600000,
+      "likes": 14000,
+      "checked_at": "2026-10-17T12:53:13.646Z"
+    },
+    {
+      "article_id": "3991104",
+      "published": "2026-09-14T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "541c043549ba4125",
+      "views": 190000,
+      "likes": 2600,
+      "checked_at": "2026-10-17T12:53:17.801Z"
+    },
+    {
+      "article_id": "3991069",
+      "published": "2026-09-14T00:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "569f5461a289c664",
+      "views": 93000,
+      "likes": 1500,
+      "checked_at": "2026-10-17T12:53:21.963Z"
+    },
+    {
+      "article_id": "3998393",
+      "published": "2026-09-11T12:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8d4b88e2e53fe8af",
+      "views": 230000,
+      "likes": 16000,
+      "checked_at": "2026-10-17T12:53:26.439Z"
+    },
+    {
+      "article_id": "3999412",
+      "published": "2026-09-09T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3f201c5ade8c588c",
+      "views": 360000,
+      "likes": 35000,
+      "checked_at": "2026-10-17T12:53:30.913Z"
+    },
+    {
+      "article_id": "4003697",
+      "published": "2026-09-08T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "62467a2eb516a454",
+      "views": 310000,
+      "likes": 2300,
+      "checked_at": "2026-10-17T12:53:35.067Z"
+    },
+    {
+      "article_id": "3989397",
+      "published": "2026-09-08T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "76be7c29cd450032",
+      "views": 24000,
+      "likes": 2800,
+      "checked_at": "2026-10-17T12:53:39.765Z"
+    },
+    {
+      "article_id": "3989446",
+      "published": "2026-09-07T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c1e04121453099ee",
+      "views": 20000,
+      "likes": 1400,
+      "checked_at": "2026-10-17T12:53:44.288Z"
+    },
+    {
+      "article_id": "3994941",
+      "published": "2026-09-06T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8d7bbc475eaaf5f5",
+      "views": 140000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:53:48.811Z"
+    },
+    {
+      "article_id": "3996721",
+      "published": "2026-09-04T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2a2acae298dcb5f3",
+      "views": 43000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:53:53.348Z"
+    },
+    {
+      "article_id": "3998338",
+      "published": "2026-09-04T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a69fe1195f6f0cc4",
+      "views": 290000,
+      "likes": 28000,
+      "checked_at": "2026-10-17T12:53:57.969Z"
+    },
+    {
+      "article_id": "3994942",
+      "published": "2026-09-03T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "72d8083fe70fd0c4",
+      "views": 660000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:02.426Z"
+    },
+    {
+      "article_id": "3991837",
+      "published": "2026-09-01T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d9e3531d0b133c7c",
+      "views": 270000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:06.788Z"
+    },
+    {
+      "article_id": "3991105",
+      "published": "2026-09-01T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bc7c00f06eedf475",
+      "views": 470000,
+      "likes": 17000,
+      "checked_at": "2026-10-17T12:54:10.945Z"
+    },
+    {
+      "article_id": "3980442",
+      "published": "2026-08-30T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "45a8ecad1b070e16",
+      "views": 23000,
+      "likes": 4200,
+      "checked_at": "2026-10-17T12:54:15.430Z"
+    },
+    {
+      "article_id": "3985258",
+      "published": "2026-08-29T20:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "83e95e729820a8cc",
+      "views": 2300000,
+      "likes": 28000,
+      "checked_at": "2026-10-17T12:54:19.853Z"
+    },
+    {
+      "article_id": "3964474",
+      "published": "2026-08-29T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f3f68e00069326e0",
+      "views": 860000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:24.378Z"
+    },
+    {
+      "article_id": "3968738",
+      "published": "2026-08-29T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c7bda6682eb8a6c8",
+      "views": 600000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T12:54:28.869Z"
+    },
+    {
+      "article_id": "3985253",
+      "published": "2026-08-28T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "529001d21fb815c0",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:33.433Z"
+    },
+    {
+      "article_id": "3901918",
+      "published": "2026-08-27T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f2456d48b1f344a3",
+      "views": 11000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:37.817Z"
+    },
+    {
+      "article_id": "3944072",
+      "published": "2026-08-22T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e18ce433e4482550",
+      "views": 960000,
+      "likes": 16000,
+      "checked_at": "2026-10-17T12:54:42.258Z"
+    },
+    {
+      "article_id": "3907814",
+      "published": "2026-08-21T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3620e69cb072bdc7",
+      "views": 20000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:54:46.825Z"
+    },
+    {
+      "article_id": "3937426",
+      "published": "2026-08-19T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "72a0fbb87697591e",
+      "views": 120000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:54:51.421Z"
+    },
+    {
+      "article_id": "3951078",
+      "published": "2026-08-18T02:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0a0116fb002fd465",
+      "views": 230000,
+      "likes": 6100,
+      "checked_at": "2026-10-17T12:54:56.108Z"
+    },
+    {
+      "article_id": "3905173",
+      "published": "2026-08-14T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9f86ce7dc636c6c2",
+      "views": 100000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:00.321Z"
+    },
+    {
+      "article_id": "3965132",
+      "published": "2026-08-13T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0fc3e012fef8d2c3",
+      "views": null,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:55:04.798Z"
+    },
+    {
+      "article_id": "3902300",
+      "published": "2026-08-08T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e332e53821cdb568",
+      "views": 690000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:08.965Z"
+    },
+    {
+      "article_id": "3884907",
+      "published": "2026-08-07T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ca3fe95619d6066b",
+      "views": 46000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:13.129Z"
+    },
+    {
+      "article_id": "3896360",
+      "published": "2026-08-06T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c1fdd8feeb8c8a3e",
+      "views": 52000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:17.672Z"
+    },
+    {
+      "article_id": "3865438",
+      "published": "2026-08-06T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ad7b6c0b67806a3b",
+      "views": null,
+      "likes": 15000,
+      "checked_at": "2026-10-17T12:55:22.216Z"
+    },
+    {
+      "article_id": "3872312",
+      "published": "2026-08-05T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d751ae79efc97048",
+      "views": 520000,
+      "likes": 50000,
+      "checked_at": "2026-10-17T12:55:26.680Z"
+    },
+    {
+      "article_id": "3864195",
+      "published": "2026-08-01T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3041d7fb14c923a0",
+      "views": 260000,
+      "likes": 33000,
+      "checked_at": "2026-10-17T12:55:31.195Z"
+    },
+    {
+      "article_id": "3956813",
+      "published": "2026-08-01T08:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7f1966a72d86d84b",
+      "views": 80000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:35.723Z"
+    },
+    {
+      "article_id": "3946507",
+      "published": "2026-07-30T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fa988cdc4a99c60a",
+      "views": 93000,
+      "likes": 4600,
+      "checked_at": "2026-10-17T12:55:40.275Z"
+    },
+    {
+      "article_id": "3949358",
+      "published": "2026-07-29T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "31fd7db97a18efb6",
+      "views": 2500000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:44.457Z"
+    },
+    {
+      "article_id": "3948753",
+      "published": "2026-07-28T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cf722f7d093a5713",
+      "views": 480000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:48.882Z"
+    },
+    {
+      "article_id": "3892152",
+      "published": "2026-07-26T11:35:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "09c3c69e1892efed",
+      "views": 540000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:53.411Z"
+    },
+    {
+      "article_id": "3937781",
+      "published": "2026-07-26T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:55:57.790Z"
+    },
+    {
+      "article_id": "3901929",
+      "published": "2026-07-25T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "282f7dc6a9f8dbc0",
+      "views": 610000,
+      "likes": 31000,
+      "checked_at": "2026-10-17T12:56:02.331Z"
+    },
+    {
+      "article_id": "3938831",
+      "published": "2026-07-23T10:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4be6fe179293849a",
+      "views": 120000,
+      "likes": 14000,
+      "checked_at": "2026-10-17T12:56:07.435Z"
+    },
+    {
+      "article_id": "3904995",
+      "published": "2026-07-21T07:20:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8784b46a8d9bd970",
+      "views": 38000,
+      "likes": 1400,
+      "checked_at": "2026-10-17T12:56:11.993Z"
+    },
+    {
+      "article_id": "3912597",
+      "published": "2026-07-18T08:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b99d6c5f4f9504cb",
+      "views": 10000,
+      "likes": 2400,
+      "checked_at": "2026-10-17T12:56:16.506Z"
+    },
+    {
+      "article_id": "3900904",
+      "published": "2026-07-12T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b291ba8dc22edfe8",
+      "views": 1800000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:56:20.994Z"
+    },
+    {
+      "article_id": "3881553",
+      "published": "2026-07-09T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6cc4874b7af414cb",
+      "views": 20000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T12:56:25.384Z"
+    },
+    {
+      "article_id": "3881526",
+      "published": "2026-07-08T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3b11c2f2f833ddcb",
+      "views": 77000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:56:29.776Z"
+    },
+    {
+      "article_id": "3867562",
+      "published": "2026-07-06T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "22c531ce0dc9b271",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:56:34.113Z"
+    },
+    {
+      "article_id": "3880296",
+      "published": "2026-07-03T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cab60f8dee47d946",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:56:38.289Z"
+    },
+    {
+      "article_id": "3883164",
+      "published": "2026-06-28T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0e39dd290de5a4e9",
+      "views": null,
+      "likes": 14000,
+      "checked_at": "2026-10-17T12:56:42.928Z"
+    },
+    {
+      "article_id": "3884331",
+      "published": "2026-06-27T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "64b0e212f6e60385",
+      "views": 970000,
+      "likes": 40000,
+      "checked_at": "2026-10-17T12:56:47.620Z"
+    },
+    {
+      "article_id": "3884142",
+      "published": "2026-06-26T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fe89880217c800c1",
+      "views": 190000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:56:51.779Z"
+    },
+    {
+      "article_id": "3876922",
+      "published": "2026-06-24T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "387e78b5b68b07d1",
+      "views": 240000,
+      "likes": 15000,
+      "checked_at": "2026-10-17T12:56:56.214Z"
+    },
+    {
+      "article_id": "3878928",
+      "published": "2026-06-23T07:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0741065aef5d9da9",
+      "views": 660000,
+      "likes": 1700,
+      "checked_at": "2026-10-17T12:57:00.785Z"
+    },
+    {
+      "article_id": "3873729",
+      "published": "2026-06-22T22:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3ab191e140d285f9",
+      "views": 320000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:57:05.330Z"
+    },
+    {
+      "article_id": "3881088",
+      "published": "2026-06-22T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5ae135eee431580e",
+      "views": 100000,
+      "likes": 8800,
+      "checked_at": "2026-10-17T12:57:09.840Z"
+    },
+    {
+      "article_id": "3877958",
+      "published": "2026-06-22T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "132d9915d2986211",
+      "views": 480000,
+      "likes": 6700,
+      "checked_at": "2026-10-17T12:57:14.372Z"
+    },
+    {
+      "article_id": "3860991",
+      "published": "2026-06-22T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d9fa22858c118bc1",
+      "views": 47000,
+      "likes": 2100,
+      "checked_at": "2026-10-17T12:57:18.813Z"
+    },
+    {
+      "article_id": "3875552",
+      "published": "2026-06-21T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "526f51e26d2ded36",
+      "views": 520000,
+      "likes": 50000,
+      "checked_at": "2026-10-17T12:57:23.398Z"
+    },
+    {
+      "article_id": "3790089",
+      "published": "2026-06-19T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f08ae1b341273707",
+      "views": null,
+      "likes": 8400,
+      "checked_at": "2026-10-17T12:57:27.550Z"
+    },
+    {
+      "article_id": "3865368",
+      "published": "2026-06-19T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "137f0b19710f103f",
+      "views": 2600000,
+      "likes": 43000,
+      "checked_at": "2026-10-17T12:57:32.077Z"
+    },
+    {
+      "article_id": "3878910",
+      "published": "2026-06-19T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e7bc7e7940d1a855",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:57:36.585Z"
+    },
+    {
+      "article_id": "3848340",
+      "published": "2026-06-18T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4f8da3c9ce93eedd",
+      "views": 1300000,
+      "likes": 59000,
+      "checked_at": "2026-10-17T12:57:41.153Z"
+    },
+    {
+      "article_id": "3870163",
+      "published": "2026-06-18T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4209ddba42e78421",
+      "views": 1300000,
+      "likes": 44000,
+      "checked_at": "2026-10-17T12:57:45.676Z"
+    },
+    {
+      "article_id": "3856996",
+      "published": "2026-06-18T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2e98ac175f27658e",
+      "views": null,
+      "likes": 61000,
+      "checked_at": "2026-10-17T12:57:50.206Z"
+    },
+    {
+      "article_id": "3846646",
+      "published": "2026-06-17T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c2ca639be20c342f",
+      "views": 78000,
+      "likes": 9800,
+      "checked_at": "2026-10-17T12:57:54.627Z"
+    },
+    {
+      "article_id": "3868631",
+      "published": "2026-06-16T10:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cc07c141f150a372",
+      "views": 1360000,
+      "likes": 82000,
+      "checked_at": "2026-10-17T12:57:58.842Z"
+    },
+    {
+      "article_id": "3869400",
+      "published": "2026-06-16T09:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bee21261e789ba94",
+      "views": 120000,
+      "likes": 3400,
+      "checked_at": "2026-10-17T12:58:03.328Z"
+    },
+    {
+      "article_id": "3857218",
+      "published": "2026-06-16T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4d2901402d08ce3c",
+      "views": null,
+      "likes": 3500,
+      "checked_at": "2026-10-17T12:58:07.939Z"
+    },
+    {
+      "article_id": "3862489",
+      "published": "2026-06-16T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b9d76016b5a4eb1c",
+      "views": 110000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:58:12.105Z"
+    },
+    {
+      "article_id": "3865650",
+      "published": "2026-06-13T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1b2c621fc6435e8f",
+      "views": 3800,
+      "likes": 400,
+      "checked_at": "2026-10-17T12:58:16.545Z"
+    },
+    {
+      "article_id": "3860199",
+      "published": "2026-06-13T09:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ebd53387ad41017e",
+      "views": 28000,
+      "likes": 1400,
+      "checked_at": "2026-10-17T12:58:21.088Z"
+    },
+    {
+      "article_id": "3865739",
+      "published": "2026-06-12T20:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a18d8d36128d5f48",
+      "views": 39000,
+      "likes": 3500,
+      "checked_at": "2026-10-17T12:58:25.487Z"
+    },
+    {
+      "article_id": "3871632",
+      "published": "2026-06-11T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9873cd1345bd391d",
+      "views": 270000,
+      "likes": 15000,
+      "checked_at": "2026-10-17T12:58:30.064Z"
+    },
+    {
+      "article_id": "3861719",
+      "published": "2026-06-10T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "14bc0b15852f7ea1",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:58:34.662Z"
+    },
+    {
+      "article_id": "3851932",
+      "published": "2026-06-09T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "df5886bcf2868e07",
+      "views": 860000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:58:39.232Z"
+    },
+    {
+      "article_id": "3868970",
+      "published": "2026-06-09T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bf90de221a19967a",
+      "views": 30000,
+      "likes": 200,
+      "checked_at": "2026-10-17T12:58:43.659Z"
+    },
+    {
+      "article_id": "3863568",
+      "published": "2026-06-07T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4c9589eff79fbead",
+      "views": 4000,
+      "likes": 470,
+      "checked_at": "2026-10-17T12:58:48.073Z"
+    },
+    {
+      "article_id": "3849939",
+      "published": "2026-06-07T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1f8b833ce02d6302",
+      "views": 10000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:58:52.624Z"
+    },
+    {
+      "article_id": "3835561",
+      "published": "2026-06-06T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c326ade5d1a445b2",
+      "views": 40000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T12:58:57.208Z"
+    },
+    {
+      "article_id": "3850213",
+      "published": "2026-06-05T07:20:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dabb4a09743b03f0",
+      "views": 8000,
+      "likes": 600,
+      "checked_at": "2026-10-17T12:59:01.822Z"
+    },
+    {
+      "article_id": "3854081",
+      "published": "2026-06-04T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "37f7cdf82394db7f",
+      "views": 420000,
+      "likes": 7000,
+      "checked_at": "2026-10-17T12:59:05.981Z"
+    },
+    {
+      "article_id": "3853709",
+      "published": "2026-06-03T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7aea69cfd203de8d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T12:59:10.446Z"
+    },
+    {
+      "article_id": "3850963",
+      "published": "2026-06-03T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2961ecceed91bb64",
+      "views": 100000,
+      "likes": 6800,
+      "checked_at": "2026-10-17T12:59:14.847Z"
+    },
+    {
+      "article_id": "3828248",
+      "published": "2026-06-03T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "43a773308dd3740b",
+      "views": 2000000,
+      "likes": 19000,
+      "checked_at": "2026-10-17T12:59:19.375Z"
+    },
+    {
+      "article_id": "3856867",
+      "published": "2026-06-02T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8f296c04dfe2a40a",
+      "views": 250000,
+      "likes": 600,
+      "checked_at": "2026-10-17T12:59:23.555Z"
+    },
+    {
+      "article_id": "3854866",
+      "published": "2026-06-02T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4214e65f074ee494",
+      "views": 40000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T12:59:28.124Z"
+    },
+    {
+      "article_id": "3851496",
+      "published": "2026-05-31T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "36a3e014fe14f718",
+      "views": 50000,
+      "likes": 7400,
+      "checked_at": "2026-10-17T12:59:32.675Z"
+    },
+    {
+      "article_id": "3817714",
+      "published": "2026-05-30T19:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "459bac40cec96327",
+      "views": null,
+      "likes": 5000,
+      "checked_at": "2026-10-17T12:59:37.214Z"
+    },
+    {
+      "article_id": "3845997",
+      "published": "2026-05-28T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "aa1fdd05fbf98fcb",
+      "views": 10000,
+      "likes": 700,
+      "checked_at": "2026-10-17T12:59:41.823Z"
+    },
+    {
+      "article_id": "3836004",
+      "published": "2026-05-24T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8fb1a04fb54bf10b",
+      "views": 24000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:59:46.240Z"
+    },
+    {
+      "article_id": "3835760",
+      "published": "2026-05-22T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "651575c03312ffb8",
+      "views": 17000,
+      "likes": null,
+      "checked_at": "2026-10-17T12:59:50.758Z"
+    },
+    {
+      "article_id": "3837636",
+      "published": "2026-05-22T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "14e0e5c06e249ece",
+      "views": 740000,
+      "likes": 12000,
+      "checked_at": "2026-10-17T12:59:55.259Z"
+    },
+    {
+      "article_id": "3842225",
+      "published": "2026-05-22T07:20:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "55a7a3a3feed0823",
+      "views": 2140000,
+      "likes": 50000,
+      "checked_at": "2026-10-17T12:59:59.754Z"
+    },
+    {
+      "article_id": "3836906",
+      "published": "2026-05-21T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8426bec4cce7efb7",
+      "views": 550000,
+      "likes": 6700,
+      "checked_at": "2026-10-17T13:00:04.259Z"
+    },
+    {
+      "article_id": "3831519",
+      "published": "2026-05-20T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5af38bbecf50ba2f",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:00:08.418Z"
+    },
+    {
+      "article_id": "3828246",
+      "published": "2026-05-19T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4b492fdad0490811",
+      "views": 90000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:00:12.798Z"
+    },
+    {
+      "article_id": "3831574",
+      "published": "2026-05-19T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "71adee0c8ca06b53",
+      "views": 520000,
+      "likes": 23000,
+      "checked_at": "2026-10-17T13:00:16.945Z"
+    },
+    {
+      "article_id": "3831499",
+      "published": "2026-05-18T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fc633babe15ebb7a",
+      "views": 200000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:00:21.484Z"
+    },
+    {
+      "article_id": "3826567",
+      "published": "2026-05-17T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4a5e89bb032afc99",
+      "views": 2800000,
+      "likes": 63000,
+      "checked_at": "2026-10-17T13:00:25.644Z"
+    },
+    {
+      "article_id": "3811540",
+      "published": "2026-05-14T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f57bbd0ac77edeec",
+      "views": 17000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T13:00:30.212Z"
+    },
+    {
+      "article_id": "3831985",
+      "published": "2026-05-12T07:20:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "91aaf647a9ee117c",
+      "views": 44000,
+      "likes": 1000,
+      "checked_at": "2026-10-17T13:00:34.636Z"
+    },
+    {
+      "article_id": "3791965",
+      "published": "2026-05-10T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5e4c03b85b6db8f2",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:00:38.821Z"
+    },
+    {
+      "article_id": "3826127",
+      "published": "2026-05-07T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6b21c279f0154a9b",
+      "views": 130000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:00:42.950Z"
+    },
+    {
+      "article_id": "3806474",
+      "published": "2026-04-29T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1c8ee35e4070f5b6",
+      "views": null,
+      "likes": 800,
+      "checked_at": "2026-10-17T13:00:47.403Z"
+    },
+    {
+      "article_id": "3815014",
+      "published": "2026-04-28T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2b8b54ea1fda37dd",
+      "views": 20000,
+      "likes": 4000,
+      "checked_at": "2026-10-17T13:00:51.907Z"
+    },
+    {
+      "article_id": "3824248",
+      "published": "2026-04-28T08:10:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "05d57fbdd1ca8a84",
+      "views": 120000,
+      "likes": 7000000,
+      "checked_at": "2026-10-17T13:00:56.448Z"
+    },
+    {
+      "article_id": "3821323",
+      "published": "2026-04-28T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ccf96ef6af6fabc5",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:01:00.822Z"
+    },
+    {
+      "article_id": "3812434",
+      "published": "2026-04-25T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "625c4c2409087283",
+      "views": 700000,
+      "likes": 32000,
+      "checked_at": "2026-10-17T13:01:05.243Z"
+    },
+    {
+      "article_id": "3807807",
+      "published": "2026-04-24T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2d776ecb72fb57c9",
+      "views": 60000,
+      "likes": 200,
+      "checked_at": "2026-10-17T13:01:09.735Z"
+    },
+    {
+      "article_id": "3813891",
+      "published": "2026-04-23T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a3b335d7966eb876",
+      "views": 420000,
+      "likes": 40000,
+      "checked_at": "2026-10-17T13:01:14.200Z"
+    },
+    {
+      "article_id": "3797889",
+      "published": "2026-04-23T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "97d3bfdb892d7f43",
+      "views": 69000,
+      "likes": 3600,
+      "checked_at": "2026-10-17T13:01:18.565Z"
+    },
+    {
+      "article_id": "3794897",
+      "published": "2026-04-21T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ed023e1ed731aab6",
+      "views": 200000,
+      "likes": 1100,
+      "checked_at": "2026-10-17T13:01:22.730Z"
+    },
+    {
+      "article_id": "3809247",
+      "published": "2026-04-21T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a5a533f83d74576c",
+      "views": 230000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:01:27.182Z"
+    },
+    {
+      "article_id": "3803889",
+      "published": "2026-04-19T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c268c5a374caa3f3",
+      "views": 360000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:01:31.659Z"
+    },
+    {
+      "article_id": "3805889",
+      "published": "2026-04-17T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "eb10fedcd6e974d9",
+      "views": 40000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:01:35.822Z"
+    },
+    {
+      "article_id": "3801227",
+      "published": "2026-04-14T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1597b9a0944aefb5",
+      "views": 280000,
+      "likes": 3000,
+      "checked_at": "2026-10-17T13:01:40.259Z"
+    },
+    {
+      "article_id": "3801514",
+      "published": "2026-04-09T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f24ef3a99f2234ec",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:01:44.722Z"
+    },
+    {
+      "article_id": "3788997",
+      "published": "2026-04-09T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4a5efedd8ef3027d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:01:48.937Z"
+    },
+    {
+      "article_id": "3801579",
+      "published": "2026-04-09T19:08:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "80dd05e5e3e79a51",
+      "views": 35000,
+      "likes": 280,
+      "checked_at": "2026-10-17T13:01:53.438Z"
+    },
+    {
+      "article_id": "3776922",
+      "published": "2026-04-08T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3c184eb1a3c9e7d5",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:01:57.826Z"
+    },
+    {
+      "article_id": "3795396",
+      "published": "2026-04-08T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d5281a00b207fa5d",
+      "views": 60000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:02:02.221Z"
+    },
+    {
+      "article_id": "3793566",
+      "published": "2026-04-07T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f6de3407b51ad5ca",
+      "views": 630000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T13:02:06.688Z"
+    },
+    {
+      "article_id": "3770828",
+      "published": "2026-04-05T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ec29403177b8da49",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:11.077Z"
+    },
+    {
+      "article_id": "3787437",
+      "published": "2026-04-04T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "755add0cadb237c8",
+      "views": 240000,
+      "likes": 18000,
+      "checked_at": "2026-10-17T13:02:15.590Z"
+    },
+    {
+      "article_id": "3788573",
+      "published": "2026-04-03T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cf5631d0e612606d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:20.120Z"
+    },
+    {
+      "article_id": "3779636",
+      "published": "2026-04-01T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a8c64b93f1ab9f24",
+      "views": 1400000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:24.629Z"
+    },
+    {
+      "article_id": "3777960",
+      "published": "2026-03-30T19:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8be9bb296a811d93",
+      "views": 170000,
+      "likes": 5900,
+      "checked_at": "2026-10-17T13:02:29.028Z"
+    },
+    {
+      "article_id": "3776774",
+      "published": "2026-03-30T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5903b31646bdbc66",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:33.196Z"
+    },
+    {
+      "article_id": "3776824",
+      "published": "2026-03-29T20:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "67d4a254f84d4a9d",
+      "views": 100000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:02:37.679Z"
+    },
+    {
+      "article_id": "3776225",
+      "published": "2026-03-29T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "abfded8ea052c429",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:42.249Z"
+    },
+    {
+      "article_id": "3780481",
+      "published": "2026-03-28T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "aa815b814b179ce9",
+      "views": 500000,
+      "likes": 60000,
+      "checked_at": "2026-10-17T13:02:46.841Z"
+    },
+    {
+      "article_id": "3774725",
+      "published": "2026-03-28T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "96adba667b3dbc62",
+      "views": 160000,
+      "likes": 13000,
+      "checked_at": "2026-10-17T13:02:51.454Z"
+    },
+    {
+      "article_id": "3776388",
+      "published": "2026-03-28T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fdbd753ef32925bd",
+      "views": 100000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:02:56.061Z"
+    },
+    {
+      "article_id": "3777066",
+      "published": "2026-03-28T07:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bb046c7af17736c7",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:00.480Z"
+    },
+    {
+      "article_id": "3774255",
+      "published": "2026-03-27T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6d118ae5a06a38a1",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:04.906Z"
+    },
+    {
+      "article_id": "3776021",
+      "published": "2026-03-26T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9fc7896d991298a2",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:09.310Z"
+    },
+    {
+      "article_id": "3776635",
+      "published": "2026-03-26T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d3c1d675bfe5d17e",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:13.701Z"
+    },
+    {
+      "article_id": "3779288",
+      "published": "2026-03-25T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "06151de79a88a3cf",
+      "views": 250000,
+      "likes": 12000,
+      "checked_at": "2026-10-17T13:03:18.090Z"
+    },
+    {
+      "article_id": "3771615",
+      "published": "2026-03-23T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "505aebccc4ebf8f9",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:22.303Z"
+    },
+    {
+      "article_id": "3766785",
+      "published": "2026-03-22T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "203553d4b24ec8e7",
+      "views": 260000,
+      "likes": 8900,
+      "checked_at": "2026-10-17T13:03:26.479Z"
+    },
+    {
+      "article_id": "3765242",
+      "published": "2026-03-17T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "752fbde9514acff7",
+      "views": 450000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:30.628Z"
+    },
+    {
+      "article_id": "3766509",
+      "published": "2026-03-16T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": 430000,
+      "likes": 8000,
+      "checked_at": "2026-10-17T13:03:35.056Z"
+    },
+    {
+      "article_id": "3747828",
+      "published": "2026-03-15T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0ec007e6599c4b44",
+      "views": 90000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:39.562Z"
+    },
+    {
+      "article_id": "3759656",
+      "published": "2026-03-15T08:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ef5189560fb5de7e",
+      "views": 42000,
+      "likes": 5000,
+      "checked_at": "2026-10-17T13:03:44.102Z"
+    },
+    {
+      "article_id": "3755866",
+      "published": "2026-03-15T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0d3b4d50bf609e40",
+      "views": 5800,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:48.437Z"
+    },
+    {
+      "article_id": "3764988",
+      "published": "2026-03-14T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c4591905e0007599",
+      "views": 150000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T13:03:53.094Z"
+    },
+    {
+      "article_id": "3760845",
+      "published": "2026-03-14T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b1088b9a0b0aa156",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:03:57.526Z"
+    },
+    {
+      "article_id": "3764841",
+      "published": "2026-03-13T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "126270a31db9e9d3",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:02.069Z"
+    },
+    {
+      "article_id": "3760892",
+      "published": "2026-03-12T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bf9387c61b3f639d",
+      "views": 220000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:06.801Z"
+    },
+    {
+      "article_id": "3760125",
+      "published": "2026-03-11T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2630ce1ad2725b6b",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:11.206Z"
+    },
+    {
+      "article_id": "3758711",
+      "published": "2026-03-11T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "019327261266208d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:15.574Z"
+    },
+    {
+      "article_id": "3757828",
+      "published": "2026-03-10T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3a0100aac8618d44",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:19.944Z"
+    },
+    {
+      "article_id": "3756227",
+      "published": "2026-03-09T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3a1ca3b3513f83e1",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:24.156Z"
+    },
+    {
+      "article_id": "3756136",
+      "published": "2026-03-08T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "52fa0f699b92837d",
+      "views": 1300000,
+      "likes": 2900,
+      "checked_at": "2026-10-17T13:04:28.875Z"
+    },
+    {
+      "article_id": "3756798",
+      "published": "2026-03-08T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3ca15d39f02239b3",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:33.426Z"
+    },
+    {
+      "article_id": "3755069",
+      "published": "2026-03-07T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e51d735517f18762",
+      "views": null,
+      "likes": 60000,
+      "checked_at": "2026-10-17T13:04:37.818Z"
+    },
+    {
+      "article_id": "3747324",
+      "published": "2026-03-07T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1b8ae35075f65ca5",
+      "views": 730000,
+      "likes": 8100,
+      "checked_at": "2026-10-17T13:04:42.237Z"
+    },
+    {
+      "article_id": "3755434",
+      "published": "2026-03-06T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "aac6786beca78a8c",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:46.629Z"
+    },
+    {
+      "article_id": "3745568",
+      "published": "2026-03-06T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b836fb0eecfff180",
+      "views": 8000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:51.034Z"
+    },
+    {
+      "article_id": "3752746",
+      "published": "2026-03-04T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1836af15ecc7146b",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:04:55.603Z"
+    },
+    {
+      "article_id": "3743549",
+      "published": "2026-03-03T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0fd7cb74d62654ee",
+      "views": 300000,
+      "likes": 4200,
+      "checked_at": "2026-10-17T13:05:00.060Z"
+    },
+    {
+      "article_id": "3744337",
+      "published": "2026-03-03T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "102d06e9af3cc61e",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:04.476Z"
+    },
+    {
+      "article_id": "3747323",
+      "published": "2026-03-03T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "479c618e5611b300",
+      "views": 310000,
+      "likes": 4000,
+      "checked_at": "2026-10-17T13:05:08.968Z"
+    },
+    {
+      "article_id": "3748920",
+      "published": "2026-03-02T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "72a1c8f56f7ddb17",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:13.401Z"
+    },
+    {
+      "article_id": "3734627",
+      "published": "2026-03-02T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "10e24007533dcc08",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:17.983Z"
+    },
+    {
+      "article_id": "3744405",
+      "published": "2026-03-02T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dc0b5e4bc01b7fb6",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:22.498Z"
+    },
+    {
+      "article_id": "3742785",
+      "published": "2026-03-01T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "70d62103215234b9",
+      "views": 42000,
+      "likes": 1100,
+      "checked_at": "2026-10-17T13:05:26.870Z"
+    },
+    {
+      "article_id": "3746228",
+      "published": "2026-03-01T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5e7261c55a56b904",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:31.032Z"
+    },
+    {
+      "article_id": "3740169",
+      "published": "2026-02-28T11:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a8b6ec2db08e5e42",
+      "views": 60000,
+      "likes": 1200,
+      "checked_at": "2026-10-17T13:05:35.493Z"
+    },
+    {
+      "article_id": "3740858",
+      "published": "2026-02-27T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "387d671197cf76ff",
+      "views": 300000,
+      "likes": 3000,
+      "checked_at": "2026-10-17T13:05:40.058Z"
+    },
+    {
+      "article_id": "3738925",
+      "published": "2026-02-27T08:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3271b20b681f5103",
+      "views": 80000,
+      "likes": 1700,
+      "checked_at": "2026-10-17T13:05:44.443Z"
+    },
+    {
+      "article_id": "3730851",
+      "published": "2026-02-27T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2d87c7186f457461",
+      "views": 13000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:48.893Z"
+    },
+    {
+      "article_id": "3735806",
+      "published": "2026-02-23T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5a5d6a483f0370a9",
+      "views": 880000,
+      "likes": 13000,
+      "checked_at": "2026-10-17T13:05:53.319Z"
+    },
+    {
+      "article_id": "3740863",
+      "published": "2026-02-23T12:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "caa2bd28880fe296",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:05:57.837Z"
+    },
+    {
+      "article_id": "3741024",
+      "published": "2026-02-23T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "082305dc548b33c6",
+      "views": 700000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:06:02.253Z"
+    },
+    {
+      "article_id": "3737402",
+      "published": "2026-02-22T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0b0301350392c08c",
+      "views": 40000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:06:06.787Z"
+    },
+    {
+      "article_id": "3737970",
+      "published": "2026-02-22T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7807dfbb56050cdc",
+      "views": 900000,
+      "likes": 34000,
+      "checked_at": "2026-10-17T13:06:11.216Z"
+    },
+    {
+      "article_id": "3723779",
+      "published": "2026-02-21T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "38d545352980ef99",
+      "views": 98000,
+      "likes": 4200,
+      "checked_at": "2026-10-17T13:06:15.693Z"
+    },
+    {
+      "article_id": "3733501",
+      "published": "2026-02-21T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a5f0e2448c3d9375",
+      "views": 120000,
+      "likes": 3300,
+      "checked_at": "2026-10-17T13:06:20.092Z"
+    },
+    {
+      "article_id": "3733521",
+      "published": "2026-02-20T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c72a1b0c513c1a1b",
+      "views": 78000,
+      "likes": 11000,
+      "checked_at": "2026-10-17T13:06:24.573Z"
+    },
+    {
+      "article_id": "3732831",
+      "published": "2026-02-19T21:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2af6284d54b670d6",
+      "views": 140000,
+      "likes": 6870,
+      "checked_at": "2026-10-17T13:06:28.734Z"
+    },
+    {
+      "article_id": "3726553",
+      "published": "2026-02-19T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fac1e7c44d69783e",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:06:33.095Z"
+    },
+    {
+      "article_id": "3730257",
+      "published": "2026-02-19T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2eaae061ea163871",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:06:37.275Z"
+    },
+    {
+      "article_id": "3728629",
+      "published": "2026-02-17T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "02479cc3d7e29a09",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:06:41.822Z"
+    },
+    {
+      "article_id": "3730009",
+      "published": "2026-02-17T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0ebc86f5980e1445",
+      "views": 310000,
+      "likes": 2900,
+      "checked_at": "2026-10-17T13:06:46.320Z"
+    },
+    {
+      "article_id": "3707979",
+      "published": "2026-02-16T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1879cd86a03d3766",
+      "views": 260000,
+      "likes": 3300,
+      "checked_at": "2026-10-17T13:06:50.858Z"
+    },
+    {
+      "article_id": "3702188",
+      "published": "2026-02-15T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ceaf061b9e3adf35",
+      "views": 1040000,
+      "likes": 44000,
+      "checked_at": "2026-10-17T13:06:55.078Z"
+    },
+    {
+      "article_id": "3709096",
+      "published": "2026-02-12T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ea9c3807870040ae",
+      "views": 1270000,
+      "likes": 72000,
+      "checked_at": "2026-10-17T13:06:59.289Z"
+    },
+    {
+      "article_id": "3728263",
+      "published": "2026-02-11T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b23068da8b68ead4",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:03.904Z"
+    },
+    {
+      "article_id": "3724728",
+      "published": "2026-02-10T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "19abbe464bb1ff6d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:08.295Z"
+    },
+    {
+      "article_id": "3707531",
+      "published": "2026-02-09T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0d27f8b981c56a1e",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:12.664Z"
+    },
+    {
+      "article_id": "3702191",
+      "published": "2026-02-08T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dc538e5903db1a0f",
+      "views": 93000,
+      "likes": 2500,
+      "checked_at": "2026-10-17T13:07:17.146Z"
+    },
+    {
+      "article_id": "3717539",
+      "published": "2026-02-08T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5adfa535aac8130d",
+      "views": 200000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:21.633Z"
+    },
+    {
+      "article_id": "3704495",
+      "published": "2026-02-07T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "81add73738c23b28",
+      "views": 200000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:26.010Z"
+    },
+    {
+      "article_id": "3720937",
+      "published": "2026-02-07T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4d2bb3badefabc2b",
+      "views": 1300000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T13:07:30.382Z"
+    },
+    {
+      "article_id": "3714584",
+      "published": "2026-02-06T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ed2070242ea7e216",
+      "views": 120000,
+      "likes": 4500,
+      "checked_at": "2026-10-17T13:07:34.992Z"
+    },
+    {
+      "article_id": "3703082",
+      "published": "2026-02-05T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5c6bb3f6ad075e9d",
+      "views": 210000,
+      "likes": 4600,
+      "checked_at": "2026-10-17T13:07:39.517Z"
+    },
+    {
+      "article_id": "3704490",
+      "published": "2026-02-05T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5564979ab60764e8",
+      "views": 1490000,
+      "likes": 12000,
+      "checked_at": "2026-10-17T13:07:44.108Z"
+    },
+    {
+      "article_id": "3705178",
+      "published": "2026-02-05T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "224638b6cedda14d",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:48.618Z"
+    },
+    {
+      "article_id": "3715743",
+      "published": "2026-02-04T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "11e55bc46d167124",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:53.155Z"
+    },
+    {
+      "article_id": "3721694",
+      "published": "2026-02-04T16:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2a583efcbfa90013",
+      "views": 25000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:07:57.611Z"
+    },
+    {
+      "article_id": "3708021",
+      "published": "2026-02-03T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "77c0cf0de43c05a0",
+      "views": 21000,
+      "likes": 3000,
+      "checked_at": "2026-10-17T13:08:02.152Z"
+    },
+    {
+      "article_id": "3706252",
+      "published": "2026-02-03T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "eef8dda32171ea56",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:06.298Z"
+    },
+    {
+      "article_id": "3707468",
+      "published": "2026-02-02T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6bbd945a38096630",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:10.808Z"
+    },
+    {
+      "article_id": "3711487",
+      "published": "2026-02-01T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d839ba390ff59c37",
+      "views": 640000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:15.220Z"
+    },
+    {
+      "article_id": "3707749",
+      "published": "2026-02-01T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4655a4fedc74f3b1",
+      "views": null,
+      "likes": 4500,
+      "checked_at": "2026-10-17T13:08:19.729Z"
+    },
+    {
+      "article_id": "3705309",
+      "published": "2026-01-31T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "15c30b13d794f3eb",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:24.251Z"
+    },
+    {
+      "article_id": "3705978",
+      "published": "2026-01-31T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5749650b084aa4ec",
+      "views": 100000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T13:08:28.615Z"
+    },
+    {
+      "article_id": "3706202",
+      "published": "2026-01-30T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b573c8615b61a446",
+      "views": 120000,
+      "likes": 17000,
+      "checked_at": "2026-10-17T13:08:32.970Z"
+    },
+    {
+      "article_id": "3709263",
+      "published": "2026-01-30T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "6931ca895e073c2c",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:37.370Z"
+    },
+    {
+      "article_id": "3707252",
+      "published": "2026-01-29T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "eff9c83458aa29e3",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:41.916Z"
+    },
+    {
+      "article_id": "3709892",
+      "published": "2026-01-29T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f8a0750c7c2578dd",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:46.331Z"
+    },
+    {
+      "article_id": "3707816",
+      "published": "2026-01-29T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3f95b67d910b6693",
+      "views": null,
+      "likes": 7200,
+      "checked_at": "2026-10-17T13:08:50.719Z"
+    },
+    {
+      "article_id": "3705095",
+      "published": "2026-01-27T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9f5a50902810b135",
+      "views": null,
+      "likes": 8000,
+      "checked_at": "2026-10-17T13:08:54.877Z"
+    },
+    {
+      "article_id": "3700920",
+      "published": "2026-01-27T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "53420037c81b23af",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:08:59.208Z"
+    },
+    {
+      "article_id": "3705105",
+      "published": "2026-01-27T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9adf23cdc33cd3d1",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:09:03.663Z"
+    },
+    {
+      "article_id": "3702190",
+      "published": "2026-01-26T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": 200000,
+      "likes": 11000,
+      "checked_at": "2026-10-17T13:09:08.017Z"
+    },
+    {
+      "article_id": "3704323",
+      "published": "2026-01-26T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2dd488e7870c0623",
+      "views": 420000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:09:12.378Z"
+    },
+    {
+      "article_id": "3691546",
+      "published": "2026-01-26T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ea260cf132d90d78",
+      "views": 170000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T13:09:16.547Z"
+    },
+    {
+      "article_id": "3698069",
+      "published": "2026-01-25T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c6e9a5dd7d6a1775",
+      "views": 29000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:09:21.097Z"
+    },
+    {
+      "article_id": "3702461",
+      "published": "2026-01-25T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d9746572b2a341bf",
+      "views": null,
+      "likes": 110000,
+      "checked_at": "2026-10-17T13:09:25.605Z"
+    },
+    {
+      "article_id": "3705624",
+      "published": "2026-01-24T07:45:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3b8584e6e43b94b3",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:09:29.845Z"
+    },
+    {
+      "article_id": "3699318",
+      "published": "2026-01-22T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dba7f4dfb3bd321f",
+      "views": 60000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:09:34.380Z"
+    },
+    {
+      "article_id": "3699194",
+      "published": "2026-01-21T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "15efac6216f80e09",
+      "views": 580000,
+      "likes": 28000,
+      "checked_at": "2026-10-17T13:09:38.887Z"
+    },
+    {
+      "article_id": "3701020",
+      "published": "2026-01-21T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1e9779f11d28e655",
+      "views": 220000,
+      "likes": 24000,
+      "checked_at": "2026-10-17T13:09:43.447Z"
+    },
+    {
+      "article_id": "3700079",
+      "published": "2026-01-21T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "fa90637ffd739e1f",
+      "views": null,
+      "likes": 12000,
+      "checked_at": "2026-10-17T13:09:47.850Z"
+    },
+    {
+      "article_id": "3695472",
+      "published": "2026-01-20T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4eb153aae401b521",
+      "views": 40000,
+      "likes": 2700,
+      "checked_at": "2026-10-17T13:09:52.360Z"
+    },
+    {
+      "article_id": "3690570",
+      "published": "2026-01-19T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "186bc70c585870f6",
+      "views": null,
+      "likes": 10000,
+      "checked_at": "2026-10-17T13:09:56.984Z"
+    },
+    {
+      "article_id": "3694756",
+      "published": "2026-01-18T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bcdb9ad6a4251009",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:01.421Z"
+    },
+    {
+      "article_id": "3691545",
+      "published": "2026-01-18T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f120d248ad568c14",
+      "views": 45000,
+      "likes": 8300,
+      "checked_at": "2026-10-17T13:10:05.618Z"
+    },
+    {
+      "article_id": "3693130",
+      "published": "2026-01-17T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8183b429ce9f67c6",
+      "views": null,
+      "likes": 18000,
+      "checked_at": "2026-10-17T13:10:09.801Z"
+    },
+    {
+      "article_id": "3688400",
+      "published": "2026-01-14T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9d687da3e56182b6",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:14.212Z"
+    },
+    {
+      "article_id": "3687917",
+      "published": "2026-01-12T11:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "953bb1b011551c95",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:19.128Z"
+    },
+    {
+      "article_id": "3689975",
+      "published": "2026-01-11T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1a3f5147f3503c28",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:23.307Z"
+    },
+    {
+      "article_id": "3681905",
+      "published": "2026-01-10T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9b34c825cfb48107",
+      "views": 39000,
+      "likes": 3600,
+      "checked_at": "2026-10-17T13:10:27.698Z"
+    },
+    {
+      "article_id": "3679660",
+      "published": "2026-01-09T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0c82c166a06dd458",
+      "views": 110000,
+      "likes": 9700,
+      "checked_at": "2026-10-17T13:10:32.227Z"
+    },
+    {
+      "article_id": "3681904",
+      "published": "2026-01-09T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7fdc4b57faaefc6c",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:36.379Z"
+    },
+    {
+      "article_id": "3680209",
+      "published": "2026-01-06T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f4e8b12587ffe847",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:40.815Z"
+    },
+    {
+      "article_id": "3671839",
+      "published": "2026-01-04T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "38bd2bc96304d170",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:45.265Z"
+    },
+    {
+      "article_id": "3665635",
+      "published": "2026-01-03T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4ebfd46ad3b35206",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:49.559Z"
+    },
+    {
+      "article_id": "3672659",
+      "published": "2026-01-03T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7017acfdd3ced94a",
+      "views": null,
+      "likes": 6300,
+      "checked_at": "2026-10-17T13:10:53.760Z"
+    },
+    {
+      "article_id": "3672816",
+      "published": "2026-01-02T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8eb29af4dc4891d4",
+      "views": 120000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:10:58.353Z"
+    },
+    {
+      "article_id": "3672297",
+      "published": "2025-12-31T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "457ee888b6562eaa",
+      "views": null,
+      "likes": 12000,
+      "checked_at": "2026-10-17T13:11:02.874Z"
+    },
+    {
+      "article_id": "3675039",
+      "published": "2025-12-30T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "afc345a6d6c57323",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:07.325Z"
+    },
+    {
+      "article_id": "3656564",
+      "published": "2025-12-29T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "61f477923bcd05d3",
+      "views": 100000,
+      "likes": 4600,
+      "checked_at": "2026-10-17T13:11:11.837Z"
+    },
+    {
+      "article_id": "3672442",
+      "published": "2025-12-29T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:16.010Z"
+    },
+    {
+      "article_id": "3671178",
+      "published": "2025-12-28T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0aecd8be55a745d2",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:20.382Z"
+    },
+    {
+      "article_id": "3670708",
+      "published": "2025-12-28T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "45893e8277bf577d",
+      "views": 1800000,
+      "likes": 66000,
+      "checked_at": "2026-10-17T13:11:24.792Z"
+    },
+    {
+      "article_id": "3672481",
+      "published": "2025-12-28T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0f59fffc79b13913",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:29.175Z"
+    },
+    {
+      "article_id": "3672191",
+      "published": "2025-12-27T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dc4a06f73b3011bb",
+      "views": 100000,
+      "likes": 11000,
+      "checked_at": "2026-10-17T13:11:33.679Z"
+    },
+    {
+      "article_id": "3670628",
+      "published": "2025-12-27T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "733c7f78d9c129ba",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:38.079Z"
+    },
+    {
+      "article_id": "3667205",
+      "published": "2025-12-27T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "79491da5bbd720f1",
+      "views": 94000,
+      "likes": 4000,
+      "checked_at": "2026-10-17T13:11:42.680Z"
+    },
+    {
+      "article_id": "3669677",
+      "published": "2025-12-26T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "db7924ae65554bc9",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:47.186Z"
+    },
+    {
+      "article_id": "3665992",
+      "published": "2025-12-25T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "52849598253e0aef",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:51.582Z"
+    },
+    {
+      "article_id": "3668975",
+      "published": "2025-12-25T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8e7d9c534b6a703a",
+      "views": 1100000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:11:55.991Z"
+    },
+    {
+      "article_id": "3660358",
+      "published": "2025-12-23T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1e2d9fb55d037f1b",
+      "views": 110000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:00.554Z"
+    },
+    {
+      "article_id": "3665612",
+      "published": "2025-12-22T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "1af0cff7eb2b5686",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:05.054Z"
+    },
+    {
+      "article_id": "3663752",
+      "published": "2025-12-21T20:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "d8685b982ae38ef2",
+      "views": null,
+      "likes": 2100,
+      "checked_at": "2026-10-17T13:12:09.508Z"
+    },
+    {
+      "article_id": "3665611",
+      "published": "2025-12-21T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5f8e94da80d19ecb",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:13.911Z"
+    },
+    {
+      "article_id": "3661715",
+      "published": "2025-12-20T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f7fdabcc6c8f63ab",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:18.318Z"
+    },
+    {
+      "article_id": "3663961",
+      "published": "2025-12-19T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a36b438bbe93653d",
+      "views": 700000,
+      "likes": 6900,
+      "checked_at": "2026-10-17T13:12:22.694Z"
+    },
+    {
+      "article_id": "3654499",
+      "published": "2025-12-19T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": false,
+      "post_fp": null,
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:27.098Z"
+    },
+    {
+      "article_id": "3652722",
+      "published": "2025-12-18T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a48e9056b8731a94",
+      "views": null,
+      "likes": 500000,
+      "checked_at": "2026-10-17T13:12:31.622Z"
+    },
+    {
+      "article_id": "3661756",
+      "published": "2025-12-17T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "23447727d5dbbf25",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:36.026Z"
+    },
+    {
+      "article_id": "3658814",
+      "published": "2025-12-16T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2e1e20d6c09a0b16",
+      "views": 280000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:48.567Z"
+    },
+    {
+      "article_id": "3658614",
+      "published": "2025-12-16T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "994f6faafadf78d8",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:53.312Z"
+    },
+    {
+      "article_id": "3658654",
+      "published": "2025-12-15T20:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "55388da2910365a6",
+      "views": 60000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:12:57.721Z"
+    },
+    {
+      "article_id": "3659884",
+      "published": "2025-12-15T11:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "bd2ea229a3a9234f",
+      "views": 110000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:13:02.450Z"
+    },
+    {
+      "article_id": "3656563",
+      "published": "2025-12-14T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "cfdafd48a843c22f",
+      "views": 100000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:13:06.832Z"
+    },
+    {
+      "article_id": "3654203",
+      "published": "2025-12-14T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "f7d8adbc6b95edee",
+      "views": 130000,
+      "likes": 2000,
+      "checked_at": "2026-10-17T13:13:11.262Z"
+    },
+    {
+      "article_id": "3657133",
+      "published": "2025-12-14T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e930c3e0264dad47",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:13:15.729Z"
+    },
+    {
+      "article_id": "3651154",
+      "published": "2025-12-13T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a821f9ac36af6afb",
+      "views": null,
+      "likes": 68000,
+      "checked_at": "2026-10-17T13:13:20.099Z"
+    },
+    {
+      "article_id": "3654977",
+      "published": "2025-12-11T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "dc4eb6e97becdbf6",
+      "views": null,
+      "likes": 43000,
+      "checked_at": "2026-10-17T13:13:24.642Z"
+    },
+    {
+      "article_id": "3636135",
+      "published": "2025-12-09T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4947ff8e083db8be",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:13:29.070Z"
+    },
+    {
+      "article_id": "3648765",
+      "published": "2025-12-08T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "61f2b5520633cdbb",
+      "views": 130000,
+      "likes": 14000,
+      "checked_at": "2026-10-17T13:13:33.455Z"
+    },
+    {
+      "article_id": "3647657",
+      "published": "2025-12-07T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "14665ece061af89f",
+      "views": null,
+      "likes": 40000,
+      "checked_at": "2026-10-17T13:13:38.004Z"
+    },
+    {
+      "article_id": "3640984",
+      "published": "2025-12-05T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "254a735c009c6e3b",
+      "views": 230000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:13:42.601Z"
+    },
+    {
+      "article_id": "3635427",
+      "published": "2025-12-04T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "c3df4e5732570f4e",
+      "views": null,
+      "likes": 9800,
+      "checked_at": "2026-10-17T13:13:47.096Z"
+    },
+    {
+      "article_id": "3637650",
+      "published": "2025-12-04T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "82a366de424587ff",
+      "views": 88000,
+      "likes": 17000,
+      "checked_at": "2026-10-17T13:13:51.585Z"
+    },
+    {
+      "article_id": "3637651",
+      "published": "2025-12-03T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "16fca91cb9f03c9a",
+      "views": 47000,
+      "likes": 3300,
+      "checked_at": "2026-10-17T13:13:55.768Z"
+    },
+    {
+      "article_id": "3633026",
+      "published": "2025-12-02T21:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a6a534f34ee3d613",
+      "views": 220000,
+      "likes": 4000,
+      "checked_at": "2026-10-17T13:13:59.963Z"
+    },
+    {
+      "article_id": "3633002",
+      "published": "2025-12-01T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "22823015900afad7",
+      "views": 430000,
+      "likes": 20000,
+      "checked_at": "2026-10-17T13:14:04.349Z"
+    },
+    {
+      "article_id": "3640731",
+      "published": "2025-12-01T12:15:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "4c2eab188aa1e8b6",
+      "views": 380000,
+      "likes": 10000,
+      "checked_at": "2026-10-17T13:14:08.724Z"
+    },
+    {
+      "article_id": "3625346",
+      "published": "2025-12-01T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "3397740c24b72f8c",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:13.127Z"
+    },
+    {
+      "article_id": "3634889",
+      "published": "2025-11-30T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "477d6e2d8113e333",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:17.525Z"
+    },
+    {
+      "article_id": "3639141",
+      "published": "2025-11-30T08:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "ba08ecbfa75054e0",
+      "views": 110000,
+      "likes": 4000,
+      "checked_at": "2026-10-17T13:14:22.045Z"
+    },
+    {
+      "article_id": "3637626",
+      "published": "2025-11-29T22:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "a368f0143ecaf430",
+      "views": 170000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:26.518Z"
+    },
+    {
+      "article_id": "3636715",
+      "published": "2025-11-29T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "18c07aac91a09efd",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:31.039Z"
+    },
+    {
+      "article_id": "3626557",
+      "published": "2025-11-23T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "0eb5615da9356add",
+      "views": 390000,
+      "likes": 3500,
+      "checked_at": "2026-10-17T13:14:35.428Z"
+    },
+    {
+      "article_id": "3630800",
+      "published": "2025-11-22T10:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "9623221014102f2c",
+      "views": 52000,
+      "likes": 2100,
+      "checked_at": "2026-10-17T13:14:39.929Z"
+    },
+    {
+      "article_id": "3630084",
+      "published": "2025-11-22T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b11d85340a8f3146",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:44.350Z"
+    },
+    {
+      "article_id": "3624892",
+      "published": "2025-11-21T09:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b6736055e8aa91c2",
+      "views": 73000,
+      "likes": 5500,
+      "checked_at": "2026-10-17T13:14:48.519Z"
+    },
+    {
+      "article_id": "3594788",
+      "published": "2025-11-06T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7ce06e6226be4ece",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:53.028Z"
+    },
+    {
+      "article_id": "3606959",
+      "published": "2025-11-04T19:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "5d0db7bd5e7a5230",
+      "views": 180000,
+      "likes": null,
+      "checked_at": "2026-10-17T13:14:57.629Z"
+    },
+    {
+      "article_id": "4049952",
+      "published": "2026-10-17T19:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "b568a1c9d8f041d8",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-17T13:29:47.921Z"
+    }
+  ],
+  "summary": {
+    "articles": 387,
+    "with_post_link": 378,
+    "unique_posts": 378,
+    "with_numbers": 289,
+    "with_views": 259,
+    "with_likes": 224,
+    "no_post_link": 9,
+    "oldest": "2025-11-04T19:30:00+0900",
+    "newest": "2026-10-17T19:00:00+0900",
+    "goal": 500,
+    "updated_at": "2026-10-17T13:34:58.965Z"
+  }
+}
