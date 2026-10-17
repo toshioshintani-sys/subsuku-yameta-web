@@ -1,0 +1,41 @@
+{
+  "_note": "東京の中継所（netlify/functions/jp-relay.mjs）が読みに行ってよい公式料金ページの一覧。id → url。ここに無いものは中継しない（誰でも使える中継にしないため・URLは呼び出し側から受け取らない）。変更すると Netlify がビルドし直して中継所に反映される。2026-10-17 作成：米国からは日本円が取れなかったサービス（docs/CLOUD_GEO_PRICE_FINDINGS_2026-10-17.md の B と Gemini）。",
+  "targets": {
+    "youtube-premium": {
+      "url": "https://www.youtube.com/premium"
+    },
+    "notion": {
+      "url": "https://www.notion.com/pricing"
+    },
+    "dropbox": {
+      "url": "https://www.dropbox.com/plans"
+    },
+    "chatgpt-plus": {
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/"
+    },
+    "evernote": {
+      "url": "https://evernote.com/ja-jp/compare-plans"
+    },
+    "google-one": {
+      "url": "https://one.google.com/about/plans"
+    },
+    "figma": {
+      "url": "https://www.figma.com/pricing/"
+    },
+    "deepl-pro": {
+      "url": "https://www.deepl.com/pro"
+    },
+    "vimeo-pro": {
+      "url": "https://vimeo.com/upgrade"
+    },
+    "gemini-advanced": {
+      "url": "https://one.google.com/about/google-ai-plans/"
+    },
+    "google-workspace": {
+      "url": "https://workspace.google.com/intl/ja/pricing.html"
+    },
+    "youtube-music": {
+      "url": "https://www.youtube.com/musicpremium"
+    }
+  }
+}

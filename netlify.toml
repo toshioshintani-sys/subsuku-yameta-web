@@ -16,6 +16,11 @@
   # scripts/netlify-ignore.sh に。exit 0=スキップ / exit 1=ビルド。
   ignore = "bash scripts/netlify-ignore.sh"
 
+[functions]
+  # 東京の中継所（netlify/functions/jp-relay.mjs・2026-10-17）。読み先の一覧 JSON をビルド時に同梱するため esbuild で束ねる。
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [build.environment]
   NODE_VERSION = "22"
   NPM_FLAGS = "--prefer-offline --no-audit"
