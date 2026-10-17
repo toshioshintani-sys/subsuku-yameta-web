@@ -1,6 +1,7 @@
 # クラウドで動く無人タスクの共通ルール（2026-10-17 制定）
 
-この文書は scripts/ops/cloud/ の各指示書（fx.md・watch.md・triage.md・weekly.md）から読まれる。
+この文書は scripts/ops/cloud/ の各指示書（daily.md・fx.md・watch.md・triage.md・weekly.md）から読まれる。
+定期タスクは「毎日の当番」1本（daily.md）で、日付によって fx・watch・triage・weekly を振り分ける。
 PC（Windows・Task Scheduler）で動いていた為替・巡回・3日棚卸し・週次を、claude.ai のクラウドの
 定期タスクへ移したもの。PC 用の指示書（scripts/price-watch/fx_update_prompt.md・scripts/ops/*_prompt.md）
 とは**別物**。PC 用の指示書にある Windows のパス・python の Slack 送信・netlify CLI・schtasks は使わない。
@@ -34,7 +35,7 @@ PC（Windows・Task Scheduler）で動いていた為替・巡回・3日棚卸�
 
 1. `https://sabusuku-yameta.com/build.json` を読む（Netlify のビルドが書く。`commit` が本番のコミット）。
    30秒おきに最大8回、`commit` が push したコミットになるまで待つ。
-2. build.json が読めない時は、Netlify のツールで確かめる：
+2. build.json が読めない時は、Netlify のツールがあれば（無い設定のこともある）それで確かめる：
    `netlify-project-services-reader` の get-project（siteId `b4ac149a-76c4-4156-9903-c2605ac17cf9`）で
    currentDeploy の id を取り、`netlify-deploy-services-reader` の get-deploy-for-site で
    `commit_ref` と `state`（ready / error）を見る。

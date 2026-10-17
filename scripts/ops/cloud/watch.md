@@ -1,4 +1,4 @@
-# 【クラウド】毎日の巡回（毎日 12:14 日本時間）
+# 【クラウド】毎日の巡回（毎日の当番 daily.md から呼ばれる）
 
 あなたは「サブスクやめた」（本番 https://sabusuku-yameta.com）の運用担当です。
 最初に scripts/ops/cloud/COMMON.md を読み、そのルールに従ってください。
