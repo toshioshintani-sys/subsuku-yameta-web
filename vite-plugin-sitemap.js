@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { SERVICES, CATEGORIES, PRICE_HISTORY } from './src/data/services.js';
 import { POSTS } from './src/data/posts.js';
 import { DISCOVER_GENRES } from './src/data/discover.js';
+import { HITOKOTO } from './src/data/hitokoto.js';
 import { BIAS_GAMES } from './src/data/biasGames.js';
 
 const FALLBACK_SITE_URL = 'https://sabusuku-yameta.com';
@@ -21,7 +22,7 @@ function withSlash(path) {
 }
 
 function buildRoutes() {
-  const staticRoutes = ['/', '/compare', '/price-watch', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact'];
+  const staticRoutes = ['/', '/compare', '/price-watch', '/tracker', '/discover', '/yamete-kau', '/games', '/blog', '/about', '/privacy', '/disclaimer', '/disclosure', '/contact', ...(HITOKOTO.length ? ['/hitokoto'] : [])];
   const categoryRoutes = CATEGORIES
     .filter((c) => c.id !== 'all')
     .map((c) => `/category/${c.id}`);
@@ -29,7 +30,7 @@ function buildRoutes() {
   const postRoutes = POSTS.map((p) => `/blog/${p.slug}`);
   const discoverRoutes = DISCOVER_GENRES.map((g) => `/discover/${g.id}`);
   const gameRoutes = BIAS_GAMES.map((g) => `/games/${g.id}`);
-  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes, ...discoverRoutes, ...gameRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...postRoutes, ...discoverRoutes, ...gameRoutes, ...HITOKOTO.map((h) => `/hitokoto/${h.id}`)];
 }
 
 function escapeXml(s) {

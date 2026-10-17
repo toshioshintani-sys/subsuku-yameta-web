@@ -22,6 +22,8 @@ const DiscoverGenrePage = lazy(() => import('./pages/DiscoverGenrePage'));
 const YameteKauPage = lazy(() => import('./pages/YameteKauPage'));
 const GamesPage = lazy(() => import('./pages/GamesPage'));
 const GameDetailPage = lazy(() => import('./pages/GameDetailPage'));
+const HitokotoPage = lazy(() => import('./pages/HitokotoPage'));
+const HitokotoIndexPage = lazy(() => import('./pages/HitokotoPage').then((m) => ({ default: m.HitokotoIndexPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
@@ -70,6 +72,8 @@ export default function App() {
           <Route path="/games/:id" element={<GameDetailPage />} />
           <Route path="/blog" element={<BlogIndexPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/hitokoto" element={<HitokotoIndexPage />} />
+          <Route path="/hitokoto/:id" element={<HitokotoPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/disclaimer" element={<DisclaimerPage />} />

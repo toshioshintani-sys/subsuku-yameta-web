@@ -1,3 +1,4 @@
+import { HITOKOTO } from '../data/hitokoto';
 import { Link } from 'react-router-dom';
 import { CATEGORIES, SERVICES } from '../data/services';
 import styles from './Footer.module.css';
@@ -70,6 +71,7 @@ export default function Footer() {
               <li><Link to="/privacy/">プライバシーポリシー</Link></li>
               <li><Link to="/disclaimer/">免責事項</Link></li>
               <li><Link to="/disclosure/">収益開示</Link></li>
+              {HITOKOTO.length > 0 && <li><Link to="/hitokoto/">ひとこと</Link></li>}
               <li><Link to="/contact/">お問い合わせ</Link></li>
             </ul>
           </div>
