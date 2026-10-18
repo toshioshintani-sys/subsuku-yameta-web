@@ -267,12 +267,12 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "short-body",
-        "ms": 5652,
+        "status": "no-money",
+        "ms": 3887,
         "moneyLines": 0,
-        "checkedAt": "2026-10-12",
-        "fails": 20,
-        "lastOkAt": "2026-09-08"
+        "checkedAt": "2026-10-19",
+        "fails": 0,
+        "lastOkAt": "2026-10-19"
       }
     },
     {
@@ -495,12 +495,15 @@
       "enabled": true,
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
-        "status": "timeout",
-        "ms": 35023,
-        "moneyLines": 0,
-        "checkedAt": "2026-10-13",
-        "fails": 1,
-        "lastOkAt": "2026-10-13"
+        "status": "ok-suspect",
+        "ms": 7892,
+        "moneyLines": 10,
+        "checkedAt": "2026-10-19",
+        "fails": 0,
+        "lastOkAt": "2026-10-19",
+        "suspects": [
+          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
+        ]
       }
     },
     {
@@ -916,15 +919,12 @@
       "enabled": true,
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 6555,
+        "status": "ok",
+        "ms": 4084,
         "moneyLines": 10,
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-10-19",
         "fails": 0,
-        "lastOkAt": "2026-10-17",
-        "suspects": [
-          "期待するドル額（$20）がページに無い（$8, $30, $100, $200）"
-        ]
+        "lastOkAt": "2026-10-19"
       }
     },
     {
@@ -951,11 +951,11 @@
       "note": "2026-07-25追加(実測￥800/￥1,600/￥2,500)。?hl=ja へリダイレクトされ日本円で取得できる良URL",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 5284,
-        "moneyLines": 3,
-        "checkedAt": "2026-10-17",
+        "ms": 4583,
+        "moneyLines": 30,
+        "checkedAt": "2026-10-19",
         "fails": 0,
-        "lastOkAt": "2026-10-17",
+        "lastOkAt": "2026-10-19",
         "suspects": [
           "ちょうど半額の組がある（800 と 1600）＝割引価格と通常価格の並記の疑い"
         ]
@@ -990,11 +990,11 @@
       "note": "2026-07-25追加(実測$0/$20/$40/$80/$200)。devin.ai/pricing へリダイレクト＝2026-06のブランド統合を裏付け（lessons 2026-07-12の記録と一致）。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3828,
+        "ms": 3110,
         "moneyLines": 10,
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-10-19",
         "fails": 0,
-        "lastOkAt": "2026-10-17"
+        "lastOkAt": "2026-10-19"
       }
     },
     {
