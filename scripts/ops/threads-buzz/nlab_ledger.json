@@ -3870,19 +3870,89 @@
       "views": null,
       "likes": null,
       "checked_at": "2026-10-17T13:29:47.921Z"
+    },
+    {
+      "article_id": "4053804",
+      "published": "2026-10-19T08:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "021dcd1f10e67811",
+      "views": 37000,
+      "likes": 2700,
+      "checked_at": "2026-10-19T03:15:48.195Z"
+    },
+    {
+      "article_id": "4054614",
+      "published": "2026-10-19T07:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "e2f9703481b1c001",
+      "views": 130000,
+      "likes": 580,
+      "checked_at": "2026-10-19T03:15:53.070Z"
+    },
+    {
+      "article_id": "4040366",
+      "published": "2026-10-18T21:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "7bf9239cbfe4e5d2",
+      "views": 720000,
+      "likes": 9800,
+      "checked_at": "2026-10-19T03:15:58.122Z"
+    },
+    {
+      "article_id": "4043135",
+      "published": "2026-10-18T11:55:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "319ccecb578e673e",
+      "views": 34000,
+      "likes": 1000,
+      "checked_at": "2026-10-19T03:16:03.015Z"
+    },
+    {
+      "article_id": "4049521",
+      "published": "2026-10-18T10:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "51f6217b24a9ce3e",
+      "views": 350000,
+      "likes": 2800,
+      "checked_at": "2026-10-19T03:16:08.202Z"
+    },
+    {
+      "article_id": "4047854",
+      "published": "2026-10-18T09:00:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "8847fd4c59b6ecc6",
+      "views": null,
+      "likes": null,
+      "checked_at": "2026-10-19T03:16:13.455Z"
+    },
+    {
+      "article_id": "4048520",
+      "published": "2026-10-18T07:30:00+0900",
+      "mentions_threads": true,
+      "has_post_link": true,
+      "post_fp": "2bfabdf8869cf63b",
+      "views": 170000,
+      "likes": 93000,
+      "checked_at": "2026-10-19T03:16:18.480Z"
     }
   ],
   "summary": {
-    "articles": 387,
-    "with_post_link": 378,
-    "unique_posts": 378,
-    "with_numbers": 289,
-    "with_views": 259,
-    "with_likes": 224,
+    "articles": 394,
+    "with_post_link": 385,
+    "unique_posts": 385,
+    "with_numbers": 295,
+    "with_views": 265,
+    "with_likes": 230,
     "no_post_link": 9,
     "oldest": "2025-11-04T19:30:00+0900",
-    "newest": "2026-10-17T19:00:00+0900",
+    "newest": "2026-10-19T08:30:00+0900",
     "goal": 500,
-    "updated_at": "2026-10-17T13:34:58.965Z"
+    "updated_at": "2026-10-19T03:16:22.480Z"
   }
 }
