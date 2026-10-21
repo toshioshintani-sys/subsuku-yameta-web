@@ -88,11 +88,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 2810,
-        "moneyLines": 56,
-        "checkedAt": "2026-10-21",
+        "ms": 3107,
+        "moneyLines": 52,
+        "checkedAt": "2026-10-22",
         "fails": 0,
-        "lastOkAt": "2026-10-21"
+        "lastOkAt": "2026-10-22"
       },
       "cloud": {
         "via": "relay",
@@ -267,12 +267,16 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "no-money",
-        "ms": 3252,
-        "moneyLines": 0,
-        "checkedAt": "2026-10-20",
+        "status": "ok-suspect",
+        "ms": 11525,
+        "moneyLines": 26,
+        "checkedAt": "2026-10-22",
         "fails": 0,
-        "lastOkAt": "2026-10-19"
+        "lastOkAt": "2026-10-22",
+        "suspects": [
+          "金額の種類が多すぎる（18種）＝別商品が混ざっている疑い",
+          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
+        ]
       }
     },
     {
@@ -409,11 +413,11 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "ok",
-        "ms": 24857,
-        "moneyLines": 4,
-        "checkedAt": "2026-10-21",
-        "fails": 0,
+        "status": "short-body",
+        "ms": 35620,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-22",
+        "fails": 3,
         "lastOkAt": "2026-10-21"
       },
       "cloud": {
@@ -495,15 +499,12 @@
       "enabled": true,
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 6083,
-        "moneyLines": 10,
-        "checkedAt": "2026-10-20",
+        "status": "ok",
+        "ms": 2535,
+        "moneyLines": 8,
+        "checkedAt": "2026-10-22",
         "fails": 0,
-        "lastOkAt": "2026-10-20",
-        "suspects": [
-          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
-        ]
+        "lastOkAt": "2026-10-22"
       },
       "cloud": {
         "via": "relay",
@@ -978,11 +979,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3823,
+        "ms": 3825,
         "moneyLines": 10,
-        "checkedAt": "2026-10-21",
+        "checkedAt": "2026-10-22",
         "fails": 0,
-        "lastOkAt": "2026-10-21"
+        "lastOkAt": "2026-10-22"
       }
     },
     {
