@@ -36,6 +36,9 @@
     },
     "youtube-music": {
       "url": "https://www.youtube.com/musicpremium"
+    },
+    "audible": {
+      "url": "https://www.audible.co.jp/"
     }
   }
 }
