@@ -8747,6 +8747,201 @@
     "judgedAt": "2026-10-19"
   },
   {
+    "date": "2026-10-20",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "保留",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "クラウドから日本の価格を確認できず。取得は本文316字・金額なし（米国サイト案内の表示のみ）。追加$1は過去4回偽陽性判定済みだが、円を確認できていないので判定しない",
+    "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-20",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [],
+    "removed": [
+      20,
+      40,
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（20, 40, 0）で過去14回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "同日の reconcile で掲載の 3000/1400/16800（Plus・Pro・Business）が公式ページと一致。検知の「全金額消失」は巡回時の取得が空（JS描画の取りこぼし）。その後の price:fetch でも本文41字と取れない回があり、取得が不安定",
+    "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-20",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [
+      8.25,
+      99
+    ],
+    "removed": [],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（99）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "保留",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "クラウドから日本の価格を確認できず。日本向けURLが米国向け(audible.com)へ誘導され、円なし・ドル表示のみ（$0.99/$8.99/$8.25/$99）。円を確認できていないので判定しない",
+    "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-20",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      40,
+      43,
+      48,
+      64,
+      67,
+      69,
+      70,
+      74,
+      97
+    ],
+    "removed": [
+      41,
+      45,
+      66,
+      68,
+      73,
+      77,
+      99
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 43, 48）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（16件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "reconcile で掲載の 1150/3750/7500 が公式ページと一致。追加・消失の$40〜$99はプラン価格ではない数字の入れ替わり（過去9回同型）",
+    "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-20",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      72
+    ],
+    "removed": [],
+    "ours": [
+      4740,
+      1264,
+      15799,
+      31598
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式は Free $0 / Plus $8 / Premium $30 / Super $100 / Ultra $200（月）で掲載と一致、reconcile も一致。追加の$72はプラン価格ではない数字",
+    "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-20",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1250,
+      400
+    ],
+    "removed": [
+      1280,
+      2000,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400, 1280）で過去69回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "reconcile で掲載の Business Starter 800/Standard 1600/Plus 2500 が公式ページと一致。¥1,250/¥400/¥1,280 等は期間限定割引まわりの揺れで過去69回偽陽性判定済み",
+    "judgedAt": "2026-10-20"
+  },
+  {
     "date": "2026-10-21",
     "serviceId": "youtube-premium",
     "name": "YouTube Premium",
