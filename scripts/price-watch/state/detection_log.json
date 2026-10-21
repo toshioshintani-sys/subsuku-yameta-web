@@ -8585,6 +8585,168 @@
     "judgedAt": "2026-10-17"
   },
   {
+    "date": "2026-10-19",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1,
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "保留",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "クラウドから日本の価格を確認できず。今朝の取得は本文316字・金額なし（「米国サイトを案内」の表示のみ）。消失 1/9080 は過去9回偽陽性判定済みの値だが、公式で円を読めていないので判定しない",
+    "judgedAt": "2026-10-19"
+  },
+  {
+    "date": "2026-10-19",
+    "serviceId": "audible",
+    "name": "Audible",
+    "added": [
+      0,
+      0.99,
+      1,
+      14.95,
+      20,
+      8.99
+    ],
+    "removed": [
+      99,
+      1500,
+      1500,
+      880
+    ],
+    "ours": [
+      1500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 99, 1500）で過去14回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "桁が不自然な値（$0.99）",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（10件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "保留",
+    "checkedUrl": "https://www.audible.co.jp/",
+    "evidence": "クラウドから日本の価格を確認できず。今朝の取得は米国向けページで円が1つも無くドル表示のみ（$14.95 等）。昨日は日本向けで一致していたため取得経路の揺れの可能性が高いが、円を確認できていないので判定しない",
+    "judgedAt": "2026-10-19"
+  },
+  {
+    "date": "2026-10-19",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      10,
+      12,
+      16,
+      70
+    ],
+    "removed": [
+      14,
+      26,
+      28,
+      31
+    ],
+    "ours": [
+      4740,
+      1264,
+      15799,
+      31598
+    ],
+    "signals": [
+      {
+        "name": "同じ値（10, 14, 26）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式は Free $0 / Plus $8 / Premium $30 / Super $100 / Ultra $200（月）。掲載（Pro 4740円=$30・Plus 1264円=$8 等）と一致、reconcile も一致。追加$10/$12/$16/$70・消失$14/$26/$28/$31 はプラン価格ではない数字の入れ替わり",
+    "judgedAt": "2026-10-19"
+  },
+  {
+    "date": "2026-10-19",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280
+    ],
+    "removed": [
+      1120
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 1120）で過去42回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "クラウドから取得（SUBSUKU_CLOUD=1）。reconcile で掲載の Business Starter 800/Standard 1600/Plus 2500 が公式ページと一致。¥1,120→¥1,280 は同じ値で過去42回偽陽性判定済みの揺れで、プラン価格の変化ではない",
+    "judgedAt": "2026-10-19"
+  },
+  {
+    "date": "2026-10-19",
+    "serviceId": "windsurf",
+    "name": "Windsurf（現Devin Desktop）",
+    "added": [
+      76,
+      77,
+      78
+    ],
+    "removed": [
+      71,
+      81
+    ],
+    "ours": [
+      3160,
+      31598,
+      12639
+    ],
+    "signals": [
+      {
+        "name": "同じ値（77, 78, 71）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://windsurf.com/pricing",
+    "evidence": "公式は Free $0 / Pro $20 / Max $200 / Team $80（月）。掲載の Pro $20 と一致、reconcile も一致。追加$76〜$78・消失$71/$81 は価格以外の数字の揺れ",
+    "judgedAt": "2026-10-19"
+  },
+  {
     "date": "2026-10-20",
     "serviceId": "adobe-cc",
     "name": "Adobe Creative Cloud",
@@ -8778,5 +8940,161 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "reconcile で掲載の Business Starter 800/Standard 1600/Plus 2500 が公式ページと一致。¥1,250/¥400/¥1,280 等は期間限定割引まわりの揺れで過去69回偽陽性判定済み",
     "judgedAt": "2026-10-20"
+  },
+  {
+    "date": "2026-10-21",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去33回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式は個人￥1,280・ファミリー￥2,280・Lite/学生￥780（月）で掲載(1280/780/2280)と一致。消失の￥1,480は過去33回同型の偽陽性",
+    "judgedAt": "2026-10-21"
+  },
+  {
+    "date": "2026-10-21",
+    "serviceId": "amazon-music-unlimited",
+    "name": "Amazon Music Unlimited",
+    "added": [],
+    "removed": [
+      0
+    ],
+    "ours": [
+      1180,
+      1680,
+      580
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.amazon.co.jp/music/unlimited",
+    "evidence": "公式は月額1,180円（プライム会員1,080円）で掲載と一致。消失は「0円」（無料体験表示）のみ",
+    "judgedAt": "2026-10-21"
+  },
+  {
+    "date": "2026-10-21",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      20,
+      40,
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（20, 40, 0）で過去14回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "公式は￥0/￥1,400/￥3,000/￥16,800で掲載(3000/1400/16800)と一致。昨日の全金額消失の取得失敗が今日戻っただけ",
+    "judgedAt": "2026-10-21"
+  },
+  {
+    "date": "2026-10-21",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      76,
+      77,
+      99
+    ],
+    "removed": [
+      74,
+      78
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（76, 77, 99）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "同日の reconcile で掲載の 1150/3750/7500 が公式ページと一致。追加・消失の$74〜$99は価格以外の数字の入れ替わり（過去3回同型）",
+    "judgedAt": "2026-10-21"
+  },
+  {
+    "date": "2026-10-21",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      21,
+      27
+    ],
+    "removed": [
+      22
+    ],
+    "ours": [
+      2370,
+      22751,
+      5530,
+      53085,
+      15009,
+      144087
+    ],
+    "signals": [
+      {
+        "name": "同じ値（21, 27, 22）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "公式は Standard $15・Pro $35・Unlimited $95（月払い。年払いは$12/$28/$76）で掲載と一致。$21/$27/$22はプラン価格ではない数字",
+    "judgedAt": "2026-10-21"
   }
 ]
