@@ -88,11 +88,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 3107,
-        "moneyLines": 52,
-        "checkedAt": "2026-10-22",
+        "ms": 2743,
+        "moneyLines": 56,
+        "checkedAt": "2026-10-23",
         "fails": 0,
-        "lastOkAt": "2026-10-22"
+        "lastOkAt": "2026-10-23"
       },
       "cloud": {
         "via": "relay",
@@ -413,12 +413,12 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "short-body",
-        "ms": 35620,
-        "moneyLines": 0,
-        "checkedAt": "2026-10-22",
-        "fails": 3,
-        "lastOkAt": "2026-10-21"
+        "status": "ok",
+        "ms": 24314,
+        "moneyLines": 4,
+        "checkedAt": "2026-10-23",
+        "fails": 0,
+        "lastOkAt": "2026-10-23"
       },
       "cloud": {
         "geo": {
@@ -925,11 +925,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 3633,
+        "ms": 3953,
         "moneyLines": 10,
-        "checkedAt": "2026-10-20",
+        "checkedAt": "2026-10-23",
         "fails": 0,
-        "lastOkAt": "2026-10-20"
+        "lastOkAt": "2026-10-23"
       }
     },
     {
