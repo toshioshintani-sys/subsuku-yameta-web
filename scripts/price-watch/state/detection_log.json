@@ -9346,5 +9346,181 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "公式は Standard $15・Pro $35・Unlimited $95（月払い。年払い$12/$28/$76）で掲載と一致、reconcile も一致。$21/$22/$27はプラン価格ではない数字",
     "judgedAt": "2026-10-22"
+  },
+  {
+    "date": "2026-10-23",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [],
+    "removed": [
+      1480
+    ],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去34回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式は個人￥1,280・ファミリー￥2,280・Lite/学生￥780（月）で掲載(1280/780/2280)と一致、reconcile も一致。消失の￥1,480は過去34回同型の偽陽性",
+    "judgedAt": "2026-10-23"
+  },
+  {
+    "date": "2026-10-23",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      20,
+      40,
+      0,
+      1400,
+      16800,
+      3000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（20, 40, 0）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "今朝は公式ページが読めた（本文10,926字）。￥0/￥1,400/￥3,000/￥16,800で掲載(3000/1400/16800)と一致。10/22の「全金額消失」は取得失敗で、昨日の保留（PR #115）は今朝の取得で解消。ドル表記の追加は断片",
+    "judgedAt": "2026-10-23"
+  },
+  {
+    "date": "2026-10-23",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      37,
+      43,
+      44,
+      68,
+      71,
+      75,
+      76,
+      96,
+      97
+    ],
+    "removed": [
+      35,
+      38,
+      40,
+      41,
+      45,
+      48,
+      60,
+      69,
+      70,
+      73,
+      77
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（37, 43, 44）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（20件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "同日の reconcile で掲載の 1150/3750/7500 が公式ページと一致。追加・消失の$35〜$97はプラン価格ではない数字の入れ替わり（過去16回同型）",
+    "judgedAt": "2026-10-23"
+  },
+  {
+    "date": "2026-10-23",
+    "serviceId": "cursor",
+    "name": "Cursor",
+    "added": [
+      13,
+      17,
+      71,
+      73
+    ],
+    "removed": [
+      16,
+      70,
+      72
+    ],
+    "ours": [
+      4740,
+      1264,
+      15799,
+      31598
+    ],
+    "signals": [
+      {
+        "name": "同じ値（13, 17, 16）で過去4回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://cursor.com/pricing",
+    "evidence": "公式は Free $0 / Plus $8 / Premium $30 / Super $100 / Ultra $200（月）で掲載と一致、reconcile も一致。追加・消失の$13〜$73はプラン価格ではない数字",
+    "judgedAt": "2026-10-23"
+  },
+  {
+    "date": "2026-10-23",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      400
+    ],
+    "removed": [
+      1280,
+      640
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（400, 1280, 640）で過去65回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（400 と 800）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "同日の reconcile で掲載の 800/1600/2500 が公式ページと一致。¥1,280/¥640/¥400 は期間限定割引まわりの数字の揺れ（過去65回同型）",
+    "judgedAt": "2026-10-23"
   }
 ]
