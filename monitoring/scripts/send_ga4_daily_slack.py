@@ -66,8 +66,8 @@ def build_payload(site: dict, target_date: str) -> dict:
                 {"type": "section", "text": {"type": "mrkdwn", "text": (
                     f"*データ取得エラー*\n```{site['error']}```\n\n"
                     "鍵の失効なら、PC で `monitoring/scripts/reauth_ga4.py` を実行して鍵を作り直し、"
-                    "GitHub の秘密 `GA4_CREDENTIALS_JSON` を更新する（docs/GA4_DAILY_ACTIONS.md）")}},
-                {"type": "context", "elements": [{"type": "mrkdwn", "text": f"GitHub Actions ga4-daily · 取得試行 {now}"}]},
+                    "クラウドの環境変数 `GA4_CREDENTIALS_JSON` を入れ直す（docs/GA4_DAILY_ACTIONS.md）")}},
+                {"type": "context", "elements": [{"type": "mrkdwn", "text": f"取得試行 {now}"}]},
             ],
         }
     users = site.get("active_users_1d", "?")
@@ -85,7 +85,7 @@ def build_payload(site: dict, target_date: str) -> dict:
                 f"*📊 GA4 数値(前日)*\n• アクティブユーザー: {users}\n• セッション: {sessions}\n• 平均エンゲージ: {engage_str}")}},
             {"type": "divider"},
             {"type": "section", "text": {"type": "mrkdwn", "text": f"*🔗 流入元 TOP5*\n{source_lines}"}},
-            {"type": "context", "elements": [{"type": "mrkdwn", "text": f"sabusuku-yameta.com · GA4 {PROPERTY_ID} · GitHub Actions · {now}"}]},
+            {"type": "context", "elements": [{"type": "mrkdwn", "text": f"sabusuku-yameta.com · GA4 {PROPERTY_ID} · {now}"}]},
         ],
     }
 
@@ -111,6 +111,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", help="YYYY-MM-DD（日本時間）。省略時は前日")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--text", action="store_true",
+                    help="Slack に送らず、送る文面（プレーンテキスト）だけを出す。クラウドの当番が Slack の道具で送るとき用（ログは非公開の場所でだけ使う）")
     args = ap.parse_args()
     target_date = args.date or (datetime.now(JST) - timedelta(days=1)).strftime("%Y-%m-%d")
 
@@ -124,6 +126,19 @@ def main() -> int:
     if args.dry_run:
         print(json.dumps(payload, ensure_ascii=False, indent=2))
         return 0
+
+    if args.text:
+        # blocks の中身をそのまま平文に並べる（header → 本文 → 補足）
+        lines = []
+        for b in payload["blocks"]:
+            if b["type"] == "header":
+                lines.append(f"*{b['text']['text']}*")
+            elif b["type"] == "section":
+                lines.append(b["text"]["text"])
+            elif b["type"] == "context":
+                lines.append("_" + " ".join(e["text"] for e in b["elements"]) + "_")
+        print("\n\n".join(lines))
+        return 1 if site.get("error") else 0
 
     ok = post_slack(payload)
     # 公開ログには数字を出さない。成否と、失敗の種類だけ

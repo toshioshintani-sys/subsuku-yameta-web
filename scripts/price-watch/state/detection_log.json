@@ -9522,5 +9522,64 @@
     "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
     "evidence": "同日の reconcile で掲載の 800/1600/2500 が公式ページと一致。¥1,280/¥640/¥400 は期間限定割引まわりの数字の揺れ（過去65回同型）",
     "judgedAt": "2026-10-23"
+  },
+  {
+    "date": "2026-10-24",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1,
+      9080
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去9回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "取得を3回やり直して3回目に日本向けページが読めた（本文3303字）。Creative Cloud Pro 通常9,080円/月・単体アプリ3,280円/月が掲載と一致。追加の$1と9,080円は読めた回の表示で、価格改定ではない。掲載の2,380円（フォトプラン）はページに見当たらない（既知の棚卸し不一致）。読めない回が多く（本文316字）取得は不安定",
+    "judgedAt": "2026-10-24"
+  },
+  {
+    "date": "2026-10-24",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      43
+    ],
+    "removed": [
+      42
+    ],
+    "ours": [
+      2370,
+      22751,
+      5530,
+      53085,
+      15009,
+      144087
+    ],
+    "signals": [
+      {
+        "name": "同じ値（42）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "公式は Standard $15・Pro $35・Unlimited $95（月払い。年払い$12/$28/$76）で掲載と一致、reconcile も一致。$43/$42はプラン価格ではない数字",
+    "judgedAt": "2026-10-24"
   }
 ]
