@@ -1,9 +1,10 @@
 {
-  "_note": "2026-10-17 クラウド移行のスイッチ。true の仕事は claude.ai のクラウド定期タスク（scripts/ops/cloud/*.md・運用当番セッション）が担当し、PC（Task Scheduler）のランナーは何もせず終わる（price-watch.mjs は自分でこのファイルを読んで止まる。ほかは main を最新にした直後に読む）。PC へ戻すときは false にして push するだけ。price は 2026-10-17 に移行（米国のクラウドから日本の価格を読む取り方＝scripts/price-watch/jp-browser.mjs・東京の中継所 netlify/functions/jp-relay.mjs）。 threads_buzz は 2026-10-17 に移行（ねとらぼの Threads タグの記事集め・scripts/ops/threads-buzz/collect-nlab.mjs・3日棚卸しの日に daily.md から）。2026-10-21 に俊雄さんが Threads を一旦中止＝threads_buzz は false（記事集めを止める。再開するときは true にして push。PCでは自動では動かない）。",
+  "_note": "2026-10-17 クラウド移行のスイッチ。true の仕事は claude.ai のクラウド定期タスク（scripts/ops/cloud/*.md・運用当番セッション）が担当し、PC（Task Scheduler）のランナーは何もせず終わる（price-watch.mjs は自分でこのファイルを読んで止まる。ほかは main を最新にした直後に読む）。PC へ戻すときは false にして push するだけ。price は 2026-10-17 に移行（米国のクラウドから日本の価格を読む取り方＝scripts/price-watch/jp-browser.mjs・東京の中継所 netlify/functions/jp-relay.mjs）。 threads_buzz は 2026-10-17 に移行（ねとらぼの Threads タグの記事集め・scripts/ops/threads-buzz/collect-nlab.mjs・3日棚卸しの日に daily.md から）。2026-10-21 に俊雄さんが Threads を一旦中止＝threads_buzz は false（記事集めを止める。再開するときは true にして push。PCでは自動では動かない）。 ga4_daily は 2026-10-24 に追加（GA4 の毎朝の数値通知・price.md 手順6・朝7:47の当番。環境変数 GA4_CREDENTIALS_JSON が入るまでは何もしない）。",
   "fx": true,
   "watch": true,
   "triage": true,
   "weekly": true,
   "price": true,
-  "threads_buzz": false
+  "threads_buzz": false,
+  "ga4_daily": true
 }
