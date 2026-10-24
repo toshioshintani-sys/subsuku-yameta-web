@@ -55,7 +55,10 @@ detection_log.json に verdict の無い検知がある、または reconcile_to
 - 手順4.5（為替）はやらない（為替は当番の fx.md と巡回が担当）。
 - 手順5の B（PR）は `gh pr create` が使えない（GraphQL 不可）。GitHub のツール（mcp__github__create_pull_request）か
   `gh api repos/toshioshintani-sys/subsuku-yameta-web/pulls -f title=... -f head=price/auto-<日付> -f base=main -f body=...` で作る。
-  その日の `price/auto-<日付>` の PR がすでに開いていれば、新しく作らずそのブランチに積む。**PR のマージはしない。**
+  その日の `price/auto-<日付>` の PR がすでに開いていれば、新しく作らずそのブランチに積む。
+  **PR は作ったら自分でマージまでする（俊雄さん決定 2026-10-24「更新する時はマージもするルール」）。** 手順：PR は draft にせず作る（draft だとマージできない）→ `mcp__github__merge_pull_request`（merge_method=merge）。
+  マージしてよいのは、本物の価格改定を公式（日本円）で確認でき、`npm run price:check` と `npm run build` が通っている PR と、台帳だけの PR（保留を含んでもよい）。
+  円を確認できていない価格の変更（services.js に触れるもの）は、マージせず保留として報告する。マージしたら本番に出たことを COMMON.md の手順で確かめる。
 - 手順6の Slack は送らない。代わりに下の手順5の基準に当てはまる時だけ、Slack のツールで1本送る。
 
 ### 5. 記録を残す（必ず）
@@ -72,7 +75,7 @@ detection_log.json に verdict の無い検知がある、または reconcile_to
 Slack は COMMON.md の基準に当てはまる日だけ1本送る。この仕事で送るのは次の時だけ：
 - 本物の価格改定があった（PR を作った）／保留がある／掲載ズレ（既知の11件以外の不一致）が見つかった／notes に書いた気づきがある → 俊雄さんに見てほしいこと
 - 巡回の取得失敗が多い（5件以上）など、仕組みが壊れていて自力で直せなかった
-例：「【クラウド】価格（<日付>）：〇〇が値上げの可能性（公式で確認済み・PR <URL>）。マージ判断をお願いします」
+例：「【クラウド】価格（<日付>）：〇〇が値上げの可能性（公式で確認済み・PR <URL> をマージ済み・本番確認済み）」
 **検知ゼロ・偽陽性だけ・基準の取り直しだけの日は送らない。** 台帳のコミットだけで終える。
 
 ### 6. GA4 の前日の数値を Slack へ（毎朝・2026-10-24 追加）
@@ -93,7 +96,7 @@ PC の毎朝 6:35 の通知（WorldOracle_subsuku_yameta_daily_report）をク�
 
 - `SUBSUKU_CLOUD=1` を付けずに巡回・棚卸しを動かす（米ドルを読んで誤検知する）
 - 公式ページで日本円を確認できていない価格を書く・本物と判定する
-- PR のマージ、force push
+- force push（PR のマージは上の条件を満たすものだけ自分でする）
 - 既存の検知記録の削除や書き換え
 
 ## 最後に必ず出力すること
