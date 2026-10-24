@@ -268,11 +268,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 9043,
+        "ms": 9407,
         "moneyLines": 26,
-        "checkedAt": "2026-10-24",
+        "checkedAt": "2026-10-25",
         "fails": 0,
-        "lastOkAt": "2026-10-24",
+        "lastOkAt": "2026-10-25",
         "suspects": [
           "金額の種類が多すぎる（18種）＝別商品が混ざっている疑い",
           "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"

@@ -1,29 +1,17 @@
 {
-  "generatedAt": "2026-10-23T22:53:36.890Z",
+  "generatedAt": "2026-10-24T22:53:03.060Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
       "id": "adobe-cc",
       "name": "Adobe Creative Cloud",
       "url": "https://www.adobe.com/jp/creativecloud/plans.html",
-      "added": [
+      "added": [],
+      "removed": [
         "$1",
         "9,080円"
       ],
-      "removed": [],
-      "detectedAt": "2026-10-23T22:50:24.220Z"
-    },
-    {
-      "id": "runway",
-      "name": "Runway",
-      "url": "https://runwayml.com/pricing",
-      "added": [
-        "$43"
-      ],
-      "removed": [
-        "$42"
-      ],
-      "detectedAt": "2026-10-23T22:53:30.510Z"
+      "detectedAt": "2026-10-24T22:49:50.237Z"
     }
   ]
 }

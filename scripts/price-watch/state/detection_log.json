@@ -9581,5 +9581,35 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "公式は Standard $15・Pro $35・Unlimited $95（月払い。年払い$12/$28/$76）で掲載と一致、reconcile も一致。$43/$42はプラン価格ではない数字",
     "judgedAt": "2026-10-24"
+  },
+  {
+    "date": "2026-10-25",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      1,
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去11回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "取得を2回やり直して2回目に日本向けページが読めた（本文3303字）。Creative Cloud Pro 通常9,080円/月・単体アプリ3,280円/月が掲載と一致。検知の「消失」は巡回時に本文316字（金額なし）しか取れなかった取得の揺れで、価格改定ではない（過去11回同型）。掲載の2,380円（フォトプラン）はページに見当たらない（既知の棚卸し不一致）",
+    "judgedAt": "2026-10-25"
   }
 ]
