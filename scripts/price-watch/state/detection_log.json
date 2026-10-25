@@ -9611,5 +9611,89 @@
     "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
     "evidence": "取得を2回やり直して2回目に日本向けページが読めた（本文3303字）。Creative Cloud Pro 通常9,080円/月・単体アプリ3,280円/月が掲載と一致。検知の「消失」は巡回時に本文316字（金額なし）しか取れなかった取得の揺れで、価格改定ではない（過去11回同型）。掲載の2,380円（フォトプラン）はページに見当たらない（既知の棚卸し不一致）",
     "judgedAt": "2026-10-25"
+  },
+  {
+    "date": "2026-10-26",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去36回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "公式は個人￥1,280・ファミリー￥2,280・Lite/学生￥780（月）で掲載(1280/780/2280)と一致。追加の￥1,480は過去36回同型の偽陽性（出たり消えたりする）、reconcile も一致",
+    "judgedAt": "2026-10-26"
+  },
+  {
+    "date": "2026-10-26",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1,
+      9080
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去12回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "今朝の巡回で日本向けページが読め、追加は9,080円（掲載のCreative Cloud Pro通常価格と同じ）と$1（ドル表示の断片）だけで、掲載と異なる新しい円の価格は出ていない。検知後の取得は4回とも本文316字（金額なし）で再確認はできなかった。同じ値で過去12回偽陽性判定済みの、ページが読める日と読めない日の切り替わり",
+    "judgedAt": "2026-10-26"
+  },
+  {
+    "date": "2026-10-26",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      640
+    ],
+    "removed": [
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（640, 400）で過去61回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "同日の reconcile で掲載の 800/1600/2500 が公式ページと一致。¥640/¥400 は期間限定割引まわりの数字の揺れ（過去61回同型）",
+    "judgedAt": "2026-10-26"
   }
 ]
