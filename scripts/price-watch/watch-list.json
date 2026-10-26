@@ -88,11 +88,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 3824,
+        "ms": 2423,
         "moneyLines": 52,
-        "checkedAt": "2026-10-26",
+        "checkedAt": "2026-10-27",
         "fails": 0,
-        "lastOkAt": "2026-10-26"
+        "lastOkAt": "2026-10-27"
       },
       "cloud": {
         "via": "relay",
@@ -639,11 +639,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchで具体的USD価格をテキスト確認済み（日本円表示ではなくUSD建て）",
       "fetch": {
         "status": "ok",
-        "ms": 3665,
+        "ms": 2954,
         "moneyLines": 4,
-        "checkedAt": "2026-08-18",
+        "checkedAt": "2026-10-27",
         "fails": 0,
-        "lastOkAt": "2026-08-18"
+        "lastOkAt": "2026-10-27"
       }
     },
     {
@@ -975,11 +975,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3717,
+        "ms": 3862,
         "moneyLines": 10,
-        "checkedAt": "2026-10-24",
+        "checkedAt": "2026-10-27",
         "fails": 0,
-        "lastOkAt": "2026-10-24"
+        "lastOkAt": "2026-10-27"
       }
     },
     {
