@@ -88,11 +88,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok",
-        "ms": 2423,
+        "ms": 2557,
         "moneyLines": 52,
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-10-28",
         "fails": 0,
-        "lastOkAt": "2026-10-27"
+        "lastOkAt": "2026-10-28"
       },
       "cloud": {
         "via": "relay",
@@ -410,11 +410,11 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "ok",
-        "ms": 24314,
+        "ms": 24083,
         "moneyLines": 4,
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-28",
         "fails": 0,
-        "lastOkAt": "2026-10-23"
+        "lastOkAt": "2026-10-28"
       },
       "cloud": {
         "geo": {
@@ -975,11 +975,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3862,
+        "ms": 3784,
         "moneyLines": 10,
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-10-28",
         "fails": 0,
-        "lastOkAt": "2026-10-27"
+        "lastOkAt": "2026-10-28"
       }
     },
     {
