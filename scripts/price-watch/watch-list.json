@@ -132,15 +132,12 @@
       ],
       "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 20216,
-        "moneyLines": 1,
-        "checkedAt": "2026-10-01",
+        "status": "ok",
+        "ms": 8789,
+        "moneyLines": 2,
+        "checkedAt": "2026-10-29",
         "fails": 0,
-        "lastOkAt": "2026-10-01",
-        "suspects": [
-          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
-        ]
+        "lastOkAt": "2026-10-29"
       }
     },
     {
@@ -838,12 +835,15 @@
       "renderMode": "headless",
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
-        "status": "ok",
-        "ms": 4271,
-        "moneyLines": 6,
-        "checkedAt": "2026-09-29",
+        "status": "ok-suspect",
+        "ms": 38423,
+        "moneyLines": 10,
+        "checkedAt": "2026-10-29",
         "fails": 0,
-        "lastOkAt": "2026-09-29"
+        "lastOkAt": "2026-10-29",
+        "suspects": [
+          "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
+        ]
       },
       "cloud": {
         "geo": {
@@ -921,11 +921,11 @@
       "note": "2026-07-25追加(実測$20/$40)。services.js追加時にwatch-list登録が漏れていた9件のうちの1件。USD表示ページ（日本円ページは無し）",
       "fetch": {
         "status": "ok",
-        "ms": 3953,
+        "ms": 4138,
         "moneyLines": 10,
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-29",
         "fails": 0,
-        "lastOkAt": "2026-10-23"
+        "lastOkAt": "2026-10-29"
       }
     },
     {
