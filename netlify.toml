@@ -27,7 +27,9 @@
   # AdSense再審査中の一時措置（docs/ADSENSE_REAPPROVAL_PLAN.md P3・俊雄さんYES承認2026-07-02）。
   # true の間、全アフィリエイトリンクが元URL（非収益化）にフォールバックする（src/data/affiliates.js）。
   # 承認が下りたら false に戻す（Netlify環境変数 VITE_REVIEW_MODE を上書き設定すればここより優先される）。
-  VITE_REVIEW_MODE = "true"
+  # 2026-10-29 false に戻した：AdSense は 2026-07-15 に休眠（積極的に狙わない）になったのに、この措置だけ残り、
+  # 約4か月間すべてのアフィリエイトリンクが非収益化URLのまま（収益0の原因）。再審査を始める時だけ true にする。
+  VITE_REVIEW_MODE = "false"
 
 # 静的アセットに長期キャッシュを設定（Vite はファイル名にハッシュを含めるので安全）
 [[headers]]
