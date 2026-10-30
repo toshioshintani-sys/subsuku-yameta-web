@@ -264,16 +264,12 @@
       "noAdBlock": true,
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
-        "status": "ok-suspect",
-        "ms": 11142,
-        "moneyLines": 26,
-        "checkedAt": "2026-10-30",
+        "status": "no-money",
+        "ms": 3972,
+        "moneyLines": 0,
+        "checkedAt": "2026-10-31",
         "fails": 0,
-        "lastOkAt": "2026-10-30",
-        "suspects": [
-          "金額の種類が多すぎる（18種）＝別商品が混ざっている疑い",
-          "ちょうど半額の組がある（3300 と 6600）＝割引価格と通常価格の並記の疑い"
-        ]
+        "lastOkAt": "2026-10-30"
       }
     },
     {
@@ -979,11 +975,11 @@
       "note": "2026-07-25追加(実測$0/$12/$15/$35/$36/$84)。runway.com/pricing へリダイレクト。USD表示",
       "fetch": {
         "status": "ok",
-        "ms": 3784,
+        "ms": 4009,
         "moneyLines": 10,
-        "checkedAt": "2026-10-28",
+        "checkedAt": "2026-10-31",
         "fails": 0,
-        "lastOkAt": "2026-10-28"
+        "lastOkAt": "2026-10-31"
       }
     },
     {
