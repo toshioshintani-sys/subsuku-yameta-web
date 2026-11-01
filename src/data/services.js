@@ -2248,11 +2248,11 @@ export const PLANS = {
  *  2026-10-15: TTS 158.99 / TTB 156.99 → TTM 157.99
  *  ⚠️ 同じページに「外貨現金両替相場」が並んでいる。**別物**。
  *     必ず上段の対顧客電信相場（US Dollar / 米ドル / USD の行）の TTS・TTB を使うこと。 */
-export const USD_JPY = 157.99;
+export const USD_JPY = 157.54;
 /** ページに書かれていた「相場日」。土日に読むと最終営業日になる */
-export const USD_JPY_AS_OF = '2026-10-15';
+export const USD_JPY_AS_OF = '2026-10-30';
 /** 実際にページを読んだ日。AS_OF と違えば「最終営業日の値」という注釈が出る */
-export const USD_JPY_READ_ON = '2026-10-15';
+export const USD_JPY_READ_ON = '2026-11-01';
 /** 出典。素のHTMLで取得できることを 2026-07-31 に実測（1.7秒・2,439字） */
 export const USD_JPY_SOURCE = 'https://www.murc-kawasesouba.jp/fx/';
 /** 出典の名前（表示に出す） */
