@@ -145,9 +145,16 @@ try {
   const m = svc.match(/USD_JPY_AS_OF\s*=\s*'(\d{4}-\d{2}-\d{2})'/);
   if (m) {
     const boundary = `${now.ym}-${now.day >= 15 ? '15' : '01'}`;
-    facts.push(`為替: USD_JPY_AS_OF=${m[1]}（直近の区切り ${boundary}）`);
+    // 区切りの日が土日なら、公表仲値の最新は直前の金曜日の相場日（2026-11-01 日曜は 10-30 が正しい・2026-11-01 の誤検知）。
+    // 祝日で公表が無い日はここでは扱わない（為替の当番 fx.md が判断する）。
+    const bd = new Date(`${boundary}T00:00:00Z`);
+    const dow = bd.getUTCDay();
+    if (dow === 0) bd.setUTCDate(bd.getUTCDate() - 2);
+    else if (dow === 6) bd.setUTCDate(bd.getUTCDate() - 1);
+    const expected = bd.toISOString().slice(0, 10);
+    facts.push(`為替: USD_JPY_AS_OF=${m[1]}（直近の区切り ${boundary}${expected !== boundary ? `・土日のため期待する相場日は ${expected}` : ''}）`);
     const boundaryDayEarly = now.date === boundary && now.min < 11 * 60 + 30;
-    if (m[1] < boundary && !boundaryDayEarly) add('高', '為替が古い', `USD_JPY_AS_OF=${m[1]} が直近の区切り ${boundary} より前`);
+    if (m[1] < expected && !boundaryDayEarly) add('高', '為替が古い', `USD_JPY_AS_OF=${m[1]} が直近の区切り ${boundary}（期待する相場日 ${expected}）より前`);
   }
 } catch { /* services.js が読めない事態はビルド・本番の指摘で出る */ }
 
