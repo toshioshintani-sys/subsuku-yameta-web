@@ -407,11 +407,11 @@
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
         "status": "ok",
-        "ms": 24083,
-        "moneyLines": 4,
-        "checkedAt": "2026-10-28",
+        "ms": 23726,
+        "moneyLines": 5,
+        "checkedAt": "2026-11-02",
         "fails": 0,
-        "lastOkAt": "2026-10-28"
+        "lastOkAt": "2026-11-02"
       },
       "cloud": {
         "geo": {
