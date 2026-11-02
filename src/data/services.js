@@ -1882,9 +1882,9 @@ export const PLANS = {
   'chatgpt-plus': {
     plans: [
       { name: 'Free（無料）', monthly: 0 },
-      { name: 'Go', monthly: 1400, note: 'Plus より安い入門プラン。Sora・レガシーモデルは対象外' },
-      { name: 'Plus（個人）', monthly: 3000, popular: true, note: '上位モデルの推論・エージェントモード月40回' },
-      { name: 'Pro', monthly: 16800, note: '公式表示は「月額 ￥16,800 から」。上位ティアは米ドル建て' },
+      { name: 'Go', monthly: 1400, note: 'Plus より安い入門プラン。レガシーモデルは対象外。広告が表示される場合あり（公式表記）' },
+      { name: 'Plus（個人）', monthly: 3000, popular: true, note: '高度な推論モデルや各機能の上限が Go より広い（回数は公式で「制限が適用されます」と表記）' },
+      { name: 'Pro', monthly: 16800, note: '公式表示は「月額 ￥16,800 から」。利用量に応じて選べる3つのティアがあり、上位ティアの月額は公式ページに明記なし' },
     ],
     howToCheck: 'ChatGPT →「設定」→「サブスクリプション」で確認できます',
   },
