@@ -265,11 +265,11 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "no-money",
-        "ms": 3972,
+        "ms": 4150,
         "moneyLines": 0,
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-03",
         "fails": 0,
-        "lastOkAt": "2026-10-30"
+        "lastOkAt": "2026-11-03"
       }
     },
     {
@@ -836,11 +836,11 @@
       "note": "2026-07-07: JS描画のためheadless(Puppeteer)化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 38423,
-        "moneyLines": 10,
-        "checkedAt": "2026-10-29",
+        "ms": 39424,
+        "moneyLines": 12,
+        "checkedAt": "2026-11-03",
         "fails": 0,
-        "lastOkAt": "2026-10-29",
+        "lastOkAt": "2026-11-03",
         "suspects": [
           "円が1つも無くドルだけ（海外向けページ／API料金ページを見ている疑い）"
         ]
