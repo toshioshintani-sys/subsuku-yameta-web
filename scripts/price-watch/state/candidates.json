@@ -1,82 +1,105 @@
 {
-  "generatedAt": "2026-11-02T22:59:33.673Z",
+  "generatedAt": "2026-11-03T22:54:45.752Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "url": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+      "added": [],
+      "removed": [
+        "¥2,130",
+        "¥2,740",
+        "¥21,300",
+        "¥27,400",
+        "¥3,200",
+        "¥32,000",
+        "¥41,380",
+        "¥4260",
+        "¥5480",
+        "¥6400"
+      ],
+      "detectedAt": "2026-11-03T22:50:20.394Z"
+    },
     {
       "id": "adobe-cc",
       "name": "Adobe Creative Cloud",
       "url": "https://www.adobe.com/jp/creativecloud/plans.html",
-      "added": [],
-      "removed": [
+      "added": [
         "$1",
         "9,080円"
       ],
-      "detectedAt": "2026-11-02T22:55:57.061Z"
+      "removed": [],
+      "detectedAt": "2026-11-03T22:50:34.080Z"
+    },
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "added": [
+        "$40"
+      ],
+      "removed": [
+        "￥0",
+        "￥1,400",
+        "￥16,800",
+        "￥3,000",
+        "￥30,000",
+        "￥84,000"
+      ],
+      "detectedAt": "2026-11-03T22:51:47.122Z"
     },
     {
       "id": "deepl-pro",
       "name": "DeepL Pro",
       "url": "https://www.deepl.com/ja/pro",
       "added": [
-        "$33",
-        "$42",
-        "$43",
-        "$62",
-        "$64",
-        "$66",
-        "$91",
-        "$94",
-        "$96"
-      ],
-      "removed": [
-        "$31",
         "$34",
+        "$37",
         "$39",
         "$40",
         "$44",
+        "$47",
         "$49",
-        "$61",
         "$63",
         "$65",
-        "$70",
+        "$67",
+        "$69",
         "$72",
-        "$92"
+        "$92",
+        "$95",
+        "$97"
       ],
-      "detectedAt": "2026-11-02T22:58:05.503Z"
-    },
-    {
-      "id": "vimeo-pro",
-      "name": "Vimeo",
-      "url": "https://vimeo.com/upgrade",
-      "added": [
-        "$120",
-        "$16",
-        "$24.50",
-        "$40",
-        "$7",
+      "removed": [
+        "$33",
+        "$36",
+        "$38",
+        "$41",
+        "$46",
+        "$48",
+        "$62",
+        "$64",
+        "$66",
+        "$68",
         "$71",
-        "$85",
-        "$9"
+        "$73",
+        "$94",
+        "$96"
       ],
-      "removed": [],
-      "detectedAt": "2026-11-02T22:59:04.993Z"
+      "detectedAt": "2026-11-03T22:53:16.817Z"
     },
     {
       "id": "runway",
       "name": "Runway",
       "url": "https://runwayml.com/pricing",
       "added": [
-        "$25",
-        "$30",
-        "$33",
-        "$38"
+        "$62"
       ],
       "removed": [
-        "$31",
-        "$34",
-        "$39"
+        "$60",
+        "$63"
       ],
-      "detectedAt": "2026-11-02T22:59:27.383Z"
+      "detectedAt": "2026-11-03T22:54:39.741Z"
     }
   ]
 }

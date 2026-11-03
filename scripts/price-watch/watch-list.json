@@ -252,7 +252,14 @@
       "url": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
       "mode": "prices",
       "enabled": true,
-      "note": ""
+      "note": "",
+      "fetch": {
+        "status": "short-body",
+        "ms": 10516,
+        "moneyLines": 0,
+        "checkedAt": "2026-11-04",
+        "fails": 3
+      }
     },
     {
       "id": "adobe-cc",
@@ -265,9 +272,9 @@
       "note": "2026-07-07解決: net::ERR_HTTP2_PROTOCOL_ERRORの真因は広告ブロック用のrequest interception自体だった（AdobeのCDNがHTTP/2接続中断に弱い）。interceptionを丸ごとスキップするnoAdBlockオプションをコードに追加(price-watch.mjs)して解消・9,080円(コンプリートプラン個人向け)を検出確認済み",
       "fetch": {
         "status": "no-money",
-        "ms": 4150,
+        "ms": 3215,
         "moneyLines": 0,
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-04",
         "fails": 0,
         "lastOkAt": "2026-11-03"
       }
@@ -406,10 +413,10 @@
       ],
       "note": "2026-07-07: 素のfetchは403でbot拒否され続けていたためheadless(Puppeteer・実ブラウザUA)化。￥修正で実価格6件(無料/Go/Plus/Pro/Business月額/Business年額)を検出。$100はscript内の分析用イベント名(\"ChatGPT Pricing > Consumer > Pro $100\")でノイズと確認・excludeTokensで除外。stripScriptStyleは使わない(Business料金￥3,050/￥3,850がscript内にありまとめて消えるため)。既知の不安定性: Business料金2件(￥3,050/￥3,850)は非同期読み込みらしく4回中2回しか出現しない(3回連続実測で確認)。sig=4/6を往復するのは既知の揺れでpriceの実変更ではない・検知候補に出ても一次確認で無視してよい",
       "fetch": {
-        "status": "ok",
-        "ms": 23726,
-        "moneyLines": 5,
-        "checkedAt": "2026-11-02",
+        "status": "no-money",
+        "ms": 38625,
+        "moneyLines": 0,
+        "checkedAt": "2026-11-04",
         "fails": 0,
         "lastOkAt": "2026-11-02"
       },

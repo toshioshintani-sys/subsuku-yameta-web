@@ -10893,5 +10893,197 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "同日の reconcile で掲載(2367/5523/14991＝$15/$35/$95を新レート157.80で換算)が公式ページと一致。追加・消失の$25〜$39はプラン価格ではない数字（過去14回同型）",
     "judgedAt": "2026-11-03"
+  },
+  {
+    "date": "2026-11-04",
+    "serviceId": "microsoft-365",
+    "name": "Microsoft 365",
+    "added": [],
+    "removed": [
+      2130,
+      2740,
+      21300,
+      27400,
+      3200,
+      32000,
+      41380,
+      4260,
+      5480,
+      6400
+    ],
+    "ours": [
+      2130,
+      21300,
+      2740,
+      27400,
+      3200,
+      32000
+    ],
+    "signals": [
+      {
+        "name": "変化した金額が多すぎる（10件）＝別商品の混在",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+    "evidence": "SUBSUKU_CLOUD=1で3回取得し本文61字（JS描画で空）。全金額が同時に消えただけでページ読めず。日本円の改定の根拠なし",
+    "judgedAt": "2026-11-03T23:00:33.395Z"
+  },
+  {
+    "date": "2026-11-04",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      1,
+      9080
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1, 9080）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "追加された9,080円はservices.jsのCreative Cloud Pro(9080)と一致。ページ読める/読めない揺れ（再取得で本文316字・金額なし）",
+    "judgedAt": "2026-11-03T23:00:33.395Z"
+  },
+  {
+    "date": "2026-11-04",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      40
+    ],
+    "removed": [
+      0,
+      1400,
+      16800,
+      3000,
+      30000,
+      84000
+    ],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（40, 0, 1400）で過去18回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が消えた＝無料キャンペーンが終わった可能性",
+        "kind": "本物より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "再取得で本文11404字だが金額行なし。円の表示が丸ごと消えただけ（既知の揺れ）。$40は米ドル表記でJP価格変更の根拠にならない",
+    "judgedAt": "2026-11-03T23:00:33.395Z"
+  },
+  {
+    "date": "2026-11-04",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      34,
+      37,
+      39,
+      40,
+      44,
+      47,
+      49,
+      63,
+      65,
+      67,
+      69,
+      72,
+      92,
+      95,
+      97
+    ],
+    "removed": [
+      33,
+      36,
+      38,
+      41,
+      46,
+      48,
+      62,
+      64,
+      66,
+      68,
+      71,
+      73,
+      94,
+      96
+    ],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（34, 37, 39）で過去29回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（29件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/ja/pricing",
+    "evidence": "換算/数値ノイズ（既知）。円の改定の根拠なし",
+    "judgedAt": "2026-11-03T23:00:33.395Z"
+  },
+  {
+    "date": "2026-11-04",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      62
+    ],
+    "removed": [
+      60,
+      63
+    ],
+    "ours": [
+      2367,
+      22723,
+      5523,
+      53021,
+      14991,
+      143914
+    ],
+    "signals": [
+      {
+        "name": "同じ値（60, 63）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。円の改定の根拠なし",
+    "judgedAt": "2026-11-03T23:00:33.395Z"
   }
 ]
