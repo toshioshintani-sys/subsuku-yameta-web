@@ -11085,5 +11085,197 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "ドル数値の揺れ（既知）。円の改定の根拠なし",
     "judgedAt": "2026-11-03T23:00:33.395Z"
+  },
+  {
+    "date": "2026-11-05",
+    "serviceId": "hulu",
+    "name": "Hulu",
+    "added": [
+      550
+    ],
+    "removed": [],
+    "ours": [
+      1320
+    ],
+    "signals": [
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.hulu.jp/",
+    "evidence": "再取得で550円はページに無く、月額1,320円(税込)のまま。services.jsと一致、reconcileも一致。一時的な表示の混入",
+    "judgedAt": "2026-11-04T22:57:57.821Z"
+  },
+  {
+    "date": "2026-11-05",
+    "serviceId": "microsoft-365",
+    "name": "Microsoft 365",
+    "added": [
+      2130,
+      2740,
+      21300,
+      27400,
+      3200,
+      32000,
+      41380,
+      4260,
+      5480,
+      6400
+    ],
+    "removed": [],
+    "ours": [
+      2130,
+      21300,
+      2740,
+      27400,
+      3200,
+      32000
+    ],
+    "signals": [
+      {
+        "name": "同じ値（2130, 2740, 21300）で過去1回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（2130 と 4260）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（10件）＝別商品の混在",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+    "evidence": "昨日ページが読めず消えた金額10件が戻っただけ（同一の値）。reconcileも一致。改定ではない",
+    "judgedAt": "2026-11-04T22:57:57.821Z"
+  },
+  {
+    "date": "2026-11-05",
+    "serviceId": "chatgpt-plus",
+    "name": "ChatGPT Plus",
+    "added": [
+      0,
+      1400,
+      16800,
+      3000,
+      30000,
+      84000
+    ],
+    "removed": [],
+    "ours": [
+      3000,
+      1400,
+      16800
+    ],
+    "signals": [
+      {
+        "name": "同じ値（0, 1400, 16800）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "「0円」の表示が出た＝無料キャンペーンが始まった可能性",
+        "kind": "本物より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://openai.com/ja-JP/chatgpt/pricing/",
+    "evidence": "昨日消えた円の表示6件が同じ値で戻っただけ。reconcileも一致。改定ではない",
+    "judgedAt": "2026-11-04T22:57:57.821Z"
+  },
+  {
+    "date": "2026-11-05",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400）で過去68回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "既知の揺れ（¥1,250/¥400の出入り）。reconcileは一致で、掲載との差なし",
+    "judgedAt": "2026-11-04T22:57:57.821Z"
+  },
+  {
+    "date": "2026-11-05",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      31,
+      32,
+      34,
+      37,
+      39,
+      43,
+      46,
+      48,
+      53,
+      64
+    ],
+    "removed": [
+      25,
+      27,
+      41,
+      52,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      62
+    ],
+    "ours": [
+      2367,
+      22723,
+      5523,
+      53021,
+      14991,
+      143914
+    ],
+    "signals": [
+      {
+        "name": "同じ値（31, 32, 34）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（32 と 64）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（21件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。reconcileは一致。円の改定の根拠なし",
+    "judgedAt": "2026-11-04T22:57:57.821Z"
   }
 ]
