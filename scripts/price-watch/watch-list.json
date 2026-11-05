@@ -133,11 +133,11 @@
       "note": "2026-07-07: headless化で月額1,026円を確認。ただしトップページ掲載の番組タイトル(「マツコ1,000円超え高級卵を試食」)由来の無関係な1,000円をexcludeTokensで除外",
       "fetch": {
         "status": "ok",
-        "ms": 8077,
-        "moneyLines": 2,
-        "checkedAt": "2026-11-05",
+        "ms": 8155,
+        "moneyLines": 3,
+        "checkedAt": "2026-11-06",
         "fails": 0,
-        "lastOkAt": "2026-11-05"
+        "lastOkAt": "2026-11-06"
       }
     },
     {
