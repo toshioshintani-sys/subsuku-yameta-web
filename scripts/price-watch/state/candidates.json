@@ -1,22 +1,34 @@
 {
-  "generatedAt": "2026-11-07T22:53:12.754Z",
+  "generatedAt": "2026-11-08T22:53:36.648Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "chatgpt-plus",
-      "name": "ChatGPT Plus",
-      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "id": "hulu",
+      "name": "Hulu",
+      "url": "https://www.hulu.jp/",
       "added": [
-        "$40",
-        "￥0",
-        "￥1,400",
-        "￥16,800",
-        "￥3,000",
-        "￥30,000",
-        "￥84,000"
+        "550円"
       ],
-      "removed": [],
-      "detectedAt": "2026-11-07T22:50:13.870Z"
+      "removed": [
+        "440円"
+      ],
+      "detectedAt": "2026-11-08T22:48:48.130Z"
+    },
+    {
+      "id": "runway",
+      "name": "Runway",
+      "url": "https://runwayml.com/pricing",
+      "added": [
+        "$26",
+        "$32",
+        "$37"
+      ],
+      "removed": [
+        "$31",
+        "$33",
+        "$38"
+      ],
+      "detectedAt": "2026-11-08T22:53:30.282Z"
     }
   ]
 }
