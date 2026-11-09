@@ -118,7 +118,11 @@ export function runNode(args, opts = {}) {
  * 2026-10-01〜10-03 の3日間 main が止まって Hulu 改定と為替が本番に出なかった。
  * --autostash：7:10の巡回が書いた未コミットの台帳(state/)があっても早送りできるようにする。
  */
-export function ensureMain() {
+export function ensureMain(job) {
+  // クラウドが担当している仕事は、PC は何もしない。作業ツリーに触る前に、origin/main のスイッチで判断して静かに終わる。
+  // （2026-11-05〜11-09：PC に未 push のコミットがあり main へ早送りできず、クラウド担当の4つの仕事が毎回
+  //  「停止」と Slack に出ていた。やらない仕事の失敗を知らせる必要はない）
+  if (job && movedToCloudRemote(job)) return { ok: true, cloud: true };
   // 価格の巡回・判定がクラウドへ移ったあとは、PC に残った台帳（state/）の未コミット変更は捨てる（2026-10-17）。
   // 正本は main（クラウドが毎日コミットする）。残したまま pull --autostash すると台帳が衝突して止まる。
   if (movedToCloud('price')) git(['checkout', '--', 'scripts/price-watch/state/']);
@@ -256,6 +260,14 @@ function merge3(base, ours, theirs) {
  * その仕事がクラウドの定期タスクへ移ったか（scripts/ops/cloud_jobs.json・2026-10-17）。
  * ensureMain() の後に呼ぶ（main の最新のスイッチを読むため）。true なら PC では何もしない。
  */
+/** origin/main のスイッチで見る（PC の作業ツリーが古い・食い違っていても判定できる）。取れなければ false。 */
+export function movedToCloudRemote(job) {
+  git(['fetch', '--quiet', 'origin', 'main'], { timeout: 90000 });
+  const raw = gitShow('origin/main', 'scripts/ops/cloud_jobs.json');
+  if (!raw) return false;
+  try { return JSON.parse(raw)[job] === true; } catch { return false; }
+}
+
 export function movedToCloud(job) {
   const j = readJson(path.join(ROOT, 'scripts/ops/cloud_jobs.json'), {});
   return !!(j && j[job] === true);

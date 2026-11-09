@@ -35,12 +35,12 @@ try {
 
 function main() {
   // PRブランチ上に居残らない（lib.ensureMain の注釈参照）。戻せないなら黙って続けず止めて知らせる。
-  const em = ensureMain();
+  const em = ensureMain('price');
   if (!em.ok) {
     sendSlack(`サブスクやめた 価格判定（無人）を停止：${em.reason}\n直pushがPRブランチに積まれて本番に出ない危険があるため続行しません。`);
     return finish(1);
   }
-  if (movedToCloud('price')) {
+  if (em.cloud || movedToCloud('price')) {
     log('価格の判定はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
     return finish(0);
   }

@@ -156,12 +156,12 @@ function main() {
     return finish(0);
   }
 
-  const em = DRY ? { ok: true } : ensureMain();
+  const em = DRY ? { ok: true } : ensureMain('watch');
   if (!em.ok) {
     sendSlack(`サブスクやめた 巡回を停止：${em.reason}\n作業ツリーが main に戻せません。手で確認してください。`);
     return finish(1);
   }
-  if (!DRY && movedToCloud('watch')) {
+  if (!DRY && (em.cloud || movedToCloud('watch'))) {
     log('巡回はクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
     return finish(0);
   }

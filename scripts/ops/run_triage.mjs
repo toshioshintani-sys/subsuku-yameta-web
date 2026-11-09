@@ -18,12 +18,12 @@ const agentLog = path.join(LOG_DIR, `triage_agent_${s}.json`);
 const finish = (c) => { process.exitCode = c; };
 
 try {
-  const em = ensureMain();
+  const em = ensureMain('triage');
   if (!em.ok) {
     sendSlack(`サブスクやめた 3日棚卸しを停止：${em.reason}`);
     process.exit(1);
   }
-  if (movedToCloud('triage')) {
+  if (em.cloud || movedToCloud('triage')) {
     log('3日棚卸しはクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
     process.exit(0);
   }

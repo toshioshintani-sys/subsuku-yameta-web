@@ -21,12 +21,12 @@ try {
     log('本日は実行済みのためスキップ');
     process.exit(0);
   }
-  const em = ensureMain();
+  const em = ensureMain('weekly');
   if (!em.ok) {
     sendSlack(`サブスクやめた 週次レビューを停止：${em.reason}`);
     process.exit(1);
   }
-  if (movedToCloud('weekly')) {
+  if (em.cloud || movedToCloud('weekly')) {
     log('週次レビューはクラウドの定期タスクへ移行済み（scripts/ops/cloud_jobs.json）のため PC では実行しない');
     process.exit(0);
   }
