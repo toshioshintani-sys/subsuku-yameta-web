@@ -254,11 +254,12 @@
       "enabled": true,
       "note": "",
       "fetch": {
-        "status": "short-body",
-        "ms": 10516,
-        "moneyLines": 0,
-        "checkedAt": "2026-11-04",
-        "fails": 3
+        "status": "ok",
+        "ms": 4793,
+        "moneyLines": 13,
+        "checkedAt": "2026-11-11",
+        "fails": 0,
+        "lastOkAt": "2026-11-11"
       }
     },
     {

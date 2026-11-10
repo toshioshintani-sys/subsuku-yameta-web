@@ -11792,5 +11792,131 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "ドル数値の揺れ（既知）。棚卸しは一致。円の改定の根拠なし",
     "judgedAt": "2026-11-09T22:58:43.073Z"
+  },
+  {
+    "date": "2026-11-11",
+    "serviceId": "microsoft-365",
+    "name": "Microsoft 365",
+    "added": [
+      1910,
+      19170,
+      2880,
+      28800
+    ],
+    "removed": [
+      4260,
+      5480,
+      6400
+    ],
+    "ours": [
+      2130,
+      21300,
+      2740,
+      27400,
+      3200,
+      32000
+    ],
+    "signals": [
+      {
+        "name": "同じ値（4260, 5480, 6400）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.microsoft.com/ja-jp/microsoft-365/buy/compare-all-microsoft-365-products",
+    "evidence": "再取得（本文6655字）で定価は Personal ¥2,130/月・¥21,300/年、Family ¥2,740/月・¥27,400/年、Premium ¥3,200/月・¥32,000/年のまま（掲載と一致）。追加の¥1,910/¥19,170/¥2,880/¥28,800は「最初の1か月／初年度」の初回割引価格で通常価格の改定ではない",
+    "judgedAt": "2026-11-10T22:57:59.701Z"
+  },
+  {
+    "date": "2026-11-11",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [],
+    "removed": [
+      9080
+    ],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（9080）で過去16回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "ページが9,080円（Pro）だけ読める日と読めない日がある既知の揺れ。services.jsのPro 9,080円は変更の根拠なし",
+    "judgedAt": "2026-11-10T22:57:59.701Z"
+  },
+  {
+    "date": "2026-11-11",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      560
+    ],
+    "removed": [
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（560, 400）で過去66回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "既知の数値の出入り（¥400→¥560）。棚卸しは一致で掲載との差なし",
+    "judgedAt": "2026-11-10T22:57:59.701Z"
+  },
+  {
+    "date": "2026-11-11",
+    "serviceId": "windsurf",
+    "name": "Windsurf（現Devin Desktop）",
+    "added": [
+      45,
+      47,
+      50,
+      81,
+      82,
+      83,
+      84
+    ],
+    "removed": [
+      76,
+      78
+    ],
+    "ours": [
+      3156,
+      31560,
+      12624
+    ],
+    "signals": [
+      {
+        "name": "同じ値（81, 76, 78）で過去3回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（9件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://windsurf.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。棚卸しは一致。円の改定の根拠なし",
+    "judgedAt": "2026-11-10T22:57:59.701Z"
   }
 ]
