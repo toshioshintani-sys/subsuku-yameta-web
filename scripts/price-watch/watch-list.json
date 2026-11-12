@@ -231,11 +231,11 @@
       "note": "2026-07-06調査: エージェントのWebFetchは503(bot対策)だったため実挙動は本スクリプトで要確認",
       "fetch": {
         "status": "ok",
-        "ms": 5234,
-        "moneyLines": 2,
-        "checkedAt": "2026-10-21",
+        "ms": 5112,
+        "moneyLines": 4,
+        "checkedAt": "2026-11-13",
         "fails": 0,
-        "lastOkAt": "2026-10-21"
+        "lastOkAt": "2026-11-13"
       }
     },
     {
