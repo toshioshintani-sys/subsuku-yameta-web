@@ -1,50 +1,48 @@
 {
-  "generatedAt": "2026-11-12T22:54:36.078Z",
+  "generatedAt": "2026-11-13T22:53:13.474Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "amazon-music-unlimited",
-      "name": "Amazon Music Unlimited",
-      "url": "https://www.amazon.co.jp/music/unlimited",
+      "id": "netflix",
+      "name": "Netflix",
+      "url": "https://www.netflix.com/jp/",
       "added": [
-        "0円"
+        "￥1,790",
+        "￥2,590",
+        "￥990"
       ],
-      "removed": [],
-      "detectedAt": "2026-11-12T22:49:50.597Z"
+      "removed": [
+        "￥1,590",
+        "￥2,290",
+        "￥890"
+      ],
+      "detectedAt": "2026-11-13T22:48:40.178Z"
     },
     {
-      "id": "chatgpt-plus",
-      "name": "ChatGPT Plus",
-      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
-      "added": [
-        "$40",
-        "￥0",
-        "￥1,400",
-        "￥16,800",
-        "￥3,000",
-        "￥30,000",
-        "￥84,000"
+      "id": "adobe-cc",
+      "name": "Adobe Creative Cloud",
+      "url": "https://www.adobe.com/jp/creativecloud/plans.html",
+      "added": [],
+      "removed": [
+        "9,080円"
       ],
-      "removed": [],
-      "detectedAt": "2026-11-12T22:51:38.005Z"
+      "detectedAt": "2026-11-13T22:49:38.671Z"
+    },
+    {
+      "id": "dmagazine",
+      "name": "dマガジン",
+      "url": "https://dmagazine.docomo.ne.jp/",
+      "added": [],
+      "removed": [
+        "8000円"
+      ],
+      "detectedAt": "2026-11-13T22:51:09.108Z"
     },
     {
       "id": "deepl-pro",
       "name": "DeepL Pro",
       "url": "https://www.deepl.com/ja/pro",
       "added": [
-        "$30",
-        "$32",
-        "$34",
-        "$39",
-        "$41",
-        "$43",
-        "$46",
-        "$61",
-        "$63",
-        "$66"
-      ],
-      "removed": [
         "$31",
         "$33",
         "$36",
@@ -58,34 +56,50 @@
         "$67",
         "$91"
       ],
-      "detectedAt": "2026-11-12T22:53:07.637Z"
+      "removed": [
+        "$30",
+        "$32",
+        "$34",
+        "$39",
+        "$41",
+        "$43",
+        "$46",
+        "$61",
+        "$63",
+        "$66"
+      ],
+      "detectedAt": "2026-11-13T22:51:46.138Z"
     },
     {
       "id": "runway",
       "name": "Runway",
       "url": "https://runwayml.com/pricing",
       "added": [
-        "$17",
-        "$22",
-        "$30",
-        "$32",
-        "$37",
-        "$43",
-        "$61",
-        "$66"
+        "$31",
+        "$33",
+        "$34",
+        "$38",
+        "$39",
+        "$40",
+        "$41",
+        "$47",
+        "$62",
+        "$68"
       ],
       "removed": [
-        "$16",
-        "$19",
-        "$20",
-        "$31",
-        "$34",
-        "$39",
-        "$41",
-        "$52",
-        "$55"
+        "$26",
+        "$29",
+        "$43",
+        "$54",
+        "$56",
+        "$58",
+        "$59",
+        "$60",
+        "$61",
+        "$63",
+        "$66"
       ],
-      "detectedAt": "2026-11-12T22:54:29.584Z"
+      "detectedAt": "2026-11-13T22:53:07.141Z"
     }
   ]
 }

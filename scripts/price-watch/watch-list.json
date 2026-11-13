@@ -16,11 +16,11 @@
       "note": "料金プランのヘルプ記事（サーバー描画で¥が出やすい）",
       "fetch": {
         "status": "ok",
-        "ms": 3803,
-        "moneyLines": 3,
-        "checkedAt": "2026-07-26",
+        "ms": 4462,
+        "moneyLines": 2,
+        "checkedAt": "2026-11-14",
         "fails": 0,
-        "lastOkAt": "2026-07-26"
+        "lastOkAt": "2026-11-14"
       },
       "cloud": {
         "url": "https://www.netflix.com/jp/",
