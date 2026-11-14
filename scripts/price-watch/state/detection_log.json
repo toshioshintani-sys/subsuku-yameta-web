@@ -12475,5 +12475,117 @@
     "checkedUrl": "https://runwayml.com/pricing",
     "evidence": "ドル数値の揺れ（既知）。棚卸しは一致",
     "judgedAt": "2026-11-13T23:06:17.717Z"
+  },
+  {
+    "date": "2026-11-15",
+    "serviceId": "adobe-cc",
+    "name": "Adobe Creative Cloud",
+    "added": [
+      9080
+    ],
+    "removed": [],
+    "ours": [
+      6480,
+      2380,
+      3280,
+      9080
+    ],
+    "signals": [
+      {
+        "name": "同じ値（9080）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "出現した値が全部うちの表示と一致＝価格は変わっていない（取得方法を変えた直後に起きる）",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.adobe.com/jp/creativecloud/plans.html",
+    "evidence": "追加の9,080円はservices.jsのCreative Cloud Pro(9080)と一致。ページが読める日と読めない日がある既知の揺れ",
+    "judgedAt": "2026-11-14T22:58:25.648Z"
+  },
+  {
+    "date": "2026-11-15",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1250, 400）で過去72回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "追加ゼロで消失だけ＝価格改定なら新しい値も出るはず。表示の揺れかプラン廃止",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "消失のみ（¥1,250/¥400）で追加なし。既知の数値の出入り。棚卸しは一致で掲載との差なし",
+    "judgedAt": "2026-11-14T22:58:25.649Z"
+  },
+  {
+    "date": "2026-11-15",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      29,
+      43,
+      54,
+      56,
+      58,
+      59,
+      60,
+      61,
+      63,
+      66
+    ],
+    "removed": [
+      32,
+      34,
+      37,
+      39,
+      40,
+      41,
+      47,
+      62,
+      68
+    ],
+    "ours": [
+      2367,
+      22723,
+      5523,
+      53021,
+      14991,
+      143914
+    ],
+    "signals": [
+      {
+        "name": "同じ値（29, 43, 54）で過去20回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（29 と 58）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（19件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。棚卸しは一致",
+    "judgedAt": "2026-11-14T22:58:25.649Z"
   }
 ]
