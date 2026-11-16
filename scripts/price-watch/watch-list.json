@@ -349,11 +349,11 @@
       "note": "",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 7972,
-        "moneyLines": 9,
-        "checkedAt": "2026-10-07",
+        "ms": 5899,
+        "moneyLines": 18,
+        "checkedAt": "2026-11-17",
         "fails": 0,
-        "lastOkAt": "2026-10-07",
+        "lastOkAt": "2026-11-17",
         "suspects": [
           "ちょうど半額の組がある（2150 と 4300）＝割引価格と通常価格の並記の疑い"
         ]
