@@ -1,75 +1,105 @@
 {
-  "generatedAt": "2026-11-16T22:53:39.872Z",
+  "generatedAt": "2026-11-17T22:53:09.625Z",
   "note": "検知候補。公開前に必ず公式ページで一次確認し、正しければ src/data/services.js の PRICE_HISTORY に人/Claudeが追記する（誤報ゼロ）。このファイルは自動公開されない。",
   "events": [
     {
-      "id": "playstation-plus",
-      "name": "PlayStation Plus",
-      "url": "https://www.playstation.com/ja-jp/ps-plus/",
-      "added": [
-        "¥5,440",
-        "¥8,775",
-        "¥9,313"
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus",
+      "url": "https://openai.com/ja-JP/chatgpt/pricing/",
+      "added": [],
+      "removed": [
+        "$40"
       ],
-      "removed": [],
-      "detectedAt": "2026-11-16T22:49:57.401Z"
+      "detectedAt": "2026-11-17T22:50:09.071Z"
+    },
+    {
+      "id": "audible",
+      "name": "Audible",
+      "url": "https://www.audible.co.jp/",
+      "added": [
+        "500円",
+        "99円",
+        "¥1500"
+      ],
+      "removed": [
+        "¥0"
+      ],
+      "detectedAt": "2026-11-17T22:50:54.614Z"
     },
     {
       "id": "deepl-pro",
       "name": "DeepL Pro",
       "url": "https://www.deepl.com/ja/pro",
       "added": [
+        "$32",
+        "$39",
+        "$40",
+        "$48",
+        "$49",
+        "$81",
+        "$84",
+        "$90",
+        "$96",
+        "$98"
+      ],
+      "removed": [
         "$30",
         "$33",
-        "$35",
         "$38",
         "$42",
-        "$44",
         "$47",
-        "$60",
-        "$62",
-        "$64",
-        "$66",
-        "$67",
-        "$69",
+        "$80",
+        "$83",
+        "$85",
         "$92",
         "$95",
         "$97"
       ],
-      "removed": [
-        "$32",
-        "$34",
-        "$36",
-        "$41",
-        "$43",
-        "$45",
-        "$48",
-        "$49",
-        "$81",
-        "$82",
-        "$84",
-        "$86",
-        "$88",
-        "$91",
-        "$93"
-      ],
-      "detectedAt": "2026-11-16T22:52:11.010Z"
+      "detectedAt": "2026-11-17T22:51:38.841Z"
     },
     {
       "id": "runway",
       "name": "Runway",
       "url": "https://runwayml.com/pricing",
       "added": [
-        "$26",
-        "$32",
-        "$37"
-      ],
-      "removed": [
         "$31",
         "$33",
         "$38"
       ],
-      "detectedAt": "2026-11-16T22:53:33.504Z"
+      "removed": [
+        "$26",
+        "$32",
+        "$37"
+      ],
+      "detectedAt": "2026-11-17T22:53:03.254Z"
+    },
+    {
+      "id": "windsurf",
+      "name": "Windsurf（現Devin Desktop）",
+      "url": "https://windsurf.com/pricing",
+      "added": [
+        "$16",
+        "$29",
+        "$65",
+        "$67"
+      ],
+      "removed": [
+        "$13",
+        "$14",
+        "$18",
+        "$21",
+        "$40",
+        "$45",
+        "$47",
+        "$50",
+        "$77",
+        "$79",
+        "$81",
+        "$82",
+        "$83",
+        "$84"
+      ],
+      "detectedAt": "2026-11-17T22:53:05.247Z"
     }
   ]
 }

@@ -501,11 +501,11 @@
       "note": "2026-07-25: 旧note「JS描画・要URL調査（未着手）」を解消。/ep/member-benefits と /ep/pricing は0件だったが、トップページ https://www.audible.co.jp/ で￥1,500(月会費)/￥880(ライト版)を実測取得。トップページ監視のため無関係なキャンペーン金額が混ざる可能性あり＝検知時は文脈確認を必ず行う",
       "fetch": {
         "status": "ok",
-        "ms": 2535,
-        "moneyLines": 8,
-        "checkedAt": "2026-10-22",
+        "ms": 2302,
+        "moneyLines": 9,
+        "checkedAt": "2026-11-18",
         "fails": 0,
-        "lastOkAt": "2026-10-22"
+        "lastOkAt": "2026-11-18"
       },
       "cloud": {
         "via": "relay",
