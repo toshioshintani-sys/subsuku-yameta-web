@@ -2962,3 +2962,17 @@ scripts/ops/cloud/daily.md の手順1に「直近の区切りが土日祝で、U
 
 ### 永続化
 scripts/ops/lib.mjs `ensureMain(job)` / `movedToCloudRemote(job)`：origin/main のスイッチ（cloud_jobs.json）でクラウド担当と分かれば、作業ツリーに触る前に黙って終わる。4つのランナー（run_triage・run_watch・run_weekly_review・run_daily_judge）が使う。PC へ戻すときは cloud_jobs.json を false にして push するだけ（従来どおり）。
+
+## 2026-11-20 ★★★ Vimeo：日本円の料金APIの場所とプラン名が変わっていた（掲載は未変更・PCで要確認）
+
+### 発見
+- クラウド（米国）から Vimeo の日本円を読むための書き換え（watch-list.json の vimeo-pro `cloud.geo.rewrite`）は、旧API `api.vimeo.com/subscription_plans` を対象にしていたが、2026-11 時点でページが呼ぶのは `https://vimeo.com/api/v3/subscription_plans` に変わっており、**書き換えが当たらず米国向け（$表示）のまま**になっていた。10/29 から保留が続いた原因。
+- 新URLに `&currency=JPY` を付けると円建てが返る（実測）。ただし返ってきたプランが掲載と違う：Creator 年払い月額換算¥1,000／月払い¥1,750、Core ¥3,500／¥6,000、Professional ¥6,100／¥10,250、Studio ¥32,500／¥48,500（税込・include_tax=true）。掲載は Starter ¥1,200・Standard ¥3,625・Advanced ¥6,346（2026-09-29 に PC の日本向け表示で確認）。
+- プラン名と体系が違う（4プラン＋Free/Enterprise）。日本の訪問者に同じ表示が出ているか、`currency=JPY` の上書きが実際の日本向け表示と一致するかは、クラウドからは確かめられない。
+
+### なぜ重要か
+- プラン名・体系の変更は、無人で直してはいけない決まり（誤報ゼロ）。円で確認できていない値を書くと誤報になる。掲載は据え置き、俊雄さんが PC で vimeo.com/upgrade の日本向け表示を見て確認するのを待つ。
+- 検知の書き換えルールを新URLに直すと基準が丸ごと入れ替わる（検知が大量に出る）ので、PCでの確認後にまとめて直す。
+
+### 永続化
+- 本エントリ。watch-list.json の vimeo-pro は未変更。PCで日本向け表示を確認できたら、①services.js の vimeo-pro（PRICING・PLANS・説明文・PRICE_HISTORY）を直す ②`cloud.geo.rewrite` の match を `vimeo\.com/api/v3/subscription_plans` に直す、の2点。
