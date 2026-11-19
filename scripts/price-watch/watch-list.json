@@ -149,10 +149,10 @@
       "note": "2026-07-06調査: 料金訴求LP。エージェントのWebFetchで「月額580円」等をテキスト確認済み",
       "fetch": {
         "status": "timeout",
-        "ms": 35005,
+        "ms": 35002,
         "moneyLines": 0,
-        "checkedAt": "2026-10-17",
-        "fails": 30,
+        "checkedAt": "2026-11-20",
+        "fails": 31,
         "lastOkAt": "2026-09-09"
       }
     },
@@ -793,11 +793,11 @@
       "note": "2026-07-06修正: hulu/楽天TVと同一のJSバンドル(監視SDK系の正規表現置換文字列)を価格と誤検出していたためscript/style除去を有効化",
       "fetch": {
         "status": "ok-suspect",
-        "ms": 9079,
+        "ms": 7361,
         "moneyLines": 1,
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-11-20",
         "fails": 0,
-        "lastOkAt": "2026-10-17",
+        "lastOkAt": "2026-11-20",
         "suspects": [
           "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
         ]
