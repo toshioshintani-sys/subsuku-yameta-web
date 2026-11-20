@@ -189,12 +189,15 @@
       "enabled": true,
       "note": "",
       "fetch": {
-        "status": "ok",
-        "ms": 3476,
-        "moneyLines": 2,
-        "checkedAt": "2026-09-29",
+        "status": "ok-suspect",
+        "ms": 2390,
+        "moneyLines": 3,
+        "checkedAt": "2026-11-21",
         "fails": 0,
-        "lastOkAt": "2026-09-29"
+        "lastOkAt": "2026-11-21",
+        "suspects": [
+          "うちの表示価格がページに1つも無い（別ページか、価格が変わった）"
+        ]
       }
     },
     {
