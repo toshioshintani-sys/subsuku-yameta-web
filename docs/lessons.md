@@ -2980,3 +2980,4 @@ scripts/ops/lib.mjs `ensureMain(job)` / `movedToCloudRemote(job)`：origin/main 
 ### 追記 2026-11-21（解決）
 - 俊雄さんが示した公式ページ vimeo.com/upgrade-plan で日本円の表示を確認でき、旧 Starter/Standard/Advanced と1対1で対応（金額は 1,200→1,000／3,625→3,500／6,346→6,100）。Studio（年払い月換算32,500円）が新たに加わっていた。services.js（PRICING・PLANS・PRICE_HISTORY）を PR #120 で更新して本番に出した。
 - 検知の書き換えルール（watch-list.json の vimeo-pro）を現行URL `vimeo.com/api/v3/subscription_plans` に直した。次回の巡回は検知の基準が入れ替わるため、円の数字が大きく動く検知が1回出る見込み（偽陽性として扱ってよい。掲載と一致していれば）。
+- 訂正（2026-11-22）：上の「Studio が加わっていた」は、料金APIの返り値にあっただけで、公式ページの料金表示には載っていなかった（今朝の棚卸しで判明）。確認できていないプランは載せない原則に従い、Studio を掲載から外した（PR #121）。掲載は Creator 1,000円／Core 3,500円／Professional 6,100円（年払い月換算）。
