@@ -860,13 +860,13 @@
         "geo": {
           "rewrite": [
             {
-              "match": "api\\.vimeo\\.com/subscription_plans",
+              "match": "vimeo\\.com/api/v3/subscription_plans",
               "from": "$",
               "to": "&currency=JPY"
             }
           ]
         },
-        "_note": "2026-10-17 クラウド（米国接続）用。料金は api.vimeo.com/subscription_plans から読む（通貨は接続元の国）。currency=JPY を付けると ￥1,200/￥3,625/￥6,346 を表示（実測。country= 等は効かない）。"
+        "_note": "2026-10-17 クラウド（米国接続）用。料金は vimeo.com/api/v3/subscription_plans から読む（通貨は接続元の国）。currency=JPY を付けると円建て（Creator ￥1,000/Core ￥3,500/Professional ￥6,100/Studio ￥32,500＝年払いの月額換算）を表示。2026-11-21 に旧 api.vimeo.com/subscription_plans から現行URLへ直した（旧URLのままだと書き換えが当たらず米ドルを読んでいた）。"
       }
     },
     {
