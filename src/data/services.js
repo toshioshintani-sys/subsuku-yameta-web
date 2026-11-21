@@ -2071,13 +2071,12 @@ export const PLANS = {
   },
   // 2026-11-21 公式（vimeo.com/upgrade-plan・日本円）でプラン名と金額が変わっているのを確認して更新。
   // 旧 Starter/Standard/Advanced（1200/3625/6346）→ Creator/Core/Professional（1000/3500/6100）に対応し、
-  // 上位に Studio が加わっている。表示は「年払いの月額換算／月払いの月額」の並記。
+  // （料金APIには上位の Studio も出るが、公式ページの料金表示には載っていないため掲載していない）。表示は「年払いの月額換算／月払いの月額」の並記。
   'vimeo-pro': {
     plans: [
       { name: 'Creator', monthly: 1000, popular: true, note: '年払いの月額換算。月払いのみだと1,750円' },
       { name: 'Core', monthly: 3500, note: '年払いの月額換算。月払いのみだと6,000円' },
       { name: 'Professional', monthly: 6100, note: '年払いの月額換算。月払いのみだと10,250円' },
-      { name: 'Studio', monthly: 32500, note: '年払いの月額換算。月払いのみだと48,500円' },
     ],
     howToCheck: 'Vimeo →「Settings」→「Plans」で確認できます',
   },
@@ -2660,10 +2659,10 @@ export const PRICE_HISTORY = {
   'vimeo-pro': [
     {
       date: '2026-11-21',
-      item: '有料プラン（Creator／Core／Professional／Studio）',
+      item: '有料プラン（Creator／Core／Professional）',
       direction: 'restructure',
       change:
-        'プラン名と金額が変わっていた。旧Starter 1,200円→Creator 1,000円、旧Standard 3,625円→Core 3,500円、旧Advanced 6,346円→Professional 6,100円（いずれも年払いの月額換算・税込）。月払いのみの場合は Creator 1,750円・Core 6,000円・Professional 10,250円（旧 2,000円・6,041円・10,610円）。上位に Studio（年払い月換算32,500円・月払い48,500円）が加わった。改定の施行日は未確認で、確認できた日を記録している。',
+        'プラン名と金額が変わっていた。旧Starter 1,200円→Creator 1,000円、旧Standard 3,625円→Core 3,500円、旧Advanced 6,346円→Professional 6,100円（いずれも年払いの月額換算・税込）。月払いのみの場合は Creator 1,750円・Core 6,000円・Professional 10,250円（旧 2,000円・6,041円・10,610円）。改定の施行日は未確認で、確認できた日を記録している。',
       source: 'https://vimeo.com/upgrade-plan',
       verifiedAt: '2026-11-21',
     },
