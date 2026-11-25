@@ -13936,5 +13936,181 @@
     "checkedUrl": "https://windsurf.com/pricing",
     "evidence": "ドル数値の揺れ（既知）。棚卸しは一致。円の改定の根拠なし",
     "judgedAt": "2026-11-24T22:55:17.996Z"
+  },
+  {
+    "date": "2026-11-26",
+    "serviceId": "youtube-premium",
+    "name": "YouTube Premium",
+    "added": [
+      1480
+    ],
+    "removed": [],
+    "ours": [
+      1280,
+      780,
+      2280
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1480）で過去42回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.youtube.com/premium",
+    "evidence": "前日に消えた￥1,480が戻っただけ（既知の揺れ）。棚卸しは一致で、掲載との差なし",
+    "judgedAt": "2026-11-25T22:55:55.313Z"
+  },
+  {
+    "date": "2026-11-26",
+    "serviceId": "deepl-pro",
+    "name": "DeepL Pro",
+    "added": [
+      863
+    ],
+    "removed": [],
+    "ours": [
+      1150,
+      3750,
+      7500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（863）で過去2回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "消失ゼロで追加だけ＝監視URL/描画方法を変えた直後の可能性",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://www.deepl.com/pro",
+    "evidence": "追加の￥863は「初年度は年払い」の割引価格（定価¥1,150の25%引き）で、11/19に確認済み。定価は掲載と一致、棚卸しも一致。改定ではない",
+    "judgedAt": "2026-11-25T22:55:55.313Z"
+  },
+  {
+    "date": "2026-11-26",
+    "serviceId": "google-workspace",
+    "name": "Google Workspace",
+    "added": [
+      1280,
+      1750,
+      640
+    ],
+    "removed": [
+      1250,
+      400
+    ],
+    "ours": [
+      800,
+      1600,
+      2500
+    ],
+    "signals": [
+      {
+        "name": "同じ値（1280, 1750, 640）で過去85回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（640 と 1280）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://workspace.google.com/intl/ja/pricing.html",
+    "evidence": "既知の数値の出入り（¥400/¥640/¥1,250/¥1,280など）。棚卸しは一致で掲載との差なし",
+    "judgedAt": "2026-11-25T22:55:55.313Z"
+  },
+  {
+    "date": "2026-11-26",
+    "serviceId": "runway",
+    "name": "Runway",
+    "added": [
+      37,
+      39,
+      41,
+      49,
+      54,
+      67,
+      68
+    ],
+    "removed": [
+      38,
+      40,
+      48,
+      53,
+      59,
+      69
+    ],
+    "ours": [
+      2398,
+      23020,
+      5595,
+      53713,
+      15187,
+      145792
+    ],
+    "signals": [
+      {
+        "name": "同じ値（37, 39, 41）で過去19回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（13件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://runwayml.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。棚卸しは一致",
+    "judgedAt": "2026-11-25T22:55:55.313Z"
+  },
+  {
+    "date": "2026-11-26",
+    "serviceId": "windsurf",
+    "name": "Windsurf（現Devin Desktop）",
+    "added": [
+      46,
+      49,
+      52,
+      54,
+      81,
+      90,
+      91,
+      92,
+      93
+    ],
+    "removed": [
+      66,
+      68
+    ],
+    "ours": [
+      3197,
+      31972,
+      12789
+    ],
+    "signals": [
+      {
+        "name": "同じ値（46, 49, 52）で過去8回、公式確認のうえ偽陽性と判定済み",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "ちょうど半額の組がある（46 と 92）＝割引価格と通常価格の並記",
+        "kind": "偽陽性より"
+      },
+      {
+        "name": "変化した金額が多すぎる（11件）＝別商品の混在",
+        "kind": "偽陽性より"
+      }
+    ],
+    "verdict": "偽陽性",
+    "checkedUrl": "https://windsurf.com/pricing",
+    "evidence": "ドル数値の揺れ（既知）。棚卸しは一致。円の改定の根拠なし",
+    "judgedAt": "2026-11-25T22:55:55.313Z"
   }
 ]
