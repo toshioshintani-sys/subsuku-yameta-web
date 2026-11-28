@@ -61,6 +61,7 @@ export default function ServicePage() {
   const { id } = useParams();
   const service = SERVICES.find((s) => s.id === id);
   const extended = service ? EXTENDED_CONTENT[service.id] : null;
+  const hasRetention = extended?.darkPatterns?.length > 0;
   const priceHistory = service ? PRICE_HISTORY[service.id] || null : null;
   const monthly = service ? getDefaultMonthly(service.id) : 0;
   const plans = service ? getPlans(service.id) : [];
@@ -132,11 +133,17 @@ export default function ServicePage() {
     return list;
   })();
 
-  // 同カテゴリのサービスを最大3件
-  const related = SERVICES.filter((s) => s.category === service?.category && s.id !== id).slice(0, 3);
+  // 同カテゴリのサービスを最大4件。常に先頭から選ぶと後ろのサービスへの内部リンクが増えないので、
+  // 自分の次から循環して選ぶ（どのサービスも同カテゴリの4件から均等にリンクされる・2026-11-28）
+  const related = (() => {
+    const peers = SERVICES.filter((s) => s.category === service?.category);
+    const i = peers.findIndex((s) => s.id === id);
+    if (i < 0) return [];
+    return Array.from({ length: Math.min(4, peers.length - 1) }, (_, k) => peers[(i + 1 + k) % peers.length]);
+  })();
 
   // 解約前に読む記事（内部リンク・選出ロジックは serviceGuides.js）
-  const guides = getGuidesForService(service, 3);
+  const guides = getGuidesForService(service, 4, { rotate: true });
 
   // C層（整理層）：買い切り・単発購入への切り替え提案（該当するサービスのみ）
   const buyout = service ? BUYOUT_ALTERNATIVES[service.id] || null : null;
@@ -186,8 +193,12 @@ export default function ServicePage() {
   // 手順。」だけの30字前後になっていた（2026-09-02 Bing Webmaster が15ページを「説明が短い」と指摘）。
   // 文字数を稼ぐための水増しはしない。**ページに実際にある事実だけ**を足して、検索結果を見た人が
   // 「開く価値があるか」を判断できるようにする（解約難度・月額・注意点や代替案の有無）。
+  // 検索結果で他の解約解説と並んだときに選ぶ理由になる「直リンク」「手順数」「引き止め画面の対処法」を、
+  // ページに実際にあるものだけ入れる（2026-11-28 改善案1。鮮度の年月は、確認日をサービスごとに持つ
+  // データが無いため入れていない）。
   const fallbackDescription = (() => {
     const parts = [`${service.name}の解約ページへの直リンクと、${service.steps.length}ステップの手順。`];
+    if (hasRetention) parts.push('引き止め画面の対処法も掲載。');
     parts.push(`解約難度は${DIFFICULTY_LABEL[service.difficulty]}。`);
     if (monthlyDisplay) parts.push(`月額${monthlyDisplay}。`);
     if (service.note) parts.push('解約時の注意点も記載。');
@@ -197,15 +208,12 @@ export default function ServicePage() {
 
   // seoTitle / seoDescription：検索語と正式名がずれるサービスだけ、検索結果での見え方を個別に上書きする
   // （2026-10-15・日経電子版から。全サービスのテンプレートは変えない）。
-  const description = service.seoDescription
-    || (extended?.summary
-      ? `${extended.summary.slice(0, 110)}…${service.name}の解約手順と引き止め対策を解説。`
-      : fallbackDescription);
+  const description = service.seoDescription || fallbackDescription;
 
   return (
     <div className={styles.page}>
       <Seo
-        title={service.seoTitle || `${service.name}の解約方法`}
+        title={service.seoTitle || `${service.name}の解約方法｜直リンク・${hasRetention ? '引き止め対処法' : `${service.steps.length}ステップ`}`}
         description={description}
         canonical={`/service/${service.id}`}
         jsonLd={jsonLd}

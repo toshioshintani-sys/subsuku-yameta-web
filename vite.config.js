@@ -2,15 +2,23 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import sitemap from './vite-plugin-sitemap.js';
+import { SERVICES } from './src/data/services.js';
+
+// 説明文などに入れるサービス数は、固定の数字にせずデータの件数から入れる（古くなるのを防ぐ）
+const SERVICE_COUNT = SERVICES.length;
 
 // PWA 設定
 // - ホーム画面に追加できる（manifest）
 // - オフラインでも解約手順を閲覧可能（Service Worker のプリキャッシュ）
 // - ロゴ画像（Clearbit）はネット必須なので、オフライン時は emoji フォールバック
 export default defineConfig({
+  define: {
+    'import.meta.env.VITE_SERVICE_COUNT': JSON.stringify(String(SERVICE_COUNT)),
+  },
   plugins: [
     react(),
     sitemap(),
+    { name: 'service-count-html', transformIndexHtml: (html) => html.replaceAll('{{SERVICE_COUNT}}', String(SERVICE_COUNT)) },
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'og-image.svg', 'ads.txt', 'robots.txt'],
@@ -18,7 +26,7 @@ export default defineConfig({
         name: 'サブスクやめた',
         short_name: 'サブスクやめた',
         description:
-          'Netflix・Spotify・Amazonプライム…58以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。',
+          `Netflix・Spotify・Amazonプライム…${SERVICE_COUNT}サービスの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。`,
         theme_color: '#1a1f2e',
         background_color: '#ffffff',
         display: 'standalone',

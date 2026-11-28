@@ -51,6 +51,13 @@ function lastmodFor(path) {
   let m;
   if ((m = path.match(/^\/service\/([^/]+)$/))) return latestPriceDate(m[1]);
   if (path === '/compare' || path === '/price-watch') return latestPriceDate(null);
+  // トップは「最近の価格変更」を載せている＝価格変更履歴の最新日で内容が変わる。
+  // カテゴリは、そのカテゴリのサービスの価格変更履歴の最新日（価格が載っているため）。根拠のあるものだけに付ける。
+  if (path === '/') return latestPriceDate(null);
+  if ((m = path.match(/^\/category\/([^/]+)$/))) {
+    const dates = SERVICES.filter((s) => s.category === m[1]).map((s) => latestPriceDate(s.id)).filter(Boolean).sort();
+    return dates.length ? dates[dates.length - 1] : null;
+  }
   if ((m = path.match(/^\/blog\/([^/]+)$/))) return POSTS.find((p) => p.slug === m[1])?.published || null;
   return null;
 }

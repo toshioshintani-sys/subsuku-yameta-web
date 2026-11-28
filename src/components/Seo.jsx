@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { SITE_URL } from '../config.js';
 
+// サービス数はビルド時に vite.config.js が SERVICES.length から入れる（固定の数字が古くなる＝陳腐化の防止・2026-11-28）
 const DEFAULT_DESC =
-  'Netflix・Spotify・Amazonプライム…58以上のサブスクの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。';
+  `Netflix・Spotify・Amazonプライム…${import.meta.env.VITE_SERVICE_COUNT}サービスの解約ページへ直接ジャンプ。手順と注意点も3ステップで要約。`;
 
 function setMeta(name, content, attr = 'name') {
   if (!content) return;

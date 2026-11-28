@@ -22,7 +22,29 @@ const BY_SERVICE = {
   spotify: ['graduated-spotify-tried-coffee-subscription'],
   dazn: ['world-cup-2026-where-to-watch-free'],
   'abema-premium': ['world-cup-2026-where-to-watch-free'],
+  'chatgpt-plus': ['chatgpt-claude-gemini-compare-cancel'],
+  'claude-pro': ['chatgpt-claude-gemini-compare-cancel'],
+  'gemini-advanced': ['chatgpt-claude-gemini-compare-cancel'],
+  'perplexity-pro': ['chatgpt-claude-gemini-compare-cancel'],
 };
+
+// (5) 循環枠：「なぜ解約しそびれるのか」の心理・お金の記事。どのサービスからも読んで違和感がなく、
+// サービス側のリンクが無くて記事ページへの内部リンクが1本しかなかった記事に、サービスごとに順番に流す。
+// （2026-11-28 改善案2）
+const ROTATION = [
+  'late-night-impulse-subscribe',
+  'free-trial-commitment-reciprocity',
+  'mystery-charge-subscription-lookup',
+  'credit-statement-ostrich-double-charge',
+  'month-end-deadline-effect-subscription',
+  'subscription-campaign-scarcity-bias',
+  'coupon-deadline-sunk-cost-loss-aversion',
+  'expensive-subscription-sunk-cost-survivorship',
+  'bank-app-avoidance-ostrich-effect',
+  'bonus-statement-silence-mental-accounting',
+  'tired-night-ego-depletion-subscribe',
+  'best-payment-method-for-subscription',
+];
 
 // (2) 難易度ルール：解約が重いサービスには引き止め対策の記事を優先で添える
 const BY_DIFFICULTY = {
@@ -55,8 +77,9 @@ const COMMON = [
  * @param {{id: string, category: string, difficulty: string}} service
  * @param {number} limit
  */
-export function getGuidesForService(service, limit = 3) {
+export function getGuidesForService(service, limit = 3, { rotate = false } = {}) {
   if (!service) return [];
+  const fixedLimit = rotate ? limit - 1 : limit;
   const ordered = [
     ...(BY_SERVICE[service.id] || []),
     ...(BY_DIFFICULTY[service.difficulty] || []),
@@ -70,7 +93,16 @@ export function getGuidesForService(service, limit = 3) {
     seen.add(slug);
     const post = POST_BY_SLUG[slug];
     if (post) picked.push(post);
-    if (picked.length >= limit) break;
+    if (picked.length >= fixedLimit) break;
+  }
+  if (rotate) {
+    // サービスの並び順に応じて循環枠の記事を1本（すでに選んだ記事は除く）
+    const at = Math.max(0, SERVICES.findIndex((s) => s.id === service.id));
+    for (let k = 0; k < ROTATION.length; k++) {
+      const slug = ROTATION[(at + k) % ROTATION.length];
+      const post = POST_BY_SLUG[slug];
+      if (post && !picked.includes(post)) { picked.push(post); break; }
+    }
   }
   return picked;
 }

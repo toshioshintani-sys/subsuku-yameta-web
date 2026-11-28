@@ -100,7 +100,16 @@ export default function BlogPostPage() {
   // 関連記事は同タグ最大3件（手動useMemo撤去・メモ化はReact Compilerに任せる＝7/17 lint一掃と同方針）
   const related = (() => {
     if (!post) return [];
-    return POSTS.filter((p) => p.slug !== post.slug && p.tags?.some((t) => post.tags?.includes(t))).slice(0, 3);
+    // 先頭の記事ばかりが選ばれて、他の記事へのリンクが増えなかった。タグの重なりが多い順、同じなら
+    // 自分の次の記事から循環して選ぶ（2026-11-28 改善案2）
+    const at = POSTS.findIndex((p) => p.slug === post.slug);
+    const n = POSTS.length;
+    return POSTS
+      .filter((p) => p.slug !== post.slug && p.tags?.some((t) => post.tags?.includes(t)))
+      .map((p) => ({ p, overlap: p.tags.filter((t) => post.tags.includes(t)).length, dist: (POSTS.indexOf(p) - at + n) % n }))
+      .sort((a, b) => b.overlap - a.overlap || a.dist - b.dist)
+      .slice(0, 3)
+      .map((x) => x.p);
   })();
 
   const jsonLd = useMemo(() => {

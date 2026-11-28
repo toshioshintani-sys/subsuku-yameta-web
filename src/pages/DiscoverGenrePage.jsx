@@ -173,7 +173,7 @@ export default function DiscoverGenrePage() {
       <div className={styles.related}>
         <h2 className={styles.relatedTitle}>他のジャンルも見る</h2>
         <ul className={styles.relatedList}>
-          {DISCOVER_GENRES.filter((g) => g.id !== genre.id).slice(0, 5).map((g) => (
+          {DISCOVER_GENRES.filter((g) => g.id !== genre.id).map((g) => (
             <li key={g.id}>
               <Link to={`/discover/${g.id}/`} className={styles.relatedCard}>
                 <span className={styles.relatedEmoji} aria-hidden="true">
